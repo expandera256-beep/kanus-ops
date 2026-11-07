@@ -1,0 +1,15 @@
+{
+  "results": [
+    {
+      "name": "real_gate",
+      "status": "BLOCKED",
+      "detail": "--real requires US_REAL_MODEL_E2E=1 and US_PROXY_URL=https://api-test.kanus.org"
+    }
+  ],
+  "counts": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 1,
+    "NOT TESTED": 0
+  }
+}

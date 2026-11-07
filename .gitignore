@@ -1,0 +1,36 @@
+# Yerel sırlar ve kimlik bilgileri
+.env*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+hosts.yml
+*cookie*
+perf_login_account.json
+*.lock
+secrets/
+# Derleme ve büyük çıktılar
+*.exe
+*.dll
+*.zip
+*.tar*
+*.tgz
+*.gz
+*.safetensors
+*.bin
+*.gguf
+*.pt
+*.pth
+*.test
+*.a
+*.o
+*.so
+*.pyc
+node_modules/
+vendor/
+__pycache__/
+.cache/
+.pytest_cache/
+go-build/

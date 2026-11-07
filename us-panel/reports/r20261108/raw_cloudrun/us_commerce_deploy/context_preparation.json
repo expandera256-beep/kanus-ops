@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "path": "/workspace/us-panel/sre/cloudrun/fixes/build-context-us-commerce",
+  "patch": "/workspace/us-panel/sre/cloudrun/fixes/us-commerce/local-acceptance.patch",
+  "patch_sha256": "c5c8d3b1951607e31f46733b29ca6f462ab6408f4ba55170eb767bbcd96f76f7",
+  "patch_output": "patching file commerce_http.py\npatching file rate_limit.py\npatching file readiness_checks.py\npatching file runtime.py\npatching file structured_logging.py\n",
+  "matches_independently_tested_tree": {
+    "lifecycle_config.py": true,
+    "managed_inference.py": true,
+    "mail_worker.py": true,
+    "model_gateway.py": true,
+    "inference_lifecycle.py": true,
+    "storage.py": true,
+    "commerce_http.py": true,
+    "metering_admin.py": true,
+    "legacy_wake_migration.py": true,
+    "readiness_checks.py": true,
+    "account_store.py": true,
+    "gce_provider.py": true,
+    "metering_stream.py": true,
+    "rate_limit.py": true,
+    "delivery.py": true,
+    "shopify_ledger.py": true,
+    "runtime.py": true,
+    "commercial_server.py": true,
+    "structured_logging.py": true
+  },
+  "time_istanbul": "2026-11-08T00:45:13.154559+03:00"
+}

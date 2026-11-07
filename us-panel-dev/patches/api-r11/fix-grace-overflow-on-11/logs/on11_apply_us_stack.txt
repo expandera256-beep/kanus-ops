@@ -1,0 +1,26 @@
+0004/0012 EXIT=0
+uyum 01-preferences/0001-iface.patch EXIT=0
+uyum 01-preferences/0002-prefs.patch EXIT=0
+uyum 01-preferences/0003-prefs_open_unix.patch EXIT=0
+uyum 01-preferences/0004-prefs_open_other.patch EXIT=0
+uyum 01-preferences/0005-prefs_test.patch EXIT=0
+uyum 01-preferences/0006-prefs_fifo_unix_test.patch EXIT=0
+uyum 01-preferences/0007-v4_security_linux_test.patch EXIT=0
+uyum 02-ops/0001-privacy_ops.patch EXIT=0
+uyum 02-ops/0002-store.patch EXIT=0
+uyum 02-ops/0003-privacy_ops_test.patch EXIT=0
+uyum 02-ops/0004-privacy_v4_test.patch EXIT=0
+uyum 03-handler/0001-handler.patch EXIT=0
+uyum 03-handler/0002-handler_test.patch EXIT=0
+uyum 03-handler/0003-v4_handler_test.patch EXIT=0
+uyum 04-hook-us/0001-main.patch EXIT=0
+uyum 04-hook-us/0002-main_test.patch EXIT=0
+additive EXIT=0
+fatal: ambiguous argument 'base11': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+cmp: EOF on /dev/fd/63 which is empty
+STACK_DIFFERS
+STACK vs US FULL_STACK content diff lines: 203
+TREE_IDENTICAL_TO_US_FULL_STACK
+FIX_APPLIES_ON_US_FULL_STACK

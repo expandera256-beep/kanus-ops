@@ -1,0 +1,21 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "istem",
+      "text": "kullanıcı: rea toplam.js"
+    },
+    {
+      "n": 2,
+      "kind": "işlem",
+      "text": "rea"
+    },
+    {
+      "n": 3,
+      "kind": "düşünce",
+      "text": "inspect-artifact\n/workspace/us-panel-dev/r13b/tmp/TestPanelRunsREAWithoutTheModel3841729377/002/toplam.js\n--format\nmd\n--token-limit\n1200"
+    }
+  ]
+}

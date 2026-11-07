@@ -1,0 +1,60 @@
+{
+  "time_istanbul": "2026-11-08T00:33:14.547643+03:00",
+  "proxy_version": "2.27.0",
+  "credentials_persisted": false,
+  "ip_types": [
+    "PRIMARY",
+    "OUTGOING"
+  ],
+  "queries": [
+    {
+      "name": "read_only_setting",
+      "sql": "SET default_transaction_read_only=on;\nSHOW default_transaction_read_only;",
+      "returncode": 0,
+      "stdout": "default_transaction_read_only\non\n",
+      "stderr": ""
+    },
+    {
+      "name": "select_1",
+      "sql": "SET default_transaction_read_only=on;\nSELECT 1;",
+      "returncode": 0,
+      "stdout": "?column?\n1\n",
+      "stderr": ""
+    },
+    {
+      "name": "version",
+      "sql": "SET default_transaction_read_only=on;\nSELECT version();",
+      "returncode": 0,
+      "stdout": "version\n\"PostgreSQL 17.11 on x86_64-pc-linux-gnu, compiled by Debian clang version 12.0.1, 64-bit\"\n",
+      "stderr": ""
+    },
+    {
+      "name": "tables",
+      "sql": "SET default_transaction_read_only=on;\nSELECT schemaname, tablename FROM pg_tables WHERE schemaname NOT IN ('pg_catalog','information_schema') ORDER BY schemaname,tablename;",
+      "returncode": 0,
+      "stdout": "schemaname,tablename\nus_app,accounts\nus_app,auth_attempts\nus_app,credit_packs\nus_app,delivery_jobs\nus_app,inference_events\nus_app,inference_watchdog\nus_app,inference_workers\nus_app,issued_licenses\nus_app,metered_requests\nus_app,sessions\nus_app,usage\nus_app,webhook_orders\n",
+      "stderr": ""
+    },
+    {
+      "name": "estimated_table_counts",
+      "sql": "SET default_transaction_read_only=on;\nSELECT schemaname, relname, n_live_tup FROM pg_stat_user_tables ORDER BY schemaname,relname;",
+      "returncode": 0,
+      "stdout": "schemaname,relname,n_live_tup\nus_app,accounts,1\nus_app,auth_attempts,2\nus_app,credit_packs,0\nus_app,delivery_jobs,0\nus_app,inference_events,0\nus_app,inference_watchdog,1\nus_app,inference_workers,1\nus_app,issued_licenses,1\nus_app,metered_requests,0\nus_app,sessions,1\nus_app,usage,0\nus_app,webhook_orders,0\n",
+      "stderr": ""
+    }
+  ],
+  "proxy_command": [
+    "/workspace/us-panel/reports/r20261108/raw_cloudrun/db_proxy/cloud-sql-proxy",
+    "--gcloud-auth",
+    "--address=127.0.0.1",
+    "--port=15438",
+    "--enable-builtin-metrics=false",
+    "--disable-metrics",
+    "--disable-traces",
+    "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg"
+  ],
+  "migration_tables_found": [],
+  "migration_status": "FAIL / NOT IMPLEMENTED: no migration version table found",
+  "status": "PASS",
+  "proxy_stopped": true
+}

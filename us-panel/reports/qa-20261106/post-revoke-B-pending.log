@@ -1,0 +1,2 @@
+{"name": "post_revoke_B_denial", "status": "NOT TESTED", "detail": "Pending coordinator revoke; no network requests made"}
+SUMMARY {"PASS": 0, "FAIL": 0, "BLOCKED": 0, "NOT TESTED": 1}

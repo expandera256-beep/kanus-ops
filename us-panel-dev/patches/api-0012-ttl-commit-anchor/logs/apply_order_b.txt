@@ -1,0 +1,18 @@
+Order B on pinned/v10
+CHECK 0001-API-0001-regression-tests-locking-accounts-credit-le.patch exit:0
+APPLY 0001-API-0001-regression-tests-locking-accounts-credit-le.patch exit:0
+CHECK 0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch exit:0
+APPLY 0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch exit:0
+CHECK 0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch exit:0
+APPLY 0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch exit:0
+CHECK 0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch exit:0
+/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch:517: trailing whitespace.
+// by resolving owned license for downstream credit/model paths via request context... 
+warning: 1 line adds whitespace errors.
+APPLY 0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch exit:0
+CHECK 0001-API-0008-daily-quota-429-Retry-After-regression-test.patch exit:0
+APPLY 0001-API-0008-daily-quota-429-Retry-After-regression-test.patch exit:0
+CHECK 0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch exit:0
+APPLY 0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch exit:0
+CHECK store-0004-0012 exit:0
+APPLY store-0004-0012 exit:0

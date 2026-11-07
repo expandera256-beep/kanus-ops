@@ -1,0 +1,68 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "düşünce",
+      "text": "İstek modele gidiyor."
+    },
+    {
+      "n": 2,
+      "kind": "istem",
+      "text": "İş modele gitti: large.txt içindeki needle-old satırını değiştir. Klasörde 1 ad."
+    },
+    {
+      "n": 3,
+      "kind": "işlem",
+      "text": "İstek modele gitti."
+    },
+    {
+      "n": 4,
+      "kind": "okuma",
+      "text": "large.txt · 3001–3001 satır · 11/30011 bayt · sha256 d73917f003cc49671f0f07f962ce096dc77114882823a175c22f1adec147173a · tam=false gizli=false"
+    },
+    {
+      "n": 5,
+      "kind": "işlem",
+      "text": "değişiklikler inceleme bekliyor"
+    },
+    {
+      "n": 6,
+      "kind": "özet",
+      "text": "Özet. İstem: large.txt içindeki needle-old satırını değiştir. Okunan: large.txt. Yazılan: yok. Sonuç: değişiklikler inceleme bekliyor."
+    },
+    {
+      "n": 7,
+      "kind": "işlem",
+      "text": "Değişiklikler uygulandı: Model dosyaya yazdı: large.txt"
+    }
+  ],
+  "chat": [
+    {
+      "role": "panel",
+      "text": "kullanıcı: large.txt içindeki needle-old satırını değiştir\nKlasörde 1 ad var."
+    },
+    {
+      "role": "model",
+      "text": "Hedef satır güncellendi.\npatch_file large.txt"
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "large.txt içindeki needle-old satırını değ",
+      "turns": [
+        {
+          "role": "panel",
+          "text": "kullanıcı: large.txt içindeki needle-old satırını değiştir\nKlasörde 1 ad var."
+        },
+        {
+          "role": "model",
+          "text": "Hedef satır güncellendi.\npatch_file large.txt"
+        }
+      ]
+    }
+  ],
+  "chatId": "s1"
+}

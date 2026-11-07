@@ -1,0 +1,71 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "düşünce",
+      "text": "İstek modele gidiyor."
+    },
+    {
+      "n": 2,
+      "kind": "istem",
+      "text": "İş modele gitti: projeyi tamamla ve onar. Klasörde en az 80 ad. Liste ilk 80 adla sınırlı."
+    },
+    {
+      "n": 3,
+      "kind": "işlem",
+      "text": "İstek modele gitti."
+    },
+    {
+      "n": 4,
+      "kind": "işlem",
+      "text": "Okundu: file_000_long_name_for_project.py. İçerik modele gönderime hazırlandı. Gövde kayda geçmedi."
+    },
+    {
+      "n": 5,
+      "kind": "işlem",
+      "text": "Yazıldı: file_000_long_name_for_project.py. Dosyanın gövdesi kayda geçmedi."
+    },
+    {
+      "n": 6,
+      "kind": "özet",
+      "text": "Özet. İstem: projeyi tamamla ve onar. Okunan: file_000_long_name_for_project.py. Yazılan: file_000_long_name_for_project.py. Sonuç: dosyalar yazıldı; projenin tamamı doğrulanmadı."
+    }
+  ],
+  "chat": [
+    {
+      "role": "panel",
+      "text": "kullanıcı: projeyi tamamla ve onar\nKlasörde en az 80 ad var.\nDosya listesi ilk 80 adla sınırlı.\nÇalışma alanındaki yollar:\nfile_000_long_name_for_project.py\nfile_001_long_name_for_project.py\nfile_002_long_name_for_project.py\nfile_003_long_name_for_project.py\nfile_004_long_name_for_project.py\nfile_005_long_name_for_project.py\nfile_006_long_name_for_project.py\nfile_007_long_name_for_project.py\nfile_008_long_name_for_project.py\nfile_009_long_name_for_project.py\nfile_010_long_name_for_project.py\nfile_011_long_name_for_project.py\nfile_012_long_name_for_project.py\nfile_013_long_name_for_project.py\nfile_014_long_name_for_project.py\nfile_015_long_name_for_project.py\nfile_016_long_name_for_project.py\nfile_017_long_name_for_project.py\nfile_018_long_name_for_project.py\nfile_019_long_name_for_project.py\nfile_020_long_name_for_project.py\nfile_021_long_name_for_project.py\nfile_022_long_name_for_project.py\nfile_023_long_name_for_project.py\nfile_024_long_name_for_project.py\nfile_025_long_name_for_project.py\nfile_026_long_name_for_project.py\nfile_027_long_name_for_project.py\nfile_028_long_name_for_project.py\nfile_029_long_name_for_project.py\nfile_030_long_name_for_project.py\nfile_031_long_name_for_project.py\nfile_032_long_name_for_project.py\nfile_033_long_name_for_project.py\nfile_034_long_name_for_project.py\nfile_035_long_name_for_project.py\nfile_036_long_name_for_project.py\nfile_037_long_name_for_project.py\nfile_038_long_name_for_project.py\nfile_039_long_name_for_project.py\nfile_040_long_name_for_project.py\nfile_041_long_name_for_project.py\nfile_042_long_name_for_project.py\nfile_043_long_name_for_project.py\nfile_044_long_name_for_project.py\nfile_045_long_name_for_project.py\nfile_046_long_name_for_project.py\nfile_047_long_name_for_project.py\nfile_048_long_name_for_project.py\nfile_049_long_name_for_project.py\nfile_050_long_name_for_project.py\nfile_051_long_name_for_project.py\nfile_052_long_name_for_project.py\nfile_053_long_name_for_project.py\nfile_054_long_name_for_project.py\nfile_055_long_name_for_project.py\nfile_056_long_name_for_project.py\nfile_057_long_name_for_project.py\nfile_058_long_name_for_project.py\nfile_059_long_name_for_project.py\nfile_060_long_name_for_project.py\nfile_061_long_name_for_project.py\nfile_062_long_name_for_project.py\nfile_063_long_name_for_project.py\nfile_064_long_name_for_project.py\nfile_065_long_name_for_project.py\nfile_066_long_name_for_project.py\nfile_067_long_name_for_project.py\nfile_068_long_name_for_project.py\nfile_069_long_name_for_project.py\nfile_070_long_name_for_project.py\nfile_071_long_name_for_project.py\nfile_072_long_name_for_project.py\nfile_073_long_name_for_project.py\nfile_074_long_name_for_project.py\nfile_075_long_name_for_project.py\nfile_076_long_name_for_project.py\nfile_077_long_name_for_project.py\nfile_078_long_name_for_project.py\nfile_079_long_name_for_project.py\nMevcut dosyaları değiştirmeden önce içeriklerini OKU göreviyle iste. Örnek veya yer tutucu dosya yolları üretme."
+    },
+    {
+      "role": "panel",
+      "text": "OKU file_000_long_name_for_project.py. Gövde kayda geçmedi."
+    },
+    {
+      "role": "model",
+      "text": "DOSYA file_000_long_name_for_project.py\ndosya gövdesi loglanmadı."
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "projeyi tamamla ve onar",
+      "turns": [
+        {
+          "role": "panel",
+          "text": "kullanıcı: projeyi tamamla ve onar\nKlasörde en az 80 ad var.\nDosya listesi ilk 80 adla sınırlı.\nÇalışma alanındaki yollar:\nfile_000_long_name_for_project.py\nfile_001_long_name_for_project.py\nfile_002_long_name_for_project.py\nfile_003_long_name_for_project.py\nfile_004_long_name_for_project.py\nfile_005_long_name_for_project.py\nfile_006_long_name_for_project.py\nfile_007_long_name_for_project.py\nfile_008_long_name_for_project.py\nfile_009_long_name_for_project.py\nfile_010_long_name_for_project.py\nfile_011_long_name_for_project.py\nfile_012_long_name_for_project.py\nfile_013_long_name_for_project.py\nfile_014_long_name_for_project.py\nfile_015_long_name_for_project.py\nfile_016_long_name_for_project.py\nfile_017_long_name_for_project.py\nfile_018_long_name_for_project.py\nfile_019_long_name_for_project.py\nfile_020_long_name_for_project.py\nfile_021_long_name_for_project.py\nfile_022_long_name_for_project.py\nfile_023_long_name_for_project.py\nfile_024_long_name_for_project.py\nfile_025_long_name_for_project.py\nfile_026_long_name_for_project.py\nfile_027_long_name_for_project.py\nfile_028_long_name_for_project.py\nfile_029_long_name_for_project.py\nfile_030_long_name_for_project.py\nfile_031_long_name_for_project.py\nfile_032_long_name_for_project.py\nfile_033_long_name_for_project.py\nfile_034_long_name_for_project.py\nfile_035_long_name_for_project.py\nfile_036_long_name_for_project.py\nfile_037_long_name_for_project.py\nfile_038_long_name_for_project.py\nfile_039_long_name_for_project.py\nfile_040_long_name_for_project.py\nfile_041_long_name_for_project.py\nfile_042_long_name_for_project.py\nfile_043_long_name_for_project.py\nfile_044_long_name_for_project.py\nfile_045_long_name_for_project.py\nfile_046_long_name_for_project.py\nfile_047_long_name_for_project.py\nfile_048_long_name_for_project.py\nfile_049_long_name_for_project.py\nfile_050_long_name_for_project.py\nfile_051_long_name_for_project.py\nfile_052_long_name_for_project.py\nfile_053_long_name_for_project.py\nfile_054_long_name_for_project.py\nfile_055_long_name_for_project.py\nfile_056_long_name_for_project.py\nfile_057_long_name_for_project.py\nfile_058_long_name_for_project.py\nfile_059_long_name_for_project.py\nfile_060_long_name_for_project.py\nfile_061_long_name_for_project.py\nfile_062_long_name_for_project.py\nfile_063_long_name_for_project.py\nfile_064_long_name_for_project.py\nfile_065_long_name_for_project.py\nfile_066_long_name_for_project.py\nfile_067_long_name_for_project.py\nfile_068_long_name_for_project.py\nfile_069_long_name_for_project.py\nfile_070_long_name_for_project.py\nfile_071_long_name_for_project.py\nfile_072_long_name_for_project.py\nfile_073_long_name_for_project.py\nfile_074_long_name_for_project.py\nfile_075_long_name_for_project.py\nfile_076_long_name_for_project.py\nfile_077_long_name_for_project.py\nfile_078_long_name_for_project.py\nfile_079_long_name_for_project.py\nMevcut dosyaları değiştirmeden önce içeriklerini OKU göreviyle iste. Örnek veya yer tutucu dosya yolları üretme."
+        },
+        {
+          "role": "panel",
+          "text": "OKU file_000_long_name_for_project.py. Gövde kayda geçmedi."
+        },
+        {
+          "role": "model",
+          "text": "DOSYA file_000_long_name_for_project.py\ndosya gövdesi loglanmadı."
+        }
+      ]
+    }
+  ],
+  "chatId": "s1"
+}

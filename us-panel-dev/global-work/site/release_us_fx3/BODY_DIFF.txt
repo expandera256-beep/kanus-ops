@@ -1,0 +1,3 @@
+live ee14acd6 body (after old component, 2342 B) vs fx3 body: IDENTICAL
+live sha256 ee14acd6d255c72612a4cbaa4ae53435cb0d2663a890646b6d302d2b4af42ab7
+fx3 sha256 7c51319948e32342e47d20a0c1560c18576db25116ae01fc079319a115810f43

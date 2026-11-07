@@ -1,0 +1,493 @@
+ip	count	label	first	last	ports	codes	top_paths
+213.14.161.140	5099	LEGITIMATE NON-VPS? — FLAG	2026-11-02T20:27:53+0000	2026-11-06T02:04:15+0000	8788:4988,both/unk:107,80:4	200:5073,404:2,504:24	GET /api/durum×4988; POST /v1/chat/completions×97; GET /×5; GET /panel×3; GET /static/trace.js×3; GET /admin×1
+24.133.236.116	1157	LEGITIMATE NON-VPS? — FLAG	2026-11-01T21:36:38+0000	2026-11-02T11:12:09+0000	8788:808,both/unk:346,80:3	200:1155,502:2	GET /api/durum×552; POST /v1/chat/completions×342; GET /api/nabiz×256; GET /panel×3; GET /static/trace.js×3; GET /indir/usta.exe×1
+144.91.74.145	936	scanner/botnet	2026-11-03T22:10:48+0000	2026-11-04T01:28:23+0000	both/unk:292,80:608,8788:36	200:5,403:1,404:930	GET /×4; [scanner-ish] /.git/config×2; [scanner-ish] /.git/HEAD×2; [scanner-ish] /.git×2; GET /prometheus×1; [scanner-ish] /actuator/metrics×1
+5.24.32.56	815	LEGITIMATE NON-VPS? — FLAG	2026-11-02T15:35:58+0000	2026-11-02T19:45:44+0000	8788:673,both/unk:140,80:2	200:786,401:22,504:7	GET /api/durum×523; GET /api/nabiz×150; POST /v1/chat/completions×138; GET /panel×2; GET /static/trace.js×2
+31.141.91.27	770	LEGITIMATE NON-VPS? — FLAG	2026-11-02T12:36:39+0000	2026-11-02T15:32:01+0000	8788:512,both/unk:256,80:2	200:766,502:3,504:1	GET /api/durum×399; POST /v1/chat/completions×254; GET /api/nabiz×113; GET /×1; GET /admin×1; GET /panel×1
+74.207.252.24	506	scanner/botnet	2026-11-04T03:18:26+0000	2026-11-04T03:19:00+0000	both/unk:435,80:45,8788:26	200:13,403:1,404:492	GET /×16; GET /webui×4; GET /health×4; GET /owa/×4; GET /favicon.ico×3; GET /cgi-mod/header_logo.cgi×2
+31.143.34.222	355	LEGITIMATE NON-VPS? — FLAG	2026-11-01T16:31:11+0000	2026-11-01T21:36:05+0000	80:8,both/unk:125,8788:222	200:352,502:2,504:1	GET /api/nabiz×132; POST /v1/chat/completions×115; GET /api/durum×90; GET /panel×7; GET /static/trace.js×7; GET /indir/usta.exe×3
+176.227.117.238	349	LEGITIMATE NON-VPS? — FLAG	2026-10-31T05:31:05+0000	2026-10-31T17:43:59+0000	both/unk:245,80:9,8788:95	200:321,304:2,403:1,404:8,502:7,504:10	POST /v1/chat/completions×218; GET /api/nabiz×87; GET /×9; GET /api/durum×8; GET /indir/usta.exe×6; GET /panel×6
+52.73.250.138	345	LEGITIMATE NON-VPS? — FLAG	2026-10-31T14:25:40+0000	2026-11-03T23:38:40+0000	both/unk:17,8788:326,80:2	200:340,404:5	GET /api/durum×325; POST /v1/chat/completions×7; GET /health×4; GET /×2; GET /indir/usta.exe×1; GET /giris×1
+3.214.111.192	339	LEGITIMATE NON-VPS? — FLAG	2026-10-31T16:16:08+0000	2026-11-03T23:47:40+0000	8788:321,both/unk:18	200:333,404:5,504:1	GET /api/durum×321; POST /v1/chat/completions×8; GET /health×3; HEAD /indir/usta.exe×1; GET /×1; GET /fiyat×1
+18.235.67.204	338	scanner/botnet	2026-10-31T14:25:51+0000	2026-11-03T23:49:59+0000	80:1,8788:315,both/unk:22	200:328,401:1,404:8,504:1	GET /api/durum×314; POST /v1/chat/completions×14; [scanner-ish] /wp-login.php×1; HEAD /indir/usta.exe×1; GET /health×1; GET /×1
+184.72.220.21	330	LEGITIMATE NON-VPS? — FLAG	2026-10-31T05:34:19+0000	2026-11-03T23:44:40+0000	both/unk:17,8788:312,80:1	200:326,404:4	GET /api/durum×311; POST /v1/chat/completions×10; GET /health×2; GET /indir/usta.exe×1; GET /kvkk×1; GET /api/workers×1
+34.232.125.200	327	likely GCP/Google range — REVIEW	2026-10-31T05:23:43+0000	2026-11-03T23:48:10+0000	both/unk:19,8788:307,80:1	200:322,401:3,504:2	GET /api/durum×306; POST /v1/chat/completions×15; GET /health×2; GET /api/nabiz×1; GET /v1/models×1; GET /indir/usta.exe×1
+45.138.12.65	323	scanner/botnet	2026-11-05T07:15:12+0000	2026-11-05T07:16:17+0000	both/unk:224,8788:11,80:88	200:1,404:322	GET /×1; GET /api/v1/auto_login×1; [scanner-ish] /.git/config×1; POST /api/v1/validate/code×1; POST /×1; POST /api×1
+34.195.13.132	313	likely GCP/Google range — REVIEW	2026-10-31T14:13:38+0000	2026-11-03T23:49:10+0000	80:1,both/unk:15,8788:297	200:310,401:1,404:2	GET /api/durum×296; POST /v1/chat/completions×9; GET /health×4; GET /panel×1; GET /×1; GET /v1/models×1
+54.236.202.137	302	LEGITIMATE NON-VPS? — FLAG	2026-10-31T14:25:32+0000	2026-11-03T23:43:10+0000	both/unk:14,8788:288	200:298,401:3,404:1	GET /api/durum×288; POST /v1/chat/completions×11; GET /health×2; GET /×1
+44.216.155.73	293	LEGITIMATE NON-VPS? — FLAG	2026-10-31T14:13:37+0000	2026-11-03T23:41:10+0000	both/unk:18,8788:275	200:287,401:3,404:3	GET /api/durum×275; POST /v1/chat/completions×14; GET /×2; GET /health×1; GET /saglik×1
+80.94.95.211	279	scanner/botnet	2026-11-02T20:42:40+0000	2026-11-02T20:57:52+0000	both/unk:96,80:179,8788:4	200:10,403:2,404:265,504:2	GET /×4; GET /indir/usta.exe×4; GET /indir/×2; GET /site.zip×1; GET /s6pit0mtgan0pv×1; [scanner-ish] /.env×1
+31.220.63.191	228	VPS (known)	2026-11-06T04:29:17+0000	2026-11-06T05:41:14+0000	80:228	200:226,202:2	GET /a100/status×226; POST /a100/start×2
+45.138.12.16	179	scanner/botnet	2026-11-01T07:52:19+0000	2026-11-02T00:23:23+0000	both/unk:82,80:94,8788:3	200:7,404:172	GET /×5; [scanner-ish] /.git/config×1; GET /.svn/wc.db×1; [scanner-ish] /.env×1; [scanner-ish] /.git-credentials×1; [scanner-ish] /.env.local×1
+45.138.12.51	178	scanner/botnet	2026-11-03T13:03:00+0000	2026-11-04T19:39:34+0000	both/unk:36,80:138,8788:4	200:4,404:174	GET /×4; [scanner-ish] /.env.default×2; [scanner-ish] /build/.env×2; [scanner-ish] /.env.template×2; [scanner-ish] /api/.git/config×2; GET /config.json×2
+79.124.58.82	150	scanner/botnet	2026-11-04T07:28:58+0000	2026-11-04T07:28:59+0000	80:100,both/unk:48,8788:2	200:1,404:149	[scanner-ish] /.env_prod×1; [scanner-ish] /.env.txt×1; [scanner-ish] /.env.yaml×1; [scanner-ish] /wp-config.bak×1; GET /config.php×1; [scanner-ish] /.env.bak~×1
+188.165.236.183	128	scanner/botnet	2026-10-31T11:52:08+0000	2026-10-31T11:52:37+0000	80:128	404:128	[scanner-ish] /admin/phpMyAdmin/index.php×1; [scanner-ish] /phpMyAdmin2/index.php×1; [scanner-ish] /db/phpMyAdmin-4/index.php×1; [scanner-ish] /db/phpMyAdmin3/index.php×1; GET /sql/sqladmin/index.php×1; [scanner-ish] /wp-content/plugins/portable-phpmyadmin/wp-pma-mod/index.php×1
+111.10.163.7	128	scanner/botnet	2026-10-31T15:36:53+0000	2026-10-31T15:37:58+0000	80:128	404:128	[scanner-ish] /phpmyadmin2017/index.php×1; [scanner-ish] /phpMyAdmin-5.2.1/index.php×1; [scanner-ish] /phpmyAdmin/index.php×1; [scanner-ish] /sql/phpMyAdmin/index.php×1; GET /mysql/mysqlmanager/index.php×1; GET /pmahomme/index.php×1
+127.0.0.1	125	local-healthcheck	2026-10-31T05:15:10+0000	2026-11-06T04:25:27+0000	both/unk:84,80:33,8788:8	200:52,401:1,403:1,404:70,501:1	GET /×22; GET /health×9; [scanner-ish] /.env×5; GET /api/durum×5; POST /v1/chat/completions×4; GET /.vscode/sftp.json×3
+45.134.142.204	87	scanner/botnet	2026-11-05T14:29:06+0000	2026-11-05T14:29:29+0000	both/unk:66,80:19,8788:2	200:5,404:81,501:1	GET /×5; POST /×5; GET /debug/default/view×3; [scanner-ish] /wp-json/batch/v1×2; [scanner-ish] /.env×2; [scanner-ish] /phpinfo.php×2
+45.148.10.247	61	unknown/other	2026-11-01T10:29:43+0000	2026-11-01T16:53:20+0000	both/unk:59,80:2	200:4,403:2,404:55	GET /login×6; GET /register×6; GET /admin/login×4; GET /×4; GET /contact×3; GET /forgot-password×3
+45.148.10.5	57	scanner/botnet	2026-11-04T10:33:07+0000	2026-11-04T10:34:11+0000	both/unk:5,80:50,8788:2	200:2,404:55	GET /×2; [scanner-ish] /assets../.git/config×1; [scanner-ish] /data/.git/config×1; [scanner-ish] /dev/.git/config×1; [scanner-ish] /.env.production.local×1; [scanner-ish] /.env_sample×1
+185.177.72.64	56	scanner/botnet	2026-11-02T06:45:05+0000	2026-11-02T06:46:39+0000	both/unk:14,80:41,8788:1	200:3,404:53	GET /×3; GET /site.zip×1; GET /fsi2ydaygikzjc×1; [scanner-ish] /.env×1; [scanner-ish] /../.env×1; [scanner-ish] /backend/.env×1
+45.140.193.140	49	scanner/botnet	2026-10-31T06:44:02+0000	2026-10-31T06:45:38+0000	both/unk:6,80:42,8788:1	404:49	GET /index.php×3; POST /index.php×2; [scanner-ish] /cgi-bin/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/b×1; [scanner-ish] /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%6×1; POST /hello.world×1; POST /×1
+103.160.205.37	49	scanner/botnet	2026-11-04T21:13:34+0000	2026-11-04T21:14:58+0000	both/unk:6,80:42,8788:1	404:49	GET /index.php×3; POST /index.php×2; [scanner-ish] /cgi-bin/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/b×1; [scanner-ish] /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%6×1; POST /hello.world×1; POST /×1
+45.138.12.48	47	unknown/other	2026-11-01T10:56:43+0000	2026-11-02T08:46:24+0000	both/unk:45,80:2	200:6,404:41	GET /×6; GET /login×6; GET /register×6; GET /contact×4; GET /forgot-password×4; GET /password/reset×3
+45.198.224.125	44	unknown/other	2026-11-01T00:59:44+0000	2026-11-06T02:27:09+0000	both/unk:44	200:44	GET /×44
+194.180.49.41	40	scanner/botnet	2026-10-31T23:04:55+0000	2026-11-04T05:49:27+0000	both/unk:9,80:31	200:3,404:37	GET /×3; [scanner-ish] /.env×3; [scanner-ish] /.env.backup×3; [scanner-ish] /.env.bak×3; [scanner-ish] /.env.production×3; [scanner-ish] /.env.local×3
+129.213.151.234	38	scanner/botnet	2026-10-31T07:34:03+0000	2026-10-31T07:34:09+0000	both/unk:19,80:19	200:1,404:37	GET /×1; GET /@vite/client×1; GET /backup.tar.gz×1; [scanner-ish] /.env.production.local×1; [scanner-ish] /.env.local×1; [scanner-ish] /.env.zip×1
+85.11.167.192	38	scanner/botnet	2026-11-01T02:34:11+0000	2026-11-01T02:34:20+0000	80:35,both/unk:3	200:1,404:37	[scanner-ish] /wp-content/plugins/translatepress-multilingual/readme.txt×1; [scanner-ish] /wp-content/plugins/pods/readme.txt×1; [scanner-ish] /wp-content/plugins/visualcomposer/readme.txt×1; [scanner-ish] /wp-content/plugins/broken-link-checker/readme.txt×1; [scanner-ish] /wp-content/plugins/super-forms/documentation.txt×1; [scanner-ish] /wp-content/plugins/drag-and-drop-multiple-file-upload-conta×1
+138.68.144.227	31	scanner/botnet	2026-10-31T14:13:49+0000	2026-10-31T14:14:16+0000	both/unk:25,80:4,8788:2	200:3,404:28	GET /×3; GET /console/×1; GET /server×1; GET /server-status×1; GET /about×1; GET /login.action×1
+45.156.87.34	30	scanner/botnet	2026-10-31T05:19:48+0000	2026-10-31T05:20:28+0000	80:30	404:30	[scanner-ish] /wp-content/plugins/translatepress-multilingual/readme.txt×1; [scanner-ish] /wp-content/plugins/super-forms/documentation.txt×1; [scanner-ish] /wp-content/plugins/visualcomposer/readme.txt×1; [scanner-ish] /wp-content/plugins/broken-link-checker/readme.txt×1; [scanner-ish] /wp-content/plugins/pods/readme.txt×1; [scanner-ish] /wp-content/plugins/user-registration/readme.txt×1
+174.138.37.24	26	scanner/botnet	2026-11-06T04:08:46+0000	2026-11-06T04:08:48+0000	80:24,8788:1,both/unk:1	404:26	[scanner-ish] /.env×1; [scanner-ish] /.env.local×1; [scanner-ish] /.env.prod×1; [scanner-ish] /.env.production×1; [scanner-ish] /.env.staging×1; [scanner-ish] /.env.dev×1
+91.92.40.12	18	unknown/other	2026-10-31T07:19:48+0000	2026-11-05T23:36:40+0000	both/unk:18	404:18	POST /×18
+92.112.189.213	18	LEGITIMATE NON-VPS? — FLAG	2026-11-02T22:31:54+0000	2026-11-02T23:55:03+0000	both/unk:18	200:15,401:2,501:1	POST /v1/chat/completions×17; HEAD /×1
+62.210.142.62	18	scanner/botnet	2026-11-03T04:05:35+0000	2026-11-03T04:07:09+0000	both/unk:18	200:3,404:15	GET /×3; GET /manage/account/login×1; GET /admin/index.html×1; GET /index.html×1; GET /+CSCOE+/logon.html×1; [scanner-ish] /cgi-bin/login.cgi×1
+195.178.110.103	12	unknown/other	2026-11-01T19:51:24+0000	2026-11-01T19:51:38+0000	both/unk:12	200:2,404:10	GET /×2; GET /login×2; GET /register×2; GET /livewire/update×1; GET /login/livewire/update×1; GET /admin/login×1
+35.210.167.237	11	likely GCP/Google range — REVIEW	2026-11-01T06:21:03+0000	2026-11-01T06:21:14+0000	both/unk:11	200:2,404:7,501:2	OPTIONS /×2; GET /×2; IZHB /×1; HEAD /×1; POST /×1; GET /pub/×1
+216.180.246.226	10	unknown/other	2026-11-05T06:30:27+0000	2026-11-05T06:38:13+0000	both/unk:10	200:6,404:4	GET /×6; GET /manage/account/login×1; GET /admin/index.html×1; GET /index.html×1; GET /+CSCOE+/logon.html×1
+151.115.99.170	9	unknown/other	2026-10-31T17:44:57+0000	2026-10-31T17:45:19+0000	both/unk:9	200:2,404:6,501:1	GET /×2; HEAD /×1; GET /favicon.ico×1; GET /app-ads.txt×1; GET /sellers.json×1; GET /ads.txt×1
+120.76.206.71	9	scanner/botnet	2026-11-04T07:11:27+0000	2026-11-04T07:11:43+0000	both/unk:2,80:7	200:1,404:8	GET /sitemap.xml×1; [scanner-ish] /wp-json/wp/v2/×1; GET /×1; [scanner-ish] /wordpress/wp-login.php×1; [scanner-ish] /blog/wp-login.php×1; [scanner-ish] /wp-login.php×1
+35.210.198.165	9	likely GCP/Google range — REVIEW	2026-11-06T04:01:48+0000	2026-11-06T04:01:58+0000	both/unk:9	200:2,404:5,501:2	OPTIONS /×2; GET /×2; LYSS /×1; HEAD /×1; POST /×1; GET /pub/×1
+185.242.226.102	8	unknown/other	2026-10-31T09:24:32+0000	2026-11-05T20:03:59+0000	both/unk:8	200:8	GET /×8
+216.180.246.189	8	unknown/other	2026-11-01T06:05:19+0000	2026-11-01T06:16:34+0000	both/unk:8	200:7,404:1	GET /×7; GET /manage/account/login×1
+66.132.195.196	8	unknown/other	2026-11-01T15:03:36+0000	2026-11-05T16:01:36+0000	both/unk:8	200:2,404:4,505:2	GET /×2; PRI *×2; GET /favicon.ico×2; GET /sellers.json×1; GET /ai/site-profile.json×1
+216.180.246.36	8	unknown/other	2026-11-02T06:13:19+0000	2026-11-02T06:22:03+0000	both/unk:8	200:4,404:4	GET /×4; GET /manage/account/login×1; GET /admin/index.html×1; GET /index.html×1; GET /+CSCOE+/logon.html×1
+94.102.49.190	8	unknown/other	2026-11-03T04:40:58+0000	2026-11-03T18:00:04+0000	both/unk:8	200:2,404:6	GET /×2; GET /robots.txt×2; GET /sitemap.xml×2; GET /.well-known/security.txt×2
+138.68.90.150	8	unknown/other	2026-11-04T12:14:05+0000	2026-11-04T12:14:06+0000	both/unk:8	200:4,404:4	GET /×4; POST /sdk×1; GET /odinhttpcall1793794445×1; GET /HNAP1×1; GET /evox/about×1
+123.58.209.194	6	unknown/other	2026-10-31T15:42:30+0000	2026-10-31T15:42:34+0000	both/unk:6	200:4,404:2	GET /×4; GET /version×1; GET /v1×1
+172.105.128.13	6	unknown/other	2026-11-01T00:53:45+0000	2026-11-06T01:36:20+0000	both/unk:6	200:6	GET /×6
+45.138.12.6	6	scanner/botnet	2026-11-01T06:14:47+0000	2026-11-01T06:14:48+0000	80:1,both/unk:5	404:6	[scanner-ish] /.git/config×1; GET /.svn/wc.db×1; GET /.svn/entries×1; GET /.hg/requires×1; GET /.hg/store/requires×1; GET /.hg/dirstate×1
+178.128.220.253	6	scanner/botnet	2026-11-01T08:01:30+0000	2026-11-01T08:01:33+0000	both/unk:4,80:2	200:1,404:5	GET /×1; [scanner-ish] /xmlrpc.php×1; GET /blog/robots.txt×1; GET /blog/×1; [scanner-ish] /wordpress/×1; GET /wp/×1
+178.128.62.59	6	scanner/botnet	2026-11-01T17:10:05+0000	2026-11-01T17:10:10+0000	both/unk:4,80:2	200:1,404:5	GET /×1; [scanner-ish] /xmlrpc.php×1; GET /blog/robots.txt×1; GET /blog/×1; [scanner-ish] /wordpress/×1; GET /wp/×1
+148.153.56.58	6	unknown/other	2026-11-02T03:32:57+0000	2026-11-02T03:33:07+0000	both/unk:6	404:6	GET /jTFX×1; GET /8zRY×1; GET /aab8×1; GET /jquery-3.3.1.slim.min.js×1; GET /aab9×1; GET /jquery-3.3.2.slim.min.js×1
+35.210.231.84	6	likely GCP/Google range — REVIEW	2026-11-04T06:24:38+0000	2026-11-04T06:24:40+0000	both/unk:6	200:1,404:3,501:2	OPTIONS /×2; MQEE /×1; GET /×1; HEAD /×1; POST /×1
+66.175.213.4	5	unknown/other	2026-10-31T06:45:09+0000	2026-11-06T02:59:23+0000	both/unk:5	200:5	GET /×5
+185.191.236.38	5	unknown/other	2026-10-31T13:56:49+0000	2026-11-05T07:50:29+0000	both/unk:5	200:3,404:2	GET /×3; GET /.well-known/security.txt×1; GET /robots.txt×1
+45.79.115.134	5	unknown/other	2026-10-31T16:33:29+0000	2026-11-06T01:34:10+0000	both/unk:5	200:5	GET /×5
+164.52.24.185	5	LEGITIMATE NON-VPS? — FLAG	2026-11-01T01:47:48+0000	2026-11-01T01:47:57+0000	both/unk:5	200:1,401:1,404:3	GET /×1; GET /v1/models×1; GET /v1/embeddings×1; GET /v1/completions×1; GET /favicon.ico×1
+172.236.228.86	5	unknown/other	2026-11-01T09:26:40+0000	2026-11-05T12:40:40+0000	both/unk:5	200:5	GET /×5
+71.6.155.70	5	unknown/other	2026-11-01T09:47:14+0000	2026-11-05T10:02:57+0000	both/unk:5	404:5	GET /.well-known/pki-validation/update×5
+77.239.124.175	5	unknown/other	2026-11-02T22:21:15+0000	2026-11-04T17:40:52+0000	both/unk:5	200:5	GET /×5
+77.239.124.162	5	unknown/other	2026-11-03T06:12:46+0000	2026-11-05T09:10:06+0000	both/unk:5	200:5	GET /×5
+186.244.201.29	5	LEGITIMATE NON-VPS? — FLAG	2026-11-05T02:37:45+0000	2026-11-05T12:23:14+0000	both/unk:5	200:2,404:3	GET /panel/status×3; GET /health×2
+103.68.192.130	5	LEGITIMATE NON-VPS? — FLAG	2026-11-05T03:42:59+0000	2026-11-05T09:32:25+0000	both/unk:5	200:2,404:3	GET /panel/status×3; GET /health×2
+54.189.162.162	5	LEGITIMATE NON-VPS? — FLAG	2026-11-06T01:41:28+0000	2026-11-06T06:42:06+0000	both/unk:4,8788:1	200:5	GET /v1/models×2; GET /×1; GET /api/durum×1; POST /v1/chat/completions×1
+44.227.25.49	5	LEGITIMATE NON-VPS? — FLAG	2026-11-06T02:30:58+0000	2026-11-06T06:32:40+0000	both/unk:5	200:5	GET /v1/models×3; GET /health×1; POST /v1/chat/completions×1
+172.104.11.34	4	unknown/other	2026-10-31T08:49:02+0000	2026-11-01T21:41:49+0000	both/unk:4	200:4	GET /×4
+172.236.254.181	4	unknown/other	2026-10-31T09:42:26+0000	2026-11-04T11:42:09+0000	both/unk:4	200:4	GET /×4
+66.228.40.100	4	unknown/other	2026-10-31T12:53:27+0000	2026-11-06T03:38:45+0000	both/unk:4	200:3,404:1	GET /×4
+170.231.237.214	4	unknown/other	2026-10-31T13:56:51+0000	2026-11-05T07:50:31+0000	both/unk:4	404:4	GET /robots.txt×2; GET /.well-known/security.txt×2
+34.90.165.170	4	likely GCP/Google range — REVIEW	2026-10-31T14:29:08+0000	2026-10-31T14:29:17+0000	both/unk:4	200:3,404:1	GET /×3; HEAD /favicon.ico×1
+3.129.187.38	4	unknown/other	2026-10-31T15:44:23+0000	2026-11-02T17:43:53+0000	both/unk:4	200:3,404:1	GET /×3; GET /robots.txt×1
+66.132.172.129	4	unknown/other	2026-10-31T16:09:24+0000	2026-10-31T16:09:28+0000	both/unk:3,80:1	200:1,404:2,505:1	GET /×1; PRI *×1; GET /favicon.ico×1; GET /info.php×1
+45.79.149.61	4	unknown/other	2026-10-31T17:34:45+0000	2026-11-05T02:54:21+0000	both/unk:4	200:4	GET /×4
+192.155.90.220	4	unknown/other	2026-10-31T19:12:24+0000	2026-11-04T22:34:07+0000	both/unk:4	200:4	GET /×4
+172.236.228.229	4	unknown/other	2026-10-31T22:45:04+0000	2026-11-05T15:43:27+0000	both/unk:4	200:4	GET /×4
+66.228.53.78	4	unknown/other	2026-11-01T00:04:01+0000	2026-11-05T13:43:29+0000	both/unk:4	200:4	GET /×4
+66.132.224.225	4	unknown/other	2026-11-01T00:16:41+0000	2026-11-01T00:16:50+0000	both/unk:4	200:1,404:2,505:1	GET /×1; PRI *×1; GET /favicon.ico×1; GET /app-ads.txt×1
+178.62.220.184	4	scanner/botnet	2026-11-01T02:27:08+0000	2026-11-01T06:08:02+0000	80:3,both/unk:1	404:4	[scanner-ish] /wp-json/batch/v1×2; [scanner-ish] /wp-login.php×1; POST /×1
+221.159.119.6	4	scanner/botnet	2026-11-01T04:20:48+0000	2026-11-03T02:39:52+0000	both/unk:4	404:4	[scanner-ish] /cgi-bin/luci/;stok=/locale×4
+45.148.10.120	4	scanner/botnet	2026-11-01T05:11:39+0000	2026-11-01T13:49:02+0000	80:3,both/unk:1	404:4	[scanner-ish] /.git/config×1; GET /.aws/credentials×1; [scanner-ish] /aws.env×1; [scanner-ish] /.env×1
+184.105.139.69	4	unknown/other	2026-11-01T07:39:26+0000	2026-11-01T07:44:33+0000	both/unk:4	200:1,404:3	GET /×1; GET /webui/×1; GET /favicon.ico×1; GET /geoserver/web/×1
+45.156.129.60	4	unknown/other	2026-11-01T10:36:38+0000	2026-11-01T10:36:40+0000	both/unk:4	200:1,404:3	GET /×1; POST /mcp×1; GET /sse×1; GET /favicon.ico×1
+66.228.53.162	4	unknown/other	2026-11-01T14:32:15+0000	2026-11-05T16:46:01+0000	both/unk:4	200:4	GET /×4
+66.132.195.207	4	unknown/other	2026-11-01T19:14:55+0000	2026-11-01T19:15:04+0000	both/unk:4	200:1,404:2,505:1	GET /×1; PRI *×1; GET /favicon.ico×1; GET /sellers.json×1
+45.79.181.223	4	unknown/other	2026-11-01T21:01:21+0000	2026-11-05T07:35:10+0000	both/unk:4	200:4	GET /×4
+172.236.228.193	4	unknown/other	2026-11-02T04:19:48+0000	2026-11-03T23:04:12+0000	both/unk:4	200:4	GET /×4
+66.228.53.174	4	unknown/other	2026-11-02T06:35:01+0000	2026-11-04T23:51:25+0000	both/unk:4	200:4	GET /×4
+165.232.57.238	4	scanner/botnet	2026-11-02T09:18:29+0000	2026-11-02T14:14:35+0000	80:3,both/unk:1	404:4	[scanner-ish] /wp-json/batch/v1×2; [scanner-ish] /wp-login.php×1; POST /×1
+66.132.195.94	4	scanner/botnet	2026-11-02T19:54:08+0000	2026-11-02T19:54:45+0000	both/unk:3,80:1	200:1,404:2,505:1	GET /×1; PRI *×1; GET /favicon.ico×1; [scanner-ish] /phpinfo.php×1
+199.165.159.193	4	unknown/other	2026-11-03T00:01:44+0000	2026-11-03T00:05:14+0000	both/unk:4	200:1,404:3	GET /×1; GET /webui/×1; GET /favicon.ico×1; GET /geoserver/web/×1
+172.236.228.115	4	unknown/other	2026-11-03T03:15:58+0000	2026-11-05T10:43:56+0000	both/unk:4	200:4	GET /×4
+152.32.236.102	4	scanner/botnet	2026-11-03T05:32:27+0000	2026-11-03T05:32:35+0000	both/unk:4	404:4	[scanner-ish] /cgi-bin/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/b×1; [scanner-ish] /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%6×1; POST /hello.world×1; POST /×1
+66.132.195.116	4	unknown/other	2026-11-03T07:37:45+0000	2026-11-03T07:37:55+0000	both/unk:4	200:1,404:2,505:1	GET /×1; PRI *×1; GET /favicon.ico×1; GET /ads.txt×1
+66.132.195.59	4	unknown/other	2026-11-03T11:08:50+0000	2026-11-03T11:09:11+0000	both/unk:4	200:1,404:2,505:1	GET /×1; PRI *×1; GET /favicon.ico×1; GET /login×1
+104.237.145.228	4	unknown/other	2026-11-04T04:19:41+0000	2026-11-05T19:40:24+0000	both/unk:4	200:4	GET /×4
+167.94.146.54	4	scanner/botnet	2026-11-04T08:14:24+0000	2026-11-04T08:14:29+0000	both/unk:4	200:1,404:2,505:1	GET /×1; PRI *×1; GET /favicon.ico×1; [scanner-ish] /phpinfo×1
+66.132.195.92	4	unknown/other	2026-11-04T11:51:33+0000	2026-11-04T11:52:12+0000	both/unk:4	200:1,404:2,505:1	GET /×1; PRI *×1; GET /favicon.ico×1; GET /sellers.json×1
+152.32.250.21	4	unknown/other	2026-11-04T23:40:06+0000	2026-11-04T23:40:08+0000	both/unk:4	200:1,404:3	GET /×1; GET /robots.txt×1; GET /sitemap.xml×1; GET /config.json×1
+95.214.54.159	4	unknown/other	2026-11-05T01:45:35+0000	2026-11-05T01:45:36+0000	both/unk:4	200:1,404:3	GET /×1; GET /login.htm×1; GET /login×1; GET /index.htm×1
+66.132.159.83	4	unknown/other	2026-11-05T05:31:44+0000	2026-11-05T05:32:18+0000	both/unk:3,80:1	200:1,404:2,505:1	GET /×1; PRI *×1; GET /favicon.ico×1; GET /info.php×1
+100.21.173.32	4	LEGITIMATE NON-VPS? — FLAG	2026-11-06T02:53:17+0000	2026-11-06T04:41:55+0000	both/unk:3,80:1	403:1,404:3	GET /×1; GET /healthz×1; POST /a100/start×1; POST /account/login×1
+172.236.228.197	3	unknown/other	2026-10-31T11:43:21+0000	2026-11-01T23:42:12+0000	both/unk:3	200:3	GET /×3
+172.239.71.239	3	unknown/other	2026-10-31T13:39:39+0000	2026-11-05T04:58:17+0000	both/unk:3	200:3	GET /×3
+170.231.236.98	3	unknown/other	2026-10-31T13:56:54+0000	2026-11-05T07:50:32+0000	both/unk:3	404:3	GET /security.txt×3
+89.248.172.11	3	unknown/other	2026-10-31T17:34:19+0000	2026-11-04T16:31:13+0000	both/unk:3	200:3	GET /×3
+172.232.108.36	3	unknown/other	2026-11-01T17:41:40+0000	2026-11-05T16:21:05+0000	both/unk:3	200:3	GET /×3
+45.79.207.181	3	unknown/other	2026-11-02T06:34:09+0000	2026-11-05T04:34:39+0000	both/unk:3	200:3	GET /×3
+45.144.212.192	3	scanner/botnet	2026-11-02T22:00:29+0000	2026-11-04T03:56:55+0000	80:3	404:3	[scanner-ish] /.git/config×1; [scanner-ish] /.git/index×1; [scanner-ish] /.git/HEAD×1
+94.183.174.99	3	unknown/other	2026-11-03T03:56:29+0000	2026-11-04T19:51:59+0000	both/unk:3	200:3	GET /×3
+64.118.143.136	3	LEGITIMATE NON-VPS? — FLAG	2026-11-03T20:31:49+0000	2026-11-03T20:37:42+0000	both/unk:3	200:2,404:1	GET /health×2; GET /gas-sponsor/info×1
+199.165.159.121	3	unknown/other	2026-11-04T02:32:37+0000	2026-11-04T02:38:57+0000	both/unk:3	200:1,404:2	GET /×1; GET /webui/×1; GET /geoserver/web/×1
+45.135.193.198	3	unknown/other	2026-11-04T05:06:51+0000	2026-11-05T05:04:39+0000	both/unk:3	200:3	GET /×3
+149.165.154.176	3	unknown/other	2026-11-04T20:25:10+0000	2026-11-04T21:34:14+0000	both/unk:3	200:1,404:2	GET /×1; GET /favicon.ico×1; GET /.well-known/security.txt×1
+199.165.159.33	3	unknown/other	2026-11-05T00:01:58+0000	2026-11-05T00:05:29+0000	both/unk:3	200:1,404:2	GET /×1; GET /webui/×1; GET /geoserver/web/×1
+52.35.237.101	3	LEGITIMATE NON-VPS? — FLAG	2026-11-06T02:53:15+0000	2026-11-06T04:14:35+0000	both/unk:3	200:3	GET /health×2; GET /v1/models×1
+46.224.128.204	2	unknown/other	2026-10-31T14:13:46+0000	2026-10-31T14:13:49+0000	both/unk:2	200:2	GET /×2
+165.22.200.169	2	unknown/other	2026-10-31T14:21:31+0000	2026-10-31T14:21:32+0000	both/unk:2	200:1,400:1	GET /×1; GET image/svg+xml,%3Csvg×1
+45.79.172.21	2	unknown/other	2026-10-31T14:50:02+0000	2026-11-01T10:46:39+0000	both/unk:2	200:2	GET /×2
+52.12.189.103	2	unknown/other	2026-10-31T15:50:35+0000	2026-10-31T15:50:35+0000	both/unk:2	200:2	GET /×2
+184.34.238.157	2	unknown/other	2026-10-31T16:06:19+0000	2026-10-31T16:06:27+0000	both/unk:2	200:2	GET /×2
+45.79.207.110	2	unknown/other	2026-10-31T17:34:38+0000	2026-11-04T22:33:53+0000	both/unk:2	200:2	GET /×2
+156.227.234.198	2	scanner/botnet	2026-10-31T20:55:53+0000	2026-10-31T20:55:57+0000	both/unk:2	404:2	[scanner-ish] /cgi-bin/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/b×1; [scanner-ish] /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%6×1
+173.255.225.15	2	unknown/other	2026-10-31T23:18:59+0000	2026-11-01T17:42:04+0000	both/unk:2	200:2	GET /×2
+109.105.210.67	2	unknown/other	2026-11-01T01:42:59+0000	2026-11-01T01:42:59+0000	both/unk:2	404:2	POST /mcp×1; GET /sse×1
+209.38.43.160	2	unknown/other	2026-11-01T02:21:32+0000	2026-11-01T02:21:33+0000	both/unk:2	200:1,400:1	GET /×1; GET image/svg+xml,%3Csvg×1
+47.254.213.222	2	unknown/other	2026-11-01T02:25:09+0000	2026-11-01T02:25:10+0000	both/unk:2	200:2	GET /×2
+123.160.223.73	2	unknown/other	2026-11-01T02:25:51+0000	2026-11-01T22:24:21+0000	both/unk:2	200:2	GET /×2
+45.135.194.127	2	unknown/other	2026-11-01T04:18:58+0000	2026-11-01T04:18:58+0000	both/unk:2	200:1,404:1	GET /×1; GET /favicon.ico×1
+66.228.53.4	2	unknown/other	2026-11-01T06:07:21+0000	2026-11-03T15:46:03+0000	both/unk:2	200:2	GET /×2
+172.235.41.44	2	unknown/other	2026-11-01T06:12:04+0000	2026-11-04T00:43:04+0000	both/unk:2	200:2	GET /×2
+85.217.149.0	2	unknown/other	2026-11-01T07:09:37+0000	2026-11-01T07:09:37+0000	both/unk:2	200:1,404:1	GET /×1; GET /favicon.ico×1
+45.79.181.104	2	unknown/other	2026-11-01T07:38:59+0000	2026-11-03T17:51:37+0000	both/unk:2	200:2	GET /×2
+96.126.130.106	2	scanner/botnet	2026-11-01T07:45:06+0000	2026-11-01T07:45:07+0000	80:2	404:2	[scanner-ish] /.env×1; [scanner-ish] /.env.txt×1
+172.236.228.227	2	unknown/other	2026-11-01T10:44:11+0000	2026-11-03T05:17:21+0000	both/unk:2	200:2	GET /×2
+89.126.220.205	2	unknown/other	2026-11-01T10:59:02+0000	2026-11-01T16:08:33+0000	both/unk:2	200:2	GET /×2
+172.236.228.38	2	unknown/other	2026-11-01T12:45:39+0000	2026-11-02T16:35:06+0000	both/unk:2	200:2	GET /×2
+172.236.119.165	2	unknown/other	2026-11-01T14:44:54+0000	2026-11-03T01:58:05+0000	both/unk:2	200:2	GET /×2
+3.130.168.2	2	unknown/other	2026-11-01T15:44:02+0000	2026-11-01T18:52:08+0000	both/unk:2	404:2	GET /robots.txt×2
+172.104.11.46	2	unknown/other	2026-11-01T16:43:36+0000	2026-11-01T19:25:18+0000	both/unk:2	200:2	GET /×2
+93.123.109.124	2	unknown/other	2026-11-01T19:20:00+0000	2026-11-01T19:20:01+0000	both/unk:2	200:1,404:1	GET /×1; GET /favicon.ico×1
+47.251.116.61	2	unknown/other	2026-11-01T22:24:05+0000	2026-11-01T22:24:05+0000	both/unk:2	200:2	GET /×2
+192.248.150.180	2	unknown/other	2026-11-01T22:45:52+0000	2026-11-04T09:50:28+0000	both/unk:2	200:2	GET /×2
+118.193.77.50	2	unknown/other	2026-11-02T01:37:37+0000	2026-11-02T01:38:38+0000	both/unk:2	200:1,404:1	GET /×1; GET /favicon.ico×1
+188.166.1.200	2	unknown/other	2026-11-02T02:27:37+0000	2026-11-02T02:27:38+0000	both/unk:2	200:1,400:1	GET /×1; GET image/svg+xml,%3Csvg×1
+5.161.22.60	2	unknown/other	2026-11-02T02:32:02+0000	2026-11-02T02:44:26+0000	both/unk:2	200:2	GET /×2
+45.79.128.205	2	unknown/other	2026-11-02T02:46:59+0000	2026-11-02T06:01:46+0000	both/unk:2	200:2	GET /×2
+45.63.4.69	2	unknown/other	2026-11-02T08:15:16+0000	2026-11-05T07:49:04+0000	both/unk:2	200:2	GET /×2
+172.236.239.55	2	unknown/other	2026-11-02T08:43:16+0000	2026-11-04T14:41:42+0000	both/unk:2	200:2	GET /×2
+173.255.225.25	2	unknown/other	2026-11-02T13:51:20+0000	2026-11-05T11:38:56+0000	both/unk:2	200:2	GET /×2
+47.250.185.143	2	unknown/other	2026-11-02T13:59:30+0000	2026-11-02T13:59:30+0000	both/unk:2	200:2	GET /×2
+152.42.139.93	2	unknown/other	2026-11-02T14:29:44+0000	2026-11-02T14:29:44+0000	both/unk:2	200:1,400:1	GET /×1; GET image/svg+xml,%3Csvg×1
+204.76.203.31	2	unknown/other	2026-11-02T15:30:47+0000	2026-11-02T15:30:47+0000	both/unk:2	200:1,404:1	GET /×1; POST /×1
+178.243.205.170	2	LEGITIMATE NON-VPS? — FLAG	2026-11-02T15:35:17+0000	2026-11-02T15:35:18+0000	8788:2	200:2	GET /api/nabiz×2
+172.239.64.155	2	unknown/other	2026-11-02T17:52:33+0000	2026-11-04T10:53:21+0000	both/unk:2	200:2	GET /×2
+45.77.61.56	2	unknown/other	2026-11-02T21:29:44+0000	2026-11-05T14:36:07+0000	both/unk:2	200:2	GET /×2
+45.33.90.118	2	unknown/other	2026-11-02T23:38:38+0000	2026-11-03T11:44:40+0000	both/unk:2	200:2	GET /×2
+172.236.228.111	2	unknown/other	2026-11-03T00:11:14+0000	2026-11-06T00:43:49+0000	both/unk:2	200:2	GET /×2
+172.233.16.50	2	scanner/botnet	2026-11-03T01:17:08+0000	2026-11-03T01:17:09+0000	80:2	404:2	[scanner-ish] /.env×1; [scanner-ish] /.git/config×1
+45.79.181.179	2	unknown/other	2026-11-03T02:03:53+0000	2026-11-05T14:44:48+0000	both/unk:2	200:2	GET /×2
+23.239.11.64	2	unknown/other	2026-11-03T02:55:31+0000	2026-11-03T09:42:40+0000	both/unk:2	200:2	GET /×2
+45.156.87.44	2	unknown/other	2026-11-03T03:39:25+0000	2026-11-03T03:39:25+0000	both/unk:2	200:2	GET /×2
+85.217.149.66	2	unknown/other	2026-11-03T03:53:54+0000	2026-11-03T03:53:54+0000	both/unk:2	200:1,404:1	GET /×1; GET /favicon.ico×1
+174.138.15.233	2	unknown/other	2026-11-03T04:38:43+0000	2026-11-03T04:38:43+0000	both/unk:2	200:1,400:1	GET /×1; GET image/svg+xml,%3Csvg×1
+35.232.76.162	2	likely GCP/Google range — REVIEW	2026-11-03T05:13:04+0000	2026-11-03T17:16:12+0000	80:2	404:2	[scanner-ish] /.git/config×2
+172.239.71.245	2	unknown/other	2026-11-03T08:40:35+0000	2026-11-06T04:54:28+0000	both/unk:2	200:2	GET /×2
+47.250.51.32	2	unknown/other	2026-11-03T08:53:51+0000	2026-11-03T08:53:51+0000	both/unk:2	200:2	GET /×2
+31.14.254.79	2	unknown/other	2026-11-03T11:08:24+0000	2026-11-05T01:05:04+0000	both/unk:2	404:2	GET /mcp×1; GET /favicon.ico×1
+188.166.88.139	2	unknown/other	2026-11-03T14:23:51+0000	2026-11-03T14:23:51+0000	both/unk:2	200:1,400:1	GET /×1; GET image/svg+xml,%3Csvg×1
+50.116.49.221	2	unknown/other	2026-11-03T22:38:22+0000	2026-11-04T15:43:56+0000	both/unk:2	200:2	GET /×2
+172.235.40.131	2	unknown/other	2026-11-03T23:54:06+0000	2026-11-04T11:45:23+0000	both/unk:2	200:2	GET /×2
+188.166.105.215	2	unknown/other	2026-11-04T02:25:13+0000	2026-11-04T02:25:14+0000	both/unk:2	200:1,400:1	GET /×1; GET image/svg+xml,%3Csvg×1
+47.251.110.209	2	unknown/other	2026-11-04T06:34:02+0000	2026-11-04T06:34:02+0000	both/unk:2	200:2	GET /×2
+64.226.109.121	2	unknown/other	2026-11-04T12:14:07+0000	2026-11-04T12:14:08+0000	both/unk:2	404:2	GET /solr/admin/info/system×1; GET /solr/admin/cores×1
+161.35.27.28	2	unknown/other	2026-11-04T12:14:07+0000	2026-11-05T14:58:01+0000	both/unk:2	200:1,404:1	GET /×1; GET /v2/_catalog×1
+47.251.125.33	2	unknown/other	2026-11-04T12:23:27+0000	2026-11-04T12:23:27+0000	both/unk:2	200:2	GET /×2
+66.228.53.136	2	unknown/other	2026-11-04T13:43:47+0000	2026-11-05T01:59:17+0000	both/unk:2	200:2	GET /×2
+37.77.150.71	2	scanner/botnet	2026-11-04T13:45:07+0000	2026-11-04T16:47:09+0000	both/unk:2	404:2	[scanner-ish] /cgi-bin/nas_sharing.cgi×2
+188.166.52.20	2	unknown/other	2026-11-04T14:25:28+0000	2026-11-04T14:25:28+0000	both/unk:2	200:1,400:1	GET /×1; GET image/svg+xml,%3Csvg×1
+193.32.162.175	2	scanner/botnet	2026-11-04T21:07:32+0000	2026-11-05T02:02:26+0000	80:1,both/unk:1	404:2	[scanner-ish] /.git/HEAD×1; GET /.svn/wc.db×1
+85.11.167.204	2	scanner/botnet	2026-11-04T23:05:09+0000	2026-11-04T23:05:10+0000	80:2	404:2	[scanner-ish] /.env×2
+85.217.149.51	2	unknown/other	2026-11-05T00:32:31+0000	2026-11-05T00:32:31+0000	both/unk:2	200:1,404:1	GET /×1; GET /favicon.ico×1
+188.166.34.24	2	unknown/other	2026-11-05T02:24:31+0000	2026-11-05T02:24:31+0000	both/unk:2	200:1,400:1	GET /×1; GET image/svg+xml,%3Csvg×1
+94.72.126.182	2	unknown/other	2026-11-05T02:25:26+0000	2026-11-05T08:24:58+0000	both/unk:2	404:2	GET /panel/status×2
+94.26.0.103	2	unknown/other	2026-11-05T02:57:57+0000	2026-11-05T02:57:57+0000	both/unk:2	200:1,404:1	GET /×1; POST /×1
+66.228.53.157	2	unknown/other	2026-11-05T03:53:31+0000	2026-11-05T22:10:52+0000	both/unk:2	200:2	GET /×2
+106.63.26.8	2	unknown/other	2026-11-05T04:55:42+0000	2026-11-05T04:55:45+0000	both/unk:2	200:1,404:1	GET /×1; GET /config.json×1
+172.81.135.182	2	scanner/botnet	2026-11-05T05:48:33+0000	2026-11-05T11:12:33+0000	80:2	404:2	[scanner-ish] /.env×1; [scanner-ish] /.git/config×1
+176.32.193.16	2	unknown/other	2026-11-05T06:08:36+0000	2026-11-05T06:08:37+0000	both/unk:2	404:2	GET /aaa9×1; GET /aab9×1
+91.196.152.140	2	unknown/other	2026-11-05T10:52:34+0000	2026-11-05T10:55:23+0000	both/unk:2	200:1,404:1	GET /×1; GET /favicon.ico×1
+64.227.68.5	2	unknown/other	2026-11-05T14:30:56+0000	2026-11-05T14:30:56+0000	both/unk:2	200:1,400:1	GET /×1; GET image/svg+xml,%3Csvg×1
+3.131.220.121	2	unknown/other	2026-11-05T16:35:15+0000	2026-11-05T16:35:18+0000	both/unk:2	200:1,404:1	GET /×1; GET /robots.txt×1
+66.249.73.163	2	unknown/other	2026-11-06T01:41:18+0000	2026-11-06T01:41:22+0000	both/unk:2	404:2	GET /robots.txt×1; GET /favicon.ico×1
+52.10.120.60	2	LEGITIMATE NON-VPS? — FLAG	2026-11-06T01:41:28+0000	2026-11-06T04:25:28+0000	both/unk:1,80:1	200:1,403:1	GET /health×1; GET /a100/status×1
+188.166.79.100	2	unknown/other	2026-11-06T02:27:22+0000	2026-11-06T02:27:22+0000	both/unk:2	200:1,400:1	GET /×1; GET image/svg+xml,%3Csvg×1
+58.240.112.150	2	unknown/other	2026-11-06T04:30:07+0000	2026-11-06T04:30:07+0000	both/unk:2	501:2	CONNECT www.baidu.com:443×2
+35.210.223.144	1	likely GCP/Google range — REVIEW	2026-10-31T06:41:12+0000	2026-10-31T06:41:12+0000	both/unk:1	200:1	GET /×1
+118.193.65.234	1	unknown/other	2026-10-31T08:38:02+0000	2026-10-31T08:38:02+0000	both/unk:1	200:1	GET /×1
+204.76.203.222	1	unknown/other	2026-10-31T08:57:22+0000	2026-10-31T08:57:22+0000	both/unk:1	501:1	CONNECT icanhazip.com:443×1
+204.76.203.221	1	unknown/other	2026-10-31T08:57:25+0000	2026-10-31T08:57:25+0000	both/unk:1	501:1	CONNECT api.ipinfo.io:443×1
+172.236.228.202	1	unknown/other	2026-10-31T10:42:15+0000	2026-10-31T10:42:15+0000	both/unk:1	200:1	GET /×1
+172.105.128.12	1	unknown/other	2026-10-31T11:36:28+0000	2026-10-31T11:36:28+0000	both/unk:1	200:1	GET /×1
+72.255.15.108	1	unknown/other	2026-10-31T11:41:04+0000	2026-10-31T11:41:04+0000	both/unk:1	404:1	GET /boaform/admin/formLogin×1
+3.95.179.63	1	unknown/other	2026-10-31T14:19:05+0000	2026-10-31T14:19:05+0000	both/unk:1	200:1	GET /×1
+40.119.42.18	1	unknown/other	2026-10-31T14:23:56+0000	2026-10-31T14:23:56+0000	both/unk:1	404:1	GET /developmentserver/metadatauploader×1
+159.223.137.31	1	unknown/other	2026-10-31T14:31:23+0000	2026-10-31T14:31:23+0000	both/unk:1	200:1	GET /×1
+3.91.151.163	1	unknown/other	2026-10-31T15:07:42+0000	2026-10-31T15:07:42+0000	both/unk:1	200:1	GET /×1
+172.239.64.86	1	unknown/other	2026-10-31T15:43:29+0000	2026-10-31T15:43:29+0000	both/unk:1	200:1	GET /×1
+185.226.197.54	1	unknown/other	2026-10-31T15:50:31+0000	2026-10-31T15:50:31+0000	both/unk:1	200:1	GET /×1
+3.91.239.39	1	unknown/other	2026-10-31T15:54:59+0000	2026-10-31T15:54:59+0000	both/unk:1	200:1	GET /×1
+172.235.41.245	1	unknown/other	2026-10-31T16:33:45+0000	2026-10-31T16:33:45+0000	both/unk:1	200:1	GET /×1
+223.123.70.248	1	unknown/other	2026-10-31T16:55:31+0000	2026-10-31T16:55:31+0000	both/unk:1	404:1	GET /boaform/admin/formLogin×1
+1.196.104.5	1	unknown/other	2026-10-31T17:08:42+0000	2026-10-31T17:08:42+0000	both/unk:1	404:1	GET /boaform/admin/formLogin×1
+103.203.56.1	1	unknown/other	2026-10-31T17:11:38+0000	2026-10-31T17:11:38+0000	both/unk:1	200:1	GET /×1
+100.56.119.88	1	unknown/other	2026-10-31T17:12:08+0000	2026-10-31T17:12:08+0000	both/unk:1	200:1	GET /×1
+13.219.18.218	1	unknown/other	2026-10-31T17:19:41+0000	2026-10-31T17:19:41+0000	both/unk:1	200:1	GET /×1
+205.210.31.197	1	unknown/other	2026-10-31T17:46:48+0000	2026-10-31T17:46:48+0000	both/unk:1	200:1	GET /×1
+86.38.187.21	1	unknown/other	2026-10-31T18:08:10+0000	2026-10-31T18:08:10+0000	both/unk:1	200:1	GET /×1
+31.14.254.67	1	unknown/other	2026-10-31T18:08:26+0000	2026-10-31T18:08:26+0000	both/unk:1	200:1	GET /×1
+195.206.182.215	1	unknown/other	2026-10-31T18:08:26+0000	2026-10-31T18:08:26+0000	both/unk:1	404:1	GET /favicon.ico×1
+185.216.145.189	1	unknown/other	2026-10-31T18:08:26+0000	2026-10-31T18:08:26+0000	both/unk:1	404:1	GET /mcp/×1
+31.14.254.80	1	unknown/other	2026-10-31T18:08:26+0000	2026-10-31T18:08:26+0000	both/unk:1	404:1	GET /mcp×1
+89.37.172.157	1	unknown/other	2026-10-31T18:08:26+0000	2026-10-31T18:08:26+0000	8788:1	404:1	GET /api/mcp×1
+195.206.182.218	1	unknown/other	2026-10-31T18:08:26+0000	2026-10-31T18:08:26+0000	both/unk:1	200:1	GET /×1
+5.226.140.122	1	unknown/other	2026-10-31T18:08:26+0000	2026-10-31T18:08:26+0000	both/unk:1	404:1	GET /sse×1
+109.94.96.109	1	unknown/other	2026-10-31T18:21:16+0000	2026-10-31T18:21:16+0000	both/unk:1	200:1	GET /×1
+48.214.147.59	1	unknown/other	2026-10-31T21:00:16+0000	2026-10-31T21:00:16+0000	both/unk:1	200:1	GET /×1
+87.236.176.208	1	unknown/other	2026-10-31T21:10:12+0000	2026-10-31T21:10:12+0000	both/unk:1	200:1	GET /×1
+152.163.187.95	1	unknown/other	2026-10-31T21:10:40+0000	2026-10-31T21:10:40+0000	both/unk:1	200:1	GET /×1
+198.235.24.24	1	unknown/other	2026-10-31T21:46:43+0000	2026-10-31T21:46:43+0000	both/unk:1	200:1	GET /×1
+45.141.116.84	1	unknown/other	2026-10-31T22:39:16+0000	2026-10-31T22:39:16+0000	both/unk:1	200:1	GET /×1
+130.61.115.11	1	unknown/other	2026-11-01T00:06:15+0000	2026-11-01T00:06:15+0000	both/unk:1	200:1	GET /×1
+109.105.210.70	1	unknown/other	2026-11-01T01:42:59+0000	2026-11-01T01:42:59+0000	both/unk:1	200:1	GET /×1
+109.105.210.68	1	unknown/other	2026-11-01T01:42:59+0000	2026-11-01T01:42:59+0000	both/unk:1	404:1	GET /favicon.ico×1
+91.92.40.236	1	unknown/other	2026-11-01T01:44:31+0000	2026-11-01T01:44:31+0000	both/unk:1	200:1	GET /×1
+66.175.215.66	1	unknown/other	2026-11-01T02:11:24+0000	2026-11-01T02:11:24+0000	both/unk:1	200:1	GET /×1
+193.32.162.73	1	scanner/botnet	2026-11-01T02:13:23+0000	2026-11-01T02:13:23+0000	80:1	404:1	[scanner-ish] /.git/HEAD×1
+193.32.162.76	1	unknown/other	2026-11-01T02:21:32+0000	2026-11-01T02:21:32+0000	both/unk:1	404:1	GET /.svn/wc.db×1
+45.74.28.248	1	unknown/other	2026-11-01T02:49:25+0000	2026-11-01T02:49:25+0000	both/unk:1	200:1	GET /×1
+83.140.96.94	1	unknown/other	2026-11-01T02:50:14+0000	2026-11-01T02:50:14+0000	both/unk:1	200:1	GET /×1
+198.235.24.131	1	unknown/other	2026-11-01T03:25:16+0000	2026-11-01T03:25:16+0000	both/unk:1	200:1	GET /×1
+85.155.14.18	1	unknown/other	2026-11-01T04:10:14+0000	2026-11-01T04:10:14+0000	both/unk:1	200:1	GET /×1
+34.38.65.98	1	likely GCP/Google range — REVIEW	2026-11-01T04:11:54+0000	2026-11-01T04:11:54+0000	both/unk:1	200:1	GET /×1
+44.244.146.129	1	unknown/other	2026-11-01T04:17:21+0000	2026-11-01T04:17:21+0000	both/unk:1	404:1	OPTIONS /×1
+160.250.181.248	1	unknown/other	2026-11-01T04:55:07+0000	2026-11-01T04:55:07+0000	both/unk:1	200:1	GET /×1
+147.185.132.159	1	unknown/other	2026-11-01T06:06:32+0000	2026-11-01T06:06:32+0000	both/unk:1	200:1	GET /×1
+35.210.181.143	1	likely GCP/Google range — REVIEW	2026-11-01T06:20:59+0000	2026-11-01T06:20:59+0000	both/unk:1	200:1	GET /×1
+172.86.119.188	1	scanner/botnet	2026-11-01T08:07:01+0000	2026-11-01T08:07:01+0000	80:1	404:1	[scanner-ish] /.git/config×1
+172.236.228.208	1	unknown/other	2026-11-01T08:39:48+0000	2026-11-01T08:39:48+0000	both/unk:1	200:1	GET /×1
+191.242.248.110	1	unknown/other	2026-11-01T10:23:22+0000	2026-11-01T10:23:22+0000	both/unk:1	404:1	GET /device.rsp×1
+54.211.110.146	1	unknown/other	2026-11-01T10:40:34+0000	2026-11-01T10:40:34+0000	both/unk:1	404:1	POST /×1
+20.40.251.158	1	unknown/other	2026-11-01T11:06:44+0000	2026-11-01T11:06:44+0000	both/unk:1	404:1	GET /developmentserver/metadatauploader×1
+172.239.64.84	1	unknown/other	2026-11-01T11:35:04+0000	2026-11-01T11:35:04+0000	both/unk:1	200:1	GET /×1
+117.27.135.91	1	unknown/other	2026-11-01T11:47:58+0000	2026-11-01T11:47:58+0000	both/unk:1	200:1	GET /×1
+91.92.40.240	1	unknown/other	2026-11-01T12:03:44+0000	2026-11-01T12:03:44+0000	both/unk:1	200:1	GET /×1
+180.149.125.163	1	unknown/other	2026-11-01T12:08:26+0000	2026-11-01T12:08:26+0000	both/unk:1	200:1	GET /×1
+34.56.6.168	1	likely GCP/Google range — REVIEW	2026-11-01T12:51:31+0000	2026-11-01T12:51:31+0000	both/unk:1	200:1	GET /×1
+34.38.254.144	1	likely GCP/Google range — REVIEW	2026-11-01T13:26:12+0000	2026-11-01T13:26:12+0000	both/unk:1	200:1	GET /×1
+172.236.228.224	1	unknown/other	2026-11-01T13:43:50+0000	2026-11-01T13:43:50+0000	both/unk:1	200:1	GET /×1
+34.24.52.92	1	likely GCP/Google range — REVIEW	2026-11-01T13:47:35+0000	2026-11-01T13:47:35+0000	both/unk:1	200:1	GET /×1
+207.180.29.240	1	unknown/other	2026-11-01T14:03:03+0000	2026-11-01T14:03:03+0000	both/unk:1	200:1	GET /×1
+92.118.39.18	1	scanner/botnet	2026-11-01T14:59:17+0000	2026-11-01T14:59:17+0000	80:1	404:1	[scanner-ish] /.git/HEAD×1
+44.203.125.226	1	unknown/other	2026-11-01T15:08:51+0000	2026-11-01T15:08:51+0000	both/unk:1	200:1	GET /×1
+172.104.11.4	1	unknown/other	2026-11-01T15:40:41+0000	2026-11-01T15:40:41+0000	both/unk:1	200:1	GET /×1
+185.247.137.217	1	unknown/other	2026-11-01T15:43:51+0000	2026-11-01T15:43:51+0000	both/unk:1	200:1	GET /×1
+216.25.90.7	1	unknown/other	2026-11-01T15:51:43+0000	2026-11-01T15:51:43+0000	both/unk:1	200:1	GET /×1
+45.156.128.195	1	unknown/other	2026-11-01T16:35:55+0000	2026-11-01T16:35:55+0000	both/unk:1	200:1	GET /×1
+9.141.55.239	1	unknown/other	2026-11-01T17:07:08+0000	2026-11-01T17:07:08+0000	both/unk:1	404:1	POST /×1
+74.249.178.126	1	unknown/other	2026-11-01T17:49:10+0000	2026-11-01T17:49:10+0000	both/unk:1	200:1	GET /×1
+147.185.133.240	1	unknown/other	2026-11-01T18:22:07+0000	2026-11-01T18:22:07+0000	both/unk:1	200:1	GET /×1
+180.149.126.9	1	unknown/other	2026-11-01T19:18:08+0000	2026-11-01T19:18:08+0000	both/unk:1	404:1	GET /c/×1
+205.210.31.32	1	unknown/other	2026-11-01T19:32:16+0000	2026-11-01T19:32:16+0000	both/unk:1	200:1	GET /×1
+198.235.24.172	1	unknown/other	2026-11-01T19:40:19+0000	2026-11-01T19:40:19+0000	both/unk:1	200:1	GET /×1
+205.210.31.3	1	unknown/other	2026-11-01T20:14:48+0000	2026-11-01T20:14:48+0000	both/unk:1	404:1	GET /.well-known/security.txt×1
+104.248.194.170	1	unknown/other	2026-11-01T20:16:00+0000	2026-11-01T20:16:00+0000	both/unk:1	200:1	GET /×1
+93.123.109.230	1	unknown/other	2026-11-01T20:24:06+0000	2026-11-01T20:24:06+0000	both/unk:1	200:1	GET /×1
+45.139.104.172	1	unknown/other	2026-11-01T20:33:33+0000	2026-11-01T20:33:33+0000	both/unk:1	200:1	GET /×1
+37.46.115.45	1	unknown/other	2026-11-01T20:42:30+0000	2026-11-01T20:42:30+0000	both/unk:1	200:1	GET /×1
+45.130.141.51	1	unknown/other	2026-11-01T20:42:30+0000	2026-11-01T20:42:30+0000	both/unk:1	404:1	GET /favicon.ico×1
+180.149.125.171	1	unknown/other	2026-11-01T20:59:07+0000	2026-11-01T20:59:07+0000	80:1	404:1	GET /stalker_portal/server/tools/auth_simple.php×1
+40.124.123.61	1	scanner/botnet	2026-11-01T21:35:30+0000	2026-11-01T21:35:30+0000	80:1	404:1	[scanner-ish] /actuator/health×1
+208.98.38.223	1	unknown/other	2026-11-01T21:38:13+0000	2026-11-01T21:38:13+0000	both/unk:1	404:1	GET http://probe.invalid/×1
+157.245.69.32	1	unknown/other	2026-11-01T22:17:11+0000	2026-11-01T22:17:11+0000	both/unk:1	200:1	GET /×1
+71.6.232.24	1	unknown/other	2026-11-02T00:19:24+0000	2026-11-02T00:19:24+0000	both/unk:1	200:1	GET /×1
+89.21.67.162	1	unknown/other	2026-11-02T01:15:00+0000	2026-11-02T01:15:00+0000	both/unk:1	200:1	GET /×1
+31.14.254.123	1	unknown/other	2026-11-02T01:15:48+0000	2026-11-02T01:15:48+0000	both/unk:1	200:1	GET /×1
+217.146.80.122	1	unknown/other	2026-11-02T01:15:48+0000	2026-11-02T01:15:48+0000	both/unk:1	404:1	GET /favicon.ico×1
+5.226.140.109	1	unknown/other	2026-11-02T01:15:48+0000	2026-11-02T01:15:48+0000	both/unk:1	404:1	GET /mcp/×1
+5.226.140.67	1	unknown/other	2026-11-02T01:15:48+0000	2026-11-02T01:15:48+0000	both/unk:1	404:1	GET /mcp×1
+5.226.140.115	1	unknown/other	2026-11-02T01:15:48+0000	2026-11-02T01:15:48+0000	8788:1	404:1	GET /api/mcp×1
+213.166.84.58	1	unknown/other	2026-11-02T01:15:48+0000	2026-11-02T01:15:48+0000	both/unk:1	200:1	GET /×1
+81.19.219.228	1	unknown/other	2026-11-02T01:15:49+0000	2026-11-02T01:15:49+0000	both/unk:1	404:1	GET /sse×1
+185.218.86.14	1	scanner/botnet	2026-11-02T01:36:38+0000	2026-11-02T01:36:38+0000	80:1	404:1	[scanner-ish] /.git/config×1
+64.205.72.9	1	unknown/other	2026-11-02T01:39:44+0000	2026-11-02T01:39:44+0000	both/unk:1	200:1	GET /×1
+9.234.11.110	1	unknown/other	2026-11-02T01:48:48+0000	2026-11-02T01:48:48+0000	both/unk:1	404:1	GET /portal/redlion×1
+157.230.91.200	1	unknown/other	2026-11-02T02:40:53+0000	2026-11-02T02:40:53+0000	both/unk:1	200:1	GET /×1
+20.102.41.156	1	unknown/other	2026-11-02T02:49:44+0000	2026-11-02T02:49:44+0000	both/unk:1	404:1	GET /hudson×1
+137.184.16.7	1	unknown/other	2026-11-02T03:50:20+0000	2026-11-02T03:50:20+0000	both/unk:1	200:1	GET /×1
+172.234.217.129	1	unknown/other	2026-11-02T04:12:00+0000	2026-11-02T04:12:00+0000	both/unk:1	200:1	GET /×1
+85.11.167.214	1	unknown/other	2026-11-02T04:35:00+0000	2026-11-02T04:35:00+0000	both/unk:1	200:1	GET /×1
+20.118.211.100	1	unknown/other	2026-11-02T05:10:03+0000	2026-11-02T05:10:03+0000	both/unk:1	404:1	GET /druid/index.html×1
+35.210.236.4	1	likely GCP/Google range — REVIEW	2026-11-02T06:14:30+0000	2026-11-02T06:14:30+0000	both/unk:1	200:1	GET /×1
+172.236.228.198	1	unknown/other	2026-11-02T07:48:10+0000	2026-11-02T07:48:10+0000	both/unk:1	200:1	GET /×1
+20.127.210.178	1	unknown/other	2026-11-02T08:39:56+0000	2026-11-02T08:39:56+0000	both/unk:1	404:1	GET /developmentserver/metadatauploader×1
+34.178.254.199	1	likely GCP/Google range — REVIEW	2026-11-02T10:06:18+0000	2026-11-02T10:06:18+0000	both/unk:1	404:1	OPTIONS /×1
+142.93.49.93	1	unknown/other	2026-11-02T11:51:35+0000	2026-11-02T11:51:35+0000	both/unk:1	200:1	GET /×1
+45.114.84.126	1	scanner/botnet	2026-11-02T11:54:24+0000	2026-11-02T11:54:24+0000	80:1	404:1	[scanner-ish] /.git/config×1
+103.174.243.224	1	unknown/other	2026-11-02T12:03:18+0000	2026-11-02T12:03:18+0000	both/unk:1	404:1	POST /GponForm/diag_Form×1
+172.234.217.192	1	unknown/other	2026-11-02T12:39:11+0000	2026-11-02T12:39:11+0000	both/unk:1	200:1	GET /×1
+172.110.223.173	1	unknown/other	2026-11-02T13:29:07+0000	2026-11-02T13:29:07+0000	both/unk:1	200:1	GET /×1
+45.138.12.21	1	scanner/botnet	2026-11-02T15:00:05+0000	2026-11-02T15:00:05+0000	80:1	404:1	[scanner-ish] /.git/config×1
+54.175.31.44	1	unknown/other	2026-11-02T15:06:32+0000	2026-11-02T15:06:32+0000	both/unk:1	200:1	GET /×1
+165.232.115.11	1	scanner/botnet	2026-11-02T15:09:13+0000	2026-11-02T15:09:13+0000	80:1	404:1	[scanner-ish] /.git/config×1
+54.183.72.36	1	unknown/other	2026-11-02T15:23:28+0000	2026-11-02T15:23:28+0000	both/unk:1	404:1	OPTIONS /×1
+34.82.99.54	1	likely GCP/Google range — REVIEW	2026-11-02T15:32:33+0000	2026-11-02T15:32:33+0000	both/unk:1	200:1	GET /×1
+20.118.37.206	1	unknown/other	2026-11-02T15:42:29+0000	2026-11-02T15:42:29+0000	both/unk:1	200:1	GET /×1
+54.37.135.61	1	unknown/other	2026-11-02T15:46:09+0000	2026-11-02T15:46:09+0000	both/unk:1	404:1	POST /%2577eb%2575i_%2577sma_Http×1
+198.74.56.6	1	unknown/other	2026-11-02T16:33:53+0000	2026-11-02T16:33:53+0000	both/unk:1	200:1	GET /×1
+77.67.26.213	1	unknown/other	2026-11-02T17:08:11+0000	2026-11-02T17:08:11+0000	both/unk:1	200:1	GET /×1
+109.105.209.111	1	unknown/other	2026-11-02T17:15:44+0000	2026-11-02T17:15:44+0000	both/unk:1	200:1	GET /×1
+216.25.90.13	1	unknown/other	2026-11-02T17:58:26+0000	2026-11-02T17:58:26+0000	both/unk:1	200:1	GET /×1
+147.185.133.48	1	unknown/other	2026-11-02T18:17:09+0000	2026-11-02T18:17:09+0000	both/unk:1	200:1	GET /×1
+185.242.226.80	1	unknown/other	2026-11-02T18:50:21+0000	2026-11-02T18:50:21+0000	both/unk:1	200:1	GET /×1
+216.25.90.107	1	unknown/other	2026-11-02T18:51:18+0000	2026-11-02T18:51:18+0000	both/unk:1	200:1	GET /×1
+205.210.31.35	1	unknown/other	2026-11-02T20:58:46+0000	2026-11-02T20:58:46+0000	both/unk:1	200:1	GET /×1
+103.158.121.21	1	unknown/other	2026-11-02T21:11:51+0000	2026-11-02T21:11:51+0000	80:1	404:1	GET /admin/config.php×1
+176.65.132.37	1	unknown/other	2026-11-02T21:51:11+0000	2026-11-02T21:51:11+0000	both/unk:1	404:1	POST /boaform/admin/formLogin×1
+187.17.228.241	1	unknown/other	2026-11-02T22:00:38+0000	2026-11-02T22:00:38+0000	80:1	404:1	GET /admin/config.php×1
+209.99.187.8	1	unknown/other	2026-11-03T02:06:46+0000	2026-11-03T02:06:46+0000	both/unk:1	200:1	GET /×1
+91.224.92.45	1	unknown/other	2026-11-03T02:16:00+0000	2026-11-03T02:16:00+0000	both/unk:1	200:1	GET /×1
+35.210.135.215	1	likely GCP/Google range — REVIEW	2026-11-03T03:47:19+0000	2026-11-03T03:47:19+0000	both/unk:1	200:1	GET /×1
+47.254.16.187	1	unknown/other	2026-11-03T04:27:24+0000	2026-11-03T04:27:24+0000	both/unk:1	200:1	GET /×1
+47.88.86.63	1	unknown/other	2026-11-03T04:27:25+0000	2026-11-03T04:27:25+0000	both/unk:1	404:1	GET /Public/home/js/check.js×1
+66.240.236.109	1	unknown/other	2026-11-03T05:58:25+0000	2026-11-03T05:58:25+0000	both/unk:1	200:1	GET /×1
+34.78.7.72	1	likely GCP/Google range — REVIEW	2026-11-03T06:18:56+0000	2026-11-03T06:18:56+0000	both/unk:1	200:1	GET /×1
+51.254.59.113	1	unknown/other	2026-11-03T06:42:32+0000	2026-11-03T06:42:32+0000	both/unk:1	200:1	GET /×1
+66.228.53.204	1	unknown/other	2026-11-03T07:52:57+0000	2026-11-03T07:52:57+0000	both/unk:1	200:1	GET /×1
+14.205.104.200	1	unknown/other	2026-11-03T07:56:44+0000	2026-11-03T07:56:44+0000	both/unk:1	404:1	GET /shell×1
+160.119.76.10	1	unknown/other	2026-11-03T08:25:02+0000	2026-11-03T08:25:02+0000	both/unk:1	200:1	GET /×1
+64.23.248.91	1	unknown/other	2026-11-03T08:44:17+0000	2026-11-03T08:44:17+0000	both/unk:1	200:1	GET /×1
+185.218.100.133	1	unknown/other	2026-11-03T09:59:30+0000	2026-11-03T09:59:30+0000	both/unk:1	200:1	GET /×1
+20.65.179.65	1	unknown/other	2026-11-03T10:08:36+0000	2026-11-03T10:08:36+0000	both/unk:1	404:1	GET /developmentserver/metadatauploader×1
+172.235.41.203	1	unknown/other	2026-11-03T10:40:19+0000	2026-11-03T10:40:19+0000	both/unk:1	200:1	GET /×1
+86.38.187.85	1	unknown/other	2026-11-03T11:07:51+0000	2026-11-03T11:07:51+0000	both/unk:1	200:1	GET /×1
+5.226.140.75	1	unknown/other	2026-11-03T11:08:23+0000	2026-11-03T11:08:23+0000	both/unk:1	200:1	GET /×1
+31.14.254.77	1	unknown/other	2026-11-03T11:08:23+0000	2026-11-03T11:08:23+0000	both/unk:1	404:1	GET /favicon.ico×1
+195.206.182.220	1	unknown/other	2026-11-03T11:08:24+0000	2026-11-03T11:08:24+0000	both/unk:1	404:1	GET /mcp/×1
+193.32.209.250	1	unknown/other	2026-11-03T11:08:24+0000	2026-11-03T11:08:24+0000	8788:1	404:1	GET /api/mcp×1
+81.19.219.232	1	unknown/other	2026-11-03T11:08:24+0000	2026-11-03T11:08:24+0000	both/unk:1	200:1	GET /×1
+5.226.140.83	1	unknown/other	2026-11-03T11:08:24+0000	2026-11-03T11:08:24+0000	both/unk:1	404:1	GET /sse×1
+20.118.27.60	1	unknown/other	2026-11-03T12:31:24+0000	2026-11-03T12:31:24+0000	both/unk:1	200:1	GET /×1
+172.105.128.11	1	unknown/other	2026-11-03T13:45:10+0000	2026-11-03T13:45:10+0000	both/unk:1	200:1	GET /×1
+27.130.17.53	1	unknown/other	2026-11-03T13:50:02+0000	2026-11-03T13:50:02+0000	both/unk:1	200:1	GET /×1
+195.96.139.58	1	unknown/other	2026-11-03T14:20:14+0000	2026-11-03T14:20:14+0000	both/unk:1	200:1	GET /×1
+3.91.61.197	1	unknown/other	2026-11-03T15:05:10+0000	2026-11-03T15:05:10+0000	both/unk:1	200:1	GET /×1
+142.93.199.231	1	scanner/botnet	2026-11-03T15:29:29+0000	2026-11-03T15:29:29+0000	80:1	404:1	[scanner-ish] /.git/config×1
+45.156.128.161	1	unknown/other	2026-11-03T16:06:21+0000	2026-11-03T16:06:21+0000	both/unk:1	200:1	GET /×1
+172.236.228.245	1	unknown/other	2026-11-03T16:46:01+0000	2026-11-03T16:46:01+0000	both/unk:1	200:1	GET /×1
+45.74.28.208	1	unknown/other	2026-11-03T16:56:03+0000	2026-11-03T16:56:03+0000	both/unk:1	200:1	GET /×1
+64.23.187.235	1	unknown/other	2026-11-03T17:12:39+0000	2026-11-03T17:12:39+0000	both/unk:1	200:1	GET /×1
+18.218.118.203	1	unknown/other	2026-11-03T17:45:31+0000	2026-11-03T17:45:31+0000	both/unk:1	404:1	GET /robots.txt×1
+205.210.31.77	1	unknown/other	2026-11-03T17:48:43+0000	2026-11-03T17:48:43+0000	both/unk:1	200:1	GET /×1
+34.48.174.155	1	likely GCP/Google range — REVIEW	2026-11-03T18:04:13+0000	2026-11-03T18:04:13+0000	both/unk:1	200:1	GET /×1
+198.235.24.155	1	unknown/other	2026-11-03T19:02:57+0000	2026-11-03T19:02:57+0000	both/unk:1	200:1	GET /×1
+136.64.194.143	1	unknown/other	2026-11-03T19:12:21+0000	2026-11-03T19:12:21+0000	both/unk:1	200:1	GET /×1
+45.156.87.63	1	unknown/other	2026-11-03T19:45:50+0000	2026-11-03T19:45:50+0000	both/unk:1	200:1	GET /×1
+64.226.116.71	1	unknown/other	2026-11-03T20:06:36+0000	2026-11-03T20:06:36+0000	both/unk:1	200:1	GET /×1
+147.185.133.117	1	unknown/other	2026-11-03T20:55:08+0000	2026-11-03T20:55:08+0000	both/unk:1	200:1	GET /×1
+159.223.205.92	1	unknown/other	2026-11-03T20:57:22+0000	2026-11-03T20:57:22+0000	both/unk:1	200:1	GET /indir/usta.exe×1
+46.101.27.59	1	unknown/other	2026-11-03T20:59:38+0000	2026-11-03T20:59:38+0000	both/unk:1	200:1	GET /×1
+209.38.153.202	1	unknown/other	2026-11-03T21:01:29+0000	2026-11-03T21:01:29+0000	80:1	200:1	GET /kosullar×1
+24.144.91.56	1	unknown/other	2026-11-03T21:04:51+0000	2026-11-03T21:04:51+0000	80:1	200:1	GET /kvkk×1
+134.199.223.53	1	unknown/other	2026-11-03T21:17:07+0000	2026-11-03T21:17:07+0000	both/unk:1	404:1	GET /fiyat×1
+35.240.22.124	1	likely GCP/Google range — REVIEW	2026-11-03T21:24:50+0000	2026-11-03T21:24:50+0000	both/unk:1	200:1	GET /×1
+137.184.180.159	1	unknown/other	2026-11-03T21:35:30+0000	2026-11-03T21:35:30+0000	80:1	200:1	GET /kayit×1
+164.92.83.221	1	unknown/other	2026-11-03T21:41:03+0000	2026-11-03T21:41:03+0000	both/unk:1	200:1	GET /×1
+146.190.143.199	1	unknown/other	2026-11-03T21:52:03+0000	2026-11-03T21:52:03+0000	80:1	200:1	GET /giris×1
+193.187.110.182	1	unknown/other	2026-11-03T23:26:06+0000	2026-11-03T23:26:06+0000	both/unk:1	404:1	HEAD /skin/frontend/ybx/default/css/styles.css×1
+141.98.10.86	1	scanner/botnet	2026-11-04T01:05:23+0000	2026-11-04T01:05:23+0000	both/unk:1	404:1	[scanner-ish] /cgi-bin/luci/;stok=/locale×1
+138.197.24.249	1	unknown/other	2026-11-04T01:37:37+0000	2026-11-04T01:37:37+0000	both/unk:1	200:1	GET /×1
+199.165.159.127	1	unknown/other	2026-11-04T02:37:22+0000	2026-11-04T02:37:22+0000	both/unk:1	404:1	GET /favicon.ico×1
+64.177.90.129	1	unknown/other	2026-11-04T04:22:08+0000	2026-11-04T04:22:08+0000	both/unk:1	200:1	GET /×1
+198.235.24.173	1	unknown/other	2026-11-04T05:18:05+0000	2026-11-04T05:18:05+0000	both/unk:1	200:1	GET /×1
+192.155.90.118	1	unknown/other	2026-11-04T06:08:14+0000	2026-11-04T06:08:14+0000	both/unk:1	200:1	GET /×1
+35.210.152.25	1	likely GCP/Google range — REVIEW	2026-11-04T06:24:02+0000	2026-11-04T06:24:02+0000	both/unk:1	200:1	GET /×1
+101.53.233.9	1	unknown/other	2026-11-04T06:32:12+0000	2026-11-04T06:32:12+0000	both/unk:1	404:1	GET /boaform/admin/formLogin×1
+193.8.186.31	1	unknown/other	2026-11-04T07:08:10+0000	2026-11-04T07:08:10+0000	both/unk:1	200:1	GET /×1
+38.76.205.190	1	unknown/other	2026-11-04T08:59:25+0000	2026-11-04T08:59:25+0000	both/unk:1	404:1	GET /panel/status×1
+20.127.172.31	1	unknown/other	2026-11-04T09:23:46+0000	2026-11-04T09:23:46+0000	both/unk:1	200:1	GET /×1
+66.228.53.46	1	unknown/other	2026-11-04T10:06:21+0000	2026-11-04T10:06:21+0000	both/unk:1	200:1	GET /×1
+20.55.82.74	1	unknown/other	2026-11-04T11:25:17+0000	2026-11-04T11:25:17+0000	both/unk:1	404:1	GET /developmentserver/metadatauploader×1
+138.122.21.19	1	unknown/other	2026-11-04T11:26:56+0000	2026-11-04T11:26:56+0000	80:1	404:1	GET /admin/config.php×1
+193.8.186.29	1	unknown/other	2026-11-04T12:26:23+0000	2026-11-04T12:26:23+0000	both/unk:1	200:1	GET /×1
+169.58.1.44	1	unknown/other	2026-11-04T13:13:20+0000	2026-11-04T13:13:20+0000	both/unk:1	200:1	GET /×1
+40.74.212.23	1	scanner/botnet	2026-11-04T14:02:32+0000	2026-11-04T14:02:32+0000	80:1	404:1	[scanner-ish] /actuator/health×1
+13.218.165.217	1	unknown/other	2026-11-04T15:07:28+0000	2026-11-04T15:07:28+0000	both/unk:1	200:1	GET /×1
+205.210.31.162	1	unknown/other	2026-11-04T15:53:02+0000	2026-11-04T15:53:02+0000	both/unk:1	200:1	GET /×1
+165.232.76.100	1	scanner/botnet	2026-11-04T16:01:38+0000	2026-11-04T16:01:38+0000	both/unk:1	404:1	[scanner-ish] /cgi-bin/authLogin.cgi×1
+45.156.128.181	1	unknown/other	2026-11-04T16:10:39+0000	2026-11-04T16:10:39+0000	both/unk:1	200:1	GET /×1
+165.154.10.187	1	unknown/other	2026-11-04T16:37:18+0000	2026-11-04T16:37:18+0000	both/unk:1	200:1	GET /×1
+18.116.101.220	1	unknown/other	2026-11-04T16:41:51+0000	2026-11-04T16:41:51+0000	both/unk:1	404:1	GET /robots.txt×1
+144.172.64.24	1	unknown/other	2026-11-04T17:39:38+0000	2026-11-04T17:39:38+0000	both/unk:1	200:1	GET /×1
+154.36.152.70	1	unknown/other	2026-11-04T18:26:56+0000	2026-11-04T18:26:56+0000	both/unk:1	404:1	GET /panel/status×1
+205.210.31.138	1	unknown/other	2026-11-04T18:39:27+0000	2026-11-04T18:39:27+0000	both/unk:1	200:1	GET /×1
+198.235.24.252	1	unknown/other	2026-11-04T19:17:49+0000	2026-11-04T19:17:49+0000	both/unk:1	200:1	GET /×1
+172.236.228.222	1	unknown/other	2026-11-04T19:19:26+0000	2026-11-04T19:19:26+0000	both/unk:1	200:1	GET /×1
+20.80.87.93	1	unknown/other	2026-11-04T19:29:42+0000	2026-11-04T19:29:42+0000	both/unk:1	404:1	GET /hudson×1
+20.15.203.58	1	unknown/other	2026-11-04T22:12:18+0000	2026-11-04T22:12:18+0000	both/unk:1	404:1	GET /ReportServer×1
+40.124.117.60	1	unknown/other	2026-11-04T22:27:46+0000	2026-11-04T22:27:46+0000	both/unk:1	404:1	GET /druid/index.html×1
+154.40.43.131	1	unknown/other	2026-11-04T23:39:12+0000	2026-11-04T23:39:12+0000	both/unk:1	404:1	GET /panel/status×1
+199.165.159.35	1	unknown/other	2026-11-05T00:04:33+0000	2026-11-05T00:04:33+0000	both/unk:1	404:1	GET /favicon.ico×1
+103.236.78.163	1	unknown/other	2026-11-05T00:25:35+0000	2026-11-05T00:25:35+0000	both/unk:1	404:1	GET /panel/status×1
+185.216.145.169	1	unknown/other	2026-11-05T01:04:24+0000	2026-11-05T01:04:24+0000	both/unk:1	200:1	GET /×1
+185.216.145.187	1	unknown/other	2026-11-05T01:05:03+0000	2026-11-05T01:05:03+0000	both/unk:1	200:1	GET /×1
+31.14.254.76	1	unknown/other	2026-11-05T01:05:04+0000	2026-11-05T01:05:04+0000	both/unk:1	404:1	GET /mcp×1
+5.226.140.86	1	unknown/other	2026-11-05T01:05:04+0000	2026-11-05T01:05:04+0000	both/unk:1	200:1	GET /×1
+31.14.254.93	1	unknown/other	2026-11-05T01:05:04+0000	2026-11-05T01:05:04+0000	both/unk:1	404:1	GET /mcp/×1
+5.226.140.100	1	unknown/other	2026-11-05T01:05:04+0000	2026-11-05T01:05:04+0000	8788:1	404:1	GET /api/mcp×1
+31.14.254.96	1	unknown/other	2026-11-05T01:05:04+0000	2026-11-05T01:05:04+0000	both/unk:1	404:1	GET /sse×1
+50.116.55.206	1	unknown/other	2026-11-05T01:32:02+0000	2026-11-05T01:32:02+0000	both/unk:1	200:1	GET /×1
+177.126.159.187	1	unknown/other	2026-11-05T01:49:07+0000	2026-11-05T01:49:07+0000	both/unk:1	200:1	GET /×1
+45.79.181.94	1	unknown/other	2026-11-05T01:52:50+0000	2026-11-05T01:52:50+0000	both/unk:1	200:1	GET /×1
+23.148.180.247	1	unknown/other	2026-11-05T01:59:06+0000	2026-11-05T01:59:06+0000	both/unk:1	404:1	GET /panel/status×1
+45.156.128.205	1	unknown/other	2026-11-05T02:34:24+0000	2026-11-05T02:34:24+0000	both/unk:1	200:1	GET /×1
+91.230.168.204	1	unknown/other	2026-11-05T02:48:01+0000	2026-11-05T02:48:01+0000	both/unk:1	200:1	GET /×1
+91.230.168.88	1	unknown/other	2026-11-05T02:50:18+0000	2026-11-05T02:50:18+0000	both/unk:1	404:1	GET /favicon.ico×1
+48.216.218.42	1	unknown/other	2026-11-05T03:00:37+0000	2026-11-05T03:00:37+0000	both/unk:1	404:1	GET /portal/redlion×1
+205.210.31.18	1	unknown/other	2026-11-05T03:04:10+0000	2026-11-05T03:04:10+0000	both/unk:1	200:1	GET /×1
+156.238.224.254	1	unknown/other	2026-11-05T03:13:13+0000	2026-11-05T03:13:13+0000	both/unk:1	404:1	GET /panel/status×1
+146.148.22.15	1	unknown/other	2026-11-05T03:17:11+0000	2026-11-05T03:17:11+0000	both/unk:1	200:1	GET /×1
+123.130.204.68	1	unknown/other	2026-11-05T03:23:36+0000	2026-11-05T03:23:36+0000	both/unk:1	404:1	GET /setup.cgi×1
+38.246.245.90	1	unknown/other	2026-11-05T03:29:05+0000	2026-11-05T03:29:05+0000	both/unk:1	404:1	GET /panel/status×1
+154.9.26.72	1	unknown/other	2026-11-05T03:43:50+0000	2026-11-05T03:43:50+0000	both/unk:1	404:1	GET /panel/status×1
+45.205.31.179	1	unknown/other	2026-11-05T03:44:06+0000	2026-11-05T03:44:06+0000	both/unk:1	404:1	GET /panel/status×1
+154.40.58.66	1	unknown/other	2026-11-05T03:46:33+0000	2026-11-05T03:46:33+0000	both/unk:1	404:1	GET /panel/status×1
+186.244.233.206	1	unknown/other	2026-11-05T03:46:50+0000	2026-11-05T03:46:50+0000	both/unk:1	404:1	GET /panel/status×1
+103.68.192.49	1	unknown/other	2026-11-05T03:48:35+0000	2026-11-05T03:48:35+0000	both/unk:1	404:1	GET /panel/status×1
+45.205.31.68	1	unknown/other	2026-11-05T03:53:06+0000	2026-11-05T03:53:06+0000	both/unk:1	404:1	GET /panel/status×1
+38.55.252.64	1	unknown/other	2026-11-05T03:57:11+0000	2026-11-05T03:57:11+0000	both/unk:1	404:1	GET /panel/status×1
+38.246.245.158	1	unknown/other	2026-11-05T04:20:01+0000	2026-11-05T04:20:01+0000	both/unk:1	404:1	GET /panel/status×1
+154.9.26.242	1	unknown/other	2026-11-05T04:20:45+0000	2026-11-05T04:20:45+0000	both/unk:1	404:1	GET /panel/status×1
+154.9.232.60	1	unknown/other	2026-11-05T04:32:51+0000	2026-11-05T04:32:51+0000	both/unk:1	404:1	GET /panel/status×1
+192.220.24.132	1	unknown/other	2026-11-05T04:34:49+0000	2026-11-05T04:34:49+0000	both/unk:1	404:1	GET /panel/status×1
+82.158.88.212	1	unknown/other	2026-11-05T04:49:11+0000	2026-11-05T04:49:11+0000	both/unk:1	404:1	GET /panel/status×1
+106.63.26.6	1	unknown/other	2026-11-05T04:55:43+0000	2026-11-05T04:55:43+0000	both/unk:1	404:1	GET /robots.txt×1
+106.63.26.15	1	unknown/other	2026-11-05T04:55:44+0000	2026-11-05T04:55:44+0000	both/unk:1	404:1	GET /sitemap.xml×1
+192.220.50.128	1	unknown/other	2026-11-05T05:11:17+0000	2026-11-05T05:11:17+0000	both/unk:1	404:1	GET /panel/status×1
+157.230.120.213	1	unknown/other	2026-11-05T05:15:03+0000	2026-11-05T05:15:03+0000	both/unk:1	200:1	GET /×1
+192.220.24.103	1	unknown/other	2026-11-05T05:21:53+0000	2026-11-05T05:21:53+0000	both/unk:1	404:1	GET /panel/status×1
+172.104.11.51	1	unknown/other	2026-11-05T06:05:47+0000	2026-11-05T06:05:47+0000	both/unk:1	200:1	GET /×1
+31.184.195.244	1	unknown/other	2026-11-05T06:07:52+0000	2026-11-05T06:07:52+0000	both/unk:1	200:1	GET /×1
+35.210.82.106	1	likely GCP/Google range — REVIEW	2026-11-05T06:30:38+0000	2026-11-05T06:30:38+0000	both/unk:1	200:1	GET /×1
+4.236.164.116	1	unknown/other	2026-11-05T06:59:31+0000	2026-11-05T06:59:31+0000	both/unk:1	200:1	GET /×1
+38.248.19.246	1	unknown/other	2026-11-05T08:33:23+0000	2026-11-05T08:33:23+0000	80:1	404:1	GET /admin/config.php×1
+172.104.215.178	1	unknown/other	2026-11-05T08:41:32+0000	2026-11-05T08:41:32+0000	both/unk:1	200:1	GET /×1
+20.127.240.127	1	unknown/other	2026-11-05T10:39:39+0000	2026-11-05T10:39:39+0000	both/unk:1	404:1	GET /developmentserver/metadatauploader×1
+194.88.98.83	1	unknown/other	2026-11-05T11:03:04+0000	2026-11-05T11:03:04+0000	both/unk:1	200:1	GET /×1
+92.119.165.164	1	unknown/other	2026-11-05T12:10:11+0000	2026-11-05T12:10:11+0000	both/unk:1	404:1	GET /home.asp×1
+185.189.182.234	1	unknown/other	2026-11-05T12:19:36+0000	2026-11-05T12:19:36+0000	both/unk:1	200:1	GET /×1
+64.226.71.148	1	scanner/botnet	2026-11-05T14:30:05+0000	2026-11-05T14:30:05+0000	80:1	404:1	[scanner-ish] /.git/config×1
+76.80.123.238	1	unknown/other	2026-11-05T14:43:45+0000	2026-11-05T14:43:45+0000	both/unk:1	200:1	GET /×1
+172.171.241.55	1	unknown/other	2026-11-05T14:51:48+0000	2026-11-05T14:51:48+0000	both/unk:1	404:1	GET /manager/html×1
+98.91.211.154	1	unknown/other	2026-11-05T15:15:06+0000	2026-11-05T15:15:06+0000	both/unk:1	200:1	GET /×1
+186.241.91.98	1	unknown/other	2026-11-05T15:34:54+0000	2026-11-05T15:34:54+0000	both/unk:1	404:1	GET /panel/status×1
+109.105.209.78	1	unknown/other	2026-11-05T16:59:05+0000	2026-11-05T16:59:05+0000	both/unk:1	200:1	GET /×1
+198.235.24.176	1	unknown/other	2026-11-05T17:08:28+0000	2026-11-05T17:08:28+0000	both/unk:1	200:1	GET /×1
+198.235.24.16	1	unknown/other	2026-11-05T18:15:57+0000	2026-11-05T18:15:57+0000	both/unk:1	200:1	GET /×1
+157.245.122.255	1	unknown/other	2026-11-05T19:24:16+0000	2026-11-05T19:24:16+0000	both/unk:1	200:1	GET /×1
+150.40.126.78	1	unknown/other	2026-11-05T20:33:29+0000	2026-11-05T20:33:29+0000	both/unk:1	200:1	GET /×1
+147.185.132.240	1	unknown/other	2026-11-05T20:35:34+0000	2026-11-05T20:35:34+0000	both/unk:1	200:1	GET /×1
+195.178.110.159	1	unknown/other	2026-11-05T21:15:41+0000	2026-11-05T21:15:41+0000	both/unk:1	200:1	GET /×1
+45.79.149.50	1	unknown/other	2026-11-05T22:40:40+0000	2026-11-05T22:40:40+0000	both/unk:1	200:1	GET /×1
+167.71.229.198	1	unknown/other	2026-11-05T23:11:56+0000	2026-11-05T23:11:56+0000	both/unk:1	200:1	GET /×1
+192.236.202.11	1	unknown/other	2026-11-06T00:32:38+0000	2026-11-06T00:32:38+0000	both/unk:1	404:1	GET http://azenv.net/×1
+139.135.60.247	1	unknown/other	2026-11-06T00:34:59+0000	2026-11-06T00:34:59+0000	both/unk:1	404:1	POST /HNAP1/×1
+184.33.84.196	1	LEGITIMATE NON-VPS? — FLAG	2026-11-06T01:06:38+0000	2026-11-06T01:06:38+0000	both/unk:1	200:1	GET /v1/models×1
+66.249.73.162	1	unknown/other	2026-11-06T01:41:18+0000	2026-11-06T01:41:18+0000	both/unk:1	200:1	GET /×1
+66.249.73.164	1	unknown/other	2026-11-06T01:41:19+0000	2026-11-06T01:41:19+0000	both/unk:1	200:1	GET /×1
+34.215.96.239	1	likely GCP probe/health (Google range)	2026-11-06T01:54:27+0000	2026-11-06T01:54:27+0000	both/unk:1	200:1	GET /health×1
+205.210.31.149	1	unknown/other	2026-11-06T02:42:56+0000	2026-11-06T02:42:56+0000	both/unk:1	200:1	GET /×1
+100.22.119.105	1	unknown/other	2026-11-06T02:53:17+0000	2026-11-06T02:53:17+0000	both/unk:1	404:1	GET /favicon.ico×1
+13.89.123.150	1	unknown/other	2026-11-06T03:29:19+0000	2026-11-06T03:29:19+0000	both/unk:1	200:1	GET /×1
+35.210.120.245	1	likely GCP/Google range — REVIEW	2026-11-06T04:01:43+0000	2026-11-06T04:01:43+0000	both/unk:1	200:1	GET /×1
+54.201.40.3	1	LEGITIMATE NON-VPS? — FLAG	2026-11-06T04:43:34+0000	2026-11-06T04:43:34+0000	80:1	403:1	GET /a100/status×1
+172.236.228.218	1	unknown/other	2026-11-06T05:00:35+0000	2026-11-06T05:00:35+0000	both/unk:1	200:1	GET /×1

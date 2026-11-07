@@ -1,0 +1,21 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "işlem",
+      "text": "Uzun istem 4 parçaya bölündü. Ara özetler bilgi kaybı içerebilir."
+    },
+    {
+      "n": 2,
+      "kind": "işlem",
+      "text": "Uzun istem 4 parçaya bölündü. Ara özetler bilgi kaybı içerebilir."
+    },
+    {
+      "n": 3,
+      "kind": "işlem",
+      "text": "4 parçanın tamamı işlendi; özetlerden sonuç hazırlanıyor."
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+=== RUN   TestPanelMuxUnauthenticatedNeverWakes
+    zz_panel_mux_wake_test.go:11: 66 unauthenticated method/route/auth combinations + 4 authenticated read/options: control calls=0
+--- PASS: TestPanelMuxUnauthenticatedNeverWakes (2.61s)
+PASS
+ok  	kiyas/cmd/us-license-hook	3.623s

@@ -1,0 +1,293 @@
+--- a/licensesrv/fx.go
++++ b/licensesrv/fx.go
+@@ -0,0 +1,225 @@
++package licensesrv
++
++// ÖNERİ / REFERANS (GLOBAL → US/API; UYGULANMAYACAK). Ortak sözleşme:
++// global-work/FX_CONTRACT_FOR_US_API.md. GET /v1/fx İMZASIZ (Demir
++// 08.11.2026 01:13 ve 01:22 TSİ: imza yok, pin yok, standart TLS).
++// Sunucu kuru TCMB today.xml'den KENDİSİ çeker (kanus.org/fx.json'a bağlı
++// değil); son geçerli kuru kalıcı tutar; 503 yalnız hiç geçerli kur yoksa.
++// Rota: mux.Handle("/v1/fx", WithAPIVersion(fxHandler)) — sonda "/" yok,
++// /healthz'den önce; kimlik doğrulama yok.
++
++import (
++	"context"
++	"encoding/json"
++	"encoding/xml"
++	"errors"
++	"io"
++	"math"
++	"net/http"
++	"os"
++	"path/filepath"
++	"regexp"
++	"strconv"
++	"strings"
++	"sync"
++	"time"
++)
++
++const TCMBTodayURL = "https://www.tcmb.gov.tr/kurlar/today.xml"
++
++var trt = time.FixedZone("TRT", 3*3600)
++
++// FXStore keeps the last valid kanus.fx/1 body (exact bytes) in memory and
++// persists it atomically to Path.
++type FXStore struct {
++	Path string
++	Now  func() time.Time
++	mu   sync.RWMutex
++	body []byte
++	date string
++}
++
++type tcmbDoc struct {
++	Tarih    string `xml:"Tarih,attr"`
++	Bulten   string `xml:"Bulten_No,attr"`
++	Currency []struct {
++		Code    string `xml:"CurrencyCode,attr"`
++		Unit    string `xml:"Unit"`
++		Selling string `xml:"ForexSelling"`
++	} `xml:"Currency"`
++}
++
++var tarihRe = regexp.MustCompile(`^(\d\d)\.(\d\d)\.(\d{4})$`)
++var decRe = regexp.MustCompile(`^\d{1,4}\.\d{1,6}$`)
++
++func (s *FXStore) now() time.Time {
++	if s.Now != nil {
++		return s.Now()
++	}
++	return time.Now()
++}
++
++// BuildFromTCMB validates today.xml and returns the kanus.fx/1 body.
++// Rates are copied as TCMB decimals (json.Number), not re-rounded.
++func (s *FXStore) BuildFromTCMB(raw []byte) ([]byte, string, error) {
++	if len(raw) == 0 || len(raw) > 64<<10 || strings.Contains(string(raw), "<!DOCTYPE") || strings.Contains(string(raw), "<!ENTITY") {
++		return nil, "", errors.New("fx: tcmb size/doctype")
++	}
++	var d tcmbDoc
++	if err := xml.Unmarshal(raw, &d); err != nil {
++		return nil, "", errors.New("fx: tcmb xml")
++	}
++	m := tarihRe.FindStringSubmatch(d.Tarih)
++	if m == nil {
++		return nil, "", errors.New("fx: tcmb Tarih")
++	}
++	date := m[3] + "-" + m[2] + "-" + m[1]
++	day, err := time.ParseInLocation("2006-01-02", date, trt)
++	if err != nil {
++		return nil, "", errors.New("fx: tcmb date")
++	}
++	y, mo, dd := s.now().In(trt).Date()
++	if day.After(time.Date(y, mo, dd, 0, 0, 0, 0, trt)) {
++		return nil, "", errors.New("fx: future date")
++	}
++	s.mu.RLock()
++	last := s.date
++	s.mu.RUnlock()
++	if last != "" && date < last {
++		return nil, "", errors.New("fx: older than last valid")
++	}
++	rates := map[string]json.Number{}
++	vals := map[string]float64{}
++	for _, c := range d.Currency {
++		if c.Code != "EUR" && c.Code != "USD" {
++			continue
++		}
++		sel := strings.TrimSpace(c.Selling)
++		v, err := strconv.ParseFloat(sel, 64)
++		if strings.TrimSpace(c.Unit) != "1" || !decRe.MatchString(sel) || err != nil || math.IsInf(v, 0) || v < 1 || v > 1000 {
++			return nil, "", errors.New("fx: rate " + c.Code)
++		}
++		rates[c.Code], vals[c.Code] = json.Number(sel), v
++	}
++	if len(rates) != 2 {
++		return nil, "", errors.New("fx: EUR and USD required")
++	}
++	if x := vals["EUR"] / vals["USD"]; x < 0.8 || x > 1.6 {
++		return nil, "", errors.New("fx: cross")
++	}
++	body, err := json.Marshal(struct {
++		Schema      string                 `json:"schema"`
++		Source      string                 `json:"source"`
++		SourceURL   string                 `json:"source_url"`
++		RateType    string                 `json:"rate_type"`
++		TCMBTarih   string                 `json:"tcmb_tarih"`
++		BultenNo    string                 `json:"bulten_no"`
++		Date        string                 `json:"date"`
++		Base        string                 `json:"base"`
++		Rates       map[string]json.Number `json:"rates"`
++		GeneratedAt string                 `json:"generated_at"`
++	}{"kanus.fx/1", "TCMB today.xml ForexSelling (döviz satış)", TCMBTodayURL, "forex_selling", d.Tarih, d.Bulten, date, "TRY", rates, s.now().In(trt).Format(time.RFC3339)})
++	if err != nil || len(body) > 4096 {
++		return nil, "", errors.New("fx: body")
++	}
++	return body, date, nil
++}
++
++// Update validates and, only on success, replaces + persists (temp+rename).
++func (s *FXStore) Update(raw []byte) error {
++	body, date, err := s.BuildFromTCMB(raw)
++	if err != nil {
++		return err // last valid kept; caller logs the reason (not the rate)
++	}
++	tmp, err := os.CreateTemp(filepath.Dir(s.Path), ".fx-*.json")
++	if err != nil {
++		return err
++	}
++	_, werr := tmp.Write(body)
++	cerr := tmp.Close()
++	if werr != nil || cerr != nil || os.Rename(tmp.Name(), s.Path) != nil {
++		_ = os.Remove(tmp.Name())
++		return errors.New("fx: persist")
++	}
++	s.mu.Lock()
++	s.body, s.date = body, date
++	s.mu.Unlock()
++	return nil
++}
++
++// Load restores the persisted last valid body at startup (re-validated shape).
++func (s *FXStore) Load() {
++	b, err := os.ReadFile(s.Path)
++	var d struct {
++		Schema string `json:"schema"`
++		Date   string `json:"date"`
++	}
++	if err != nil || len(b) > 4096 || json.Unmarshal(b, &d) != nil || d.Schema != "kanus.fx/1" {
++		return
++	}
++	s.mu.Lock()
++	s.body, s.date = b, d.Date
++	s.mu.Unlock()
++}
++
++// FetchTCMB: https, 10 s, <= 64 KB, same-host redirects only.
++func FetchTCMB(ctx context.Context, c *http.Client) ([]byte, error) {
++	if c == nil {
++		c = &http.Client{Timeout: 10 * time.Second, CheckRedirect: func(r *http.Request, via []*http.Request) error {
++			if r.URL.Scheme != "https" || r.URL.Host != via[0].URL.Host || len(via) > 3 {
++				return http.ErrUseLastResponse
++			}
++			return nil
++		}}
++	}
++	req, err := http.NewRequestWithContext(ctx, http.MethodGet, TCMBTodayURL, nil)
++	if err != nil {
++		return nil, err
++	}
++	resp, err := c.Do(req)
++	if err != nil {
++		return nil, err
++	}
++	defer resp.Body.Close()
++	if resp.StatusCode != http.StatusOK {
++		return nil, errors.New("fx: tcmb status " + strconv.Itoa(resp.StatusCode))
++	}
++	return io.ReadAll(io.LimitReader(resp.Body, 64<<10+1))
++}
++
++// Schedule (US): Load(); one fetch at startup; then weekdays ~16:05 TSİ with
++// bounded retries (e.g. +15, +30, +60 min, until end of day). Weekends and
++// holidays: retries are harmless; the last valid body is kept.
++
++func (s *FXStore) ServeHTTP(w http.ResponseWriter, r *http.Request) {
++	if r.Method != http.MethodGet && r.Method != http.MethodHead {
++		w.Header().Set("Allow", "GET, HEAD")
++		writeFXError(w, r, http.StatusMethodNotAllowed, "method_not_allowed", "Method not allowed")
++		return
++	}
++	s.mu.RLock()
++	body := s.body
++	s.mu.RUnlock()
++	if body == nil { // no valid rate ever: 503; a stale but valid rate is served with 200
++		w.Header().Set("Cache-Control", "no-store")
++		writeFXError(w, r, http.StatusServiceUnavailable, "fx_unavailable", "FX rate unavailable")
++		return
++	}
++	w.Header().Set("Content-Type", "application/json")
++	w.Header().Set("Cache-Control", "public, max-age=3600")
++	if r.Method == http.MethodGet {
++		_, _ = w.Write(body)
++	}
++}
++
++// writeFXError: api-0003 envelope; for FX the legacy "error" field carries the code.
++func writeFXError(w http.ResponseWriter, r *http.Request, status int, code, msg string) {
++	rid := r.Header.Get("X-Request-Id")
++	if rid == "" {
++		rid = strconv.FormatInt(time.Now().UnixNano(), 36)
++	}
++	w.Header().Set("Content-Type", "application/json")
++	w.Header().Set("X-Request-Id", rid)
++	w.WriteHeader(status)
++	_ = json.NewEncoder(w).Encode(map[string]string{"error": code, "code": code, "message": msg, "request_id": rid})
++}
+--- a/licensesrv/fx_test.go
++++ b/licensesrv/fx_test.go
+@@ -0,0 +1,62 @@
++package licensesrv
++
++import (
++	"encoding/json"
++	"net/http/httptest"
++	"os"
++	"path/filepath"
++	"strings"
++	"testing"
++	"time"
++)
++
++const tcmbXML = `<?xml version="1.0" encoding="UTF-8"?><Tarih_Date Tarih="06.11.2026" Date="11/06/2026" Bulten_No="2026/209"><Currency CrossOrder="0" Kod="USD" CurrencyCode="USD"><Unit>1</Unit><ForexSelling>50.0724</ForexSelling></Currency><Currency CrossOrder="9" Kod="EUR" CurrencyCode="EUR"><Unit>1</Unit><ForexSelling>55.9609</ForexSelling></Currency></Tarih_Date>`
++
++func TestFXProposal(t *testing.T) {
++	dir := t.TempDir()
++	s := &FXStore{Path: filepath.Join(dir, "fx.json"), Now: func() time.Time { return time.Date(2026, 11, 8, 12, 0, 0, 0, time.UTC) }}
++	w := httptest.NewRecorder()
++	s.ServeHTTP(w, httptest.NewRequest("GET", "/v1/fx", nil))
++	var e map[string]string
++	if w.Code != 503 || w.Header().Get("Cache-Control") != "no-store" || json.Unmarshal(w.Body.Bytes(), &e) != nil || e["error"] != "fx_unavailable" || e["code"] != "fx_unavailable" || e["request_id"] == "" {
++		t.Fatal("503 envelope", w.Code, w.Body.String())
++	}
++	if err := s.Update([]byte(tcmbXML)); err != nil {
++		t.Fatal(err)
++	}
++	w = httptest.NewRecorder()
++	s.ServeHTTP(w, httptest.NewRequest("GET", "/v1/fx", nil))
++	b := w.Body.String()
++	if w.Code != 200 || w.Header().Get("Cache-Control") != "public, max-age=3600" || !strings.Contains(b, `"EUR":55.9609`) || !strings.Contains(b, `"rate_type":"forex_selling"`) || strings.Contains(b, "sig") {
++		t.Fatal(w.Code, b)
++	}
++	for name, bad := range map[string]string{
++		"missing EUR": strings.Replace(tcmbXML, `CurrencyCode="EUR"`, `CurrencyCode="EUX"`, 1),
++		"range":       strings.Replace(tcmbXML, "55.9609", "5555.9609", 1),
++		"cross":       strings.Replace(tcmbXML, "55.9609", "155.9609", 1),
++		"future":      strings.Replace(tcmbXML, "06.11.2026", "09.11.2026", 1),
++		"older":       strings.Replace(tcmbXML, "06.11.2026", "05.11.2026", 1),
++		"junk":        "<x/>",
++	} {
++		if err := s.Update([]byte(bad)); err == nil {
++			t.Errorf("%s accepted", name)
++		}
++	}
++	// stale but valid: still 200 (freshness is the panel's decision); restart reload
++	s.Now = func() time.Time { return time.Date(2026, 11, 30, 12, 0, 0, 0, time.UTC) }
++	s2 := &FXStore{Path: s.Path}
++	s2.Load()
++	w = httptest.NewRecorder()
++	s2.ServeHTTP(w, httptest.NewRequest("HEAD", "/v1/fx", nil))
++	if w.Code != 200 || w.Body.Len() != 0 {
++		t.Fatal("restart/HEAD", w.Code)
++	}
++	w = httptest.NewRecorder()
++	s2.ServeHTTP(w, httptest.NewRequest("POST", "/v1/fx", nil))
++	if w.Code != 405 {
++		t.Fatal(w.Code)
++	}
++	if _, err := os.Stat(s.Path); err != nil {
++		t.Fatal(err)
++	}
++}

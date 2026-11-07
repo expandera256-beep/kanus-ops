@@ -1,0 +1,1 @@
+NOTE: gcloud compute instances get-effective-firewalls not available in this gcloud CLI; used networks get-effective-firewalls instead

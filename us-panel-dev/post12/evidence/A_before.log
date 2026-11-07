@@ -1,0 +1,7 @@
+--- FAIL: TestPost12SettleLostAcknowledgementRetriesSameID (0.01s)
+    post12_settle_retry_test.go:32: ok=false model=1 settle=1 credit=1 reserved=0 commits=1
+--- FAIL: TestPost12ReleaseTransientFailureRetries (0.00s)
+    post12_settle_retry_test.go:45: settle=1 reserved=1 credits=2 released=0
+FAIL
+FAIL	kiyas	0.014s
+FAIL

@@ -1,0 +1,3 @@
+# kiyas/licensesrv
+# [kiyas/licensesrv]
+vet: licensesrv/gpu_wake_test.go:63:43: undefined: GPUWaker

@@ -1,0 +1,86 @@
+[
+  {
+    "url": "https://shop.kanus.org/collections/all",
+    "file": "collections_all",
+    "result": "429 https://shop.kanus.org/collections/all",
+    "error": ""
+  },
+  {
+    "url": "https://shop.kanus.org/policies/refund-policy",
+    "file": "policies_refund-policy",
+    "result": "404 https://shop.kanus.org/policies/refund-policy",
+    "error": ""
+  },
+  {
+    "url": "https://shop.kanus.org/policies/privacy-policy",
+    "file": "policies_privacy-policy",
+    "result": "200 https://shop.kanus.org/policies/privacy-policy",
+    "error": ""
+  },
+  {
+    "url": "https://shop.kanus.org/policies/terms-of-service",
+    "file": "policies_terms-of-service",
+    "result": "404 https://shop.kanus.org/policies/terms-of-service",
+    "error": ""
+  },
+  {
+    "url": "https://shop.kanus.org/policies/shipping-policy",
+    "file": "policies_shipping-policy",
+    "result": "404 https://shop.kanus.org/policies/shipping-policy",
+    "error": ""
+  },
+  {
+    "url": "https://shop.kanus.org/policies/contact-information",
+    "file": "policies_contact-information",
+    "result": "404 https://shop.kanus.org/policies/contact-information",
+    "error": ""
+  },
+  {
+    "url": "https://shop.kanus.org/pages/contact",
+    "file": "pages_contact",
+    "result": "200 https://shop.kanus.org/pages/contact",
+    "error": ""
+  },
+  {
+    "url": "https://shop.kanus.org/pages/us",
+    "file": "pages_us",
+    "result": "404 https://shop.kanus.org/pages/us",
+    "error": ""
+  },
+  {
+    "url": "https://shop.kanus.org/cart",
+    "file": "cart",
+    "result": "200 https://shop.kanus.org/cart",
+    "error": ""
+  },
+  {
+    "url": "https://shop.kanus.org/checkouts",
+    "file": "checkouts",
+    "result": "404 https://shop.kanus.org/checkouts",
+    "error": ""
+  },
+  {
+    "url": "https://shop.kanus.org/products/kanus-ai-1-aylik-erisim-200-istem.js",
+    "file": "products_kanus-ai-1-aylik-erisim-200-istem.js",
+    "result": "429 https://shop.kanus.org/products/kanus-ai-1-aylik-erisim-200-istem.js",
+    "error": ""
+  },
+  {
+    "url": "https://shop.kanus.org/products/kanus-ai-1-saatlik-kullanim.js",
+    "file": "products_kanus-ai-1-saatlik-kullanim.js",
+    "result": "429 https://shop.kanus.org/products/kanus-ai-1-saatlik-kullanim.js",
+    "error": ""
+  },
+  {
+    "url": "https://dns.google/resolve?name=api.kanus.org",
+    "file": "dns-api.json",
+    "result": "200 https://dns.google/resolve?name=api.kanus.org",
+    "error": ""
+  },
+  {
+    "url": "https://api.kanus.org/healthz",
+    "file": "api-healthz",
+    "result": "502 https://api.kanus.org/healthz",
+    "error": ""
+  }
+]

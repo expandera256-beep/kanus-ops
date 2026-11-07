@@ -1,0 +1,30 @@
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/api-0001-regression/0001-API-0001-regression-tests-locking-accounts-credit-le.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/api-0001-regression/0001-API-0001-regression-tests-locking-accounts-credit-le.patch'] EXIT 0
+
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/api-0003-error-envelope/0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/api-0003-error-envelope/0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch'] EXIT 0
+
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/api-0005-v1-versioning/0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/api-0005-v1-versioning/0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch'] EXIT 0
+
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch'] EXIT 0
+/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch:517: trailing whitespace.
+// by resolving owned license for downstream credit/model paths via request context... 
+warning: 1 line adds whitespace errors.
+
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/api-0008-rate-quota-usage/0001-API-0008-daily-quota-429-Retry-After-regression-test.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/api-0008-rate-quota-usage/0001-API-0008-daily-quota-429-Retry-After-regression-test.patch'] EXIT 0
+
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch'] EXIT 0
+
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/api-r11/us-proposals/api-0012-ttl-commit-anchor/store-and-tests.diff'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/api-r11/us-proposals/api-0012-ttl-commit-anchor/store-and-tests.diff'] EXIT 0

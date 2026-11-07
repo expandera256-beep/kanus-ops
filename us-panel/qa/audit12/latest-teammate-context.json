@@ -1,0 +1,9 @@
+{
+  "out": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp",
+  "r11_tree": "/workspace/us-panel/qa/build/qa-r11-patch-6ij93zmg/term",
+  "r12_tree": "/workspace/us-panel/qa/build/qa-r12-odheei69/term",
+  "r12_base": "/workspace/us-panel-dev/pinned/v12",
+  "r12_verified_files": 209,
+  "r12_manifest_sha256": "915cea46addb8680f7ad7907480d482e8145dfcf5200dd92e9da09640cf2bf38",
+  "r11_limiter_sources_manifest_match": true
+}

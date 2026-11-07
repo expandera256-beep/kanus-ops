@@ -1,0 +1,22 @@
+{
+  "_meta": {"name": "English", "dir": "ltr", "bcp47": "en-US", "currency": "USD"},
+  "brand.slogan": "Turn your ideas into software.",
+  "brand.name": "Kanus",
+  "product.name": "US Panel",
+  "ui.language": "Language",
+  "ui.open_panel": "Open US Panel",
+  "ui.download": "Download US Panel",
+  "ui.credits": "Credits left: {count}",
+  "ui.login": "Sign in",
+  "ui.logout": "Sign out",
+  "ui.help_center": "Help center",
+  "err.network": "Could not reach the server. Please check your connection and try again.",
+  "err.license_invalid": "The license is invalid or has expired.",
+  "err.insufficient_credit": "Not enough credits. You can get credits at shop.kanus.org.",
+  "err.model_unavailable": "The model is not ready yet; please try again shortly.",
+  "err.unknown": "An unexpected error occurred.",
+  "email.license.subject": "Your US Panel license key",
+  "email.license.body": "Hello,\n\nYour license key for order {order} is ready. Open US Panel and enter the key.\n\nQuestions: support@kanus.org",
+  "help.title": "Help center",
+  "help.intro": "Questions about US Panel or your order? Leave a note at support@kanus.org."
+}

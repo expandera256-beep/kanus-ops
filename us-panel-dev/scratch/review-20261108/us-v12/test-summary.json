@@ -1,0 +1,55 @@
+{
+  "test": {
+    "pass": 481,
+    "fail": 0,
+    "skip": 7,
+    "skips": [
+      "kiyas/TestPHPLicenseMatchesThePanel",
+      "kiyas/TestLiveDoorAnswers",
+      "kiyas/TestOfficialREAInspectsOwnedFile",
+      "kiyas/TestRealModelPanelMultiFileRepair",
+      "kiyas/TestRealModelPanelBuildRentalProject",
+      "kiyas/TestTaskStateCrashChild",
+      "kiyas/licensesrv/TestStoreWriterProcess"
+    ]
+  },
+  "race": {
+    "pass": 481,
+    "fail": 0,
+    "skip": 7,
+    "skips": [
+      "kiyas/TestPHPLicenseMatchesThePanel",
+      "kiyas/TestLiveDoorAnswers",
+      "kiyas/TestOfficialREAInspectsOwnedFile",
+      "kiyas/TestRealModelPanelMultiFileRepair",
+      "kiyas/TestRealModelPanelBuildRentalProject",
+      "kiyas/TestTaskStateCrashChild",
+      "kiyas/licensesrv/TestStoreWriterProcess"
+    ]
+  },
+  "commands": {
+    "build": 0,
+    "build-all": 0,
+    "vet": 0,
+    "windows-vet": 0,
+    "windows-build": 0,
+    "gofmt": 0,
+    "test": 0,
+    "race": 0,
+    "s2": 0,
+    "node": 0,
+    "python-idle": 0,
+    "rebuild-exe": 0,
+    "rebuild-hook": 0
+  },
+  "s2": {
+    "pass": 36,
+    "fail": 0,
+    "blocked": 0
+  },
+  "python": {
+    "pass": 24,
+    "fail": 0
+  },
+  "node": "PASS"
+}

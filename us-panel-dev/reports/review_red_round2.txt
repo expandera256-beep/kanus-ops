@@ -1,0 +1,4 @@
+    review_regression_linux_test.go:247: yarışta 20413/48868 okuma kök dışından geldi
+--- FAIL: TestReviewSymlinkSwapRaceNoEscape (2.00s)
+    review_regression_test.go:59: Node seçeneği kabul edildi: ["node" "--test" "-p" "1"]
+--- FAIL: TestReviewNodeArgAllowlist (0.00s)

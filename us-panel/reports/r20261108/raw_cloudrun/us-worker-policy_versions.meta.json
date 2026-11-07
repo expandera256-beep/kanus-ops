@@ -1,0 +1,15 @@
+{
+  "command": [
+    "gcloud",
+    "secrets",
+    "versions",
+    "list",
+    "us-worker-policy",
+    "--project=project-27082a40-6083-4952-9db",
+    "--format=json",
+    "--quiet"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "time_istanbul": "2026-11-08T00:24:34.438930+03:00"
+}

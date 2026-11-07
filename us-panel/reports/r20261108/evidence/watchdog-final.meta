@@ -1,0 +1,3 @@
+2026-11-08T00:25:25.406131+03:00
+gcloud run services describe us-watchdog --region=europe-west4 --format=json
+exit=0

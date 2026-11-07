@@ -1,0 +1,5 @@
+{
+  "files_scanned": 48,
+  "findings": [],
+  "note": "Pattern scan only; secret values not read to compare; no matched contents persisted."
+}

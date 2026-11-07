@@ -1,0 +1,74 @@
+=== RUN   TestS2Reg_H1_RUN_VenvEnvLeak
+    s2reg_helpers_test.go:92: S2REG|H1-RUN|PASS|op=run; proje venv betiği ortamında sır görüldü=false
+--- PASS: TestS2Reg_H1_RUN_VenvEnvLeak (0.02s)
+=== RUN   TestS2Reg_H1_TEST_VenvEnvLeak
+    s2reg_helpers_test.go:92: S2REG|H1-TEST|PASS|op=project-tests; proje venv betiği ortamında sır görüldü=false
+--- PASS: TestS2Reg_H1_TEST_VenvEnvLeak (0.05s)
+=== RUN   TestS2Reg_H3_RUN_ProjectBinaryExecuted
+    s2reg_helpers_test.go:92: S2REG|H3-RUN|PASS|op=run; proje kontrolündeki 'python' adlı betik onaysız çalıştı=false
+--- PASS: TestS2Reg_H3_RUN_ProjectBinaryExecuted (0.02s)
+=== RUN   TestS2Reg_H2_TOOLEXEC
+    s2reg_helpers_test.go:92: S2REG|H2-TOOLEXEC|PASS|kabul=false durum=idle yan_etki_dosyası=false notice="Go argümanında boşluk yasak."
+--- PASS: TestS2Reg_H2_TOOLEXEC (0.01s)
+=== RUN   TestS2Reg_N_EXEC
+    s2reg_helpers_test.go:92: S2REG|N-EXEC|PASS|kabul=false durum=idle yan_etki_dosyası=false notice="Go argümanında boşluk yasak."
+--- PASS: TestS2Reg_N_EXEC (0.01s)
+=== RUN   TestS2Reg_N_TOOLEXEC_SPLIT
+    s2reg_helpers_test.go:92: S2REG|N-TOOLEXEC-SPLIT|PASS|kabul=false durum=idle yan_etki_dosyası=false notice="Go bayrağı izinli değil: -toolexec"
+--- PASS: TestS2Reg_N_TOOLEXEC_SPLIT (0.01s)
+=== RUN   TestS2Reg_N_OVERLAY
+    s2reg_helpers_test.go:92: S2REG|N-OVERLAY|PASS|kabul=false durum=idle kök_dışı_kod_çalıştı=false
+--- PASS: TestS2Reg_N_OVERLAY (0.01s)
+=== RUN   TestS2Reg_N_Policy
+    s2reg_helpers_test.go:92: S2REG|N-LDFLAGS|PASS|argv=["go" "build" "-ldflags=-linkmode=external -extld=sh"] kabul=false durum=idle notice="Go argümanında boşluk yasak."
+    s2reg_helpers_test.go:92: S2REG|N-GCFLAGS|PASS|argv=["go" "build" "-gcflags=all=-trimpath=x" "-asmflags=-trimpath=x"] kabul=false durum=idle notice="Go bayrağı izinli değil: -gcflags"
+    s2reg_helpers_test.go:92: S2REG|N-MODFILE|PASS|argv=["go" "build" "-modfile=other.mod"] kabul=false durum=idle notice="Go bayrağı izinli değil: -modfile"
+    s2reg_helpers_test.go:92: S2REG|N-PY-C|PASS|argv=["python3" "-c" "print(1)"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+    s2reg_helpers_test.go:92: S2REG|N-PY-C-AFTER|PASS|argv=["python3" "a.py" "-c" "x"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+    s2reg_helpers_test.go:92: S2REG|N-PY-M-OTHER|PASS|argv=["python3" "-m" "http.server"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+    s2reg_helpers_test.go:92: S2REG|N-NODE-E|PASS|argv=["node" "-e" "1"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+    s2reg_helpers_test.go:92: S2REG|N-NODE-EVAL|PASS|argv=["node" "--eval=1"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+    s2reg_helpers_test.go:92: S2REG|N-NODE-P|PASS|argv=["node" "--test" "-p" "1"] kabul=false durum=idle notice="Node seçeneği izinli değil: -p"
+    s2reg_helpers_test.go:92: S2REG|N-NODE-IMPORT|PASS|argv=["node" "--test" "--import=./a.js"] kabul=false durum=idle notice="Node seçeneği izinli değil: --import=./a.js"
+    s2reg_helpers_test.go:92: S2REG|N-NPM|PASS|argv=["npm" "run" "x"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+--- PASS: TestS2Reg_N_Policy (0.08s)
+=== RUN   TestS2Reg_N_GOFLAGS_Env
+    s2reg_helpers_test.go:92: S2REG|N-GOFLAGS-ENV|PASS|panel ortamındaki GOFLAGS alt sürece geçti=false kabul=true durum=success
+--- PASS: TestS2Reg_N_GOFLAGS_Env (0.12s)
+=== RUN   TestS2Reg_N_CC_Env
+    s2reg_helpers_test.go:92: S2REG|N-CC-ENV|PASS|panel ortamındaki CC alt sürece geçti=false kabul=true durum=success
+--- PASS: TestS2Reg_N_CC_Env (0.33s)
+=== RUN   TestS2Reg_M1_SETSID_TIMEOUT
+    s2reg_helpers_test.go:92: S2REG|M1-SETSID-TIMEOUT|PASS|durum=timeout aynı_grup_torun_canlı=false setsid_torun_canlı=false
+--- PASS: TestS2Reg_M1_SETSID_TIMEOUT (2.60s)
+=== RUN   TestS2Reg_M1_SETSID_CANCEL
+    s2reg_helpers_test.go:92: S2REG|M1-SETSID-CANCEL|PASS|durum=cancelled aynı_grup_torun_canlı=false setsid_torun_canlı=false
+--- PASS: TestS2Reg_M1_SETSID_CANCEL (0.68s)
+=== RUN   TestS2Reg_L2_TESTS_RLIMIT
+    s2reg_helpers_test.go:92: S2REG|L2-TESTS-RLIMIT|PASS|Testler yolu alt süreç limitleri (CPU DATA NPROC; -1=sınırsız): 600 4294967296 63991
+--- PASS: TestS2Reg_L2_TESTS_RLIMIT (0.05s)
+=== RUN   TestS2Reg_H3_SAFECMD_AbsoluteBasename
+    s2reg_helpers_test.go:92: S2REG|H3-SAFECMD|PASS|reddedildi: çalıştırıcı güvenilir PATH çözümüyle eşleşmiyor
+--- PASS: TestS2Reg_H3_SAFECMD_AbsoluteBasename (0.00s)
+=== RUN   TestS2Reg_M2_TASKSTATE_Tamper
+    s2reg_helpers_test.go:92: S2REG|M2-TASKSTATE|PASS|kurcalanmış kayıt onaysız uygulandı=false approve_çağrıldı=true
+--- PASS: TestS2Reg_M2_TASKSTATE_Tamper (0.01s)
+=== RUN   TestS2Reg_M3_HARDLINK
+    s2reg_helpers_test.go:92: S2REG|M3-HARDLINK|PASS|kök dışı içerik hard link ile okundu=false err=normal dosya değil veya birden çok bağlantılı (hard link)
+--- PASS: TestS2Reg_M3_HARDLINK (0.00s)
+=== RUN   TestS2Reg_M4_SYMLINK_RACE
+    s2reg_helpers_test.go:92: S2REG|M4-SYMLINK-RACE|PASS|3 sn yarışta başarılı okuma=1696 kök dışı okuma=0 (0 sızıntı yarışın kaybedildiğini de gösterebilir; kesin kanıt değil)
+--- PASS: TestS2Reg_M4_SYMLINK_RACE (3.00s)
+=== RUN   TestS2Reg_L1_WindowsPaths
+    s2reg_helpers_test.go:92: S2REG|L1-ADS|PASS|resolve("a.txt:gizli") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7)
+    s2reg_helpers_test.go:92: S2REG|L1-ADS-DATA|PASS|resolve("a.txt::$DATA") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7)
+    s2reg_helpers_test.go:92: S2REG|L1-DRIVE-REL|PASS|resolve("C:evil.txt") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7)
+    s2reg_helpers_test.go:92: S2REG|L1-RESERVED-CON|PASS|resolve("CON") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7)
+    s2reg_helpers_test.go:92: S2REG|L1-RESERVED-NUL|PASS|resolve("sub/nul.txt") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7)
+    s2reg_helpers_test.go:92: S2REG|L1-RESERVED-AUX|PASS|resolve("AUX.log") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7)
+    s2reg_helpers_test.go:92: S2REG|L1-LONGPATH|PASS|resolve("\\\\?\\C:\\Windows\\win.ini") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7)
+    s2reg_helpers_test.go:92: S2REG|L1-UNC|PASS|resolve("\\\\server\\share\\x.txt") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7)
+    s2reg_helpers_test.go:92: S2REG|L1-DEVICE|PASS|resolve("\\\\.\\PhysicalDrive0") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7)
+--- PASS: TestS2Reg_L1_WindowsPaths (0.00s)
+PASS
+ok  	kiyas	8.028s

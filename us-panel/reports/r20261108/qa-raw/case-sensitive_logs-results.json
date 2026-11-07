@@ -1,0 +1,18 @@
+{
+  "results": [
+    {
+      "item": "sensitive_logs",
+      "status": "PASS",
+      "log": "reports/r20261108/qa-raw/sensitive_logs.log",
+      "exit_code": 0,
+      "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"
+    }
+  ],
+  "counts": {
+    "PASS": 1,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT TESTED": 0
+  },
+  "scope": "Local automated case outcomes; production backup/restore and cloud IAM require separate read-only evidence"
+}

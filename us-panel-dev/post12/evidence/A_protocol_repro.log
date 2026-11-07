@@ -1,0 +1,7 @@
+--- FAIL: TestPost12ReproChatRetryMustSettleOnce (0.00s)
+    post12_retry_repro_test.go:13: same request charged twice: credits=498 reserved=0 want=499/0
+--- FAIL: TestPost12ReproReserveLostResponseMustNotLeak (0.00s)
+    post12_retry_repro_test.go:20: lost reserve response leaks hold: reserved=2 want=1
+FAIL
+FAIL	kiyas/licensesrv	0.008s
+FAIL

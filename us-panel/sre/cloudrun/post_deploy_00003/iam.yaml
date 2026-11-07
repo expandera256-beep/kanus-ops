@@ -1,0 +1,6 @@
+bindings:
+- members:
+  - serviceAccount:us-scheduler@project-27082a40-6083-4952-9db.iam.gserviceaccount.com
+  role: roles/run.invoker
+etag: BwZfjZEbHqw=
+version: 1

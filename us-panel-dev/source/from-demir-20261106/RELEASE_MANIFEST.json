@@ -1,0 +1,18 @@
+{
+  "US_Ticari_Aday_2026_11_05_4.exe": {
+    "bytes": 14597632,
+    "sha256": "fd16074c40bdc1ab434cb4473f6238cf233511792e1e8fdc945f2640a3493129",
+    "version": "2026.11.05.4",
+    "native_windows_run": false,
+    "default_gateway": "https://us-commerce-iqhblf63dq-ez.a.run.app",
+    "live_acceptance_passed": false
+  },
+  "US_Gorev_Kota_Test.exe": {
+    "bytes": 14597632,
+    "sha256": "db911b11597237a6202c7cfd91fd51e96d56da7214e503a26f11d51fe9803edc",
+    "version": "2026.11.05.4",
+    "native_windows_run": false,
+    "default_gateway": "https://us-commerce-iqhblf63dq-ez.a.run.app",
+    "live_acceptance_passed": false
+  }
+}

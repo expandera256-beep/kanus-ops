@@ -1,0 +1,151 @@
+{
+  "normal11": {
+    "pass": 548,
+    "fail": 0,
+    "skip": 7,
+    "failures": [],
+    "completed_packages": [
+      "kiyas",
+      "kiyas/cmd/us-license-hook",
+      "kiyas/internal/privacy",
+      "kiyas/licensesrv"
+    ]
+  },
+  "R3-11": {
+    "pass": 20,
+    "fail": 0,
+    "skip": 0,
+    "failures": [],
+    "completed_packages": [
+      "kiyas/internal/privacy",
+      "kiyas/licensesrv",
+      "kiyas/cmd/us-license-hook",
+      "kiyas/internal/privacy"
+    ]
+  },
+  "35-original-11": {
+    "pass": 34,
+    "fail": 1,
+    "skip": 0,
+    "failures": [
+      "TestReviewV4PrefsFailureRoutesAndLog"
+    ],
+    "completed_packages": [
+      "kiyas/internal/privacy",
+      "kiyas/licensesrv"
+    ]
+  },
+  "35-updated-11": {
+    "pass": 35,
+    "fail": 0,
+    "skip": 0,
+    "failures": [],
+    "completed_packages": [
+      "kiyas/internal/privacy",
+      "kiyas/licensesrv",
+      "kiyas/cmd/us-license-hook"
+    ]
+  },
+  "ports-11": {
+    "pass": 5,
+    "fail": 0,
+    "skip": 0,
+    "failures": [],
+    "completed_packages": [
+      "kiyas/internal/privacy"
+    ]
+  },
+  "normal12": {
+    "pass": 576,
+    "fail": 0,
+    "skip": 7,
+    "failures": [],
+    "completed_packages": [
+      "kiyas",
+      "kiyas/cmd/us-license-hook",
+      "kiyas/internal/privacy",
+      "kiyas/licensesrv"
+    ]
+  },
+  "R3-12": {
+    "pass": 20,
+    "fail": 0,
+    "skip": 0,
+    "failures": [],
+    "completed_packages": [
+      "kiyas/internal/privacy",
+      "kiyas/licensesrv",
+      "kiyas/cmd/us-license-hook",
+      "kiyas/internal/privacy"
+    ]
+  },
+  "35-original-12": {
+    "pass": 34,
+    "fail": 1,
+    "skip": 0,
+    "failures": [
+      "TestReviewV4PrefsFailureRoutesAndLog"
+    ],
+    "completed_packages": [
+      "kiyas/internal/privacy",
+      "kiyas/licensesrv"
+    ]
+  },
+  "35-updated-12": {
+    "pass": 35,
+    "fail": 0,
+    "skip": 0,
+    "failures": [],
+    "completed_packages": [
+      "kiyas/internal/privacy",
+      "kiyas/licensesrv",
+      "kiyas/cmd/us-license-hook"
+    ]
+  },
+  "ports-12": {
+    "pass": 5,
+    "fail": 0,
+    "skip": 0,
+    "failures": [],
+    "completed_packages": [
+      "kiyas/internal/privacy"
+    ]
+  },
+  "claim-race10": {
+    "pass": 173,
+    "fail": 0,
+    "skip": 1,
+    "failures": [],
+    "completed_packages": [
+      "kiyas/internal/privacy",
+      "kiyas/licensesrv",
+      "kiyas/cmd/us-license-hook"
+    ]
+  },
+  "extra": {
+    "pass": 46,
+    "fail": 5,
+    "skip": 1,
+    "failures": [
+      "TestPanelV41OriginFuzzMatrix/validfalse-case7",
+      "TestPanelV41OriginFuzzMatrix/validfalse-case8",
+      "TestPanelV41OriginFuzzMatrix/validfalse-case9",
+      "TestPanelV41OriginFuzzMatrix/validfalse-case10",
+      "TestPanelV41OriginFuzzMatrix"
+    ],
+    "completed_packages": [
+      "kiyas/cmd/us-license-hook"
+    ]
+  },
+  "erase-auth": {
+    "pass": 1,
+    "fail": 1,
+    "skip": 0,
+    "failures": [
+      "TestPanelV41HealthyHTTPAuth"
+    ],
+    "completed_packages": [
+      "kiyas/licensesrv"
+    ]
+  }
+}

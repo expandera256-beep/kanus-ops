@@ -1,0 +1,64 @@
+{
+  "c1c52ca3df85da8486b04e50560f26522bc171f820e8015a62bc9708cd93eec3": [
+    "/workspace/us-panel-dev/r11_base",
+    "/workspace/us-panel-dev/global-work/v10dev",
+    "/workspace/us-panel-dev/global-work/tur6/fixture/work2/kiyas/term"
+  ],
+  "4d2ff37d372a372765b481f0469aa46d5b0e0abf84cac20cbf202c13fb6c5c57": [
+    "/workspace/us-panel-dev/r10_gpu_base",
+    "/workspace/us-panel-dev/r9_base",
+    "/workspace/us-panel-dev/r10_base"
+  ],
+  "24e8dc09c1c906299e4b46c63f5e93ba7e3d61f6cd51171fb342d79e946a2a4d": [
+    "/workspace/us-panel-dev/snap_item1",
+    "/workspace/us-panel-dev/snap_item2",
+    "/workspace/us-panel-dev/snap_item3",
+    "/workspace/us-panel-dev/work2/kiyas/term",
+    "/workspace/us-panel-dev/global-work/base",
+    "/workspace/us-panel-dev/global-work/panel"
+  ],
+  "012f3714fc9211aa6e9f4443d570dde3b3cc98d685374b44255180a98abf2ea8": [
+    "/workspace/us-panel-dev/baseline_tree"
+  ],
+  "168270bd2a3946a606979a0c4b5363f1ca6518c1ae70b2813dac7039f4f2ee61": [
+    "/workspace/us-panel-dev/rebase-api/term"
+  ],
+  "669cc4a0f90aece4e03d673c6b5458d2ba005aa16435cddbe1ad65ad4ef5ed6e": [
+    "/workspace/us-panel-dev/work/api-r11-term"
+  ],
+  "4fb5975666052aee4e18bf7a6997b327d41b9f271772cdd50ab7f6d47528fad4": [
+    "/workspace/us-panel-dev/work/api/r10_base",
+    "/workspace/us-panel-dev/work/api/r3fix-20261108/ledger"
+  ],
+  "063675185b3f4daabc7fbfe1ab9c9a0ca19adfb671d95d52f43602d16bd8583d": [
+    "/workspace/us-panel-dev/work/kiyas/term"
+  ],
+  "bb309435af3421f07663681382caccd0848135156111c64bcae994b721e4da97": [
+    "/workspace/us-panel-dev/work/uyum/r11_privacy_v3_apply"
+  ],
+  "42d2d50d3c45ce1ab7c93da998668c0b592667c85df25411ebc5df516a6dbec6": [
+    "/workspace/us-panel-dev/work/uyum/api_r11_uyum_v3_try"
+  ],
+  "c301b391a50ea616fe9f5589aa335a3f6f4454e18119bff1f3077d99de6e520b": [
+    "/workspace/us-panel-dev/work/uyum/r11_privacy_v4_apply",
+    "/workspace/us-panel-dev/work/uyum/v10_privacy_v4_review",
+    "/workspace/us-panel-dev/work/uyum/v10_privacy_v4_apply",
+    "/workspace/us-panel-dev/work/uyum/v10_privacy_v4"
+  ],
+  "5140192f8057e999dba9f8db872d7d2fb1388912e5b31e29f14b712d3e3875d6": [
+    "/workspace/us-panel-dev/work/uyum/v10_privacy_v3",
+    "/workspace/us-panel-dev/work/uyum/v10_privacy_v3_apply"
+  ],
+  "cc6169b5d2159e2ce74cd2b89eefcbc552c7e701c07dfa22ae6651e460d4e4bd": [
+    "/workspace/us-panel-dev/work/uyum/v10_privacy_v4_ops_only"
+  ],
+  "bae6a4855be011e7dbb7d64b919555f79aa2b153a2c9045138aaeb8c50c01989": [
+    "/workspace/us-panel-dev/work/uyum/v10_privacy_v2"
+  ],
+  "ea785bc4de2de96af3d411bdb9c747af39c50855395ae750d2ae72f51c1f8d43": [
+    "/workspace/us-panel-dev/work/uyum/r10_privacy"
+  ],
+  "ff707d33519eaacbe9b53e1adcacf9966ca3e876bdf1949c9faad2c2cee05af9": [
+    "/workspace/us-panel-dev/global-work/r10dev"
+  ]
+}

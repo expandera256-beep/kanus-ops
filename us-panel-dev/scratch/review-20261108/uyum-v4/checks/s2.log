@@ -1,0 +1,48 @@
+Toplam: PASS=36 FAIL=0 BLOCKED=0
+# S2 regresyon sonucu — 20261108_003534
+
+- Kaynak: `/workspace/us-panel-dev/scratch/review-20261108/uyum-v4/tree` ("2026.11.06.10")
+- Kaynak ağacı koşu sonrası: **DEĞİŞMEDİ** (sha256 manifest karşılaştırması)
+
+| Senaryo | Sonuç | Ayrıntı |
+|---|---|---|
+| H1-RUN | PASS | op=run; proje venv betiği ortamında sır görüldü=false |
+| H1-TEST | PASS | op=project-tests; proje venv betiği ortamında sır görüldü=false |
+| H2-TOOLEXEC | PASS | kabul=false durum=idle yan_etki_dosyası=false notice="Go argümanında boşluk yasak." |
+| H3-RUN | PASS | op=run; proje kontrolündeki 'python' adlı betik onaysız çalıştı=false |
+| H3-SAFECMD | PASS | reddedildi: çalıştırıcı güvenilir PATH çözümüyle eşleşmiyor |
+| M1-SETSID-TIMEOUT | PASS | durum=timeout aynı_grup_torun_canlı=false setsid_torun_canlı=false |
+| M1-SETSID-CANCEL | PASS | durum=cancelled aynı_grup_torun_canlı=false setsid_torun_canlı=false |
+| M2-TASKSTATE | PASS | kurcalanmış kayıt onaysız uygulandı=false approve_çağrıldı=true |
+| M3-HARDLINK | PASS | kök dışı içerik hard link ile okundu=false err=normal dosya değil veya birden çok bağlantılı (hard link) |
+| M4-SYMLINK-RACE | PASS | 3 sn yarışta başarılı okuma=4493 kök dışı okuma=0 (0 sızıntı yarışın kaybedildiğini de gösterebilir; kesin kanıt değil) |
+| L1-ADS | PASS | resolve("a.txt:gizli") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7) |
+| L1-ADS-DATA | PASS | resolve("a.txt::$DATA") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7) |
+| L1-DRIVE-REL | PASS | resolve("C:evil.txt") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7) |
+| L1-RESERVED-CON | PASS | resolve("CON") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7) |
+| L1-RESERVED-NUL | PASS | resolve("sub/nul.txt") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7) |
+| L1-RESERVED-AUX | PASS | resolve("AUX.log") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7) |
+| L1-LONGPATH | PASS | resolve("\\\\?\\C:\\Windows\\win.ini") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7) |
+| L1-UNC | PASS | resolve("\\\\server\\share\\x.txt") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7) |
+| L1-DEVICE | PASS | resolve("\\\\.\\PhysicalDrive0") reddedildi=true (Linux'ta denetim; Windows davranışı manuel plan W-6/W-7) |
+| L2-TESTS-RLIMIT | PASS | Testler yolu alt süreç limitleri (CPU DATA NPROC; -1=sınırsız): 600 4294967296 63991 |
+| N-EXEC | PASS | kabul=false durum=idle yan_etki_dosyası=false notice="Go argümanında boşluk yasak." |
+| N-TOOLEXEC-SPLIT | PASS | kabul=false durum=idle yan_etki_dosyası=false notice="Go bayrağı izinli değil: -toolexec" |
+| N-OVERLAY | PASS | kabul=false durum=idle kök_dışı_kod_çalıştı=false |
+| N-LDFLAGS | PASS | argv=["go" "build" "-ldflags=-linkmode=external -extld=sh"] kabul=false durum=idle notice="Go argümanında boşluk yasak." |
+| N-GCFLAGS | PASS | argv=["go" "build" "-gcflags=all=-trimpath=x" "-asmflags=-trimpath=x"] kabul=false durum=idle notice="Go bayrağı izinli değil: -gcflags" |
+| N-MODFILE | PASS | argv=["go" "build" "-modfile=other.mod"] kabul=false durum=idle notice="Go bayrağı izinli değil: -modfile" |
+| N-GOFLAGS-ENV | PASS | panel ortamındaki GOFLAGS alt sürece geçti=false kabul=true durum=success |
+| N-CC-ENV | PASS | panel ortamındaki CC alt sürece geçti=false kabul=true durum=success |
+| N-PY-C | PASS | argv=["python3" "-c" "print(1)"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz." |
+| N-PY-C-AFTER | PASS | argv=["python3" "a.py" "-c" "x"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz." |
+| N-PY-M-OTHER | PASS | argv=["python3" "-m" "http.server"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz." |
+| N-NODE-E | PASS | argv=["node" "-e" "1"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz." |
+| N-NODE-EVAL | PASS | argv=["node" "--eval=1"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz." |
+| N-NODE-P | PASS | argv=["node" "--test" "-p" "1"] kabul=false durum=idle notice="Node seçeneği izinli değil: -p" |
+| N-NODE-IMPORT | PASS | argv=["node" "--test" "--import=./a.js"] kabul=false durum=idle notice="Node seçeneği izinli değil: --import=./a.js" |
+| N-NPM | PASS | argv=["npm" "run" "x"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz." |
+
+Toplam: PASS=36 FAIL=0 BLOCKED=0
+Kalıcı kopya: /workspace/us-panel-dev/scratch/review-20261108/s2reg.CcD1r5
+Sonuçlar: /workspace/us-panel-dev/scratch/review-20261108/uyum-v4/checks/s2

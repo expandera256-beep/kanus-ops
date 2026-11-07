@@ -1,0 +1,537 @@
+#!/usr/bin/env python3
+"""Always-on door. Wakes the chosen worker, then streams the request through."""
+
+from __future__ import annotations
+
+import json
+import threading
+import time
+import urllib.error
+import urllib.request
+import ssl
+from pathlib import Path
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from urllib.parse import parse_qs, urlparse
+
+PROJECT = "project-27082a40-6083-4952-9db"
+PORT = 80
+WORKER_PORT = 8788
+A100_TLS_PORT = 8443
+A100_TLS_CERT = "/etc/usta-wake/cert.pem"
+A100_TLS_KEY = "/etc/usta-wake/key.pem"
+WAKE_LIMIT = 20 * 60
+
+WORKERS = {
+    "q8": {
+        "id": "q8",
+        "name": "Q8 işlemci",
+        "kind": "cpu",
+        "zone": "us-central1-c",
+        "instance": "instance-20261030-232245",
+        "backend": "10.128.0.2",
+    },
+    "q5": {
+        "id": "q5",
+        "name": "Q5 ekran kartı",
+        "kind": "gpu",
+        "zone": "us-central1-a",
+        "instance": "usta-l4",
+        "backend": "10.128.0.6",
+    },
+    "a100": {
+        "id": "a100",
+        "name": "DeepSeek A100",
+        "kind": "gpu",
+        "zone": "europe-west4-b",
+        "instance": "ds-a100",
+        "backend": "10.164.0.6",
+        "wake_limit": 50 * 60,
+        "discard_local_ssd": True,
+    },
+}
+LOCKS = {key: threading.Lock() for key in WORKERS}
+GPU_LOCK = threading.Lock()
+
+
+def worker_id(path: str, header: str) -> str:
+    raw = (header or "").strip().lower()
+    if not raw:
+        query = parse_qs(urlparse(path).query)
+        picked = query.get("worker") or []
+        raw = picked[0].strip().lower() if picked else ""
+    if raw in WORKERS:
+        return raw
+    return "q8"
+
+
+def power_verb(status: str) -> str:
+    if status in ("RUNNING", "STAGING", "PROVISIONING"):
+        return ""
+    if status == "SUSPENDED":
+        return "resume"
+    if status in ("TERMINATED", "STOPPED"):
+        return "start"
+    return ""
+
+
+def token() -> str:
+    req = urllib.request.Request(
+        "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token",
+        headers={"Metadata-Flavor": "Google"},
+    )
+    with urllib.request.urlopen(req, timeout=5) as response:
+        return json.load(response)["access_token"]
+
+
+def instance_status(worker: dict) -> str:
+    url = (
+        "https://compute.googleapis.com/compute/v1/projects/"
+        f"{PROJECT}/zones/{worker['zone']}/instances/{worker['instance']}"
+    )
+    req = urllib.request.Request(url, headers={"Authorization": "Bearer " + token()})
+    with urllib.request.urlopen(req, timeout=20) as response:
+        return json.load(response).get("status") or ""
+
+
+def power(worker: dict, verb: str) -> None:
+    extra = ""
+    if verb == "stop" and worker.get("discard_local_ssd"):
+        extra = "?discardLocalSsd=true"
+    url = (
+        "https://compute.googleapis.com/compute/v1/projects/"
+        f"{PROJECT}/zones/{worker['zone']}/instances/{worker['instance']}/{verb}{extra}"
+    )
+    req = urllib.request.Request(
+        url, data=b"{}", method="POST", headers={"Authorization": "Bearer " + token()}
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as response:
+            response.read()
+    except urllib.error.HTTPError as exc:
+        if exc.code not in (400, 409):
+            raise
+
+
+def worker_awake(worker: dict) -> bool:
+    try:
+        with urllib.request.urlopen(f"http://{worker['backend']}/health", timeout=2) as response:
+            return response.status == 200
+    except (OSError, urllib.error.URLError, TimeoutError):
+        return False
+
+
+def fleet() -> list[dict]:
+    found: dict[str, bool] = {}
+
+    def probe(key: str) -> None:
+        found[key] = worker_awake(WORKERS[key])
+
+    threads = [threading.Thread(target=probe, args=(key,)) for key in WORKERS]
+    for item in threads:
+        item.start()
+    for item in threads:
+        item.join(timeout=2.5)
+    rows = []
+    for key, worker in WORKERS.items():
+        rows.append(
+            {
+                "id": key,
+                "name": worker["name"],
+                "kind": worker["kind"],
+                "awake": bool(found.get(key)),
+            }
+        )
+    return rows
+
+
+def stop_other_gpus(worker: dict) -> None:
+    """The project can run one GPU at a time. Stop the others before this one starts."""
+    if worker.get("kind") != "gpu":
+        return
+    for other in WORKERS.values():
+        if other["id"] == worker["id"] or other.get("kind") != "gpu":
+            continue
+        try:
+            status = instance_status(other)
+        except (OSError, urllib.error.URLError, json.JSONDecodeError, KeyError):
+            continue
+        if status in ("RUNNING", "STAGING", "PROVISIONING", "SUSPENDING", "SUSPENDED"):
+            power(other, "stop")
+    deadline = time.time() + 180
+    while time.time() < deadline:
+        busy = False
+        for other in WORKERS.values():
+            if other["id"] == worker["id"] or other.get("kind") != "gpu":
+                continue
+            try:
+                status = instance_status(other)
+            except (OSError, urllib.error.URLError, json.JSONDecodeError, KeyError):
+                busy = True
+                break
+            if status in ("RUNNING", "STAGING", "PROVISIONING", "SUSPENDING", "SUSPENDED", "STOPPING"):
+                busy = True
+        if not busy:
+            return
+        time.sleep(3)
+
+
+def ensure(worker: dict) -> None:
+    limit = int(worker.get("wake_limit") or WAKE_LIMIT)
+    with LOCKS[worker["id"]]:
+        if worker.get("kind") == "gpu":
+            stop_other_gpus(worker)
+        deadline = time.time() + limit
+        while time.time() < deadline:
+            if worker_awake(worker):
+                return
+            try:
+                verb = power_verb(instance_status(worker))
+            except (OSError, urllib.error.URLError, json.JSONDecodeError, KeyError):
+                verb = ""
+            if verb:
+                power(worker, verb)
+            time.sleep(3)
+    raise TimeoutError("işçi uyanmadı")
+
+
+def worth_waking(path: str) -> bool:
+    bare = path.split("?", 1)[0]
+    if bare in {
+        "/",
+        "/health",
+        "/panel",
+        "/giris",
+        "/kayit",
+        "/cikis",
+        "/admin",
+        "/kosullar",
+        "/kvkk",
+        "/siparis",
+        "/models",
+        "/chat/completions",
+    }:
+        return True
+    return bare.startswith(("/v1/", "/api/", "/indir/", "/static/"))
+
+
+A100_TOKEN_FILE = "/etc/usta-wake/a100.token"
+A100_ALLOWED_IPS = {"31.220.63.191", "82.29.184.225"}
+
+
+A100_TOKEN_OLD_FILE = "/etc/usta-wake/a100.token.old"
+A100_GRACE_FLAG = "/etc/usta-wake/grace_old_token"
+
+
+def a100_grace() -> bool:
+    return Path(A100_GRACE_FLAG).is_file()
+
+
+def a100_token_ok(header: str) -> bool:
+    import hmac
+    got = (header or "").strip()
+    if not got.startswith("Bearer "):
+        return False
+    presented = got[7:].strip().encode()
+    wants: list[str] = []
+    try:
+        wants.append(open(A100_TOKEN_FILE, encoding="utf-8").read().strip())
+    except OSError:
+        pass
+    if a100_grace():
+        try:
+            wants.append(open(A100_TOKEN_OLD_FILE, encoding="utf-8").read().strip())
+        except OSError:
+            pass
+    for want in wants:
+        if want and hmac.compare_digest(presented, want.encode()):
+            return True
+    return False
+
+
+def a100_start_now() -> None:
+    worker = WORKERS["a100"]
+    with LOCKS["a100"]:
+        if power_verb(instance_status(worker)) == "start":
+            stop_other_gpus(worker)
+            power(worker, "start")
+
+
+def a100_start_async() -> None:
+    def run() -> None:
+        try:
+            a100_start_now()
+        except Exception as exc:  # noqa: BLE001
+            print("a100 start failed", type(exc).__name__, flush=True)
+    threading.Thread(target=run, daemon=True).start()
+
+
+# Demir 2026-11-08 00:30: a start that arrives while ds-a100 is STOPPING is
+# queued (at most one) and fired once the VM reaches TERMINATED.
+PENDING_POLL = 5
+PENDING_LIMIT = 5 * 60
+PENDING_LOCK = threading.Lock()
+PENDING: dict = {"since": 0.0}
+SLEEP = time.sleep
+CLOCK = time.time
+
+
+def a100_pending() -> dict:
+    with PENDING_LOCK:
+        since = PENDING["since"]
+    return {"pending_start": bool(since), "pending_since": int(since) if since else None}
+
+
+def a100_queue_start() -> bool:
+    """Record one pending start. Returns False if one is already pending."""
+    with PENDING_LOCK:
+        if PENDING["since"]:
+            return False
+        PENDING["since"] = CLOCK()
+
+    def run() -> None:
+        worker = WORKERS["a100"]
+        deadline = CLOCK() + PENDING_LIMIT
+        outcome = "expired"
+        try:
+            while CLOCK() < deadline:
+                try:
+                    status = instance_status(worker)
+                except Exception:  # noqa: BLE001
+                    status = "UNKNOWN"
+                if power_verb(status) == "start":
+                    try:
+                        a100_start_now()
+                        outcome = "started"
+                    except Exception as exc:  # noqa: BLE001
+                        outcome = "start_failed:" + type(exc).__name__
+                    return
+                if status in ("RUNNING", "STAGING", "PROVISIONING"):
+                    outcome = "already_" + status.lower()
+                    return
+                SLEEP(PENDING_POLL)
+        finally:
+            with PENDING_LOCK:
+                PENDING["since"] = 0.0
+            print("a100 pending start", outcome, flush=True)
+
+    threading.Thread(target=run, daemon=True).start()
+    return True
+
+
+class Door(BaseHTTPRequestHandler):
+    protocol_version = "HTTP/1.1"
+
+    def handle(self) -> None:
+        try:
+            super().handle()
+        except (TimeoutError, OSError, urllib.error.URLError):
+            try:
+                self.send_error(504, "işçi uyanmadı")
+            except OSError:
+                return
+
+    def do_GET(self) -> None:
+        self.forward()
+
+    def do_POST(self) -> None:
+        self.forward()
+
+    def do_HEAD(self) -> None:
+        self.forward()
+
+    def do_OPTIONS(self) -> None:
+        self.forward()
+
+    def chosen(self) -> dict:
+        return WORKERS[worker_id(self.path, self.headers.get("X-Usta-Worker", ""))]
+
+    def a100_control(self) -> bool:
+        """HTTP :80 — /a100/* closed unless grace_old_token is present (VPS cutover)."""
+        bare = self.path.split("?", 1)[0]
+        if bare not in ("/a100/start", "/a100/status") and not bare.startswith("/a100/"):
+            return False
+        if a100_grace() and bare in ("/a100/start", "/a100/status"):
+            return self.a100_control_tls()
+        self.send_error(404, "yok")
+        return True
+
+    def a100_control_tls(self) -> bool:
+        """TLS :8443 — only /a100/start and /a100/status."""
+        bare = self.path.split("?", 1)[0]
+        if bare not in ("/a100/start", "/a100/status"):
+            return False
+
+        def reply(code: int, doc: dict) -> None:
+            body = json.dumps(doc).encode() + b"\n"
+            self.send_response(code)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Connection", "close")
+            self.end_headers()
+            if self.command != "HEAD":
+                self.wfile.write(body)
+
+        if self.client_address[0] not in A100_ALLOWED_IPS or not a100_token_ok(
+            self.headers.get("Authorization", "")
+        ):
+            reply(403, {"ok": False})
+            return True
+        worker = WORKERS["a100"]
+        if bare == "/a100/status" and self.command == "GET":
+            try:
+                status = instance_status(worker)
+            except Exception:  # noqa: BLE001
+                status = "UNKNOWN"
+            doc = {
+                "ok": True,
+                "instance": status,
+                "model_ready": status == "RUNNING" and worker_awake(worker),
+            }
+            doc.update(a100_pending())
+            reply(200, doc)
+            return True
+        if bare == "/a100/start" and self.command == "POST":
+            length = int(self.headers.get("Content-Length", "0") or "0")
+            if length:
+                self.rfile.read(min(length, 4096))
+            try:
+                status = instance_status(worker)
+            except Exception:  # noqa: BLE001
+                status = "UNKNOWN"
+            if power_verb(status) == "start":
+                a100_start_async()
+                reply(202, {"ok": True, "instance": status, "action": "start_requested"})
+            elif status == "STOPPING":
+                queued = a100_queue_start()
+                doc = {"ok": True, "instance": status, "action": "start_queued" if queued else "start_already_queued"}
+                doc.update(a100_pending())
+                reply(202, doc)
+            else:
+                reply(200, {"ok": True, "instance": status, "action": "none"})
+            return True
+        reply(405, {"ok": False})
+        return True
+
+
+    def forward(self) -> None:
+        if self.a100_control():
+            return
+        if not worth_waking(self.path):
+            self.send_error(404, "yok")
+            return
+        self.proxy(self.chosen())
+
+    def proxy(self, worker: dict) -> None:
+        if worker.get("kind") == "gpu":
+            with GPU_LOCK:
+                self._send(worker)
+        else:
+            self._send(worker)
+
+    def _send(self, worker: dict) -> None:
+        ensure(worker)
+        length = int(self.headers.get("Content-Length", "0") or "0")
+        body = self.rfile.read(length) if length else None
+        headers = {key: value for key, value in self.headers.items() if key.lower() != "host"}
+        headers["Host"] = worker["backend"]
+        req = urllib.request.Request(
+            f"http://{worker['backend']}{self.path}",
+            data=body,
+            headers=headers,
+            method=self.command,
+        )
+        try:
+            response = urllib.request.urlopen(req, timeout=6 * 60 * 60)
+        except urllib.error.HTTPError as exc:
+            response = exc
+        self.close_connection = True
+        self.send_response(response.status)
+        for key, value in response.headers.items():
+            if key.lower() in ("transfer-encoding", "connection", "keep-alive"):
+                continue
+            self.send_header(key, value)
+        self.send_header("Connection", "close")
+        self.end_headers()
+        while True:
+            chunk = response.read(8192)
+            if not chunk:
+                break
+            self.wfile.write(chunk)
+            self.wfile.flush()
+
+    def log_message(self, fmt: str, *args) -> None:
+        print("%s %s" % (self.address_string(), fmt % args), flush=True)
+
+
+class WorkerDoor(Door):
+    """Model port. A look does not wake. Model calls wake the chosen worker."""
+
+    def forward(self) -> None:
+        bare = self.path.split("?", 1)[0]
+        picked = self.chosen()
+        if bare == "/api/durum":
+            rows = fleet()
+            awake = False
+            for row in rows:
+                if row["id"] == picked["id"]:
+                    awake = row["awake"]
+            body = json.dumps(
+                {
+                    "ok": True,
+                    "awake": awake,
+                    "worker": picked["id"],
+                    "port": WORKER_PORT,
+                    "workers": rows,
+                }
+            ).encode() + b"\n"
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Connection", "close")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        if bare == "/health":
+            body = b'{"ok":true,"port":8788,"model":"usta"}\n'
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Connection", "close")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        if bare != "/api/nabiz" and not bare.startswith("/v1/") and bare not in ("/models", "/chat/completions"):
+            self.send_error(404, "yok")
+            return
+        self.proxy(picked)
+
+
+class A100TlsDoor(Door):
+    """TLS :8443 — only /a100/start and /a100/status; everything else 404."""
+
+    def forward(self) -> None:
+        if self.a100_control_tls():
+            return
+        self.send_error(404, "yok")
+
+
+def main() -> None:
+    threading.Thread(
+        target=lambda: ThreadingHTTPServer(("0.0.0.0", WORKER_PORT), WorkerDoor).serve_forever(),
+        daemon=True,
+    ).start()
+
+    def serve_a100_tls() -> None:
+        httpd = ThreadingHTTPServer(("0.0.0.0", A100_TLS_PORT), A100TlsDoor)
+        ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        ctx.minimum_version = ssl.TLSVersion.TLSv1_2
+        ctx.load_cert_chain(A100_TLS_CERT, A100_TLS_KEY)
+        httpd.socket = ctx.wrap_socket(httpd.socket, server_side=True)
+        httpd.serve_forever()
+
+    threading.Thread(target=serve_a100_tls, daemon=True).start()
+    ThreadingHTTPServer(("0.0.0.0", PORT), Door).serve_forever()
+
+
+if __name__ == "__main__":
+    main()

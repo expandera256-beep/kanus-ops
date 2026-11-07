@@ -1,0 +1,16 @@
+{
+  "report": "/workspace/us-panel-dev/PANEL_GLOBAL_REVIEW_R4B_20261108.md",
+  "03": "PASS Linux technical",
+  "08": "FAIL MEDIUM date policy; LOW rounding/robustness",
+  "fx_v10": {
+    "pass": 425,
+    "skip": 7
+  },
+  "fx_v11": {
+    "pass": 492,
+    "skip": 7
+  },
+  "windows_own": "NOT TESTED",
+  "windows_external": "23 PASS /0 FAIL /1 SKIP; provenance/exit incomplete",
+  "report_sha256": "382735d361a9af0434770fc84fa68955b1c583e846ce436e040294ad55749c64"
+}

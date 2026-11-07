@@ -1,0 +1,76 @@
+[
+  {
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+    "auth": "none",
+    "http_status": 403,
+    "body": "\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>403 Forbidden</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Forbidden</h1>\n<h2>Your client does not have permission to get URL <code>/health</code> from this server.</h2>\n<h2></h2>\n</body></html>\n",
+    "response_headers": {
+      "date": "Sat, 07 Nov 2026 21:28:05 GMT",
+      "content-type": "text/html; charset=UTF-8",
+      "server": "Google Frontend",
+      "Content-Length": "301",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "time_istanbul": "2026-11-08T00:28:05.819630+03:00",
+    "revision_config": "us-watchdog-00006-88h"
+  },
+  {
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+    "auth": "own_user_identity_token",
+    "http_status": 200,
+    "body": "{\"ok\": true}",
+    "response_headers": {
+      "content-type": "application/json",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "92e3d2ddf3a904951e7f9082c387a091",
+      "date": "Sat, 07 Nov 2026 21:28:05 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "12",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "time_istanbul": "2026-11-08T00:28:06.023926+03:00",
+    "revision_config": "us-watchdog-00006-88h"
+  },
+  {
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/ready",
+    "auth": "own_user_identity_token",
+    "http_status": 404,
+    "body": "{\"error\": \"route\"}",
+    "response_headers": {
+      "content-type": "application/json",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "50bd96426e4f98bdf7016b66a6a58968",
+      "date": "Sat, 07 Nov 2026 21:28:06 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "18",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "time_istanbul": "2026-11-08T00:28:06.240746+03:00",
+    "revision_config": "us-watchdog-00006-88h"
+  },
+  {
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/readyz",
+    "auth": "own_user_identity_token",
+    "http_status": 404,
+    "body": "{\"error\": \"route\"}",
+    "response_headers": {
+      "content-type": "application/json",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "591ceb4ddeb89aafa78c381d98550630",
+      "date": "Sat, 07 Nov 2026 21:28:06 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "18",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "time_istanbul": "2026-11-08T00:28:06.443983+03:00",
+    "revision_config": "us-watchdog-00006-88h"
+  }
+]

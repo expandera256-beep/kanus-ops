@@ -1,0 +1,7 @@
+Deploying...
+Creating Revision........................................................................................................................................done
+Routing traffic.....done
+Done.
+Service [us-watchdog] revision [us-watchdog-sre-ready-r1] has been deployed and is serving 0 percent of traffic.
+The revision can be reached directly at https://sre-candidate-watchdog---us-watchdog-iqhblf63dq-ez.a.run.app
+Proxy locally with: gcloud run services proxy us-watchdog --region europe-west4 --project project-27082a40-6083-4952-9db

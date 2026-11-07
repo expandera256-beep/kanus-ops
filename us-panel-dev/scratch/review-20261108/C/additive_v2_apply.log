@@ -1,0 +1,3 @@
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/api-r11/0001-API-r11-additive-apiv1-package-v1-account-alias-no-l.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/api-r11/0001-API-r11-additive-apiv1-package-v1-account-alias-no-l.patch'] EXIT 0

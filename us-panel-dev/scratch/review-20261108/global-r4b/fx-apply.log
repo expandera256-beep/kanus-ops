@@ -1,0 +1,10 @@
+fx-v10 ['git', 'apply', '--check', '/workspace/us-panel-dev/scratch/review-20261108/global-r4b/reviewed_08.patch'] EXIT 0
+
+fx-v10 ['git', 'apply', '/workspace/us-panel-dev/scratch/review-20261108/global-r4b/reviewed_08.patch'] EXIT 0
+
+fx-v10 changed=['i18n/fx.go', 'i18n/fx_test.go']
+fx-v11 ['git', 'apply', '--check', '/workspace/us-panel-dev/scratch/review-20261108/global-r4b/reviewed_08.patch'] EXIT 0
+
+fx-v11 ['git', 'apply', '/workspace/us-panel-dev/scratch/review-20261108/global-r4b/reviewed_08.patch'] EXIT 0
+
+fx-v11 changed=['i18n/fx.go', 'i18n/fx_test.go']

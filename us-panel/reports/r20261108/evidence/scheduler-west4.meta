@@ -1,0 +1,3 @@
+2026-11-08T00:21:26.178260+03:00
+gcloud scheduler jobs list --location=europe-west4 --format=json
+exit=0

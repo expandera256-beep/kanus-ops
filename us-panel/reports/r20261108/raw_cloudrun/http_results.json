@@ -1,0 +1,448 @@
+[
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/health",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:02.740396+03:00",
+    "http_status": 200,
+    "duration_seconds": 0.263,
+    "response_headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "a07e245797bb144a81c3a35c63bd1cde;o=1",
+      "date": "Sat, 07 Nov 2026 21:23:02 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "39",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"ok\": true, \"shopify_webhooks\": false}",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/health"
+  },
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/healthz",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:03.008654+03:00",
+    "http_status": 404,
+    "duration_seconds": 0.093,
+    "response_headers": {
+      "Content-Type": "text/html; charset=UTF-8",
+      "Referrer-Policy": "no-referrer",
+      "Content-Length": "1568",
+      "Date": "Sat, 07 Nov 2026 21:23:03 GMT",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That\u2019s an error.</ins>\n  <p>The requested URL <code>/healthz</code> was not found on this server.  <ins>That\u2019s all we know.</ins>\n",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/healthz"
+  },
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/ready",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:03.103740+03:00",
+    "http_status": 405,
+    "duration_seconds": 0.221,
+    "response_headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "bd69a6a1bccf8bbf8a4ef0d595a3de2f",
+      "date": "Sat, 07 Nov 2026 21:23:03 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "19",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"method\"}",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/ready"
+  },
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/readyz",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:03.325174+03:00",
+    "http_status": 405,
+    "duration_seconds": 0.226,
+    "response_headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "277dac9881b0ea6e687d6c540f38391e",
+      "date": "Sat, 07 Nov 2026 21:23:03 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "19",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"method\"}",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/readyz"
+  },
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:03.551283+03:00",
+    "http_status": 405,
+    "duration_seconds": 0.262,
+    "response_headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "03d1605731619aef6e3bbe82985ad6d7",
+      "date": "Sat, 07 Nov 2026 21:23:03 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "19",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"method\"}",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/"
+  },
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/register",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:03.814368+03:00",
+    "http_status": 405,
+    "duration_seconds": 0.215,
+    "response_headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "c5bc61f1d3413811c014a3fb4e00aaae",
+      "date": "Sat, 07 Nov 2026 21:23:03 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "19",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"method\"}",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/account/register"
+  },
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/login",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:04.034601+03:00",
+    "http_status": 405,
+    "duration_seconds": 0.376,
+    "response_headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "123e56ebefc1e1090082b3926e5d1975",
+      "date": "Sat, 07 Nov 2026 21:23:04 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "19",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"method\"}",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/account/login"
+  },
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/redeem",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:04.414546+03:00",
+    "http_status": 405,
+    "duration_seconds": 0.221,
+    "response_headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "cf2e5bf5d31dbb3a49785b86d1421918",
+      "date": "Sat, 07 Nov 2026 21:23:04 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "19",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"method\"}",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/account/redeem"
+  },
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/balance",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:04.635480+03:00",
+    "http_status": 405,
+    "duration_seconds": 0.224,
+    "response_headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "014973d2a5895cec24466c591e67cfed",
+      "date": "Sat, 07 Nov 2026 21:23:04 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "19",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"method\"}",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/account/balance"
+  },
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/requests",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:04.869939+03:00",
+    "http_status": 405,
+    "duration_seconds": 0.223,
+    "response_headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "e66caa503870310e59fd3a8dac859a61",
+      "date": "Sat, 07 Nov 2026 21:23:04 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "19",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"method\"}",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/account/requests"
+  },
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/workers",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:05.094040+03:00",
+    "http_status": 405,
+    "duration_seconds": 0.265,
+    "response_headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "5dc5381ecad8d0e4b91746f03bb13450",
+      "date": "Sat, 07 Nov 2026 21:23:05 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "19",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"method\"}",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/account/workers"
+  },
+  {
+    "service": "commerce",
+    "method": "GET",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/webhooks/shopify",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:05.359700+03:00",
+    "http_status": 503,
+    "duration_seconds": 0.234,
+    "response_headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "0c86be71eecb7655592941c3d991e679",
+      "date": "Sat, 07 Nov 2026 21:23:05 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "47",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"shopify integration not configured\"}",
+    "command": "GET https://us-commerce-iqhblf63dq-ez.a.run.app/webhooks/shopify"
+  },
+  {
+    "service": "watchdog",
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:05.594563+03:00",
+    "http_status": 403,
+    "duration_seconds": 0.416,
+    "response_headers": {
+      "date": "Sat, 07 Nov 2026 21:23:05 GMT",
+      "content-type": "text/html; charset=UTF-8",
+      "server": "Google Frontend",
+      "Content-Length": "295",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>403 Forbidden</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Forbidden</h1>\n<h2>Your client does not have permission to get URL <code>/</code> from this server.</h2>\n<h2></h2>\n</body></html>\n",
+    "command": "GET https://us-watchdog-iqhblf63dq-ez.a.run.app/"
+  },
+  {
+    "service": "watchdog",
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:06.010515+03:00",
+    "http_status": 403,
+    "duration_seconds": 0.408,
+    "response_headers": {
+      "date": "Sat, 07 Nov 2026 21:23:06 GMT",
+      "content-type": "text/html; charset=UTF-8",
+      "server": "Google Frontend",
+      "Content-Length": "301",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>403 Forbidden</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Forbidden</h1>\n<h2>Your client does not have permission to get URL <code>/health</code> from this server.</h2>\n<h2></h2>\n</body></html>\n",
+    "command": "GET https://us-watchdog-iqhblf63dq-ez.a.run.app/health"
+  },
+  {
+    "service": "watchdog",
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/healthz",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:06.418620+03:00",
+    "http_status": 404,
+    "duration_seconds": 0.067,
+    "response_headers": {
+      "Content-Type": "text/html; charset=UTF-8",
+      "Referrer-Policy": "no-referrer",
+      "Content-Length": "1568",
+      "Date": "Sat, 07 Nov 2026 21:23:06 GMT",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That\u2019s an error.</ins>\n  <p>The requested URL <code>/healthz</code> was not found on this server.  <ins>That\u2019s all we know.</ins>\n",
+    "command": "GET https://us-watchdog-iqhblf63dq-ez.a.run.app/healthz"
+  },
+  {
+    "service": "watchdog",
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/ready",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:06.486482+03:00",
+    "http_status": 403,
+    "duration_seconds": 0.22,
+    "response_headers": {
+      "date": "Sat, 07 Nov 2026 21:23:06 GMT",
+      "content-type": "text/html; charset=UTF-8",
+      "server": "Google Frontend",
+      "Content-Length": "300",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>403 Forbidden</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Forbidden</h1>\n<h2>Your client does not have permission to get URL <code>/ready</code> from this server.</h2>\n<h2></h2>\n</body></html>\n",
+    "command": "GET https://us-watchdog-iqhblf63dq-ez.a.run.app/ready"
+  },
+  {
+    "service": "watchdog",
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/readyz",
+    "auth": "none",
+    "started_istanbul": "2026-11-08T00:23:06.706997+03:00",
+    "http_status": 403,
+    "duration_seconds": 0.228,
+    "response_headers": {
+      "date": "Sat, 07 Nov 2026 21:23:06 GMT",
+      "content-type": "text/html; charset=UTF-8",
+      "server": "Google Frontend",
+      "Content-Length": "301",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>403 Forbidden</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Forbidden</h1>\n<h2>Your client does not have permission to get URL <code>/readyz</code> from this server.</h2>\n<h2></h2>\n</body></html>\n",
+    "command": "GET https://us-watchdog-iqhblf63dq-ez.a.run.app/readyz"
+  },
+  {
+    "service": "watchdog",
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/",
+    "auth": "own_user_identity_token",
+    "started_istanbul": "2026-11-08T00:23:07.665604+03:00",
+    "http_status": 404,
+    "duration_seconds": 0.218,
+    "response_headers": {
+      "content-type": "application/json",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "1fd4b76d7caa0eb3b4954d8525381b26",
+      "date": "Sat, 07 Nov 2026 21:23:07 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "18",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"route\"}",
+    "command": "GET https://us-watchdog-iqhblf63dq-ez.a.run.app/ Authorization: Bearer [REDACTED]"
+  },
+  {
+    "service": "watchdog",
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+    "auth": "own_user_identity_token",
+    "started_istanbul": "2026-11-08T00:23:07.884624+03:00",
+    "http_status": 200,
+    "duration_seconds": 0.214,
+    "response_headers": {
+      "content-type": "application/json",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "ffa850a89fe386567b9c9fc16e60abf2",
+      "date": "Sat, 07 Nov 2026 21:23:07 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "12",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"ok\": true}",
+    "command": "GET https://us-watchdog-iqhblf63dq-ez.a.run.app/health Authorization: Bearer [REDACTED]"
+  },
+  {
+    "service": "watchdog",
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/ready",
+    "auth": "own_user_identity_token",
+    "started_istanbul": "2026-11-08T00:23:08.102329+03:00",
+    "http_status": 404,
+    "duration_seconds": 0.253,
+    "response_headers": {
+      "content-type": "application/json",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "9f0ae33757fe69efaef2e0151100beaa",
+      "date": "Sat, 07 Nov 2026 21:23:08 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "18",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "body": "{\"error\": \"route\"}",
+    "command": "GET https://us-watchdog-iqhblf63dq-ez.a.run.app/ready Authorization: Bearer [REDACTED]"
+  },
+  {
+    "service": "watchdog",
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/healthz",
+    "auth": "own_user_identity_token",
+    "started_istanbul": "2026-11-08T00:25:42.814006+03:00",
+    "http_status": 404,
+    "body": "<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That\u2019s an error.</ins>\n  <p>The requested URL <code>/healthz</code> was not found on this server.  <ins>That\u2019s all we know.</ins>\n",
+    "response_headers": {
+      "Content-Type": "text/html; charset=UTF-8",
+      "Referrer-Policy": "no-referrer",
+      "Content-Length": "1568",
+      "Date": "Sat, 07 Nov 2026 21:25:42 GMT",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "command": "GET https://us-watchdog-iqhblf63dq-ez.a.run.app/healthz Authorization: Bearer [REDACTED]"
+  },
+  {
+    "service": "watchdog",
+    "method": "GET",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/readyz",
+    "auth": "own_user_identity_token",
+    "started_istanbul": "2026-11-08T00:25:43.026103+03:00",
+    "http_status": 404,
+    "body": "{\"error\": \"route\"}",
+    "response_headers": {
+      "content-type": "application/json",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "b1f29b820d2967324bc6570d212e1e17;o=1",
+      "date": "Sat, 07 Nov 2026 21:25:42 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "18",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "command": "GET https://us-watchdog-iqhblf63dq-ez.a.run.app/readyz Authorization: Bearer [REDACTED]"
+  }
+]

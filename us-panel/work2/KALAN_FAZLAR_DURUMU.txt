@@ -1,0 +1,11 @@
+US — KALAN FAZLAR / KAYNAK TASLAĞI
+
+Bu çalışma daha önceki test edilmemiş faz taslağının üzerinedir. EXE derlenmedi; Go ve PHP testleri çalıştırılmadı. Canlı sistemlere yüklenmedi.
+
+Eklenenler:
+- Uzun istemin tamamlanmış parça özetleri çalışma klasöründeki .us-tasks içinde kaydedilir. Panelde devam ve kaydı kaldır düğmeleri bulunur. Görev içeriği ve ara notlar şifrelenmez. Devam yalnızca aynı metin, model, ağ geçidi, işçi ve parça/bütçe değerleriyle çalışır. Birleştirme aşaması baştan yapılır; kapsam genel amaçlı proje görevleri değil uzun istem parçalarıdır. Yeniden başlatma mevcut lisans kuralına göre yeni istem sayılabilir.
+- Test et ve onarım öner işlemi: kullanıcı tetikler, Go veya Python test komutunu çalıştırır; başarısızlık halinde modelden tek onarım önerisi ister. Öneri inceleme bekler. Tekrarlayan tam otomatik bir döngü değildir. Node testi otomatik seçilmez.
+- Shopify lisans taslağı yalnızca tanımlı ürün kimliklerini kabul eder; fiyat, SKU veya başlık tek başına yetki vermez. Anahtarlar e-posta denemesinden önce kaydedilir; başarısız bildirimde aynı anahtarlar tekrar kullanılır. Mesaj tam olarak bir kez gönderilir garantisi yoktur. Ürün kimlikleri ve fiyatlar yayından önce doğrulanmalıdır.
+- kanus/account_store.py deneysel SQLite çekirdeği, abonelik lisansıyla hesap açma, parola özeti, geçici oturum, tek kullanımlık lisans ve eşzamanlı istem kotası denetimidir. Yalnızca abonelik türünü destekler; saatlik haklar yoktur. HTTP servisi, Shopify webhook entegrasyonu, e-posta doğrulaması, iade/iptal ve model ağ geçidine zorunlu kota bağlantısı YOKTUR. Bu nedenle ticari kullanıma hazır değildir. Üretimde kimlik doğrulama, istek sınırlandırma ve güvenli işletim ayrıca gerekir.
+
+Yerel doğrulama: account_store Python testleri (4 senaryo, kota eşzamanlılığı dahil) geçti; GUI JavaScript sözdizimi geçti. Diğer değişiklikler ve önceki taslak Go/PHP kodu test edilmedi. Çok dosyalı önerilerin uygulanması atomik değildir. Uygulama öncesi kapsamlı test ve güvenlik incelemesi gerekir.

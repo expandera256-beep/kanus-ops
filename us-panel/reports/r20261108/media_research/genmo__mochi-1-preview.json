@@ -1,0 +1,441 @@
+{
+  "_id": "671755e338bc25eac38bbd59",
+  "id": "genmo/mochi-1-preview",
+  "private": false,
+  "pipeline_tag": "text-to-video",
+  "library_name": "diffusers",
+  "tags": [
+    "diffusers",
+    "safetensors",
+    "video",
+    "genmo",
+    "text-to-video",
+    "en",
+    "license:apache-2.0",
+    "diffusers:MochiPipeline",
+    "region:us"
+  ],
+  "downloads": 4019,
+  "likes": 1381,
+  "modelId": "genmo/mochi-1-preview",
+  "author": "genmo",
+  "sha": "cd1d0fe89aa8382fcd9ae760bc3d7afe6183579f",
+  "lastModified": "2026-10-06T17:19:35.000Z",
+  "gated": false,
+  "disabled": false,
+  "model-index": null,
+  "config": {
+    "diffusers": {
+      "_class_name": "MochiPipeline"
+    }
+  },
+  "cardData": {
+    "language": [
+      "en"
+    ],
+    "tags": [
+      "video",
+      "genmo"
+    ],
+    "license": "apache-2.0",
+    "pipeline_tag": "text-to-video",
+    "library_name": "diffusers"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes",
+      "blobId": "aafb9f7bec760b90674d44433d49b8ea46d6cb9e",
+      "size": 1616
+    },
+    {
+      "rfilename": "LICENSE",
+      "blobId": "afc1daf869ecdfe45bcd107489e70d3495f4df57",
+      "size": 11334
+    },
+    {
+      "rfilename": "NOTICE",
+      "blobId": "c5c9af21de3285710bf968c6eb2d740542101d85",
+      "size": 413
+    },
+    {
+      "rfilename": "README.md",
+      "blobId": "b5362ad8c033a1ed72b9a3ad8fa945e422e06efe",
+      "size": 8812
+    },
+    {
+      "rfilename": "assets/grid.gif",
+      "blobId": "9bc6feb4b59c880d809aee8e0a0d3aaf2a373b93",
+      "size": 59735957,
+      "lfs": {
+        "sha256": "85588586e345d5302112486b34a59c34240ab759c3048f0abc3868d8f3fdaa5d",
+        "size": 59735957,
+        "pointerSize": 133
+      }
+    },
+    {
+      "rfilename": "decoder.safetensors",
+      "blobId": "0b2cbd7f334cd6a4408ef31507976826f7a34614",
+      "size": 1450122828,
+      "lfs": {
+        "sha256": "641920faaf20e5404ddb5553ce3e295c21ed9b4bc5f6fe7c930811b84099cb14",
+        "size": 1450122828,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "dit.safetensors",
+      "blobId": "4bc0c84a1fb1c1457e3860c49fee9cf57fd1124e",
+      "size": 40110801256,
+      "lfs": {
+        "sha256": "5c273a0d4fbb0de835e31b7cb5228089ba0ee54d4c3a087e81d354cef3d8bbf1",
+        "size": 40110801256,
+        "pointerSize": 136
+      }
+    },
+    {
+      "rfilename": "encoder.safetensors",
+      "blobId": "9cc905460a0a48e72e2b594a3df4bd45ce5f946d",
+      "size": 388912864,
+      "lfs": {
+        "sha256": "d3a8827a66b58a479d97420a9bf77e59078d88f538298469d8db28c37bd556ae",
+        "size": 388912864,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "model_index.json",
+      "blobId": "bc894f8ea1f99a8794e5335fab42a66c974b0fed",
+      "size": 408
+    },
+    {
+      "rfilename": "scheduler/scheduler_config.json",
+      "blobId": "56d9b464e9a88aa4569f5bbf4d2ee91fd7b81cef",
+      "size": 299
+    },
+    {
+      "rfilename": "text_encoder/config.json",
+      "blobId": "32686bd5cde4b8b211ffd1fe919f9f84456f0d9e",
+      "size": 781
+    },
+    {
+      "rfilename": "text_encoder/model-00001-of-00002.safetensors",
+      "blobId": "fb543745ed2f4aa1105e3a8f97ff89a6ff7b5662",
+      "size": 4994582224,
+      "lfs": {
+        "sha256": "ec87bffd1923e8b2774a6d240c922a41f6143081d52cf83b8fe39e9d838c893e",
+        "size": 4994582224,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "text_encoder/model-00001-of-00004.safetensors",
+      "blobId": "18c5aabb9b2b13497a1d695dca7c6aa53010ab12",
+      "size": 4989319680,
+      "lfs": {
+        "sha256": "7a68b2c8c080696a10109612a649bc69330991ecfea65930ccfdfbdb011f2686",
+        "size": 4989319680,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "text_encoder/model-00002-of-00002.safetensors",
+      "blobId": "c1596ab4886c9962503f01891b16715d1469fbe5",
+      "size": 4530066360,
+      "lfs": {
+        "sha256": "a5640855b301fcdbceddfa90ae8066cd9414aff020552a201a255ecf2059da00",
+        "size": 4530066360,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "text_encoder/model-00002-of-00004.safetensors",
+      "blobId": "99a5b982f77018015431bcac90f77fb50ef2485b",
+      "size": 4999830656,
+      "lfs": {
+        "sha256": "b8ed6556d7507e38af5b428c605fb2a6f2bdb7e80bd481308b865f7a40c551ca",
+        "size": 4999830656,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "text_encoder/model-00003-of-00004.safetensors",
+      "blobId": "03e07005d6976043a9bbe738c61e39a60ebabaca",
+      "size": 4865612720,
+      "lfs": {
+        "sha256": "c831635f83041f83faf0024b39c6ecb21b45d70dd38a63ea5bac6c7c6e5e558c",
+        "size": 4865612720,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "text_encoder/model-00004-of-00004.safetensors",
+      "blobId": "2c6513c8a7cfd4f59f71837c19fb28bfc5aae25e",
+      "size": 4194506688,
+      "lfs": {
+        "sha256": "02a5f2d69205be92ad48fe5d712d38c2ff55627969116aeffc58bd75a28da468",
+        "size": 4194506688,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "text_encoder/model.safetensors.index.json",
+      "blobId": "0900b8ebd70052d4cccc2eacf6e07d75bb1f9cb8",
+      "size": 19886
+    },
+    {
+      "rfilename": "tokenizer/added_tokens.json",
+      "blobId": "3f5132007c4fcf42b75b65c8b6aa49c7098bcdf4",
+      "size": 2593
+    },
+    {
+      "rfilename": "tokenizer/special_tokens_map.json",
+      "blobId": "17ade346a1042cbe0c1436f5bedcbd85c099d582",
+      "size": 2543
+    },
+    {
+      "rfilename": "tokenizer/spiece.model",
+      "blobId": "317a5ccbde45300f5d1d970d4d449af2108b147e",
+      "size": 791656,
+      "lfs": {
+        "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+        "size": 791656,
+        "pointerSize": 131
+      }
+    },
+    {
+      "rfilename": "tokenizer/tokenizer_config.json",
+      "blobId": "ade6de4dc4a1c92d8c2f3f2e06e47ffff582cc62",
+      "size": 20618
+    },
+    {
+      "rfilename": "transformer/config.json",
+      "blobId": "a4c5b33516b0c3f4de4f6748fe1e13e4fbb055cf",
+      "size": 396
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model-00001-of-00005.safetensors",
+      "blobId": "851b374aa65ea3b5c696c9d7fa2ab9eee13e2938",
+      "size": 9907773000,
+      "lfs": {
+        "sha256": "9b5db44998e2ce04a55b2688b881567b81577a38f4b63ce89d1ce0f81840de17",
+        "size": 9907773000,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model-00002-of-00005.safetensors",
+      "blobId": "324f8ab7ab0c044e742b9da350c6aeb62d760e69",
+      "size": 9966828288,
+      "lfs": {
+        "sha256": "8d8a5a5dab5132531b0dd8bbb6148db875f9f8ca32e759095329623f6e7de2d4",
+        "size": 9966828288,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model-00003-of-00005.safetensors",
+      "blobId": "250533709cee5f5283d549a379a7f385be3bd525",
+      "size": 9966828288,
+      "lfs": {
+        "sha256": "a2a4516c2f821b161b37005ef796f35252a5c7045f6046139ca4d206bb627564",
+        "size": 9966828288,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model-00004-of-00005.safetensors",
+      "blobId": "969259be73cad2df83559cfd48a9234afa0a8ebf",
+      "size": 9891306008,
+      "lfs": {
+        "sha256": "57a1e86cd5b566aab4c910767fccedbd2a9b29172c820b2a37d8ae706108f0df",
+        "size": 9891306008,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model-00005-of-00005.safetensors",
+      "blobId": "4d104acdcb6c7a13f0afa078d7f491c72463196f",
+      "size": 378102568,
+      "lfs": {
+        "sha256": "69296ea436e319c26eab46197365b5f95cb0a20c8f982876d016513a77bdcd3c",
+        "size": 378102568,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model.bf16-00001-of-00003.safetensors",
+      "blobId": "8154753f982d6b74e6f7a3a1258ca687e629f52b",
+      "size": 9937333040,
+      "lfs": {
+        "sha256": "29f767d34af7bfba3a216def2d1a45c23f0a71ce69ead170af92328e0605eb1a",
+        "size": 9937333040,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model.bf16-00002-of-00003.safetensors",
+      "blobId": "74f8f0f5ac2766ea764eebce0a12b241440de84e",
+      "size": 9929099008,
+      "lfs": {
+        "sha256": "fd0c821a4ed49847f30f4baed76136b5f0e3077d95538469e196ecca50259713",
+        "size": 9929099008,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model.bf16-00003-of-00003.safetensors",
+      "blobId": "3c4f111f84f515bfa732c504e5e861110279f175",
+      "size": 189051592,
+      "lfs": {
+        "sha256": "e94bb39dec286bafcd626252a2e26f00ea36a900bd813bf8b0e3cc17493a49db",
+        "size": 189051592,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model.safetensors.index.bf16.json",
+      "blobId": "d98372b4507c1fff6e78b22092a1caa396b95c3e",
+      "size": 117567
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model.safetensors.index.json",
+      "blobId": "de56a6364318ff46cdd3f716b79d115e70319e10",
+      "size": 112212
+    },
+    {
+      "rfilename": "vae/config.json",
+      "blobId": "71bca4a0b2d53ac904fbacc09138179ed9909232",
+      "size": 1234
+    },
+    {
+      "rfilename": "vae/diffusion_pytorch_model.bf16.safetensors",
+      "blobId": "b1b1e16ae445662468f8343bd2a54f29e6242b75",
+      "size": 919549966,
+      "lfs": {
+        "sha256": "fecceadc048487f07cad99f6f5fbbf691f7385573d53cea2f06e461b3a9721ea",
+        "size": 919549966,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "vae/diffusion_pytorch_model.safetensors",
+      "blobId": "14267671e547bed78688a1881010fdfe94d2be6d",
+      "size": 1839047460,
+      "lfs": {
+        "sha256": "0d74f617ddcaa1b4a53884581d8d21b6836761f6175b20e3df177d4a12ed77df",
+        "size": 1839047460,
+        "pointerSize": 135
+      }
+    }
+  ],
+  "spaces": [
+    "PR-Puppets/PR-Puppet-Sora",
+    "thesab/mochi-1",
+    "jbilcke-hf/VideoModelStudio",
+    "ruslanmv/AI-Video-Generator",
+    "ninjawick/PR-Puppet-Sora-2",
+    "nazdridoy/inferoxy-hub",
+    "RandomGayGuy/genmo-mochi-1-preview",
+    "null002/genmo-mochi-1-preview",
+    "shaheerawan3/Pro-Advertisement-Generator",
+    "recapmovie/genmo-mochi-1-previe",
+    "Forstjsjsg/forts-video-gen",
+    "fullstuckdev/mochi-1",
+    "johann22/ss",
+    "ylues/PR-Puppet-Sora",
+    "Konst2021/PR-Puppet-Sora",
+    "alexlevy0/PR-Puppet-Sora",
+    "Masterdqqq/PR-Puppet-Sora",
+    "tsoe/sora",
+    "aliabd/genmo-mochi-1-preview",
+    "versantus/genmoai",
+    "FelixJZJ/genmo-mochi-1-preview",
+    "JakeNickson/genmo-mochi-1-preview",
+    "svjack/VideoModelStudio",
+    "Mohmed932/genmo-mochi-1-preview",
+    "ThePunkmaister/genmo-mochi-1-preview",
+    "yoiine/genmo-mochi-1-preview",
+    "Reality123b/genmo-mochi-1-preview",
+    "Reality123b/newwwww",
+    "7ngl/genmo-mochi-1-preview",
+    "justShannniii/genmo-mochi-1-preview",
+    "GranadaNortetv/genmo-mochi-1-preview",
+    "Jamesharc19/genmo-mochi-1-preview",
+    "ksadjhfkjlsdhf/genmo-mochi-1-preview",
+    "meditto/genmo-mochi-1-preview",
+    "Telleous/genmo-mochi-1-preview",
+    "ssc93cs/genmo-mochi-1-preview",
+    "codejunky/genmo-mochi-1-preview",
+    "MonkeyDLuffy133/genmo-mochi-1-preview",
+    "Roger1971/genmo-mochi-1-preview",
+    "null002/genmo-mochi-1-my",
+    "dtddz/zdtmochi",
+    "etsadiz/genmo-mochi-1-preview",
+    "Philly123ez/genmo-mochi-1-preview",
+    "joaorech/genmo-mochi-1-preview",
+    "BitDown/genmo-mochi-1-preview",
+    "Nandoschicken60/genmo-mochi-1-preview",
+    "imadsaiyed/genmo-mochi-1-preview",
+    "Hashhere/genmo-mochi-1-preview",
+    "Pokips/genmo-mochi-1-preview",
+    "captainnami/genmo-mochi-1-preview",
+    "sakthivelpandiyan2264/genmo-mochi-1-preview",
+    "LoveHandles/TransPixelerTest",
+    "Lupiras/genmo-mochi-1-preview",
+    "mohsin141/genmo-mochi-1-preview",
+    "Babar000/genmo-mochi-1-preview",
+    "pps2k1/genmo-mochi-1-preview",
+    "Bobmcpoppy/genmo-mochi-1-preview",
+    "pepper200pepper/genmo-mochi-1-preview",
+    "Josh-yoyo777/genmo-mochi-1-preview",
+    "yozarashi/genmo-mochi-1-preview",
+    "zed2525/mocji",
+    "XxProudDoggoYTxX/genmo-mochi-1-preview",
+    "AbiSin/genmo-mochi-1-preview",
+    "guillefalcon/genmo-mochi-1-preview",
+    "Kamalkshs82/genmo-mochi-1-preview",
+    "Arabika/genmo-mochi-1-preview",
+    "HiyawErtiro/genmo-mochi-1-preview",
+    "mmgaber/genmo-mochi-1-preview",
+    "KuroIE/genmo-mochi-1-preview",
+    "ardiosenas/genmo-mochi-1-preview",
+    "slavik557/genmo-mochi-1-preview",
+    "Viko2656/genmo-mochi-1-preview",
+    "miklemilano/genmo-mochi-1-preview",
+    "jt5d/genmo-mochi-1-preview",
+    "ahmadmirx/genmo-mochi-1-preview",
+    "Coolhg/genmo-mochi-1-preview",
+    "Matias221/mochi-1-preview",
+    "iamprajval/genmo-mochi-1-preview",
+    "raj95233/genmo-mochi-1-preview",
+    "sibonaque/genmo-mochi-1-preview1",
+    "sibonaque/genmo-mochi-1-preview",
+    "charansai6127/study-video-material-generation",
+    "zayngates/genmo-mochi-1-preview",
+    "carlitros22sa/genmo-mochi-1-preview",
+    "Daynor/genmo-mochi-1-preview",
+    "DAVIGABRIELA/PR-Puppet-Sora",
+    "aistoriesstudio/generation-video-ia",
+    "aistoriesstudio/generation-video-ai",
+    "aistoriesstudio/generation_stories_ai",
+    "iplustsolution/genmo-mochi-1-preview",
+    "PolygonStew/VideoModelStudio",
+    "Gabrielricardo85/genmo-mochi-1-preview",
+    "recapmovie/genmo-mochi-1-preview",
+    "Khizu-AI-Labs/genmo-mochi-1-preview",
+    "pbmva18/VideoModelStudio",
+    "Digvi69/genmo-mochi-1-preview",
+    "amma1maam/genmo-mochi-1-preview",
+    "Long012/genmo-mochi-1-preview",
+    "Minihits2142/chroma-radiance",
+    "Serega3456/genmo-mochi-1-preview"
+  ],
+  "createdAt": "2024-10-22T07:36:03.000Z",
+  "safetensors": {
+    "parameters": {
+      "F32": 10027677744
+    },
+    "total": 10027677744
+  },
+  "usedStorage": 133516261150
+}

@@ -1,0 +1,149 @@
+[
+  {
+    "insertId": "aa2poke60qs4",
+    "labels": {
+      "compute.googleapis.com/root_trigger_id": "00a2ac9f-eda5-4be6-9bc4-61f31943e2fe"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Factivity",
+    "operation": {
+      "first": true,
+      "id": "operation-1794088188584-65fb6b52d2419-9b0266cc-c2399d50",
+      "producer": "compute.googleapis.com"
+    },
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "apiVersionIdentifier": "v1",
+      "authenticationInfo": {
+        "oauthInfo": {
+          "oauthClientId": "107049515245422876444"
+        },
+        "principalEmail": "247516932580-compute@developer.gserviceaccount.com",
+        "principalSubject": "serviceAccount:247516932580-compute@developer.gserviceaccount.com",
+        "serviceAccountDelegationInfo": [
+          {
+            "firstPartyPrincipal": {
+              "principalEmail": "service-247516932580@compute-system.iam.gserviceaccount.com"
+            }
+          }
+        ]
+      },
+      "authorizationInfo": [
+        {
+          "granted": true,
+          "permission": "compute.instances.stop",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/instances/ds-a100",
+          "resourceAttributes": {
+            "name": "projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/instances/ds-a100",
+            "service": "compute",
+            "type": "compute.instances"
+          }
+        }
+      ],
+      "methodName": "v1.compute.instances.stop",
+      "request": {
+        "@type": "type.googleapis.com/compute.instances.stop",
+        "discardLocalSsd": true
+      },
+      "requestMetadata": {
+        "callerIp": "34.178.14.38",
+        "callerNetwork": "//compute.googleapis.com/projects/project-27082a40-6083-4952-9db/global/networks/__unknown__",
+        "callerSuppliedUserAgent": "Python-urllib/3.10,gzip(gfe)",
+        "destinationAttributes": {},
+        "requestAttributes": {
+          "auth": {},
+          "time": "2026-11-07T21:49:48.821999Z"
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "europe-west4-b"
+        ]
+      },
+      "resourceName": "projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/instances/ds-a100",
+      "response": {
+        "@type": "type.googleapis.com/operation",
+        "id": "3359004942093394451",
+        "insertTime": "2026-11-07T13:49:48.782-08:00",
+        "name": "operation-1794088188584-65fb6b52d2419-9b0266cc-c2399d50",
+        "operationType": "stop",
+        "progress": "0",
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/operations/operation-1794088188584-65fb6b52d2419-9b0266cc-c2399d50",
+        "startTime": "2026-11-07T13:49:48.788-08:00",
+        "status": "RUNNING",
+        "targetId": "6979174631840438511",
+        "targetLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/instances/ds-a100",
+        "user": "247516932580-compute@developer.gserviceaccount.com",
+        "zone": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b"
+      },
+      "serviceName": "compute.googleapis.com",
+      "status": {}
+    },
+    "receiveTimestamp": "2026-11-07T21:49:49.664907544Z",
+    "resource": {
+      "labels": {
+        "instance_id": "6979174631840438511",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "zone": "europe-west4-b"
+      },
+      "type": "gce_instance"
+    },
+    "severity": "NOTICE",
+    "timestamp": "2026-11-07T21:49:48.559246Z"
+  },
+  {
+    "insertId": "-2qsgcadq8eu",
+    "labels": {
+      "compute.googleapis.com/root_trigger_id": "00a2ac9f-eda5-4be6-9bc4-61f31943e2fe"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Factivity",
+    "operation": {
+      "id": "operation-1794088188584-65fb6b52d2419-9b0266cc-c2399d50",
+      "last": true,
+      "producer": "compute.googleapis.com"
+    },
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "apiVersionIdentifier": "v1",
+      "authenticationInfo": {
+        "oauthInfo": {
+          "oauthClientId": "107049515245422876444"
+        },
+        "principalEmail": "247516932580-compute@developer.gserviceaccount.com",
+        "principalSubject": "serviceAccount:247516932580-compute@developer.gserviceaccount.com",
+        "serviceAccountDelegationInfo": [
+          {
+            "firstPartyPrincipal": {
+              "principalEmail": "service-247516932580@compute-system.iam.gserviceaccount.com"
+            }
+          }
+        ]
+      },
+      "methodName": "v1.compute.instances.stop",
+      "request": {
+        "@type": "type.googleapis.com/compute.instances.stop"
+      },
+      "requestMetadata": {
+        "callerIp": "34.178.14.38",
+        "callerNetwork": "//compute.googleapis.com/projects/project-27082a40-6083-4952-9db/global/networks/__unknown__",
+        "callerSuppliedUserAgent": "Python-urllib/3.10,gzip(gfe)",
+        "destinationAttributes": {},
+        "requestAttributes": {}
+      },
+      "resourceName": "projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/instances/ds-a100",
+      "serviceName": "compute.googleapis.com",
+      "status": {}
+    },
+    "receiveTimestamp": "2026-11-07T21:51:03.248736805Z",
+    "resource": {
+      "labels": {
+        "instance_id": "6979174631840438511",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "zone": "europe-west4-b"
+      },
+      "type": "gce_instance"
+    },
+    "severity": "NOTICE",
+    "timestamp": "2026-11-07T21:51:02.623274Z"
+  }
+]

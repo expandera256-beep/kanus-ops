@@ -1,0 +1,39 @@
+{
+  "/workspace/us-panel-dev/patches/api-0003-error-envelope/0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch": [
+    "b/licensesrv/accounts.go",
+    "b/licensesrv/api_error.go",
+    "b/licensesrv/api_error_test.go",
+    "b/licensesrv/credits.go",
+    "b/licensesrv/model_proxy.go"
+  ],
+  "/workspace/us-panel-dev/patches/api-0005-v1-versioning/0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch": [
+    "b/cmd/us-license-hook/accounts_routes_test.go",
+    "b/cmd/us-license-hook/main.go",
+    "b/licensesrv/api_version.go",
+    "b/licensesrv/api_version_test.go"
+  ],
+  "/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch": [
+    "b/cmd/us-license-hook/main.go",
+    "b/licensesrv/accounts.go",
+    "b/licensesrv/api_keys.go",
+    "b/licensesrv/api_keys_test.go",
+    "b/licensesrv/credits.go",
+    "b/licensesrv/store.go"
+  ],
+  "/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch": [
+    "b/licensesrv/accounts.go",
+    "b/licensesrv/api_keys.go",
+    "b/licensesrv/api_keys_test.go",
+    "b/licensesrv/store.go"
+  ],
+  "/workspace/us-panel-dev/patches/api-0008-rate-quota-usage/0001-API-0008-daily-quota-429-Retry-After-regression-test.patch": [
+    "b/licensesrv/api_keys_test.go"
+  ],
+  "/workspace/us-panel-dev/patches/api-r11/0001-API-r11-additive-apiv1-package-v1-account-alias-no-l.patch": [
+    "b/apiv1/README.md",
+    "b/apiv1/errors.go",
+    "b/apiv1/version.go",
+    "b/apiv1/version_test.go",
+    "b/cmd/us-license-hook/main.go"
+  ]
+}

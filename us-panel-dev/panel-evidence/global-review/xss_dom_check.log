@@ -1,0 +1,1 @@
+PASS: translation text, placeholder and option labels use inert DOM properties; malicious dir forced ltr; valid rtl accepted. DOM mock, not a real browser.

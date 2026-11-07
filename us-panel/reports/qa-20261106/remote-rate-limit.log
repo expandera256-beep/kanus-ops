@@ -1,0 +1,14 @@
+2026-11-06 08:07:28 TSİ
+CMD: seq 1 12 | xargs -P2 -I{} curl --max-time 10 -sS -o /dev/null -w HTTP/timing GET /v1/credits/status (invalid Bearer). Cap: 12 requests, concurrency2; no escalation.
+probe=1 http=401 total_s=0.717845
+probe=2 http=401 total_s=0.727253
+probe=3 http=401 total_s=0.701590
+probe=4 http=401 total_s=0.695257
+probe=5 http=401 total_s=0.982600
+probe=6 http=401 total_s=0.982782
+probe=7 http=401 total_s=1.100590
+probe=8 http=401 total_s=1.100287
+probe=10 http=401 total_s=0.884393
+probe=9 http=401 total_s=0.886186
+probe=12 http=401 total_s=1.088442
+probe=11 http=401 total_s=1.092034

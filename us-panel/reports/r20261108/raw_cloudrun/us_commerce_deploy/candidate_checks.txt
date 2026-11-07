@@ -1,0 +1,5 @@
+health: {"ok": true, "shopify_webhooks": false} HTTP200
+ready: {"ready": true, "checks": {"config": true, "store": true}} HTTP200
+readyz: HTTP405
+429 at request 15; Retry-After=retry-after: 1; body={"error": "rate limit exceeded"}
+son kod: 429, istek: 15

@@ -1,0 +1,10 @@
+{
+  "/workspace/us-panel-dev/patches/global_i18n_panel_core.patch": "e4f10a339c78818ceddbc49e2f687b4ee80afa86a7fce9d407c22bd8536892c7",
+  "/workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch": "314fab48b009f06e221ce140758724105b9f5b972c69d0c15c7ad2c9db8d3669",
+  "/workspace/us-panel-dev/scratch/review-20261108/global-r4b/reviewed_03.patch": "ba8845c5f34855d8f2f2fa49a055c4e9d20698c9fbd7572462531c2746f6b58e",
+  "/workspace/us-panel-dev/patches/global_i18n_04_errors.patch": "1c937497ee30ef7de86245b2fa4e2b6668b8660e2db62017bd7a7c2db5864991",
+  "/workspace/us-panel-dev/patches/global_i18n_06_de_ru.patch": "83aaca5d4a3aeb8cf7d4ed0e3854d0c3408d1553bb139ddb2eee22f8b5d013c6",
+  "/workspace/us-panel-dev/global-work/patch_archive_r7/global_i18n_03_pref.patch": "f66d4416bce2b5d61382fb097705104baf6e9d742e085cce9c0dd77933441a8f",
+  "/workspace/us-panel-dev/patches/global_i18n_05_email_loader.patch": "7c917564df055f151f8bd0a0b334a09e248db1481723123196fbfb0377093f3d",
+  "/workspace/us-panel-dev/patches/global_i18n_07_mail_de_ru.patch": "70acc9b0789a982c2abfe3b0e6f3febbf62db16cf3957343e7fc916f50efae18"
+}

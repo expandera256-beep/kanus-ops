@@ -1,0 +1,80 @@
+{
+  "steps": [
+    {
+      "step": "baseline-ssrf",
+      "exit_code": 1
+    },
+    {
+      "step": "patch-dry-run",
+      "exit_code": 0
+    },
+    {
+      "step": "patch-apply",
+      "exit_code": 0
+    },
+    {
+      "step": "patched-ssrf",
+      "exit_code": 0
+    },
+    {
+      "step": "patched-file-isolation",
+      "exit_code": 1
+    },
+    {
+      "step": "owner-added-regressions",
+      "exit_code": 0
+    },
+    {
+      "step": "owner-repro-ssrf",
+      "exit_code": 0
+    },
+    {
+      "step": "owner-repro-file_isolation",
+      "exit_code": 0
+    },
+    {
+      "step": "hook-linux-package-boundary",
+      "exit_code": 0
+    },
+    {
+      "step": "desktop-linux-package-boundary",
+      "exit_code": 0
+    },
+    {
+      "step": "desktop-windows-package-boundary",
+      "exit_code": 0
+    },
+    {
+      "step": "owner-repro-ssrf-underlying-go",
+      "exit_code": 0,
+      "expected_exit_code": 0
+    },
+    {
+      "step": "owner-repro-file_isolation-underlying-go",
+      "exit_code": 1,
+      "expected_exit_code": 1
+    }
+  ],
+  "owner_repro_source_sha256": "42b3a630628d4d14bdfed1a6d47b4b1947ec41752bfb4efd7ec2c1052e4f99bc",
+  "owner_repro_adaptation": "Only evidence-output paths redirected into QA output; grep replaced by equivalent rg; source and test pattern unchanged",
+  "hook_binary_contains_f01_f02_desktop_package": false,
+  "observed_flags": {
+    "baseline-ssrf": {
+      "redirect_contacted": true,
+      "authorization_forwarded": true,
+      "project_body_forwarded": true
+    },
+    "patched-ssrf": {
+      "redirect_contacted": false,
+      "authorization_forwarded": false,
+      "project_body_forwarded": false
+    },
+    "patched-file-isolation": {
+      "synthetic_sibling_read": true
+    }
+  },
+  "original_base_manifest_reverified_unchanged": true,
+  "file_isolation_open": true,
+  "f02_status": "FIXED on independently patched .11; .12 release merge/artifact acceptance pending",
+  "run_directories_distinct": true
+}

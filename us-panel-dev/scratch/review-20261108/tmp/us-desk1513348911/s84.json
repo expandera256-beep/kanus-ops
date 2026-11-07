@@ -1,0 +1,63 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "düşünce",
+      "text": "İstek modele gidiyor."
+    },
+    {
+      "n": 2,
+      "kind": "işlem",
+      "text": "Uzun istem 3 parçaya bölündü. Ara özetler bilgi kaybı içerebilir."
+    },
+    {
+      "n": 3,
+      "kind": "işlem",
+      "text": "3 parçanın tamamı işlendi; özetlerden sonuç hazırlanıyor."
+    },
+    {
+      "n": 4,
+      "kind": "istem",
+      "text": "İş modele gitti: veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri\nkesildi.\n[Uzun istemin tamamı parçalara ayrılır.]. Klasörde 0 ad."
+    },
+    {
+      "n": 5,
+      "kind": "işlem",
+      "text": "İstek modele gitti."
+    },
+    {
+      "n": 6,
+      "kind": "özet",
+      "text": "Özet. İstem: veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri\nkesildi.\n[Uzun istemin tamamı parçalara ayrılır.]. Okunan: yok. Yazılan: yok. Sonuç: cevap verildi."
+    }
+  ],
+  "chat": [
+    {
+      "role": "panel",
+      "text": "kullanıcı: veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri\nkesildi.\n[Uzun istemin tamamı parçalara ayrılır.]\nKlasörde 0 ad var."
+    },
+    {
+      "role": "model",
+      "text": "kısa yanıt"
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "veri veri veri veri veri veri veri veri ve",
+      "turns": [
+        {
+          "role": "panel",
+          "text": "kullanıcı: veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri veri\nkesildi.\n[Uzun istemin tamamı parçalara ayrılır.]\nKlasörde 0 ad var."
+        },
+        {
+          "role": "model",
+          "text": "kısa yanıt"
+        }
+      ]
+    }
+  ],
+  "chatId": "s1"
+}

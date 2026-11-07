@@ -1,0 +1,10 @@
+{
+  "15473713283325": {"kind":"sub","days":90,"prompts":1,"credits":1},
+  "15473713316093": {"kind":"sub","days":90,"prompts":5,"credits":5},
+  "15473713348861": {"kind":"sub","days":90,"prompts":10,"credits":10},
+  "15473713381629": {"kind":"sub","days":180,"prompts":25,"credits":25},
+  "15473713414397": {"kind":"sub","days":180,"prompts":50,"credits":50},
+  "15473713447165": {"kind":"sub","days":365,"prompts":100,"credits":100},
+  "15473713479933": {"kind":"sub","days":30,"prompts":200,"credits":200},
+  "15473713512701": {"kind":"use","days":30,"seconds":3600}
+}

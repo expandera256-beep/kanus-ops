@@ -1,0 +1,19 @@
+{
+  "source-v11": {
+    "path": "/workspace/us-panel/work2/kiyas/term/release.go",
+    "sha256": "03bf9f1edf54f33274305a46d8bd5e9213d4ae775401122366db8f7799de9aed",
+    "text": "package main\n\nimport (\n\t\"encoding/json\"\n\t\"io\"\n\t\"net/http\"\n\t\"strings\"\n\t\"time\"\n)\n\nconst buildVersion = \"2026.11.06.11\"\n\n// An occupied port must not silently open an older panel after an EXE update.\nfunc currentPanelVersion(base string) bool {\n\tclient := http.Client{Timeout: 800 * time.Millisecond, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}\n\tresp, err := client.Get(strings.TrimRight(base, \"/\") + \"/api/version\")\n\tif err != nil {\n\t\treturn false\n\t}\n\tdefer resp.Body.Close()\n\tif resp.StatusCode != http.StatusOK {\n\t\treturn false\n\t}\n\tvar value struct {\n\t\tVersion string `json:\"version\"`\n\t}\n\treturn json.NewDecoder(io.LimitReader(resp.Body, 1024)).Decode(&value) == nil && value.Version == buildVersion\n}\n"
+  },
+  "pinned-v10": {
+    "path": "/workspace/us-panel-dev/pinned/v10/release.go",
+    "sha256": "c2683f7783c9df198fa91f28f848f04f8f94d219f423a422d9ab58264a35d556",
+    "text": "package main\n\nimport (\n\t\"encoding/json\"\n\t\"io\"\n\t\"net/http\"\n\t\"strings\"\n\t\"time\"\n)\n\nconst buildVersion = \"2026.11.06.10\"\n\n// An occupied port must not silently open an older panel after an EXE update.\nfunc currentPanelVersion(base string) bool {\n\tclient := http.Client{Timeout: 800 * time.Millisecond, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}\n\tresp, err := client.Get(strings.TrimRight(base, \"/\") + \"/api/version\")\n\tif err != nil {\n\t\treturn false\n\t}\n\tdefer resp.Body.Close()\n\tif resp.StatusCode != http.StatusOK {\n\t\treturn false\n\t}\n\tvar value struct {\n\t\tVersion string `json:\"version\"`\n\t}\n\treturn json.NewDecoder(io.LimitReader(resp.Body, 1024)).Decode(&value) == nil && value.Version == buildVersion\n}\n"
+  },
+  "checked_tsi": "2026-11-08T00:23:18.274620+03:00",
+  "dist_exists": false,
+  "release_files": [],
+  "missing_evidence_roots": [
+    "/workspace/kan",
+    "/workspace/sre"
+  ]
+}

@@ -1,0 +1,4 @@
+ok  	kiyas	1.166s
+ok  	kiyas/cmd/us-license-hook	1.013s [no tests to run]
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+ok  	kiyas/licensesrv	1.012s [no tests to run]

@@ -1,0 +1,105 @@
+{
+  "source": "/workspace/us-panel-dev/pinned/v11",
+  "checks": [
+    {
+      "patch": "/workspace/us-panel-dev/patches/global_i18n_panel_core.patch",
+      "exit": 0,
+      "command": [
+        "git",
+        "apply",
+        "--check"
+      ],
+      "output": ""
+    },
+    {
+      "patch": "/workspace/us-panel-dev/patches/global_i18n_panel_core.patch",
+      "exit": 0,
+      "command": [
+        "git",
+        "apply",
+        "/workspace/us-panel-dev/patches/global_i18n_panel_core.patch"
+      ],
+      "output": ""
+    },
+    {
+      "patch": "/workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch",
+      "exit": 0,
+      "command": [
+        "git",
+        "apply",
+        "--check"
+      ],
+      "output": ""
+    },
+    {
+      "patch": "/workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch",
+      "exit": 0,
+      "command": [
+        "git",
+        "apply",
+        "/workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch"
+      ],
+      "output": ""
+    },
+    {
+      "patch": "/workspace/us-panel-dev/patches/global_i18n_03_pref.patch",
+      "exit": 0,
+      "command": [
+        "git",
+        "apply",
+        "--check"
+      ],
+      "output": ""
+    },
+    {
+      "patch": "/workspace/us-panel-dev/patches/global_i18n_03_pref.patch",
+      "exit": 0,
+      "command": [
+        "git",
+        "apply",
+        "/workspace/us-panel-dev/patches/global_i18n_03_pref.patch"
+      ],
+      "output": ""
+    },
+    {
+      "patch": "/workspace/us-panel-dev/patches/global_i18n_04_errors.patch",
+      "exit": 0,
+      "command": [
+        "git",
+        "apply",
+        "--check"
+      ],
+      "output": ""
+    },
+    {
+      "patch": "/workspace/us-panel-dev/patches/global_i18n_04_errors.patch",
+      "exit": 0,
+      "command": [
+        "git",
+        "apply",
+        "/workspace/us-panel-dev/patches/global_i18n_04_errors.patch"
+      ],
+      "output": ""
+    },
+    {
+      "patch": "/workspace/us-panel-dev/patches/global_i18n_06_de_ru.patch",
+      "exit": 0,
+      "command": [
+        "git",
+        "apply",
+        "--check"
+      ],
+      "output": ""
+    },
+    {
+      "patch": "/workspace/us-panel-dev/patches/global_i18n_06_de_ru.patch",
+      "exit": 0,
+      "command": [
+        "git",
+        "apply",
+        "/workspace/us-panel-dev/patches/global_i18n_06_de_ru.patch"
+      ],
+      "output": ""
+    }
+  ]
+}

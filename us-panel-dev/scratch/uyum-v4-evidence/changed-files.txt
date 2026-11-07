@@ -1,0 +1,16 @@
+cmd/us-license-hook/main.go
+cmd/us-license-hook/main_test.go
+internal/privacy/handler.go
+internal/privacy/handler_test.go
+internal/privacy/iface.go
+internal/privacy/prefs.go
+internal/privacy/prefs_fifo_unix_test.go
+internal/privacy/prefs_open_other.go
+internal/privacy/prefs_open_unix.go
+internal/privacy/prefs_test.go
+internal/privacy/v4_handler_test.go
+internal/privacy/v4_security_linux_test.go
+licensesrv/privacy_ops.go
+licensesrv/privacy_ops_test.go
+licensesrv/privacy_v4_test.go
+licensesrv/store.go

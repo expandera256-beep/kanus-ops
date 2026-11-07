@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Run AFTER KAN.US uploads release_us_fx/public_html/* (read-only curl GET). exit 0 = all PASS
+set -u
+B="${1:-https://kanus.org}"; ASSET="index-uscommerce-i18nfx-5a375f29.js"; WANT="5a375f292604694e6f905a9654353700edf9dc4bb595c5df250354048991c5d0"; PREV="index-uscommerce-i18n-75f56119.js"; F=0
+ok(){ echo "PASS $1"; }; bad(){ echo "FAIL $1"; F=$((F+1)); }
+for p in / /us /contact /news; do h=$(curl -fsS "$B$p") || { bad "$p fetch"; continue; }
+  echo "$h" | grep -q "/assets/$ASSET" && ok "$p references $ASSET" || bad "$p not referencing $ASSET"; done
+got=$(curl -fsS "$B/assets/$ASSET" | sha256sum | cut -d' ' -f1); [ "$got" = "$WANT" ] && ok "asset sha256" || bad "asset sha256 $got"
+ct=$(curl -fsSI "$B/assets/$ASSET" | tr -d '\r' | awk -F': ' 'tolower($1)=="content-type"{print $2}'); echo "$ct" | grep -qi javascript && ok "asset content-type" || bad "asset content-type '$ct'"
+curl -fsS "$B/assets/$PREV" >/dev/null && ok "previous asset still served (rollback safe)" || bad "previous asset missing"
+fx=$(curl -fsS "$B/fx.json") && ok "fx.json fetch" || bad "fx.json fetch"
+fct=$(curl -fsSI "$B/fx.json" | tr -d '\r' | awk -F': ' 'tolower($1)=="content-type"{print $2}'); echo "$fct" | grep -qi json && ok "fx.json content-type" || bad "fx.json content-type '$fct' (SPA fallback?)"
+echo "$fx" | python3 -c 'import json,sys,datetime as d;j=json.load(sys.stdin);a=(d.date.today()-d.date.fromisoformat(j["date"])).days;assert j["schema"]=="kanus.fx/1" and set(j["rates"])=={"EUR","USD"} and -1<=a<=5,a;print(j["tcmb_tarih"],j["rates"])' && ok "fx.json schema/age" || bad "fx.json schema/age"
+curl -fsS "$B/assets/$ASSET" | grep -q 'tcmb.gov.tr' && bad "bundle references tcmb.gov.tr" || ok "no live TCMB call in bundle"
+for s in 'Yerli Teknoloji' 'Küresel Vizyon' 'Built in Türkiye' 'Designed for the World'; do curl -fsS "$B/assets/$ASSET" | grep -qi "$s" && bad "forbidden slogan: $s" || ok "no '$s'"; done
+echo "Rollback: rollback/index.html -> public_html/index.html (release_us state); delete public_html/fx.json optional (component hides FX when absent)."
+[ $F -eq 0 ] && echo "ALL PASS" || echo "$F FAIL"; exit $F

@@ -1,0 +1,9 @@
+=== RUN   TestF01LandlockSiblingHomeAndWrite
+    sandbox_linux_test.go:54: sibling=EACCES home=EACCES outside_write=EACCES inside_write=OK
+--- PASS: TestF01LandlockSiblingHomeAndWrite (0.01s)
+=== RUN   TestF01LandlockGoTest
+    sandbox_linux_test.go:68: ok  	f01fixture	0.007s
+        
+--- PASS: TestF01LandlockGoTest (4.45s)
+PASS
+ok  	kiyas	4.464s

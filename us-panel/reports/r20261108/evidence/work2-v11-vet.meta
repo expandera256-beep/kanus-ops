@@ -1,0 +1,4 @@
+2026-11-08T00:21:44.136189+03:00
+go vet ./...
+exit=0
+GOPROXY=off; real-model/network gates=0; copy=/workspace/us-panel/reports/r20261108/test-snapshots/work2-v11

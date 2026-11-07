@@ -1,0 +1,50 @@
+srv1662550 capacity / steal capture — 2026-11-06 09:46 UTC+03:00
+READ-ONLY. MCP user-Hostinger-vps timed out; used official API + one SSH.
+
+=== Plan / limits (API GET /api/vps/v1/virtual-machines/1662550) ===
+id=1662550 hostname=srv1662550.hstgr.cloud state=running
+plan=KVM 2
+cpus=2
+memory=8192 (MiB)
+disk=102400 (MiB ≈ 100 GiB)
+bandwidth=(see raw VM JSON; catalog metadata bandwidth=8192000)
+template=Ubuntu 24.04 LTS (id 1077)
+firewall_group_id=null
+subscription_id=AzZRHIVJKcZem2ycn (id only; not a secret)
+Hypervisor (guest lscpu): KVM, AMD EPYC 7543P, 2 vCPU
+
+=== Prod comparison (2133566) ===
+plan=KVM 2 cpus=2 memory=8192 disk=102400
+template=Ubuntu 26.04 LTS state=running
+API metrics (sparse, new VM): cpu_usage=0.53% ram≈0.47GiB disk≈1.68GiB
+
+=== Hostinger API metrics last ~24h (cpu_usage / ram / disk) ===
+NOTE: Panel cpu_usage for test is flat ~4.98–5.00% across 48 samples.
+This matches guest %usr≈3–4% and does NOT include steal. Do not treat panel CPU% as "host healthy".
+
+TEST ram_usage: min≈4.51GiB max≈7.64GiB last≈6.37GiB (of 8 GiB)
+TEST disk_space used: ≈48.4–49.0 GiB of 100 GiB plan disk
+PROD: mostly idle (single metric sample)
+
+=== Guest steal sample (SSH 2026-11-06T06:45:12Z / 09:45 Istanbul) ===
+loadavg: 30.35, 31.08, 31.97 (2 vCPU)
+PSI cpu some avg10=94.76
+Mem: used≈6552MiB available≈1389MiB swap used≈1922MiB
+
+vmstat 1 5 (st column):
+  first line avg: st=65 (since boot bias)
+  then: st=95,95,95,95
+
+mpstat -P ALL 1 3 Average: %steal=95.32 %usr=4.04 %idle=0.00
+sar -u (sysstat today, 03:40–06:40 UTC): %steal ≈94.4–95.5 every 10m; %user≈2.5–3.8; %idle≈0
+/proc/stat 5s delta: steal_pct=95.0 idle_pct=0.0 guest_busy≈5.0
+
+Runnable: vmstat r=20–33 while guest only executes ~5% — processes wait on stolen CPU.
+
+=== Catalog prices (API GET /api/billing/v1/catalog?category=VPS) — cents USD ===
+KVM 2 (current): monthly renew 2449 ($24.49), first_period 1399 ($13.99); yearly 20388 ($203.88)
+KVM 4: monthly renew 4299 ($42.99), first_period 2599 ($25.99); yearly 37188 ($371.88)
+KVM 8: monthly renew 7399 ($73.99), first_period 5099 ($50.99); yearly 64788 ($647.88)
+Metadata: KVM2=2CPU/8GB/100GB; KVM4=4CPU/16GB/200GB; KVM8=8CPU/32GB/400GB
+Currency in catalog responses: USD. TRY list price not returned by this catalog filter.
+Public page hostinger.com/vps-hosting fetched (200) but dynamic; TR page 403 — rely on API cents above.

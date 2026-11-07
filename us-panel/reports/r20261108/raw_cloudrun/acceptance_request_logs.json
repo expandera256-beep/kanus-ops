@@ -1,0 +1,723 @@
+[
+  {
+    "httpRequest": {
+      "latency": "0.001012220s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "140.248.52.114",
+      "requestMethod": "GET",
+      "requestSize": "283",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/health",
+      "responseSize": "196",
+      "serverIp": "34.143.79.2",
+      "status": 200,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b6000d9ba817ae2b6c",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:02.899240561Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "59124f3120ae2d12",
+    "timestamp": "2026-11-07T21:23:02.884219Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/a07e245797bb144a81c3a35c63bd1cde",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001097012s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:2dbc::db4f:2dbc",
+      "requestMethod": "GET",
+      "requestSize": "282",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/ready",
+      "responseSize": "176",
+      "serverIp": "2600:1900:4245:200::",
+      "status": 405,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b7000324f1d92f5848",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:03.233895069Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "0b74c5f09201a95e",
+    "timestamp": "2026-11-07T21:23:03.203617Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/bd69a6a1bccf8bbf8a4ef0d595a3de2f"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000983765s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:b51f::c975:b51f",
+      "requestMethod": "GET",
+      "requestSize": "283",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/readyz",
+      "responseSize": "176",
+      "serverIp": "2600:1901:81d5:200::",
+      "status": 405,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b70006a378d39740cb",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:03.564846049Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "f9e13ea8d9158826",
+    "timestamp": "2026-11-07T21:23:03.432784Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/277dac9881b0ea6e687d6c540f38391e"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000960561s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:e1a0::cf81:e1a0",
+      "requestMethod": "GET",
+      "requestSize": "277",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/",
+      "responseSize": "176",
+      "serverIp": "2600:1900:4243:200::",
+      "status": 405,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b7000abadabe827680",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:03.897702671Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "a4db827265202951",
+    "timestamp": "2026-11-07T21:23:03.701006Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/03d1605731619aef6e3bbe82985ad6d7"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001058232s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:b76e::5e26:b76e",
+      "requestMethod": "GET",
+      "requestSize": "293",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/register",
+      "responseSize": "176",
+      "serverIp": "2600:1901:81d5:200::",
+      "status": 405,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b7000de43dec85c0f1",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:04.229316755Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "e6f4a184c3699ad5",
+    "timestamp": "2026-11-07T21:23:03.908489Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/c5bc61f1d3413811c014a3fb4e00aaae"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001013766s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:5faa::7a3e:5faa",
+      "requestMethod": "GET",
+      "requestSize": "290",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/login",
+      "responseSize": "176",
+      "serverIp": "2600:1900:4245:200::",
+      "status": 405,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b80004875de196f741",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:04.564219709Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "1674ad4c46f18950",
+    "timestamp": "2026-11-07T21:23:04.294811Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/123e56ebefc1e1090082b3926e5d1975"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001050201s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:a284::e48:a284",
+      "requestMethod": "GET",
+      "requestSize": "291",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/redeem",
+      "responseSize": "176",
+      "serverIp": "2600:1900:4240:200::",
+      "status": 405,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b80007f7c43aeab3e3",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:04.564219709Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "e54d1c4f3014dd9c",
+    "timestamp": "2026-11-07T21:23:04.519818Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/cf2e5bf5d31dbb3a49785b86d1421918"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001042939s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:e658::d1f:e658",
+      "requestMethod": "GET",
+      "requestSize": "293",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/balance",
+      "responseSize": "176",
+      "serverIp": "2600:1901:81d5:200::",
+      "status": 405,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b8000b6455296426fd",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:04.896414691Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "0345d306a2d7bcaa",
+    "timestamp": "2026-11-07T21:23:04.744184Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/014973d2a5895cec24466c591e67cfed"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000986740s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:4041::b2ed:4041",
+      "requestMethod": "GET",
+      "requestSize": "293",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/requests",
+      "responseSize": "176",
+      "serverIp": "2600:1900:4241:200::",
+      "status": 405,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b8000ee1073d6a4308",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:05.226667981Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "5798478d769537e9",
+    "timestamp": "2026-11-07T21:23:04.972936Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/e66caa503870310e59fd3a8dac859a61"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001091978s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:6444::beee:6444",
+      "requestMethod": "GET",
+      "requestSize": "292",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/workers",
+      "responseSize": "176",
+      "serverIp": "2600:1900:4240:200::",
+      "status": 405,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b9000373f607f9f00d",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:05.558447349Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "0ec5bc709ebbc87d",
+    "timestamp": "2026-11-07T21:23:05.224019Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/5dc5381ecad8d0e4b91746f03bb13450"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000998696s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:e658::d1f:e658",
+      "requestMethod": "GET",
+      "requestSize": "294",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/webhooks/shopify",
+      "responseSize": "204",
+      "serverIp": "2600:1900:4244:200::",
+      "status": 503,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b90007574d11f8d87f",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:05.558447349Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "spanId": "1e3d2634d41dde1d",
+    "timestamp": "2026-11-07T21:23:05.478889Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/0c86be71eecb7655592941c3d991e679"
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:4714::65a3:4714",
+      "requestMethod": "GET",
+      "requestSize": "277",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/",
+      "serverIp": "2600:1900:4241:200::",
+      "status": 403,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b9000db626be0298d7",
+    "labels": {
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:05.951005614Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "f9a170eb4f39a860",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:23:05.719299Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/656e64e3943247ee2302142ab960e6b4"
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:4714::65a3:4714",
+      "requestMethod": "GET",
+      "requestSize": "284",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "serverIp": "2600:1900:4244:200::",
+      "status": 403,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96ba000466a70717ada9",
+    "labels": {
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:06.613922061Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "0d6d3836efbebf82",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:23:06.096661Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/23c5cacc827fc84f75869e9c2c5f6137"
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:d538::3569:d538",
+      "requestMethod": "GET",
+      "requestSize": "282",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/ready",
+      "serverIp": "2600:1900:4245:200::",
+      "status": 403,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96ba000916afdad494a7",
+    "labels": {
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:06.613922061Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "1b650cd0d69b14e4",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:23:06.594291Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/b5465888581481008007cbeada8153f9"
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:f2f4::3562:f2f4",
+      "requestMethod": "GET",
+      "requestSize": "284",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/readyz",
+      "serverIp": "2600:1901:81d5:200::",
+      "status": 403,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96ba000c8087fe48cc72",
+    "labels": {
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:06.946019827Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "7e0eab37fadccf81",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:23:06.818168Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/2dd7a2255070f0984145a6eefee68612"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001624263s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:c264::5110:c264",
+      "requestMethod": "GET",
+      "requestSize": "812",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/",
+      "responseSize": "160",
+      "serverIp": "2600:1901:81d5:200::",
+      "status": 404,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96bb000bc47107403220",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:07.950433033Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "04c5e07fdabfea61",
+    "timestamp": "2026-11-07T21:23:07.763705Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/1fd4b76d7caa0eb3b4954d8525381b26"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001314103s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "140.248.52.26",
+      "requestMethod": "GET",
+      "requestSize": "819",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "responseSize": "154",
+      "serverIp": "34.143.77.2",
+      "status": 200,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96bb000f1319cd2da8b0",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:08.285616954Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "baec45f77b4ef65c",
+    "timestamp": "2026-11-07T21:23:07.984444Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/ffa850a89fe386567b9c9fc16e60abf2"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001387755s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:7fdf::7f51:7fdf",
+      "requestMethod": "GET",
+      "requestSize": "818",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/ready",
+      "responseSize": "160",
+      "serverIp": "2600:1900:4241:200::",
+      "status": 404,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96bc0003ae1da0d26e0a",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:08.285616954Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "1b3d88486424e55b",
+    "timestamp": "2026-11-07T21:23:08.234275Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/9f0ae33757fe69efaef2e0151100beaa"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.041071486s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:a536::9f86:a536",
+      "requestMethod": "POST",
+      "requestSize": "347",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/balance",
+      "responseSize": "186",
+      "serverIp": "2600:1900:4243:200::",
+      "status": 400,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef9732000472c8d943f2e7",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:25:06.298812392Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "78704ef14f35349e",
+    "timestamp": "2026-11-07T21:25:06.241749Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/c0d3dd36fdf5932dc15ef2ab1af4093b",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.039642083s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:a536::9f86:a536",
+      "requestMethod": "POST",
+      "requestSize": "347",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/account/requests",
+      "responseSize": "186",
+      "serverIp": "2600:1901:81d4:200::",
+      "status": 400,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef97320008f7d563aa0b94",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:25:06.635130730Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "ee24dd9722d3b3c9",
+    "timestamp": "2026-11-07T21:25:06.546892Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/a5c43e1c4de749f6cd991b2406f47cd5"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001351698s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:1056::bf9b:1056",
+      "requestMethod": "GET",
+      "requestSize": "819",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/readyz",
+      "responseSize": "160",
+      "serverIp": "2600:1900:4242:200::",
+      "status": 404,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef9756000de0b16c7b60c4",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:25:42.916090025Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "f32af14afd6227f6",
+    "timestamp": "2026-11-07T21:25:42.891766Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/b1f29b820d2967324bc6570d212e1e17",
+    "traceSampled": true
+  }
+]

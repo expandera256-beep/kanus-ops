@@ -1,0 +1,73 @@
+{
+  "source": "REAL_NETWORK_NOT_GPU",
+  "target": "https://api-test.kanus.org/healthz",
+  "timestamp": "2026-11-06T09:31:17.942789+03:00",
+  "zone": "TSİ / Europe/Istanbul",
+  "samples": [
+    {
+      "http_code": 200,
+      "remote_ip": "198.18.0.1",
+      "http_connect": 0,
+      "num_connects": 1,
+      "size_download": 2,
+      "size_header": 143,
+      "ssl_verify_result": 0,
+      "proxy_used": 0,
+      "dns_ms": 1.2630000000000001,
+      "ttfb_ms": 1107.9589999999998,
+      "total_ms": 1108.067,
+      "tcp_connect_ms": 0.245,
+      "tls_ms": 409.921,
+      "post_tls_to_first_byte_ms": 696.5299999999999,
+      "ttft_ms": null
+    },
+    {
+      "http_code": 200,
+      "remote_ip": "198.18.0.1",
+      "http_connect": 0,
+      "num_connects": 1,
+      "size_download": 2,
+      "size_header": 143,
+      "ssl_verify_result": 0,
+      "proxy_used": 0,
+      "dns_ms": 1.4020000000000001,
+      "ttfb_ms": 863.709,
+      "total_ms": 863.761,
+      "tcp_connect_ms": 0.258,
+      "tls_ms": 465.809,
+      "post_tls_to_first_byte_ms": 396.23999999999995,
+      "ttft_ms": null,
+      "gap_from_previous_start_seconds": 3.126357167999231
+    },
+    {
+      "http_code": 200,
+      "remote_ip": "198.18.0.1",
+      "http_connect": 0,
+      "num_connects": 1,
+      "size_download": 2,
+      "size_header": 143,
+      "ssl_verify_result": 0,
+      "proxy_used": 0,
+      "dns_ms": 1.125,
+      "ttfb_ms": 1095.206,
+      "total_ms": 1095.261,
+      "tcp_connect_ms": 0.2850000000000001,
+      "tls_ms": 496.227,
+      "post_tls_to_first_byte_ms": 597.569,
+      "ttft_ms": null,
+      "gap_from_previous_start_seconds": 2.8749837370014575
+    }
+  ],
+  "notes": [
+    "TCP connect is connect completion minus DNS, NOT pure RTT.",
+    "TLS increment can include network/proxy overhead; no packet-level RTT inferred.",
+    "Health HTTP TTFB is NOT LLM TTFT.",
+    "Single box vantage does not measure US/Europe end-user latency.",
+    "Egress region is ipinfo geolocation estimate, not verified hosting location.",
+    "Egress lookup failed; no alternate network route used."
+  ],
+  "egress": {
+    "error": "curl_exit_35",
+    "detail": "curl: (35) TLS connect error: error:0A000126:SSL routines::unexpected eof while reading"
+  }
+}

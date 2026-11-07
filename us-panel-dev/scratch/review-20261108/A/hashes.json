@@ -1,0 +1,7 @@
+{
+  "global_i18n_panel_core.patch": "e4f10a339c78818ceddbc49e2f687b4ee80afa86a7fce9d407c22bd8536892c7",
+  "global_i18n_02_gui_strings.patch": "314fab48b009f06e221ce140758724105b9f5b972c69d0c15c7ad2c9db8d3669",
+  "global_i18n_03_pref.patch": "425a76afd9e07b9bdc711b5496a1539046d975e63b54380d6e4f503f2c2c40a0",
+  "global_i18n_04_errors.patch": "1c937497ee30ef7de86245b2fa4e2b6668b8660e2db62017bd7a7c2db5864991",
+  "global_i18n_05_email_loader.patch": "7c917564df055f151f8bd0a0b334a09e248db1481723123196fbfb0377093f3d"
+}

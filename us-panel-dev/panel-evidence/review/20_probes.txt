@@ -1,0 +1,31 @@
+    zz_review_probe_test.go:40: RESULT P1: state=success code=0 stdout="PWNED_NOT_GO\n"
+--- PASS: TestProbeAllowlistBaseNameAbsolutePath (0.00s)
+    zz_review_probe_test.go:61: RESULT P2: accepted argv=["go" "build" "-toolexec=sh -c 'touch PWNED_SHELL'"] state=failed code=1 shellSideEffectFileExists=true stderr="go: parsing buildID from go tool compile -V=full: unexpected output:\n\t\n"
+    zz_review_probe_test.go:64: RESULT P2b: ["go","test","-exec","bash","./..."] -> err=<nil>
+    zz_review_probe_test.go:64: RESULT P2b: ["python3","-c","print(1)"] -> err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_review_probe_test.go:64: RESULT P2b: ["node","-e","1"] -> err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_review_probe_test.go:64: RESULT P2b: ["go","run","-exec=sh","main.go"] -> err=<nil>
+    zz_review_probe_test.go:64: RESULT P2b: ["npm","run","x"] -> err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+--- PASS: TestProbeTerminalToolexecShell (0.01s)
+    zz_review_probe_test.go:77: RESULT P3: ['GOPROXY', 'HOME', 'LANG', 'LC_ALL', 'PATH']
+--- PASS: TestProbeSafeEnv (0.01s)
+    zz_review_probe_test.go:89: RESULT P4: findPython -> /tmp/TestProbeFindPythonVenvLeak135816440/001/.venv/bin/python ok=true; project script executed=true; secret in child env=true
+--- PASS: TestProbeFindPythonVenvLeak (0.00s)
+    zz_review_probe_test.go:126: RESULT P5 timeout: state=timeout code=-1 main_alive=false samePgidSleep(pid 286049)_alive=false setsidSleep(pid 286050)_alive=true
+    zz_review_probe_test.go:126: RESULT P5 cancel: state=cancelled code=-1 main_alive=false samePgidSleep(pid 286170)_alive=false setsidSleep(pid 286171)_alive=true
+--- PASS: TestProbeTimeoutCancelOrphans (6.16s)
+    zz_review_probe_test.go:143: RESULT P6: panel CPU rlimit before={Cur:18446744073709551615 Max:18446744073709551615} after={Cur:18446744073709551615 Max:18446744073709551615}; child: t0 (600, 600)
+--- PASS: TestProbeRlimitScope (0.53s)
+    zz_review_probe_test.go:157: RESULT P7: read via hardlink err=<nil> content="OUTSIDE-SECRET"
+    zz_review_probe_test.go:160: RESULT P7b: resolve('a.txt:stream') err=<nil> ; resolve('C:evil.txt') err=<nil> (Windows ADS/drive-relative not rejected on this OS)
+--- PASS: TestProbeHardlinkRead (0.00s)
+    zz_review_probe_test.go:177: RESULT P8: err=<nil> status=already_ok approveCalled=false injectedOnDisk=true
+    zz_review_probe_test.go:180: RESULT P8b: id '../x' err=geçersiz görev kimliği ; '..' err=geçersiz görev kimliği
+--- PASS: TestProbeTaskStateTamperBypassesApproval (0.20s)
+ok  	kiyas	7.929s
+FAIL	kiyas [build failed]
+FAIL
+    zz_review_probe_test.go:193: RESULT P9: detectLaunch ok=true argv=["/tmp/TestProbeRunPathVenvLeak1860475054/001/.venv/bin/python" "main.py"] ; project venv executed with secret in env=true
+    zz_review_probe_test.go:196: RESULT P9b: after Tests path, secret seen count=2 ; report head="Test doğrulanmadı (komut çıkış kodu 0; gerçek test kanıtı yok)."
+--- PASS: TestProbeRunPathVenvLeak (0.01s)
+ok  	kiyas	1.024s

@@ -1,0 +1,11 @@
+# OIDC negatif test, rolsüz SA (sre-oidc-negtest@project-27082a40-6083-4952-9db.iam.gserviceaccount.com), 2026-11-07T21:32:45Z
+Updated IAM policy for serviceAccount [sre-oidc-negtest@project-27082a40-6083-4952-9db.iam.gserviceaccount.com].
+binding eklendi (yalnız SA seviyesi)
+SA proje rolleri: []
+token alındı: evet (deneme 8)
+rolsuz SA token /health -> HTTP 403
+rolsuz SA token / -> HTTP 403
+kimliksiz /health -> HTTP 403
+Updated IAM policy for serviceAccount [sre-oidc-negtest@project-27082a40-6083-4952-9db.iam.gserviceaccount.com].
+binding kaldırıldı
+SA politikası sonrası: {"etag":"BwZftn0Ez2c=","version":1}

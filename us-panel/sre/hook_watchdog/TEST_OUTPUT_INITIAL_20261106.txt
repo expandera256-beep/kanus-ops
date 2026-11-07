@@ -1,0 +1,47 @@
+..............................................FF........                 [100%]
+=================================== FAILURES ===================================
+__________________ test_outbox_only_and_existing_alarm_reused __________________
+
+env = (<test_hook_watchdog.Clock object at 0x7f56a2e0f700>, Config(poll_seconds=30, health_timeout_seconds=2, consecutive_vi... alarm_email_to='demirtumen08@gmail.com', alarm_send_enabled=False), <hook_watchdog.Watchdog object at 0x7f56a2dffe50>)
+
+    def test_outbox_only_and_existing_alarm_reused(env):
+        from hook_watchdog import ExistingAlarm
+        for _ in range(3): tick(env,health=Health(500,.1))
+        mail=mails(env)[0]
+        assert isinstance(env[2].alarm, ExistingAlarm)
+        assert mail['from']=='support@kanus.org' and mail['to']=='demirtumen08@gmail.com'
+        assert mail['sent'] is False and mail['send_enabled'] is False
+>       assert '+03:00' in mail['body']
+E       assert '+03:00' in '{"ts": 1060.0, "level": "ERROR", "instance": "us-license-hook", "where": "hook.healthz", "error": "critical", "detail": {"time_tsi": "1970-01-01T02:17:40+02:00", "severity": "critical"}}'
+
+../hook_watchdog/tests/test_hook_watchdog.py:196: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    ds_watchdog:watchdog.py:173 {"ts": 1060.0, "level": "ERROR", "instance": "us-license-hook", "where": "hook.healthz", "error": "critical", "detail": {"time_tsi": "1970-01-01T02:17:40+02:00", "severity": "critical"}}
+_________________________ test_outbox_error_and_retry __________________________
+
+env = (<test_hook_watchdog.Clock object at 0x7f56a2db89b0>, Config(poll_seconds=30, health_timeout_seconds=2, consecutive_vi... alarm_email_to='demirtumen08@gmail.com', alarm_send_enabled=False), <hook_watchdog.Watchdog object at 0x7f56a2dff750>)
+
+    def test_outbox_error_and_retry(env):
+        c,cfg,w=env
+        cfg.alarm_outbox_path += '/missing/outbox'
+        # Existing alarm has its own config; point it at the deliberately absent parent.
+        w.alarm.cfg.alarm_outbox_path=cfg.alarm_outbox_path
+        for _ in range(3): tick(env,health=Health(500,.1))
+        assert w.degraded and w.outbox_error=='FileNotFoundError'
+        assert w.states['healthz'].last_sent is None
+        w.alarm.cfg.alarm_outbox_path=str(Path(cfg.alarm_outbox_path).parents[1]/'fixed.jsonl')
+        tick(env,health=Health(500,.1))
+>       assert w.outbox_error is None and w.states['healthz'].active=='critical'
+E       AssertionError: assert ('FileNotFoundError' is None)
+E        +  where 'FileNotFoundError' = <hook_watchdog.Watchdog object at 0x7f56a2dff750>.outbox_error
+
+../hook_watchdog/tests/test_hook_watchdog.py:209: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    ds_watchdog:watchdog.py:173 {"ts": 1060.0, "level": "ERROR", "instance": "us-license-hook", "where": "hook.healthz", "error": "critical", "detail": {"time_tsi": "1970-01-01T02:17:40+02:00", "severity": "critical"}}
+ERROR    hook_watchdog:hook_watchdog.py:156 hook alarm outbox write failed: FileNotFoundError
+ERROR    ds_watchdog:watchdog.py:173 {"ts": 1090.0, "level": "ERROR", "instance": "us-license-hook", "where": "hook.healthz", "error": "critical", "detail": {"time_tsi": "1970-01-01T02:18:10+02:00", "severity": "critical"}}
+ERROR    hook_watchdog:hook_watchdog.py:156 hook alarm outbox write failed: FileNotFoundError
+=========================== short test summary info ============================
+FAILED ../hook_watchdog/tests/test_hook_watchdog.py::test_outbox_only_and_existing_alarm_reused
+FAILED ../hook_watchdog/tests/test_hook_watchdog.py::test_outbox_error_and_retry
+2 failed, 54 passed in 0.10s

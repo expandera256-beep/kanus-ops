@@ -1,0 +1,134 @@
+{
+  "counts": {
+    "PASS": 8,
+    "FAIL": 4,
+    "BLOCKED": 2,
+    "NOT TESTED": 0
+  },
+  "items": [
+    {
+      "item": "Kullanıcı kimlik doğrulaması",
+      "status": "PASS",
+      "source": "accounts.go:48–91,362–373,453–485",
+      "repro": "--case authentication",
+      "evidence": "authentication.log;remote-negative.json",
+      "scope": "Signed session expiry/reset/version/verification yerel PASS; uzak fake/missing401. Authenticated yeni-host kabulü yapılmadı."
+    },
+    {
+      "item": "API token güvenliği",
+      "status": "FAIL",
+      "source": "accounts.go:53–91;repair_loop.go:262–274",
+      "repro": "--case api_tokens; --case ssrf",
+      "evidence": "api_tokens.log;ssrf.log",
+      "scope": "Forgery/invalid-token denial PASS; default repair client307 ile farklı porta synthetic Authorizationı gönderdi (F02). Bu helperın aktif GUI routeuna bağlandığı gösterilmedi."
+    },
+    {
+      "item": "Secret Manager",
+      "status": "BLOCKED",
+      "source": "cmd/us-license-hook/main.go:30–31,57,104,132; kanus/deploy/gcp_apply.py:64–78;gateway.service.yaml:30–47",
+      "repro": "--case secret_manager",
+      "evidence": "secret-manager-source-check.json;secret-scan.json;secret-candidate-classification.json",
+      "scope": "Env+SecretKeyRef kaynak bindingleri mevcut; taramada confirmed hardcoded real credential yok. Güncel IAM/version rotation/runtime binding kanıtı yok; secret/private/env/data dosyaları okunmadı."
+    },
+    {
+      "item": "Webhook HMAC",
+      "status": "PASS",
+      "source": "licensesrv/webhook.go:34–45,72–93",
+      "repro": "--case hmac",
+      "evidence": "hmac.log;remote-negative.json",
+      "scope": "Constant-time HMAC; local bad/missing/reversal shop/topic testleri PASS; remote missing/wrong401. Gerçek webhook sırrı kullanılmadı."
+    },
+    {
+      "item": "SQL injection",
+      "status": "PASS",
+      "source": "kanus/account_store.py:123–136,162–170;kanus/storage.py:21–35",
+      "repro": "--case sqli",
+      "evidence": "sqli.log;python-tests.log",
+      "scope": "Gerçek AccountStore/SQLite parameter-binding ile email/session payloadları auth alamadı; accounts tablosu ve quota sağlam. PostgreSQL gerçek DSN/migration ayrıca NOT TESTED."
+    },
+    {
+      "item": "Komut enjeksiyonu",
+      "status": "PASS",
+      "source": "terminal.go:32+;safe_exec.go:223–258",
+      "repro": "--case command_injection",
+      "evidence": "command_injection.log;panel-audit.log",
+      "scope": "Terminal shell/meta/python-c argv reddi PASS. İzinli proje kodunun OS erişimi sandbox değildir, F01 ayrıca FAIL."
+    },
+    {
+      "item": "Path traversal",
+      "status": "PASS",
+      "source": "file_tools.go:44–105,127–138",
+      "repro": "--case path_traversal",
+      "evidence": "path_traversal.log",
+      "scope": "../,absolute outside,Windows separator ve symlink escape fileTools üzerinden reddedildi. OS child bypassı F01dir."
+    },
+    {
+      "item": "SSRF",
+      "status": "FAIL",
+      "source": "repair_loop.go:262–274; karşı kontrol model_proxy.go:46–58 ve gpu_pin.go:140–173",
+      "repro": "--case ssrf",
+      "evidence": "ssrf.log;panel-audit.log",
+      "scope": "Local307 sinke POST/project body ve Authorization geçti (F02). Model proxy/GPU clientlarının no-redirect kontrolleri ayrı mevcut; metadata/network saldırısı yapılmadı."
+    },
+    {
+      "item": "Rate limiting",
+      "status": "PASS",
+      "source": "accounts.go:257–290,344–360;login_limiter.go:10–16,30–80;accounts.go:362–373,466–468,484",
+      "repro": "--case rate_limit",
+      "evidence": "rate_limit.log;../qa-20261106/ratelimit-evidence.txt",
+      "scope": "Account10/900s normalized email/local rotating-IP testi PASS. Legacy/nginx IP-only DESIGN GAP (F04), FAIL değil; ek kaynak mitigasyonu var, yeni deploy etkinliği henüz doğrulanmadı."
+    },
+    {
+      "item": "Yetki yükseltme",
+      "status": "PASS",
+      "source": "accounts.go:53–100,110–118,201–221;credits.go authorization/settle",
+      "repro": "--case privilege_escalation",
+      "evidence": "privilege_escalation.log;go-test.log",
+      "scope": "Application credential/ownership düzeyinde farklı license reservation settle reddi ve idempotency PASS; root/kernel/container escape audit kabulü değildir."
+    },
+    {
+      "item": "Dosya izolasyonu",
+      "status": "FAIL",
+      "source": "safe_exec.go:17–19,176–208,223–258;file_tools.go:44–105",
+      "repro": "--case file_isolation",
+      "evidence": "file_isolation.log",
+      "scope": "AynıUID child Python testin ürettiği sibling workspace dosyasını okudu (F01). Trusted single-user davranışı biliniyor; multi-user/untrusted izolasyon gereksinimi karşılanmıyor."
+    },
+    {
+      "item": "Hassas loglar",
+      "status": "PASS",
+      "source": "licensesrv/privacy_mask.go:10–40;mail.go:63–70,97–110;accounts.go:384–387",
+      "repro": "--case sensitive_logs; check_logs.py",
+      "evidence": "sensitive_logs.log;log-leak-check.json",
+      "scope": "DryRun/fakeSender masking ve GPU redact testleri PASS; raw log token/canary scan PASS. İlk deny-all allowlist fixture hatası düzeltildi; ürün leak değildi."
+    },
+    {
+      "item": "Yedekleme",
+      "status": "FAIL",
+      "source": "deploy/host-hardening/backup/backup-us-license-hook-hourly.sh:30–43,49;licensesrv/store.go:153–185",
+      "repro": "--case backup",
+      "evidence": "backup.log;go-store-backup-restore.log",
+      "scope": "DRAFT shell hiç kaynak yokken success0 döndürdü (F03). Local SQLite/Go JSON yedek+restore PASS; bu scriptin productionda kurulu olduğu iddia edilmiyor."
+    },
+    {
+      "item": "Geri yükleme",
+      "status": "BLOCKED",
+      "source": "licensesrv/store.go:101–150,153–185;kanus/storage.py:53–58;restore-us-license-hook-store.sh:21–33",
+      "repro": "--case restore",
+      "evidence": "restore.log;go-store-backup-restore.log",
+      "scope": "Sentetik DB ve Go Store offline ayrı instance restore/kota/history/lock PASS. Yeni-host/CloudSQL backup+restore/rpo/rto/installed cron kanıtı yok; üretim içerikleri açılmadı veya restore edilmedi."
+    }
+  ],
+  "distinct_open_fail_findings": 3,
+  "design_gap_findings": 1,
+  "routing": "Proposed component owners; prompt contains no bot ownership table",
+  "product_fixed": false,
+  "additional_acceptance": {
+    "new_host_precheck": "BLOCKED: local resolver198.18.0.1,0 HTTP; no peer/IP proof",
+    "production_journal_sensitive_logs": "BLOCKED: root SSH evidence needed; metadata/redacted synthetic-only, not customer dumps",
+    "gpu_dependent_authenticated_model": "NOT TESTED: forbidden outside KAN live window; no valid model/completions call",
+    "shopify_full_e2e": "SHOP owns; referenced, not duplicated",
+    "host_reported_running_version": "pre-.11;7d72f449…56f0 (not independently measured)",
+    "host_reported_r11_hash": "12772d12…b47 (.11 not deployed, per HOST)"
+  }
+}

@@ -1,0 +1,8 @@
+test_sql_injection (__main__.DataSecurity.test_sql_injection) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.093s
+
+OK
+
+exit_code=0

@@ -1,0 +1,14 @@
+F.
+======================================================================
+FAIL: test_default_idle_exactly_600_and_boot_600 (test_inference_lifecycle.TenMinutePolicyTest.test_default_idle_exactly_600_and_boot_600)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/us-panel/work2/kanus/test_inference_lifecycle.py", line 175, in test_default_idle_exactly_600_and_boot_600
+    self.assertEqual(p.idle_seconds,600);self.assertEqual(p.boot_seconds,600)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: 900 != 600
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.066s
+
+FAILED (failures=1)

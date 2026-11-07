@@ -1,0 +1,41 @@
+{
+  "test_counts": {
+    "pass": 422,
+    "skip": 7
+  },
+  "package_counts": {
+    "pass": 4,
+    "skip": 1
+  },
+  "data_race_occurrences": 0,
+  "exits": {
+    "windows-test-compile.exit": "0",
+    "check_ui.exit": "0",
+    "own-lifecycle.exit": "0",
+    "test_i18n_mail.exit": "0",
+    "gofmt-changed.exit": "0",
+    "mutant-no-close.exit": "1",
+    "python-discover.exit": "0",
+    "probe.exit": "0",
+    "gui_lang_ui_test.exit": "0",
+    "checks/windows_build.exit": "0",
+    "checks/race.exit": "0",
+    "checks/build.exit": "0",
+    "checks/gofmt.exit": "0",
+    "checks/s2.exit": "0",
+    "checks/vet.exit": "0",
+    "checks/windows_vet.exit": "0"
+  },
+  "input_stable": {
+    "/workspace/us-panel-dev/patches/global_i18n_panel_core.patch": true,
+    "/workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch": true,
+    "/workspace/us-panel-dev/scratch/review-20261108/global-r4b/reviewed_03.patch": true,
+    "/workspace/us-panel-dev/patches/global_i18n_04_errors.patch": true,
+    "/workspace/us-panel-dev/patches/global_i18n_06_de_ru.patch": true,
+    "/workspace/us-panel-dev/global-work/patch_archive_r7/global_i18n_03_pref.patch": true,
+    "/workspace/us-panel-dev/patches/global_i18n_05_email_loader.patch": true,
+    "/workspace/us-panel-dev/patches/global_i18n_07_mail_de_ru.patch": true,
+    "/workspace/us-panel-dev/patches/global_i18n_03_pref.patch": true
+  },
+  "final03_mode": "0o444"
+}

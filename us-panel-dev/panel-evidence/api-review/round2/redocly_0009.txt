@@ -1,0 +1,16 @@
+
+    ╔═══════════════════════════════════════════════════════╗
+    ║                                                       ║
+    ║  A new version of Redocly CLI (2.76.0) is available.  ║
+    ║  Update now: `npm i -g @redocly/cli@latest`.          ║
+    ║  Changelog: https://redocly.com/docs/cli/changelog/   ║
+    ║                                                       ║
+    ╚═══════════════════════════════════════════════════════╝
+
+No configurations were provided -- using built in recommended configuration by default.
+
+validating oa9.yaml...
+oa9.yaml: validated in 31ms
+
+Woohoo! Your API description is valid. 🎉
+

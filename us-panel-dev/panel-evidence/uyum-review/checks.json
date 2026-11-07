@@ -1,0 +1,72 @@
+[
+  {
+    "name": "vet",
+    "command": [
+      "go",
+      "vet",
+      "./..."
+    ],
+    "exit": 1,
+    "seconds": 0.62
+  },
+  {
+    "name": "race",
+    "command": [
+      "go",
+      "test",
+      "-race",
+      "-json",
+      "./..."
+    ],
+    "exit": 1,
+    "seconds": 80.08
+  },
+  {
+    "name": "windows-vet",
+    "command": [
+      "go",
+      "vet",
+      "./..."
+    ],
+    "exit": 1,
+    "seconds": 0.47
+  },
+  {
+    "name": "windows-build",
+    "command": [
+      "go",
+      "build",
+      "./..."
+    ],
+    "exit": 1,
+    "seconds": 1.02
+  },
+  {
+    "name": "new-count3",
+    "command": [
+      "go",
+      "test",
+      "-race",
+      "-json",
+      "./licensesrv",
+      "-run",
+      "^TestPrivacy",
+      "-count=3"
+    ],
+    "exit": 0,
+    "seconds": 16.96
+  },
+  {
+    "name": "gofmt",
+    "command": [
+      "gofmt",
+      "-l",
+      "cmd/us-license-hook/main.go",
+      "licensesrv/privacy_ops.go",
+      "licensesrv/privacy_ops_test.go",
+      "internal/privacy/handler.go"
+    ],
+    "exit": 0,
+    "seconds": 0.0
+  }
+]

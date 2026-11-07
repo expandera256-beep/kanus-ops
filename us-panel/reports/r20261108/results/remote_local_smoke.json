@@ -1,0 +1,986 @@
+{
+  "data_source": "LOCAL_FIXTURE",
+  "timestamp": "2026-11-08T00:48:08.938525+03:00",
+  "target": "http://127.0.0.1:34213",
+  "max_concurrency": 20,
+  "hard_deadline_seconds": 10,
+  "idle_seconds": 600,
+  "idle_policy": "v5",
+  "blocked_levels": {
+    "25": "BLOCKED cap20",
+    "50": "BLOCKED cap20"
+  },
+  "no_model_or_gpu_calls": true,
+  "marker_header": "X-KANUS-Host-Marker",
+  "preflight_marker_verified": false,
+  "scenarios": {
+    "login": [
+      {
+        "concurrency": 1,
+        "n": 1,
+        "p50_ms": 31.292,
+        "p95_ms": 31.292,
+        "p99_ms": 31.292,
+        "success_rate": 1.0,
+        "expected_429_count": 0,
+        "rate_limit_429_rate": 0.0,
+        "accepted_behavior_rate": 1.0,
+        "unexpected_error_rate": 0.0,
+        "error_rate": 0.0,
+        "unsuccessful_rate": 0.0,
+        "status_counts": {
+          "200": 1
+        },
+        "throughput_rps": 31.38254220589927,
+        "successful_rps": 31.38254220589927,
+        "queue_ms": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "samples": [
+          {
+            "status": 200,
+            "elapsed_ms": 31.292446999941603,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          }
+        ],
+        "expected_credit_debit": 0,
+        "actual_credit_debit": 0,
+        "outstanding_hold_after": 0,
+        "credit_consistent": true
+      },
+      {
+        "concurrency": 5,
+        "n": 5,
+        "p50_ms": 31.899,
+        "p95_ms": 31.931,
+        "p99_ms": 31.934,
+        "success_rate": 1.0,
+        "expected_429_count": 0,
+        "rate_limit_429_rate": 0.0,
+        "accepted_behavior_rate": 1.0,
+        "unexpected_error_rate": 0.0,
+        "error_rate": 0.0,
+        "unsuccessful_rate": 0.0,
+        "status_counts": {
+          "200": 5
+        },
+        "throughput_rps": 150.33560469295992,
+        "successful_rps": 150.33560469295992,
+        "queue_ms": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "samples": [
+          {
+            "status": 200,
+            "elapsed_ms": 31.203806000121403,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.918105999466206,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.899137999971572,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.934736000039265,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.697757999609166,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          }
+        ],
+        "expected_credit_debit": 0,
+        "actual_credit_debit": 0,
+        "outstanding_hold_after": 0,
+        "credit_consistent": true
+      },
+      {
+        "concurrency": 10,
+        "n": 10,
+        "p50_ms": 32.097,
+        "p95_ms": 32.781,
+        "p99_ms": 32.797,
+        "success_rate": 1.0,
+        "expected_429_count": 0,
+        "rate_limit_429_rate": 0.0,
+        "accepted_behavior_rate": 1.0,
+        "unexpected_error_rate": 0.0,
+        "error_rate": 0.0,
+        "unsuccessful_rate": 0.0,
+        "status_counts": {
+          "200": 10
+        },
+        "throughput_rps": 295.1616773215295,
+        "successful_rps": 295.1616773215295,
+        "queue_ms": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "samples": [
+          {
+            "status": 200,
+            "elapsed_ms": 32.22080600062327,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.389581000439648,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.75701599977765,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.801364999613725,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.48794699973223,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.276701999762736,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.041702999777044,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.15151499989588,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.639675999940664,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.50133700000879,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          }
+        ],
+        "expected_credit_debit": 0,
+        "actual_credit_debit": 0,
+        "outstanding_hold_after": 0,
+        "credit_consistent": true
+      },
+      {
+        "concurrency": 20,
+        "n": 20,
+        "p50_ms": 32.379,
+        "p95_ms": 34.075,
+        "p99_ms": 34.284,
+        "success_rate": 1.0,
+        "expected_429_count": 0,
+        "rate_limit_429_rate": 0.0,
+        "accepted_behavior_rate": 1.0,
+        "unexpected_error_rate": 0.0,
+        "error_rate": 0.0,
+        "unsuccessful_rate": 0.0,
+        "status_counts": {
+          "200": 20
+        },
+        "throughput_rps": 516.860693592688,
+        "successful_rps": 516.860693592688,
+        "queue_ms": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "samples": [
+          {
+            "status": 200,
+            "elapsed_ms": 32.62009100035357,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.48748700025317,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.05319699938991,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.28624100029265,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.14734700052213,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.24177199990663,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.2085279995008,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 34.061020000081044,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.251034000386426,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.49242799959029,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.52752200003306,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.41623200028698,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.34255699953792,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.85839799991663,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.890346999716712,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.56492000016442,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 34.33596100057912,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.512270999883185,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.951831999322167,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.469385000491457,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null
+          }
+        ],
+        "expected_credit_debit": 0,
+        "actual_credit_debit": 0,
+        "outstanding_hold_after": 0,
+        "credit_consistent": true
+      }
+    ],
+    "credit_status": [
+      {
+        "concurrency": 1,
+        "n": 1,
+        "p50_ms": 31.246,
+        "p95_ms": 31.246,
+        "p99_ms": 31.246,
+        "success_rate": 1.0,
+        "expected_429_count": 0,
+        "rate_limit_429_rate": 0.0,
+        "accepted_behavior_rate": 1.0,
+        "unexpected_error_rate": 0.0,
+        "error_rate": 0.0,
+        "unsuccessful_rate": 0.0,
+        "status_counts": {
+          "200": 1
+        },
+        "throughput_rps": 31.375604387611396,
+        "successful_rps": 31.375604387611396,
+        "queue_ms": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "samples": [
+          {
+            "status": 200,
+            "elapsed_ms": 31.24613300042256,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          }
+        ],
+        "expected_credit_debit": 0,
+        "actual_credit_debit": 0,
+        "outstanding_hold_after": 0,
+        "credit_consistent": true
+      },
+      {
+        "concurrency": 5,
+        "n": 5,
+        "p50_ms": 31.157,
+        "p95_ms": 31.309,
+        "p99_ms": 31.326,
+        "success_rate": 1.0,
+        "expected_429_count": 0,
+        "rate_limit_429_rate": 0.0,
+        "accepted_behavior_rate": 1.0,
+        "unexpected_error_rate": 0.0,
+        "error_rate": 0.0,
+        "unsuccessful_rate": 0.0,
+        "status_counts": {
+          "200": 5
+        },
+        "throughput_rps": 155.50803713589113,
+        "successful_rps": 155.50803713589113,
+        "queue_ms": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "samples": [
+          {
+            "status": 200,
+            "elapsed_ms": 30.9703430002628,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.33055200032686,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.156869999904302,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.224567999743158,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 30.827920999399794,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          }
+        ],
+        "expected_credit_debit": 0,
+        "actual_credit_debit": 0,
+        "outstanding_hold_after": 0,
+        "credit_consistent": true
+      },
+      {
+        "concurrency": 10,
+        "n": 10,
+        "p50_ms": 32.182,
+        "p95_ms": 32.464,
+        "p99_ms": 32.474,
+        "success_rate": 1.0,
+        "expected_429_count": 0,
+        "rate_limit_429_rate": 0.0,
+        "accepted_behavior_rate": 1.0,
+        "unexpected_error_rate": 0.0,
+        "error_rate": 0.0,
+        "unsuccessful_rate": 0.0,
+        "status_counts": {
+          "200": 10
+        },
+        "throughput_rps": 298.8626721201158,
+        "successful_rps": 298.8626721201158,
+        "queue_ms": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "samples": [
+          {
+            "status": 200,
+            "elapsed_ms": 32.190475000788865,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.47657799965964,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.279781000397634,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.17311400021572,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.889586000033887,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.025374000113516,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.280341999467055,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.44914999959292,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.825910999941698,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.052811000539805,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          }
+        ],
+        "expected_credit_debit": 0,
+        "actual_credit_debit": 0,
+        "outstanding_hold_after": 0,
+        "credit_consistent": true
+      },
+      {
+        "concurrency": 20,
+        "n": 20,
+        "p50_ms": 32.789,
+        "p95_ms": 33.799,
+        "p99_ms": 34.451,
+        "success_rate": 1.0,
+        "expected_429_count": 0,
+        "rate_limit_429_rate": 0.0,
+        "accepted_behavior_rate": 1.0,
+        "unexpected_error_rate": 0.0,
+        "error_rate": 0.0,
+        "unsuccessful_rate": 0.0,
+        "status_counts": {
+          "200": 20
+        },
+        "throughput_rps": 561.8668498041335,
+        "successful_rps": 561.8668498041335,
+        "queue_ms": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "samples": [
+          {
+            "status": 200,
+            "elapsed_ms": 32.5740689995655,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.4559619996071,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.67193599933671,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.20339600011357,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.84645700002875,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.54737099996419,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.051154999862774,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.57353600040369,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.759452999926,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.818937999763875,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 30.973280000580417,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.75647000029858,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.62528600043879,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.17108700048266,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 32.335342999431305,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.10666300058074,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.735781000359566,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 33.0641390000892,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 34.61416499976622,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 31.912295000438462,
+            "error": null,
+            "success": true,
+            "expected_429": false,
+            "retry_after": null,
+            "queue_ms": null,
+            "remaining": 1000,
+            "reserved": 0
+          }
+        ],
+        "expected_credit_debit": 0,
+        "actual_credit_debit": 0,
+        "outstanding_hold_after": 0,
+        "credit_consistent": true
+      }
+    ]
+  },
+  "preflight_status": 200,
+  "host_identity_evidence": "HOST declaration7d72f449\u202656f0",
+  "elapsed_seconds": 0.8093913000002431,
+  "status": "COMPLETED"
+}

@@ -1,0 +1,680 @@
+# KANUS.ORG — EKSİK GELİŞTİRMELERİ TAMAMLAMA VE GLOBAL TİCARİ SÜRÜM PROMPTU
+
+## ROL VE GÖREV
+
+Sen Kanus.org / US Panel projesinin baş yazılım mimarı, AI altyapı mühendisi, DevOps/SRE uzmanı, ödeme sistemleri geliştiricisi, güvenlik denetçisi, QA mühendisi ve uluslararası SaaS ürün geliştiricisisin.
+
+Görevin mevcut projeyi yeniden yazmadan, çalışan özellikleri koruyarak **bütün kalan geliştirmeleri tamamlamak, eksik entegrasyonları uygulamak, hataları gidermek, testleri gerçekleştirmek ve sistemi Türkiye ile uluslararası pazarlara uygun ticari sürüme hazırlamaktır.**
+
+Yalnızca analiz ve rapor üretme. Erişebildiğin ve yetkili olduğun çalışma ortamında gerçek kaynak kodu düzenle, derle, test et ve sonuçları doğrula.
+
+**Önemli:** Önceki raporlardaki eksiklikleri başlangıç hipotezi kabul et. Her birinin güncel kodda hâlâ mevcut olup olmadığını doğrula. Tamamlanmış işlevleri yeniden geliştirme.
+
+---
+
+# 1. MEVCUT SÜRÜMÜ VE KALAN İŞLERİ DOĞRULA
+
+Aşağıdaki kaynakları bul:
+
+- `us_checkout/kiyas/term`
+- `us_checkout/kanus`
+- `kanus/deploy`
+- `US_KAPSAM_VE_FIYAT_RAPORU.md`
+- `KANUS_FINAL_STATUS.md`
+- `KANUS_TEST_RESULTS.md`
+- `KANUS_GLOBAL_TEST_RESULTS.md`
+- `KANUS_RELEASE_READINESS.md`
+- Shopify entegrasyon kaynakları
+- Cloud Run ve GPU kontrol dosyaları
+- Windows EXE kaynakları
+- PostgreSQL migration dosyaları
+- CI/CD ve otomatik testler
+
+Her işlevi aşağıdaki durumlardan biriyle sınıflandır:
+
+- VERIFIED: Gerçek testlerle doğrulanmış.
+- IMPLEMENTED: Kodlanmış ancak yeterince test edilmemiş.
+- PARTIAL: Kısmen uygulanmış.
+- BROKEN: Hatalı.
+- MISSING: Mevcut kodda bulunmuyor.
+- BLOCKED: Yetki, erişim veya dış servis engeli.
+- UNKNOWN: İnceleme için yeterli kanıt yok.
+
+VERIFIED işlevleri gereksiz yere değiştirme.
+
+IMPLEMENTED işlevleri önce test et.
+
+PARTIAL, BROKEN ve MISSING işlevleri tamamla.
+
+UNKNOWN işlevleri incelemeden eksik ilan etme.
+
+Her değişiklik için önce mevcut davranışı koruyan regresyon testi oluştur.
+
+---
+
+# 2. KRİTİK CLOUD RUN VE API ONARIMLARI
+
+Önceki raporlarda aşağıdaki servisler için HTTP 404 sorunları kaydedilmiştir:
+
+- `us-commerce`
+- `us-watchdog`
+
+Bu hataların güncel durumda devam edip etmediğini doğrula.
+
+Devam ediyorsa:
+
+1. Gerçek servis URL'lerini kontrol et.
+2. Cloud Run revision ve container portlarını doğrula.
+3. IAM, ingress ve OIDC ayarlarını incele.
+4. Uygulama yönlendirmelerini kontrol et.
+5. `/healthz` ve `/readyz` uç noktalarını düzelt.
+6. Sağlık sorgularının GPU başlatmadığını doğrula.
+7. Watchdog Scheduler çağrılarını test et.
+8. Cloud SQL bağlantılarını doğrula.
+9. Hata kayıtlarını merkezi log sistemine bağla.
+10. Uçtan uca HTTP kabul testlerini çalıştır.
+
+Canlı API erişimi doğrulanmadan sistemi üretime hazır ilan etme.
+
+---
+
+# 3. İSTEM-BAŞI GPU YAŞAM DÖNGÜSÜNÜ TAMAMLA
+
+Kanus.org'un temel ekonomik modeli, pahalı GPU hesaplama kaynaklarının yalnızca ihtiyaç halinde çalışmasıdır.
+
+Aşağıdaki durum makinesini uygula veya mevcut uygulamayı doğrula:
+
+STOPPED → STARTING → BOOTING → LOADING_MODEL → READY → BUSY → IDLE → STOPPING → STOPPED
+
+Hata durumları için FAILED ve RECOVERING geçişlerini destekle.
+
+### Zorunlu işlevler
+
+- GPU otomatik açılışı.
+- Eşzamanlı açılış isteklerinin birleştirilmesi.
+- Güvenli iş kuyruğu.
+- Model hazır olma denetimi.
+- Uzun görev desteği.
+- Aktif iş lease/heartbeat yönetimi.
+- Görev iptali.
+- GPU boşta kalma denetimi.
+- Varsayılan 10 dakika etkinliksizlik.
+- Kapanış öncesi aktif iş kontrolü.
+- Yeni iş geldiğinde kapanışın iptali.
+- Güvenli kapanış.
+- Sağlayıcı API'sinden gerçek kapanış doğrulaması.
+- Kapanış hatası uyarısı.
+- GPU maliyet kaydı.
+- Harcama limitleri.
+- Yeniden başlatma ve hata kurtarma.
+
+### Kaynak denetimi
+
+İncele:
+
+- `ds-a100`
+- `instance-20261030-232245`
+- `usta-wake`
+- `usta-l4`
+- `us-commerce`
+- `us-watchdog`
+- `us-idle-watchdog`
+
+Eski sürekli açık sunucuların gerçekten gerekli olup olmadığını belirle.
+
+Yeni mimari doğrulanmadan eski kaynakları kapatma.
+
+Diskleri biçimlendirme veya veri kaybına neden olacak işlemler gerçekleştirme.
+
+### Kabul testi
+
+Gerçek GPU kapalıyken:
+
+1. Kullanıcı isteği oluştur.
+2. GPU'nun açıldığını doğrula.
+3. Modelin yüklendiğini doğrula.
+4. Modelden gerçek yanıt al.
+5. Kullanım kaydını oluştur.
+6. Görevin tamamlandığını doğrula.
+7. 10 dakika etkinliksizlik koşulunu test et.
+8. GPU'nun kapandığını sağlayıcı API'sinden doğrula.
+9. Maliyet kaydını kontrol et.
+
+Aktif görev sırasında kapanma olmadığını ayrıca test et.
+
+---
+
+# 4. US PANEL YAPAY ZEKÂ AJANINI TAMAMLA
+
+US Panel'i çok aşamalı yazılım geliştirme görevlerini gerçekten tamamlayabilen bir AI geliştirme ortamına dönüştür.
+
+### Eksikse geliştir
+
+- Proje oluşturma.
+- Proje açma.
+- Güvenli klasör tarama.
+- Dosya ağacı.
+- Dosya arama.
+- Büyük dosya okuma.
+- Kod editörü.
+- Terminal.
+- Komut çalıştırma.
+- AI görev planlama.
+- Çok dosyalı kod üretimi.
+- Dosya değiştirme.
+- Değişiklik önizleme.
+- Atomik dosya uygulama.
+- Derleme.
+- Test.
+- Hata analizi.
+- Otomatik düzeltme.
+- Görev geçmişi.
+- Kesintiden sonra devam.
+- Güvenli geri alma.
+- Kullanıcı çalışma alanı izolasyonu.
+
+### Ajan döngüsü
+
+Kullanıcı görevi
+→ Proje analizi
+→ Plan
+→ Dosya okuma
+→ Kod üretimi
+→ Dosya değişiklikleri
+→ Derleme
+→ Test
+→ Hata analizi
+→ Düzeltme
+→ Yeniden test
+→ Sonuç raporu
+
+Dosya yazılmadan “dosya oluşturuldu” mesajı verme.
+
+Derleme çalıştırılmadan “derleme başarılı” mesajı verme.
+
+Test yapılmadan “testler geçti” mesajı verme.
+
+### Terminal güvenliği
+
+Komut çalıştırma sistemi:
+
+- İzole çalışma ortamı.
+- Kaynak limitleri.
+- İşlem zaman aşımı.
+- Gerçek stdout/stderr.
+- İptal desteği.
+- Çalışma dizini kontrolü.
+- Dosya yolu doğrulaması.
+- Yetki sınırları.
+- Tehlikeli işlemler için açık onay.
+
+sağlamalıdır.
+
+---
+
+# 5. DEEPSEEK MODEL ENTEGRASYONU
+
+Mevcut model altyapısını koru.
+
+Eksikse uygula:
+
+- Güvenli model API bağlantısı.
+- TLS/Bearer doğrulaması.
+- SSE streaming.
+- Token kullanımı ölçümü.
+- İstek iptali.
+- Model hazır olma kontrolü.
+- Uzun yanıtların kayıpsız işlenmesi.
+- Çok aşamalı görev bağlamı.
+- Model bağlantı hatası yönetimi.
+- Kullanıcı başına kullanım takibi.
+- Kuyruk ve eşzamanlılık kontrolü.
+- GPU bellek izleme.
+- Sağlıklı yeniden deneme.
+
+Modelin desteklediği teknik yetenekleri gereksiz uygulama kısıtlamalarıyla daraltma; güvenlik, erişim kontrolü ve veri koruma mekanizmalarını koru.
+
+---
+
+# 6. SHOPIFY, ÖDEME, LİSANS VE KREDİ SİSTEMİ
+
+Mevcut mağaza:
+
+`https://shop.kanus.org`
+
+### Tamamlanacak akış
+
+Ödeme
+→ İmzalı Shopify webhook
+→ Sipariş doğrulama
+→ Hesap oluşturma/eşleştirme
+→ Lisans oluşturma
+→ Kredi yükleme
+→ E-posta teslimatı
+→ US Panel girişi
+→ Model kullanımı
+→ Kredi düşümü
+
+Eksikse tamamla:
+
+- Shopify HMAC doğrulaması.
+- Webhook tekrar önleme.
+- İdempotent sipariş işleme.
+- Atomik kredi defteri.
+- Kredi rezervasyonu.
+- Kullanım kesinleştirme.
+- Başarısız çağrılarda tutarlı kredi iadesi.
+- İade ve iptal.
+- Lisans iptali.
+- Otomatik teslimat.
+- E-posta outbox sistemi.
+- Kullanım geçmişi.
+- Hesap ve oturum güvenliği.
+
+### Fiyatlandırma
+
+Mevcut mağaza fiyatlarını tekrar doğrula.
+
+Çoklu paketlerin tekli pakete göre daha pahalıya gelmesi sorununu analiz et.
+
+GPU maliyeti, ödeme komisyonları, vergi ve hedef kâr marjına dayalı yeni fiyatlandırma önerisi oluştur.
+
+Canlı ürün fiyatlarını onay almadan değiştirme.
+
+---
+
+# 7. GLOBAL PAZAR İÇİN EKSİK İŞLEVLER
+
+Kanus.org'u Türkiye merkezli ve uluslararası pazara uygun bir SaaS platformuna dönüştür.
+
+Marka konumlandırması:
+
+**KANUS.ORG — Yerli Teknoloji, Küresel Vizyon.**
+
+**Built in Türkiye. Designed for the World.**
+
+### 7.1. Çok dilli arayüz
+
+İlk aşamada:
+
+- Türkçe.
+- İngilizce.
+
+Destekle:
+
+- Dinamik dil değiştirme.
+- Dil dosyaları.
+- Tarih/saat biçimleri.
+- Para birimi biçimleri.
+- Çok dilli hata mesajları.
+- Çok dilli e-posta.
+- Çok dilli yardım merkezi.
+- Kullanıcı dil tercihi.
+
+Almanca, Fransızca, İspanyolca ve Arapça için genişletilebilir mimari hazırla.
+
+### 7.2. Uluslararası web sitesi
+
+Eksikse geliştir:
+
+- `/tr`
+- `/en`
+- Çok dilli ana sayfa.
+- Ürün sayfaları.
+- Fiyatlandırma.
+- İndirme.
+- Dokümantasyon.
+- API belgeleri.
+- Destek.
+- Gizlilik politikası.
+- Kullanım koşulları.
+- İade politikası.
+
+SEO için:
+
+- hreflang.
+- Canonical URL.
+- Sitemap.
+- Open Graph.
+- Schema.org.
+- Mobil uyumluluk.
+- Performans optimizasyonu.
+
+### 7.3. Uluslararası ödeme
+
+Hedef para birimleri:
+
+- TRY.
+- USD.
+- EUR.
+- GBP.
+
+İleride AED, SAR ve INR desteği için genişletilebilir yapı kur.
+
+Shopify ve alternatif ödeme sağlayıcılarını Türkiye merkezli işletme uygunluğu açısından doğrula.
+
+Araştır:
+
+- Shopify Payments.
+- Stripe.
+- PayPal.
+- Paddle.
+- Lemon Squeezy.
+- Uygun Türkiye merkezli ödeme kuruluşları.
+
+Kullanılabilirliği doğrulanmamış ödeme sağlayıcılarını canlı sisteme ekleme.
+
+### 7.4. Uluslararası SaaS paketleri
+
+Üç model hazırla:
+
+1. Pay-as-you-go.
+2. Credit Packs.
+3. Subscription.
+
+Kurumsal müşteriler için özel fiyatlandırma mimarisi ekle.
+
+Abonelik yenileme, iptal, kota ve faturalandırma akışlarını güvenli tasarla.
+
+### 7.5. Global API
+
+Eksikse geliştir:
+
+- Sürümlenmiş REST API.
+- OpenAPI dokümantasyonu.
+- API anahtarları.
+- Anahtar rotasyonu.
+- Rate limiting.
+- Kullanım kotası.
+- SSE.
+- Standart hata kodları.
+- Python SDK.
+- JavaScript/TypeScript SDK.
+- Kullanım analitiği.
+
+### 7.6. Global kullanıcı sistemi
+
+- Bireysel hesap.
+- Takım hesabı.
+- Organizasyon.
+- Rol tabanlı yetkilendirme.
+- MFA.
+- Takım kredileri.
+- API anahtarları.
+- Fatura geçmişi.
+- Denetim kayıtları.
+
+### 7.7. Veri koruma
+
+Türkiye KVKK, GDPR ve diğer hedef pazarların uygulanabilir mevzuatı için teknik boşluk analizi yap.
+
+Eksikse geliştir:
+
+- Veri dışa aktarma.
+- Veri silme talebi.
+- Saklama politikaları.
+- Kullanıcı veri izolasyonu.
+- Denetim kayıtları.
+- Gizlilik tercihleri.
+- Veri aktarımı envanteri.
+- Güvenli yedekleme.
+
+Hukuki uyumluluğu yalnızca kodun varlığına dayanarak tamamlanmış ilan etme.
+
+---
+
+# 8. KÜRESEL GPU ALTYAPISI
+
+Mevcut A100 altyapısını koru.
+
+Önce tek bölgeden uluslararası erişim performansını ölç.
+
+ABD, Avrupa ve diğer hedef bölgeler için:
+
+- API gecikmesi.
+- İlk token süresi.
+- Toplam yanıt süresi.
+- Ağ maliyeti.
+- Kullanıcı deneyimi.
+
+ölç.
+
+Gerçek talep oluşmadan yeni pahalı GPU bölgeleri açma.
+
+Gelecekte çok bölgeli altyapıya geçiş için sağlayıcı adaptörlerini ve yönlendirme sistemini modüler tasarla.
+
+---
+
+# 9. ÇOK KULLANICILI PERFORMANS
+
+Test et:
+
+- 1 kullanıcı.
+- 5 kullanıcı.
+- 10 kullanıcı.
+- 25 kullanıcı.
+- 50 kullanıcı.
+
+Her testte ölç:
+
+- p50/p95/p99 gecikme.
+- Hata oranı.
+- Kuyruk süresi.
+- GPU kullanımı.
+- Kredi tutarlılığı.
+- İstek başına maliyet.
+- Model yanıt bütünlüğü.
+
+Kapasite aşımında kontrollü kuyruk ve geri basınç uygula.
+
+---
+
+# 10. WINDOWS EXE VE KURULUM
+
+Mevcut Windows uygulamasını derle.
+
+Doğrula:
+
+- Uygulama açılışı.
+- Kullanıcı girişi.
+- API bağlantısı.
+- Proje oluşturma.
+- Dosya okuma/yazma.
+- Terminal.
+- AI ajanı.
+- Model yanıtı.
+- Test çalıştırma.
+- Kredi görüntüleme.
+- Oturum kurtarma.
+- Hata yönetimi.
+
+Gerçek Windows testi yapılmadıysa cross-compile sonucunu çalışma kabulü olarak gösterme.
+
+---
+
+# 11. KAPSAMLI GERÇEK PROJE TESTİ
+
+US Panel'in yapay zekâ ajanına çok dosyalı bir uygulama oluşturt.
+
+Örnek:
+
+**Çok Kullanıcılı SaaS Proje Yönetim Sistemi**
+
+Gereksinimler:
+
+- Backend.
+- Frontend.
+- PostgreSQL.
+- Kimlik doğrulama.
+- Rol tabanlı yetkilendirme.
+- Görev yönetimi.
+- REST API.
+- Testler.
+- Docker.
+- CI/CD.
+- Dokümantasyon.
+
+Ajanın ürettiği projeyi gerçekten derle, çalıştır ve test et.
+
+Hataları modele geri göndererek düzeltme döngüsü uygula.
+
+Belirlenen işlem ve maliyet sınırları içinde testleri sürdür.
+
+---
+
+# 12. GÜVENLİK VE TİCARİ KABUL
+
+Zorunlu denetimler:
+
+- IAM.
+- TLS.
+- Secret Manager.
+- API yetkilendirme.
+- Rate limiting.
+- SQL injection.
+- Komut enjeksiyonu.
+- SSRF.
+- Dosya yolu güvenliği.
+- Kullanıcı izolasyonu.
+- Webhook doğrulama.
+- Kredi yarış durumları.
+- Veritabanı yedekleme.
+- Geri yükleme.
+- Bağımlılık taraması.
+- Loglarda gizli veri sızıntısı.
+- Üretim geri alma planı.
+
+Kritik güvenlik açıkları giderilmeden üretim kabulü verme.
+
+---
+
+# 13. OTOMATİK TEST VE DÜZELTME DÖNGÜSÜ
+
+Her değişiklik için:
+
+1. İlgili testi oluştur.
+2. Testi çalıştır.
+3. Hatanın kök nedenini belirle.
+4. Kodu düzelt.
+5. Testi tekrar çalıştır.
+6. Regresyon testlerini çalıştır.
+7. Sonucu kaydet.
+
+Mevcut Go projesi için uygun olduğunda:
+
+- `go test ./...`
+- `go test -race ./...`
+- `go vet ./...`
+
+çalıştır.
+
+Testler gerçekten çalıştırılmadıysa başarılı gösterme.
+
+---
+
+# 14. CANLI İŞLEM VE ONAY SINIRLARI
+
+Aşağıdakileri yetkili yerel veya test ortamında otomatik gerçekleştir:
+
+- Kod inceleme.
+- Kod geliştirme.
+- Yerel derleme.
+- Otomatik test.
+- Mock/sandbox entegrasyon testi.
+- Güvenlik analizi.
+- Dry-run.
+- Dokümantasyon.
+- Geri alınabilir test ortamı değişiklikleri.
+
+Aşağıdakiler için yeni açık onay iste:
+
+- Canlı Shopify fiyat değişikliği.
+- Gerçek ödeme veya iade.
+- Ücretli bulut kaynağı oluşturma.
+- Canlı VM durdurma/silme.
+- Veri silme.
+- Disk biçimlendirme.
+- Yıkıcı migration.
+- Kamuya açık üretim dağıtımı.
+- Gerçek müşteri e-postaları.
+- Geri dönüşü zor altyapı değişiklikleri.
+
+Önceki onayları yalnızca geçerli oldukları kapsamda kullan.
+
+---
+
+# 15. SONUÇ VE RAPORLAMA
+
+Aşağıdaki dosyaları oluştur veya güncelle:
+
+- `KANUS_CURRENT_STATE.md`
+- `KANUS_REMAINING_ISSUES.md`
+- `KANUS_COMPLETED_FEATURES.md`
+- `KANUS_TEST_RESULTS.md`
+- `KANUS_GPU_REPORT.md`
+- `KANUS_SHOPIFY_REPORT.md`
+- `KANUS_GLOBAL_READINESS.md`
+- `KANUS_SECURITY_REPORT.md`
+- `KANUS_COST_REPORT.md`
+- `KANUS_RELEASE_READINESS.md`
+
+Her işlev için:
+
+- Önceki durum.
+- Yapılan değişiklik.
+- Değiştirilen dosyalar.
+- Test komutu.
+- Test sonucu.
+- Kalan risk.
+- Üretim durumu.
+
+kaydet.
+
+Kabul durumları:
+
+- PASS.
+- FAIL.
+- BLOCKED.
+- NOT TESTED.
+
+Bütün kritik kabul testleri PASS olmadan üretime hazır sonucu verme.
+
+---
+
+# 16. ÇALIŞMA ÖNCELİĞİ VE NİHAİ TALİMAT
+
+Aşağıdaki sırayı uygula:
+
+**P0 — Kritik işlevsellik**
+
+Cloud Run, GPU açılış/kapanış, model bağlantısı, Shopify, kredi ve lisans.
+
+**P1 — US Panel**
+
+Ajan, terminal, proje üretimi, dosya işlemleri, test ve Windows EXE.
+
+**P2 — Global-ready ürün**
+
+İngilizce arayüz, çok dilli web sitesi, uluslararası ödeme uygunluğu, API ve SDK.
+
+**P3 — Ticari güvenlik**
+
+KVKK/GDPR teknik kontrolleri, performans, veri izolasyonu, yedekleme ve maliyet.
+
+**P4 — Uluslararası lansman**
+
+Beta, kullanıcı edinimi, global pazarlama ve kurumsal özellikler.
+
+Her aşamada mevcut çalışan işlevleri koru.
+
+Eksik özellikleri gerçekten kodla.
+
+Hataları gerçekten onar.
+
+Testleri gerçekten çalıştır.
+
+Kritik engelleri gizleme.
+
+**Son hedef: Kanus.org'u yerli ve milli kimliğini koruyan, uluslararası pazara açılmaya hazır, güvenli ve ticari olarak kullanılabilir bir AI yazılım geliştirme platformuna dönüştürmek.**
+
+Şimdi mevcut kaynak kodu incele, kalan işleri doğrula ve güvenli geliştirmeleri uygulamaya başla.

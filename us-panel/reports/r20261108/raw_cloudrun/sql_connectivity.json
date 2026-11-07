@@ -1,0 +1,9 @@
+{
+  "target": "Cloud SQL public IP:5432",
+  "command": "socket.create_connection((CloudSQL_PRIMARY_IP,5432),timeout=5)",
+  "time_istanbul": "2026-11-08T00:24:36.453768+03:00",
+  "credentials_accessed": false,
+  "sql_executed": [],
+  "tcp": "BLOCKED",
+  "error": "TimeoutError"
+}

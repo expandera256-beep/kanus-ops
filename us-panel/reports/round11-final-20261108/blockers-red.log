@@ -1,0 +1,58 @@
+--- FAIL: TestWakeBuiltInDefaultsAndDisable (0.00s)
+    wake_defaults_test.go:25: defaults unavailable: <nil>
+FAIL
+FAIL	kiyas/cmd/us-license-hook	0.007s
+--- FAIL: TestNonLoopbackPinRequiredUnlessExplicitSystemCA (0.00s)
+    gpu_final_test.go:32: missing mandatory default pin path
+--- FAIL: TestPEMPinsUseNormalTLSAndWrongPinsFail (0.00s)
+    gpu_final_test.go:71: PEM mode must use normal root/SAN verification, not InsecureSkipVerify
+--- FAIL: TestGPUWakeInfoLogLine (0.00s)
+    gpu_pin_test.go:149: log satırında "pin_ok=yes" yok: 2026/11/08 00:15:26 gpu_wake INFO method=GET scheme=https host=127.0.0.1:35167 path=/a100/status status=200 pin_matched=yes duration_ms=2 err=-
+2026/11/08 00:15:26 model proxy: upstream stream ended without [DONE] after finish_reason=stop; reservation released (total=1)
+2026/11/08 00:15:26 model proxy: upstream stream ended without [DONE] after finish_reason=stop; reservation released (total=2)
+--- FAIL: TestReadinessInvalidatesEveryUpstreamFailure (0.21s)
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/500 (0.00s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 200
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/501 (0.00s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 200
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/502 (0.00s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 200
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/504 (0.01s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 200
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/599 (0.00s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 200
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/malformed-json (0.00s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 502
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/incomplete-json (0.00s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 502
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/json-read-cut (0.00s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 502
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/wrong-sse-type (0.00s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 200
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/sse-cut (0.00s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 200
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/sse-malformed (0.00s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 200
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/sse-truncated (0.03s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 200
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/timeout-json (0.07s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 504
+    --- FAIL: TestReadinessInvalidatesEveryUpstreamFailure/timeout-sse (0.07s)
+        readiness_failure_test.go:83: upstream failure retained readiness cache
+        readiness_failure_test.go:92: next request skipped readiness probe: 200
+FAIL
+FAIL	kiyas/licensesrv	0.225s
+FAIL

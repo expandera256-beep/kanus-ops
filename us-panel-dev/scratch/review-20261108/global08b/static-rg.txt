@@ -1,0 +1,13 @@
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/gui.html:836:  fetch("/api/pricing?lang=" + encodeURIComponent(lang), { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(d => { if (d && typeof d.text === "string" && d.text) el.textContent = d.text; }).catch(() => {});
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/pricing.go:39:// data-i18n text); the GUI switches it via /api/pricing after applyLocale.
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/pricing.go:72:// pricingHandler: GET /api/pricing?lang=xx -> {"text": ...} for live
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/i18n/pref_windows.go:153:	if info.NumberOfLinks != 1 || info.FileSizeHigh != 0 || info.FileSizeLow > maxPrefSize {
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/i18n/pref_unix.go:70:	if st.Mode&unix.S_IFMT != unix.S_IFREG || st.Size > maxPrefSize {
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/i18n/fx_cache.go:7:// reparse-point traversal, regular file only, at most maxPrefSize bytes,
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/i18n/fx_cache.go:26:// WriteRaw atomically replaces the file with raw (<= maxPrefSize bytes).
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/i18n/fx_cache.go:28:	if len(raw) == 0 || len(raw) > maxPrefSize {
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/i18n/pref.go:64:// maxPrefSize bounds the preference file; larger files are ignored.
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/i18n/pref.go:65:const maxPrefSize = 4096
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/i18n/pref.go:207:// FILE_OPEN_REPARSE_POINT), must be regular, and at most maxPrefSize bytes
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/i18n/pref.go:272:	raw, err := io.ReadAll(io.LimitReader(r, maxPrefSize+1))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/i18n/pref.go:276:	if len(raw) > maxPrefSize {

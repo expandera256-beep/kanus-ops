@@ -1,0 +1,20 @@
+test_chain_san_match (test_cert_monitor.Tests.test_chain_san_match) ... ok
+test_expired_critical (test_cert_monitor.Tests.test_expired_critical) ... ok
+test_expiry_21_warn (test_cert_monitor.Tests.test_expiry_21_warn) ... ok
+test_expiry_25_ok (test_cert_monitor.Tests.test_expiry_25_ok) ... ok
+test_expiry_26_ok (test_cert_monitor.Tests.test_expiry_26_ok) ... ok
+test_expiry_7_critical (test_cert_monitor.Tests.test_expiry_7_critical) ... ok
+test_expiry_below25_warn (test_cert_monitor.Tests.test_expiry_below25_warn) ... ok
+test_missing_intermediate (test_cert_monitor.Tests.test_missing_intermediate) ... ok
+test_no_http (test_cert_monitor.Tests.test_no_http) ... ok
+test_no_renewal_warn (test_cert_monitor.Tests.test_no_renewal_warn) ... ok
+test_renewal_evidence (test_cert_monitor.Tests.test_renewal_evidence) ... ok
+test_san_mismatch (test_cert_monitor.Tests.test_san_mismatch) ... ok
+test_san_required (test_cert_monitor.Tests.test_san_required) ... ok
+test_timeout_five_seconds (test_cert_monitor.Tests.test_timeout_five_seconds) ... ok
+test_untrusted_root (test_cert_monitor.Tests.test_untrusted_root) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.049s
+
+OK

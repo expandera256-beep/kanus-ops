@@ -1,0 +1,6 @@
+=== RUN   TestReviewPreferencesTrailingJunkRejected
+    review_trailing_test.go:31: trailing junk want 400 got 200 {"accountId":"ae78a6f420b8ae4901f0daa031a0f2dd","cookieAnalytics":false,"marketingConsent":true,"productUpdates":false,"source":"","updatedAt":"2026-11-07T21:13:58.034690661Z"}
+--- FAIL: TestReviewPreferencesTrailingJunkRejected (0.65s)
+FAIL
+FAIL	kiyas/internal/privacy	0.652s
+FAIL

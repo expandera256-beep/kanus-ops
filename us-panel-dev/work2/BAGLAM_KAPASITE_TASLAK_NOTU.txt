@@ -1,0 +1,14 @@
+US — DİNAMİK BAĞLAM TASLAĞI
+
+DURUM: Go testleri ve derleme bu ortamda çalıştırılmadı. Canlı model ve Windows üzerinde doğrulanmadı. Üretimde kullanmadan önce test edin.
+
+Değişiklikler: Seçili modelin aynı tek sunucudaki /v1/models yanıtından max_model_len, context_length veya context_window alanı ve varsa max_output_tokens okunur. Tam model kimliği eşleşmezse veya bilgi gelmezse önceki güvenli varsayılanlar uygulanır. Birden çok geçit varsa otomatik tespit kullanılmaz. US_CONTEXT_TOKENS ortam değişkeni önceliklidir; örneğin 32768. İsteğe bağlı US_OUTPUT_TOKENS çıktı bütçesini ayarlar. Bu değerleri sunucunun gerçek sınırlarıyla uyumlu seçin. Otomatik yanıt bütçesi bağlamın dörtte biri ve en fazla 8192 tokendir; sunucunun bildirdiği çıktı sınırıyla ayrıca kısıtlanır.
+
+Girdi bütçesi token sayacı yerine bayt cinsinden ihtiyatlı bir sınır ve ek pay kullanır; bu tüm modellerde gerçek tokenizasyonun garantisi değildir. Sunucu hata verirse işlem başarısız olur. Bağlama sığan uzun istem özetlenmeden gönderilir; sığmayanlar parçalara bölünerek özetlenir. Özetlerde bilgi kaybı mümkündür. Kısmen okunmuş dosya üzerine yazılmaz. Dosya okuma en fazla 8 MiB ile sınırlıdır; tüm model kapasitesinin doldurulacağı garanti edilmez.
+
+Windows örneği, uygulamayı aynı komut penceresinden başlatın:
+set US_CONTEXT_TOKENS=32768
+set US_OUTPUT_TOKENS=4096
+US.exe
+
+Doğrulama için kiyas/term klasöründe: go test ./... ve GOOS=windows GOARCH=amd64 ortam değişkenleriyle go build. Bağımlılıklar ve hedefe uygun Go araçları gereklidir. Gerçek modelle sınır, Türkçe ve kod içeren istemler ile eksik dosya koruması ayrıca test edilmelidir.

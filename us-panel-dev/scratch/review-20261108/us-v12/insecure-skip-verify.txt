@@ -1,0 +1,4 @@
+licensesrv/gpu_pin.go:24:// hash for a self-signed leaf would need InsecureSkipVerify, which is not
+licensesrv/gpu_pin_test.go:60:// (no request reaches the server) instead of using InsecureSkipVerify.
+licensesrv/gpu_final_test.go:74:	if !ok || tr.TLSClientConfig == nil || tr.TLSClientConfig.InsecureSkipVerify || tr.TLSClientConfig.RootCAs == nil {
+licensesrv/gpu_final_test.go:75:		t.Fatal("PEM mode must use normal root/SAN verification, not InsecureSkipVerify")

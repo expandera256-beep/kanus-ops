@@ -1,0 +1,4 @@
+patching file licensesrv/privacy_ops.go
+patching file licensesrv/store.go
+patching file licensesrv/privacy_ops_test.go
+patching file licensesrv/privacy_v4_test.go

@@ -1,0 +1,8 @@
+test_backup_restore (__main__.DataSecurity.test_backup_restore) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.086s
+
+OK
+
+exit_code=0

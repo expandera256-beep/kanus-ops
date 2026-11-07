@@ -1,0 +1,3784 @@
+{
+  "timestamp": "2026-11-06T09:40:55.065495+03:00",
+  "zone": "TSİ / Europe/Istanbul",
+  "method": "repeated simultaneous closed-loop bursts, at least50 measured requests per concurrency after warmup; local synthetic accounts; response bodies discarded",
+  "cpu_shared_warning": "affinity does not reserve cores; other agents/cgroup scheduling can affect timings",
+  "variants": [
+    {
+      "label": "baseline_dot10_prior_binary",
+      "source": "LOCAL_SYNTHETIC_LOGIN_NOT_GPU",
+      "metadata": {
+        "binary_sha256": "75e92824da67814b8cda3b93e7dc7898244618ee519355cbb1412281bef54e40",
+        "matches_prior_perf_benchmark": true,
+        "previous_source_fingerprint": {
+          "go_source_sha256_before": "15a0449599ea8df47aad76ed386fecd5de6af6c2a8300325ffe0354dab5a294f",
+          "go_source_sha256_after": "15a0449599ea8df47aad76ed386fecd5de6af6c2a8300325ffe0354dab5a294f",
+          "binary_sha256": "75e92824da67814b8cda3b93e7dc7898244618ee519355cbb1412281bef54e40",
+          "source_stable_during_build": true
+        },
+        "revision_label": ".10 prior measured binary; no commit/release attestation"
+      },
+      "cpu_method": "taskset affinity + GOMAXPROCS=2; shared, not exclusive CPUs",
+      "cpus": [
+        0,
+        1
+      ],
+      "affinity_start": {
+        "Name": "hook-login-base",
+        "Threads": "5",
+        "Cpus_allowed_list": "0-1",
+        "sched_getaffinity": [
+          0,
+          1
+        ],
+        "all_thread_affinities": [
+          "0,1"
+        ]
+      },
+      "bcrypt_cost": [
+        12
+      ],
+      "fixture_users": 4,
+      "rate_limiter_isolation": "unique TEST-NET X-Real-IP per request on loopback trusted-proxy path; no actual remote traffic",
+      "levels": [
+        {
+          "concurrency": 1,
+          "n": 50,
+          "warmup_excluded": 4,
+          "measurement_seconds": 10.613518359998125,
+          "p50_ms": 209.957,
+          "p95_ms": 220.195,
+          "p99_ms": 235.544,
+          "status_counts": {
+            "200": 50
+          },
+          "error_rate": 0.0,
+          "throughput_requests_per_second": 4.710973148022974,
+          "throughput_success_per_second": 4.710973148022974,
+          "http503_rate": 0.0,
+          "http503_retry_after_rate_among_503": null,
+          "http503_elapsed_max_ms": null,
+          "queue_wait_ms": "NOT_EXPOSED",
+          "queue_wait_upper_bound_ms": 238.78793399853748,
+          "samples": [
+            {
+              "status": 200,
+              "elapsed_ms": 213.87877400047728,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 218.39223799906904,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 221.66977199958637,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.10032899701037,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 232.16824699920835,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.11621200159425,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 211.3041519987746,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.4063760014251,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.34423799917568,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 216.5498270005628,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.29722000073525,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.993114000099,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.31663000010303,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 213.53191700109164,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.75375899818027,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 238.78793399853748,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.32010799879208,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.3041859989171,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.16805299930274,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 208.93509899906348,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.13144900259795,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 208.71449800324626,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.1041089988721,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.19481500115944,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.09409999876516,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.19553199928487,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.19076800055336,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.37227600006736,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.32727399870055,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.19803500146372,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.4782360001991,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.70833799947286,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.65550300024915,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.33125999727054,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.37898899865104,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 213.99640900199302,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.94601100028376,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.96859899969422,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.46362800168572,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.47834300043178,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.19175400194945,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 217.91435300110606,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.42591000150423,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.15851500123972,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.15181300026597,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 216.35555399916484,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 214.42188099899795,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 211.16427600281895,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 213.19902100003674,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.7117060002347,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            }
+          ],
+          "success_only_p50_ms": 209.957,
+          "success_only_p95_ms": 220.195
+        },
+        {
+          "concurrency": 5,
+          "n": 50,
+          "warmup_excluded": 4,
+          "measurement_seconds": 4.424457924000308,
+          "p50_ms": 407.768,
+          "p95_ms": 469.055,
+          "p99_ms": 485.632,
+          "status_counts": {
+            "200": 40,
+            "429": 10
+          },
+          "error_rate": 0.19999999999999996,
+          "throughput_requests_per_second": 11.300819413102984,
+          "throughput_success_per_second": 9.040655530482386,
+          "http503_rate": 0.0,
+          "http503_retry_after_rate_among_503": null,
+          "http503_elapsed_max_ms": null,
+          "queue_wait_ms": "NOT_EXPOSED",
+          "queue_wait_upper_bound_ms": 487.8333599990583,
+          "samples": [
+            {
+              "status": 200,
+              "elapsed_ms": 472.5478230029694,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 464.78585099976044,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 487.8333599990583,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 65.94892300199717,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 483.34027799865,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 409.7956959994917,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 61.488024999562185,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 373.807632997341,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 405.5158509981993,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 438.561971001036,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 54.89671299801557,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 405.8030289997987,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 427.1296260012605,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 443.223432997911,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 403.66551899933256,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 417.0633899993845,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 452.1069999973406,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 98.85954499986838,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 419.6188730020367,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 446.07145100235357,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 410.41191700060153,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 406.94966099908925,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 434.65152900171233,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 391.7643889981264,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 56.49693899977137,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 410.82635299972026,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 380.4181460000109,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 51.94987399954698,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 372.450494000077,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 429.48816799980705,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 420.45388000042294,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 411.4553019971936,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 419.8615419991256,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 38.92316999917966,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 390.22425299845054,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 401.34706900062156,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 438.86507199931657,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 41.33476299830363,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 440.1798709986906,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 401.60342599847354,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 370.31196499810903,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 75.85045199812157,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 398.37012000134564,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 440.89218899898697,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 419.3663080004626,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 73.20217099913862,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 429.64125399885233,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 395.42242999959853,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 408.5856720012089,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 371.50931900032447,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            }
+          ],
+          "success_only_p50_ms": 414.259,
+          "success_only_p95_ms": 473.087
+        },
+        {
+          "concurrency": 10,
+          "n": 50,
+          "warmup_excluded": 4,
+          "measurement_seconds": 2.2603295109984174,
+          "p50_ms": 66.623,
+          "p95_ms": 511.374,
+          "p99_ms": 527.693,
+          "status_counts": {
+            "429": 30,
+            "200": 20
+          },
+          "error_rate": 0.6,
+          "throughput_requests_per_second": 22.12066858248218,
+          "throughput_success_per_second": 8.848267432992872,
+          "http503_rate": 0.0,
+          "http503_retry_after_rate_among_503": null,
+          "http503_elapsed_max_ms": null,
+          "queue_wait_ms": "NOT_EXPOSED",
+          "queue_wait_upper_bound_ms": 529.5520219988248,
+          "samples": [
+            {
+              "status": 429,
+              "elapsed_ms": 60.33692400160362,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 39.48422100074822,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 60.555608997674426,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 424.1547530000389,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 60.49773700215155,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 431.1277599990717,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 431.8466309996438,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 430.9250689984765,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 37.52238400193164,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 37.58382199885091,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 57.22496499947738,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 58.49213999681524,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 429.91274499945575,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 401.80268000040087,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 57.147939998685615,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 411.5796020014386,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 57.54860199886025,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 57.21788700247998,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 58.761410997249186,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 371.73451200214913,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 39.76835100183962,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 39.74300600020797,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 404.0810340011376,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 39.242016999196494,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 413.8353919988731,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 39.69165599846747,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 38.92988699954003,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 433.3058899974276,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 393.3238799982064,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 39.54559499834431,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 60.81257900223136,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 60.531536997586954,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 60.905073001777055,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 430.5206230019394,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 391.38417100184597,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 61.3009080007032,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 371.08072900082334,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 60.56625700148288,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 61.787050999555504,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 406.4234479992592,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 517.8076119991601,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 67.2801900000195,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 67.00977299988153,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 525.7580459983728,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 503.51158600096824,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 67.1202000012272,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 529.5520219988248,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 67.47093200101517,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 66.23565099653206,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 67.3467639971932,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            }
+          ],
+          "success_only_p50_ms": 427.034,
+          "success_only_p95_ms": 525.948
+        },
+        {
+          "concurrency": 20,
+          "n": 60,
+          "warmup_excluded": 4,
+          "measurement_seconds": 1.305212406001374,
+          "p50_ms": 46.065,
+          "p95_ms": 422.607,
+          "p99_ms": 444.026,
+          "status_counts": {
+            "429": 48,
+            "200": 12
+          },
+          "error_rate": 0.8,
+          "throughput_requests_per_second": 45.96952934566027,
+          "throughput_success_per_second": 9.193905869132053,
+          "http503_rate": 0.0,
+          "http503_retry_after_rate_among_503": null,
+          "http503_elapsed_max_ms": null,
+          "queue_wait_ms": "NOT_EXPOSED",
+          "queue_wait_upper_bound_ms": 458.2414090000384,
+          "samples": [
+            {
+              "status": 429,
+              "elapsed_ms": 41.85261900056503,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 44.21308000019053,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 41.74937400239287,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 420.13988100006827,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 412.2429610033578,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 42.39520600094693,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 410.9604250006669,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 42.453714999282965,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 422.37742699944647,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 41.31244200107176,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 43.036316998041,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 42.0339629999944,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 81.42683999903966,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 80.55220800088136,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 100.51219399974798,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 80.75751100113848,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 79.45660299810697,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 99.45244399932562,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 99.02951800177107,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 36.65212199848611,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 34.81061099955696,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 34.38449199893512,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 390.41656100016553,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 35.75384499708889,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 35.857460999977775,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 36.120273998676566,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 415.12243199758814,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 36.60449600283755,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 421.7214869968302,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 35.637103999761166,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 407.52707499996177,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 37.03916000085883,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 43.50609800167149,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 46.34478500156547,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 45.78567000135081,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 42.407018001540564,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 42.500378000113415,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 42.297749001591,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 18.58930100206635,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 41.97511000165832,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 79.12522799961152,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 39.466539998102235,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 40.20063400093932,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 458.2414090000384,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 434.1482689997065,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 419.9520610018226,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 39.45220400055405,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 38.55574000044726,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 39.662391998717794,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 426.96075799904065,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 79.31433499834384,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 79.45200899848714,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 80.69839000017964,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 80.66838300146628,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 39.89260900198133,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 80.30631499786978,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 87.31109600194031,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 80.78697299788473,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 80.31812099943636,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            },
+            {
+              "status": 429,
+              "elapsed_ms": 47.17252699992969,
+              "retry_after": null,
+              "valid_response": false,
+              "transport_error": null
+            }
+          ],
+          "success_only_p50_ms": 420.046,
+          "success_only_p95_ms": 444.99
+        }
+      ],
+      "affinity_end": {
+        "Name": "hook-login-base",
+        "Threads": "5",
+        "Cpus_allowed_list": "0-1",
+        "sched_getaffinity": [
+          0,
+          1
+        ],
+        "all_thread_affinities": [
+          "0,1"
+        ]
+      },
+      "cpu_limit_verified": true,
+      "effective_bcrypt_config": {
+        "policy": "legacy fail-fast; binary snapshot attested, source revision not release-attested"
+      }
+    },
+    {
+      "label": "round11_default2_wait10s",
+      "source": "LOCAL_SYNTHETIC_LOGIN_NOT_GPU",
+      "metadata": {
+        "source_path": "/workspace/us-panel/work2/kiyas/term",
+        "go_source_sha256": "92de20323f1e1f4d52b3c243682003cda92f5d256f1f78b6eefe75419c22052c",
+        "accounts_go_sha256": "48db78b904f2b49da823f30fc40751c714755a2330def1b0f736366aac6274b4",
+        "binary_sha256": "dab2348e8f51893a2c61d1888e14ca4a0dea8cb63ec54226a428c7eedaefccfd",
+        "source_stable_during_build": true,
+        "revision_label": "round11 semaphore feature detected in current source",
+        "default_bcrypt_concurrency": 2,
+        "default_bcrypt_wait_seconds": 10
+      },
+      "cpu_method": "taskset affinity + GOMAXPROCS=2; shared, not exclusive CPUs",
+      "cpus": [
+        0,
+        1
+      ],
+      "affinity_start": {
+        "Name": "hook-login-roun",
+        "Threads": "5",
+        "Cpus_allowed_list": "0-1",
+        "sched_getaffinity": [
+          0,
+          1
+        ],
+        "all_thread_affinities": [
+          "0,1"
+        ]
+      },
+      "bcrypt_cost": [
+        12
+      ],
+      "fixture_users": 4,
+      "rate_limiter_isolation": "unique TEST-NET X-Real-IP per request on loopback trusted-proxy path; no actual remote traffic",
+      "levels": [
+        {
+          "concurrency": 1,
+          "n": 50,
+          "warmup_excluded": 4,
+          "measurement_seconds": 10.682658982001158,
+          "p50_ms": 210.314,
+          "p95_ms": 230.798,
+          "p99_ms": 240.413,
+          "status_counts": {
+            "200": 50
+          },
+          "error_rate": 0.0,
+          "throughput_requests_per_second": 4.680482648022676,
+          "throughput_success_per_second": 4.680482648022676,
+          "http503_rate": 0.0,
+          "http503_retry_after_rate_among_503": null,
+          "http503_elapsed_max_ms": null,
+          "queue_wait_ms": "NOT_EXPOSED",
+          "queue_wait_upper_bound_ms": 244.77092400047695,
+          "samples": [
+            {
+              "status": 200,
+              "elapsed_ms": 235.8763500014902,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 244.77092400047695,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 211.66247200017096,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.6058130011661,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.1394370001799,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.13372899687965,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.75409600234707,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.38481499999762,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.48700300141354,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.38345399938407,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.9275159998797,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.92180800042115,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 211.4614950005489,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 231.37379099716782,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.4877870006021,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.31890700032818,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 211.92706500005443,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.2007969986298,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 226.5979090007022,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.05411000057939,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.4121189986472,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.74485100305174,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 211.00690100138308,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 211.87379199909628,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 214.23172499999055,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 211.41243099918938,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.93327799806139,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 212.2928309981944,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 230.09359199932078,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 214.27131699965685,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 220.06098099882365,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 215.6022880008095,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 221.26523800034192,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.926176998124,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.24867599771824,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.02553699872806,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.9805979996745,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.4239860016387,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.69952599989483,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.81114999813144,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.14053999897442,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.39862600062042,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.75505199749023,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.62933500049985,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.1409559980093,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.19544999924256,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.1473000002443,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.308993999206,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.76063499983866,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.09553399926517,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            }
+          ],
+          "success_only_p50_ms": 210.314,
+          "success_only_p95_ms": 230.798
+        },
+        {
+          "concurrency": 5,
+          "n": 50,
+          "warmup_excluded": 4,
+          "measurement_seconds": 9.463449627000955,
+          "p50_ms": 507.024,
+          "p95_ms": 1045.679,
+          "p99_ms": 1047.288,
+          "status_counts": {
+            "200": 50
+          },
+          "error_rate": 0.0,
+          "throughput_requests_per_second": 5.283485617902043,
+          "throughput_success_per_second": 5.283485617902043,
+          "http503_rate": 0.0,
+          "http503_retry_after_rate_among_503": null,
+          "http503_elapsed_max_ms": null,
+          "queue_wait_ms": "NOT_EXPOSED",
+          "queue_wait_upper_bound_ms": 1048.3695219991205,
+          "samples": [
+            {
+              "status": 200,
+              "elapsed_ms": 419.4150420007645,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1046.1625999996613,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 421.5480349994323,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 836.0237710003275,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 833.4926940005971,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1048.3695219991205,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 417.61100700023235,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 843.1856070019421,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 837.2995050012833,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 419.9627249981859,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 838.1116639975517,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 835.9970519995841,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1045.4602099998738,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 419.95084600057453,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 416.22055399784585,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 417.9887099999178,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1045.843359999708,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 835.8250840028632,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 416.3212019993807,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 840.6619330016838,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 831.0640260024229,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 423.34562099858886,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1045.2920879979501,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 837.1909599991341,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 416.1699670003145,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 832.0870479983569,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 837.1675939997658,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 417.31793800136074,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1045.4775629987125,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 419.6737470010703,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1045.473486999981,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 834.4570959998237,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 417.81548600192764,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 419.6591849977267,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 837.7383330007433,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 496.37866400007624,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 283.3877160010161,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 712.8790770002524,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 498.2665140014433,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 283.4038019973377,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 278.01330200236407,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 490.22447500101407,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 498.47937199956505,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 700.9526709989586,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 261.69995600139373,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 506.92966700080433,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 507.1176829987962,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 297.8353969992895,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 715.5372840024938,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 298.093360997882,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            }
+          ],
+          "success_only_p50_ms": 507.024,
+          "success_only_p95_ms": 1045.679
+        },
+        {
+          "concurrency": 10,
+          "n": 50,
+          "warmup_excluded": 4,
+          "measurement_seconds": 5.4007097909998265,
+          "p50_ms": 640.719,
+          "p95_ms": 1087.375,
+          "p99_ms": 1116.604,
+          "status_counts": {
+            "200": 50
+          },
+          "error_rate": 0.0,
+          "throughput_requests_per_second": 9.258042356455439,
+          "throughput_success_per_second": 9.258042356455439,
+          "http503_rate": 0.0,
+          "http503_retry_after_rate_among_503": null,
+          "http503_elapsed_max_ms": null,
+          "queue_wait_ms": "NOT_EXPOSED",
+          "queue_wait_upper_bound_ms": 1122.7557150014036,
+          "samples": [
+            {
+              "status": 200,
+              "elapsed_ms": 891.5239079979074,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 236.18598300163285,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1110.2014509997389,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 448.4565050006495,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1100.4747090009914,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 454.82051099679666,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 668.215532998147,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 243.04975499762804,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 659.7270339989336,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 880.1389650034253,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1051.583626998763,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1051.8201039994892,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 842.4884740015841,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 215.76834499865072,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 633.2504299971333,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 424.7152140014805,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 843.7706670010812,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 636.0647340006835,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 425.64129199672607,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 216.24957300082315,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.30961599899456,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1044.9875080012134,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 837.2203830003855,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 838.0621800024528,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 626.6855079993547,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 628.9903090000735,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 420.4457879968686,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1045.7389170005627,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 210.2748879988212,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 420.346471000812,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 846.5729449999344,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1063.3039770000323,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 854.7998370013374,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1054.8852959982469,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 436.5638850031246,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 645.3739070020674,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 209.62729900202248,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 422.26947599920095,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 213.485018000938,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 633.5872449999442,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 440.69945400042343,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 279.1879329997755,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 910.1984199987783,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 702.7199809999729,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 862.2541639997507,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 489.34548900069785,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1122.7557150014036,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1071.3644720017328,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 227.48335999858682,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 650.6737620002241,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            }
+          ],
+          "success_only_p50_ms": 640.719,
+          "success_only_p95_ms": 1087.375
+        },
+        {
+          "concurrency": 20,
+          "n": 60,
+          "warmup_excluded": 4,
+          "measurement_seconds": 6.515252279998094,
+          "p50_ms": 1225.297,
+          "p95_ms": 1321.782,
+          "p99_ms": 1401.198,
+          "status_counts": {
+            "200": 60
+          },
+          "error_rate": 0.0,
+          "throughput_requests_per_second": 9.209159894575494,
+          "throughput_success_per_second": 9.209159894575494,
+          "http503_rate": 0.0,
+          "http503_retry_after_rate_among_503": null,
+          "http503_elapsed_max_ms": null,
+          "queue_wait_ms": "NOT_EXPOSED",
+          "queue_wait_upper_bound_ms": 1401.9237800021074,
+          "samples": [
+            {
+              "status": 200,
+              "elapsed_ms": 210.32323699910194,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 837.8524620020471,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 629.330949002906,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1256.4810529984243,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 421.0619370023778,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 419.06788399865036,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 629.752513999847,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1047.5169399978768,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1255.6068459998642,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1046.0099760020967,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 211.5725610019581,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 838.840437001636,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1258.7711859996489,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1256.802809999499,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1256.8939409975428,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1254.475163997995,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1257.5291419998393,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1318.3295679991716,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1320.5899729982775,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1263.170471000194,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 642.1356860009837,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 427.68789199908497,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 850.7019030002994,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 639.8372820003715,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1060.0593149974884,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1268.7587949985755,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1270.8799250031007,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 427.91789800321567,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 851.1906979983905,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 212.18663399849902,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 211.16208299645223,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1059.7681859981094,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1266.5481749972969,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1266.1303569984739,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1264.24642100028,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1260.6387870000617,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1266.7903779984044,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1257.2436459995515,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1257.5595849993988,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1264.6587350027403,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 648.5742139993818,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 217.7284179997514,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1077.815354001359,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1401.9237800021074,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 475.97246899749734,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 432.2183229996881,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1196.1180750004132,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 715.443517001404,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 211.22390699747484,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 974.3602910020854,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 868.4686519991374,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1293.7584850005805,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1400.694410000142,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1286.399905999133,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1280.6415340019157,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1344.42887899786,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1273.3797620021505,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1313.5788510007842,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1262.0808309984568,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            },
+            {
+              "status": 200,
+              "elapsed_ms": 1262.3742270006915,
+              "retry_after": null,
+              "valid_response": true,
+              "transport_error": null
+            }
+          ],
+          "success_only_p50_ms": 1225.297,
+          "success_only_p95_ms": 1321.782
+        }
+      ],
+      "affinity_end": {
+        "Name": "hook-login-roun",
+        "Threads": "6",
+        "Cpus_allowed_list": "0-1",
+        "sched_getaffinity": [
+          0,
+          1
+        ],
+        "all_thread_affinities": [
+          "0,1"
+        ]
+      },
+      "cpu_limit_verified": true,
+      "effective_bcrypt_config": {
+        "concurrency": 2,
+        "wait_seconds": 10
+      }
+    }
+  ],
+  "round11_feature_present": true,
+  "round11_checks": {
+    "20_concurrent_http503_rate": 0.0,
+    "retry_after_fraction_of_503": null,
+    "retry_after_check": "NOT_EXERCISED_NO_503",
+    "queue_metric": "not exposed; only client end-to-end upper bound and source/config available",
+    "all_observed_response_upper_bounds_below10s": true,
+    "timeout_branch_check": "not established by successful normal samples"
+  },
+  "diagnostic_overload": {
+    "label": "round11_overload_wait1s_DIAGNOSTIC_NOT_DEFAULT",
+    "source": "LOCAL_SYNTHETIC_LOGIN_NOT_GPU",
+    "metadata": {
+      "source_path": "/workspace/us-panel/work2/kiyas/term",
+      "go_source_sha256": "92de20323f1e1f4d52b3c243682003cda92f5d256f1f78b6eefe75419c22052c",
+      "accounts_go_sha256": "48db78b904f2b49da823f30fc40751c714755a2330def1b0f736366aac6274b4",
+      "binary_sha256": "dab2348e8f51893a2c61d1888e14ca4a0dea8cb63ec54226a428c7eedaefccfd",
+      "source_stable_during_build": true,
+      "revision_label": "round11 semaphore feature detected in current source",
+      "default_bcrypt_concurrency": 2,
+      "default_bcrypt_wait_seconds": 10
+    },
+    "cpu_method": "taskset affinity + GOMAXPROCS=2; shared, not exclusive CPUs",
+    "cpus": [
+      0,
+      1
+    ],
+    "affinity_start": {
+      "Name": "hook-login-roun",
+      "Threads": "5",
+      "Cpus_allowed_list": "0-1",
+      "sched_getaffinity": [
+        0,
+        1
+      ],
+      "all_thread_affinities": [
+        "0,1"
+      ]
+    },
+    "bcrypt_cost": [
+      12
+    ],
+    "fixture_users": 4,
+    "rate_limiter_isolation": "unique TEST-NET X-Real-IP per request on loopback trusted-proxy path; no actual remote traffic",
+    "levels": [
+      {
+        "concurrency": 20,
+        "n": 60,
+        "warmup_excluded": 4,
+        "measurement_seconds": 5.794797841001127,
+        "p50_ms": 1034.523,
+        "p95_ms": 1076.478,
+        "p99_ms": 1152.029,
+        "status_counts": {
+          "503": 10,
+          "200": 50
+        },
+        "error_rate": 0.16666666666666663,
+        "throughput_requests_per_second": 10.354114439587459,
+        "throughput_success_per_second": 8.628428699656215,
+        "http503_rate": 0.16666666666666666,
+        "http503_retry_after_rate_among_503": 1.0,
+        "http503_elapsed_max_ms": 1064.8015330007183,
+        "queue_wait_ms": "NOT_EXPOSED",
+        "queue_wait_upper_bound_ms": 1152.5004300019646,
+        "samples": [
+          {
+            "status": 503,
+            "elapsed_ms": 1038.9774850009417,
+            "retry_after": "5",
+            "valid_response": false,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 840.6919310000376,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 417.58813499836833,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1151.7012629992678,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 503,
+            "elapsed_ms": 1037.8295440023066,
+            "retry_after": "5",
+            "valid_response": false,
+            "transport_error": null
+          },
+          {
+            "status": 503,
+            "elapsed_ms": 1038.4838499994657,
+            "retry_after": "5",
+            "valid_response": false,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1152.5004300019646,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 503,
+            "elapsed_ms": 1038.4094859982724,
+            "retry_after": "5",
+            "valid_response": false,
+            "transport_error": null
+          },
+          {
+            "status": 503,
+            "elapsed_ms": 1040.9879819999333,
+            "retry_after": "5",
+            "valid_response": false,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 417.7932819984562,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 503,
+            "elapsed_ms": 1039.1978619991278,
+            "retry_after": "5",
+            "valid_response": false,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 848.9549750011065,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 943.7200350002968,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 942.2312610004155,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 743.7352960005228,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 724.9391139994259,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 754.9174129999301,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 951.9746260011743,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 962.6610320010514,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 743.1263310027134,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 836.3020559991128,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1045.5273450024833,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 836.5724760005833,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 416.8472479977936,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 626.8638219989953,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 209.51328400042257,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1045.3583799971966,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 209.75894900038838,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 417.79710600167164,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 503,
+            "elapsed_ms": 1033.7489769990498,
+            "retry_after": "5",
+            "valid_response": false,
+            "transport_error": null
+          },
+          {
+            "status": 503,
+            "elapsed_ms": 1035.296890000609,
+            "retry_after": "5",
+            "valid_response": false,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 627.1620489969791,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1043.8822639989667,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1043.7607780004328,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1044.651481002802,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1043.9065110003867,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1044.234487999347,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1043.2525899996108,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1043.499054001586,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1042.7568839986634,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 427.9787209998176,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1077.5759829994058,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 868.4802600000694,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 644.1783950031095,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 426.93323000275996,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 660.0731610014918,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 503,
+            "elapsed_ms": 1064.8015330007183,
+            "retry_after": "5",
+            "valid_response": false,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 209.83109699955094,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 209.4690960002481,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 853.7546289990132,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1063.5334239996155,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 503,
+            "elapsed_ms": 1064.2043049992935,
+            "retry_after": "5",
+            "valid_response": false,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1076.420222001616,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1062.4265129990818,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1066.8433850005385,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1054.8506230006751,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1049.4562690000748,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1041.6759770014323,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1056.7466149987013,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          },
+          {
+            "status": 200,
+            "elapsed_ms": 1033.6310800012143,
+            "retry_after": null,
+            "valid_response": true,
+            "transport_error": null
+          }
+        ],
+        "success_only_p50_ms": 942.976,
+        "success_only_p95_ms": 1077.056
+      }
+    ],
+    "affinity_end": {
+      "Name": "hook-login-roun",
+      "Threads": "5",
+      "Cpus_allowed_list": "0-1",
+      "sched_getaffinity": [
+        0,
+        1
+      ],
+      "all_thread_affinities": [
+        "0,1"
+      ]
+    },
+    "cpu_limit_verified": true,
+    "effective_bcrypt_config": {
+      "concurrency": 2,
+      "wait_seconds": 1
+    },
+    "checks": {
+      "saw_http503": true,
+      "all_503_have_retry_after5": true,
+      "configured_wait_seconds": 1,
+      "not_default10s_test": true
+    }
+  },
+  "semaphore_unit_test": {
+    "source": "LOCAL_UNIT_TEST_NOT_GPU",
+    "test": "TestBcryptThirdLoginWaitsThen503",
+    "configured_test_wait_seconds": 1,
+    "not_default_10_second_timeout_test": true,
+    "cpus": [
+      0,
+      1
+    ],
+    "GOMAXPROCS": 2,
+    "exit_code": 0,
+    "duration_seconds": 2.88810577500044,
+    "source_sha256_before": "d8c461eb91aa15d4eff9f72d9bb828f52122f800c536b341f8ee168140cd867d",
+    "source_sha256_after": "d8c461eb91aa15d4eff9f72d9bb828f52122f800c536b341f8ee168140cd867d",
+    "raw_runtime_output_persisted": false
+  }
+}

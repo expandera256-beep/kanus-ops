@@ -1,0 +1,1923 @@
+diff --git a/gui.go b/gui.go
+index 08ad169..4f6d349 100644
+--- a/gui.go
++++ b/gui.go
+@@ -10,7 +10,6 @@ import (
+ 	"kiyas/i18n"
+ 	"net"
+ 	"net/http"
+-	"net/url"
+ 	"os"
+ 	"path/filepath"
+ 	"strconv"
+@@ -149,7 +148,8 @@ func guiMux(s *session) http.Handler {
+ 		w.Header().Set("Cache-Control", "no-store")
+ 		writeJSON(w, map[string]string{"version": buildVersion})
+ 	})
+-	mux.Handle("/api/i18n", i18n.Handler(nil))
++	mux.Handle("/api/i18n", i18n.Handler(langPref.Get))
++	mux.Handle("/api/lang", i18n.PrefHandler(langPref, sameOriginRequest))
+ 	mux.HandleFunc("/api/files", g.filesPage)
+ 	mux.HandleFunc("/api/source", g.sourceRange)
+ 	mux.HandleFunc("/api/act", g.act)
+@@ -250,12 +250,9 @@ func (g *guiServer) act(w http.ResponseWriter, r *http.Request) {
+ 		http.Error(w, "yöntem yok", http.StatusMethodNotAllowed)
+ 		return
+ 	}
+-	if origin := r.Header.Get("Origin"); origin != "" {
+-		u, err := url.Parse(origin)
+-		if err != nil || u.Scheme != "http" || !strings.EqualFold(u.Host, r.Host) {
+-			http.Error(w, "Kaynak doğrulanamadı.", http.StatusForbidden)
+-			return
+-		}
++	if !sameOriginRequest(r) {
++		http.Error(w, "Kaynak doğrulanamadı.", http.StatusForbidden)
++		return
+ 	}
+ 	var body struct {
+ 		Op         string `json:"op"`
+diff --git a/gui.html b/gui.html
+index 5ab084f..8863942 100644
+--- a/gui.html
++++ b/gui.html
+@@ -98,7 +98,7 @@
+       <div>
+         <h1>US <span class="muted" data-i18n="gui.workspace">/ çalışma alanı</span></h1>
+         <p id="buildversion" class="muted"></p>
+-        <label class="muted"><span data-i18n="gui.lang.label">Dil</span> <select id="langsel" aria-label="Dil / Language"><option value="tr">Türkçe</option></select></label>
++        <label class="muted"><span data-i18n="gui.lang.label">Dil</span> <select id="langsel" aria-label="Dil / Language"><option value="tr">Türkçe</option></select></label><span id="langstatus" class="muted" role="alert" hidden></span>
+         <p class="muted" data-i18n="gui.intro">Modelle çalışın, projelerinizi yönetin ve sonuçları izleyin.</p><p id="tunneltop" class="muted" role="status">Hesap bağlantısı bekleniyor.</p>
+       </div>
+     </div>
+@@ -841,7 +841,33 @@ function loadLocale(lang) {
+   const q = lang ? "?lang=" + encodeURIComponent(lang) : "";
+   return fetch("/api/i18n" + q, { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(doc => { if (doc) applyLocale(doc); }).catch(() => {});
+ }
+-document.querySelector("#langsel").addEventListener("change", ev => loadLocale(ev.target.value));
++// Persist the choice first; only switch when the server saved it. On any
++// failure keep the previous language, restore the selector and say so.
++function saveLanguage(lang) {
++  return fetch("/api/lang", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lang }) })
++    .then(r => r.ok).catch(() => false);
++}
++function showLangSaveError(lang) {
++  const el = document.querySelector("#langstatus");
++  return fetch("/api/i18n?lang=" + encodeURIComponent(lang), { cache: "no-store" })
++    .then(r => r.ok ? r.json() : null).catch(() => null)
++    .then(doc => {
++      const msg = doc && doc.messages && doc.messages["gui.lang.save_failed"];
++      el.textContent = typeof msg === "string" ? msg : "Dil tercihi kaydedilemedi. / Could not save the language preference.";
++      el.hidden = false;
++    });
++}
++document.querySelector("#langsel").addEventListener("change", ev => {
++  const sel = ev.target;
++  const prev = i18nState.lang;
++  const lang = sel.value;
++  document.querySelector("#langstatus").hidden = true;
++  return saveLanguage(lang).then(saved => {
++    if (saved) return loadLocale(lang);
++    sel.value = prev;
++    return showLangSaveError(prev);
++  });
++});
+ loadLocale("");
+ load();
+ </script>
+diff --git a/gui_lang.go b/gui_lang.go
+new file mode 100644
+index 0000000..325d3e3
+--- /dev/null
++++ b/gui_lang.go
+@@ -0,0 +1,34 @@
++package main
++
++import (
++	"net/http"
++	"net/url"
++	"path/filepath"
++	"strings"
++
++	"kiyas/i18n"
++)
++
++// langPref stores the panel language next to the existing desk.json
++// (honours US_DESK, defaults to <UserConfigDir>/us/lang.json). The desk
++// directory is the trusted root: resolved once (symlinked HOME/config is
++// fine) and pinned as a handle; nothing below it may be a symlink.
++var langPref = &i18n.PrefStore{Name: "lang.json", Root: func() string {
++	desk := deskPath()
++	if desk == "" {
++		return ""
++	}
++	return filepath.Dir(desk)
++}}
++
++// sameOriginRequest is the shared Origin check for mutating panel routes
++// (/api/act, /api/lang): an Origin header, when present, must be
++// http://<same host>; requests without Origin (non-browser) are allowed.
++func sameOriginRequest(r *http.Request) bool {
++	origin := r.Header.Get("Origin")
++	if origin == "" {
++		return true
++	}
++	u, err := url.Parse(origin)
++	return err == nil && u.Scheme == "http" && strings.EqualFold(u.Host, r.Host)
++}
+diff --git a/gui_lang_security_test.go b/gui_lang_security_test.go
+new file mode 100644
+index 0000000..74fd4fd
+--- /dev/null
++++ b/gui_lang_security_test.go
+@@ -0,0 +1,68 @@
++package main
++
++import (
++	"bytes"
++	"net/http"
++	"net/http/httptest"
++	"os"
++	"strings"
++	"testing"
++)
++
++func postLang(t *testing.T, h http.Handler, origin string, body []byte) *httptest.ResponseRecorder {
++	t.Helper()
++	r := httptest.NewRequest(http.MethodPost, "http://127.0.0.1:4477/api/lang", bytes.NewReader(body))
++	r.Header.Set("Content-Type", "application/json")
++	if origin != "" {
++		r.Header.Set("Origin", origin)
++	}
++	w := httptest.NewRecorder()
++	h.ServeHTTP(w, r)
++	return w
++}
++
++func langHandler(t *testing.T) http.Handler {
++	s := newView("langsec")
++	s.root = t.TempDir()
++	_ = os.Remove(langPref.Path())
++	t.Cleanup(func() { _ = os.Remove(langPref.Path()) })
++	return guiMux(&s)
++}
++
++// G-03: foreign Origin must get 403 like /api/act; same-origin still works.
++func TestLangPostRejectsForeignOrigin(t *testing.T) {
++	h := langHandler(t)
++	if w := postLang(t, h, "https://evil.example", []byte(`{"lang":"en"}`)); w.Code != http.StatusForbidden {
++		t.Fatalf("foreign origin status %d", w.Code)
++	}
++	if langPref.Get() == "en" {
++		t.Fatal("foreign origin changed preference")
++	}
++	if w := postLang(t, h, "http://127.0.0.1:4477", []byte(`{"lang":"en"}`)); w.Code != http.StatusOK {
++		t.Fatalf("same origin status %d", w.Code)
++	}
++	if w := postLang(t, h, "", []byte(`{"lang":"tr"}`)); w.Code != http.StatusOK {
++		t.Fatalf("no origin status %d", w.Code)
++	}
++}
++
++// G-04: trailing data / second document / oversized body are rejected.
++func TestLangPostRejectsTrailingAndOversized(t *testing.T) {
++	h := langHandler(t)
++	for name, body := range map[string][]byte{
++		"trailing garbage": []byte(`{"lang":"en"} xxx`),
++		"second object":    []byte(`{"lang":"en"}{"lang":"tr"}`),
++		"2MB body":         append([]byte(`{"lang":"en"}`), bytes.Repeat([]byte(" "), 2<<20)...),
++	} {
++		w := postLang(t, h, "", body)
++		if w.Code != http.StatusBadRequest && w.Code != http.StatusRequestEntityTooLarge {
++			t.Errorf("%s: status %d", name, w.Code)
++		}
++	}
++	if langPref.Get() == "en" {
++		t.Fatal("rejected body changed preference")
++	}
++	if w := postLang(t, h, "", []byte(`{"lang":"en"}`+"\n")); w.Code != http.StatusOK || !strings.Contains(w.Body.String(), "en") {
++		t.Fatalf("valid body with newline: %d", w.Code)
++	}
++}
+diff --git a/gui_lang_test.go b/gui_lang_test.go
+new file mode 100644
+index 0000000..7143776
+--- /dev/null
++++ b/gui_lang_test.go
+@@ -0,0 +1,38 @@
++package main
++
++import (
++	"net/http"
++	"net/http/httptest"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++func TestGUILangPreferencePersistsNextToDesk(t *testing.T) {
++	dir := t.TempDir()
++	t.Setenv("US_DESK", filepath.Join(dir, "desk.json"))
++	s := newView("lang")
++	s.root = t.TempDir()
++	h := guiMux(&s)
++	get := func() string {
++		w := httptest.NewRecorder()
++		h.ServeHTTP(w, httptest.NewRequest("GET", "http://127.0.0.1/api/i18n", nil))
++		return w.Body.String()
++	}
++	if !strings.Contains(get(), `"lang":"tr"`) {
++		t.Fatal("default must stay tr")
++	}
++	r := httptest.NewRequest("POST", "http://127.0.0.1/api/lang", strings.NewReader(`{"lang":"en"}`))
++	r.Header.Set("Content-Type", "application/json")
++	w := httptest.NewRecorder()
++	h.ServeHTTP(w, r)
++	if w.Code != http.StatusOK {
++		t.Fatal(w.Code, w.Body.String())
++	}
++	if langPref.Path() != filepath.Join(filepath.Dir(deskPath()), "lang.json") || langPref.Get() != "en" {
++		t.Fatal("pref not stored next to desk")
++	}
++	if !strings.Contains(get(), `"lang":"en"`) {
++		t.Fatal("pref not applied")
++	}
++}
+diff --git a/gui_lang_ui_test.mjs b/gui_lang_ui_test.mjs
+new file mode 100644
+index 0000000..8070557
+--- /dev/null
++++ b/gui_lang_ui_test.mjs
+@@ -0,0 +1,61 @@
++// R2-01 UI: a failed /api/lang save must revert the selector, keep the
++// previous language and show a localized error. No browser required.
++import { readFileSync } from 'node:fs';
++import { runInNewContext } from 'node:vm';
++
++const html = readFileSync(new URL('./gui.html', import.meta.url), 'utf8');
++const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
++const start = script.indexOf('// i18n: dynamic language switching');
++const end = script.indexOf('load();', start);
++if (start < 0 || end < 0) throw new Error('i18n block not found');
++const block = script.slice(start, end);
++
++const MSG = {
++  tr: { 'gui.lang.save_failed': 'Dil tercihi kaydedilemedi; önceki dil korunuyor.' },
++  en: { 'gui.lang.save_failed': 'Could not save the language preference; keeping the previous language.' },
++};
++
++async function scenario(name, apiLang, expect) {
++  const els = {};
++  const el = (id) => (els[id] ||= { id, value: '', textContent: '', hidden: true, listeners: {}, dataset: {},
++    addEventListener(t, f) { this.listeners[t] = f; }, replaceChildren(...c) { this.children = c; } });
++  const calls = [];
++  const document = {
++    documentElement: { lang: 'tr', dir: 'ltr' },
++    querySelector: (sel) => el(sel.replace('#', '')),
++    querySelectorAll: () => [],
++    createElement: () => ({}),
++  };
++  const fetch = (url, opts = {}) => {
++    calls.push([url, opts.method || 'GET']);
++    if (url.startsWith('/api/lang')) return apiLang();
++    const lang = (url.match(/lang=(\w+)/) || [, 'tr'])[1];
++    const doc = { lang, dir: 'ltr', languages: [{ code: 'tr', name: 'Türkçe' }, { code: 'en', name: 'English' }], messages: MSG[lang] };
++    return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve(doc) });
++  };
++  runInNewContext(block, { document, fetch, encodeURIComponent, Array, Promise, console });
++  await new Promise((r) => setTimeout(r, 20));
++  const sel = el('langsel');
++  sel.value = 'en';
++  await sel.listeners.change({ target: sel });
++  await new Promise((r) => setTimeout(r, 20));
++  const loadedEn = calls.some(([u]) => u === '/api/i18n?lang=en');
++  const status = el('langstatus');
++  const got = { value: sel.value, loadedEn, htmlLang: document.documentElement.lang, statusShown: status.hidden === false, statusText: status.textContent };
++  const ok = Object.entries(expect).every(([k, v]) => got[k] === v);
++  console.log(`${ok ? 'PASS' : 'FAIL'} ${name} ${JSON.stringify(got)}`);
++  return ok;
++}
++
++const results = [
++  await scenario('500 reverts and shows TR error', () => Promise.resolve({ ok: false, status: 500 }),
++    { value: 'tr', loadedEn: false, htmlLang: 'tr', statusShown: true, statusText: MSG.tr['gui.lang.save_failed'] }),
++  await scenario('503 not-persisted reverts', () => Promise.resolve({ ok: false, status: 503 }),
++    { value: 'tr', loadedEn: false, statusShown: true }),
++  await scenario('network error reverts', () => Promise.reject(new Error('down')),
++    { value: 'tr', loadedEn: false, statusShown: true }),
++  await scenario('200 switches to en', () => Promise.resolve({ ok: true, status: 200 }),
++    { value: 'en', loadedEn: true, htmlLang: 'en', statusShown: false }),
++];
++if (results.includes(false)) { console.error('gui lang UI test FAILED'); process.exit(1); }
++console.log('gui lang UI test passed');
+diff --git a/i18n/locales/en.json b/i18n/locales/en.json
+index d0b4692..6c26f0e 100644
+--- a/i18n/locales/en.json
++++ b/i18n/locales/en.json
+@@ -29,6 +29,7 @@
+   "gui.files.up": "Up",
+   "gui.intro": "Work with the model, manage your projects and follow the results.",
+   "gui.lang.label": "Language",
++  "gui.lang.save_failed": "Could not save the language preference; keeping the previous language.",
+   "gui.log": "Log",
+   "gui.models.title": "Models",
+   "gui.nav.files": "Files",
+diff --git a/i18n/locales/tr.json b/i18n/locales/tr.json
+index bfa8fa3..e7e5a85 100644
+--- a/i18n/locales/tr.json
++++ b/i18n/locales/tr.json
+@@ -29,6 +29,7 @@
+   "gui.files.up": "Üst",
+   "gui.intro": "Modelle çalışın, projelerinizi yönetin ve sonuçları izleyin.",
+   "gui.lang.label": "Dil",
++  "gui.lang.save_failed": "Dil tercihi kaydedilemedi; önceki dil korunuyor.",
+   "gui.log": "Günlük",
+   "gui.models.title": "Modeller",
+   "gui.nav.files": "Dosya",
+diff --git a/i18n/pref.go b/i18n/pref.go
+new file mode 100644
+index 0000000..329854e
+--- /dev/null
++++ b/i18n/pref.go
+@@ -0,0 +1,345 @@
++package i18n
++
++import (
++	"encoding/json"
++	"errors"
++	"fmt"
++	"io"
++	"mime"
++	"net/http"
++	"os"
++	"path/filepath"
++	"strings"
++	"sync"
++	"sync/atomic"
++)
++
++// PrefStore persists the user's language choice as a small JSON file
++// ({"lang":"en"}) under a trusted config root (the panel's desk.json
++// directory).
++//
++// Root is resolved ONCE per distinct value (filepath.EvalSymlinks, so a
++// legitimately symlinked HOME/config such as /home -> /var/home works) and
++// pinned as a directory handle. Everything below the root (Name and its
++// intermediate directories) is opened relative to that handle without
++// following symlinks or reparse points; the file is written as a temp file
++// and atomically renamed relative to the same handle. Re-pointing the root
++// symlink later does not move writes. If the root cannot be opened the
++// choice is kept in memory only and Set returns ErrNotPersisted.
++type PrefStore struct {
++	mu    sync.Mutex
++	Root  func() string
++	Name  string // relative path under Root; default "lang.json"
++	roots map[string]*prefRoot
++	mem   map[string]string
++}
++
++type prefRoot struct {
++	h       rootHandle
++	err     error
++	refs    int  // in-flight Get/Set using h; guarded by PrefStore.mu
++	evicted bool // removed from the cache; closed when refs reaches 0
++	closed  bool
++}
++
++// maxRoots bounds the pinned-root cache. The GUI uses one fixed root, so
++// one entry is enough; a new Root() value evicts the old one and its
++// handle is closed as soon as no Get/Set is using it (same on Unix and
++// Windows), keeping the descriptor count constant.
++const maxRoots = 1
++
++// Root handle accounting (process-wide). Tests use these to measure leaks
++// directly instead of OS-wide handle counts, which include Go runtime and
++// AV/EDR handles on Windows.
++var rootOpened, rootClosed atomic.Int64
++
++// rootCloseHook is nil in production; tests set it to verify that a closed
++// handle is really invalid.
++var rootCloseHook func(rootHandle)
++
++type prefDoc struct {
++	Lang string `json:"lang"`
++}
++
++// maxPrefSize bounds the preference file; larger files are ignored.
++const maxPrefSize = 4096
++
++// errUnsafePath is returned when a component below the root is a symlink,
++// reparse point or not a regular file/directory.
++var errUnsafePath = errors.New("i18n: unsafe preference path")
++
++// ErrNotPersisted means the config root is unavailable; the choice is
++// kept in memory for this process only.
++var ErrNotPersisted = errors.New("i18n: language preference could not be saved")
++
++// ErrUnsupported is returned for languages without a locale file.
++var ErrUnsupported = errors.New("i18n: unsupported language")
++
++func (p *PrefStore) name() ([]string, error) {
++	n := p.Name
++	if n == "" {
++		n = "lang.json"
++	}
++	n = filepath.ToSlash(n)
++	if strings.HasPrefix(n, "/") || filepath.IsAbs(n) || filepath.VolumeName(n) != "" {
++		return nil, errUnsafePath
++	}
++	parts := strings.Split(n, "/")
++	for _, s := range parts {
++		if s == "" || s == "." || s == ".." || strings.ContainsAny(s, "\\:") {
++			return nil, errUnsafePath
++		}
++	}
++	return parts, nil
++}
++
++// root returns the pinned root for the current Root() value, opening it on
++// first use. Only this short lookup holds the mutex; file I/O does not.
++func (p *PrefStore) root() (string, *prefRoot) {
++	if p == nil || p.Root == nil {
++		return "", nil
++	}
++	key := p.Root()
++	if key == "" {
++		return "", nil
++	}
++	p.mu.Lock()
++	defer p.mu.Unlock()
++	if r, ok := p.roots[key]; ok {
++		r.refs++
++		return key, r
++	}
++	if p.roots == nil {
++		p.roots = map[string]*prefRoot{}
++	}
++	for len(p.roots) >= maxRoots {
++		for k, old := range p.roots {
++			delete(p.roots, k)
++			old.evicted = true
++			p.closeIfIdleLocked(old)
++			break
++		}
++	}
++	r := &prefRoot{}
++	resolved, err := resolveRoot(key)
++	if err == nil {
++		r.h, err = openRoot(resolved)
++		if err == nil {
++			rootOpened.Add(1)
++		}
++	}
++	r.err = err
++	r.refs = 1
++	p.roots[key] = r
++	return key, r
++}
++
++// release ends one use of r returned by root(); it must not be called with
++// p.mu held.
++func (p *PrefStore) release(r *prefRoot) {
++	if r == nil {
++		return
++	}
++	p.mu.Lock()
++	defer p.mu.Unlock()
++	r.refs--
++	p.closeIfIdleLocked(r)
++}
++
++func (p *PrefStore) closeIfIdleLocked(r *prefRoot) {
++	if r.evicted && r.refs <= 0 && r.err == nil && !r.closed {
++		r.closed = true
++		closeRoot(r.h)
++		rootClosed.Add(1)
++		if rootCloseHook != nil {
++			rootCloseHook(r.h)
++		}
++	}
++}
++
++// Close releases the pinned root handles. In-flight calls finish first;
++// later calls re-open the root on demand.
++func (p *PrefStore) Close() error {
++	if p == nil {
++		return nil
++	}
++	p.mu.Lock()
++	defer p.mu.Unlock()
++	for k, r := range p.roots {
++		delete(p.roots, k)
++		r.evicted = true
++		p.closeIfIdleLocked(r)
++	}
++	return nil
++}
++
++// Path reports the (unresolved) preference file path for diagnostics.
++func (p *PrefStore) Path() string {
++	if p == nil || p.Root == nil || p.Root() == "" {
++		return ""
++	}
++	n := p.Name
++	if n == "" {
++		n = "lang.json"
++	}
++	return filepath.Join(p.Root(), filepath.FromSlash(n))
++}
++
++func (p *PrefStore) memGet(key string) string {
++	p.mu.Lock()
++	defer p.mu.Unlock()
++	return p.mem[key]
++}
++
++func resolveRoot(dir string) (string, error) {
++	abs, err := filepath.Abs(dir)
++	if err != nil {
++		return "", err
++	}
++	if err := os.MkdirAll(abs, 0o700); err != nil {
++		return "", err
++	}
++	return filepath.EvalSymlinks(abs)
++}
++
++// Get returns the stored, supported language or "" (caller uses TR).
++// Files are opened without following symlinks (O_NOFOLLOW|O_NONBLOCK /
++// FILE_OPEN_REPARSE_POINT), must be regular, and at most maxPrefSize bytes
++// are read. The mutex is never held during file I/O.
++func (p *PrefStore) Get() string {
++	key, r := p.root()
++	if r == nil {
++		return ""
++	}
++	defer p.release(r)
++	if r.err != nil {
++		return p.memGet(key)
++	}
++	parts, err := p.name()
++	if err != nil {
++		return ""
++	}
++	raw, err := readPrefFile(r.h, parts)
++	if err != nil {
++		return ""
++	}
++	var d prefDoc
++	if json.Unmarshal(raw, &d) != nil {
++		return ""
++	}
++	b, err := Load()
++	if err != nil || !b.has(normalize(d.Lang)) {
++		return ""
++	}
++	return normalize(d.Lang)
++}
++
++// Set validates and stores lang below the pinned root.
++func (p *PrefStore) Set(lang string) error {
++	b, err := Load()
++	if err != nil {
++		return err
++	}
++	lang = normalize(lang)
++	if !b.has(lang) {
++		return ErrUnsupported
++	}
++	key, r := p.root()
++	if r == nil {
++		return ErrNotPersisted
++	}
++	defer p.release(r) // runs after the Unlock deferred below
++	if r.err != nil {
++		p.mu.Lock()
++		if p.mem == nil {
++			p.mem = map[string]string{}
++		}
++		p.mem[key] = lang
++		p.mu.Unlock()
++		return fmt.Errorf("%w: %v", ErrNotPersisted, r.err)
++	}
++	parts, err := p.name()
++	if err != nil {
++		return err
++	}
++	raw, _ := json.Marshal(prefDoc{Lang: lang})
++	p.mu.Lock() // serialize writers; operations below never block on FIFOs
++	defer p.mu.Unlock()
++	return writePrefFile(r.h, parts, raw)
++}
++
++func readLimited(r io.Reader) ([]byte, error) {
++	raw, err := io.ReadAll(io.LimitReader(r, maxPrefSize+1))
++	if err != nil {
++		return nil, err
++	}
++	if len(raw) > maxPrefSize {
++		return nil, errUnsafePath
++	}
++	return raw, nil
++}
++
++// PrefHandler serves GET/POST /api/lang. POST requires a single JSON
++// document ({"lang":"en"}) of at most maxBodySize bytes; allow (if set)
++// must accept the request (same Origin check as /api/act).
++func PrefHandler(p *PrefStore, allow func(*http.Request) bool) http.Handler {
++	const maxBodySize = 4096
++	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		w.Header().Set("Cache-Control", "no-store")
++		switch r.Method {
++		case http.MethodGet:
++			lang := p.Get()
++			if lang == "" {
++				lang = Default
++			}
++			w.Header().Set("Content-Type", "application/json; charset=utf-8")
++			_ = json.NewEncoder(w).Encode(prefDoc{Lang: lang})
++		case http.MethodPost:
++			if allow != nil && !allow(r) {
++				http.Error(w, "forbidden origin", http.StatusForbidden)
++				return
++			}
++			if mt, _, _ := mime.ParseMediaType(r.Header.Get("Content-Type")); mt != "application/json" {
++				http.Error(w, "json required", http.StatusUnsupportedMediaType)
++				return
++			}
++			dec := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxBodySize))
++			var d prefDoc
++			err := dec.Decode(&d)
++			if err == nil {
++				if extra := dec.Decode(&struct{}{}); extra != io.EOF {
++					err = errors.New("trailing data")
++					if extra != nil {
++						err = extra
++					}
++				}
++			}
++			if err != nil {
++				var tooBig *http.MaxBytesError
++				if errors.As(err, &tooBig) {
++					http.Error(w, "request too large", http.StatusRequestEntityTooLarge)
++					return
++				}
++				http.Error(w, "bad request", http.StatusBadRequest)
++				return
++			}
++			if err := p.Set(d.Lang); err != nil {
++				if errors.Is(err, ErrUnsupported) {
++					http.Error(w, "unsupported language", http.StatusBadRequest)
++					return
++				}
++				if errors.Is(err, ErrNotPersisted) {
++					http.Error(w, "language preference could not be saved (kept for this session only)", http.StatusServiceUnavailable)
++					return
++				}
++				http.Error(w, "could not save", http.StatusInternalServerError)
++				return
++			}
++			w.Header().Set("Content-Type", "application/json; charset=utf-8")
++			_ = json.NewEncoder(w).Encode(prefDoc{Lang: normalize(d.Lang)})
++		default:
++			w.Header().Set("Allow", "GET, POST")
++			http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
++		}
++	})
++}
+diff --git a/i18n/pref_handles_other_test.go b/i18n/pref_handles_other_test.go
+new file mode 100644
+index 0000000..b6f8e14
+--- /dev/null
++++ b/i18n/pref_handles_other_test.go
+@@ -0,0 +1,20 @@
++//go:build !linux && !windows
++
++package i18n
++
++import (
++	"testing"
++
++	"golang.org/x/sys/unix"
++)
++
++func openHandleCount(t *testing.T) int {
++	t.Helper()
++	t.Skip("handle count not implemented on this OS")
++	return 0
++}
++
++func handleValid(h rootHandle) bool {
++	_, err := unix.FcntlInt(uintptr(h), unix.F_GETFD, 0)
++	return err == nil
++}
+diff --git a/i18n/pref_handles_unix_test.go b/i18n/pref_handles_unix_test.go
+new file mode 100644
+index 0000000..00c146a
+--- /dev/null
++++ b/i18n/pref_handles_unix_test.go
+@@ -0,0 +1,24 @@
++//go:build linux
++
++package i18n
++
++import (
++	"os"
++	"testing"
++
++	"golang.org/x/sys/unix"
++)
++
++func openHandleCount(t *testing.T) int {
++	t.Helper()
++	ents, err := os.ReadDir("/proc/self/fd")
++	if err != nil {
++		t.Skip("/proc/self/fd unavailable:", err)
++	}
++	return len(ents)
++}
++
++func handleValid(h rootHandle) bool {
++	_, err := unix.FcntlInt(uintptr(h), unix.F_GETFD, 0)
++	return err == nil
++}
+diff --git a/i18n/pref_handles_windows_test.go b/i18n/pref_handles_windows_test.go
+new file mode 100644
+index 0000000..f17db6a
+--- /dev/null
++++ b/i18n/pref_handles_windows_test.go
+@@ -0,0 +1,34 @@
++//go:build windows
++
++package i18n
++
++import (
++	"testing"
++	"unsafe"
++
++	"golang.org/x/sys/windows"
++)
++
++var (
++	kernel32                  = windows.NewLazySystemDLL("kernel32.dll")
++	procGetProcessHandleCount = kernel32.NewProc("GetProcessHandleCount")
++	procGetHandleInformation  = kernel32.NewProc("GetHandleInformation")
++)
++
++func openHandleCount(t *testing.T) int {
++	t.Helper()
++	var n uint32
++	r, _, err := procGetProcessHandleCount.Call(uintptr(windows.CurrentProcess()), uintptr(unsafe.Pointer(&n)))
++	if r == 0 {
++		t.Fatal("GetProcessHandleCount:", err)
++	}
++	return int(n)
++}
++
++// handleValid: GetHandleInformation fails with ERROR_INVALID_HANDLE once
++// the handle is closed.
++func handleValid(h rootHandle) bool {
++	var flags uint32
++	r, _, _ := procGetHandleInformation.Call(uintptr(h), uintptr(unsafe.Pointer(&flags)))
++	return r != 0
++}
+diff --git a/i18n/pref_perm_unix_test.go b/i18n/pref_perm_unix_test.go
+new file mode 100644
+index 0000000..83f2831
+--- /dev/null
++++ b/i18n/pref_perm_unix_test.go
+@@ -0,0 +1,20 @@
++//go:build !windows
++
++package i18n
++
++import (
++	"os"
++	"testing"
++)
++
++// checkPrivateFile: on Unix the mode bits are the access control.
++func checkPrivateFile(t *testing.T, path string) {
++	t.Helper()
++	fi, err := os.Stat(path)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if fi.Mode().Perm() != 0o600 {
++		t.Errorf("perm %v", fi.Mode().Perm())
++	}
++}
+diff --git a/i18n/pref_perm_windows_test.go b/i18n/pref_perm_windows_test.go
+new file mode 100644
+index 0000000..895cfdd
+--- /dev/null
++++ b/i18n/pref_perm_windows_test.go
+@@ -0,0 +1,67 @@
++//go:build windows
++
++package i18n
++
++import (
++	"testing"
++	"unsafe"
++
++	"golang.org/x/sys/windows"
++)
++
++// Rights that let a principal modify, replace or re-permission the file.
++const winWriteMask = windows.FILE_WRITE_DATA | windows.FILE_APPEND_DATA | windows.FILE_WRITE_EA |
++	windows.FILE_WRITE_ATTRIBUTES | windows.DELETE | windows.WRITE_DAC | windows.WRITE_OWNER |
++	windows.GENERIC_WRITE | windows.GENERIC_ALL
++
++// checkPrivateFile: on Windows Go's FileMode only mirrors the read-only
++// attribute (always -rw-rw-rw- for writable files), so the DACL is checked:
++// owner is the current user, DACL is protected (not inherited) and
++// Everyone / Users / Authenticated Users have no write-class right.
++func checkPrivateFile(t *testing.T, path string) {
++	t.Helper()
++	sd, err := windows.GetNamedSecurityInfo(path, windows.SE_FILE_OBJECT,
++		windows.OWNER_SECURITY_INFORMATION|windows.DACL_SECURITY_INFORMATION)
++	if err != nil {
++		t.Fatal(err)
++	}
++	tu, err := windows.GetCurrentProcessToken().GetTokenUser()
++	if err != nil {
++		t.Fatal(err)
++	}
++	owner, _, err := sd.Owner()
++	if err != nil || !owner.Equals(tu.User.Sid) {
++		t.Errorf("owner %v, want current user %v", owner, tu.User.Sid)
++	}
++	ctl, _, err := sd.Control()
++	if err != nil || ctl&windows.SE_DACL_PROTECTED == 0 {
++		t.Errorf("DACL not protected (inherits from parent): %v", sd)
++	}
++	dacl, _, err := sd.DACL()
++	if err != nil || dacl == nil {
++		t.Fatalf("no DACL (= everyone full access): %v", err)
++	}
++	var bad []*windows.SID
++	for _, w := range []windows.WELL_KNOWN_SID_TYPE{windows.WinWorldSid, windows.WinBuiltinUsersSid, windows.WinAuthenticatedUserSid} {
++		s, err := windows.CreateWellKnownSid(w)
++		if err != nil {
++			t.Fatal(err)
++		}
++		bad = append(bad, s)
++	}
++	for i := uint32(0); i < uint32(dacl.AceCount); i++ {
++		var ace *windows.ACCESS_ALLOWED_ACE
++		if err := windows.GetAce(dacl, i, &ace); err != nil {
++			t.Fatal(err)
++		}
++		if ace.Header.AceType != windows.ACCESS_ALLOWED_ACE_TYPE {
++			continue
++		}
++		sid := (*windows.SID)(unsafe.Pointer(&ace.SidStart))
++		for _, b := range bad {
++			if sid.Equals(b) && uint32(ace.Mask)&winWriteMask != 0 {
++				t.Errorf("write access for %v (mask %#x): %v", b, ace.Mask, sd)
++			}
++		}
++	}
++}
+diff --git a/i18n/pref_rootcache_test.go b/i18n/pref_rootcache_test.go
+new file mode 100644
+index 0000000..f2b0e9f
+--- /dev/null
++++ b/i18n/pref_rootcache_test.go
+@@ -0,0 +1,168 @@
++package i18n
++
++import (
++	"path/filepath"
++	"runtime"
++	"strconv"
++	"sync"
++	"testing"
++)
++
++func liveRoots() int64 { return rootOpened.Load() - rootClosed.Load() }
++
++// cycleRoots runs Set+Get on n distinct roots below base with one store.
++func cycleRoots(t *testing.T, p *PrefStore, set func(string), base string, from, n int) {
++	t.Helper()
++	for i := from; i < from+n; i++ {
++		set(filepath.Join(base, "r"+strconv.Itoa(i)))
++		if err := p.Set("en"); err != nil {
++			t.Fatal(err)
++		}
++		if p.Get() != "en" {
++			t.Fatal("round trip", i)
++		}
++	}
++}
++
++func newSwitchStore() (*PrefStore, func(string)) {
++	var mu sync.Mutex
++	cur := ""
++	p := &PrefStore{Root: func() string { mu.Lock(); defer mu.Unlock(); return cur }}
++	return p, func(s string) { mu.Lock(); cur = s; mu.Unlock() }
++}
++
++// TestPrefRootCacheBounded reproduces PANEL DEV R3-01 (64 roots: 7 -> 71
++// fds). Direct measurement: the internal open/close counters must show at
++// most maxRoots live root handles, and zero after Close.
++func TestPrefRootCacheBounded(t *testing.T) {
++	base := t.TempDir()
++	p, set := newSwitchStore()
++	live0 := liveRoots()
++	cycleRoots(t, p, set, base, 0, 64)
++	if d := liveRoots() - live0; d > maxRoots {
++		t.Fatalf("live root handles after 64 roots: %d (> %d)", d, maxRoots)
++	}
++	p.mu.Lock()
++	n := len(p.roots)
++	p.mu.Unlock()
++	if n > maxRoots {
++		t.Fatalf("cache size %d > %d", n, maxRoots)
++	}
++	p.Close()
++	if d := liveRoots() - live0; d != 0 {
++		t.Fatalf("Close left %d root handles open", d)
++	}
++}
++
++// TestPrefRootHandleScaling: OS handle growth must not scale with the
++// number of roots. Absolute counts are noisy (runtime threads, IOCP,
++// timers, AV/EDR); a leak of one handle per root would add >= 448 between
++// the 64- and 512-root runs, so a 32-handle slack cleanly separates them.
++func TestPrefRootHandleScaling(t *testing.T) {
++	runtime.LockOSThread()
++	defer runtime.UnlockOSThread()
++	base := t.TempDir()
++	p, set := newSwitchStore()
++	defer p.Close()
++	cycleRoots(t, p, set, base, 0, 32) // warm-up: lazy runtime/OS handles
++	measure := func(from, n int) int {
++		runtime.GC()
++		b := openHandleCount(t)
++		cycleRoots(t, p, set, base, from, n)
++		runtime.GC()
++		return openHandleCount(t) - b
++	}
++	d64 := measure(1000, 64)
++	d512 := measure(2000, 512)
++	t.Logf("handle delta: 64 roots %+d, 512 roots %+d", d64, d512)
++	if d512-d64 > 32 {
++		t.Fatalf("handle growth scales with roots: 64 -> %+d, 512 -> %+d", d64, d512)
++	}
++}
++
++// TestPrefRootClosedHandleInvalid: every evicted root handle is really
++// closed at the OS level right after close (fcntl/GetHandleInformation).
++func TestPrefRootClosedHandleInvalid(t *testing.T) {
++	var closed []rootHandle
++	var bad []string
++	rootCloseHook = func(h rootHandle) {
++		closed = append(closed, h)
++		if handleValid(h) {
++			bad = append(bad, "still valid after close")
++		}
++	}
++	defer func() { rootCloseHook = nil }()
++	base := t.TempDir()
++	p, set := newSwitchStore()
++	cycleRoots(t, p, set, base, 0, 16)
++	p.Close()
++	if len(closed) != 16 {
++		t.Fatalf("closed %d root handles, want 16", len(closed))
++	}
++	if len(bad) > 0 {
++		t.Fatal(bad)
++	}
++}
++
++// TestPrefRootEvictionWhileInUse: a root evicted during an in-flight call
++// stays open until that call releases it, then is closed exactly once.
++func TestPrefRootEvictionWhileInUse(t *testing.T) {
++	a, b := t.TempDir(), t.TempDir()
++	cur := a
++	p := &PrefStore{Root: func() string { return cur }}
++	_, ra := p.root() // simulate in-flight use of a
++	if ra.err != nil {
++		t.Fatal(ra.err)
++	}
++	cur = b
++	_, rb := p.root() // evicts a
++	p.release(rb)
++	if !ra.evicted || ra.closed {
++		t.Fatal("in-use root closed early")
++	}
++	if !handleValid(ra.h) {
++		t.Fatal("in-use root handle invalid")
++	}
++	p.release(ra)
++	if !ra.closed {
++		t.Fatal("evicted root not closed after release")
++	}
++	cur = a
++	if err := p.Set("en"); err != nil || p.Get() != "en" {
++		t.Fatal("re-open after eviction failed", err)
++	}
++	p.Close()
++}
++
++// TestPrefRootConcurrentSwitch: concurrent Get/Set while Root flips.
++func TestPrefRootConcurrentSwitch(t *testing.T) {
++	a, b := t.TempDir(), t.TempDir()
++	var mu sync.Mutex
++	flip := false
++	p := &PrefStore{Root: func() string {
++		mu.Lock()
++		defer mu.Unlock()
++		flip = !flip
++		if flip {
++			return a
++		}
++		return b
++	}}
++	live0 := liveRoots()
++	var wg sync.WaitGroup
++	for g := 0; g < 8; g++ {
++		wg.Add(1)
++		go func() {
++			defer wg.Done()
++			for i := 0; i < 50; i++ {
++				_ = p.Set("en")
++				_ = p.Get()
++			}
++		}()
++	}
++	wg.Wait()
++	p.Close()
++	if d := liveRoots() - live0; d != 0 {
++		t.Fatalf("concurrent switching left %d root handles open", d)
++	}
++}
+diff --git a/i18n/pref_security_unix_test.go b/i18n/pref_security_unix_test.go
+new file mode 100644
+index 0000000..0647fee
+--- /dev/null
++++ b/i18n/pref_security_unix_test.go
+@@ -0,0 +1,248 @@
++//go:build !windows
++
++package i18n
++
++import (
++	"errors"
++	"net/http/httptest"
++	"os"
++	"path/filepath"
++	"strings"
++	"syscall"
++	"testing"
++	"time"
++)
++
++func store(path string) *PrefStore {
++	return &PrefStore{Root: func() string { return filepath.Dir(path) }, Name: filepath.Base(path)}
++}
++
++// G-01: a FIFO must not block Get (nor leave the mutex held for Set).
++func TestPrefGetFIFODoesNotBlock(t *testing.T) {
++	dir := t.TempDir()
++	path := filepath.Join(dir, "lang.json")
++	if err := syscall.Mkfifo(path, 0o600); err != nil {
++		t.Skip("mkfifo:", err)
++	}
++	t.Cleanup(func() { // unblock a stuck reader of the old implementation
++		if f, err := os.OpenFile(path, os.O_WRONLY|syscall.O_NONBLOCK, 0); err == nil {
++			f.Close()
++		}
++	})
++	p := store(path)
++	done := make(chan string, 1)
++	go func() { done <- p.Get() }()
++	select {
++	case got := <-done:
++		if got != "" {
++			t.Fatalf("FIFO must yield default, got %q", got)
++		}
++	case <-time.After(500 * time.Millisecond):
++		t.Fatal("Get blocked on FIFO")
++	}
++	setDone := make(chan error, 1)
++	go func() { setDone <- store(filepath.Join(t.TempDir(), "lang.json")).Set("en") }()
++	select {
++	case <-setDone:
++	case <-time.After(500 * time.Millisecond):
++		t.Fatal("Set blocked")
++	}
++}
++
++// G-01: a symlinked preference file must be ignored.
++func TestPrefGetRejectsSymlinkFile(t *testing.T) {
++	dir, out := t.TempDir(), t.TempDir()
++	target := filepath.Join(out, "target.json")
++	os.WriteFile(target, []byte(`{"lang":"en"}`), 0o600)
++	path := filepath.Join(dir, "lang.json")
++	if err := os.Symlink(target, path); err != nil {
++		t.Fatal(err)
++	}
++	if got := store(path).Get(); got != "" {
++		t.Fatalf("symlink followed: %q", got)
++	}
++}
++
++// G-01: huge (sparse) file must be rejected without reading it all.
++func TestPrefGetRejectsLargeFileQuickly(t *testing.T) {
++	path := filepath.Join(t.TempDir(), "lang.json")
++	f, err := os.Create(path)
++	if err != nil {
++		t.Fatal(err)
++	}
++	f.WriteString(`{"lang":"en"}`)
++	f.Truncate(1 << 30) // 1 GiB sparse
++	f.Close()
++	start := time.Now()
++	got := store(path).Get()
++	if got != "" {
++		t.Fatalf("large file accepted: %q", got)
++	}
++	if d := time.Since(start); d > 150*time.Millisecond {
++		t.Fatalf("large file read took %v (unbounded read)", d)
++	}
++}
++
++// G-02: a symlinked parent directory must not redirect the write.
++func TestPrefSetRejectsSymlinkParent(t *testing.T) {
++	root, outside := t.TempDir(), t.TempDir()
++	if err := os.Symlink(outside, filepath.Join(root, "parent")); err != nil {
++		t.Fatal(err)
++	}
++	// root is the trusted config root; "parent" is a symlink BELOW it.
++	p := &PrefStore{Root: func() string { return root }, Name: "parent/lang.json"}
++	if err := p.Set("en"); err == nil {
++		t.Error("Set through symlinked parent succeeded")
++	}
++	if _, err := os.Lstat(filepath.Join(outside, "lang.json")); err == nil {
++		t.Fatal("write escaped to symlink target directory")
++	}
++	ents, _ := os.ReadDir(outside)
++	if len(ents) != 0 {
++		t.Fatalf("files created outside root: %v", ents)
++	}
++}
++
++// G-02: a symlinked final component must be rejected, target untouched.
++func TestPrefSetRejectsSymlinkFile(t *testing.T) {
++	dir, out := t.TempDir(), t.TempDir()
++	victim := filepath.Join(out, "victim")
++	os.WriteFile(victim, []byte("keep"), 0o600)
++	path := filepath.Join(dir, "lang.json")
++	os.Symlink(victim, path)
++	if err := store(path).Set("en"); err == nil {
++		t.Error("Set over symlink succeeded")
++	}
++	if b, _ := os.ReadFile(victim); string(b) != "keep" {
++		t.Fatal("victim modified")
++	}
++}
++
++// Regression: normal write stays inside its directory, 0600, round-trips.
++func TestPrefSetStaysInsideRoot(t *testing.T) {
++	root := t.TempDir()
++	path := filepath.Join(root, "us", "lang.json")
++	p := store(path)
++	if err := p.Set("en"); err != nil {
++		t.Fatal(err)
++	}
++	if p.Get() != "en" {
++		t.Fatal("roundtrip")
++	}
++	fi, err := os.Lstat(path)
++	if err != nil || !fi.Mode().IsRegular() || fi.Mode().Perm() != 0o600 {
++		t.Fatalf("bad file %v %v", fi, err)
++	}
++	ents, _ := os.ReadDir(filepath.Dir(path))
++	if len(ents) != 1 {
++		t.Fatalf("temp files left: %v", ents)
++	}
++}
++
++// R2-01: a legitimately symlinked config root (/home -> /var/home) works.
++func TestPrefSymlinkedRootPersists(t *testing.T) {
++	base := t.TempDir()
++	os.MkdirAll(filepath.Join(base, "var", "home", "u", ".config", "us"), 0o700)
++	if err := os.Symlink(filepath.Join(base, "var", "home"), filepath.Join(base, "home")); err != nil {
++		t.Fatal(err)
++	}
++	root := filepath.Join(base, "home", "u", ".config", "us")
++	p := &PrefStore{Root: func() string { return root }, Name: "lang.json"}
++	if err := p.Set("en"); err != nil {
++		t.Fatalf("save through symlinked root failed: %v", err)
++	}
++	if p.Get() != "en" {
++		t.Fatal("not read back")
++	}
++	q := &PrefStore{Root: func() string { return root }, Name: "lang.json"} // new process
++	if q.Get() != "en" {
++		t.Fatal("not persisted")
++	}
++	if _, err := os.Lstat(filepath.Join(base, "var", "home", "u", ".config", "us", "lang.json")); err != nil {
++		t.Fatal("file not in resolved root:", err)
++	}
++}
++
++// R2-01: symlinks BELOW the (symlinked) root stay rejected.
++func TestPrefSymlinkBelowSymlinkedRootRejected(t *testing.T) {
++	base, outside := t.TempDir(), t.TempDir()
++	os.MkdirAll(filepath.Join(base, "real"), 0o700)
++	os.Symlink(filepath.Join(base, "real"), filepath.Join(base, "cfg"))
++	os.Symlink(outside, filepath.Join(base, "real", "sub"))
++	p := &PrefStore{Root: func() string { return filepath.Join(base, "cfg") }, Name: "sub/lang.json"}
++	if err := p.Set("en"); err == nil {
++		t.Fatal("symlink below root accepted")
++	}
++	os.Symlink(filepath.Join(outside, "x.json"), filepath.Join(base, "real", "lang.json"))
++	p2 := &PrefStore{Root: func() string { return filepath.Join(base, "cfg") }, Name: "lang.json"}
++	if err := p2.Set("en"); err == nil {
++		t.Fatal("symlinked file below root accepted")
++	}
++	if ents, _ := os.ReadDir(outside); len(ents) != 0 {
++		t.Fatalf("wrote outside: %v", ents)
++	}
++}
++
++// R2-01: re-pointing the root symlink after first use must not move writes
++// (the root is pinned as a directory fd).
++func TestPrefRootRebindPinned(t *testing.T) {
++	base := t.TempDir()
++	a, b := filepath.Join(base, "a"), filepath.Join(base, "b")
++	os.MkdirAll(a, 0o700)
++	os.MkdirAll(b, 0o700)
++	link := filepath.Join(base, "cfg")
++	os.Symlink(a, link)
++	p := &PrefStore{Root: func() string { return link }, Name: "lang.json"}
++	if err := p.Set("en"); err != nil {
++		t.Fatal(err)
++	}
++	os.Remove(link)
++	os.Symlink(b, link)
++	if err := p.Set("tr"); err != nil {
++		t.Fatal(err)
++	}
++	if _, err := os.Lstat(filepath.Join(b, "lang.json")); err == nil {
++		t.Fatal("write followed rebound root")
++	}
++	if raw, _ := os.ReadFile(filepath.Join(a, "lang.json")); string(raw) != `{"lang":"tr"}` {
++		t.Fatalf("pinned root not updated: %q", raw)
++	}
++}
++
++// R2-01: an unopenable root keeps the choice in memory, Set reports it.
++func TestPrefUnavailableRootMemoryOnly(t *testing.T) {
++	f := filepath.Join(t.TempDir(), "file")
++	os.WriteFile(f, []byte("x"), 0o600)
++	p := &PrefStore{Root: func() string { return filepath.Join(f, "sub") }, Name: "lang.json"} // parent is a file
++	err := p.Set("en")
++	if !errors.Is(err, ErrNotPersisted) {
++		t.Fatalf("want ErrNotPersisted, got %v", err)
++	}
++	if p.Get() != "en" {
++		t.Fatal("memory fallback missing")
++	}
++}
++
++// R2-01 HTTP: symlinked root -> 200 and persisted; unavailable root -> 503.
++func TestPrefHandlerSymlinkedRootAndUnavailable(t *testing.T) {
++	base := t.TempDir()
++	os.MkdirAll(filepath.Join(base, "var", "home"), 0o700)
++	os.Symlink(filepath.Join(base, "var", "home"), filepath.Join(base, "home"))
++	ok := &PrefStore{Root: func() string { return filepath.Join(base, "home") }, Name: "lang.json"}
++	post := func(p *PrefStore) int {
++		r := httptest.NewRequest("POST", "/api/lang", strings.NewReader(`{"lang":"en"}`))
++		r.Header.Set("Content-Type", "application/json")
++		w := httptest.NewRecorder()
++		PrefHandler(p, nil).ServeHTTP(w, r)
++		return w.Code
++	}
++	if c := post(ok); c != 200 || ok.Get() != "en" {
++		t.Fatalf("symlinked root: %d %q", c, ok.Get())
++	}
++	f := filepath.Join(base, "file")
++	os.WriteFile(f, nil, 0o600)
++	bad := &PrefStore{Root: func() string { return filepath.Join(f, "x") }, Name: "lang.json"}
++	if c := post(bad); c != 503 {
++		t.Fatalf("unavailable root status %d", c)
++	}
++}
+diff --git a/i18n/pref_test.go b/i18n/pref_test.go
+new file mode 100644
+index 0000000..1bc64a7
+--- /dev/null
++++ b/i18n/pref_test.go
+@@ -0,0 +1,87 @@
++package i18n
++
++import (
++	"net/http"
++	"net/http/httptest"
++	"os"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++func TestPrefStoreRoundTrip(t *testing.T) {
++	dir := t.TempDir()
++	path := filepath.Join(dir, "sub", "lang.json")
++	p := &PrefStore{Root: func() string { return filepath.Dir(path) }, Name: filepath.Base(path)}
++	if p.Get() != "" {
++		t.Fatal("empty store should return empty")
++	}
++	if err := p.Set("EN-gb"); err != nil {
++		t.Fatal(err)
++	}
++	if p.Get() != "en" {
++		t.Fatal("got", p.Get())
++	}
++	checkPrivateFile(t, path)
++	if err := p.Set("xx"); err != ErrUnsupported {
++		t.Fatal("unsupported accepted", err)
++	}
++	if p.Get() != "en" {
++		t.Fatal("bad set changed value")
++	}
++	os.WriteFile(path, []byte(`{"lang":"zz"}`), 0o600)
++	if p.Get() != "" {
++		t.Fatal("unknown stored lang must be ignored")
++	}
++	os.WriteFile(path, []byte(`garbage`), 0o600)
++	if p.Get() != "" {
++		t.Fatal("corrupt file must be ignored")
++	}
++	var nilStore *PrefStore
++	if nilStore.Get() != "" {
++		t.Fatal("nil store")
++	}
++}
++
++func TestPrefHandler(t *testing.T) {
++	path := filepath.Join(t.TempDir(), "lang.json")
++	p := &PrefStore{Root: func() string { return filepath.Dir(path) }, Name: filepath.Base(path)}
++	h := PrefHandler(p, nil)
++	do := func(method, ct, body string) *httptest.ResponseRecorder {
++		r := httptest.NewRequest(method, "/api/lang", strings.NewReader(body))
++		if ct != "" {
++			r.Header.Set("Content-Type", ct)
++		}
++		w := httptest.NewRecorder()
++		h.ServeHTTP(w, r)
++		return w
++	}
++	if w := do("GET", "", ""); !strings.Contains(w.Body.String(), `"tr"`) {
++		t.Fatal("default must be tr:", w.Body.String())
++	}
++	if w := do("POST", "application/x-www-form-urlencoded", "lang=en"); w.Code != http.StatusUnsupportedMediaType {
++		t.Fatal("form post accepted", w.Code)
++	}
++	if w := do("POST", "application/json", `{"lang":"de"}`); w.Code != http.StatusBadRequest {
++		t.Fatal("unsupported lang accepted", w.Code)
++	}
++	if w := do("POST", "application/json", `{`); w.Code != http.StatusBadRequest {
++		t.Fatal("bad json", w.Code)
++	}
++	if w := do("POST", "application/json; charset=utf-8", `{"lang":"en"}`); w.Code != 200 {
++		t.Fatal("valid post", w.Code)
++	}
++	if w := do("GET", "", ""); !strings.Contains(w.Body.String(), `"en"`) {
++		t.Fatal("persisted value", w.Body.String())
++	}
++	if w := do("DELETE", "", ""); w.Code != http.StatusMethodNotAllowed {
++		t.Fatal(w.Code)
++	}
++	// Handler honours stored preference when no lang query is given.
++	r := httptest.NewRequest("GET", "/api/i18n", nil)
++	w := httptest.NewRecorder()
++	Handler(p.Get).ServeHTTP(w, r)
++	if !strings.Contains(w.Body.String(), `"lang":"en"`) {
++		t.Fatal("handler ignored preference")
++	}
++}
+diff --git a/i18n/pref_unix.go b/i18n/pref_unix.go
+new file mode 100644
+index 0000000..baf2a39
+--- /dev/null
++++ b/i18n/pref_unix.go
+@@ -0,0 +1,115 @@
++//go:build !windows
++
++package i18n
++
++import (
++	"crypto/rand"
++	"encoding/hex"
++	"errors"
++	"os"
++
++	"golang.org/x/sys/unix"
++)
++
++type rootHandle = int
++
++// openRoot pins the already-resolved trusted root as a directory fd.
++func openRoot(resolved string) (rootHandle, error) {
++	return unix.Open(resolved, unix.O_RDONLY|unix.O_DIRECTORY|unix.O_CLOEXEC, 0)
++}
++
++// walkBelow opens the intermediate directories of parts below root with
++// openat(O_NOFOLLOW|O_DIRECTORY); a symlink below the root is rejected.
++// The returned fd must be closed by the caller unless it equals root.
++func walkBelow(root rootHandle, parts []string, create bool) (int, error) {
++	fd := root
++	for _, part := range parts[:len(parts)-1] {
++		next, err := unix.Openat(fd, part, unix.O_RDONLY|unix.O_DIRECTORY|unix.O_NOFOLLOW|unix.O_CLOEXEC, 0)
++		if errors.Is(err, unix.ENOENT) && create {
++			if merr := unix.Mkdirat(fd, part, 0o700); merr != nil && !errors.Is(merr, unix.EEXIST) {
++				closeBelow(root, fd)
++				return -1, merr
++			}
++			next, err = unix.Openat(fd, part, unix.O_RDONLY|unix.O_DIRECTORY|unix.O_NOFOLLOW|unix.O_CLOEXEC, 0)
++		}
++		closeBelow(root, fd)
++		if err != nil {
++			if errors.Is(err, unix.ELOOP) || errors.Is(err, unix.ENOTDIR) {
++				return -1, errUnsafePath
++			}
++			return -1, err
++		}
++		fd = next
++	}
++	return fd, nil
++}
++
++func closeBelow(root rootHandle, fd int) {
++	if fd != root && fd >= 0 {
++		unix.Close(fd)
++	}
++}
++
++func readPrefFile(root rootHandle, parts []string) ([]byte, error) {
++	dirfd, err := walkBelow(root, parts, false)
++	if err != nil {
++		return nil, err
++	}
++	defer closeBelow(root, dirfd)
++	base := parts[len(parts)-1]
++	fd, err := unix.Openat(dirfd, base, unix.O_RDONLY|unix.O_NOFOLLOW|unix.O_NONBLOCK|unix.O_CLOEXEC, 0)
++	if err != nil {
++		return nil, err
++	}
++	f := os.NewFile(uintptr(fd), base)
++	defer f.Close()
++	var st unix.Stat_t
++	if err := unix.Fstat(fd, &st); err != nil {
++		return nil, err
++	}
++	if st.Mode&unix.S_IFMT != unix.S_IFREG || st.Size > maxPrefSize {
++		return nil, errUnsafePath
++	}
++	return readLimited(f)
++}
++
++func writePrefFile(root rootHandle, parts []string, raw []byte) error {
++	dirfd, err := walkBelow(root, parts, true)
++	if err != nil {
++		return err
++	}
++	defer closeBelow(root, dirfd)
++	base := parts[len(parts)-1]
++	var st unix.Stat_t
++	if err := unix.Fstatat(dirfd, base, &st, unix.AT_SYMLINK_NOFOLLOW); err == nil && st.Mode&unix.S_IFMT != unix.S_IFREG {
++		return errUnsafePath
++	}
++	var rnd [8]byte
++	if _, err := rand.Read(rnd[:]); err != nil {
++		return err
++	}
++	tmp := ".lang-" + hex.EncodeToString(rnd[:]) + ".tmp"
++	fd, err := unix.Openat(dirfd, tmp, unix.O_WRONLY|unix.O_CREAT|unix.O_EXCL|unix.O_NOFOLLOW|unix.O_CLOEXEC, 0o600)
++	if err != nil {
++		return err
++	}
++	f := os.NewFile(uintptr(fd), tmp)
++	_, err = f.Write(raw)
++	if err == nil {
++		err = f.Sync()
++	}
++	if cerr := f.Close(); err == nil {
++		err = cerr
++	}
++	if err == nil {
++		err = unix.Renameat(dirfd, tmp, dirfd, base)
++	}
++	if err != nil {
++		_ = unix.Unlinkat(dirfd, tmp, 0)
++		return err
++	}
++	_ = unix.Fsync(dirfd)
++	return nil
++}
++
++func closeRoot(h rootHandle) { _ = unix.Close(h) }
+diff --git a/i18n/pref_windows.go b/i18n/pref_windows.go
+new file mode 100644
+index 0000000..e5c320b
+--- /dev/null
++++ b/i18n/pref_windows.go
+@@ -0,0 +1,241 @@
++//go:build windows
++
++package i18n
++
++import (
++	"crypto/rand"
++	"encoding/hex"
++	"os"
++	"unsafe"
++
++	"golang.org/x/sys/windows"
++)
++
++type rootHandle = windows.Handle
++
++// Directory/file access rights (winnt.h).
++const (
++	fileListDirectory   = 0x0001
++	fileAddFile         = 0x0002
++	fileAddSubdirectory = 0x0004
++	fileTraverse        = 0x0020
++	fileReadAttributes  = 0x0080
++	dirAccess           = fileListDirectory | fileTraverse | fileAddFile | fileAddSubdirectory | fileReadAttributes
++)
++
++const shareAll = windows.FILE_SHARE_READ | windows.FILE_SHARE_WRITE | windows.FILE_SHARE_DELETE
++
++// ntOpen opens name relative to dir (or an absolute NT path when dir is 0)
++// with NtCreateFile. FILE_OPEN_REPARSE_POINT makes the open land on a
++// symlink/junction itself instead of its target, so the handle can be
++// verified with GetFileInformationByHandle before any data is used.
++func ntOpen(dir windows.Handle, name string, access, disposition, options uint32) (windows.Handle, error) {
++	return ntOpenSD(dir, name, access, disposition, options, nil)
++}
++
++// ntOpenSD is ntOpen with a security descriptor that is applied only when
++// the object is newly created (FILE_CREATE / FILE_OPEN_IF creating).
++func ntOpenSD(dir windows.Handle, name string, access, disposition, options uint32, sd *windows.SECURITY_DESCRIPTOR) (windows.Handle, error) {
++	uname, err := windows.NewNTUnicodeString(name)
++	if err != nil {
++		return 0, err
++	}
++	oa := &windows.OBJECT_ATTRIBUTES{RootDirectory: dir, ObjectName: uname, Attributes: windows.OBJ_CASE_INSENSITIVE, SecurityDescriptor: sd}
++	oa.Length = uint32(unsafe.Sizeof(*oa))
++	var iosb windows.IO_STATUS_BLOCK
++	var h windows.Handle
++	err = windows.NtCreateFile(&h, access|windows.SYNCHRONIZE, oa, &iosb, nil, windows.FILE_ATTRIBUTE_NORMAL, shareAll,
++		disposition, options|windows.FILE_SYNCHRONOUS_IO_NONALERT|windows.FILE_OPEN_REPARSE_POINT, 0, 0)
++	if err != nil {
++		return 0, err
++	}
++	return h, nil
++}
++
++// privateSD returns a protected security descriptor (inheritance from the
++// parent disabled) owned by the current user that grants full access only
++// to the current user, SYSTEM and Administrators. It is set atomically at
++// creation time through OBJECT_ATTRIBUTES, so a config root outside the
++// profile (e.g. a shared folder that grants Users/Everyone write) cannot
++// make lang.json or the directories we create writable by others. dir
++// adds OI|CI so files created inside also get the private ACL.
++func privateSD(dir bool) (*windows.SECURITY_DESCRIPTOR, error) {
++	tu, err := windows.GetCurrentProcessToken().GetTokenUser()
++	if err != nil {
++		return nil, err
++	}
++	sid := tu.User.Sid.String()
++	inh := ""
++	if dir {
++		inh = "OICI"
++	}
++	return windows.SecurityDescriptorFromString("O:" + sid + "D:P(A;" + inh + ";FA;;;" + sid + ")(A;" + inh + ";FA;;;SY)(A;" + inh + ";FA;;;BA)")
++}
++
++// verify checks the opened handle (not a path): no reparse point, and the
++// expected kind (directory or regular file).
++func verify(h windows.Handle, wantDir bool) (*windows.ByHandleFileInformation, error) {
++	var info windows.ByHandleFileInformation
++	if err := windows.GetFileInformationByHandle(h, &info); err != nil {
++		return nil, err
++	}
++	isDir := info.FileAttributes&windows.FILE_ATTRIBUTE_DIRECTORY != 0
++	if info.FileAttributes&windows.FILE_ATTRIBUTE_REPARSE_POINT != 0 || isDir != wantDir {
++		return nil, errUnsafePath
++	}
++	return &info, nil
++}
++
++// openRoot pins the already-resolved trusted root as a directory handle.
++func openRoot(resolved string) (rootHandle, error) {
++	h, err := ntOpen(0, `\??\`+resolved, dirAccess, windows.FILE_OPEN, windows.FILE_DIRECTORY_FILE)
++	if err != nil {
++		return 0, err
++	}
++	if _, err := verify(h, true); err != nil {
++		windows.CloseHandle(h)
++		return 0, err
++	}
++	return h, nil
++}
++
++func closeBelow(root rootHandle, h windows.Handle) {
++	if h != root && h != 0 {
++		windows.CloseHandle(h)
++	}
++}
++
++func walkBelow(root rootHandle, parts []string, create bool) (windows.Handle, error) {
++	h := root
++	disp := uint32(windows.FILE_OPEN)
++	var sd *windows.SECURITY_DESCRIPTOR
++	if create {
++		disp = windows.FILE_OPEN_IF
++		var err error
++		if sd, err = privateSD(true); err != nil {
++			return 0, err
++		}
++	}
++	for _, part := range parts[:len(parts)-1] {
++		next, err := ntOpenSD(h, part, dirAccess, disp, windows.FILE_DIRECTORY_FILE, sd)
++		closeBelow(root, h)
++		if err != nil {
++			return 0, err
++		}
++		if _, err := verify(next, true); err != nil {
++			windows.CloseHandle(next)
++			return 0, err
++		}
++		h = next
++	}
++	return h, nil
++}
++
++func readPrefFile(root rootHandle, parts []string) ([]byte, error) {
++	dir, err := walkBelow(root, parts, false)
++	if err != nil {
++		return nil, err
++	}
++	defer closeBelow(root, dir)
++	h, err := ntOpen(dir, parts[len(parts)-1], windows.FILE_GENERIC_READ, windows.FILE_OPEN, windows.FILE_NON_DIRECTORY_FILE)
++	if err != nil {
++		return nil, err
++	}
++	f := os.NewFile(uintptr(h), parts[len(parts)-1])
++	defer f.Close()
++	info, err := verify(h, false)
++	if err != nil {
++		return nil, err
++	}
++	// A hard link (no privilege needed on NTFS) could alias a file outside
++	// the root; only a single-link file is trusted on read. Set replaces
++	// the directory entry by rename, so the aliased file is never written.
++	if info.NumberOfLinks != 1 || info.FileSizeHigh != 0 || info.FileSizeLow > maxPrefSize {
++		return nil, errUnsafePath
++	}
++	return readLimited(f)
++}
++
++type fileRenameInformation struct {
++	ReplaceIfExists uint32
++	RootDirectory   windows.Handle
++	FileNameLength  uint32
++	FileName        [1]uint16
++}
++
++// renameByHandle renames the open file h to name inside dir, relative to
++// the dir handle (NtSetInformationFile/FileRenameInformation), replacing a
++// regular file atomically.
++func renameByHandle(h, dir windows.Handle, name string) error {
++	u16, err := windows.UTF16FromString(name)
++	if err != nil {
++		return err
++	}
++	n := len(u16) - 1
++	var probe fileRenameInformation
++	size := int(unsafe.Offsetof(probe.FileName)) + n*2
++	if size < int(unsafe.Sizeof(probe)) {
++		size = int(unsafe.Sizeof(probe))
++	}
++	buf := make([]byte, size)
++	ri := (*fileRenameInformation)(unsafe.Pointer(&buf[0]))
++	ri.ReplaceIfExists = 1
++	ri.RootDirectory = dir
++	ri.FileNameLength = uint32(n * 2)
++	copy(unsafe.Slice(&ri.FileName[0], n), u16[:n])
++	var iosb windows.IO_STATUS_BLOCK
++	return windows.NtSetInformationFile(h, &iosb, &buf[0], uint32(size), windows.FileRenameInformation)
++}
++
++func deleteByHandle(h windows.Handle) {
++	var del uint8 = 1
++	_ = windows.SetFileInformationByHandle(h, windows.FileDispositionInfo, &del, 1)
++}
++
++func writePrefFile(root rootHandle, parts []string, raw []byte) error {
++	dir, err := walkBelow(root, parts, true)
++	if err != nil {
++		return err
++	}
++	defer closeBelow(root, dir)
++	base := parts[len(parts)-1]
++	// An existing target must be a regular file (checked on its handle).
++	if old, err := ntOpen(dir, base, fileReadAttributes, windows.FILE_OPEN, 0); err == nil {
++		_, verr := verify(old, false)
++		windows.CloseHandle(old)
++		if verr != nil {
++			return verr
++		}
++	}
++	var rnd [8]byte
++	if _, err := rand.Read(rnd[:]); err != nil {
++		return err
++	}
++	tmp := ".lang-" + hex.EncodeToString(rnd[:]) + ".tmp"
++	sd, err := privateSD(false)
++	if err != nil {
++		return err
++	}
++	h, err := ntOpenSD(dir, tmp, windows.FILE_GENERIC_WRITE|windows.DELETE|fileReadAttributes, windows.FILE_CREATE, windows.FILE_NON_DIRECTORY_FILE, sd)
++	if err != nil {
++		return err
++	}
++	defer windows.CloseHandle(h)
++	var done uint32
++	err = windows.WriteFile(h, raw, &done, nil)
++	if err == nil && int(done) != len(raw) {
++		err = errUnsafePath
++	}
++	if err == nil {
++		err = windows.FlushFileBuffers(h)
++	}
++	if err == nil {
++		err = renameByHandle(h, dir, base)
++	}
++	if err != nil {
++		deleteByHandle(h)
++	}
++	return err
++}
++
++func closeRoot(h rootHandle) { _ = windows.CloseHandle(h) }
+diff --git a/i18n/pref_windows_test.go b/i18n/pref_windows_test.go
+new file mode 100644
+index 0000000..e811a2e
+--- /dev/null
++++ b/i18n/pref_windows_test.go
+@@ -0,0 +1,147 @@
++//go:build windows
++
++package i18n
++
++import (
++	"os"
++	"os/exec"
++	"path/filepath"
++	"testing"
++	"unsafe"
++
++	"golang.org/x/sys/windows"
++)
++
++func winStore(root, name string) *PrefStore {
++	return &PrefStore{Root: func() string { return root }, Name: name}
++}
++
++// junction creates a directory junction (no admin rights needed).
++func junction(t *testing.T, link, target string) {
++	t.Helper()
++	if out, err := exec.Command("cmd", "/c", "mklink", "/J", link, target).CombinedOutput(); err != nil {
++		t.Skipf("mklink /J unavailable: %v %s", err, out)
++	}
++}
++
++func TestWinPrefNormalSave(t *testing.T) {
++	root := t.TempDir()
++	p := winStore(root, "lang.json")
++	if err := p.Set("en"); err != nil {
++		t.Fatal(err)
++	}
++	if winStore(root, "lang.json").Get() != "en" {
++		t.Fatal("not persisted")
++	}
++	ents, _ := os.ReadDir(root)
++	if len(ents) != 1 {
++		t.Fatalf("temp files left: %v", ents)
++	}
++}
++
++func TestWinPrefJunctionBelowRootRejected(t *testing.T) {
++	root, outside := t.TempDir(), t.TempDir()
++	junction(t, filepath.Join(root, "sub"), outside)
++	if err := winStore(root, "sub/lang.json").Set("en"); err == nil {
++		t.Fatal("junction below root accepted")
++	}
++	if winStore(root, "sub/lang.json").Get() != "" {
++		t.Fatal("read through junction")
++	}
++	if ents, _ := os.ReadDir(outside); len(ents) != 0 {
++		t.Fatalf("wrote outside root: %v", ents)
++	}
++}
++
++func TestWinPrefSymlinkFileRejected(t *testing.T) {
++	root, outside := t.TempDir(), t.TempDir()
++	victim := filepath.Join(outside, "victim.json")
++	os.WriteFile(victim, []byte(`{"lang":"en"}`), 0o600)
++	if err := os.Symlink(victim, filepath.Join(root, "lang.json")); err != nil {
++		t.Skip("symlink privilege missing:", err)
++	}
++	if winStore(root, "lang.json").Get() != "" {
++		t.Fatal("symlink followed on read")
++	}
++	if err := winStore(root, "lang.json").Set("tr"); err == nil {
++		t.Fatal("symlink replaced/followed on write")
++	}
++	if b, _ := os.ReadFile(victim); string(b) != `{"lang":"en"}` {
++		t.Fatal("victim modified")
++	}
++}
++
++func TestWinPrefJunctionRootAllowedAndPinned(t *testing.T) {
++	base := t.TempDir()
++	a, b := filepath.Join(base, "a"), filepath.Join(base, "b")
++	os.MkdirAll(a, 0o700)
++	os.MkdirAll(b, 0o700)
++	link := filepath.Join(base, "cfg")
++	junction(t, link, a)
++	p := winStore(link, "lang.json")
++	if err := p.Set("en"); err != nil {
++		t.Fatalf("junctioned root rejected: %v", err)
++	}
++	os.Remove(link)
++	junction(t, link, b)
++	if err := p.Set("tr"); err != nil {
++		t.Fatal(err)
++	}
++	if _, err := os.Lstat(filepath.Join(b, "lang.json")); err == nil {
++		t.Fatal("write followed re-pointed root")
++	}
++}
++
++// TestWinPrefDACLSharedRoot simulates a config root outside the profile
++// (US_DESK=C:\ShareDir) whose inherited ACL grants Everyone full access:
++// lang.json and created subdirectories must still get the private DACL.
++func TestWinPrefDACLSharedRoot(t *testing.T) {
++	root := filepath.Join(t.TempDir(), "share")
++	sd, err := windows.SecurityDescriptorFromString("D:(A;OICI;FA;;;WD)(A;OICI;FA;;;BU)(A;OICI;FA;;;AU)")
++	if err != nil {
++		t.Fatal(err)
++	}
++	sa := &windows.SecurityAttributes{Length: uint32(unsafe.Sizeof(windows.SecurityAttributes{})), SecurityDescriptor: sd}
++	rp, _ := windows.UTF16PtrFromString(root)
++	if err := windows.CreateDirectory(rp, sa); err != nil {
++		t.Fatal(err)
++	}
++	if err := winStore(root, "lang.json").Set("en"); err != nil {
++		t.Fatal(err)
++	}
++	checkPrivateFile(t, filepath.Join(root, "lang.json"))
++	if err := winStore(root, "sub/lang.json").Set("en"); err != nil {
++		t.Fatal(err)
++	}
++	checkPrivateFile(t, filepath.Join(root, "sub"))
++	checkPrivateFile(t, filepath.Join(root, "sub", "lang.json"))
++	if err := winStore(root, "lang.json").Set("tr"); err != nil {
++		t.Fatal(err)
++	}
++	checkPrivateFile(t, filepath.Join(root, "lang.json"))
++}
++
++// TestWinPrefHardlinkAliasRejected is the no-privilege counterpart of the
++// symlink case: a hard link (CreateHardLink needs no special right) from
++// lang.json to a file outside the root is not trusted on read, and Set
++// replaces the entry instead of writing through to the outside file.
++func TestWinPrefHardlinkAliasRejected(t *testing.T) {
++	root, outside := t.TempDir(), t.TempDir()
++	victim := filepath.Join(outside, "victim.json")
++	os.WriteFile(victim, []byte(`{"lang":"en"}`), 0o600)
++	if err := os.Link(victim, filepath.Join(root, "lang.json")); err != nil {
++		t.Fatalf("hard link creation failed (no privilege needed on NTFS): %v", err)
++	}
++	if winStore(root, "lang.json").Get() != "" {
++		t.Fatal("hard-linked alias trusted on read")
++	}
++	if err := winStore(root, "lang.json").Set("tr"); err != nil {
++		t.Fatal(err)
++	}
++	if b, _ := os.ReadFile(victim); string(b) != `{"lang":"en"}` {
++		t.Fatal("victim modified through hard link")
++	}
++	if winStore(root, "lang.json").Get() != "tr" {
++		t.Fatal("replacement not stored")
++	}
++}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>US deneme — KAN.US</title>
+<meta name="description" content="US panelinin buluta bağlı deneme sürümü. 20 istem.">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: #0b0d12; color: #f4f1ea; font: 16px/1.5 "Segoe UI", sans-serif; }
+  header, main { padding: 22px 20px; }
+  header { border-bottom: 1px solid rgba(255,255,255,.08); }
+  .mark { margin: 0; font: 12px ui-monospace, monospace; letter-spacing: .18em; color: #d6f25c; }
+  h1 { margin: 6px 0; font-size: 40px; letter-spacing: -.04em; }
+  a { color: #d6f25c; }
+  .muted { color: #a39e93; }
+  form, section { max-width: 760px; }
+  textarea { width: 100%; min-height: 120px; margin-top: 14px; background: #0c0e13; color: #f4f1ea; border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 12px; font: inherit; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+  button { border: 1px solid rgba(255,255,255,.12); background: #14171e; color: #f4f1ea; border-radius: 999px; padding: 8px 14px; font: inherit; }
+  button.on { background: #f4f1ea; color: #12141a; }
+  button.go { background: #d6f25c; color: #1a2208; border: 0; font-weight: 700; }
+  button:disabled { opacity: .55; }
+  #quota { font-weight: 650; }
+  #ask { color: #8eb6ff; min-height: 1.5em; }
+  #notice { color: #f0a3a3; min-height: 1.5em; }
+  pre { white-space: pre-wrap; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 16px; margin: 8px 0 0; }
+  @media (max-width: 640px) { h1 { font-size: 32px; } header, main { padding: 16px; } }
+</style>
+</head>
+<body>
+<header>
+  <p class="mark">US · BULUT DENEME</p>
+  <h1>US deneme</h1>
+  <p class="muted">Bu panel kapıdaki modele bağlıdır. Deneme 20 istemdir. Yerel disk burada açılmaz. Ticari erişim için <a href="mailto:support@kanus.org">support@kanus.org</a>. 1 Aylık Erişim / 200 İstem: 18.900 TL. 1 Saatlik Kullanım: 1.990 TL; 1 saat işlem veya açık panel. KDV dahil. Tek seferlik satın alım; otomatik yenileme yok.</p>
+</header>
+<main>
+  <form id="form">
+    <p id="quota" class="muted">Kota okunuyor.</p>
+    <p id="ask"></p>
+    <textarea id="task" placeholder="İstem yaz"></textarea>
+    <div class="row">
+      <button type="button" id="q8" class="on">Q8</button>
+      <button type="button" id="q5">Q5</button>
+      <button class="go" type="submit">Yürüt</button>
+    </div>
+  </form>
+  <p id="notice"></p>
+  <section>
+    <h2>Cevap</h2>
+    <pre id="result">Henüz cevap yok.</pre>
+  </section>
+</main>
+<script>
+const task = document.querySelector("#task");
+const ask = document.querySelector("#ask");
+const notice = document.querySelector("#notice");
+const result = document.querySelector("#result");
+const quota = document.querySelector("#quota");
+const go = document.querySelector("#form button.go");
+let worker = "q8";
+let remaining = 20;
+
+function paintQuota(desk) {
+  remaining = Number(desk.remaining ?? 0);
+  quota.textContent = "Deneme " + desk.used + " / " + desk.limit + " · kalan " + desk.remaining;
+  go.disabled = remaining < 1;
+  if (remaining < 1) {
+    notice.textContent = "Deneme bitti. 20 istem kullanıldı.";
+    task.disabled = true;
+  }
+}
+
+async function load() {
+  const response = await fetch("/api/trial.php");
+  const desk = await response.json();
+  if (!response.ok && desk.message) notice.textContent = desk.message;
+  paintQuota(desk);
+}
+
+document.querySelector("#q8").addEventListener("click", () => {
+  worker = "q8";
+  document.querySelector("#q8").className = "on";
+  document.querySelector("#q5").className = "";
+});
+document.querySelector("#q5").addEventListener("click", () => {
+  worker = "q5";
+  document.querySelector("#q5").className = "on";
+  document.querySelector("#q8").className = "";
+});
+document.querySelector("#form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const prompt = task.value.trim();
+  if (!prompt || remaining < 1) return;
+  ask.textContent = "Model çağrılıyor.";
+  notice.textContent = "";
+  go.disabled = true;
+  try {
+    const response = await fetch("/api/trial.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt, worker }),
+    });
+    const raw = await response.text();
+    let desk;
+    try {
+      desk = JSON.parse(raw);
+    } catch (error) {
+      ask.textContent = "";
+      notice.textContent = "Kapı zamanında cevap vermedi.";
+      go.disabled = remaining < 1;
+      return;
+    }
+    paintQuota(desk);
+    if (desk.pending && desk.id) {
+      for (let i = 0; i < 40; i++) {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        const again = await fetch("/api/trial.php");
+        const state = await again.json();
+        paintQuota(state);
+        const item = (state.items || []).find((row) => row.id === desk.id);
+        if (item && !item.pending) {
+          ask.textContent = "";
+          if (item.reply) {
+            result.textContent = item.reply;
+            task.value = "";
+          } else {
+            notice.textContent = item.error || "Çağrı durdu.";
+          }
+          return;
+        }
+      }
+      ask.textContent = "";
+      notice.textContent = "Cevap gecikti.";
+      return;
+    }
+    if (desk.reply) {
+      result.textContent = desk.reply;
+      task.value = "";
+      ask.textContent = "";
+    } else {
+      ask.textContent = "";
+      notice.textContent = desk.message || "Çağrı durdu.";
+    }
+  } catch (error) {
+    ask.textContent = "";
+    notice.textContent = "Çağrı durdu.";
+    go.disabled = remaining < 1;
+  }
+});
+load().catch(() => { notice.textContent = "Kota okunamadı."; });
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{"index": 4, "start_offset_ms": 3.372, "http": 400, "ms": 1157.914, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648", "content_type": "application/json"}
+{"index": 0, "start_offset_ms": 4.099, "http": 400, "ms": 1158.807, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648", "content_type": "application/json"}
+{"index": 3, "start_offset_ms": 3.889, "http": 400, "ms": 1159.142, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648", "content_type": "application/json"}
+{"index": 2, "start_offset_ms": 2.988, "http": 400, "ms": 1169.393, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648", "content_type": "application/json"}
+{"index": 1, "start_offset_ms": 3.674, "http": 400, "ms": 1169.309, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648", "content_type": "application/json"}
+{"name": "spoof_no_wrong_password_session", "status": "PASS", "detail": {"http": [400, 400, 400, 400, 400]}}
+{"name": "XFF_XRealIP_spoof_burst", "status": "NOT TESTED", "detail": {"baseline429": 0, "spoof429": 0, "reason": "No matched overflow control or insufficient429; no bypass conclusion"}}
+SUMMARY {"PASS": 1, "FAIL": 0, "BLOCKED": 0, "NOT TESTED": 1}

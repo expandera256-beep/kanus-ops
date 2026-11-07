@@ -1,0 +1,29 @@
+---
+pid: 345309
+cwd: "/workspace/us-panel-dev/r13hook/term/licensesrv"
+command: "cd /workspace/us-panel-dev/r13hook/term/licensesrv && T=$(mktemp) && { sed -n 1,16p r13_wake_races_test.go; cat /tmp/mid; sed -n '/^\\/\\/ Cancelled leader mid/,$p' r13_wake_races_test.go; } > $T && mv $T r13_wake_races_test.go && chmod 644 r13_wake_races_test.go && gofmt -w r13_wake_races_test.go && cd .. && export GOPROXY=off GOSUMDB=off US_REAL_MODEL_TEST=0 US_REAL_MODEL_E2E=0; go test ./licensesrv -run 'TestR13|TestR12ConcurrentWakeCoalescesStatus' -count=5 2>&1 | grep -E \"^\\s*(--- FAIL|ok|FAIL)\" | sort | uniq -c"
+status: succeeded
+started_at: 2026-11-07T22:12:42.791Z
+running_for_ms: 101226   
+---
+      3     --- FAIL: TestR13CancelledLeaderLiveFollowerPolicy/entitled=false (10.01s)
+      2     --- FAIL: TestR13CancelledLeaderLiveFollowerPolicy/entitled=false (10.02s)
+      3     --- FAIL: TestR13EntitlementChangesBeforeWake/credit-consumed (0.00s)
+      2     --- FAIL: TestR13EntitlementChangesBeforeWake/credit-consumed (0.01s)
+      4     --- FAIL: TestR13EntitlementChangesBeforeWake/license-revoked (0.00s)
+      1     --- FAIL: TestR13EntitlementChangesBeforeWake/license-revoked (0.01s)
+      5 --- FAIL: TestR13CancelledFollowerDoesNotWake (0.00s)
+      5 --- FAIL: TestR13CancelledLeaderDoesNotWake (0.00s)
+      1 --- FAIL: TestR13CancelledLeaderLiveFollowerPolicy (20.02s)
+      3 --- FAIL: TestR13CancelledLeaderLiveFollowerPolicy (20.03s)
+      1 --- FAIL: TestR13CancelledLeaderLiveFollowerPolicy (20.04s)
+      4 --- FAIL: TestR13EntitlementChangesBeforeWake (0.01s)
+      1 --- FAIL: TestR13EntitlementChangesBeforeWake (0.02s)
+      2 FAIL
+      1 FAIL	kiyas/licensesrv	100.532s
+
+---
+exit_code: 0
+elapsed_ms: 101226
+ended_at: 2026-11-07T22:14:24.017Z
+---

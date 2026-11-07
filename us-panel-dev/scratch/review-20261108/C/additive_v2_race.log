@@ -1,0 +1,36 @@
+{"Time":"2026-11-08T00:18:29.640434106+03:00","Action":"start","Package":"kiyas/apiv1"}
+{"Time":"2026-11-08T00:18:29.649879123+03:00","Action":"run","Package":"kiyas/apiv1","Test":"TestWithAPIVersionHeader"}
+{"Time":"2026-11-08T00:18:29.649941521+03:00","Action":"output","Package":"kiyas/apiv1","Test":"TestWithAPIVersionHeader","Output":"=== RUN   TestWithAPIVersionHeader\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:29.650166492+03:00","Action":"output","Package":"kiyas/apiv1","Test":"TestWithAPIVersionHeader","Output":"--- PASS: TestWithAPIVersionHeader (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:29.650193635+03:00","Action":"pass","Package":"kiyas/apiv1","Test":"TestWithAPIVersionHeader","Elapsed":0}
+{"Time":"2026-11-08T00:18:29.65022433+03:00","Action":"run","Package":"kiyas/apiv1","Test":"TestMountAccountAlias"}
+{"Time":"2026-11-08T00:18:29.65022973+03:00","Action":"output","Package":"kiyas/apiv1","Test":"TestMountAccountAlias","Output":"=== RUN   TestMountAccountAlias\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:29.650397345+03:00","Action":"output","Package":"kiyas/apiv1","Test":"TestMountAccountAlias","Output":"--- PASS: TestMountAccountAlias (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:29.650421154+03:00","Action":"pass","Package":"kiyas/apiv1","Test":"TestMountAccountAlias","Elapsed":0}
+{"Time":"2026-11-08T00:18:29.650442055+03:00","Action":"output","Package":"kiyas/apiv1","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:30.6521439+03:00","Action":"output","Package":"kiyas/apiv1","Output":"ok  \tkiyas/apiv1\t1.011s\n"}
+{"Time":"2026-11-08T00:18:30.65218753+03:00","Action":"pass","Package":"kiyas/apiv1","Elapsed":1.012}
+{"Time":"2026-11-08T00:18:31.497514675+03:00","Action":"start","Package":"kiyas/cmd/us-license-hook"}
+{"Time":"2026-11-08T00:18:31.505310192+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux"}
+{"Time":"2026-11-08T00:18:31.505364255+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux","Output":"=== RUN   TestAccountRoutesThroughProductionMux\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:39.523327911+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux","Output":"--- PASS: TestAccountRoutesThroughProductionMux (8.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:39.523394682+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux","Elapsed":8.02}
+{"Time":"2026-11-08T00:18:39.523404918+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestWebhookRoutesAreTopicBound"}
+{"Time":"2026-11-08T00:18:39.523412958+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestWebhookRoutesAreTopicBound","Output":"=== RUN   TestWebhookRoutesAreTopicBound\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:39.529742561+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestWebhookRoutesAreTopicBound","Output":"--- PASS: TestWebhookRoutesAreTopicBound (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:39.529778111+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestWebhookRoutesAreTopicBound","Elapsed":0.01}
+{"Time":"2026-11-08T00:18:39.529784507+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestSMTPDisabledDoesNotAttemptOrExhaustOutbox"}
+{"Time":"2026-11-08T00:18:39.52978707+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestSMTPDisabledDoesNotAttemptOrExhaustOutbox","Output":"=== RUN   TestSMTPDisabledDoesNotAttemptOrExhaustOutbox\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:39.532243096+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestSMTPDisabledDoesNotAttemptOrExhaustOutbox","Output":"--- PASS: TestSMTPDisabledDoesNotAttemptOrExhaustOutbox (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:39.532272342+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestSMTPDisabledDoesNotAttemptOrExhaustOutbox","Elapsed":0}
+{"Time":"2026-11-08T00:18:39.532290218+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestPlansFilePrecedenceAndFailClosed"}
+{"Time":"2026-11-08T00:18:39.532295029+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPlansFilePrecedenceAndFailClosed","Output":"=== RUN   TestPlansFilePrecedenceAndFailClosed\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:39.533338316+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPlansFilePrecedenceAndFailClosed","Output":"--- PASS: TestPlansFilePrecedenceAndFailClosed (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:39.533363163+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestPlansFilePrecedenceAndFailClosed","Elapsed":0}
+{"Time":"2026-11-08T00:18:39.533402826+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestModelRoutesAreLicenseProtected"}
+{"Time":"2026-11-08T00:18:39.533424211+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestModelRoutesAreLicenseProtected","Output":"=== RUN   TestModelRoutesAreLicenseProtected\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:39.534040629+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestModelRoutesAreLicenseProtected","Output":"--- PASS: TestModelRoutesAreLicenseProtected (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:39.53405385+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestModelRoutesAreLicenseProtected","Elapsed":0}
+{"Time":"2026-11-08T00:18:39.534076384+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:18:40.536456213+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Output":"ok  \tkiyas/cmd/us-license-hook\t9.039s\n"}
+{"Time":"2026-11-08T00:18:40.536541124+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Elapsed":9.039}

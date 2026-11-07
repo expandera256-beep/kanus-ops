@@ -1,0 +1,42 @@
+[
+  {
+    "clientSpecifiedPayloadChecksum": true,
+    "createTime": "2026-11-07T21:10:53.063365Z",
+    "etag": "\"165fb629f7e8c5\"",
+    "name": "projects/247516932580/secrets/us-worker-policy/versions/4",
+    "replicationStatus": {
+      "automatic": {}
+    },
+    "state": "ENABLED"
+  },
+  {
+    "clientSpecifiedPayloadChecksum": true,
+    "createTime": "2026-11-06T06:49:03.765352Z",
+    "etag": "\"165f9602034368\"",
+    "name": "projects/247516932580/secrets/us-worker-policy/versions/3",
+    "replicationStatus": {
+      "automatic": {}
+    },
+    "state": "ENABLED"
+  },
+  {
+    "clientSpecifiedPayloadChecksum": true,
+    "createTime": "2026-11-06T06:47:21.384771Z",
+    "etag": "\"165fb62583d390\"",
+    "name": "projects/247516932580/secrets/us-worker-policy/versions/2",
+    "replicationStatus": {
+      "automatic": {}
+    },
+    "state": "DISABLED"
+  },
+  {
+    "clientSpecifiedPayloadChecksum": true,
+    "createTime": "2026-11-05T20:36:52.723443Z",
+    "etag": "\"165f8d74ac0af3\"",
+    "name": "projects/247516932580/secrets/us-worker-policy/versions/1",
+    "replicationStatus": {
+      "automatic": {}
+    },
+    "state": "ENABLED"
+  }
+]

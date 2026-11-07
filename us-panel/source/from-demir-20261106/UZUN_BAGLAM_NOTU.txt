@@ -1,0 +1,9 @@
+US uzun istem çalışması — kaynak taslağı
+
+Sohbet alanına girilen uzun bir istem, modele sığacak küçük metin parçalarına ayrılır. Parçalar sırayla işlenir ve ara notlar kademeli olarak birleştirilir. Parça veya birleştirme çağrısı başarısızsa işlem durur; ara yanıtlar dosya olarak uygulanmaz. İşlemi bir parçanın sonunda durdurma kontrolü eklenmiştir. Tek kullanıcı istemi, istem sayısıyla sınırlandırılmış lisanslarda bir istem olarak sayılır; süre ve son kullanma kontrolleri işlem boyunca devam eder.
+
+Girdi üst sınırı 8 MiB'tır. Uzun işlemler çok sayıda model çağrısı gerektirebilir. Ara özetler bilgi kaybına yol açabilir: bu işlem modelin 8.192 tokenlık gerçek bağlam penceresini büyütmez. İlk ve son bölümden verilen kısa ipuçları her olası görevi tam anlatmayabilir. Yanıt doğruluğu ve 300.000 tokenlık gerçek bir görev henüz canlı modelle sınanmamıştır.
+
+Bu değişiklik sohbet istemleri içindir. Proje dosyalarının tamamını parçalı okuyup büyük dosyalara yama uygulama henüz eklenmemiştir; tam okunmayan mevcut dosyaların üzerine yazma koruması sürer.
+
+Bu kaynak Go testlerinden geçirilmiş ve Windows 64 bit EXE olarak derlenmiştir. Güncel çıktı sınırı değişiklikleri için CIKTI_DEVAM_NOTU.txt dosyasına bakın. Windows'ta Go 1.22 veya üzeri ile kiyas/term/US_DERLE.bat testleri çalıştırır, başarılıysa US.exe oluşturur. Bu çalışma ticari hesap/Shopify sisteminin tamamlandığı anlamına gelmez.

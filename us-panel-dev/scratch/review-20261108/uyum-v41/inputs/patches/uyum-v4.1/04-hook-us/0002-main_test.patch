@@ -1,0 +1,39 @@
+--- a/cmd/us-license-hook/main_test.go
++++ b/cmd/us-license-hook/main_test.go
+@@ -140,3 +140,36 @@
+ 		}
+ 	}
+ }
++
++func TestPrivacyRetentionDaysMounted(t *testing.T) {
++	t.Setenv("US_PRIVACY_RETENTION_DAYS", "1")
++	t.Setenv("US_PRIVACY_ADMIN_TOKEN", "adm-test-token")
++	dir := t.TempDir()
++	path := filepath.Join(dir, "s.json")
++	st, err := licensesrv.OpenStore(path)
++	if err != nil {
++		t.Fatal(err)
++	}
++	st.Close()
++	// Seed an aged webhook via on-disk ledger (no internal field access from package main).
++	raw := []byte(`{"accounts":{},"licenseOwners":{},"webhooks":{"old":"2020-01-01T00:00:00Z"},"orders":{},"licenses":{},"outbox":[],"reservations":{},"settlements":{},"cancelled":{},"refunds":{}}`)
++	if err := os.WriteFile(path, raw, 0o600); err != nil {
++		t.Fatal(err)
++	}
++	st, err = licensesrv.OpenStore(path)
++	if err != nil {
++		t.Fatal(err)
++	}
++	defer st.Close()
++	mux := newMux(licensesrv.Config{}, st)
++	req := httptest.NewRequest("POST", "/account/privacy/retention-run", nil)
++	req.Header.Set("Authorization", "Bearer adm-test-token")
++	w := httptest.NewRecorder()
++	mux.ServeHTTP(w, req)
++	if w.Code != 200 {
++		t.Fatalf("retention %d %s", w.Code, w.Body.String())
++	}
++	if !strings.Contains(w.Body.String(), `"webhooksRemoved":1`) && !strings.Contains(w.Body.String(), `"webhooksRemoved": 1`) {
++		t.Fatalf("expected KeepDays=1 to remove aged webhook: %s", w.Body.String())
++	}
++}

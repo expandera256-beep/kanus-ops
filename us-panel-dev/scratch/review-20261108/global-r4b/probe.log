@@ -1,0 +1,18 @@
+=== RUN   TestPrefRootCacheBounded
+--- PASS: TestPrefRootCacheBounded (0.06s)
+=== RUN   TestPrefRootHandleScaling
+    pref_rootcache_test.go:77: handle delta: 64 roots +0, 512 roots +0
+--- PASS: TestPrefRootHandleScaling (0.43s)
+=== RUN   TestPrefRootClosedHandleInvalid
+--- PASS: TestPrefRootClosedHandleInvalid (0.01s)
+=== RUN   TestPrefRootEvictionWhileInUse
+--- PASS: TestPrefRootEvictionWhileInUse (0.00s)
+=== RUN   TestPrefRootConcurrentSwitch
+--- PASS: TestPrefRootConcurrentSwitch (0.29s)
+=== RUN   TestPrefRootRebindPinned
+--- PASS: TestPrefRootRebindPinned (0.00s)
+=== RUN   TestReviewRootFDGrowth
+    review_fd_test.go:3: fds before=7 after=8 roots=1
+--- PASS: TestReviewRootFDGrowth (0.04s)
+PASS
+ok  	kiyas/i18n	1.840s

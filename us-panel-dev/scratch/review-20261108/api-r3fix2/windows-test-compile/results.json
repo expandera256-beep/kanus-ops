@@ -1,0 +1,119 @@
+[
+  {
+    "tree": "api11-fixed",
+    "package": "kiyas",
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sha256": "3216edcf49ba43143c9913e6e96d30fabe9ea01a129210cd1036a738a1e1b3ce",
+    "executed": false
+  },
+  {
+    "tree": "api11-fixed",
+    "package": "kiyas/apiv1",
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sha256": "408d87f0136cadc4d67885c7c921c7044e50675330b15d5bdb1ed33992cafed1",
+    "executed": false
+  },
+  {
+    "tree": "api11-fixed",
+    "package": "kiyas/cmd/us-license-hook",
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sha256": "b8154db4932e11eaefabc4e8ddb4a7893b2c4654f9c213d5266ae7b3e8560349",
+    "executed": false
+  },
+  {
+    "tree": "api11-fixed",
+    "package": "kiyas/cmd/us-pricing-gen",
+    "compile_exit": 0,
+    "stdout": "?   \tkiyas/cmd/us-pricing-gen\t[no test files]\n",
+    "stderr": "",
+    "sha256": null,
+    "executed": false
+  },
+  {
+    "tree": "api11-fixed",
+    "package": "kiyas/internal/privacy",
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sha256": "ec808f2c1f9cf6d215c09d353a1d4e2a5ef06a344917383dec863d873f7670fc",
+    "executed": false
+  },
+  {
+    "tree": "api11-fixed",
+    "package": "kiyas/licensesrv",
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sha256": "f76695db5f4f72d618c373a2385aca448cee3b78c098541b9adcc3a383cbeb7c",
+    "executed": false
+  },
+  {
+    "tree": "stack12",
+    "package": "kiyas",
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sha256": "ec2431de73ad13e3418986af3a21e2e5184f9caecea75f8f30ff8df1424bca58",
+    "executed": false
+  },
+  {
+    "tree": "stack12",
+    "package": "kiyas/apiv1",
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sha256": "095cde31cb0acdc2a8eabe0586542c0fafe33849ed7895f26b3c16012be42009",
+    "executed": false
+  },
+  {
+    "tree": "stack12",
+    "package": "kiyas/cmd/us-license-hook",
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sha256": "c4821c8f767154cb6366e6f737195c5090719b6505c37ac4a3ac37674f94badf",
+    "executed": false
+  },
+  {
+    "tree": "stack12",
+    "package": "kiyas/cmd/us-pricing-gen",
+    "compile_exit": 0,
+    "stdout": "?   \tkiyas/cmd/us-pricing-gen\t[no test files]\n",
+    "stderr": "",
+    "sha256": null,
+    "executed": false
+  },
+  {
+    "tree": "stack12",
+    "package": "kiyas/i18n",
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sha256": "6379c6c7d852161b4654e39d068b34b9ec9b31234d1b88df885f0d6f19e31c73",
+    "executed": false
+  },
+  {
+    "tree": "stack12",
+    "package": "kiyas/internal/privacy",
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sha256": "28db938394c5b903be44a851bb7b3129c0e80fbfc9eb573bdbfe6d93a37bdd9c",
+    "executed": false
+  },
+  {
+    "tree": "stack12",
+    "package": "kiyas/licensesrv",
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sha256": "870384afd6c186839942d8a3789ff62d86081ea48f29cf1d33b4b4a1355df736",
+    "executed": false
+  }
+]

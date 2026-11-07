@@ -1,0 +1,15 @@
+=== RUN   TestAPIRegressionLedgerBalanceReserveCommitRelease
+--- PASS: TestAPIRegressionLedgerBalanceReserveCommitRelease (0.01s)
+=== RUN   TestAPIRegressionInsufficientCreditAndIdempotentSettle
+--- PASS: TestAPIRegressionInsufficientCreditAndIdempotentSettle (0.00s)
+=== RUN   TestAPIRegressionConcurrentLastCreditNoDoubleSpend
+--- PASS: TestAPIRegressionConcurrentLastCreditNoDoubleSpend (0.02s)
+=== RUN   TestAPIRegressionAccountBalanceAggregatesOwnedLicenses
+--- PASS: TestAPIRegressionAccountBalanceAggregatesOwnedLicenses (2.64s)
+=== RUN   TestAPIRegressionCreditHTTPStatusContract
+--- PASS: TestAPIRegressionCreditHTTPStatusContract (0.01s)
+=== RUN   TestAPIRegressionAccountSessionCreditStatus
+--- PASS: TestAPIRegressionAccountSessionCreditStatus (2.66s)
+PASS
+ok  	kiyas/licensesrv	6.347s
+EXIT:0

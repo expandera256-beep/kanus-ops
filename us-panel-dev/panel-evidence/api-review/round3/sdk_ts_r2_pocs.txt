@@ -1,0 +1,8 @@
+reserve_err KanusError(status=429, code="rate_limited", request_id="x", raw=<redacted len=72>)
+{"reserve_server_posts":1,"PASS_IF_1":true}
+cap retry_after_capped
+{"sleeps":[],"capped_no_sleep":true}
+https_enforced true
+localhost_ok true
+toString KanusError(status=401, code="", request_id="", raw=<redacted len=19>)
+raw_in_toString false

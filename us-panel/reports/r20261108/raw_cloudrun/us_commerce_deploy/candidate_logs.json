@@ -1,0 +1,629 @@
+[
+  {
+    "httpRequest": {
+      "latency": "0.000142s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "32",
+      "status": 429
+    },
+    "insertId": "6aef9c8c00019adb7a161057",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "96ebe79c713b4cc1bfabaad08251e2d5"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:56.254536281Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "timestamp": "2026-11-07T21:47:56.105179Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/dd4faecee76538c8c8c07275d9698a3e"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000139s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c8b000da3062dbb66b7",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "41b4950630bb404c804c547d848e3808"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:55.923107078Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:55.893702Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/9f2baa23194930a90343574540cd27af"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000136s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c8b000a522d56598cbc",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "76d398e2dc7a46039c6cd0c77613343d"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:55.923107078Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:55.676397Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/b8f14fb7d5fb38b25a20955aa794578c"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000136s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c8b00070d4be72366d1",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "ebf6b1da43ad4d1a81aed891091eadf3"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:55.585616383Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:55.462155Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/0a01adf984aaf54535816a4e182a09c4"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000144s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c8b000386dc790cf4a2",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "05c10213bb664a10b2827a2bb505c5aa"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:55.252043834Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:55.231132Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/68ea8d16cbd8e5a0991e16f210b42b9f"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000149s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c8b00002f633850e079",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "a9cb5f6cf81e45199db08cb948107e99"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:55.252043834Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:55.012131Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/7e8a1cb440bfbae17f6e6e6f6c2652d1"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000158s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c8a000c36cf81b342ad",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "fa1874be4cab442e80861528d5d27531"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:54.925998342Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:54.800463Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/36c085ce708ab4380b1237a1e3103f5f"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000147s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c8a0008e7002896618e",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "0afb420e17d24641a66f98a46750f901"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:54.925998342Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:54.583424Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/99c7cbf0698931307917651acd8e4b27"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000179s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c8a000564e7860ad522",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "18859229e0cb4e248b1d4d6d4b62a392"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:54.586401905Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:54.353511Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/f3c5b9d5db20f30504f413e0afe980fd"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000142s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c8a0001df9a469d06c3",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "9eac0e0043e74e9f900f5385fa0a8f42"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:54.253188451Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:54.122778Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/b674ff37da130cfe843ee545146efbd2"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000153s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c89000d9369a6fa0529",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "f1b7629460fd477a996f4936ae89c00b"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:53.919720547Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:53.889705Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/488f65f78aed1e0689e86f4ef697e4b5"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000152s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c89000a19f9e21617e2",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "750ccb9c0fe346459443ad59534b2cea"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:53.919720547Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:53.662009Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/a57b498c59e1b4a8f6bd99fca3f85b10"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000142s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c8900064b4121ac4e7e",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "7ca0e3e1fffa4b49a07c925e52708cd5"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:53.587544586Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:53.412481Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/3ecd0fb87a8b88e296d7b3b3a0ce4315"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000157s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c8900025fe791923960",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "bfdfffa02aaa4d6693849c8cb729180b"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:53.254479509Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:53.155623Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/da38138e077f42a07c593864173a5453"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000144s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c88000ddd49c28dd9ff",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "80b5e572320d49f5a6b7b58ac03c10db"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:52.925545210Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:52.908617Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/cc58b20e26448d57c558faec0946bce5"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000142s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/readyz",
+      "responseSize": "19",
+      "status": 405
+    },
+    "insertId": "6aef9c88000a76edd2de7d5a",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "7b0058138e5646b3b243783c08145e20"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:52.925545210Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "timestamp": "2026-11-07T21:47:52.685805Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/5f3b5edc2523148df45ecdc9cea9e5bb"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.034305s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/ready",
+      "responseSize": "58",
+      "status": 200
+    },
+    "insertId": "6aef9c880007236770a67906",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "a2c21bea49b34fd9ad702c68d3e0c34a"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:52.589436511Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:52.467815Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/41abebe0059d3c6bdcad4062f0145501"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000177s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c880002efda49a4e2fd",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "cde8f7c878e14ee7acee6259c4c6e7d3"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:52.254733535Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:52.192474Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/375285a05cc058d5116722e2794147a3"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000499s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9c77000e3b7eca0bcd15",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "d764496eaf0b4caeacc87008eff8dbc7"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:47:35.937573904Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:47:35.932734Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/656d7eb3004e43deae6235fd74b0bb47"
+  }
+]

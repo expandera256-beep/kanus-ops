@@ -1,0 +1,4 @@
+2026-11-08T00:20:52.693882+03:00
+GET https://api-test.kanus.org/readyz
+404 198.18.0.1 https://api-test.kanus.org/readyz
+exit=0

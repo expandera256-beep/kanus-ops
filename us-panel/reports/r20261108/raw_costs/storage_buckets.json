@@ -1,0 +1,38 @@
+[
+  {
+    "creation_time": "2026-11-02T22:15:22+0000",
+    "default_storage_class": "STANDARD",
+    "generation": 1793657722152108037,
+    "location": "EUROPE-WEST4",
+    "location_type": "region",
+    "metageneration": 2,
+    "name": "p27082-ds-istek",
+    "public_access_prevention": "enforced",
+    "satisfies_pzs": true,
+    "soft_delete_policy": {
+      "effectiveTime": "2026-11-02T22:15:22.572000+00:00",
+      "retentionDurationSeconds": "604800"
+    },
+    "storage_url": "gs://p27082-ds-istek/",
+    "uniform_bucket_level_access": true,
+    "update_time": "2026-11-02T22:19:49+0000"
+  },
+  {
+    "creation_time": "2026-11-05T20:42:07+0000",
+    "default_storage_class": "STANDARD",
+    "generation": 1793911326737875495,
+    "location": "EUROPE-WEST4",
+    "location_type": "region",
+    "metageneration": 2,
+    "name": "us-build-247516932580-euw4",
+    "public_access_prevention": "enforced",
+    "satisfies_pzs": true,
+    "soft_delete_policy": {
+      "effectiveTime": "2026-11-05T20:42:07.133000+00:00",
+      "retentionDurationSeconds": "604800"
+    },
+    "storage_url": "gs://us-build-247516932580-euw4/",
+    "uniform_bucket_level_access": true,
+    "update_time": "2026-11-05T20:42:08+0000"
+  }
+]

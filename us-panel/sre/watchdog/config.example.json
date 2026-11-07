@@ -1,0 +1,111 @@
+{
+  "idle_seconds": 600,
+  "boot_seconds": 3000,
+  "client_wait_seconds": 2700,
+  "upstream_timeout_seconds": 2700,
+  "sse_keepalive_seconds": 15,
+  "alarm_threshold": 3,
+  "alarm_outbox_path": "/var/lib/ds-watchdog/alarm_outbox.jsonl",
+  "alarm_email_to": "demirtumen08@gmail.com",
+  "mode": "observe",
+  "poll_seconds": 5,
+  "start_attempts": 3,
+  "retry_backoff_seconds": 30,
+  "stop_wait_seconds": 300,
+  "price_per_hour_usd": 1.848238,
+  "cost_log_path": "/var/lib/ds-watchdog/gpu_cost.jsonl",
+  "instance": "ds-a100",
+  "alarm_email_from": "support@kanus.org",
+  "alarm_send_enabled": false,
+  "price_source": "Cloud Billing Catalog API v1 services/6F81-5844-456A/skus (Compute Engine), europe-west4, list price; adet: cloud.google.com/compute/docs/accelerator-optimized-machines (a2-highgpu-1g: 12 vCPU, 85 GB, 1x A100 40GB)",
+  "price_retrieved_at": "2026-11-06T08:20:00+03:00",
+  "price_breakdown": {
+    "currency": "USD",
+    "model": "SPOT",
+    "region": "europe-west4",
+    "machine_type": "a2-highgpu-1g",
+    "hours_per_month": 730,
+    "components": [
+      {
+        "name": "vCPU",
+        "skuId": "E540-EA28-2318",
+        "description": "Spot Preemptible A2 Instance Core running in Netherlands",
+        "unit_price_usd": 0.01616,
+        "unit": "h (per vCPU)",
+        "qty": 12,
+        "hourly_usd": 0.19392,
+        "effectiveTime": "2026-11-05T08:00:00Z"
+      },
+      {
+        "name": "RAM",
+        "skuId": "D847-3FF3-B717",
+        "description": "Spot Preemptible A2 Instance Ram running in Netherlands",
+        "unit_price_usd": 0.002165,
+        "unit": "GiBy.h",
+        "qty": 85,
+        "hourly_usd": 0.184025,
+        "effectiveTime": "2026-11-05T08:00:00Z"
+      },
+      {
+        "name": "GPU A100 40GB",
+        "skuId": "9BBC-6855-1C9A",
+        "description": "Nvidia Tesla A100 GPU attached to Spot Preemptible VMs running in Netherlands",
+        "unit_price_usd": 1.3618,
+        "unit": "h (per GPU)",
+        "qty": 1,
+        "hourly_usd": 1.3618,
+        "effectiveTime": "2026-11-05T08:00:00Z"
+      },
+      {
+        "name": "Local SSD 4x375 GiB",
+        "skuId": "8D0B-EA58-9E35",
+        "description": "SSD backed Local Storage attached to Spot Preemptible VMs in Netherlands",
+        "unit_price_usd": 0.0528,
+        "unit": "GiBy.mo",
+        "qty": 1500,
+        "hourly_usd": 0.108493,
+        "conversion": "1500 GiB x 0.0528 USD/GiB-ay / 730 saat/ay",
+        "effectiveTime": "2026-11-05T08:00:00Z"
+      }
+    ],
+    "excluded": [
+      "50 GB boot persistent disk (VM durunca da ücretlenir)",
+      "ağ çıkışı",
+      "dış IP"
+    ],
+    "note": "Liste fiyatı; Spot fiyatı değişkendir. Gerçek maliyet Billing export'tan."
+  },
+  "billing_project": "project-27082a40-6083-4952-9db",
+  "billing_dataset": "billing_export",
+  "billing_resource_table": "gcp_billing_export_resource_v1_017786_B62E9C_E21182",
+  "billing_resource_names": [
+    "ds-a100"
+  ],
+  "billing_maximum_bytes_billed": 1000000000,
+  "billing_lookback_days": 3,
+  "billing_export_lag_hours": 48,
+  "billing_diff_abs_usd": 0.5,
+  "billing_diff_pct": 0.2,
+  "spend_daily_limit_usd": 20.0,
+  "spend_monthly_limit_usd": 200.0,
+  "spend_thresholds": [
+    0.5,
+    0.8,
+    1.0
+  ],
+  "spend_alarm_cooldown_seconds": 21600,
+  "preserve_local_ssd": false,
+  "preserved_ssd_gib": 1500,
+  "preserved_ssd_rates_usd_gib_month": {
+    "pd_standard": 0.044,
+    "spot_local_ssd": 0.0528,
+    "ondemand_local_ssd": 0.088
+  },
+  "hours_per_month": 730,
+  "preserved_ssd_rates_source": "Catalog 2026-11-06 08:20 TSİ: AE8C-46C3-4994 / 8D0B-EA58-9E35 / EFD6-4D88-8C94; uygulanan SKU NOT VERIFIED (fiyat doğrulanmadı)",
+  "spend_alarm_ssd_scenario": "ondemand_local_ssd",
+  "spend_alarm_ssd_scenario_note": "Limit alarmı en yüksek (muhafazakâr) senaryoyu kullanır; export'tan kesin SKU gelince preserved_ssd_verified_rate_usd_gib_month doldurulur ve senaryoların yerine geçer.",
+  "preserved_ssd_verified_rate_usd_gib_month": null,
+  "preserved_ssd_verified_sku": null,
+  "spend_limits_decision": "Demir kararı 06.11.2026 09:36 TSİ (KAN.US aracılığıyla)"
+}

@@ -1,0 +1,33 @@
+{
+  "reference": "Wikimedia Solid_unicursal_hexagram.svg proportions (recomputed, not copied)",
+  "A": 0.8281222222222223,
+  "B": 0.4214333333333334,
+  "R": 1.0,
+  "path_order": "top \u2192 lr \u2192 ul \u2192 bottom \u2192 ur \u2192 ll \u2192 top",
+  "vertices_normalized_svg_ydown": {
+    "top": [
+      0.0,
+      -1.0
+    ],
+    "ur": [
+      0.8281222222222223,
+      -0.4214333333333334
+    ],
+    "lr": [
+      0.8281222222222223,
+      0.4214333333333334
+    ],
+    "bottom": [
+      0.0,
+      1.0
+    ],
+    "ll": [
+      -0.8281222222222223,
+      0.4214333333333334
+    ],
+    "ul": [
+      -0.8281222222222223,
+      -0.4214333333333334
+    ]
+  }
+}

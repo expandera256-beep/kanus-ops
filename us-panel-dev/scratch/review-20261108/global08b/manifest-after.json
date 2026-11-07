@@ -1,0 +1,726 @@
+[
+  {
+    "path": "./OKU.txt",
+    "ok": true
+  },
+  {
+    "path": "./ONARIM_NOTU.txt",
+    "ok": true
+  },
+  {
+    "path": "./PROJE_ONARIM_DURUMU.txt",
+    "ok": true
+  },
+  {
+    "path": "./TICARI_ENTEGRASYON_GEREKSINIMLERI.txt",
+    "ok": true
+  },
+  {
+    "path": "./US_DERLE.bat",
+    "ok": true
+  },
+  {
+    "path": "./account_auth_timeout_test.go",
+    "ok": true
+  },
+  {
+    "path": "./account_client.go",
+    "ok": true
+  },
+  {
+    "path": "./account_client_test.go",
+    "ok": true
+  },
+  {
+    "path": "./accounts_mode_round7_test.go",
+    "ok": true
+  },
+  {
+    "path": "./agent.go",
+    "ok": true
+  },
+  {
+    "path": "./agent_test.go",
+    "ok": true
+  },
+  {
+    "path": "./cancellation_test.go",
+    "ok": true
+  },
+  {
+    "path": "./change_history.go",
+    "ok": true
+  },
+  {
+    "path": "./change_history_test.go",
+    "ok": true
+  },
+  {
+    "path": "./chat_quality_test.go",
+    "ok": true
+  },
+  {
+    "path": "./chat_test.go",
+    "ok": true
+  },
+  {
+    "path": "./check_ui.mjs",
+    "ok": true
+  },
+  {
+    "path": "./cloud_install.go",
+    "ok": true
+  },
+  {
+    "path": "./cloud_install_test.go",
+    "ok": true
+  },
+  {
+    "path": "./cloud_space.go",
+    "ok": true
+  },
+  {
+    "path": "./cloud_space_test.go",
+    "ok": true
+  },
+  {
+    "path": "./cmd/us-license-hook/accounts_routes_test.go",
+    "ok": true
+  },
+  {
+    "path": "./cmd/us-license-hook/main.go",
+    "ok": true
+  },
+  {
+    "path": "./cmd/us-license-hook/main_test.go",
+    "ok": true
+  },
+  {
+    "path": "./cmd/us-pricing-gen/main.go",
+    "ok": true
+  },
+  {
+    "path": "./commercial_policy.go",
+    "ok": true
+  },
+  {
+    "path": "./commercial_policy_test.go",
+    "ok": true
+  },
+  {
+    "path": "./context_budget_test.go",
+    "ok": true
+  },
+  {
+    "path": "./context_limits.go",
+    "ok": true
+  },
+  {
+    "path": "./context_limits_test.go",
+    "ok": true
+  },
+  {
+    "path": "./continuation.go",
+    "ok": true
+  },
+  {
+    "path": "./continuation_test.go",
+    "ok": true
+  },
+  {
+    "path": "./core_safety_regression_test.go",
+    "ok": true
+  },
+  {
+    "path": "./desk.go",
+    "ok": true
+  },
+  {
+    "path": "./editor_safety_test.go",
+    "ok": true
+  },
+  {
+    "path": "./embedded_key.go",
+    "ok": true
+  },
+  {
+    "path": "./embedded_license.go",
+    "ok": true
+  },
+  {
+    "path": "./engine.go",
+    "ok": true
+  },
+  {
+    "path": "./engine_test.go",
+    "ok": true
+  },
+  {
+    "path": "./file_link_unix.go",
+    "ok": true
+  },
+  {
+    "path": "./file_link_windows.go",
+    "ok": true
+  },
+  {
+    "path": "./file_open_unix.go",
+    "ok": true
+  },
+  {
+    "path": "./file_open_windows.go",
+    "ok": true
+  },
+  {
+    "path": "./file_tools.go",
+    "ok": true
+  },
+  {
+    "path": "./file_tools_test.go",
+    "ok": true
+  },
+  {
+    "path": "./gateway.go",
+    "ok": true
+  },
+  {
+    "path": "./gateway_credit_test.go",
+    "ok": true
+  },
+  {
+    "path": "./gateway_test.go",
+    "ok": true
+  },
+  {
+    "path": "./go.mod",
+    "ok": true
+  },
+  {
+    "path": "./go.sum",
+    "ok": true
+  },
+  {
+    "path": "./gpu_warming.go",
+    "ok": true
+  },
+  {
+    "path": "./gpu_warming_test.go",
+    "ok": true
+  },
+  {
+    "path": "./gui.go",
+    "ok": true
+  },
+  {
+    "path": "./gui.html",
+    "ok": true
+  },
+  {
+    "path": "./gui_test.go",
+    "ok": true
+  },
+  {
+    "path": "./hook_release_test.go",
+    "ok": true
+  },
+  {
+    "path": "./input.go",
+    "ok": true
+  },
+  {
+    "path": "./journal.go",
+    "ok": true
+  },
+  {
+    "path": "./journal_test.go",
+    "ok": true
+  },
+  {
+    "path": "./license.go",
+    "ok": true
+  },
+  {
+    "path": "./license_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/account_workers.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/accounts.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/accounts_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/b64.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/credit_status_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/credits.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/credits_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/gpu_wake.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/gpu_wake_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/licensesrv_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/load_round6_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/lock_unix.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/lock_windows.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/mail.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/model_meter.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/model_proxy.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/model_proxy_deadline_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/model_proxy_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/order_name_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/plans.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/pricing.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/pricing_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/reversals.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/reversals_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/store.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/store_empty_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/store_lock_test.go",
+    "ok": true
+  },
+  {
+    "path": "./licensesrv/webhook.go",
+    "ok": true
+  },
+  {
+    "path": "./life.go",
+    "ok": true
+  },
+  {
+    "path": "./life_test.go",
+    "ok": true
+  },
+  {
+    "path": "./log_regression_test.go",
+    "ok": true
+  },
+  {
+    "path": "./long_checkpoint.go",
+    "ok": true
+  },
+  {
+    "path": "./long_checkpoint_test.go",
+    "ok": true
+  },
+  {
+    "path": "./long_context.go",
+    "ok": true
+  },
+  {
+    "path": "./long_context_test.go",
+    "ok": true
+  },
+  {
+    "path": "./main.go",
+    "ok": true
+  },
+  {
+    "path": "./model.go",
+    "ok": true
+  },
+  {
+    "path": "./model_actions.go",
+    "ok": true
+  },
+  {
+    "path": "./model_actions_test.go",
+    "ok": true
+  },
+  {
+    "path": "./model_admission.go",
+    "ok": true
+  },
+  {
+    "path": "./model_admission_test.go",
+    "ok": true
+  },
+  {
+    "path": "./model_test.go",
+    "ok": true
+  },
+  {
+    "path": "./offline_test_main_test.go",
+    "ok": true
+  },
+  {
+    "path": "./open_other.go",
+    "ok": true
+  },
+  {
+    "path": "./open_windows.go",
+    "ok": true
+  },
+  {
+    "path": "./order.go",
+    "ok": true
+  },
+  {
+    "path": "./order_test.go",
+    "ok": true
+  },
+  {
+    "path": "./pack.go",
+    "ok": true
+  },
+  {
+    "path": "./pack_test.go",
+    "ok": true
+  },
+  {
+    "path": "./pricing.go",
+    "ok": true
+  },
+  {
+    "path": "./process_tree_linux.go",
+    "ok": true
+  },
+  {
+    "path": "./process_tree_other.go",
+    "ok": true
+  },
+  {
+    "path": "./process_tree_unix.go",
+    "ok": true
+  },
+  {
+    "path": "./process_tree_windows.go",
+    "ok": true
+  },
+  {
+    "path": "./project.go",
+    "ok": true
+  },
+  {
+    "path": "./project_inspection_regression_test.go",
+    "ok": true
+  },
+  {
+    "path": "./project_map.go",
+    "ok": true
+  },
+  {
+    "path": "./project_test_runner.go",
+    "ok": true
+  },
+  {
+    "path": "./project_test_runner_test.go",
+    "ok": true
+  },
+  {
+    "path": "./proposal.go",
+    "ok": true
+  },
+  {
+    "path": "./proposal_batch.go",
+    "ok": true
+  },
+  {
+    "path": "./proposal_batch_test.go",
+    "ok": true
+  },
+  {
+    "path": "./proposal_syntax.go",
+    "ok": true
+  },
+  {
+    "path": "./proposal_syntax_test.go",
+    "ok": true
+  },
+  {
+    "path": "./proposal_test.go",
+    "ok": true
+  },
+  {
+    "path": "./rea.go",
+    "ok": true
+  },
+  {
+    "path": "./rea_test.go",
+    "ok": true
+  },
+  {
+    "path": "./real_model_e2e_test.go",
+    "ok": true
+  },
+  {
+    "path": "./real_project_build_test.go",
+    "ok": true
+  },
+  {
+    "path": "./release.go",
+    "ok": true
+  },
+  {
+    "path": "./repair_flow_test.go",
+    "ok": true
+  },
+  {
+    "path": "./repair_intent_regression_test.go",
+    "ok": true
+  },
+  {
+    "path": "./repair_loop.go",
+    "ok": true
+  },
+  {
+    "path": "./repair_loop_test.go",
+    "ok": true
+  },
+  {
+    "path": "./review_regression_linux_test.go",
+    "ok": true
+  },
+  {
+    "path": "./review_regression_test.go",
+    "ok": true
+  },
+  {
+    "path": "./run.go",
+    "ok": true
+  },
+  {
+    "path": "./run_test.go",
+    "ok": true
+  },
+  {
+    "path": "./safe_exec.go",
+    "ok": true
+  },
+  {
+    "path": "./safe_exec_test.go",
+    "ok": true
+  },
+  {
+    "path": "./safe_exec_unix_test.go",
+    "ok": true
+  },
+  {
+    "path": "./safe_limits_linux.go",
+    "ok": true
+  },
+  {
+    "path": "./safe_limits_linux_test.go",
+    "ok": true
+  },
+  {
+    "path": "./safe_limits_other.go",
+    "ok": true
+  },
+  {
+    "path": "./safe_limits_windows.go",
+    "ok": true
+  },
+  {
+    "path": "./scope_guard_test.go",
+    "ok": true
+  },
+  {
+    "path": "./smoke_cli.go",
+    "ok": true
+  },
+  {
+    "path": "./smoke_cli_test.go",
+    "ok": true
+  },
+  {
+    "path": "./smoke_console_other.go",
+    "ok": true
+  },
+  {
+    "path": "./smoke_console_windows.go",
+    "ok": true
+  },
+  {
+    "path": "./source_range.go",
+    "ok": true
+  },
+  {
+    "path": "./stream_integrity_test.go",
+    "ok": true
+  },
+  {
+    "path": "./studio.go",
+    "ok": true
+  },
+  {
+    "path": "./studio_test.go",
+    "ok": true
+  },
+  {
+    "path": "./task_history.go",
+    "ok": true
+  },
+  {
+    "path": "./task_history_test.go",
+    "ok": true
+  },
+  {
+    "path": "./task_queue.go",
+    "ok": true
+  },
+  {
+    "path": "./task_queue_test.go",
+    "ok": true
+  },
+  {
+    "path": "./task_state.go",
+    "ok": true
+  },
+  {
+    "path": "./task_state_test.go",
+    "ok": true
+  },
+  {
+    "path": "./terminal.go",
+    "ok": true
+  },
+  {
+    "path": "./terminal_gui_test.go",
+    "ok": true
+  },
+  {
+    "path": "./terminal_test.go",
+    "ok": true
+  },
+  {
+    "path": "./testdata/project_acceptance.py",
+    "ok": true
+  },
+  {
+    "path": "./transaction_recovery.go",
+    "ok": true
+  },
+  {
+    "path": "./transaction_recovery_test.go",
+    "ok": true
+  },
+  {
+    "path": "./trial.go",
+    "ok": true
+  },
+  {
+    "path": "./tunnel.go",
+    "ok": true
+  },
+  {
+    "path": "./tunnel_other.go",
+    "ok": true
+  },
+  {
+    "path": "./tunnel_test.go",
+    "ok": true
+  },
+  {
+    "path": "./tunnel_windows.go",
+    "ok": true
+  },
+  {
+    "path": "./ui.go",
+    "ok": true
+  },
+  {
+    "path": "./ui_test.go",
+    "ok": true
+  },
+  {
+    "path": "./vt_other.go",
+    "ok": true
+  },
+  {
+    "path": "./vt_windows.go",
+    "ok": true
+  },
+  {
+    "path": "./window.go",
+    "ok": true
+  },
+  {
+    "path": "./window_other.go",
+    "ok": true
+  },
+  {
+    "path": "./window_windows.go",
+    "ok": true
+  },
+  {
+    "path": "./worker_client.go",
+    "ok": true
+  },
+  {
+    "path": "./workspace_context_test.go",
+    "ok": true
+  }
+]

@@ -1,0 +1,176 @@
+{
+  "source": "MOCK",
+  "target": "http://127.0.0.1:33239/v1/chat/completions",
+  "loads": [
+    {
+      "source": "MOCK",
+      "target": "parameterized_loopback_target",
+      "concurrency": 1,
+      "n": 1,
+      "successes": 1,
+      "status_counts": {
+        "200": 1
+      },
+      "elapsed_ms": {
+        "p50": 43.528,
+        "p95": 43.528,
+        "p99": 43.528
+      },
+      "ttft_ms": {
+        "p50": 21.173,
+        "p95": 21.173,
+        "p99": 21.173
+      },
+      "queue_ms": {
+        "p50": 0.004,
+        "p95": 0.004,
+        "p99": 0.004
+      },
+      "queue_observation": "response_header",
+      "error_rate": 0.0,
+      "incomplete_200": 0,
+      "expected_credit_debit": 1,
+      "actual_credit_debit": 1,
+      "credits_consistent": true,
+      "outstanding_hold": 0,
+      "mock_cost_usd_per_request": 0.002,
+      "cost_basis": "SIMULATED credit=$0.002; not measured GPU cost",
+      "gpu_utilization": "N/A MOCK",
+      "samples": [
+        {
+          "status": 200,
+          "elapsed_ms": 43.52768399985507,
+          "ttft_ms": 21.173047000047518,
+          "queue_ms": 0.004412999260239303,
+          "retry_after": null,
+          "complete": true,
+          "done": true,
+          "finish": true,
+          "content_chunks": 4,
+          "malformed": false,
+          "stream_error": false,
+          "cancelled": false,
+          "transport_error": null,
+          "error_code": null
+        }
+      ]
+    },
+    {
+      "source": "MOCK",
+      "target": "parameterized_loopback_target",
+      "concurrency": 5,
+      "n": 5,
+      "successes": 5,
+      "status_counts": {
+        "200": 5
+      },
+      "elapsed_ms": {
+        "p50": 44.455,
+        "p95": 87.227,
+        "p99": 87.229
+      },
+      "ttft_ms": {
+        "p50": 21.64,
+        "p95": 64.812,
+        "p99": 64.814
+      },
+      "queue_ms": {
+        "p50": 0.002,
+        "p95": 43.155,
+        "p99": 43.156
+      },
+      "queue_observation": "response_header",
+      "error_rate": 0.0,
+      "incomplete_200": 0,
+      "expected_credit_debit": 5,
+      "actual_credit_debit": 5,
+      "credits_consistent": true,
+      "outstanding_hold": 0,
+      "mock_cost_usd_per_request": 0.002,
+      "cost_basis": "SIMULATED credit=$0.002; not measured GPU cost",
+      "gpu_utilization": "N/A MOCK",
+      "samples": [
+        {
+          "status": 200,
+          "elapsed_ms": 44.45479000060004,
+          "ttft_ms": 21.63982799902442,
+          "queue_ms": 0.002430999302305281,
+          "retry_after": null,
+          "complete": true,
+          "done": true,
+          "finish": true,
+          "content_chunks": 4,
+          "malformed": false,
+          "stream_error": false,
+          "cancelled": false,
+          "transport_error": null,
+          "error_code": null
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 44.42110799936927,
+          "ttft_ms": 21.610609997878782,
+          "queue_ms": 0.0017880011000670493,
+          "retry_after": null,
+          "complete": true,
+          "done": true,
+          "finish": true,
+          "content_chunks": 4,
+          "malformed": false,
+          "stream_error": false,
+          "cancelled": false,
+          "transport_error": null,
+          "error_code": null
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 44.38605399991502,
+          "ttft_ms": 21.583524998277426,
+          "queue_ms": 0.0013669996405951679,
+          "retry_after": null,
+          "complete": true,
+          "done": true,
+          "finish": true,
+          "content_chunks": 4,
+          "malformed": false,
+          "stream_error": false,
+          "cancelled": false,
+          "transport_error": null,
+          "error_code": null
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 87.2298590002174,
+          "ttft_ms": 64.80412000018987,
+          "queue_ms": 43.151899000804406,
+          "retry_after": null,
+          "complete": true,
+          "done": true,
+          "finish": true,
+          "content_chunks": 4,
+          "malformed": false,
+          "stream_error": false,
+          "cancelled": false,
+          "transport_error": null,
+          "error_code": null
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 87.21592900110409,
+          "ttft_ms": 64.81403900033911,
+          "queue_ms": 43.156096999155125,
+          "retry_after": null,
+          "complete": true,
+          "done": true,
+          "finish": true,
+          "content_chunks": 4,
+          "malformed": false,
+          "stream_error": false,
+          "cancelled": false,
+          "transport_error": null,
+          "error_code": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: us-watchdog
+  annotations:
+    run.googleapis.com/ingress: all
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '0'
+        autoscaling.knative.dev/maxScale: '1'
+        run.googleapis.com/network-interfaces: '[{"network":"default","subnetwork":"default"}]'
+        run.googleapis.com/vpc-access-egress: private-ranges-only
+    spec:
+      serviceAccountName: REPLACE_WATCHDOG_SERVICE_ACCOUNT
+      containerConcurrency: 1
+      timeoutSeconds: 300
+      containers:
+        - image: REPLACE_VERIFIED_IMAGE_DIGEST
+          ports: [{containerPort: 8080}]
+          resources:
+            limits: {cpu: '1', memory: 512Mi}
+          env:
+            - {name: US_ENV, value: production}
+            - {name: US_APP_FACTORY, value: 'runtime:watchdog_app()'}
+            - {name: US_WORKERS_CONFIG, value: /secrets/policy/workers.json}
+            - {name: US_MODEL_CA_FILE, value: /secrets/ca/ca.pem}
+            - name: US_COMMERCE_DB
+              valueFrom: {secretKeyRef: {name: us-postgres-dsn, key: latest}}
+            - name: US_MODEL_API_TOKEN
+              valueFrom: {secretKeyRef: {name: us-model-token, key: latest}}
+          volumeMounts:
+            - {name: policy, mountPath: /secrets/policy}
+            - {name: ca, mountPath: /secrets/ca}
+      volumes:
+        - name: policy
+          secret: {secretName: us-worker-policy, items: [{key: latest, path: workers.json}]}
+        - name: ca
+          secret: {secretName: us-model-ca, items: [{key: latest, path: ca.pem}]}

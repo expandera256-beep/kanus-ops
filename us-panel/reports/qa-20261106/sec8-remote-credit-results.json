@@ -1,0 +1,236 @@
+{
+  "results": [
+    {
+      "name": "remote_credit_initial_fixture",
+      "status": "PASS",
+      "detail": {
+        "before": {
+          "A": {
+            "remaining": 10,
+            "available": 10,
+            "reserved": 0,
+            "committed": 0,
+            "released": 0,
+            "valid": true
+          },
+          "B": {
+            "remaining": 10,
+            "available": 10,
+            "reserved": 0,
+            "committed": 0,
+            "released": 0,
+            "valid": true
+          }
+        }
+      }
+    },
+    {
+      "name": "remote_reserve_A",
+      "status": "PASS",
+      "detail": {
+        "http": 200
+      }
+    },
+    {
+      "name": "remote_reserve_B",
+      "status": "PASS",
+      "detail": {
+        "http": 200
+      }
+    },
+    {
+      "name": "remote_reserved_balances",
+      "status": "PASS",
+      "detail": {
+        "held": {
+          "A": {
+            "remaining": 10,
+            "available": 9,
+            "reserved": 1,
+            "committed": 0,
+            "released": 0,
+            "valid": true
+          },
+          "B": {
+            "remaining": 10,
+            "available": 9,
+            "reserved": 1,
+            "committed": 0,
+            "released": 0,
+            "valid": true
+          }
+        }
+      }
+    },
+    {
+      "name": "remote_cross_owner_settle_A_to_B",
+      "status": "PASS",
+      "detail": {
+        "http": 409,
+        "expected": 409,
+        "commit": false
+      }
+    },
+    {
+      "name": "remote_cross_owner_settle_B_to_A",
+      "status": "PASS",
+      "detail": {
+        "http": 409,
+        "expected": 409,
+        "commit": false
+      }
+    },
+    {
+      "name": "remote_commit_A_idempotent_one_debit",
+      "status": "PASS",
+      "detail": {
+        "http": [
+          200,
+          200
+        ],
+        "before": {
+          "remaining": 10,
+          "available": 10,
+          "reserved": 0,
+          "committed": 0,
+          "released": 0,
+          "valid": true
+        },
+        "after": {
+          "remaining": 9,
+          "available": 9,
+          "reserved": 0,
+          "committed": 1,
+          "released": 0,
+          "valid": true
+        },
+        "intentional_credit_debit": 1
+      }
+    },
+    {
+      "name": "remote_release_B_idempotent_restores_available",
+      "status": "PASS",
+      "detail": {
+        "http": [
+          200,
+          200
+        ],
+        "before": {
+          "remaining": 10,
+          "available": 10,
+          "reserved": 0,
+          "committed": 0,
+          "released": 0,
+          "valid": true
+        },
+        "after": {
+          "remaining": 10,
+          "available": 10,
+          "reserved": 0,
+          "committed": 0,
+          "released": 1,
+          "valid": true
+        }
+      }
+    },
+    {
+      "name": "remote_credit_reserve_race_capacity",
+      "status": "PASS",
+      "detail": {
+        "requests": 10,
+        "concurrency": 2,
+        "http": {
+          "200": 9,
+          "402": 1
+        },
+        "held": {
+          "remaining": 9,
+          "available": 0,
+          "reserved": 9,
+          "committed": 1,
+          "released": 0,
+          "valid": true
+        },
+        "no_double_spend": true
+      }
+    },
+    {
+      "name": "remote_all_temporary_holds_released",
+      "status": "PASS",
+      "detail": {
+        "holds": 9,
+        "release_http": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200
+        ]
+      }
+    },
+    {
+      "name": "remote_final_credit_accounting",
+      "status": "PASS",
+      "detail": {
+        "licenses": [
+          {
+            "license": "A",
+            "before": {
+              "remaining": 10,
+              "available": 10,
+              "reserved": 0,
+              "committed": 0,
+              "released": 0,
+              "valid": true
+            },
+            "after": {
+              "remaining": 9,
+              "available": 9,
+              "reserved": 0,
+              "committed": 1,
+              "released": 9,
+              "valid": true
+            },
+            "credits_used": 1
+          },
+          {
+            "license": "B",
+            "before": {
+              "remaining": 10,
+              "available": 10,
+              "reserved": 0,
+              "committed": 0,
+              "released": 0,
+              "valid": true
+            },
+            "after": {
+              "remaining": 10,
+              "available": 10,
+              "reserved": 0,
+              "committed": 0,
+              "released": 1,
+              "valid": true
+            },
+            "credits_used": 0
+          }
+        ],
+        "cleanup": "QA A/B may now be revoked by coordinator; this script never revokes"
+      }
+    },
+    {
+      "name": "post_revoke_B_denial",
+      "status": "NOT TESTED",
+      "detail": "Pending coordinator revoke; run qa/sec8/post_revoke.py --after-revoke afterwards. No revoke done here."
+    }
+  ],
+  "counts": {
+    "PASS": 11,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT TESTED": 1
+  }
+}

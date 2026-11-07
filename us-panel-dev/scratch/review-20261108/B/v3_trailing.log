@@ -1,0 +1,4 @@
+=== RUN   TestReviewPreferencesTrailingJunkRejected
+--- PASS: TestReviewPreferencesTrailingJunkRejected (0.67s)
+PASS
+ok  	kiyas/internal/privacy	0.673s

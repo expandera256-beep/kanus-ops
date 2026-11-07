@@ -1,0 +1,22 @@
+=== gofmt new file ===
+=== go vet ./licensesrv ===
+VET:0
+=== TestAPIRegression* -race -count=1 ===
+=== RUN   TestAPIRegressionLedgerBalanceReserveCommitRelease
+--- PASS: TestAPIRegressionLedgerBalanceReserveCommitRelease (0.01s)
+=== RUN   TestAPIRegressionInsufficientCreditAndIdempotentSettle
+--- PASS: TestAPIRegressionInsufficientCreditAndIdempotentSettle (0.01s)
+=== RUN   TestAPIRegressionConcurrentLastCreditNoDoubleSpend
+--- PASS: TestAPIRegressionConcurrentLastCreditNoDoubleSpend (0.02s)
+=== RUN   TestAPIRegressionAccountBalanceAggregatesOwnedLicenses
+--- PASS: TestAPIRegressionAccountBalanceAggregatesOwnedLicenses (2.63s)
+=== RUN   TestAPIRegressionCreditHTTPStatusContract
+--- PASS: TestAPIRegressionCreditHTTPStatusContract (0.01s)
+=== RUN   TestAPIRegressionAccountSessionCreditStatus
+--- PASS: TestAPIRegressionAccountSessionCreditStatus (2.62s)
+PASS
+ok  	kiyas/licensesrv	6.307s
+EXIT:0
+=== TestAPIRegression* -count=3 ===
+ok  	kiyas/licensesrv	17.009s
+EXIT3:0

@@ -1,0 +1,48 @@
+[
+  {
+    "backupKind": "SNAPSHOT",
+    "databaseVersion": "POSTGRES_17",
+    "endTime": "2026-11-07T05:16:18.762Z",
+    "enqueuedTime": "2026-11-07T05:14:47.360Z",
+    "id": "1794020400000",
+    "instance": "us-commerce-pg",
+    "kind": "sql#backupRun",
+    "location": "eu",
+    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/project-27082a40-6083-4952-9db/instances/us-commerce-pg/backupRuns/1794020400000",
+    "startTime": "2026-11-07T05:14:47.403Z",
+    "status": "SUCCESSFUL",
+    "type": "AUTOMATED",
+    "windowStartTime": "2026-11-07T03:00:00Z"
+  },
+  {
+    "backupKind": "SNAPSHOT",
+    "databaseVersion": "POSTGRES_17",
+    "endTime": "2026-11-06T04:57:27.312Z",
+    "enqueuedTime": "2026-11-06T04:55:55.948Z",
+    "id": "1793934000000",
+    "instance": "us-commerce-pg",
+    "kind": "sql#backupRun",
+    "location": "eu",
+    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/project-27082a40-6083-4952-9db/instances/us-commerce-pg/backupRuns/1793934000000",
+    "startTime": "2026-11-06T04:55:55.974Z",
+    "status": "SUCCESSFUL",
+    "type": "AUTOMATED",
+    "windowStartTime": "2026-11-06T03:00:00Z"
+  },
+  {
+    "backupKind": "SNAPSHOT",
+    "databaseVersion": "POSTGRES_17",
+    "description": "Backup created automatically during an update operation after enabling point-in-time recovery",
+    "endTime": "2026-11-05T20:31:17.875Z",
+    "enqueuedTime": "2026-11-05T20:30:58.414Z",
+    "id": "1793910658414",
+    "instance": "us-commerce-pg",
+    "kind": "sql#backupRun",
+    "location": "eu",
+    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/project-27082a40-6083-4952-9db/instances/us-commerce-pg/backupRuns/1793910658414",
+    "startTime": "2026-11-05T20:30:58.428Z",
+    "status": "SUCCESSFUL",
+    "type": "AUTOMATED",
+    "windowStartTime": "2026-11-05T20:30:58.414Z"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "completed_at": "2026-11-08T00:41:33.508825+03:00",
+  "uyum_v4": "PASS Linux; LOW notes; US integration BLOCKED",
+  "global_r4_reviewed_f66": "PASS Linux",
+  "global_current_03_ba8845": "NOT TESTED/BLOCKED",
+  "reports": [
+    "PANEL_UYUM_REVIEW_R4_20261108.md",
+    "PANEL_GLOBAL_REVIEW_R4_20261108.md"
+  ],
+  "messages_sent": false,
+  "exe_executed": false
+}

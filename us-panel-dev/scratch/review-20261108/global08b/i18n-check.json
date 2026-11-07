@@ -1,0 +1,74 @@
+{
+  "tr": {
+    "price.try": [
+      "amount"
+    ],
+    "price.pack": [
+      "price",
+      "prompts"
+    ],
+    "price.summary": [
+      "days",
+      "hourly",
+      "monthly",
+      "packs",
+      "prompts"
+    ],
+    "price.multi_call": [],
+    "price.store": []
+  },
+  "en": {
+    "price.try": [
+      "amount"
+    ],
+    "price.pack": [
+      "price",
+      "prompts"
+    ],
+    "price.summary": [
+      "days",
+      "hourly",
+      "monthly",
+      "packs",
+      "prompts"
+    ],
+    "price.multi_call": [],
+    "price.store": []
+  },
+  "de": {
+    "price.try": [
+      "amount"
+    ],
+    "price.pack": [
+      "price",
+      "prompts"
+    ],
+    "price.summary": [
+      "days",
+      "hourly",
+      "monthly",
+      "packs",
+      "prompts"
+    ],
+    "price.multi_call": [],
+    "price.store": []
+  },
+  "ru": {
+    "price.try": [
+      "amount"
+    ],
+    "price.pack": [
+      "price",
+      "prompts"
+    ],
+    "price.summary": [
+      "days",
+      "hourly",
+      "monthly",
+      "packs",
+      "prompts"
+    ],
+    "price.multi_call": [],
+    "price.store": []
+  }
+}

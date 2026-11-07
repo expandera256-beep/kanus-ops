@@ -1,0 +1,99 @@
+Binary files a/kanus/__pycache__/inference_lifecycle.cpython-313.pyc and b/kanus/__pycache__/inference_lifecycle.cpython-313.pyc differ
+diff -ruN a/kanus/inference_lifecycle.py b/kanus/inference_lifecycle.py
+--- a/kanus/inference_lifecycle.py	2026-11-06 08:08:33.722996209 +0300
++++ b/kanus/inference_lifecycle.py	2026-11-06 08:11:14.518274919 +0300
+@@ -12,6 +12,11 @@
+ import time
+ import uuid
+ from storage import connect
++import logging, os
++_LOG=logging.getLogger('kanus.lifecycle')
++_RECONCILE_FAILS={}
++_ALARM_THRESHOLD=int(os.environ.get('KANUS_ALARM_THRESHOLD','3'))
++_ALARM_OUTBOX=os.environ.get('KANUS_ALARM_OUTBOX','')
+ 
+ 
+ class LifecycleError(RuntimeError):
+@@ -45,7 +50,7 @@
+         if not isinstance(self.instance_id,str) or not self.instance_id.isdecimal() or not isinstance(self.upstream,str) or not self.upstream:
+             raise ValueError('verified instance identity and upstream required')
+         if any(type(v) is not bool for v in (self.preserve_local_ssd,self.adopt_running,self.require_watchdog)):raise ValueError('invalid lifecycle guard switch')
+-        for value,low,high in ((self.idle_seconds,0,1800),(self.boot_seconds,1,600),(self.request_seconds,1,600),(self.lease_seconds,5,120),(self.capacity,1,10),(self.max_uptime_seconds,60,86400),(self.daily_runtime_seconds,60,86400),(self.daily_starts,1,100)):
++        for value,low,high in ((self.idle_seconds,0,1800),(self.boot_seconds,1,3600),(self.request_seconds,1,600),(self.lease_seconds,5,120),(self.capacity,1,10),(self.max_uptime_seconds,60,86400),(self.daily_runtime_seconds,60,86400),(self.daily_starts,1,100)):
+             if type(value) is not int or not low<=value<=high:raise ValueError('invalid lifecycle limit')
+         if self.max_uptime_seconds < self.request_seconds+30:
+             raise ValueError('uptime guard must leave room for an admitted request')
+@@ -252,9 +257,16 @@
+                     self.provider.stop(p,op['id'])
+                     self.store.event(p.key,'stop_requested',op['id'],self.clock())
+                 results.append({'worker':p.key,'status':vm['status'],'active':len(view['leases']),'stop_requested':bool(op)})
+-            except Exception:
++            except Exception as exc:
+                 self.store.event(p.key,'reconcile_error','provider/guard unavailable; no destructive fallback',self.clock())
+-                results.append({'worker':p.key,'error':'reconciliation failed'})
++                # SRE: sessiz hata yerine yapilandirilmis ERROR + ardisik sayac (degraded) + outbox
++                _RECONCILE_FAILS[p.key]=_RECONCILE_FAILS.get(p.key,0)+1
++                _LOG.error(json.dumps({'level':'ERROR','where':'reconcile','worker':p.key,'error':type(exc).__name__,'consecutive':_RECONCILE_FAILS[p.key]}))
++                if _RECONCILE_FAILS[p.key]==_ALARM_THRESHOLD and _ALARM_OUTBOX:
++                    with open(_ALARM_OUTBOX,'a',encoding='utf-8') as fh:fh.write(json.dumps({'to':os.environ.get('KANUS_ALARM_EMAIL_TO'),'sent':False,'subject':f'[lifecycle] {p.key} degraded','worker':p.key,'consecutive':_RECONCILE_FAILS[p.key]})+'\n')
++                results.append({'worker':p.key,'error':'reconciliation failed','degraded':_RECONCILE_FAILS[p.key]>=_ALARM_THRESHOLD})
++                continue
++            _RECONCILE_FAILS[p.key]=0
+         if external and not any('error' in r for r in results):self.store.watchdog_beat(self.clock())
+         return results
+ 
+Binary files a/sre_watchdog/__pycache__/gce_adapter.cpython-313.pyc and b/sre_watchdog/__pycache__/gce_adapter.cpython-313.pyc differ
+diff -ruN a/sre_watchdog/ds-watchdog.service b/sre_watchdog/ds-watchdog.service
+--- a/sre_watchdog/ds-watchdog.service	1970-01-01 02:00:00.000000000 +0200
++++ b/sre_watchdog/ds-watchdog.service	2026-11-06 08:08:33.726996375 +0300
+@@ -0,0 +1,15 @@
++[Unit]
++Description=SRE ds-a100 watchdog (replaces ds-idle.timer ONLY after approval)
++After=network-online.target
++
++[Service]
++Type=simple
++ExecStart=/usr/bin/python3 -m sre_watchdog.run --config /etc/ds-watchdog/config.json
++Restart=on-failure
++RestartSec=10
++NoNewPrivileges=yes
++ProtectSystem=strict
++ReadWritePaths=/var/lib/ds-watchdog
++
++[Install]
++WantedBy=multi-user.target
+diff -ruN a/sre_watchdog/gce_adapter.py b/sre_watchdog/gce_adapter.py
+--- a/sre_watchdog/gce_adapter.py	1970-01-01 02:00:00.000000000 +0200
++++ b/sre_watchdog/gce_adapter.py	2026-11-06 08:11:14.518274919 +0300
+@@ -0,0 +1,31 @@
++"""Adapter: KAN GCEProvider (kanus/gce_provider.py) -> SRE Watchdog provider interface.
++Not deployed. Requires KAN + Demir approval (see SRE_WATCHDOG_DESIGN_20261106.md)."""
++from kanus.gce_provider import GCEProvider
++
++
++class GCEWatchdogProvider:
++    def __init__(self, policy, provider=None):
++        self.policy, self.p = policy, provider or GCEProvider()
++        self._op = 0
++
++    def get_status(self) -> str:          # live instances.get, no cache (§4.11)
++        return self.p.describe(self.policy)["status"]
++
++    def start(self) -> None:              # GCEProvider.start is idempotent for RUNNING/STAGING
++        self._op += 1
++        self.p.start(self.policy, f"sre-wd-start-{self._op}")
++
++    def stop(self) -> None:               # idempotent for TERMINATED/STOPPING
++        self._op += 1
++        self.p.stop(self.policy, f"sre-wd-stop-{self._op}")
++
++
++def make_legacy_check(read_controller_flag):
++    """Handover guard. read_controller_flag() returns instance metadata 'ds-controller'
++    (KAN sets it). Anything other than 'sre-watchdog' (incl. missing/error) = legacy active."""
++    def legacy_active() -> bool:
++        try:
++            return read_controller_flag() != "sre-watchdog"
++        except Exception:  # noqa: BLE001
++            return True
++    return legacy_active

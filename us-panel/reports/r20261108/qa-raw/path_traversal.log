@@ -1,0 +1,6 @@
+=== RUN   TestQAAuditPathTraversal
+--- PASS: TestQAAuditPathTraversal (0.00s)
+PASS
+ok  	kiyas	0.003s
+
+exit_code=0

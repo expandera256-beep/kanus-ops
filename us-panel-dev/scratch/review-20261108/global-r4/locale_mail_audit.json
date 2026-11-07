@@ -1,0 +1,96 @@
+{
+  "go": [
+    {
+      "lang": "de",
+      "keys": 92,
+      "missing": [],
+      "extra": [],
+      "placeholder_mismatches": []
+    },
+    {
+      "lang": "en",
+      "keys": 92,
+      "missing": [],
+      "extra": [],
+      "placeholder_mismatches": []
+    },
+    {
+      "lang": "tr",
+      "keys": 92,
+      "missing": [],
+      "extra": [],
+      "placeholder_mismatches": []
+    },
+    {
+      "lang": "ru",
+      "keys": 92,
+      "missing": [],
+      "extra": [],
+      "placeholder_mismatches": []
+    }
+  ],
+  "python": [
+    {
+      "lang": "de",
+      "keys": 5,
+      "missing": [],
+      "extra": [],
+      "placeholder_mismatches": []
+    },
+    {
+      "lang": "en",
+      "keys": 5,
+      "missing": [],
+      "extra": [],
+      "placeholder_mismatches": []
+    },
+    {
+      "lang": "tr",
+      "keys": 5,
+      "missing": [],
+      "extra": [],
+      "placeholder_mismatches": []
+    },
+    {
+      "lang": "ru",
+      "keys": 5,
+      "missing": [],
+      "extra": [],
+      "placeholder_mismatches": []
+    }
+  ],
+  "mail_fixture": [
+    {
+      "lang": "tr",
+      "subject": "US Panel lisans anahtarın",
+      "mime_roundtrip_ok": true,
+      "text_plain": true,
+      "header_encoded_word": true,
+      "raw_markup_in_plain_body": true
+    },
+    {
+      "lang": "en",
+      "subject": "Your US Panel license key",
+      "mime_roundtrip_ok": true,
+      "text_plain": true,
+      "header_encoded_word": false,
+      "raw_markup_in_plain_body": true
+    },
+    {
+      "lang": "de",
+      "subject": "Dein US Panel Lizenzschlüssel",
+      "mime_roundtrip_ok": true,
+      "text_plain": true,
+      "header_encoded_word": true,
+      "raw_markup_in_plain_body": true
+    },
+    {
+      "lang": "ru",
+      "subject": "Ваш лицензионный ключ US Panel",
+      "mime_roundtrip_ok": true,
+      "text_plain": true,
+      "header_encoded_word": true,
+      "raw_markup_in_plain_body": true
+    }
+  ]
+}

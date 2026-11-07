@@ -1,0 +1,7 @@
+Updating traffic...
+Routing traffic...................................done
+Done.
+URL: https://us-watchdog-iqhblf63dq-ez.a.run.app
+Traffic:
+  100% us-watchdog-sre-ready-r1
+         sre-candidate-watchdog: https://sre-candidate-watchdog---us-watchdog-iqhblf63dq-ez.a.run.app

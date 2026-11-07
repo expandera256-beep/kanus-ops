@@ -1,0 +1,38 @@
+--- a/cmd/us-license-hook/main.go
++++ b/cmd/us-license-hook/main.go
+@@ -12,6 +12,7 @@
+ 	"strconv"
+ 	"time"
+ 
++	"kiyas/internal/privacy"
+ 	"kiyas/licensesrv"
+ )
+ 
+@@ -100,6 +101,27 @@
+ 		accounts.Workers = proxy.AccountWorkers
+ 	}
+ 	mux.Handle("/account/", accounts)
++	// UYUM privacy: thin mount. Prefs only if US_PRIVACY_PREFS_PATH set (optional). Erase off by default.
++	var prefStore privacy.PreferenceStore
++	prefsReady := true
++	if pp := os.Getenv("US_PRIVACY_PREFS_PATH"); pp != "" {
++		if privacy.OpenPrefStoreFunc == nil {
++			prefsReady = false
++			log.Print("privacy prefs: implementation unavailable; erase disabled")
++		} else if ps, err := privacy.OpenPrefStoreFunc(pp); err != nil {
++			prefsReady = false
++			log.Printf("privacy prefs unavailable; erase disabled: %v", err)
++		} else {
++			prefStore = ps
++		}
++	}
++	keepDays := privacy.RetentionDaysFromEnv()
++	privacy.Mount(mux, st, privacy.MountOptions{
++		Prefs:        prefStore,
++		EraseEnabled: os.Getenv("US_PRIVACY_ERASE_ENABLED") == "1" && prefsReady,
++		AdminToken:   os.Getenv("US_PRIVACY_ADMIN_TOKEN"),
++		KeepDays:     keepDays,
++	})
+ 	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte("ok")) })
+ 	return mux
+ }

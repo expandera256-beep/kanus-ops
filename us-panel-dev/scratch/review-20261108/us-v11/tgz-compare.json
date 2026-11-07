@@ -1,0 +1,38 @@
+[
+  {
+    "file": "Caddyfile",
+    "deploy_equal": true
+  },
+  {
+    "file": "README_TR.md",
+    "deploy_equal": true
+  },
+  {
+    "file": "US_PLANS_JSON_TEST.json",
+    "deploy_equal": true
+  },
+  {
+    "file": "nginx-location.example.conf",
+    "deploy_equal": true
+  },
+  {
+    "file": "plans.json",
+    "deploy_equal": true
+  },
+  {
+    "file": "python-disabled.env.example",
+    "deploy_equal": true
+  },
+  {
+    "file": "us-license-hook",
+    "deploy_equal": true
+  },
+  {
+    "file": "us-license-hook.env.example",
+    "deploy_equal": true
+  },
+  {
+    "file": "us-license-hook.service",
+    "deploy_equal": true
+  }
+]

@@ -1,0 +1,16 @@
+en/api/index.html
+en/docs/index.html
+en/download/index.html
+en/index.html
+en/pricing/index.html
+en/product/index.html
+en/support/index.html
+robots.txt
+sitemap.xml
+tr/api/index.html
+tr/docs/index.html
+tr/download/index.html
+tr/index.html
+tr/pricing/index.html
+tr/product/index.html
+tr/support/index.html

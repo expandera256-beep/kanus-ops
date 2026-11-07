@@ -1,0 +1,38 @@
+=== RUN   TestQAAuditLimiterAccountLockDoS
+2026/11/08 01:12:54 account /account/register email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account login limiter: q***@example.test locked for 15m0s after 10 failures
+    zz_qa_limiter_risks_test.go:14: failed_attempts=10 correct_password_http=429 retry_after_present=true
+    zz_qa_limiter_risks_test.go:15: unauthenticated failures locked the legitimate correct password: account-lock DoS remains OPEN
+--- FAIL: TestQAAuditLimiterAccountLockDoS (0.23s)
+=== RUN   TestQAAuditLimiterFixedWindowAndVolatileState
+2026/11/08 01:12:54 account login limiter: u***@example.test locked for 15m0s after 10 failures
+    zz_qa_limiter_risks_test.go:23: unregistered_email_counted=true fixed_window_900s=true blocked_checks_do_not_extend=true fresh_instance_or_restart_state_empty=true
+--- PASS: TestQAAuditLimiterFixedWindowAndVolatileState (0.00s)
+=== RUN   TestQAAuditLimiterEvictionSpray
+2026/11/08 01:12:54 account login limiter: t***@example.test locked for 15m0s after 10 failures
+    zz_qa_limiter_risks_test.go:30: default_max_keys=10000 synthetic_other_emails=10000 target_counter_evicted=true
+--- PASS: TestQAAuditLimiterEvictionSpray (0.00s)
+=== RUN   TestQAAuditLimiterIPCapacityAndRetryAfter
+    zz_qa_limiter_risks_test.go:37: ip_buckets=4096 new_ip_http=429 retry_after_present=true
+    zz_qa_limiter_risks_test.go:38: IP capacity behavior changed; reassess finding
+--- FAIL: TestQAAuditLimiterIPCapacityAndRetryAfter (0.21s)
+=== RUN   TestQAAuditLimiterRedeemHasNoRateBucket
+2026/11/08 01:12:54 account /account/register email=r***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:54 account /account/login email=r***@example.test queue_wait_ms=0 result=slot
+    zz_qa_limiter_risks_test.go:48: authenticated_redeem_invalid_attempts=12 rate_429_count=0 rate_bucket_delta=0 synthetic_no_mutation=true
+--- PASS: TestQAAuditLimiterRedeemHasNoRateBucket (0.21s)
+FAIL
+FAIL	kiyas/licensesrv	0.662s
+FAIL
+
+exit_code=1

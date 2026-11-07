@@ -1,0 +1,9 @@
+test_U01_power_verbs (__main__.T.test_U01_power_verbs) ... ok
+test_U02_concurrent_start_single_power (__main__.T.test_U02_concurrent_start_single_power) ... ok
+test_U03_start_while_stopping_is_noop (__main__.T.test_U03_start_while_stopping_is_noop) ... ok
+test_U04_a100_discards_local_ssd_flag (__main__.T.test_U04_a100_discards_local_ssd_flag) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.313s
+
+OK

@@ -1,0 +1,10 @@
+--- FAIL: TestLangPostRejectsForeignOrigin (0.00s)
+    gui_lang_security_test.go:36: foreign origin status 200
+--- FAIL: TestLangPostRejectsTrailingAndOversized (0.00s)
+    gui_lang_security_test.go:59: trailing garbage: status 200
+    gui_lang_security_test.go:59: second object: status 200
+    gui_lang_security_test.go:59: 2MB body: status 200
+    gui_lang_security_test.go:63: rejected body changed preference
+FAIL
+FAIL	kiyas	0.011s
+FAIL

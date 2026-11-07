@@ -1,0 +1,100 @@
+{"Time":"2026-11-08T01:16:00.385051784+03:00","Action":"start","Package":"kiyas"}
+{"Time":"2026-11-08T01:16:00.395980386+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix"}
+{"Time":"2026-11-08T01:16:00.396050798+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix","Output":"=== RUN   TestOwnFetchMatrix\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.396191105+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/http"}
+{"Time":"2026-11-08T01:16:00.396197983+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/http","Output":"=== RUN   TestOwnFetchMatrix/http\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.398340336+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/http","Output":"    review_fx_extra_test.go:11: http fx: https required 5.755µs\n"}
+{"Time":"2026-11-08T01:16:00.398684521+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/http","Output":"--- PASS: TestOwnFetchMatrix/http (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.398698674+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/http","Elapsed":0}
+{"Time":"2026-11-08T01:16:00.398753018+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/redirect"}
+{"Time":"2026-11-08T01:16:00.398755954+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/redirect","Output":"=== RUN   TestOwnFetchMatrix/redirect\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.406536068+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/redirect","Output":"    review_fx_extra_test.go:11: redirect fx: status 302 5.084234ms\n"}
+{"Time":"2026-11-08T01:16:00.406565241+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/redirect","Output":"--- PASS: TestOwnFetchMatrix/redirect (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.406569089+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/redirect","Elapsed":0.01}
+{"Time":"2026-11-08T01:16:00.406574607+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/4097"}
+{"Time":"2026-11-08T01:16:00.406580539+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/4097","Output":"=== RUN   TestOwnFetchMatrix/4097\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.411946834+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/4097","Output":"    review_fx_extra_test.go:11: 4097 fx: body 4.500533ms\n"}
+{"Time":"2026-11-08T01:16:00.41228069+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/4097","Output":"--- PASS: TestOwnFetchMatrix/4097 (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.41232854+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/4097","Elapsed":0.01}
+{"Time":"2026-11-08T01:16:00.412377483+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/bad-json"}
+{"Time":"2026-11-08T01:16:00.412395197+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/bad-json","Output":"=== RUN   TestOwnFetchMatrix/bad-json\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.418736202+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/bad-json","Output":"    review_fx_extra_test.go:11: bad-json fx: json 4.523913ms\n"}
+{"Time":"2026-11-08T01:16:00.419241019+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/bad-json","Output":"--- PASS: TestOwnFetchMatrix/bad-json (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.419903552+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/bad-json","Elapsed":0.01}
+{"Time":"2026-11-08T01:16:00.419917646+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/missing"}
+{"Time":"2026-11-08T01:16:00.419921874+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/missing","Output":"=== RUN   TestOwnFetchMatrix/missing\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.428081724+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/missing","Output":"    review_fx_extra_test.go:11: missing fx: signature 6.638262ms\n"}
+{"Time":"2026-11-08T01:16:00.428115743+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/missing","Output":"--- PASS: TestOwnFetchMatrix/missing (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.428120076+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/missing","Elapsed":0.01}
+{"Time":"2026-11-08T01:16:00.428133929+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/wrong"}
+{"Time":"2026-11-08T01:16:00.428136729+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/wrong","Output":"=== RUN   TestOwnFetchMatrix/wrong\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.436795851+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/wrong","Output":"    review_fx_extra_test.go:11: wrong fx: signature 6.907646ms\n"}
+{"Time":"2026-11-08T01:16:00.437107994+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/wrong","Output":"--- PASS: TestOwnFetchMatrix/wrong (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.437215597+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/wrong","Elapsed":0.01}
+{"Time":"2026-11-08T01:16:00.437271424+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/replay"}
+{"Time":"2026-11-08T01:16:00.437275111+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/replay","Output":"=== RUN   TestOwnFetchMatrix/replay\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.443859186+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/replay","Output":"    review_fx_extra_test.go:11: replay fx: stale or future 5.069062ms\n"}
+{"Time":"2026-11-08T01:16:00.44445693+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/replay","Output":"--- PASS: TestOwnFetchMatrix/replay (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.44447614+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/replay","Elapsed":0.01}
+{"Time":"2026-11-08T01:16:00.444480985+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/valid"}
+{"Time":"2026-11-08T01:16:00.444484072+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/valid","Output":"=== RUN   TestOwnFetchMatrix/valid\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.453917026+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/valid","Output":"    review_fx_extra_test.go:11: valid \u003cnil\u003e 6.201142ms\n"}
+{"Time":"2026-11-08T01:16:00.453945022+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/valid","Output":"--- PASS: TestOwnFetchMatrix/valid (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.453949208+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/valid","Elapsed":0.01}
+{"Time":"2026-11-08T01:16:00.453952757+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted"}
+{"Time":"2026-11-08T01:16:00.453954787+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted","Output":"=== RUN   TestOwnFetchMatrix/tls-untrusted\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.530222071+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted","Output":"2026/11/08 01:16:00 http: TLS handshake error from 127.0.0.1:50300: remote error: tls: bad certificate\n"}
+{"Time":"2026-11-08T01:16:00.530260697+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted","Output":"    review_fx_extra_test.go:11: tls-untrusted Get \"https://127.0.0.1:39891/v1/fx\": tls: failed to verify certificate: x509: certificate signed by unknown authority 75.854797ms\n"}
+{"Time":"2026-11-08T01:16:00.530573703+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted","Output":"--- PASS: TestOwnFetchMatrix/tls-untrusted (0.08s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:00.530631331+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted","Elapsed":0.08}
+{"Time":"2026-11-08T01:16:00.530701876+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/timeout5"}
+{"Time":"2026-11-08T01:16:00.530712226+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/timeout5","Output":"=== RUN   TestOwnFetchMatrix/timeout5\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.54548145+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/timeout5","Output":"    review_fx_extra_test.go:11: timeout5 Get \"https://127.0.0.1:45539/v1/fx\": context deadline exceeded (Client.Timeout exceeded while awaiting headers) 5.01075701s\n"}
+{"Time":"2026-11-08T01:16:05.545516817+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/timeout5","Output":"--- PASS: TestOwnFetchMatrix/timeout5 (5.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.545522598+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/timeout5","Elapsed":5.01}
+{"Time":"2026-11-08T01:16:05.545548996+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix","Output":"--- PASS: TestOwnFetchMatrix (5.15s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.54555314+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix","Elapsed":5.15}
+{"Time":"2026-11-08T01:16:05.54555588+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix"}
+{"Time":"2026-11-08T01:16:05.54555851+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix","Output":"=== RUN   TestOwnCacheMatrix\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.545568786+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/valid"}
+{"Time":"2026-11-08T01:16:05.545571517+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/valid","Output":"=== RUN   TestOwnCacheMatrix/valid\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.545574258+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/valid","Output":"--- PASS: TestOwnCacheMatrix/valid (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.545577641+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/valid","Elapsed":0}
+{"Time":"2026-11-08T01:16:05.545580485+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/unsigned"}
+{"Time":"2026-11-08T01:16:05.545583297+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/unsigned","Output":"=== RUN   TestOwnCacheMatrix/unsigned\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.545586111+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/unsigned","Output":"--- PASS: TestOwnCacheMatrix/unsigned (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.545588128+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/unsigned","Elapsed":0}
+{"Time":"2026-11-08T01:16:05.545590156+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/corrupt"}
+{"Time":"2026-11-08T01:16:05.545591836+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/corrupt","Output":"=== RUN   TestOwnCacheMatrix/corrupt\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.545594368+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/corrupt","Output":"--- PASS: TestOwnCacheMatrix/corrupt (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.54559693+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/corrupt","Elapsed":0}
+{"Time":"2026-11-08T01:16:05.545598759+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/stale"}
+{"Time":"2026-11-08T01:16:05.545601516+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/stale","Output":"=== RUN   TestOwnCacheMatrix/stale\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.555713546+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/stale","Output":"--- PASS: TestOwnCacheMatrix/stale (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.555742744+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/stale","Elapsed":0.01}
+{"Time":"2026-11-08T01:16:05.555748193+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/symlink"}
+{"Time":"2026-11-08T01:16:05.555755174+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/symlink","Output":"=== RUN   TestOwnCacheMatrix/symlink\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.555758877+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/symlink","Output":"--- PASS: TestOwnCacheMatrix/symlink (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.555761677+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/symlink","Elapsed":0}
+{"Time":"2026-11-08T01:16:05.555766732+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/root-swap"}
+{"Time":"2026-11-08T01:16:05.555768669+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/root-swap","Output":"=== RUN   TestOwnCacheMatrix/root-swap\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.558867293+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/root-swap","Output":"--- PASS: TestOwnCacheMatrix/root-swap (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.56647979+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/root-swap","Elapsed":0}
+{"Time":"2026-11-08T01:16:05.566501674+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/max-body-cache"}
+{"Time":"2026-11-08T01:16:05.566505333+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/max-body-cache","Output":"=== RUN   TestOwnCacheMatrix/max-body-cache\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.566511167+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/max-body-cache","Output":"    review_fx_extra_test.go:18: valid 4096-byte response cannot persist\n","OutputType":"error"}
+{"Time":"2026-11-08T01:16:05.56651622+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/max-body-cache","Output":"--- FAIL: TestOwnCacheMatrix/max-body-cache (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.566519416+03:00","Action":"fail","Package":"kiyas","Test":"TestOwnCacheMatrix/max-body-cache","Elapsed":0.01}
+{"Time":"2026-11-08T01:16:05.566522191+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix","Output":"--- FAIL: TestOwnCacheMatrix (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.566524604+03:00","Action":"fail","Package":"kiyas","Test":"TestOwnCacheMatrix","Elapsed":0.02}
+{"Time":"2026-11-08T01:16:05.566527201+03:00","Action":"run","Package":"kiyas","Test":"TestOwnConcurrentRefresh"}
+{"Time":"2026-11-08T01:16:05.566529074+03:00","Action":"output","Package":"kiyas","Test":"TestOwnConcurrentRefresh","Output":"=== RUN   TestOwnConcurrentRefresh\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.638501692+03:00","Action":"output","Package":"kiyas","Test":"TestOwnConcurrentRefresh","Output":"--- PASS: TestOwnConcurrentRefresh (0.07s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.638537797+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnConcurrentRefresh","Elapsed":0.07}
+{"Time":"2026-11-08T01:16:05.638542864+03:00","Action":"run","Package":"kiyas","Test":"TestOwnPricingCannotOverrideGateway"}
+{"Time":"2026-11-08T01:16:05.638545315+03:00","Action":"output","Package":"kiyas","Test":"TestOwnPricingCannotOverrideGateway","Output":"=== RUN   TestOwnPricingCannotOverrideGateway\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.658871623+03:00","Action":"output","Package":"kiyas","Test":"TestOwnPricingCannotOverrideGateway","Output":"--- PASS: TestOwnPricingCannotOverrideGateway (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.659131784+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnPricingCannotOverrideGateway","Elapsed":0.02}
+{"Time":"2026-11-08T01:16:05.659177522+03:00","Action":"output","Package":"kiyas","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.664789482+03:00","Action":"output","Package":"kiyas","Output":"FAIL\tkiyas\t5.280s\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:05.664817348+03:00","Action":"fail","Package":"kiyas","Elapsed":5.28}

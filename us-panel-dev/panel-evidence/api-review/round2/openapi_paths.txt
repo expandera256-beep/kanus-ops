@@ -1,0 +1,78 @@
+0002 paths 20
+  /account/balance
+  /account/login
+  /account/password-reset/confirm
+  /account/password-reset/request
+  /account/redeem
+  /account/register
+  /account/requests
+  /account/verification/request
+  /account/verify-email
+  /account/workers
+  /healthz
+  /v1/chat
+  /v1/chat/completions
+  /v1/credits/reserve
+  /v1/credits/settle
+  /v1/credits/status
+  /v1/models
+  /webhooks/shopify/orders-cancelled
+  /webhooks/shopify/orders-paid
+  /webhooks/shopify/refunds-create
+0009 paths 25
+  /account/balance
+  /account/login
+  /account/password-reset/confirm
+  /account/password-reset/request
+  /account/redeem
+  /account/register
+  /account/requests
+  /account/verification/request
+  /account/verify-email
+  /account/workers
+  /healthz
+  /v1/account/register
+  /v1/api-keys
+  /v1/api-keys/{id}/revoke
+  /v1/api-keys/{id}/rotate
+  /v1/chat
+  /v1/chat/completions
+  /v1/credits/reserve
+  /v1/credits/settle
+  /v1/credits/status
+  /v1/models
+  /v1/usage
+  /webhooks/shopify/orders-cancelled
+  /webhooks/shopify/orders-paid
+  /webhooks/shopify/refunds-create
+--- main Handle snippets ---
+log.Fatal((&http.Server{Addr: addr, Handler: mux, ReadHeaderTimeout: 10 * time.Second, ReadTimeout: 30 * time.Second, IdleTimeout: 90 * time.Second}).ListenAndServe())
+mux.Handle(path, &licensesrv.Handler{Cfg: cfg, Store: st, Topic: topic})
+credits := licensesrv.WithAPIVersion(&licensesrv.CreditHandler{Store: st})
+mux.Handle("/v1/credits/reserve", credits)
+mux.Handle("/v1/credits/settle", credits)
+mux.Handle("/v1/credits/status", credits)
+var handler http.Handler
+handler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+mux.Handle("/v1/models", licensesrv.WithAPIVersion(http.HandlerFunc(proxy.Models)))
+mux.Handle("/v1/chat", licensesrv.WithAPIVersion(handler))
+mux.Handle("/v1/chat/completions", licensesrv.WithAPIVersion(handler))
+accounts := licensesrv.NewAccountHandler(st, os.Getenv("US_SESSION_SECRET"), time.Duration(ttl)*time.Second)
+mux.Handle("/account/", accounts)
+mux.Handle("/v1/account/", licensesrv.StripV1AccountPrefix(accounts))
+apiKeys := licensesrv.WithAPIVersion(&licensesrv.APIKeyHandler{Store: st})
+mux.Handle("/v1/api-keys", apiKeys)
+mux.Handle("/v1/api-keys/", apiKeys)
+mux.Handle("/v1/usage", licensesrv.WithAPIVersion(&licensesrv.UsageHandler{Store: st}))
+mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte("ok")) })
+--- 0002 checks ---
+LicenseBearer True
+SessionBearer True
+settle LicenseBearer only True
+version <re.Match object; span=(56, 79), match='version: "2026.11.06.10'>
+max_tokens True
+messages max True
+api-0002-openapi/lint.txt False True True
+  lines with warn: ['Woohoo! Your API description is valid. 🎉', 'LINT_EXIT:0']
+api-0009-openapi-update/lint.txt False False True
+  lines with warn: ['Woohoo! Your API description is valid. 🎉']

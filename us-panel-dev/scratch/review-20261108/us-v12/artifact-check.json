@@ -1,0 +1,31 @@
+[
+  {
+    "file": "US_Ticari_Aday_2026_11_06_12.exe",
+    "hash": "f951229be8aae931a0db48c102fb80f2f3af58ebdf9ba6ebe09eb412b763d590",
+    "equal": true
+  },
+  {
+    "file": "us-license-hook_linux",
+    "hash": "b2d7ab28f65dc98b6b75373f867575b73c030547b7745e8cf71a527dd1ec2c72",
+    "equal": true
+  },
+  {
+    "file": "us-license-hook_hostinger.tgz",
+    "hash": "b5489468efddfde838f940e64b40c2e512788d64acd880a860ea85a1822f539d",
+    "equal": true
+  },
+  {
+    "file": "TREE_MANIFEST.sha256",
+    "hash": "915cea46addb8680f7ad7907480d482e8145dfcf5200dd92e9da09640cf2bf38",
+    "equal": true
+  },
+  {
+    "file": "TESLIM_RAPORU_TR.md",
+    "hash": "9f127301e9b06fbbb79780ff4c86f77236265acd0245d43751f5f846833cb37f",
+    "equal": true
+  },
+  {
+    "file": "SHA256SUMS",
+    "hash": "38e96f7b3f147d06c28487d9ff6c9ba0859d73486285b9ca503bc591cf24b981"
+  }
+]

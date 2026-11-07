@@ -1,0 +1,17 @@
+{
+  "data_source": "OFFLINE_POST_RUN_INVARIANT_AUDIT",
+  "remote_network_requests": 0,
+  "checks": {
+    "both_DoH_exact_expected_A": true,
+    "both_phases_clean": true,
+    "balance_unchanged": true,
+    "concurrency_max20": true,
+    "phase_caps300_total600": true,
+    "five_verified_TLS_health_samples": true,
+    "phase1_sample_count80": true,
+    "phase2_17_success_23_expected429": true,
+    "no_5xx_observed": true,
+    "no_secret_payload_keys_or_license_values_in_remote_results": true
+  },
+  "pass": true
+}

@@ -1,0 +1,13 @@
+US SHOPIFY, HESAP VE MODEL GEÇİDİ — YEREL ENTEGRASYON TASLAĞI
+
+DURUM: Canlıya kurulmadı, gerçek Shopify web kancası kaydedilmedi, gerçek e-posta gönderilmedi ve Windows EXE derlenmedi. Müşteri satışına açılmaya hazır değildir.
+
+Hazırlananlar:
+- kanus/commerce_http.py: WSGI sipariş webhook'u, lisansla kayıt, giriş ve hesap oturumuyla model çağrısı. Shopify gövde HMAC'i, mağaza ve bildirim türü kontrol edilir. Yalnızca bilinen abonelik ürünleri desteklenir.
+- kanus/delivery.py ve mail_worker.py: denemeleri kaydedilen lisans e-posta kuyruğu; TLS üzerinden SMTP gönderme kodu. Gerçek SMTP hesabı yapılandırılmadı. Gönderim sonrası veritabanı kaydı başarısız olursa aynı e-posta tekrar gönderilebilir.
+- kiyas/term/account_client.go ve panel arayüzü: yapılandırılmış HTTPS geçidine kayıt/giriş isteği ve oturum anahtarını bellekte tutma taslağı. Bu Go kodu ve önceki Go değişiklikleri derlenmedi veya test edilmedi.
+- kanus/commercial_server.py yalnızca 127.0.0.1 üzerinde entegrasyon denemesi için tasarlanmıştır; üretim HTTP sunucusu değildir. Canlı kullanımda güvenilir TLS ters vekili, süreç yönetimi, sunucu/model ağ izolasyonu, gizli anahtarlar, SMTP, izleme, yedekleme, hata/iptal telafisi, e-posta doğrulaması ve bağımsız güvenlik denetimi gerekir. US_COMMERCE_DB (mutlak yol), SHOPIFY_WEBHOOK_SECRET, US_LICENSE_SECRET, SHOPIFY_SHOP ve US_MODEL_UPSTREAM ayarları gerektirir. SMTP işçisi US_SMTP_HOST, US_SMTP_PORT, US_SMTP_USER, US_SMTP_PASSWORD, US_SMTP_FROM ve aynı US_COMMERCE_DB ister. Gizli değerleri koda yazmayın.
+
+ÖNEMLİ KOTA UYUMSUZLUĞU: Örnek geçit her model HTTP çağrısı için bir hak tüketir. Panel tek kullanıcı isteminde birden çok model çağrısı yapabilir. Bu yüzden 500 kullanıcı istemi vaat eden bir ürünle eşdeğer değildir. İstek başarısız olsa dahi hak düşülebilir. Canlı satış öncesi bu davranış giderilmelidir. Saatlik ürün, kısmi iade ve lisans yenileme kapsam dışındadır. Müşteri bağlantısı arka uç modele doğrudan erişebiliyorsa bu kod kota uygulayamaz.
+
+Doğrulama: 13 Python testi geçti; sahte webhook, sahte SMTP göndericisi, hesap ve taklit model akışı sınandı. JavaScript sözdizimi geçti. Gerçek Shopify, SMTP, masaüstü ve canlı model uçtan uca denenmedi. Go/PHP testleri çalıştırılmadı. Taslak eski deneysel faz kodlarını da içerir; öneri kaydı ve çok dosyalı uygulama dahil incelenmelidir.

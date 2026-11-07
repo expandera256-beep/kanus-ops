@@ -1,0 +1,1 @@
+CONFIRMED: actual change handler ignores HTTP500 save failure and still loads explicit EN; no status/error handling in this handler. Reload uses saved/default TR. Node callback harness, not browser E2E.

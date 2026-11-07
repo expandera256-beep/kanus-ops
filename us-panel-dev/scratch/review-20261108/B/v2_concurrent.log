@@ -1,0 +1,6 @@
+=== RUN   TestReviewSameAccountConcurrentFields
+    review_concurrent_test.go:3: lost field at iteration 14: {AccountID:a MarketingConsent:true ProductUpdates:false CookieAnalytics:false UpdatedAt:2026-11-07 21:14:54.472632798 +0000 UTC Source:}
+--- FAIL: TestReviewSameAccountConcurrentFields (0.02s)
+FAIL
+FAIL	kiyas/internal/privacy	0.037s
+FAIL

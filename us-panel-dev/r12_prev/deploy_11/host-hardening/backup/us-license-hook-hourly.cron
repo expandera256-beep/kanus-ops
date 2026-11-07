@@ -1,0 +1,5 @@
+# DRAFT — /etc/cron.d/us-license-hook-hourly (mode 644)
+# Complements existing daily cron at 03:15; does not remove it.
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+5 * * * * root /usr/local/sbin/backup-us-license-hook-hourly.sh >>/var/log/us-license-hook-backup-hourly.log 2>&1

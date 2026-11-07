@@ -1,0 +1,21 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "işlem",
+      "text": "Yanıt sınırına ulaşıldı; devam bölümü 1/4 isteniyor."
+    },
+    {
+      "n": 2,
+      "kind": "işlem",
+      "text": "Yanıt sınırına ulaşıldı; devam bölümü 2/4 isteniyor."
+    },
+    {
+      "n": 3,
+      "kind": "işlem",
+      "text": "Yanıtın devamı doğrulandı; sonuç hazırlanıyor."
+    }
+  ]
+}

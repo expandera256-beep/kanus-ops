@@ -1,0 +1,396 @@
+[
+  {
+    "architecture": "X86_64",
+    "autoCreated": true,
+    "creationSizeBytes": "37445949184",
+    "creationTimestamp": "2026-10-31T02:32:33.960-07:00",
+    "diskSizeGb": "180",
+    "downloadBytes": "37453422172",
+    "enableConfidentialCompute": false,
+    "guestOsFeatures": [
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_LIVE_MIGRATABLE_V2"
+      },
+      {
+        "type": "SUSPEND_SAFE_FPR"
+      }
+    ],
+    "id": "7125457992422001502",
+    "kind": "compute#snapshot",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "2147286739765738111"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-12-bookworm"
+    ],
+    "name": "instance-20261030-2-us-central1-c-20261031093233-z27pe45a",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/snapshots/instance-20261030-2-us-central1-c-20261031093233-z27pe45a",
+    "sourceDisk": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/disks/instance-20261030-232245",
+    "sourceDiskId": "5894902308240136474",
+    "sourceSnapshotSchedulePolicy": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1/resourcePolicies/default-schedule-1",
+    "sourceSnapshotSchedulePolicyId": "4886560831724623595",
+    "status": "READY",
+    "storageBytes": "37445949184",
+    "storageBytesStatus": "UP_TO_DATE",
+    "storageLocations": [
+      "us"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "autoCreated": true,
+    "creationSizeBytes": "320973824",
+    "creationTimestamp": "2026-11-01T02:32:33.942-08:00",
+    "diskSizeGb": "180",
+    "downloadBytes": "37502153927",
+    "enableConfidentialCompute": false,
+    "guestOsFeatures": [
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_LIVE_MIGRATABLE_V2"
+      },
+      {
+        "type": "SUSPEND_SAFE_FPR"
+      }
+    ],
+    "id": "4615772223272823726",
+    "kind": "compute#snapshot",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "2147286739765738111"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-12-bookworm"
+    ],
+    "name": "instance-20261030-2-us-central1-c-20261101103233-yyi1vcax",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/snapshots/instance-20261030-2-us-central1-c-20261101103233-yyi1vcax",
+    "sourceDisk": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/disks/instance-20261030-232245",
+    "sourceDiskId": "5894902308240136474",
+    "sourceSnapshotSchedulePolicy": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1/resourcePolicies/default-schedule-1",
+    "sourceSnapshotSchedulePolicyId": "4886560831724623595",
+    "status": "READY",
+    "storageBytes": "320973824",
+    "storageBytesStatus": "UP_TO_DATE",
+    "storageLocations": [
+      "us"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "autoCreated": true,
+    "creationSizeBytes": "506611584",
+    "creationTimestamp": "2026-11-02T02:32:33.986-08:00",
+    "diskSizeGb": "180",
+    "downloadBytes": "37531975872",
+    "enableConfidentialCompute": false,
+    "guestOsFeatures": [
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_LIVE_MIGRATABLE_V2"
+      },
+      {
+        "type": "SUSPEND_SAFE_FPR"
+      }
+    ],
+    "id": "1080756105619298350",
+    "kind": "compute#snapshot",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "2147286739765738111"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-12-bookworm"
+    ],
+    "name": "instance-20261030-2-us-central1-c-20261102103233-twib75iu",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/snapshots/instance-20261030-2-us-central1-c-20261102103233-twib75iu",
+    "sourceDisk": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/disks/instance-20261030-232245",
+    "sourceDiskId": "5894902308240136474",
+    "sourceSnapshotSchedulePolicy": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1/resourcePolicies/default-schedule-1",
+    "sourceSnapshotSchedulePolicyId": "4886560831724623595",
+    "status": "READY",
+    "storageBytes": "506611584",
+    "storageBytesStatus": "UP_TO_DATE",
+    "storageLocations": [
+      "us"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "autoCreated": true,
+    "creationSizeBytes": "170248064",
+    "creationTimestamp": "2026-11-03T02:32:33.830-08:00",
+    "diskSizeGb": "180",
+    "downloadBytes": "37573452334",
+    "enableConfidentialCompute": false,
+    "guestOsFeatures": [
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_LIVE_MIGRATABLE_V2"
+      },
+      {
+        "type": "SUSPEND_SAFE_FPR"
+      }
+    ],
+    "id": "3116313872253060782",
+    "kind": "compute#snapshot",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "2147286739765738111"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-12-bookworm"
+    ],
+    "name": "instance-20261030-2-us-central1-c-20261103103233-otxlt4ih",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/snapshots/instance-20261030-2-us-central1-c-20261103103233-otxlt4ih",
+    "sourceDisk": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/disks/instance-20261030-232245",
+    "sourceDiskId": "5894902308240136474",
+    "sourceSnapshotSchedulePolicy": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1/resourcePolicies/default-schedule-1",
+    "sourceSnapshotSchedulePolicyId": "4886560831724623595",
+    "status": "READY",
+    "storageBytes": "170248064",
+    "storageBytesStatus": "UP_TO_DATE",
+    "storageLocations": [
+      "us"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "autoCreated": true,
+    "creationSizeBytes": "134521216",
+    "creationTimestamp": "2026-11-04T02:32:33.954-08:00",
+    "diskSizeGb": "180",
+    "downloadBytes": "37619497058",
+    "enableConfidentialCompute": false,
+    "guestOsFeatures": [
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_LIVE_MIGRATABLE_V2"
+      },
+      {
+        "type": "SUSPEND_SAFE_FPR"
+      }
+    ],
+    "id": "558751913676814126",
+    "kind": "compute#snapshot",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "2147286739765738111"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-12-bookworm"
+    ],
+    "name": "instance-20261030-2-us-central1-c-20261104103233-pcg5ga3s",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/snapshots/instance-20261030-2-us-central1-c-20261104103233-pcg5ga3s",
+    "sourceDisk": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/disks/instance-20261030-232245",
+    "sourceDiskId": "5894902308240136474",
+    "sourceSnapshotSchedulePolicy": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1/resourcePolicies/default-schedule-1",
+    "sourceSnapshotSchedulePolicyId": "4886560831724623595",
+    "status": "READY",
+    "storageBytes": "134521216",
+    "storageBytesStatus": "UP_TO_DATE",
+    "storageLocations": [
+      "us"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "autoCreated": true,
+    "creationSizeBytes": "170983552",
+    "creationTimestamp": "2026-11-05T02:32:33.931-08:00",
+    "diskSizeGb": "180",
+    "downloadBytes": "37630754817",
+    "enableConfidentialCompute": false,
+    "guestOsFeatures": [
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_LIVE_MIGRATABLE_V2"
+      },
+      {
+        "type": "SUSPEND_SAFE_FPR"
+      }
+    ],
+    "id": "5469673595015914926",
+    "kind": "compute#snapshot",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "2147286739765738111"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-12-bookworm"
+    ],
+    "name": "instance-20261030-2-us-central1-c-20261105103233-igcfzcum",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/snapshots/instance-20261030-2-us-central1-c-20261105103233-igcfzcum",
+    "sourceDisk": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/disks/instance-20261030-232245",
+    "sourceDiskId": "5894902308240136474",
+    "sourceSnapshotSchedulePolicy": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1/resourcePolicies/default-schedule-1",
+    "sourceSnapshotSchedulePolicyId": "4886560831724623595",
+    "status": "READY",
+    "storageBytes": "170983552",
+    "storageBytesStatus": "UP_TO_DATE",
+    "storageLocations": [
+      "us"
+    ]
+  },
+  {
+    "architecture": "X86_64",
+    "creationSizeBytes": "132842560",
+    "creationTimestamp": "2026-11-05T21:11:41.038-08:00",
+    "description": "Safety backup before Demir-approved delete 2026-11-06",
+    "diskSizeGb": "180",
+    "downloadBytes": "37657784560",
+    "enableConfidentialCompute": false,
+    "guestOsFeatures": [
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_LIVE_MIGRATABLE_V2"
+      },
+      {
+        "type": "SUSPEND_SAFE_FPR"
+      }
+    ],
+    "id": "5279601891800571747",
+    "kind": "compute#snapshot",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "2147286739765738111"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-12-bookworm"
+    ],
+    "name": "pre-delete-instance-20261030-232245-20261106",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/snapshots/pre-delete-instance-20261030-232245-20261106",
+    "sourceDisk": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/disks/instance-20261030-232245",
+    "sourceDiskId": "5894902308240136474",
+    "status": "READY",
+    "storageBytes": "132842560",
+    "storageBytesStatus": "UP_TO_DATE",
+    "storageLocations": [
+      "us"
+    ]
+  },
+  {
+    "creationSizeBytes": "57028270848",
+    "creationTimestamp": "2026-11-05T21:11:41.701-08:00",
+    "description": "Safety backup before Demir-approved disk delete 2026-11-06",
+    "diskSizeGb": "100",
+    "downloadBytes": "57034311194",
+    "enableConfidentialCompute": false,
+    "guestOsFeatures": [
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "GVNIC"
+      }
+    ],
+    "id": "4722821452741533538",
+    "kind": "compute#snapshot",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "licenseCodes": [
+      "5592494605997326117",
+      "1045467480970708420",
+      "5696107195841859039",
+      "2409827280084787154",
+      "8562147097333863664"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/click-to-deploy-images/global/licenses/c2d-dl-platform-dlvm",
+      "https://www.googleapis.com/compute/v1/projects/click-to-deploy-images/global/licenses/c2d-dl-platform-gvnic",
+      "https://www.googleapis.com/compute/v1/projects/click-to-deploy-images/global/licenses/c2d-dl-platform-py310",
+      "https://www.googleapis.com/compute/v1/projects/click-to-deploy-images/global/licenses/c2d-dl-platform-gpu-common-cu129",
+      "https://www.googleapis.com/compute/v1/projects/click-to-deploy-images/global/licenses/c2d-dl-platform-ubuntu-2204"
+    ],
+    "name": "pre-delete-usta-l4-20261106",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/snapshots/pre-delete-usta-l4-20261106",
+    "sourceDisk": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-a/disks/usta-l4",
+    "sourceDiskId": "6104932127479611735",
+    "status": "READY",
+    "storageBytes": "57028270848",
+    "storageBytesStatus": "UP_TO_DATE",
+    "storageLocations": [
+      "us"
+    ]
+  }
+]

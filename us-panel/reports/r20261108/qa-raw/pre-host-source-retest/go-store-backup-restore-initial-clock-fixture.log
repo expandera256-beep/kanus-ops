@@ -1,0 +1,8 @@
+=== RUN   TestQAAuditGoStoreBackupRestore
+    zz_qa_audit_store_test.go:17: settle failed
+--- FAIL: TestQAAuditGoStoreBackupRestore (0.01s)
+FAIL
+FAIL	kiyas/licensesrv	0.009s
+FAIL
+
+exit_code=1

@@ -1,0 +1,19 @@
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/global_i18n_panel_core.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/global_i18n_panel_core.patch'] EXIT 0
+
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch'] EXIT 0
+
+['git', 'apply', '--check', '/workspace/us-panel-dev/scratch/review-20261108/global-r4b/reviewed_03.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/scratch/review-20261108/global-r4b/reviewed_03.patch'] EXIT 0
+
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/global_i18n_04_errors.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/global_i18n_04_errors.patch'] EXIT 0
+
+['git', 'apply', '--check', '/workspace/us-panel-dev/patches/global_i18n_06_de_ru.patch'] EXIT 0
+
+['git', 'apply', '/workspace/us-panel-dev/patches/global_i18n_06_de_ru.patch'] EXIT 0

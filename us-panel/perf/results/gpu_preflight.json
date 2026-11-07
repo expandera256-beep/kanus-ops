@@ -1,0 +1,13 @@
+{
+  "mode": "NO_NETWORK_PREFLIGHT",
+  "endpoint": "https://api-test.kanus.org/v1/chat/completions",
+  "compute_cap_usd": 3,
+  "active_test_limit_seconds": 1800,
+  "automatic_extension": false,
+  "gpu_state_required": "preserved SSD / warm GPU; no separate cold-start test",
+  "idle_seconds": 900,
+  "live_execution_implemented": false,
+  "token_loaded": false,
+  "error": "PERF token file missing: /workspace/secrets/perf_api_token.txt",
+  "network_requests_sent": 0
+}

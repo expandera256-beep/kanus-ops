@@ -1,0 +1,3 @@
+GET https://shop.kanus.org/products/kanus-ai-1-saatlik-kullanim
+HTTP 429
+exit=0

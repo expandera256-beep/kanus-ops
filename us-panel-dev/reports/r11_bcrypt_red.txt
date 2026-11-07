@@ -1,0 +1,7 @@
+--- FAIL: TestBcryptThirdLoginWaitsThen503 (0.92s)
+    bcrypt_limit_test.go:65: üçüncü giriş: 200 "" {"session":"usa1.eyJzdWIiOiJmMzhkY2VlYzBiNDI4ODQ2NjYzZGU1MmM5NWI0ZGZjMCIsInYiOjEsImV4cCI6MTc5Mzk1MDUxMCwibiI6IjI1YWNhMzZmMzI1OTI5YWYwMzgyM2JlNDg4ZGJmY2M0In0.Ryaaw2ZENTuT-gYvQ7siQlYdR6qXIg-ShUapKRt4RNA"}
+--- FAIL: TestBcryptCancelledContextDoesNoWork (0.88s)
+    bcrypt_limit_test.go:87: iptal edilmiş istekte bcrypt yapıldı (210.684336ms)
+FAIL
+FAIL	kiyas/licensesrv	6.348s
+FAIL

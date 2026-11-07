@@ -1,0 +1,3 @@
+2026-11-08T00:21:30.982742+03:00
+curl -sS --max-time 25 -D /workspace/us-panel/reports/r20261108/evidence/us-commerce-health.headers -o /workspace/us-panel/reports/r20261108/evidence/us-commerce-health.body -w %{http_code} https://us-commerce-iqhblf63dq-ez.a.run.app/health
+exit=0

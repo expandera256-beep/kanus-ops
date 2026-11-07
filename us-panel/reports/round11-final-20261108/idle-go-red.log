@@ -1,0 +1,5 @@
+--- FAIL: TestWorkerMetadataIdlePolicyTenMinutes (0.01s)
+    idle_policy_test.go:35: idle target must be 10 minutes, without inventing a verified countdown
+FAIL
+FAIL	kiyas/licensesrv	0.009s
+FAIL

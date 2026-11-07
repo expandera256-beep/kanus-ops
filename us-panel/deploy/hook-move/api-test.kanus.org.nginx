@@ -1,0 +1,16 @@
+# api-test.kanus.org on prod VPS (parallel install) — HTTP only until LE cert at cutover
+server {
+    listen 80;
+    listen [::]:80;
+    server_name api-test.kanus.org;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/html;
+        default_type text/plain;
+    }
+
+    # Temporary: proxy over HTTP for local/ACME-era checks; cutover enables HTTPS block
+    location / {
+        include /etc/nginx/snippets/us-license-hook-test-locations.conf;
+    }
+}

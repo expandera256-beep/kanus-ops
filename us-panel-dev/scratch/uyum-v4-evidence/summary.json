@@ -1,0 +1,51 @@
+{
+  "race": {
+    "exit": 0,
+    "tests": {
+      "pass": 125,
+      "skip": 1
+    },
+    "packages": [
+      {
+        "package": "kiyas/licensesrv",
+        "action": "pass"
+      },
+      {
+        "package": "kiyas/internal/privacy",
+        "action": "pass"
+      },
+      {
+        "package": "kiyas/cmd/us-license-hook",
+        "action": "pass"
+      }
+    ]
+  },
+  "r3-probes": {
+    "exit": 0,
+    "tests": {
+      "pass": 18
+    },
+    "packages": [
+      {
+        "package": "kiyas/internal/privacy",
+        "action": "pass"
+      },
+      {
+        "package": "kiyas/licensesrv",
+        "action": "pass"
+      }
+    ]
+  },
+  "pinned_unchanged": true,
+  "pinned_file_count": 181,
+  "work_equals_apply": true,
+  "gofmt_clean": true,
+  "checks": {
+    "vet": 0,
+    "vet-all": 0,
+    "windows": 0,
+    "windows-all": 0,
+    "ops-standalone": 0,
+    "r11-check": 0
+  }
+}

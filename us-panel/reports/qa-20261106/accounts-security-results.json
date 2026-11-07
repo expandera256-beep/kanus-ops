@@ -1,0 +1,337 @@
+{
+  "results": [
+    {
+      "name": "valid_login_1",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "ms": 31362.373,
+        "session": "[MASKED]",
+        "session_length": 188
+      }
+    },
+    {
+      "name": "valid_login_2",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "ms": 31998.25,
+        "session": "[MASKED]",
+        "session_length": 188
+      }
+    },
+    {
+      "name": "authenticated_balance_1",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "balance": {
+          "remaining": 10,
+          "seconds_remaining": 0,
+          "reserved": 0,
+          "reserved_seconds": 0,
+          "kind": "account",
+          "expiresAt": "2027-02-04T05:34:19.947782032Z"
+        }
+      }
+    },
+    {
+      "name": "authenticated_balance_2",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "balance": {
+          "remaining": 0,
+          "seconds_remaining": 0,
+          "reserved": 0,
+          "reserved_seconds": 0,
+          "kind": "account",
+          "expiresAt": "0001-01-01T00:00:00Z"
+        }
+      }
+    },
+    {
+      "name": "genuine_signed_session_expiry",
+      "status": "NOT TESTED",
+      "detail": {
+        "remaining_ttl_seconds": 86335,
+        "expiry_tsi": [
+          "2026-11-07T09:14:37+03:00",
+          "2026-11-07T09:15:09+03:00"
+        ],
+        "reason": "No short-TTL issuance API; cannot change VPS TTL or use signing secret. Not waiting24h."
+      }
+    },
+    {
+      "name": "session_tampered_signature_rejected",
+      "status": "PASS",
+      "detail": {
+        "http": 401
+      }
+    },
+    {
+      "name": "expired_claims_without_valid_signature_rejected",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "scope": "Signature/claims tamper denial only; NOT genuine signed expiry acceptance"
+      }
+    },
+    {
+      "name": "cross_account_subject_forgery_rejected",
+      "status": "PASS",
+      "detail": {
+        "http": 401
+      }
+    },
+    {
+      "name": "cross_account_balance_authority",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "A_balance": {
+          "remaining": 10,
+          "seconds_remaining": 0,
+          "reserved": 0,
+          "reserved_seconds": 0,
+          "kind": "account",
+          "expiresAt": "2027-02-04T05:34:19.947782032Z"
+        },
+        "B_balance": {
+          "remaining": 0,
+          "seconds_remaining": 0,
+          "reserved": 0,
+          "reserved_seconds": 0,
+          "kind": "account",
+          "expiresAt": "0001-01-01T00:00:00Z"
+        },
+        "returned": {
+          "remaining": 10,
+          "seconds_remaining": 0,
+          "reserved": 0,
+          "reserved_seconds": 0,
+          "kind": "account",
+          "expiresAt": "2027-02-04T05:34:19.947782032Z"
+        },
+        "scope": "A Bearer + B email retains A authority; no endpoint for arbitrary user ID"
+      }
+    },
+    {
+      "name": "cross_account_history_authority",
+      "status": "PASS",
+      "detail": {
+        "http": [
+          200,
+          200
+        ],
+        "same_A_history": true,
+        "scope": "B identity field cannot change A scoped history; no new model calls"
+      }
+    },
+    {
+      "name": "same_owner_redeem_twice_idempotent",
+      "status": "PASS",
+      "detail": {
+        "http": [
+          200,
+          200
+        ],
+        "balance_unchanged": true,
+        "fixture": "existing valid order9000000000303 already bound to account1"
+      }
+    },
+    {
+      "name": "same_owner_redeem_parallel2_idempotent",
+      "status": "PASS",
+      "detail": {
+        "http": [
+          200,
+          200
+        ],
+        "parallel": 2,
+        "scope": "Already-owned key repeat race, not fresh first-claim race"
+      }
+    },
+    {
+      "name": "cross_account_redeem_existing_owner_denied",
+      "status": "PASS",
+      "detail": {
+        "http": 409,
+        "expected": 409
+      }
+    },
+    {
+      "name": "fresh_first_claim_parallel_race",
+      "status": "BLOCKED",
+      "detail": "Existing valid key is already owned. Need ONE unbound valid synthetic test-order license in /workspace/secrets/acct-qa-fresh-license.txt for two-account first-claim race. No new orders/secrets used."
+    },
+    {
+      "name": "revoked_license_redeem_a",
+      "status": "PASS",
+      "detail": {
+        "http": 409,
+        "expected": 409
+      }
+    },
+    {
+      "name": "revoked_license_redeem_b",
+      "status": "PASS",
+      "detail": {
+        "http": 409,
+        "expected": 409
+      }
+    },
+    {
+      "name": "credits_unchanged_1",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "before": {
+          "remaining": 10,
+          "seconds_remaining": 0,
+          "reserved": 0,
+          "reserved_seconds": 0,
+          "kind": "account",
+          "expiresAt": "2027-02-04T05:34:19.947782032Z"
+        },
+        "after": {
+          "remaining": 10,
+          "seconds_remaining": 0,
+          "reserved": 0,
+          "reserved_seconds": 0,
+          "kind": "account",
+          "expiresAt": "2027-02-04T05:34:19.947782032Z"
+        },
+        "credits_consumed": 0
+      }
+    },
+    {
+      "name": "credits_unchanged_2",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "before": {
+          "remaining": 0,
+          "seconds_remaining": 0,
+          "reserved": 0,
+          "reserved_seconds": 0,
+          "kind": "account",
+          "expiresAt": "0001-01-01T00:00:00Z"
+        },
+        "after": {
+          "remaining": 0,
+          "seconds_remaining": 0,
+          "reserved": 0,
+          "reserved_seconds": 0,
+          "kind": "account",
+          "expiresAt": "0001-01-01T00:00:00Z"
+        },
+        "credits_consumed": 0
+      }
+    },
+    {
+      "name": "login_enumeration_body_status",
+      "status": "PASS",
+      "detail": {
+        "samples": [
+          {
+            "label": "enumeration_registered_0",
+            "http": 401,
+            "ms": 33100.67,
+            "body_bytes": 37,
+            "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+          },
+          {
+            "label": "enumeration_unregistered_1",
+            "http": 401,
+            "ms": 34797.644,
+            "body_bytes": 37,
+            "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+          },
+          {
+            "label": "enumeration_unregistered_2",
+            "http": 401,
+            "ms": 34596.937,
+            "body_bytes": 37,
+            "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+          },
+          {
+            "label": "enumeration_registered_3",
+            "http": 401,
+            "ms": 31802.185,
+            "body_bytes": 37,
+            "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+          }
+        ]
+      }
+    },
+    {
+      "name": "login_enumeration_timing",
+      "status": "NOT TESTED",
+      "detail": {
+        "samples_ms": {
+          "registered": [
+            33100.67,
+            31802.185
+          ],
+          "unregistered": [
+            34797.644,
+            34596.937
+          ]
+        },
+        "medians_ms": {
+          "registered": 32451.427,
+          "unregistered": 34697.291
+        },
+        "reason": "Only2 samples/class; load~27, bcrypt20–28s and network noise. Insufficient to establish or exclude timing side channel."
+      }
+    },
+    {
+      "name": "register_reset_enumeration",
+      "status": "NOT TESTED",
+      "detail": "Not invoked: registration/reset/verification may queue or send real mail; no mail-generating endpoints called."
+    },
+    {
+      "name": "wrong_password_QA_denied_0",
+      "status": "PASS",
+      "detail": {
+        "http": 401
+      }
+    },
+    {
+      "name": "wrong_password_QA_denied_1",
+      "status": "PASS",
+      "detail": {
+        "http": 401
+      }
+    },
+    {
+      "name": "account_specific_lockout",
+      "status": "NOT TESTED",
+      "detail": {
+        "http_after_four_wrong_QA_attempts": 200,
+        "reason": "No documented per-account lock threshold; source shows per-IP15min limiter only. Small test cannot prove lockout absence or exhaust account-specific threshold."
+      }
+    },
+    {
+      "name": "login_ip_bruteforce_rate_limit",
+      "status": "NOT TESTED",
+      "detail": {
+        "429_observed": false,
+        "login_requests_so_far": 12,
+        "scope": "Per-IP/proxy limiter, not per-account lockout; invalid short passwords keep additional probes cheap"
+      }
+    },
+    {
+      "name": "XFF_rotation_limiter_bypass",
+      "status": "NOT TESTED",
+      "detail": "Baseline429 not reached within bounded request budget; no escalation"
+    }
+  ],
+  "counts": {
+    "PASS": 19,
+    "FAIL": 0,
+    "BLOCKED": 1,
+    "NOT TESTED": 6
+  }
+}

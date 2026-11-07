@@ -1,0 +1,9 @@
+{
+  "counts": {
+    "PASS": 6,
+    "FAIL": 4,
+    "NOT VERIFIED": 2
+  },
+  "report_sha256": "4d6350b8ac5117a56275a6cf8fb8c8f0b12833aad48da138459ddfaf96988525",
+  "classification": "table counts exclude separately mentioned old-token residue"
+}

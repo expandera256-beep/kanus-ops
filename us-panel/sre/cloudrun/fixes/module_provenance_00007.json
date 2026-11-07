@@ -1,0 +1,34 @@
+{
+  "runtime": {
+    "path": "/workspace/us-panel/sre/cloudrun/fixes/app-00007/runtime.py",
+    "sha256": "b7865c178533aaca917a5a0fd9c987fb8f966e86810339908682ab94acfb10e4"
+  },
+  "commerce_http": {
+    "path": "/workspace/us-panel/sre/cloudrun/fixes/app-00007/commerce_http.py",
+    "sha256": "57c6a17f30f643639a28ade029b41e22d70a597c31c4c38e4fb009c6efb752ba"
+  },
+  "rate_limit": {
+    "path": "/workspace/us-panel/sre/cloudrun/fixes/app-00007/rate_limit.py",
+    "sha256": "d07925d6f37789ae932f338c116c954633309f3f57d9f7eb212ad04f154f2348"
+  },
+  "readiness_checks": {
+    "path": "/workspace/us-panel/sre/cloudrun/fixes/app-00007/readiness_checks.py",
+    "sha256": "a2ded6414f3fea318bea13529326053dc2b260bcb99380a70d69b2bbae450ba0"
+  },
+  "structured_logging": {
+    "path": "/workspace/us-panel/sre/cloudrun/fixes/app-00007/structured_logging.py",
+    "sha256": "63f1227510f43f7bc67ede66ad1570255b5d2ded1ee32a9acdd4a374cbbf6ab6"
+  },
+  "inference_lifecycle": {
+    "path": "/workspace/us-panel/sre/cloudrun/fixes/app-00007/inference_lifecycle.py",
+    "sha256": "9e141f0a7caa98ad0730c43c9f9ab4e1c6b9263a101b1a42b69f289032b7f693"
+  },
+  "managed_inference": {
+    "path": "/workspace/us-panel/sre/cloudrun/fixes/app-00007/managed_inference.py",
+    "sha256": "0ae01708ff62776b1ca1452526c2bd8afb5c9a882c123f96378d0748f67c63b4"
+  },
+  "gce_provider": {
+    "path": "/workspace/us-panel/sre/cloudrun/fixes/app-00007/gce_provider.py",
+    "sha256": "f2de2bc53ce4e292ab71d915234941b7ceea42de645c8de8d3d838bc5ced5667"
+  }
+}

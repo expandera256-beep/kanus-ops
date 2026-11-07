@@ -1,0 +1,63 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "düşünce",
+      "text": "İstek modele gidiyor."
+    },
+    {
+      "n": 2,
+      "kind": "işlem",
+      "text": "Uzun istem 4 parçaya bölündü. Ara özetler bilgi kaybı içerebilir."
+    },
+    {
+      "n": 3,
+      "kind": "istem",
+      "text": "İş modele gitti: long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text\nkesildi.\n[Uzun istemin tamamı parçalara ayrılır.]. Klasörde 1 ad."
+    },
+    {
+      "n": 4,
+      "kind": "işlem",
+      "text": "İstek modele gitti."
+    },
+    {
+      "n": 5,
+      "kind": "işlem",
+      "text": "Model cevap vermedi."
+    },
+    {
+      "n": 6,
+      "kind": "özet",
+      "text": "Özet. İstem: long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text\nkesildi.\n[Uzun istemin tamamı parçalara ayrılır.]. Okunan: yok. Yazılan: yok. Sonuç: model cevap vermedi."
+    }
+  ],
+  "chat": [
+    {
+      "role": "panel",
+      "text": "kullanıcı: long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text\nkesildi.\n[Uzun istemin tamamı parçalara ayrılır.]\nKlasörde 1 ad var."
+    },
+    {
+      "role": "model",
+      "text": "Parça 2/4 işleniyor tamamlanmadı: bağlantı kesildi"
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "long text long text long text long text lo",
+      "turns": [
+        {
+          "role": "panel",
+          "text": "kullanıcı: long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text\nkesildi.\n[Uzun istemin tamamı parçalara ayrılır.]\nKlasörde 1 ad var."
+        },
+        {
+          "role": "model",
+          "text": "Parça 2/4 işleniyor tamamlanmadı: bağlantı kesildi"
+        }
+      ]
+    }
+  ],
+  "chatId": "s1"
+}

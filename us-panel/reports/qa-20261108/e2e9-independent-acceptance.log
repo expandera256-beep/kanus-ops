@@ -1,0 +1,3 @@
+INDEPENDENT_HTTP_ACCEPTANCE PASS health/auth/create/list/cross-user/validation
+
+exit_code=0

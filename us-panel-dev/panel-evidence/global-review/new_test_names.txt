@@ -1,0 +1,16 @@
+TestAddRejectsBadLocale
+TestConcurrentUse
+TestFallbackAndPlaceholders
+TestForbiddenSloganAbsent
+TestFormatting
+TestGUIDataI18nMatchesTurkishDefault
+TestGUIErrorFollowsPreference
+TestGUIErrorTextsPreserveTurkish
+TestGUII18nEndpoint
+TestGUILangPreferencePersistsNextToDesk
+TestNegotiate
+TestNoMissingKeysBetweenLocales
+TestPlaceholdersMatch
+TestPrefHandler
+TestPrefStoreRoundTrip
+TestSloganSingleKey

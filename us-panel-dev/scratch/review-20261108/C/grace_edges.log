@@ -1,0 +1,53 @@
+=== RUN   TestReviewGraceParseEdges
+=== RUN   TestReviewGraceParseEdges/#00
+    review_edges_test.go:5: input="" got=10m0s want=10m0s
+=== RUN   TestReviewGraceParseEdges/_
+    review_edges_test.go:5: input=" " got=10m0s want=10m0s
+=== RUN   TestReviewGraceParseEdges/0
+    review_edges_test.go:5: input="0" got=0s want=0s
+=== RUN   TestReviewGraceParseEdges/-0
+    review_edges_test.go:5: input="-0" got=0s want=0s
+=== RUN   TestReviewGraceParseEdges/-1
+    review_edges_test.go:5: input="-1" got=10m0s want=10m0s
+=== RUN   TestReviewGraceParseEdges/900
+    review_edges_test.go:5: input="900" got=15m0s want=15m0s
+=== RUN   TestReviewGraceParseEdges/901
+    review_edges_test.go:5: input="901" got=15m0s want=15m0s
+=== RUN   TestReviewGraceParseEdges/+901
+    review_edges_test.go:5: input="+901" got=15m0s want=15m0s
+=== RUN   TestReviewGraceParseEdges/_901_
+    review_edges_test.go:5: input=" 901 " got=15m0s want=15m0s
+=== RUN   TestReviewGraceParseEdges/1s
+    review_edges_test.go:5: input="1s" got=10m0s want=10m0s
+=== RUN   TestReviewGraceParseEdges/abc
+    review_edges_test.go:5: input="abc" got=10m0s want=10m0s
+=== RUN   TestReviewGraceParseEdges/9999999999999999999999999
+    review_edges_test.go:5: input="9999999999999999999999999" got=10m0s want=10m0s
+=== RUN   TestReviewGraceParseEdges/9223372036
+    review_edges_test.go:5: input="9223372036" got=15m0s want=15m0s
+=== RUN   TestReviewGraceParseEdges/9223372037
+    review_edges_test.go:5: input="9223372037" got=-2562047h47m16.709551616s want=15m0s
+=== RUN   TestReviewGraceParseEdges/18446744074
+    review_edges_test.go:5: input="18446744074" got=290.448384ms want=15m0s
+=== RUN   TestReviewGraceParseEdges/9223372036854775807
+    review_edges_test.go:5: input="9223372036854775807" got=-1s want=15m0s
+--- FAIL: TestReviewGraceParseEdges (0.00s)
+    --- PASS: TestReviewGraceParseEdges/#00 (0.00s)
+    --- PASS: TestReviewGraceParseEdges/_ (0.00s)
+    --- PASS: TestReviewGraceParseEdges/0 (0.00s)
+    --- PASS: TestReviewGraceParseEdges/-0 (0.00s)
+    --- PASS: TestReviewGraceParseEdges/-1 (0.00s)
+    --- PASS: TestReviewGraceParseEdges/900 (0.00s)
+    --- PASS: TestReviewGraceParseEdges/901 (0.00s)
+    --- PASS: TestReviewGraceParseEdges/+901 (0.00s)
+    --- PASS: TestReviewGraceParseEdges/_901_ (0.00s)
+    --- PASS: TestReviewGraceParseEdges/1s (0.00s)
+    --- PASS: TestReviewGraceParseEdges/abc (0.00s)
+    --- PASS: TestReviewGraceParseEdges/9999999999999999999999999 (0.00s)
+    --- PASS: TestReviewGraceParseEdges/9223372036 (0.00s)
+    --- FAIL: TestReviewGraceParseEdges/9223372037 (0.00s)
+    --- FAIL: TestReviewGraceParseEdges/18446744074 (0.00s)
+    --- FAIL: TestReviewGraceParseEdges/9223372036854775807 (0.00s)
+FAIL
+FAIL	kiyas/licensesrv	0.003s
+FAIL

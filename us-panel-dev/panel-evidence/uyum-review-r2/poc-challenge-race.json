@@ -1,0 +1,63 @@
+{"Time":"2026-11-06T09:59:56.788182661+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-06T09:59:56.801305738+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace"}
+{"Time":"2026-11-06T09:59:56.801878149+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"=== RUN   TestPanelR2GlobalChallengeRace\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:56.828029749+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"==================\n"}
+{"Time":"2026-11-06T09:59:56.828069852+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"WARNING: DATA RACE\n"}
+{"Time":"2026-11-06T09:59:56.828073127+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"Write at 0x00c000123980 by goroutine 10:\n"}
+{"Time":"2026-11-06T09:59:56.828079122+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  runtime.mapassign_faststr()\n"}
+{"Time":"2026-11-06T09:59:56.828083008+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /usr/local/go/src/internal/runtime/maps/runtime_faststr.go:261 +0x0\n"}
+{"Time":"2026-11-06T09:59:56.828090771+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.(*Store).RequestErase.func1()\n"}
+{"Time":"2026-11-06T09:59:56.828095848+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/privacy_ops.go:160 +0x177\n"}
+{"Time":"2026-11-06T09:59:56.828097919+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.(*Store).transactionLocked()\n"}
+{"Time":"2026-11-06T09:59:56.828099968+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/store.go:220 +0xd6\n"}
+{"Time":"2026-11-06T09:59:56.828101573+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.(*Store).RequestErase()\n"}
+{"Time":"2026-11-06T09:59:56.828103865+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/privacy_ops.go:159 +0x32f\n"}
+{"Time":"2026-11-06T09:59:56.828105565+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.TestPanelR2GlobalChallengeRace.func1()\n"}
+{"Time":"2026-11-06T09:59:56.82810743+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/zz_panel_r2_test.go:24 +0x144\n"}
+{"Time":"2026-11-06T09:59:56.828109357+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.TestPanelR2GlobalChallengeRace.gowrap1()\n"}
+{"Time":"2026-11-06T09:59:56.82811113+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/zz_panel_r2_test.go:24 +0x62\n"}
+{"Time":"2026-11-06T09:59:56.828112663+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"\n"}
+{"Time":"2026-11-06T09:59:56.828114865+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"Previous write at 0x00c000123980 by goroutine 9:\n"}
+{"Time":"2026-11-06T09:59:56.828116465+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  runtime.mapassign_faststr()\n"}
+{"Time":"2026-11-06T09:59:56.828119118+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /usr/local/go/src/internal/runtime/maps/runtime_faststr.go:261 +0x0\n"}
+{"Time":"2026-11-06T09:59:56.828124576+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.(*Store).RequestErase.func1()\n"}
+{"Time":"2026-11-06T09:59:56.828126515+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/privacy_ops.go:160 +0x177\n"}
+{"Time":"2026-11-06T09:59:56.828128143+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.(*Store).transactionLocked()\n"}
+{"Time":"2026-11-06T09:59:56.8281298+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/store.go:220 +0xd6\n"}
+{"Time":"2026-11-06T09:59:56.828131434+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.(*Store).RequestErase()\n"}
+{"Time":"2026-11-06T09:59:56.828133329+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/privacy_ops.go:159 +0x32f\n"}
+{"Time":"2026-11-06T09:59:56.828134988+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.TestPanelR2GlobalChallengeRace.func1()\n"}
+{"Time":"2026-11-06T09:59:56.82813667+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/zz_panel_r2_test.go:24 +0x144\n"}
+{"Time":"2026-11-06T09:59:56.828138352+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.TestPanelR2GlobalChallengeRace.gowrap1()\n"}
+{"Time":"2026-11-06T09:59:56.828140052+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/zz_panel_r2_test.go:24 +0x62\n"}
+{"Time":"2026-11-06T09:59:56.828141525+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"\n"}
+{"Time":"2026-11-06T09:59:56.828143085+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"Goroutine 10 (running) created at:\n"}
+{"Time":"2026-11-06T09:59:56.82814469+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.TestPanelR2GlobalChallengeRace()\n"}
+{"Time":"2026-11-06T09:59:56.828146416+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/zz_panel_r2_test.go:24 +0x284\n"}
+{"Time":"2026-11-06T09:59:56.828148022+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  testing.tRunner()\n"}
+{"Time":"2026-11-06T09:59:56.828149995+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /usr/local/go/src/testing/testing.go:2195 +0x21c\n"}
+{"Time":"2026-11-06T09:59:56.828151662+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  testing.(*T).Run.gowrap1()\n"}
+{"Time":"2026-11-06T09:59:56.828153392+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /usr/local/go/src/testing/testing.go:2260 +0x38\n"}
+{"Time":"2026-11-06T09:59:56.828154834+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"\n"}
+{"Time":"2026-11-06T09:59:56.828156298+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"Goroutine 9 (running) created at:\n"}
+{"Time":"2026-11-06T09:59:56.828157915+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  kiyas/licensesrv.TestPanelR2GlobalChallengeRace()\n"}
+{"Time":"2026-11-06T09:59:56.828164877+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /tmp/uyum-r2-sqm3eaol/a/b/poc/licensesrv/zz_panel_r2_test.go:24 +0x284\n"}
+{"Time":"2026-11-06T09:59:56.828166948+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  testing.tRunner()\n"}
+{"Time":"2026-11-06T09:59:56.82816865+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /usr/local/go/src/testing/testing.go:2195 +0x21c\n"}
+{"Time":"2026-11-06T09:59:56.828170463+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"  testing.(*T).Run.gowrap1()\n"}
+{"Time":"2026-11-06T09:59:56.82817233+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"      /usr/local/go/src/testing/testing.go:2260 +0x38\n"}
+{"Time":"2026-11-06T09:59:56.82817395+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"==================\n"}
+{"Time":"2026-11-06T09:59:56.841433879+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"    testing.go:1867: race detected during execution of test\n","OutputType":"error"}
+{"Time":"2026-11-06T09:59:56.842355882+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"--- FAIL: TestPanelR2GlobalChallengeRace (0.04s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:56.842376013+03:00","Action":"fail","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Elapsed":0.04}
+{"Time":"2026-11-06T09:59:56.842391058+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace"}
+{"Time":"2026-11-06T09:59:56.842393994+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"=== RUN   TestPanelR2GlobalChallengeRace\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:56.87720802+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"--- PASS: TestPanelR2GlobalChallengeRace (0.04s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:56.877246473+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Elapsed":0.04}
+{"Time":"2026-11-06T09:59:56.877376241+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace"}
+{"Time":"2026-11-06T09:59:56.87739597+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"=== RUN   TestPanelR2GlobalChallengeRace\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:56.910733043+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Output":"--- PASS: TestPanelR2GlobalChallengeRace (0.03s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:56.910765784+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2GlobalChallengeRace","Elapsed":0.03}
+{"Time":"2026-11-06T09:59:56.910772367+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:56.91258811+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"FAIL\tkiyas/licensesrv\t0.124s\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:56.91262213+03:00","Action":"fail","Package":"kiyas/licensesrv","Elapsed":0.124}

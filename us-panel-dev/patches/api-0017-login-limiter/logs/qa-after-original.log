@@ -1,0 +1,36 @@
+RUN_DIR /workspace/us-panel-dev/work/api/limiter/qa-repro/reports/r20261108/qa-raw/runs/20261108T013109+0300-limiter-risks-lrq8d4lz
+=== RUN   TestQAAuditLimiterAccountLockDoS
+2026/11/08 01:31:11 account /account/register email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=q***@example.test queue_wait_ms=0 result=slot
+    zz_qa_limiter_risks_test.go:14: failed_attempts=10 correct_password_http=200 retry_after_present=false
+--- PASS: TestQAAuditLimiterAccountLockDoS (0.23s)
+=== RUN   TestQAAuditLimiterFixedWindowAndVolatileState
+    zz_qa_limiter_risks_test.go:23: unregistered_email_counted=true fixed_window_900s=true blocked_checks_do_not_extend=true fresh_instance_or_restart_state_empty=true
+--- PASS: TestQAAuditLimiterFixedWindowAndVolatileState (0.00s)
+=== RUN   TestQAAuditLimiterEvictionSpray
+    zz_qa_limiter_risks_test.go:30: default_max_keys=10000 synthetic_other_emails=10000 target_counter_evicted=false
+    zz_qa_limiter_risks_test.go:31: eviction behavior changed; reassess finding
+--- FAIL: TestQAAuditLimiterEvictionSpray (0.00s)
+=== RUN   TestQAAuditLimiterIPCapacityAndRetryAfter
+    zz_qa_limiter_risks_test.go:37: ip_buckets=4096 new_ip_http=429 retry_after_seconds=5
+--- PASS: TestQAAuditLimiterIPCapacityAndRetryAfter (0.22s)
+=== RUN   TestQAAuditLimiterRedeemHasNoRateBucket
+2026/11/08 01:31:11 account /account/register email=r***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:31:11 account /account/login email=r***@example.test queue_wait_ms=0 result=slot
+    zz_qa_limiter_risks_test.go:48: authenticated_redeem_invalid_attempts=12 rate_429_count=0 rate_bucket_delta=0 synthetic_no_mutation=true
+--- PASS: TestQAAuditLimiterRedeemHasNoRateBucket (0.24s)
+FAIL
+FAIL	kiyas/licensesrv	0.704s
+FAIL
+
+exit_code=1

@@ -1,0 +1,123 @@
+a/licensesrv/store.go b/licensesrv/store.go
+index 2e8fa3b..cf46b1d 100644
+--- a/licensesrv/store.go
++++ b/licensesrv/store.go
+@@ -12,6 +12,7 @@ import (
+ 	"errors"
+ 	"os"
+ 	"path/filepath"
++	"strconv"
+ 	"strings"
+ 	"sync"
+ 	"time"
+@@ -97,6 +98,7 @@ type Store struct {
+ 	lock          *os.File
+ 	closed        bool
+ 	sessionSecret string
++	commitGrace   time.Duration // TTL commit anchor grace (api-0012); 0 = legacy immediate expire
+ 	st            state
+ }
+ 
+@@ -154,6 +156,7 @@ func OpenStore(path string) (*Store, error) {
+ 	if s.st.UsageEvents == nil {
+ 		s.st.UsageEvents = []UsageEvent{}
+ 	}
++	s.commitGrace = commitGraceFromEnv()
+ 	good = true
+ 	return s, nil
+ }
+@@ -236,6 +239,38 @@ func (s *Store) transactionLocked(fn func() error) error {
+ 	return nil
+ }
+ 
++// commitGraceFromEnv reads US_CREDIT_COMMIT_GRACE_SECONDS (default 600 = 10m).
++// Set to 0 for legacy immediate expire-at-TTL behavior.
++func commitGraceFromEnv() time.Duration {
++	raw := strings.TrimSpace(os.Getenv("US_CREDIT_COMMIT_GRACE_SECONDS"))
++	if raw == "" {
++		return 10 * time.Minute
++	}
++	n, err := strconv.Atoi(raw)
++	if err != nil || n < 0 {
++		return 10 * time.Minute
++	}
++	return time.Duration(n) * time.Second
++}
++
++func (s *Store) reservationCommitDeadline(r *Reservation) time.Time {
++	if s.commitGrace <= 0 {
++		return r.Expires
++	}
++	return r.Expires.Add(s.commitGrace)
++}
++
++// applyReservedDelta adjusts Reserved and returns an error if it would go negative.
++// On error, the license Reserved field is left unchanged (no panic).
++func applyReservedDelta(l *License, delta int) error {
++	next := l.Reserved + delta
++	if next < 0 {
++		return errors.New("reserved invariant violated")
++	}
++	l.Reserved = next
++	return nil
++}
++
+ // Reserve atomically holds credits; one prompt/model call costs one credit.
+ func (s *Store) Reserve(key string, amount int, ttl time.Duration, now time.Time) (string, error) {
+ 	s.mu.Lock()
+@@ -250,7 +285,9 @@ func (s *Store) Reserve(key string, amount int, ttl time.Duration, now time.Time
+ 		if ttl <= 0 || amount <= 0 || l.Credits-l.Reserved < amount {
+ 			return ErrNoCredit
+ 		}
+-		l.Reserved += amount
++		if err := applyReservedDelta(l, amount); err != nil {
++			return err
++		}
+ 		s.st.Reservations[id] = &Reservation{CreatedAt: now, Key: key, Amount: amount, Expires: now.Add(ttl)}
+ 		return nil
+ 	})
+@@ -282,7 +319,7 @@ func (s *Store) settleFor(key, id string, commit bool, now time.Time) error {
+ 	if !ok || (key != "" && r.Key != key) {
+ 		return ErrInvalid
+ 	}
+-	if commit && !now.Before(r.Expires) {
++	if commit && !now.Before(s.reservationCommitDeadline(r)) {
+ 		return errors.New("rezervasyon süresi doldu")
+ 	}
+ 	return s.transactionLocked(func() error {
+@@ -291,9 +328,16 @@ func (s *Store) settleFor(key, id string, commit bool, now time.Time) error {
+ 			return ErrInvalid
+ 		}
+ 		if ok {
+-			l.Reserved -= r.Amount
++			if err := applyReservedDelta(l, -r.Amount); err != nil {
++				return err
++			}
+ 			if commit {
+ 				l.Credits -= r.Amount
++				if l.Credits < 0 {
++					l.Credits += r.Amount
++					_ = applyReservedDelta(l, r.Amount) // restore reserved
++					return errors.New("credits invariant violated")
++				}
+ 			}
+ 		}
+ 		s.st.Settlements[id] = Settlement{CreatedAt: r.CreatedAt, Key: r.Key, Commit: commit, Amount: func() int {
+@@ -309,9 +353,13 @@ func (s *Store) settleFor(key, id string, commit bool, now time.Time) error {
+ 
+ func (s *Store) expireLocked(now time.Time) {
+ 	for id, r := range s.st.Reservations {
+-		if !now.Before(r.Expires) {
++		// Defer release until commit-grace after reservation Expires (api-0012).
++		if !now.Before(s.reservationCommitDeadline(r)) {
+ 			if l, ok := s.st.Licenses[r.Key]; ok {
+-				l.Reserved -= r.Amount
++				if err := applyReservedDelta(l, -r.Amount); err != nil {
++					// Corrupt ledger: clamp rather than panic; still tombstone reservation.
++					l.Reserved = 0
++				}
+ 			}
+ 			s.st.Settlements[id] = Settlement{CreatedAt: r.CreatedAt, Key: r.Key, SettledAt: now}
+ 			delete(s.st.Reservations, id)
+
+---TRUNC--- 4001

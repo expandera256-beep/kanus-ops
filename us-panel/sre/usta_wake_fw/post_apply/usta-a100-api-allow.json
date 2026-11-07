@@ -1,0 +1,30 @@
+{
+  "allowed": [
+    {
+      "IPProtocol": "tcp",
+      "ports": [
+        "8443"
+      ]
+    }
+  ],
+  "creationTimestamp": "2026-11-05T22:53:22.819-08:00",
+  "description": "usta-wake /a100 TLS :8443 from VPS only (option A)",
+  "direction": "INGRESS",
+  "disabled": false,
+  "id": "4896509535054776205",
+  "kind": "compute#firewall",
+  "logConfig": {
+    "enable": false
+  },
+  "name": "usta-a100-api-allow",
+  "network": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/networks/default",
+  "priority": 900,
+  "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/firewalls/usta-a100-api-allow",
+  "sourceRanges": [
+    "31.220.63.191/32",
+    "82.29.184.225/32"
+  ],
+  "targetTags": [
+    "usta-a100-api"
+  ]
+}

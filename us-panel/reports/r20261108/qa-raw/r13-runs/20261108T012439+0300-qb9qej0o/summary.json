@@ -1,0 +1,62 @@
+{
+  "suite": "r13",
+  "created_at": "2026-11-08T01:24:46.954502+03:00",
+  "tree": "/workspace/us-panel/qa/build/qa-r11-patch-6ij93zmg/term",
+  "source_version": "2026.11.06.11",
+  "status": "FAIL",
+  "counts": {
+    "PASS": 2,
+    "FAIL": 2,
+    "SKIP": 0,
+    "NOT TESTED": 1,
+    "BLOCKED": 0,
+    "PLANNED": 0
+  },
+  "landlock_probe": {
+    "platform": "Linux",
+    "arch": "x86_64",
+    "kernel": "6.12.113+",
+    "supported": true,
+    "abi": 6,
+    "reason": "Kernel ABI query succeeded; actual child boundary still must pass"
+  },
+  "cases": [
+    {
+      "name": "F02_ssrf",
+      "status": "PASS",
+      "log": "/workspace/us-panel/reports/r20261108/qa-raw/r13-runs/20261108T012439+0300-qb9qej0o/F02_ssrf.log",
+      "case_evidence": "/workspace/us-panel/reports/r20261108/qa-raw/runs/20261108T012439_745012+0300-8n5q6vlr/case-ssrf-results.json",
+      "scope": "Local synthetic case; no public endpoint"
+    },
+    {
+      "name": "F04_account_limiter",
+      "status": "PASS",
+      "log": "/workspace/us-panel/reports/r20261108/qa-raw/r13-runs/20261108T012439+0300-qb9qej0o/F04_account_limiter.log",
+      "case_evidence": "/workspace/us-panel/reports/r20261108/qa-raw/runs/20261108T012440_661671+0300-k1o9ah82/case-rate_limit-results.json",
+      "scope": "Local synthetic case; no public endpoint"
+    },
+    {
+      "name": "F07_account_lock_dos",
+      "status": "FAIL",
+      "log": "/workspace/us-panel/reports/r20261108/qa-raw/r13-runs/20261108T012439+0300-qb9qej0o/F07_account_lock_dos.jsonl",
+      "test": "TestQAAuditLimiterAccountLockDoS",
+      "reason": "Safety regression failed or build/harness error; inspect raw evidence"
+    },
+    {
+      "name": "F01_linux_landlock",
+      "status": "FAIL",
+      "log": "/workspace/us-panel/reports/r20261108/qa-raw/r13-runs/20261108T012439+0300-qb9qej0o/F01_linux_landlock.jsonl",
+      "test": "TestQAR13LinuxLandlockSiblingRead",
+      "reason": "Safety regression failed or build/harness error; inspect raw evidence"
+    },
+    {
+      "name": "Windows_low_il_write_block",
+      "status": "NOT TESTED",
+      "reason": "Native Windows runtime unavailable; cross-compilation is not runtime proof"
+    }
+  ],
+  "remote_requests": 0,
+  "authenticated_public_model_calls": 0,
+  "max_case_parallelism": 1,
+  "note": "F04 preserves current lock contract; F07 intentionally exposes its DoS consequence. API policy decision required; no known failure is hidden."
+}

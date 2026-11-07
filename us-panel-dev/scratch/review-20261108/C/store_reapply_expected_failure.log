@@ -1,0 +1,6 @@
+error: licensesrv/ledger_hardening_test.go: already exists in working directory
+error: patch failed: licensesrv/licensesrv_test.go:33
+error: licensesrv/licensesrv_test.go: patch does not apply
+error: patch failed: licensesrv/store.go:12
+error: licensesrv/store.go: patch does not apply
+error: licensesrv/ttl_commit_anchor_test.go: already exists in working directory

@@ -1,0 +1,329 @@
+[
+  {
+    "httpRequest": {
+      "latency": "0.374209887s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.226",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "260",
+      "serverIp": "34.143.79.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef994b0009a1fcebc94d3c",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd72e16789491c736eeb7411742889ce4a1318073dea6e7f700a22ee801f18fa5513ec3bf5b2748e8369fbc46c8a6d387a4c5c16ca8904b41441827a5b79a4b1afe888f5c39a702c36d69b4e6798fb02d76bd3126b9e",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:34:03.639219285Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00007-fnc",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "501f4196f23c2216",
+    "timestamp": "2026-11-07T21:34:03.244155Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/94d5c05f307a8139182fbb80ded4b9fb",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:b51f::c975:b51f",
+      "requestMethod": "GET",
+      "requestSize": "983",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "serverIp": "2600:1901:81d4:200::",
+      "status": 403,
+      "userAgent": "curl/8.14.1"
+    },
+    "insertId": "6aef994c0009469dc3eaadb0",
+    "labels": {
+      "discard-fix": "20261108",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:34:04.638418431Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00007-fnc",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "27a121b5f7b00d2d",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. The IAM principal lacks {run.routes.invoke} permission. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:34:04.590119Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/ebe762815616be74208728bb707921dc"
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "140.248.52.12",
+      "requestMethod": "GET",
+      "requestSize": "1002",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/",
+      "serverIp": "34.143.76.2",
+      "status": 403,
+      "userAgent": "curl/8.14.1"
+    },
+    "insertId": "6aef994c000cb4b1a1765859",
+    "labels": {
+      "discard-fix": "20261108",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:34:04.968933943Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00007-fnc",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "6237b2b9c4765488",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. The IAM principal lacks {run.routes.invoke} permission. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:34:04.831577Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/0bae15b0ddc56c3d0de241f48bc94f6c"
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:e1a0::cf81:e1a0",
+      "requestMethod": "GET",
+      "requestSize": "270",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "serverIp": "2600:1900:4240:200::",
+      "status": 403,
+      "userAgent": "curl/8.14.1"
+    },
+    "insertId": "6aef994d00049854d9759160",
+    "labels": {
+      "discard-fix": "20261108",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:34:05.635574956Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00007-fnc",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "e439a3f50ffd8212",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:34:05.041474Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/65e6426a94e3e2db3e4ef116f4a3cc11"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.319644098s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.135.168",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "260",
+      "serverIp": "34.143.77.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef9988000e963fe6518db4",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd72e16789491c736eeb7411742889ce4a1318073dea6e7f700a22ee801f18fa5513ec3bf5b2748e8369fbc46c8a6d387a4c5c16ca8904b41441827a5b79a4b1afe888f5c39a702c36d69b4e6798fb02d76bd3126b9e",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:35:04.960980277Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00007-fnc",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "3d92dc928269a52e",
+    "timestamp": "2026-11-07T21:35:04.617539Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/56f94e7cf747fd7a6c26e5e0a2a82eea",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.314403909s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.37",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "260",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef99c3000002f4f2ac652f",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd72e16789491c736eeb7411742889ce4a1318073dea6e7f700a22ee801f18fa5513ec3bf5b2748e8369fbc46c8a6d387a4c5c16ca8904b41441827a5b79a4b1afe888f5c39a702c36d69b4e6798fb02d76bd3126b9e",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:36:03.004420528Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00007-fnc",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "25843d185e229121",
+    "timestamp": "2026-11-07T21:36:02.671467Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/2576fed028670d754c8a541ca79c9daa",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.323379123s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.32",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "260",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef99ff0000b3bbffe128c9",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd72e16789491c736eeb7411742889ce4a1318073dea6e7f700a22ee801f18fa5513ec3bf5b2748e8369fbc46c8a6d387a4c5c16ca8904b41441827a5b79a4b1afe888f5c39a702c36d69b4e6798fb02d76bd3126b9e",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:37:03.051374911Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00007-fnc",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "9ce7ae0bf57c1e08",
+    "timestamp": "2026-11-07T21:37:02.693517Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/b3baa9d7a23afedafc61df9d20ae7531",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.345402406s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.167",
+      "requestMethod": "POST",
+      "requestSize": "1322",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "260",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef9a3b0000c861586391bd",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd72e16789491c736eeb7411742889ce4a1318073dea6e7f700a22ee801f18fa5513ec3bf5b2748e8369fbc46c8a6d387a4c5c16ca8904b41441827a5b79a4b1afe888f5c39a702c36d69b4e6798fb02d76bd3126b9e",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:38:03.060002887Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00007-fnc",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "1899e93a758b99a9",
+    "timestamp": "2026-11-07T21:38:02.686993Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/ee56871323278023ea5b3e7be8c736f5",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.343671467s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.1",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "260",
+      "serverIp": "34.143.77.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef9a770008b3f28aefd674",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd72e16789491c736eeb7411742889ce4a1318073dea6e7f700a22ee801f18fa5513ec3bf5b2748e8369fbc46c8a6d387a4c5c16ca8904b41441827a5b79a4b1afe888f5c39a702c36d69b4e6798fb02d76bd3126b9e",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:39:03.574646417Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00007-fnc",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "84a8598535e7ce94",
+    "timestamp": "2026-11-07T21:39:03.206463Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/e26ad4d2bf13e488562c1c0a2c77561d",
+    "traceSampled": true
+  }
+]

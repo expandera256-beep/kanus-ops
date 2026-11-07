@@ -1,0 +1,12 @@
+{
+  "licensesrv/store.go": {
+    "v11_sha256": "72c42f7a867ddbe599afe9f6985f564e9c5bc9a886821b357de34eca51f1db24",
+    "v12_sha256": "72c42f7a867ddbe599afe9f6985f564e9c5bc9a886821b357de34eca51f1db24",
+    "byte_equal": true
+  },
+  "cmd/us-license-hook/main.go": {
+    "v11_sha256": "35b1cab2403f5231dac75f0957ab2f139d4be5458c9f0d208116e5bfeab07dbb",
+    "v12_sha256": "35b1cab2403f5231dac75f0957ab2f139d4be5458c9f0d208116e5bfeab07dbb",
+    "byte_equal": true
+  }
+}

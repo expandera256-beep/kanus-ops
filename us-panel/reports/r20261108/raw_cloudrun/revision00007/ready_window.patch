@@ -1,0 +1,77 @@
+Only in work: .pytest_cache
+diff -u -x __pycache__ work-pre-ready/commerce_http.py work/commerce_http.py
+--- work-pre-ready/commerce_http.py	2026-11-08 00:24:25.166290970 +0300
++++ work/commerce_http.py	2026-11-08 00:32:08.328585894 +0300
+@@ -181,7 +181,10 @@
+                     success=False;receipt=CompletionReceipt(content_type);started=request_started;terminal=[]
+                     try:
+                         while True:
+-                            if time.monotonic()-started>600:raise TimeoutError('model request deadline exceeded')
++                            ready=getattr(response,'ready_monotonic',None)
++                            # 600 s model window counts from READY; before READY the
++                            # lifecycle boot cap (<=600 s) bounds the wait.
++                            if (time.monotonic()-ready>600) if isinstance(ready,(int,float)) else (time.monotonic()-started>(630 if hasattr(response,'ready_monotonic') else 600)):raise TimeoutError('model request deadline exceeded')
+                             read=getattr(response,'read1',None) or response.read
+                             block=read(8192)
+                             if not block:break
+Common subdirectories: work-pre-ready/deploy and work/deploy
+diff -u -x __pycache__ work-pre-ready/inference_lifecycle.py work/inference_lifecycle.py
+--- work-pre-ready/inference_lifecycle.py	2026-11-08 00:24:25.166290970 +0300
++++ work/inference_lifecycle.py	2026-11-08 00:32:02.800463018 +0300
+@@ -233,9 +233,31 @@
+                     try:self.provider.start(p,op['id'])
+                     except TimeoutError:pass # Persist intent; inspect before retry.
+             elif vm['status']=='RUNNING' and self.provider.model_ready(p):
+-                self.store.event(p.key,'model_ready','verified model metadata',self.clock());return
++                self.store.event(p.key,'model_ready','verified model metadata',self.clock())
++                return self._start_request_window(p,reservation)
+             self.sleep(1)
+ 
++    def _start_request_window(self,p,reservation):
++        # Demir 2026-11-08 00:30: the request window starts when the model is
++        # READY, not when the lease was taken, so a cold start does not eat it.
++        # Boot is still capped by boot_seconds in ensure_ready; the new deadline
++        # never passes max_uptime (minus 30 s drain) or the remaining daily
++        # runtime budget, and never moves earlier than the original deadline.
++        now=self.clock()
++        def rebase(s):
++            self._account(s,now)
++            lease=s['leases'].get(reservation)
++            if lease is None:raise LifecycleError('request lease expired')
++            if lease.get('ready_at'):return copy.deepcopy(lease)
++            deadline=now+p.request_seconds
++            if s.get('run_since'):deadline=min(deadline,s['run_since']+p.max_uptime_seconds-30)
++            deadline=min(deadline,now+max(0,p.daily_runtime_seconds-s.get('day_seconds',0)))
++            lease['deadline']=max(lease['deadline'],deadline)
++            lease['ready_at']=now;lease['expires']=min(lease['deadline'],now+p.lease_seconds)
++            s['last_activity']=now
++            return copy.deepcopy(lease)
++        return self.store.change(p.key,rebase)
++
+     def reconcile(self,external=False):
+         results=[]
+         for p in self.policies.values():
+diff -u -x __pycache__ work-pre-ready/managed_inference.py work/managed_inference.py
+--- work-pre-ready/managed_inference.py	2026-11-08 00:24:25.166290970 +0300
++++ work/managed_inference.py	2026-11-08 00:32:02.800463018 +0300
+@@ -19,7 +19,7 @@
+         self.headers={'Content-Type':'text/event-stream' if stream else 'application/json'}
+         self.stream=stream;self.body=body;self.upstream=upstream
+         self.queue=queue.Queue(maxsize=8);self.stop=threading.Event();self.response=None
+-        self.closed=False;self.lock=threading.Lock();self.release_lock=threading.Lock();self.released=False;self.buffer=b'';self.ended=False
++        self.ready_monotonic=None;self.closed=False;self.lock=threading.Lock();self.release_lock=threading.Lock();self.released=False;self.buffer=b'';self.ended=False
+         self.worker=threading.Thread(target=self._run,daemon=True);self.worker.start()
+ 
+     def _put(self,item):
+@@ -29,7 +29,9 @@
+ 
+     def _run(self):
+         try:
+-            self.controller.ensure_ready(self.policy,self.reservation,self.stop)
++            ready_lease=self.controller.ensure_ready(self.policy,self.reservation,self.stop)
++            if isinstance(ready_lease,dict) and ready_lease.get('deadline'):
++                self.lease=ready_lease;self.ready_monotonic=time.monotonic()
+             if self.stop.is_set():return
+             response=self.upstream(self.body)
+             with self.lock:
+Only in work: test_ready_window.py

@@ -1,0 +1,58 @@
+=== RUN   TestReviewMailMatching
+=== RUN   TestReviewMailMatching/case
+=== RUN   TestReviewMailMatching/space
+    review_mail_test.go:9: got false want true
+=== RUN   TestReviewMailMatching/display
+    review_mail_test.go:9: got false want true
+=== RUN   TestReviewMailMatching/multi
+    review_mail_test.go:9: got false want true
+=== RUN   TestReviewMailMatching/empty
+=== RUN   TestReviewMailMatching/zero-order
+--- FAIL: TestReviewMailMatching (0.00s)
+    --- PASS: TestReviewMailMatching/case (0.00s)
+    --- FAIL: TestReviewMailMatching/space (0.00s)
+    --- FAIL: TestReviewMailMatching/display (0.00s)
+    --- FAIL: TestReviewMailMatching/multi (0.00s)
+    --- PASS: TestReviewMailMatching/empty (0.00s)
+    --- PASS: TestReviewMailMatching/zero-order (0.00s)
+=== RUN   TestReviewPrivacyEraseDoesNotTouchUnrelatedOutbox
+--- PASS: TestReviewPrivacyEraseDoesNotTouchUnrelatedOutbox (5.41s)
+=== RUN   TestReviewPrivacyEraseChallengeMultiStoreNoRace
+--- PASS: TestReviewPrivacyEraseChallengeMultiStoreNoRace (2.76s)
+=== RUN   TestReviewPrivacyEraseChallengeSurvivesFailedSave
+--- PASS: TestReviewPrivacyEraseChallengeSurvivesFailedSave (13.72s)
+FAIL
+FAIL	kiyas/licensesrv	21.911s
+=== RUN   TestReviewBadConfirmMustNotDeletePrefs
+    review_extra_test.go:9: HTTP=400 prefs={AccountID:6b38d9565d7e8a125045483472d6fe56 MarketingConsent:false ProductUpdates:false CookieAnalytics:false UpdatedAt:0001-01-01 00:00:00 +0000 UTC Source:}
+    review_extra_test.go:9: invalid confirmation deleted preferences
+--- FAIL: TestReviewBadConfirmMustNotDeletePrefs (8.13s)
+=== RUN   TestReviewOriginAllowlistMustNotPermitInsecureRemote
+=== RUN   TestReviewOriginAllowlistMustNotPermitInsecureRemote/http://localhost.evil.com
+    review_extra_test.go:11: allowlist bypasses https/loopback policy
+=== RUN   TestReviewOriginAllowlistMustNotPermitInsecureRemote/http://127.0.0.1.nip.io
+    review_extra_test.go:11: allowlist bypasses https/loopback policy
+=== RUN   TestReviewOriginAllowlistMustNotPermitInsecureRemote/ftp://public.example
+    review_extra_test.go:11: allowlist bypasses https/loopback policy
+--- FAIL: TestReviewOriginAllowlistMustNotPermitInsecureRemote (0.00s)
+    --- FAIL: TestReviewOriginAllowlistMustNotPermitInsecureRemote/http://localhost.evil.com (0.00s)
+    --- FAIL: TestReviewOriginAllowlistMustNotPermitInsecureRemote/http://127.0.0.1.nip.io (0.00s)
+    --- FAIL: TestReviewOriginAllowlistMustNotPermitInsecureRemote/ftp://public.example (0.00s)
+=== RUN   TestReviewOriginUnlistedLookalikesRejected
+--- PASS: TestReviewOriginUnlistedLookalikesRejected (0.00s)
+=== RUN   TestReviewRetentionOverflow
+    review_extra_test.go:13: 213504 days -> 25m26.290448384s
+    review_extra_test.go:13: overflow drastically shortened retention
+--- FAIL: TestReviewRetentionOverflow (0.00s)
+=== RUN   TestReviewParentSymlinkMustNotEscape
+    review_extra_test.go:14: write traversed symlink parent
+--- FAIL: TestReviewParentSymlinkMustNotEscape (0.00s)
+=== RUN   TestReviewRenameFailureMustCleanTemp
+    review_extra_test.go:15: sensitive temp remains: 1
+--- FAIL: TestReviewRenameFailureMustCleanTemp (0.00s)
+=== RUN   TestReviewOpenHelperAcceptsFIFO
+    review_fifo_open_test.go:4: helper blocked and accepted FIFO; no opened-handle type validation
+--- FAIL: TestReviewOpenHelperAcceptsFIFO (0.10s)
+FAIL
+FAIL	kiyas/internal/privacy	8.242s
+FAIL

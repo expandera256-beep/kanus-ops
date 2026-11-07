@@ -1,0 +1,30 @@
+[
+  {
+    "path": "/workspace/us-panel/reports/r20261108/QA_SECURITY_AUDIT_20261108.md",
+    "sha256": "df3e8e7fa65c80f944662c4dcdced5450c303a5630a94494017cf6f0bc80079c"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/QA_REGRESSION_R13_COMMANDS.md",
+    "sha256": "daa7eded3e39210bffcd4b242b8aa0a9535e4cf98a3a8fab793f1d369d31e425"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-findings/FINDING-01.md",
+    "sha256": "9d5f0e16ff2a08545fa9f981626287f93bd101fc621a6ed054f577bc80c98981"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-findings/FINDING-06.md",
+    "sha256": "84bd8d4c8763a87bed95ff3538eea55bb283a7be6afabeea30d6e329d64448bf"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-findings/FINDING-07.md",
+    "sha256": "229484a0b0f1027c011c6f1d144c88f3eb83459b0ce2fa5b0bcc2ed4e4a54b59"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/UPDATED_QA_AUDIT_MATRIX_R13_PREP.json",
+    "sha256": "e4275a49de17d2d67265fb0e9e76c5806fbf386e48f3cfcd946de33982fbca8c"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/r13-final-log-leak-check.json",
+    "sha256": "941e55256c4899bedad9554f2e316c46c975a53aaf3aa0801c60a71f23234990"
+  }
+]

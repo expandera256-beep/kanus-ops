@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "name": "Русский",
+    "dir": "ltr",
+    "bcp47": "ru-RU",
+    "currency": "TRY"
+  },
+  "brand.name": "Kanus",
+  "brand.slogan": "Превращайте идеи в программы.",
+  "email.license.body": "Здравствуйте!\n\nЛицензионный ключ для заказа {order} готов. Откройте US Panel и введите ключ.\n\nВопросы: support@kanus.org",
+  "email.license.subject": "Ваш лицензионный ключ US Panel",
+  "product.name": "US Panel"
+}

@@ -1,0 +1,532 @@
+[
+  {
+    "label": "API11 combined",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-0004-0012-combined-on-11.diff",
+    "sha256": "9c8a4c45553d64ee60f2562aeac2f2020fb70ad90e5c4e49d0812415d10751a4",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch",
+    "sha256": "f6d660142e23f9121e6f621037b9aeaf901155f8be875ac31513152859fee3be",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch",
+    "sha256": "6f3cf673a93cfd0e1372ce85b4edef90a339f228f02b0f1ad67b14b9227d23a3",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch",
+    "sha256": "04a272e8b7e6f2d35feb96d231b244b485be54ae602a4732c9ca10f8a783d177",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch",
+    "sha256": "48529e9d44881f891d7de65d2a2b6787eff44d314c5393e2a6351840308604a1",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch",
+    "sha256": "26d47990502fb49fe9a9461e76a1c17e3fd62a543e038037cce0f6d4fe670592",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch",
+    "sha256": "1f4e0b90b13380a2feb431eb817b4ca0586f78d98c853518605ebddbb42e0fcf",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch",
+    "sha256": "bfed494d32ebf15d0324db0985305e722e5913aa075a72ab3a188474851a4893",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch",
+    "sha256": "ee133c8facd3d0397c5529085fc1a1857f8b2ac2e492ad075df2805180aa9e33",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch",
+    "sha256": "4f291280b0c6c02bdaa2899ef3d6acc193ac14a56e366d7b84d77bfe72b4cf8d",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch",
+    "sha256": "e697d07cf2cd3e93b29c19ff543ad9efbb24f6f0ca6744bd94fe89d827cf2b7d",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch",
+    "sha256": "7453211f1c51bc0fb8b64fc97e5abd5ba3c587a2a1020139b8681f43375f1b34",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch",
+    "sha256": "dc9ef3b99b1c64aa225c74031248bc7287e72496cbae90fa783c9d5da36185ae",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch",
+    "sha256": "d8b2d8d6ef229c7cefb94272280b99c2a945f7f8b7c0f474e7cef09e616021cd",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch",
+    "sha256": "a617e950feaa95dbaa147f1788e68f79f1e93fd9b80ca6b9deb8e8f0bea3aae3",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch",
+    "sha256": "801da3cedaa56eba6522a31ff0d424e464e7fdb759e07351510c0eb1738fbea4",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch",
+    "sha256": "0a06b78f48944529ee19b822ee05d9c49b3b2fee4eec842177cfd20f56cac903",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 additive",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-before",
+    "patch": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-r11-additive-on-11+api+uyum-v4.diff",
+    "sha256": "4a052e5bc7821aca5f5b749b816e05b4a155bf5dd773198b2f0b5120f9697f79",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 FULL_STACK reference",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/full11",
+    "patch": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/FULL_STACK_11+api+uyum-v4+additive.diff",
+    "sha256": "c602879b7a0949b7bed38b47ac50219bcb65939aeba38dd770fde4aab6054d78",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "API11 overflow fix",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-fixed",
+    "patch": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/fix-grace-overflow-on-11.diff",
+    "sha256": "df1ae528483634405cb6b21f3c3a0dd3481db9d2f808b2e10f7991d994c07c28",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch",
+    "sha256": "f6d660142e23f9121e6f621037b9aeaf901155f8be875ac31513152859fee3be",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch",
+    "sha256": "6f3cf673a93cfd0e1372ce85b4edef90a339f228f02b0f1ad67b14b9227d23a3",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch",
+    "sha256": "04a272e8b7e6f2d35feb96d231b244b485be54ae602a4732c9ca10f8a783d177",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch",
+    "sha256": "48529e9d44881f891d7de65d2a2b6787eff44d314c5393e2a6351840308604a1",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch",
+    "sha256": "26d47990502fb49fe9a9461e76a1c17e3fd62a543e038037cce0f6d4fe670592",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch",
+    "sha256": "1f4e0b90b13380a2feb431eb817b4ca0586f78d98c853518605ebddbb42e0fcf",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch",
+    "sha256": "bfed494d32ebf15d0324db0985305e722e5913aa075a72ab3a188474851a4893",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch",
+    "sha256": "ee133c8facd3d0397c5529085fc1a1857f8b2ac2e492ad075df2805180aa9e33",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch",
+    "sha256": "4f291280b0c6c02bdaa2899ef3d6acc193ac14a56e366d7b84d77bfe72b4cf8d",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch",
+    "sha256": "e697d07cf2cd3e93b29c19ff543ad9efbb24f6f0ca6744bd94fe89d827cf2b7d",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch",
+    "sha256": "7453211f1c51bc0fb8b64fc97e5abd5ba3c587a2a1020139b8681f43375f1b34",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch",
+    "sha256": "dc9ef3b99b1c64aa225c74031248bc7287e72496cbae90fa783c9d5da36185ae",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch",
+    "sha256": "d8b2d8d6ef229c7cefb94272280b99c2a945f7f8b7c0f474e7cef09e616021cd",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch",
+    "sha256": "a617e950feaa95dbaa147f1788e68f79f1e93fd9b80ca6b9deb8e8f0bea3aae3",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch",
+    "sha256": "801da3cedaa56eba6522a31ff0d424e464e7fdb759e07351510c0eb1738fbea4",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 UYUM",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch",
+    "sha256": "0a06b78f48944529ee19b822ee05d9c49b3b2fee4eec842177cfd20f56cac903",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 API combined",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-0004-0012-combined-on-11.diff",
+    "sha256": "9c8a4c45553d64ee60f2562aeac2f2020fb70ad90e5c4e49d0812415d10751a4",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 API additive",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-r11-additive-on-11+api+uyum-v4.diff",
+    "sha256": "4a052e5bc7821aca5f5b749b816e05b4a155bf5dd773198b2f0b5120f9697f79",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 API overflow fix",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/fix-grace-overflow-on-11.diff",
+    "sha256": "df1ae528483634405cb6b21f3c3a0dd3481db9d2f808b2e10f7991d994c07c28",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 GLOBAL",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/global_i18n_panel_core.patch",
+    "sha256": "e4f10a339c78818ceddbc49e2f687b4ee80afa86a7fce9d407c22bd8536892c7",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 GLOBAL",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch",
+    "sha256": "314fab48b009f06e221ce140758724105b9f5b972c69d0c15c7ad2c9db8d3669",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 GLOBAL",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/global_i18n_03_pref.patch",
+    "sha256": "ba8845c5f34855d8f2f2fa49a055c4e9d20698c9fbd7572462531c2746f6b58e",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 GLOBAL",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/global_i18n_04_errors.patch",
+    "sha256": "1c937497ee30ef7de86245b2fa4e2b6668b8660e2db62017bd7a7c2db5864991",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 GLOBAL",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/global_i18n_06_de_ru.patch",
+    "sha256": "83aaca5d4a3aeb8cf7d4ed0e3854d0c3408d1553bb139ddb2eee22f8b5d013c6",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 GLOBAL",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/global_i18n_05_email_loader.patch",
+    "sha256": "7c917564df055f151f8bd0a0b334a09e248db1481723123196fbfb0377093f3d",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "STACK12 GLOBAL",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/stack12",
+    "patch": "/workspace/us-panel-dev/patches/global_i18n_07_mail_de_ru.patch",
+    "sha256": "70acc9b0789a982c2abfe3b0e6f3febbf62db16cf3957343e7fc916f50efae18",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "R10 B chain",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/r10-fixed",
+    "patch": "/workspace/us-panel-dev/patches/api-0001-regression/0001-API-0001-regression-tests-locking-accounts-credit-le.patch",
+    "sha256": "f6adb8da070ce4d472ba4b06a49a71c96d03736407296a186dd25d6705d39767",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "R10 B chain",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/r10-fixed",
+    "patch": "/workspace/us-panel-dev/patches/api-0003-error-envelope/0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch",
+    "sha256": "89ea7bb67023665ed170bab3d57d83494c5dead35d74db616ba89b13ea711205",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "R10 B chain",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/r10-fixed",
+    "patch": "/workspace/us-panel-dev/patches/api-0005-v1-versioning/0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch",
+    "sha256": "1be4417f9e1fbcd2ae64deb8ef16aa24120901acd17b925c8928b7cdcb71f63d",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "R10 B chain",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/r10-fixed",
+    "patch": "/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch",
+    "sha256": "19b3cbd93ef5196d05f1be9540a0fa67e73ad72bf34e425d48ed10500ac2ed76",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/inputs/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch:517: trailing whitespace.\n// by resolving owned license for downstream credit/model paths via request context... \nwarning: 1 line adds whitespace errors.\n"
+  },
+  {
+    "label": "R10 B chain",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/r10-fixed",
+    "patch": "/workspace/us-panel-dev/patches/api-0008-rate-quota-usage/0001-API-0008-daily-quota-429-Retry-After-regression-test.patch",
+    "sha256": "496f390718b691fa245d0675cb0580c078997a56adba736add131406db08433d",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "R10 B chain",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/r10-fixed",
+    "patch": "/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch",
+    "sha256": "75dec7b4eaf50277d6979a6ddc43a1d61c6d6dc78ff255b07a4df607982f03b0",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "label": "R10 B chain",
+    "tree": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/r10-fixed",
+    "patch": "/workspace/us-panel-dev/patches/api-r11/us-proposals/api-0012-ttl-commit-anchor/store-and-tests.diff",
+    "sha256": "ee9aee17b68cc82ffbfe944e78380f525e3dfdb4f5abad8feaab901b4bc604cf",
+    "check": 0,
+    "check_log": "",
+    "apply": 0,
+    "apply_log": ""
+  }
+]

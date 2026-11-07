@@ -1,0 +1,17 @@
+{
+  "projects": [
+    {
+      "name": "001",
+      "path": "/workspace/us-panel-dev/r13b/tmp/TestPickedFolderBecomesTheWorkingRoot2738233087/001",
+      "state": "açık"
+    }
+  ],
+  "plugins": null,
+  "chats": [
+    {
+      "id": "s1",
+      "title": "Sohbet 1"
+    }
+  ],
+  "chatId": "s1"
+}

@@ -1,0 +1,17 @@
+UYARI: Bu arşivdeki son proje okuma değişiklikleri henüz derlenmedi ve test edilmedi. Aşağıdaki test açıklamaları önceki kaynak sürümüne aittir. Güncel durum için PROJE_ONARIM_DURUMU.txt dosyasına bakın.
+
+US 1453 — DİSK ALANI DENETİMLİ TEST SÜRÜMÜ
+
+Bu sürüm ticari dağıtıma hazır değildir. Mevcut kaynak ticari lisansı ancak bir lisans sırrı yapılandırıldığında doğrular; e-posta kodu ile giriş, hesap/ödeme eşleştirmesi ve sunucuda kota denetimi bu sürümde uygulanmış değildir. Varsayılan derlemede mevcut lisans sırrı yoktur ve müşteri sınırları otomatik uygulanmaz. Satışa veya genel müşteri kullanımına açmayın.
+
+Yapılanlar: Sohbet belleği son mesajlara öncelik verir; günlüklerin eski kısıtları yerine sohbet yanıtları daha geniş saklanır; kopyalama ve Ctrl+Enter eklenir; akış ortasında dönen hata artık başarılı yanıt sayılmaz. Daha önce lisans kontrolünü atlayabilen arka plan model çağrıları mevcut imzalı lisans mekanizmasına dahil edilmiştir. US_REQUIRE_COMMERCIAL=1 ayarlandığında ticari lisans sırrı yoksa model çağrısı engellenir. Bu seçenek hesapla giriş sağlamaz.
+
+Model API anahtarı: SSH tüneli üzerinden çalışan mevcut DeepSeek modeli ek bir model anahtarı istemez. Otomatik tünel kullanılırken eski US_KEY veya oturum anahtarı modele gönderilmez; alternatif sunucu için gelişmiş ayarlar korunur. Google Cloud hesabı doğrulaması ayrı bir işlemdir ve gerektiğinde kullanıcı tarafından tamamlanmalıdır.
+
+Bağlantı: Bilgisayardaki 127.0.0.1:1923, Google Cloud ds-a100 üzerindeki 127.0.0.1:8080 model servisine SSH ile yönlendirilir. Windows'ta Google Cloud CLI bulunamazsa US, Python içeren Google CLI 592.0.0 arşivini resmi kaynaktan (yaklaşık 105 MB) indirir, SHA-256 ile doğrular ve kullanıcının yerel önbelleğindeki US klasörüne kurar. Sistem PATH ayarını değiştirmez. İndirme ve açma sırasında en az 1 GiB boş alan aranır. Önce kullanıcının yerel önbelleği; alan yetersizse ağ veya taşınabilir sürücüler hariç diğer sabit sürücüler denenir ve bulunan sürücüde US_Cache klasörü kullanılır. Uygun sabit sürücü yoksa dosya indirilmez ve kullanıcıya durum bildirilir. Windows ve Google kimlik doğrulaması için sistem sürücüsünde de bir miktar boş alan gerekebilir. İlgili hesapla Google oturum açma ve gerektiğinde SSH onayları kullanıcı tarafından tamamlanır. SSH penceresini açık tutun. Önceki US sürecini Görev Yöneticisi'nden kapatın.
+
+Doğrulama: Go testleri ve yarış durumu testleri Linux'ta geçti. Gerçek DeepSeek modeliyle, sunucuda 1923 portuna bağlanan geçici bir yerel yönlendirici aracılığıyla otomatik model seçimi ve yanıt üretimi sınandı. Linux üzerinde gerçek resmi Google arşivinin doğrulama ve açılması, eksik/bozuk arşiv ve güvensiz dosya yolu testleri yapıldı. Bu test Windows'ta CLI çalıştırılmasını, hesap doğrulamasını veya Windows uçtan uca bağlantıyı doğrulamaz. EXE Windows x64 için çapraz derlenmiştir.
+
+UYARI: Bu otomatik SSH yolu sunucu yöneticisi tarafından kullanım içindir. Müşterilere Google Cloud hesabına/VM'e erişim vermeyin. Güvenli ticari sunucu kapısı ve hesap tabanlı hak kontrolü gerekir. Panel mevcut proje davranışı gereği dosya yazabilir ve bazı durumlarda program çalıştırabilir; güvenilir bir çalışma klasörü seçin.
+
+Disk hatası yaşanırsa: Kişisel dosyalar otomatik silinmez. Windows Ayarlar > Sistem > Depolama bölümünde boş alanı kontrol edin. Güncel EXE dosyasını açın; yeterli alan yoksa güvenli gördüğünüz dosyaları yedekleyip alan açmanız gerekir.

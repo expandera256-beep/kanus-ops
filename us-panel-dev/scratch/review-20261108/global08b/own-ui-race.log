@@ -1,0 +1,1 @@
+{"requests":["/api/pricing?lang=en","/api/pricing?lang=de"],"final":"EN old price","expected":"DE price"}

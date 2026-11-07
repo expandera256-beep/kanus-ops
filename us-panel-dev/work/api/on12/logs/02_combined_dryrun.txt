@@ -1,0 +1,5 @@
+checking file licensesrv/ledger_hardening_test.go
+checking file licensesrv/licensesrv_test.go
+checking file licensesrv/store.go
+checking file licensesrv/ttl_commit_anchor_test.go
+EXIT=0

@@ -1,0 +1,4 @@
+# kiyas/internal/privacy
+internal/privacy/handler.go:19:12: undefined: PrefStore
+internal/privacy/handler.go:24:46: undefined: PrefStore
+internal/privacy/handler.go:127:9: undefined: Preferences

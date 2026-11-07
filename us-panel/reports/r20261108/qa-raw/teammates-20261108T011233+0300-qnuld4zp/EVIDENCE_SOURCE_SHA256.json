@@ -1,0 +1,106 @@
+[
+  {
+    "path": "/workspace/us-panel/reports/r20261108/QA_SECURITY_AUDIT_20261108.md",
+    "sha256": "3cb03715ba5d8c90830831258e10718cf2d785e67a881dfe1eb6474a6727d377"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-findings/FINDING-01.md",
+    "sha256": "72c205343d18c4db0dd0ff6fb286425a548bb49f5698c129f8c70e386419e692"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-findings/FINDING-02.md",
+    "sha256": "c30b3a1fccdd93ef7178ed78f3e4571b411b7479b96ee1b7c11f7a4b22559943"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-findings/FINDING-04.md",
+    "sha256": "a5bfa3dbf9b68a8e35b1389406bedc456d1aef912557425d95e368deca1c7e15"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-findings/FINDING-06.md",
+    "sha256": "84bd8d4c8763a87bed95ff3538eea55bb283a7be6afabeea30d6e329d64448bf"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-findings/FINDING-07.md",
+    "sha256": "229484a0b0f1027c011c6f1d144c88f3eb83459b0ce2fa5b0bcc2ed4e4a54b59"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/SRE_SECRETS_IAM_METADATA.md",
+    "sha256": "4d6350b8ac5117a56275a6cf8fb8c8f0b12833aad48da138459ddfaf96988525"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/README.md",
+    "sha256": "70eaf7e8b3df621e984aa4e1cb795cdc16807523f5cd831f18d0bf15932df962"
+  },
+  {
+    "path": "/workspace/us-panel-dev/PANEL_S2_REVIEW_R12_20261108.md",
+    "sha256": "1b5dcfdfc6de34e8a196c86d0e83debb3ad38c5d67a7ac343c9490e11080a5d8"
+  },
+  {
+    "path": "/workspace/us-panel/qa/audit12/review_sre_metadata.py",
+    "sha256": "7b9ba80fe87e67128f72b2576312897089f71fef2dfdd750d15905d076b3b165"
+  },
+  {
+    "path": "/workspace/us-panel/qa/audit12/repro_limiter_risks.py",
+    "sha256": "6e29cabe25b060ea7750993ded9c5d68bc6dde1f6834c90bf3f8cf2f2ed8f680"
+  },
+  {
+    "path": "/workspace/us-panel/qa/audit12/limiter_risks_test.go",
+    "sha256": "7c18a0be17612c6c7e460f84561fb06dd57e51a47e3862495ec726386a55cdda"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/targeted-retest-summary.json",
+    "sha256": "99e07bb56950cb4be6cb681b97f10e3762fcd42b84b8b97d11d1d03f8aec0c28"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/sre-policy-negative.json",
+    "sha256": "bd6796c86115cf5c338c8a22750329695aa347a5bb17504f83acc437cc1e8ea9"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/sre-policy-negative-final.json",
+    "sha256": "bd6796c86115cf5c338c8a22750329695aa347a5bb17504f83acc437cc1e8ea9"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/sre-metadata-verification.json",
+    "sha256": "789abe8ae22b8cf72cc5dbb6a578f9699130a4a01bf7baf12364b7a7f1fbb7ec"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/final-log-leak-check.json",
+    "sha256": "aa666a9283f4d8a042cd92d738624e49134aa8b7261c0650cbcfb2ae6683fc50"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/UPDATED_QA_AUDIT_MATRIX.json",
+    "sha256": "4f58369f7c27aa999607e90451e60cbdf16fc0e31c25f6ca6f9de933324c56d3"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/post-update-log-leak-check.json",
+    "sha256": "ed0f5759ad6bfb506208b7629994afcefec73c40238def29b19ac2dd83e9c047"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/r12-artifact-sha-verification.json",
+    "sha256": "e4a2475a82942251868f463a72111c2adb0587c00fd0020abeaf310b2e164d23"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/old-token-stat.json",
+    "sha256": "74f9e817215e6bc63a756e290ad8060e97a4ad2b129a1768c348bd252a3284db"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/UPDATED_QA_AUDIT_MATRIX_FINAL.json",
+    "sha256": "3f2b8ac91b24e2c5e2588bee69222dea132d199c067372465c04986d6b5d145a"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/main-report-append-proof.json",
+    "sha256": "81590ef6cc6184fef2518b4ca86192a02ddbdcf46705a9f9b68b4f319d7209b1"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/source-trees-final-check.json",
+    "sha256": "9fe460647db3433458653b8dc3b1405bb4ad8404be274249f717f064cdd88e3b"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/sre-report-table-count.json",
+    "sha256": "15cc9360de2c0111ec2b20ba5e6bfa6fa56a0329dbc3d450c8ef1f3505efc2bd"
+  },
+  {
+    "path": "/workspace/us-panel/reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/context.json",
+    "sha256": "e4c1adcf7d8880dfe2e9c04a9d24efe9be3437a4a7a6f8993fd02e0f1388c3dd"
+  }
+]

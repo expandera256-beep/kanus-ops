@@ -1,0 +1,4 @@
+2026-11-08T00:21:31.218583+03:00
+go test -race ./... -json -count=1 -timeout=300s
+exit=1
+GOPROXY=off; real-model/network gates=0; copy=/workspace/us-panel/reports/r20261108/test-snapshots/pinned-v10

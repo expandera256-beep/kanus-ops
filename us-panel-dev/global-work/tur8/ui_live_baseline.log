@@ -1,0 +1,13 @@
+PASS tr /us page translated {"lang":"tr","sample":"İçeriğe geç\nKAN.US)\n®\n\nÇALIŞMA ALANIN\n\nKeşfet\nUygulamalar\nGünlük\nGaleri\nForum\nİletişim\n\nKAN.US)\nBiraz merak uzun bir yol"}
+FAIL tr date localized {"found":"\n2026-11-06T06:05:00.000Z"}
+FAIL tr submit error localized {"notice":""}
+PASS en /us page translated {"lang":"en","sample":"Skip to content\nKAN.US)\n®\n\nYOUR WORKSPACE\n\nDiscover\nApplications\nJournal\nGallery\nForum\nContact\n\nKAN.US)\nA little curiosi"}
+FAIL en date localized {"found":"\n2026-11-06T06:05:00.000Z"}
+FAIL en submit error localized {"notice":""}
+PASS de /us page translated {"lang":"de","sample":"Zum Inhalt\nKAN.US)\n®\n\nDEIN ARBEITSBEREICH\n\nEntdecken\nAnwendungen\nJournal\nGalerie\nForum\nKontakt\n\nKAN.US)\nEin wenig Neugie"}
+FAIL de date localized {"found":"\n2026-11-06T06:05:00.000Z"}
+FAIL de submit error localized {"notice":""}
+PASS ru /us page translated {"lang":"ru","sample":"К содержанию\nKAN.US)\n®\n\nВАШЕ ПРОСТРАНСТВО\n\nОбзор\nПриложения\nЖурнал\nГалерея\nФорум\nКонтакты\n\nKAN.US)\nНемного любопытства в"}
+FAIL ru date localized {"found":"\n2026-11-06T06:05:00.000Z"}
+FAIL ru submit error localized {"notice":""}
+TOTAL 4 PASS / 8 FAIL

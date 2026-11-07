@@ -1,0 +1,36 @@
+=== RUN   TestR2IndependentOriginAndBounds
+    zz_r2_gui_test.go:6: Origin="" lang=200 legacy-guard=true
+    zz_r2_gui_test.go:6: Origin="https://evil.example" lang=403 legacy-guard=false
+    zz_r2_gui_test.go:6: Origin="http://127.0.0.1:4477" lang=200 legacy-guard=true
+    zz_r2_gui_test.go:6: Origin="null" lang=403 legacy-guard=false
+    zz_r2_gui_test.go:6: Origin="http://localhost:4477" lang=403 legacy-guard=false
+    zz_r2_gui_test.go:6: Origin="http://127.0.0.1:4478" lang=403 legacy-guard=false
+    zz_r2_gui_test.go:8: HTTP body size=17 got=400 want=400
+    zz_r2_gui_test.go:8: HTTP body size=26 got=400 want=400
+    zz_r2_gui_test.go:8: HTTP body size=2097165 got=413 want=413
+    zz_r2_gui_test.go:8: HTTP body size=4096 got=200 want=200
+    zz_r2_gui_test.go:8: HTTP body size=4097 got=413 want=413
+    zz_r2_gui_test.go:8: HTTP body size=2097165 got=400 want=400
+--- PASS: TestR2IndependentOriginAndBounds (0.02s)
+=== RUN   TestR2IndependentLegitimateSymlinkConfig
+    zz_r2_gui_test.go:12: legitimate symlink config POST=500 body="could not save\n" pref=""
+    zz_r2_gui_test.go:13: explicit locale EN still loads; saved preference/default remains TR
+--- PASS: TestR2IndependentLegitimateSymlinkConfig (0.00s)
+PASS
+ok  	kiyas	1.045s
+=== RUN   TestR2IndependentReadAndLock
+    zz_r2_independent_test.go:5: regular size=13 value="en"
+    zz_r2_independent_test.go:5: regular size=4096 value="en"
+    zz_r2_independent_test.go:5: regular size=4097 value=""
+    zz_r2_independent_test.go:7: FIFO rejected elapsed=75.396µs
+    zz_r2_independent_test.go:9: 1GiB sparse rejected elapsed=14.937µs
+--- PASS: TestR2IndependentReadAndLock (0.00s)
+=== RUN   TestR2IndependentParentRace
+    zz_r2_independent_test.go:16: parent-swap races=14 Set success=1496 reject=4 outside entries=0
+--- PASS: TestR2IndependentParentRace (1.48s)
+=== RUN   TestR2IndependentWriteCleanup
+    zz_r2_independent_test.go:19: injected rename error=file name too long
+    zz_r2_independent_test.go:20: rename-error cleanup and normal0600 PASS
+--- PASS: TestR2IndependentWriteCleanup (0.00s)
+PASS
+ok  	kiyas/i18n	2.506s

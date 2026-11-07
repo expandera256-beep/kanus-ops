@@ -1,0 +1,39 @@
+package main
+import (
+ "net/http/httptest"
+ "os"
+ "path/filepath"
+ "strings"
+ "testing"
+ "syscall"
+ "time"
+ "kiyas/i18n"
+)
+func TestGlobalReviewEndpointSecurity(t *testing.T) {
+ d:=t.TempDir(); t.Setenv("US_DESK", filepath.Join(d,"desk.json")); s:=newView("sec");s.root=t.TempDir();h:=guiMux(&s)
+ call:=func(path,host,origin,ct,body string) int {r:=httptest.NewRequest("POST","http://127.0.0.1"+path,strings.NewReader(body));if host!="" {r.Host=host};if origin!="" {r.Header.Set("Origin",origin)};if ct!="" {r.Header.Set("Content-Type",ct)};w:=httptest.NewRecorder();h.ServeHTTP(w,r);return w.Code}
+ act:=call("/api/act","","https://evil.example","application/json",`{"op":"refresh"}`)
+ pref:=call("/api/lang","","https://evil.example","application/json",`{"lang":"en"}`)
+ t.Logf("foreign Origin: existing /api/act=%d new /api/lang=%d persisted=%s",act,pref,langPref.Get());if act!=403||pref!=200 {t.Fatal("observation changed")}
+ for _,ct:=range []string{"text/plain","application/x-www-form-urlencoded","multipart/form-data",""} {if got:=call("/api/lang","","",ct,`{"lang":"tr"}`);got!=415 {t.Errorf("ct=%q code=%d",ct,got)}}
+ for _,lang:=range []string{"../en","../../en","/tmp/en",`C:\\en`,"en/../../tr","en.json","xx"} {if got:=call("/api/lang","","","application/json",`{"lang":`+`"`+strings.ReplaceAll(lang,`\`,`\\`)+`"}`);got!=400 {t.Errorf("lang=%q code=%d",lang,got)}}
+ for _,path:=range []string{"/api/i18n","/api/lang"} {r:=httptest.NewRequest("GET","http://evil.example"+path,nil);w:=httptest.NewRecorder();h.ServeHTTP(w,r);if w.Code!=403 {t.Errorf("host accepted %s %d",path,w.Code)}}
+ for _,body:=range []string{`{"lang":"tr"}`+strings.Repeat("x",2<<20),`{"lang":"en"}{"lang":"tr"}`,`{"lang":"tr"} not json`} {got:=call("/api/lang","","","application/json",body);t.Logf("body bytes=%d trailing input accepted code=%d",len(body),got);if got!=200 {t.Fatal("observation changed")}}
+ t.Log("non-JSON content types rejected; traversal languages rejected; foreign hosts rejected")
+ b,_:=i18n.Load();for _,q:=range []string{"../en","/tmp/en"} {r:=httptest.NewRequest("GET","http://127.0.0.1/api/i18n?lang="+q,nil);w:=httptest.NewRecorder();h.ServeHTTP(w,r);if w.Code!=200||!strings.Contains(w.Body.String(),`"lang":"tr"`) {t.Fatal("unsafe GET lang")}}
+ if err:=b.Add("bad",[]byte(`{"_meta":{"dir":"javascript:bad"}}`));err==nil {t.Fatal("dir accepted")}
+}
+func TestGlobalReviewPreferenceSymlink(t *testing.T) {
+ d:=t.TempDir();outside:=filepath.Join(d,"outside");os.Mkdir(outside,0700); victim:=filepath.Join(outside,"victim");os.WriteFile(victim,[]byte(`{"lang":"en"}`),0600)
+ direct:=filepath.Join(d,"lang.json");os.Symlink(victim,direct);p:=&i18n.PrefStore{Path:func()string{return direct}}
+ t.Logf("final symlink Get=%q (follows target)",p.Get());if err:=p.Set("tr");err!=nil {t.Fatal(err)};raw,_:=os.ReadFile(victim);st,_:=os.Lstat(direct);t.Logf("final symlink Set preserves victim=%q replaced-link=%t perm=%o",raw,st.Mode()&os.ModeSymlink==0,st.Mode().Perm());if string(raw)!=`{"lang":"en"}` {t.Fatal("victim changed")}
+ parent:=filepath.Join(d,"parent");os.Symlink(outside,parent);p2:=&i18n.PrefStore{Path:func()string{return filepath.Join(parent,"lang.json")}};if err:=p2.Set("en");err!=nil {t.Fatal(err)};raw,err:=os.ReadFile(filepath.Join(outside,"lang.json"));if err!=nil {t.Fatal(err)};t.Logf("symlink parent redirected write to outside directory=%q",raw)
+}
+
+func TestGlobalReviewPreferenceFIFO(t *testing.T) {
+ fifo:=filepath.Join(t.TempDir(),"lang.json");if err:=syscall.Mkfifo(fifo,0600);err!=nil {t.Fatal(err)};p:=&i18n.PrefStore{Path:func()string{return fifo}}
+ done:=make(chan string,1);go func(){done<-p.Get()}()
+ select {case <-done:t.Fatal("unexpected nonblocking FIFO read");case <-time.After(150*time.Millisecond):t.Log("Get blocks on lang.json FIFO while holding PrefStore mutex")}
+ if err:=os.WriteFile(fifo,[]byte(`{"lang":"en"}`),0600);err!=nil {t.Fatal(err)}
+ select {case got:=<-done:if got!="en" {t.Fatal(got)};case <-time.After(time.Second):t.Fatal("FIFO did not unblock")}
+}

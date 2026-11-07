@@ -1,0 +1,18 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "test",
+      "text": "Test iptal edildi (86ms).\nKomut: /usr/bin/python3 -m unittest discover\n/usr/lib/python3.13/subprocess.py:1140: ResourceWarning: subprocess 276096 is still running\n  _warn(\"subprocess %s is still running\" % self.pid,\nResourceWarning: Enable tracemalloc to get the object allocation traceback"
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "Sohbet 1"
+    }
+  ],
+  "chatId": "s1"
+}

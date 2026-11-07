@@ -1,0 +1,110 @@
+=== RUN   TestPanelReadinessRejectsTrailingJSON
+--- PASS: TestPanelReadinessRejectsTrailingJSON (0.00s)
+=== RUN   TestPanelMetadataMissingDataInvalidates
+=== RUN   TestPanelMetadataMissingDataInvalidates/null
+=== RUN   TestPanelMetadataMissingDataInvalidates/{}
+=== RUN   TestPanelMetadataMissingDataInvalidates/{"data":null}
+--- PASS: TestPanelMetadataMissingDataInvalidates (0.01s)
+    --- PASS: TestPanelMetadataMissingDataInvalidates/null (0.00s)
+    --- PASS: TestPanelMetadataMissingDataInvalidates/{} (0.00s)
+    --- PASS: TestPanelMetadataMissingDataInvalidates/{"data":null} (0.00s)
+=== RUN   TestPanelUnauthorizedWakeMatrix
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/missing
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/malformed
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/unknown
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/expired
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/revoked
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/zero-credit
+    zz_panel_wake_auth_test.go:14: code=402 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/fully-reserved
+    zz_panel_wake_auth_test.go:14: code=402 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/session-no-license
+    zz_panel_wake_auth_test.go:14: code=402 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/session-expired
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/session-forged
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/completions/missing
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/completions/malformed
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/completions/unknown
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/completions/expired
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/completions/revoked
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/completions/zero-credit
+    zz_panel_wake_auth_test.go:14: code=402 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/completions/fully-reserved
+    zz_panel_wake_auth_test.go:14: code=402 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/completions/session-no-license
+    zz_panel_wake_auth_test.go:14: code=402 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/completions/session-expired
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+=== RUN   TestPanelUnauthorizedWakeMatrix//v1/chat/completions/session-forged
+    zz_panel_wake_auth_test.go:14: code=401 start=0 status=0 retry=
+--- PASS: TestPanelUnauthorizedWakeMatrix (0.04s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/missing (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/malformed (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/unknown (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/expired (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/revoked (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/zero-credit (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/fully-reserved (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/session-no-license (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/session-expired (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/session-forged (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/completions/missing (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/completions/malformed (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/completions/unknown (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/completions/expired (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/completions/revoked (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/completions/zero-credit (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/completions/fully-reserved (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/completions/session-no-license (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/completions/session-expired (0.00s)
+    --- PASS: TestPanelUnauthorizedWakeMatrix//v1/chat/completions/session-forged (0.00s)
+=== RUN   TestPanelWakeSingleflightAndCooldown
+2026/11/08 01:02:57 gpu_wake scheme=http host=127.0.0.1:40259 path=/a100/start status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 01:02:57 gpu_wake scheme=http host=127.0.0.1:40259 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:02:57 gpu_wake scheme=http host=127.0.0.1:40259 path=/a100/start status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:02:57 gpu_wake scheme=http host=127.0.0.1:40259 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:02:57 gpu wake: failed (synthetic-failure)
+    zz_panel_wake_auth_test.go:19: 50 concurrent=1, ready repeated=0, markdown=1, failed repeated=0
+--- PASS: TestPanelWakeSingleflightAndCooldown (0.01s)
+=== RUN   TestPanelWakeBadTLSFailsClosed503
+=== RUN   TestPanelWakeBadTLSFailsClosed503/wrong-pin
+2026/11/08 01:02:57 gpu_wake scheme=https host=127.0.0.1:33643 path=/a100/status status=0 pin_ok=no duration_ms=0 level=INFO method=GET err=pin_spki_unsupported
+2026/11/08 01:02:57 gpu_wake scheme=https host=127.0.0.1:33643 path=/a100/start status=0 pin_ok=no duration_ms=0 level=INFO method=POST err=pin_spki_unsupported
+2026/11/08 01:02:57 gpu wake: failed (wake_pin_spki_unsupported)
+=== RUN   TestPanelWakeBadTLSFailsClosed503/missing-pin
+2026/11/08 01:02:57 gpu_wake scheme=https host=127.0.0.1:44759 path=/a100/status status=0 pin_ok=no duration_ms=0 level=INFO method=GET err=pin_unreadable
+2026/11/08 01:02:57 gpu_wake scheme=https host=127.0.0.1:44759 path=/a100/start status=0 pin_ok=no duration_ms=0 level=INFO method=POST err=pin_unreadable
+2026/11/08 01:02:57 gpu wake: failed (wake_pin_unreadable)
+=== RUN   TestPanelWakeBadTLSFailsClosed503/TLS-untrusted-system-CA
+2026/11/08 01:02:57 gpu_wake scheme=https host=127.0.0.1:46183 path=/a100/status status=0 pin_ok=n/a(system-ca) duration_ms=76 level=INFO method=GET err=unreachable
+2026/11/08 01:02:57 http: TLS handshake error from 127.0.0.1:55026: remote error: tls: bad certificate
+2026/11/08 01:02:57 gpu_wake scheme=https host=127.0.0.1:46183 path=/a100/start status=0 pin_ok=n/a(system-ca) duration_ms=3 level=INFO method=POST err=unreachable
+2026/11/08 01:02:57 gpu wake: failed (wake_unreachable)
+2026/11/08 01:02:57 http: TLS handshake error from 127.0.0.1:55034: remote error: tls: bad certificate
+--- PASS: TestPanelWakeBadTLSFailsClosed503 (0.09s)
+    --- PASS: TestPanelWakeBadTLSFailsClosed503/wrong-pin (0.00s)
+    --- PASS: TestPanelWakeBadTLSFailsClosed503/missing-pin (0.00s)
+    --- PASS: TestPanelWakeBadTLSFailsClosed503/TLS-untrusted-system-CA (0.08s)
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 01:02:57 gpu_wake scheme=http host=127.0.0.1:36603 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 01:02:57 gpu_wake scheme=http host=127.0.0.1:36603 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:02:57 gpu wake: failed (wake_http)
+2026/11/08 01:02:57 gpu_wake scheme=http host=127.0.0.1:36603 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=2
+    zz_panel_wake_burst_test.go:8: unexpected debounce/probe count
+--- FAIL: TestPanelConcurrentHTTPWakeDebounce (0.01s)
+FAIL
+FAIL	kiyas/licensesrv	0.171s
+FAIL

@@ -1,0 +1,93 @@
+{
+  "accounts": {
+    "buyer@example.test": {
+      "id": "account-test",
+      "email": "buyer@example.test",
+      "passwordHash": "synthetic-not-a-real-hash",
+      "sessionVersion": 4,
+      "createdAt": "2026-11-01T00:00:00Z",
+      "emailVerified": true,
+      "verificationHash": "verify-test",
+      "verificationExpiry": "2030-01-01T00:00:00Z",
+      "resetHash": "reset-test",
+      "resetExpiry": "2030-01-01T00:00:00Z"
+    }
+  },
+  "licenseOwners": {
+    "synthetic-license": "account-test"
+  },
+  "webhooks": {
+    "hook-test": "2026-11-01T00:00:00Z"
+  },
+  "orders": {
+    "42": [
+      "synthetic-license"
+    ]
+  },
+  "licenses": {
+    "synthetic-license": {
+      "key": "synthetic-license",
+      "orderId": 42,
+      "lineId": 12,
+      "email": "buyer@example.test",
+      "productId": 5,
+      "plan": {
+        "kind": "use",
+        "days": 30,
+        "prompts": 0,
+        "seconds": 100,
+        "credits": 100
+      },
+      "issuedAt": "2026-11-01T00:00:00Z",
+      "expiresAt": "2030-01-01T00:00:00Z",
+      "revoked": false,
+      "credits": 99,
+      "meterUnit": "seconds",
+      "reserved": 3
+    }
+  },
+  "outbox": [
+    {
+      "skipped": "fixture",
+      "orderName": "TEST-42",
+      "orderId": 42,
+      "id": "mail-test",
+      "to": "buyer@example.test",
+      "subject": "Synthetic test",
+      "body": "Synthetic body",
+      "attempts": 2,
+      "nextTry": "2030-01-01T00:00:00Z",
+      "sentAt": "2026-11-01T00:00:00Z",
+      "lastErr": "test error",
+      "dead": false
+    }
+  ],
+  "reservations": {
+    "r-test": {
+      "createdAt": "2026-11-01T00:00:00Z",
+      "key": "synthetic-license",
+      "amount": 3,
+      "expires": "2030-01-01T00:00:00Z"
+    }
+  },
+  "settlements": {
+    "s-test": {
+      "createdAt": "2026-11-01T00:00:00Z",
+      "key": "synthetic-license",
+      "commit": true,
+      "amount": 1,
+      "settledAt": "2026-11-01T01:00:00Z"
+    }
+  },
+  "cancelled": {
+    "cancel-test": true
+  },
+  "refunds": {
+    "refund-test": {
+      "orderId": 42,
+      "lines": {
+        "12": 1
+      }
+    }
+  }
+}

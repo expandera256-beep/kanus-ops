@@ -1,0 +1,12 @@
+=== UYUM paths ===
+-- /workspace/us-panel-dev/patches/uyum-erase/0001-privacy-ops-shared.patch --
+-- /workspace/us-panel-dev/patches/uyum-erase/0002-privacy-handler.patch --
+-- /workspace/us-panel-dev/patches/uyum-export/0001-privacy-ops-export-erase-retention.patch --
+-- /workspace/us-panel-dev/patches/uyum-export/0002-privacy-ops-test.patch --
+-- /workspace/us-panel-dev/patches/uyum-export/0003-privacy-handler.patch --
+-- /workspace/us-panel-dev/patches/uyum-preferences/0001-prefs-store.patch --
+-- /workspace/us-panel-dev/patches/uyum-preferences/0002-privacy-handler.patch --
+-- /workspace/us-panel-dev/patches/uyum-preferences/0003-privacy-handler-test.patch --
+-- /workspace/us-panel-dev/patches/uyum-retention/0001-privacy-ops-shared.patch --
+-- /workspace/us-panel-dev/patches/uyum-retention/0002-privacy-handler.patch --
+-- /workspace/us-panel-dev/patches/uyum-wiring/0001-privacy-mux-wiring.patch --

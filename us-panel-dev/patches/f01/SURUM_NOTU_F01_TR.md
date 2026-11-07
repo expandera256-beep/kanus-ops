@@ -1,0 +1,3 @@
+# FINDING-01 sürüm notu
+
+FINDING-01 için bu sürüm yalnız risk azaltımı sağlar; bulgu kapanmamıştır. Linux'ta Landlock, proje kodunun kardeş çalışma alanlarını okumasını sınırlar. Windows'ta okuma izolasyonu yok: proje kodu çalışma alanı dışındaki dosyaları hâlâ OKUYABİLİR. Restricted token ve Low integrity level (Low IL), bu okuma riskini ortadan kaldırmaz. KAN.US üzerinden aktarılan karara göre Demir, FINDING-01 kapsamındaki bu Windows riskini 2026-11-08 tarihinde geçici olarak kabul etmiştir (seçenek e). AppContainer ve proje başına ayrı işletim sistemi kullanıcısı seçenekleri daha sonra yeniden değerlendirilecektir.

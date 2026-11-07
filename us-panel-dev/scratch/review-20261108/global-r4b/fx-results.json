@@ -1,0 +1,49 @@
+{
+  "fx-v10": {
+    "test_counts": {
+      "pass": 425,
+      "skip": 7
+    },
+    "package_counts": {
+      "pass": 4,
+      "skip": 1
+    },
+    "data_race": 0,
+    "exits": {
+      "race": "0",
+      "gofmt": "0",
+      "vet": "0"
+    },
+    "gofmt_new_files_clean": true
+  },
+  "fx-v11": {
+    "test_counts": {
+      "pass": 492,
+      "skip": 7
+    },
+    "package_counts": {
+      "pass": 4,
+      "skip": 1
+    },
+    "data_race": 0,
+    "exits": {
+      "race": "0",
+      "gofmt": "0",
+      "vet": "0"
+    },
+    "gofmt_new_files_clean": true
+  },
+  "08_sha_current": "6ac3588bd36e76be008ea0e5d7180bbade76b15718cb9b27f592164668e5f363",
+  "03_sha_current": "ba8845c5f34855d8f2f2fa49a055c4e9d20698c9fbd7572462531c2746f6b58e",
+  "completed_at_tsi": "2026-11-08T00:56:09.094151+03:00",
+  "manifests": {
+    "v10": {
+      "pass": 181,
+      "total": 181
+    },
+    "v11": {
+      "pass": 205,
+      "total": 205
+    }
+  }
+}

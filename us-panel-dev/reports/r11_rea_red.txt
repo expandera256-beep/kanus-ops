@@ -1,0 +1,6 @@
+    rea_safe_test.go:25: sürüm sabitlenmedi: "--yes rea-agents@latest"
+--- FAIL: TestReaPinnedVersionNoLatest (0.00s)
+    rea_safe_test.go:51: ayrı süreç grubu yok: "430986"
+--- FAIL: TestReaRunsThroughSafeExec (0.02s)
+--- SKIP: TestRealModelPanelMultiFileRepair (0.00s)
+--- SKIP: TestRealModelPanelBuildRentalProject (0.00s)

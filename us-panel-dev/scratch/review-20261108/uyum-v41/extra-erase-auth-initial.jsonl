@@ -1,0 +1,18 @@
+{"Time":"2026-11-08T01:32:45.852461712+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-08T01:32:45.860637029+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger"}
+{"Time":"2026-11-08T01:32:45.860683945+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Output":"=== RUN   TestPanelV41AuthWrongCodeLedger\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:48.611699347+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Output":"    zz_panel_erase_test.go:6: ledger retained/anonymized contract\n","OutputType":"error"}
+{"Time":"2026-11-08T01:32:48.612109278+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Output":"--- FAIL: TestPanelV41AuthWrongCodeLedger (2.75s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:48.612280671+03:00","Action":"fail","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Elapsed":2.75}
+{"Time":"2026-11-08T01:32:48.612339353+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:48.614389414+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"FAIL\tkiyas/licensesrv\t2.762s\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:48.614459004+03:00","Action":"fail","Package":"kiyas/licensesrv","Elapsed":2.762}
+{"Time":"2026-11-08T01:32:49.229348682+03:00","Action":"start","Package":"kiyas/internal/privacy"}
+{"Time":"2026-11-08T01:32:49.238600748+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth"}
+{"Time":"2026-11-08T01:32:49.238672115+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Output":"=== RUN   TestPanelV41HealthyHTTPAuth\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:49.239823122+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Output":"    zz_panel_auth_test.go:3: erase/request unauthorized got 404\n","OutputType":"error"}
+{"Time":"2026-11-08T01:32:49.239860141+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Output":"--- FAIL: TestPanelV41HealthyHTTPAuth (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:49.239972507+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Elapsed":0}
+{"Time":"2026-11-08T01:32:49.240065906+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:49.240931845+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"FAIL\tkiyas/internal/privacy\t0.012s\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:49.241001825+03:00","Action":"fail","Package":"kiyas/internal/privacy","Elapsed":0.012}

@@ -1,0 +1,50 @@
+safe_limits_linux_test.go:15:	sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", "import resource,time\ntime.sleep(0.3)\nprint(resource.getrlimit(resource.RLIMIT_CPU)[0], resource.getrlimit(resource.RLIMIT_DATA)[0], resource.getrlimit(resource.RLIMIT_FSIZE)[0])"}, 10*time.Second)
+run.go:71:	sc, err := newSafeCmd(context.Background(), root, found.Dir, argv, runProgramTimeout, "PYTHONIOENCODING=utf-8")
+safe_exec.go:156:// safeRun runs argv through newSafeCmd; output is stdout then stderr.
+safe_exec.go:158:	sc, err := newSafeCmd(parent, root, dir, argv, timeout, extraEnv...)
+safe_exec.go:220:// newSafeCmd builds a command with the allowlisted binary, locked cwd,
+safe_exec.go:223:func newSafeCmd(parent context.Context, root, dir string, argv []string, timeout time.Duration, extraEnv ...string) (*safeCmd, error) {
+core_safety_regression_test.go:60:	report:=runProjectTests(root)
+gui.go:763:		report := runProjectTestsWithContext(ctx, root, 60*time.Second)
+task_state.go:191:func runPersistentRepair(ctx context.Context, l *repairLoop, id string, allowReplay bool) (*repairResult, error) {
+safe_exec_test.go:26:		if _, err := newSafeCmd(context.Background(), root, root, argv, time.Second); err == nil {
+safe_exec_test.go:54:	if _, err := newSafeCmd(context.Background(), root, "kacis", []string{"go", "version"}, time.Second); err == nil {
+safe_exec_test.go:71:	sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", "import os\nfor k,v in os.environ.items(): print(k+'='+v)"}, 10*time.Second)
+safe_exec_test.go:115:	sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", "import sys\nsys.stdout.write('o'*100000)\nsys.stderr.write('E-ONLY')\nsys.exit(7)"}, 10*time.Second)
+safe_exec_test.go:139:	sc, err := newSafeCmd(context.Background(), root, root, []string{fake}, time.Second)
+review_regression_linux_test.go:35:	if sc, err := newSafeCmd(context.Background(), root, root, []string{bin}, 5*time.Second); err == nil {
+review_regression_linux_test.go:42:	if sc, err := newSafeCmd(context.Background(), root, root, []string{"python3", "-c", "print(1)"}, 5*time.Second); err == nil {
+review_regression_linux_test.go:99:	_ = runProjectTestsWithContext(context.Background(), root, 10*time.Second)
+review_regression_linux_test.go:120:		sc, err := newSafeCmd(context.Background(), root, root, []string{py, "tree.py"}, 1500*time.Millisecond)
+review_regression_linux_test.go:186:	_ = runProjectTestsWithContext(context.Background(), root, 2*time.Minute)
+task_state_test.go:26:	return &repairLoop{Root: root, Endpoint: url, Key: "test-key", Model: "mock",
+task_state_test.go:43:	_, _ = runPersistentRepair(context.Background(), crashTestLoop(os.Getenv("US_TASK_CRASH_ROOT"), os.Getenv("US_TASK_CRASH_URL")), "gorev1", false)
+task_state_test.go:91:	res, err := runPersistentRepair(context.Background(), crashTestLoop(root, srv.URL), "gorev1", false)
+task_state_test.go:105:	again, err := runPersistentRepair(context.Background(), crashTestLoop(root, srv.URL), "gorev1", false)
+task_state_test.go:116:	if _, err := runPersistentRepair(context.Background(), crashTestLoop(root, srv.URL), "gorev1", false); !errors.Is(err, errUncertainModelCall) {
+task_state_test.go:122:	res, err := runPersistentRepair(context.Background(), crashTestLoop(root, srv.URL), "gorev1", true)
+project_test_runner_test.go:30:	if got := runProjectTests(filepath.Join(root, "missing")); !strings.HasPrefix(got, "Test çalıştırılamadı") {
+project_test_runner_test.go:36:	if got := runProjectTests(root); !strings.HasPrefix(got, "Test bulunamadı") {
+project_test_runner_test.go:54:		got := runProjectTests(root)
+project_test_runner_test.go:62:	if got := runProjectTests(root); !strings.HasPrefix(got, "Test bulunamadı") {
+project_test_runner_test.go:83:	report := runProjectTestsWithContext(context.Background(), root, 500*time.Millisecond)
+project_test_runner_test.go:154:	if got := runProjectTests(root); !strings.HasPrefix(got, "Test bulunamadı") {
+project_test_runner_test.go:158:	if got := runProjectTests(root); !strings.HasPrefix(got, "Test komutu başarılı") {
+project_test_runner_test.go:164:	if got := runProjectTests(node); !strings.HasPrefix(got, "Test komutu başarılı") {
+real_model_e2e_test.go:50:	if report := runProjectTests(root); !strings.HasPrefix(report, "Test başarısız") {
+repair_loop_test.go:70:	loop := &repairLoop{Root: root, Endpoint: srv.URL, Key: "test-key", Model: "mock", Budget: repairBudget{MaxIterations: 3, MaxModelCalls: 3, MaxDuration: 3 * time.Minute, StepTimeout: 2 * time.Minute, MaxEditBytes: 1 << 16},
+repair_loop_test.go:100:	loop := &repairLoop{Root: root, Endpoint: srv.URL, Key: "test-key", Budget: repairBudget{MaxIterations: 2, MaxModelCalls: 2, MaxDuration: 3 * time.Minute, StepTimeout: time.Minute, MaxEditBytes: 1 << 16},
+repair_loop_test.go:125:		loop := &repairLoop{Root: root, Endpoint: srv.URL, Key: "test-key", Budget: repairBudget{MaxIterations: 2, MaxModelCalls: 2, MaxDuration: time.Minute, StepTimeout: time.Minute, MaxEditBytes: 1 << 16},
+repair_loop_test.go:152:	loop := &repairLoop{Root: root, Endpoint: srv.URL, Budget: repairBudget{MaxIterations: 2, MaxModelCalls: 2, MaxDuration: time.Minute, StepTimeout: time.Minute, MaxEditBytes: 1 << 16}, Approve: func(int, []repairEdit) bool { return true }}
+repair_loop.go:98:		sc, err := newSafeCmd(ctx, l.Root, l.Root, append([]string{bin}, argv[1:]...), l.Budget.StepTimeout)
+repair_loop.go:177:		edits, err := l.askFix(ctx, ft, step)
+project_test_runner.go:18:func runProjectTests(root string) string {
+project_test_runner.go:19:	return runProjectTestsWithContext(context.Background(), root, 60*time.Second)
+project_test_runner.go:24:func runProjectTestsWithContext(parent context.Context, root string, timeout time.Duration) string {
+model.go:1228:	sc, err := newSafeCmd(context.Background(), dst, dst, []string{"python3", "main.py", "sunucu", fmt.Sprintf("%d", port)}, 30*time.Second, "PYTHONIOENCODING=utf-8", "PYTHONDONTWRITEBYTECODE=1")
+safe_exec_unix_test.go:27:		sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", script}, timeout)
+review_regression_test.go:22:	l := &repairLoop{Root: root, Endpoint: "http://127.0.0.1:1", Approve: func(int, []repairEdit) bool { return false }}
+review_regression_test.go:23:	_, _ = runPersistentRepair(context.Background(), l, "t1", false)
+review_regression_test.go:34:	l2 := &repairLoop{Root: root, Endpoint: "http://127.0.0.1:1", Approve: func(int, []repairEdit) bool { asked = true; return false }}
+review_regression_test.go:35:	_, _ = runPersistentRepair(context.Background(), l2, "t2", false)
+terminal.go:117:	sc, err := newSafeCmd(context.Background(), root, root, append([]string{bin}, argv[1:]...), timeout, "PYTHONIOENCODING=utf-8")

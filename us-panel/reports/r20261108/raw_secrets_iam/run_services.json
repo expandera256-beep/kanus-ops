@@ -1,0 +1,422 @@
+[
+  {
+    "apiVersion": "serving.knative.dev/v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "run.googleapis.com/client-name": "gcloud",
+        "run.googleapis.com/client-version": "592.0.0",
+        "run.googleapis.com/ingress": "all",
+        "run.googleapis.com/ingress-status": "all",
+        "run.googleapis.com/maxScale": "3",
+        "run.googleapis.com/operation-id": "0651543e-baa6-47f7-a2e3-28196c993d76",
+        "run.googleapis.com/urls": "[\"https://us-commerce-247516932580.europe-west4.run.app\",\"https://us-commerce-iqhblf63dq-ez.a.run.app\"]",
+        "serving.knative.dev/creator": "demirtumen08@gmail.com",
+        "serving.knative.dev/lastModifier": "demirtumen08@gmail.com"
+      },
+      "creationTimestamp": "2026-11-05T20:44:39.760352Z",
+      "generation": 4,
+      "labels": {
+        "cloud.googleapis.com/location": "europe-west4",
+        "run.googleapis.com/satisfiesPzs": "true"
+      },
+      "name": "us-commerce",
+      "namespace": "247516932580",
+      "resourceVersion": "AAZftrDHoHw",
+      "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/services/us-commerce",
+      "uid": "5223c720-c0b5-4423-b9cd-8c47badf2681"
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "2",
+            "autoscaling.knative.dev/minScale": "0",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "592.0.0",
+            "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+            "run.googleapis.com/execution-environment": "gen2",
+            "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+            "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+          },
+          "labels": {
+            "run.googleapis.com/startupProbeType": "Custom"
+          },
+          "name": "us-commerce-sre-ready-r1"
+        },
+        "spec": {
+          "containerConcurrency": 32,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "US_ENV",
+                  "value": "<omitted>"
+                },
+                {
+                  "name": "US_WORKERS_CONFIG",
+                  "value": "<omitted>"
+                },
+                {
+                  "name": "US_MODEL_CA_FILE",
+                  "value": "<omitted>"
+                },
+                {
+                  "name": "SHOPIFY_SHOP",
+                  "value": "<omitted>"
+                },
+                {
+                  "name": "US_COMMERCE_DB",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-postgres-dsn"
+                    }
+                  }
+                },
+                {
+                  "name": "US_LICENSE_SECRET",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-license-signing"
+                    }
+                  }
+                },
+                {
+                  "name": "US_MODEL_API_TOKEN",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-model-token"
+                    }
+                  }
+                },
+                {
+                  "name": "US_CREDIT_PRODUCTS",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-credit-products"
+                    }
+                  }
+                },
+                {
+                  "name": "US_SHOPIFY_ENABLED",
+                  "value": "<omitted>"
+                }
+              ],
+              "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:2416ec71eb4e16c3da4c1d9866cb3c7393ce8819efd043e8b1f28bf9a8bfdbab",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 24,
+                "httpGet": {
+                  "path": "/health",
+                  "port": 8080
+                },
+                "periodSeconds": 5,
+                "timeoutSeconds": 5
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/secrets/policy",
+                  "name": "policy"
+                },
+                {
+                  "mountPath": "/secrets/ca",
+                  "name": "ca"
+                }
+              ]
+            }
+          ],
+          "serviceAccountName": "us-gateway@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+          "timeoutSeconds": 600,
+          "volumes": [
+            {
+              "name": "policy",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "workers.json"
+                  }
+                ],
+                "secretName": "us-worker-policy"
+              }
+            },
+            {
+              "name": "ca",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "ca.pem"
+                  }
+                ],
+                "secretName": "us-model-ca"
+              }
+            }
+          ]
+        }
+      },
+      "traffic": [
+        {
+          "percent": 100,
+          "revisionName": "us-commerce-sre-ready-r1"
+        },
+        {
+          "revisionName": "us-commerce-sre-ready-r1",
+          "tag": "sre-candidate-commerce"
+        }
+      ]
+    },
+    "status": {
+      "address": {
+        "url": "https://us-commerce-iqhblf63dq-ez.a.run.app"
+      },
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-11-07T21:48:34.823292Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2026-11-07T21:47:28.425064Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2026-11-07T21:48:34.775423Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "latestCreatedRevisionName": "us-commerce-sre-ready-r1",
+      "latestReadyRevisionName": "us-commerce-sre-ready-r1",
+      "observedGeneration": 4,
+      "traffic": [
+        {
+          "percent": 100,
+          "revisionName": "us-commerce-sre-ready-r1",
+          "tag": "sre-candidate-commerce",
+          "url": "https://sre-candidate-commerce---us-commerce-iqhblf63dq-ez.a.run.app"
+        }
+      ],
+      "url": "https://us-commerce-iqhblf63dq-ez.a.run.app"
+    }
+  },
+  {
+    "apiVersion": "serving.knative.dev/v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "run.googleapis.com/client-name": "gcloud",
+        "run.googleapis.com/client-version": "592.0.0",
+        "run.googleapis.com/ingress": "all",
+        "run.googleapis.com/ingress-status": "all",
+        "run.googleapis.com/maxScale": "3",
+        "run.googleapis.com/operation-id": "dd61ac1d-c4fb-40c7-a443-d8d1ebbe390a",
+        "run.googleapis.com/urls": "[\"https://us-watchdog-247516932580.europe-west4.run.app\",\"https://us-watchdog-iqhblf63dq-ez.a.run.app\"]",
+        "serving.knative.dev/creator": "demirtumen08@gmail.com",
+        "serving.knative.dev/lastModifier": "demirtumen08@gmail.com"
+      },
+      "creationTimestamp": "2026-11-05T20:44:19.648841Z",
+      "generation": 9,
+      "labels": {
+        "cloud.googleapis.com/location": "europe-west4",
+        "discard-fix": "20261108",
+        "run.googleapis.com/satisfiesPzs": "true",
+        "worker-policy": "v5"
+      },
+      "name": "us-watchdog",
+      "namespace": "247516932580",
+      "resourceVersion": "AAZftuWqdKg",
+      "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/services/us-watchdog",
+      "uid": "440f1173-98a5-4919-9bcf-7369043d5cf7"
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "1",
+            "autoscaling.knative.dev/minScale": "0",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "592.0.0",
+            "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+            "run.googleapis.com/execution-environment": "gen2",
+            "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+            "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+          },
+          "labels": {
+            "discard-fix": "20261108",
+            "run.googleapis.com/startupProbeType": "Custom",
+            "worker-policy": "v5"
+          },
+          "name": "us-watchdog-sre-ready-r1"
+        },
+        "spec": {
+          "containerConcurrency": 1,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "US_ENV",
+                  "value": "<omitted>"
+                },
+                {
+                  "name": "US_APP_FACTORY",
+                  "value": "<omitted>"
+                },
+                {
+                  "name": "US_WORKERS_CONFIG",
+                  "value": "<omitted>"
+                },
+                {
+                  "name": "US_MODEL_CA_FILE",
+                  "value": "<omitted>"
+                },
+                {
+                  "name": "US_COMMERCE_DB",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-postgres-dsn"
+                    }
+                  }
+                },
+                {
+                  "name": "US_MODEL_API_TOKEN",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-model-token"
+                    }
+                  }
+                },
+                {
+                  "name": "US_ALLOW_DISCARD_LOCAL_SSD",
+                  "value": "<omitted>"
+                }
+              ],
+              "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:5ad490386738a1006f667497c2891cd392b4af5febac59a8018c0bd8a3c8a64a",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 24,
+                "httpGet": {
+                  "path": "/health",
+                  "port": 8080
+                },
+                "periodSeconds": 5,
+                "timeoutSeconds": 5
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/secrets/policy",
+                  "name": "policy"
+                },
+                {
+                  "mountPath": "/secrets/ca",
+                  "name": "ca"
+                }
+              ]
+            }
+          ],
+          "serviceAccountName": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+          "timeoutSeconds": 300,
+          "volumes": [
+            {
+              "name": "policy",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "workers.json"
+                  }
+                ],
+                "secretName": "us-worker-policy"
+              }
+            },
+            {
+              "name": "ca",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "ca.pem"
+                  }
+                ],
+                "secretName": "us-model-ca"
+              }
+            }
+          ]
+        }
+      },
+      "traffic": [
+        {
+          "percent": 100,
+          "revisionName": "us-watchdog-sre-ready-r1"
+        },
+        {
+          "revisionName": "us-watchdog-sre-ready-r1",
+          "tag": "sre-candidate-watchdog"
+        }
+      ]
+    },
+    "status": {
+      "address": {
+        "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app"
+      },
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-11-07T22:03:22.103976Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2026-11-07T22:02:36.208841Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2026-11-07T22:03:22.049561Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "latestCreatedRevisionName": "us-watchdog-sre-ready-r1",
+      "latestReadyRevisionName": "us-watchdog-sre-ready-r1",
+      "observedGeneration": 9,
+      "traffic": [
+        {
+          "percent": 100,
+          "revisionName": "us-watchdog-sre-ready-r1",
+          "tag": "sre-candidate-watchdog",
+          "url": "https://sre-candidate-watchdog---us-watchdog-iqhblf63dq-ez.a.run.app"
+        }
+      ],
+      "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app"
+    }
+  }
+]

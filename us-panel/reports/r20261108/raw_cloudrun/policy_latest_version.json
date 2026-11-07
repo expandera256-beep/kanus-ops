@@ -1,0 +1,10 @@
+{
+  "clientSpecifiedPayloadChecksum": true,
+  "createTime": "2026-11-07T21:21:40.976250Z",
+  "etag": "\"165fb65096467a\"",
+  "name": "projects/247516932580/secrets/us-worker-policy/versions/5",
+  "replicationStatus": {
+    "automatic": {}
+  },
+  "state": "ENABLED"
+}

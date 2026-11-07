@@ -1,0 +1,46 @@
+{
+  "licensesrv/store.go": {
+    "exists": true,
+    "equal": true
+  },
+  "licensesrv/grace_overflow_test.go": {
+    "exists": true,
+    "equal": true
+  },
+  "licensesrv/ttl_grace_lock_test.go": {
+    "exists": true,
+    "equal": true
+  },
+  "licensesrv/ttl_commit_anchor_test.go": {
+    "exists": true,
+    "equal": true
+  },
+  "licensesrv/ledger_hardening_test.go": {
+    "exists": true,
+    "equal": true
+  },
+  "updated_0006b_gofmt_stdout": "",
+  "lock_test_identical_in_mutant": true,
+  "original_probe_sha256": "412dc1507aba88d3bba73f4be6056d4705f8f1cda4ab742f5558ebbfe0b2f6a2",
+  "probe_unchanged": true,
+  "probe11-before": {
+    "PASS": 13,
+    "FAIL": 3
+  },
+  "probe11-fixed": {
+    "PASS": 16
+  },
+  "probe-r10-before": {
+    "PASS": 13,
+    "FAIL": 3
+  },
+  "probe-r10-fixed": {
+    "PASS": 16
+  },
+  "r10-incremental": {
+    "PASS": 16
+  },
+  "probe-stack12": {
+    "PASS": 16
+  }
+}

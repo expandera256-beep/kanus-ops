@@ -1,0 +1,13 @@
+{
+  "hosts": [
+    {
+      "host": "api-test.kanus.org"
+    },
+    {
+      "host": "api.kanus.org"
+    },
+    {
+      "host": "kanus.org"
+    }
+  ]
+}

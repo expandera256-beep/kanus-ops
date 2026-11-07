@@ -1,0 +1,3 @@
+2026-11-08T00:25:25.526782+03:00
+curl -sS --max-time 20 https://dns.google/resolve?name=api-test.kanus.org&type=A
+exit=0

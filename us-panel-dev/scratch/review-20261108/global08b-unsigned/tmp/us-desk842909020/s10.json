@@ -1,0 +1,58 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "düşünce",
+      "text": "İstek modele gidiyor."
+    },
+    {
+      "n": 2,
+      "kind": "istem",
+      "text": "İş modele gitti: sırayla yaz magaza/katalog.py magaza/siparis.py. Klasörde 0 ad."
+    },
+    {
+      "n": 3,
+      "kind": "işlem",
+      "text": "İstek modele gitti."
+    },
+    {
+      "n": 4,
+      "kind": "işlem",
+      "text": "Yazıldı: magaza/katalog.py. Dosyanın gövdesi kayda geçmedi."
+    },
+    {
+      "n": 5,
+      "kind": "özet",
+      "text": "Özet. İstem: sırayla yaz magaza/katalog.py magaza/siparis.py. Okunan: yok. Yazılan: magaza/katalog.py. Sonuç: dosyalar yazıldı; projenin tamamı doğrulanmadı."
+    }
+  ],
+  "chat": [
+    {
+      "role": "panel",
+      "text": "kullanıcı: sırayla yaz magaza/katalog.py magaza/siparis.py\nKlasörde 0 ad var."
+    },
+    {
+      "role": "model",
+      "text": "DOSYA magaza/katalog.py\ndosya gövdesi loglanmadı."
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "sırayla yaz magaza/katalog.py magaza/sipar",
+      "turns": [
+        {
+          "role": "panel",
+          "text": "kullanıcı: sırayla yaz magaza/katalog.py magaza/siparis.py\nKlasörde 0 ad var."
+        },
+        {
+          "role": "model",
+          "text": "DOSYA magaza/katalog.py\ndosya gövdesi loglanmadı."
+        }
+      ]
+    }
+  ],
+  "chatId": "s1"
+}

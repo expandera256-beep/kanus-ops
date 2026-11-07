@@ -1,0 +1,25 @@
+{
+  "exists": true,
+  "sha256": "e5644c731e3b1f479d8109d879c0910403fe08feb0ac6a9560fbbca9f89eeea0",
+  "reported_records": [
+    {
+      "label": "B",
+      "order": 9000000000302,
+      "reported_webhook_http": 200,
+      "reported_status_http": 200,
+      "reported_valid": false,
+      "reported_revoked": true,
+      "structure_consistent": true
+    },
+    {
+      "label": "A",
+      "order": 9000000000301,
+      "reported_webhook_http": 200,
+      "reported_status_http": 200,
+      "reported_valid": false,
+      "reported_revoked": true,
+      "structure_consistent": true
+    }
+  ],
+  "note": "File evidence only; independent live endpoint checks below are authoritative"
+}

@@ -1,0 +1,16 @@
+{
+  "all_test_results": {
+    "pass": 485,
+    "skip": 7
+  },
+  "top_level": {
+    "pass": 409,
+    "skip": 7
+  },
+  "packages": {
+    "kiyas": "pass",
+    "kiyas/cmd/us-license-hook": "pass",
+    "kiyas/cmd/us-pricing-gen": "skip",
+    "kiyas/licensesrv": "pass"
+  }
+}

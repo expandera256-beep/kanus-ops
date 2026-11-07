@@ -1,0 +1,105 @@
+v10 /workspace/us-panel-dev/patches/api-0003-error-envelope/0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch filter=[]
+exit=0
+
+v10 /workspace/us-panel-dev/patches/api-0003-error-envelope/0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=0
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-0003-error-envelope/0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch filter=[]
+exit=0
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-0003-error-envelope/0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=0
+
+v10 /workspace/us-panel-dev/patches/api-0005-v1-versioning/0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch filter=[]
+exit=0
+
+v10 /workspace/us-panel-dev/patches/api-0005-v1-versioning/0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=0
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-0005-v1-versioning/0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch filter=[]
+exit=1
+error: patch failed: cmd/us-license-hook/main.go:100
+error: cmd/us-license-hook/main.go: patch does not apply
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-0005-v1-versioning/0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=1
+error: patch failed: cmd/us-license-hook/main.go:100
+error: cmd/us-license-hook/main.go: patch does not apply
+
+v10 /workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch filter=[]
+exit=1
+error: patch failed: cmd/us-license-hook/main.go:103
+error: cmd/us-license-hook/main.go: patch does not apply
+error: patch failed: licensesrv/credits.go:25
+error: licensesrv/credits.go: patch does not apply
+
+v10 /workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=1
+error: patch failed: cmd/us-license-hook/main.go:103
+error: cmd/us-license-hook/main.go: patch does not apply
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch filter=[]
+exit=1
+error: patch failed: cmd/us-license-hook/main.go:103
+error: cmd/us-license-hook/main.go: patch does not apply
+error: patch failed: licensesrv/credits.go:25
+error: licensesrv/credits.go: patch does not apply
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=1
+error: patch failed: cmd/us-license-hook/main.go:103
+error: cmd/us-license-hook/main.go: patch does not apply
+
+v10 /workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch filter=[]
+exit=1
+error: patch failed: licensesrv/accounts.go:646
+error: licensesrv/accounts.go: patch does not apply
+error: licensesrv/api_keys.go: No such file or directory
+error: licensesrv/api_keys_test.go: No such file or directory
+error: patch failed: licensesrv/store.go:77
+error: licensesrv/store.go: patch does not apply
+
+v10 /workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=0
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch filter=[]
+exit=1
+error: patch failed: licensesrv/accounts.go:646
+error: licensesrv/accounts.go: patch does not apply
+error: licensesrv/api_keys.go: No such file or directory
+error: licensesrv/api_keys_test.go: No such file or directory
+error: patch failed: licensesrv/store.go:77
+error: licensesrv/store.go: patch does not apply
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=0
+
+v10 /workspace/us-panel-dev/patches/api-0008-rate-quota-usage/0001-API-0008-daily-quota-429-Retry-After-regression-test.patch filter=[]
+exit=1
+error: licensesrv/api_keys_test.go: No such file or directory
+
+v10 /workspace/us-panel-dev/patches/api-0008-rate-quota-usage/0001-API-0008-daily-quota-429-Retry-After-regression-test.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=0
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-0008-rate-quota-usage/0001-API-0008-daily-quota-429-Retry-After-regression-test.patch filter=[]
+exit=1
+error: licensesrv/api_keys_test.go: No such file or directory
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-0008-rate-quota-usage/0001-API-0008-daily-quota-429-Retry-After-regression-test.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=0
+
+v10 /workspace/us-panel-dev/patches/api-r11/0001-API-r11-additive-apiv1-package-v1-account-alias-no-l.patch filter=[]
+exit=1
+error: patch failed: cmd/us-license-hook/main.go:12
+error: cmd/us-license-hook/main.go: patch does not apply
+
+v10 /workspace/us-panel-dev/patches/api-r11/0001-API-r11-additive-apiv1-package-v1-account-alias-no-l.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=1
+error: patch failed: cmd/us-license-hook/main.go:12
+error: cmd/us-license-hook/main.go: patch does not apply
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-r11/0001-API-r11-additive-apiv1-package-v1-account-alias-no-l.patch filter=[]
+exit=0
+
+v10-plus-UYUM /workspace/us-panel-dev/patches/api-r11/0001-API-r11-additive-apiv1-package-v1-account-alias-no-l.patch filter=['--include=cmd/us-license-hook/main.go']
+exit=0

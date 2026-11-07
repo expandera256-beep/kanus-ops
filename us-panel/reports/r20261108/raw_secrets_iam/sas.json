@@ -1,0 +1,62 @@
+[
+  {
+    "disabled": false,
+    "displayName": "Compute Engine default service account",
+    "email": "247516932580-compute@developer.gserviceaccount.com",
+    "etag": "MDEwMjE5MjA=",
+    "name": "projects/project-27082a40-6083-4952-9db/serviceAccounts/247516932580-compute@developer.gserviceaccount.com",
+    "oauth2ClientId": "107049515245422876444",
+    "projectId": "project-27082a40-6083-4952-9db",
+    "uniqueId": "107049515245422876444"
+  },
+  {
+    "disabled": false,
+    "displayName": "US independent idle watchdog",
+    "email": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "etag": "MDEwMjE5MjA=",
+    "name": "projects/project-27082a40-6083-4952-9db/serviceAccounts/us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "oauth2ClientId": "103357102838223895218",
+    "projectId": "project-27082a40-6083-4952-9db",
+    "uniqueId": "103357102838223895218"
+  },
+  {
+    "disabled": false,
+    "displayName": "US container release builder",
+    "email": "us-builder@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "etag": "MDEwMjE5MjA=",
+    "name": "projects/project-27082a40-6083-4952-9db/serviceAccounts/us-builder@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "oauth2ClientId": "116946858183438476579",
+    "projectId": "project-27082a40-6083-4952-9db",
+    "uniqueId": "116946858183438476579"
+  },
+  {
+    "disabled": false,
+    "displayName": "SRE OIDC negatif test (rolsuz, 08.11; silme karari Demir)",
+    "email": "sre-oidc-negtest@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "etag": "MDEwMjE5MjA=",
+    "name": "projects/project-27082a40-6083-4952-9db/serviceAccounts/sre-oidc-negtest@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "oauth2ClientId": "113692609139578142848",
+    "projectId": "project-27082a40-6083-4952-9db",
+    "uniqueId": "113692609139578142848"
+  },
+  {
+    "disabled": false,
+    "displayName": "US watchdog scheduler caller",
+    "email": "us-scheduler@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "etag": "MDEwMjE5MjA=",
+    "name": "projects/project-27082a40-6083-4952-9db/serviceAccounts/us-scheduler@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "oauth2ClientId": "105137311447881723074",
+    "projectId": "project-27082a40-6083-4952-9db",
+    "uniqueId": "105137311447881723074"
+  },
+  {
+    "disabled": false,
+    "displayName": "US metered model gateway",
+    "email": "us-gateway@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "etag": "MDEwMjE5MjA=",
+    "name": "projects/project-27082a40-6083-4952-9db/serviceAccounts/us-gateway@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "oauth2ClientId": "109766974252925827585",
+    "projectId": "project-27082a40-6083-4952-9db",
+    "uniqueId": "109766974252925827585"
+  }
+]

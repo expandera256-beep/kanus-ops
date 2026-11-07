@@ -1,0 +1,3 @@
+str: KanusError(status=401, code='c')
+repr: KanusError(status=401, envelope=ErrorEnvelope(error='e', code='c', message='m', request_id='rid'), raw='{"secret":"usk_deadbeef"}', retry_after=None)
+raw_in_repr True

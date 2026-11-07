@@ -1,0 +1,32 @@
+{
+  "timestamp": "06.11.2026 08:09 TSİ (Europe/Istanbul)",
+  "state": "BLOCKED_REQUIRED_CODING_AGENT_UNAVAILABLE",
+  "steps": {
+    "1": {
+      "implementation": "BLOCKED",
+      "vet": "NOT TESTED",
+      "race": "NOT TESTED",
+      "patch": null
+    },
+    "2": {
+      "implementation": "BLOCKED",
+      "vet": "NOT TESTED",
+      "race": "NOT TESTED",
+      "patch": null
+    },
+    "3": {
+      "implementation": "BLOCKED",
+      "vet": "NOT TESTED",
+      "race": "NOT TESTED",
+      "patch": null
+    },
+    "4": {
+      "implementation": "BLOCKED",
+      "vet": "NOT TESTED",
+      "race": "NOT TESTED",
+      "patch": null
+    }
+  },
+  "code_changes": [],
+  "next_action": "Parent must delegate using required CloudAgent tool available in another executor."
+}

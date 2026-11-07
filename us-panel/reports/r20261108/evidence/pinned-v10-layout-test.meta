@@ -1,0 +1,4 @@
+cwd=/workspace/us-panel/reports/r20261108/test-snapshots/pinned-v10-layout/work2/kiyas/term
+command=['go', 'test', './...', '-json', '-count=1', '-timeout=240s']
+exit=0
+Yalnız orijinal rapor fixture dosyaları aynı göreli düzene kopyalandı; ürün koduna müdahale yok.

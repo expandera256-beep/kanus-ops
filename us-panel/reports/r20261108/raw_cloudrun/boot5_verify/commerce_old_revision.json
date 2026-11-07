@@ -1,0 +1,218 @@
+{
+  "apiVersion": "serving.knative.dev/v1",
+  "kind": "Revision",
+  "metadata": {
+    "annotations": {
+      "autoscaling.knative.dev/maxScale": "2",
+      "autoscaling.knative.dev/minScale": "0",
+      "run.googleapis.com/client-name": "gcloud",
+      "run.googleapis.com/client-version": "591.0.0",
+      "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+      "run.googleapis.com/execution-environment": "gen2",
+      "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+      "run.googleapis.com/operation-id": "0651543e-baa6-47f7-a2e3-28196c993d76",
+      "run.googleapis.com/vpc-access-egress": "private-ranges-only",
+      "serving.knative.dev/creator": "demirtumen08@gmail.com"
+    },
+    "creationTimestamp": "2026-11-05T21:17:41.887130Z",
+    "generation": 1,
+    "labels": {
+      "client.knative.dev/nonce": "tgursvbywp",
+      "cloud.googleapis.com/location": "europe-west4",
+      "run.googleapis.com/satisfiesPzs": "true",
+      "run.googleapis.com/startupProbeType": "Custom",
+      "serving.knative.dev/configuration": "us-commerce",
+      "serving.knative.dev/configurationGeneration": "2",
+      "serving.knative.dev/service": "us-commerce",
+      "serving.knative.dev/serviceUid": "5223c720-c0b5-4423-b9cd-8c47badf2681"
+    },
+    "name": "us-commerce-00002-pr2",
+    "namespace": "247516932580",
+    "ownerReferences": [
+      {
+        "apiVersion": "serving.knative.dev/v1",
+        "blockOwnerDeletion": true,
+        "controller": true,
+        "kind": "Configuration",
+        "name": "us-commerce",
+        "uid": "1bf5030c-0121-4664-a433-ff620920c2f4"
+      }
+    ],
+    "resourceVersion": "AAZftrDHxDk",
+    "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/revisions/us-commerce-00002-pr2",
+    "uid": "d9c8e89e-ac62-47db-aa6e-1464ccdf7d95"
+  },
+  "spec": {
+    "containerConcurrency": 32,
+    "containers": [
+      {
+        "env": [
+          {
+            "name": "US_ENV",
+            "value": "production"
+          },
+          {
+            "name": "US_WORKERS_CONFIG",
+            "value": "/secrets/policy/workers.json"
+          },
+          {
+            "name": "US_MODEL_CA_FILE",
+            "value": "/secrets/ca/ca.pem"
+          },
+          {
+            "name": "SHOPIFY_SHOP",
+            "value": "19einb-qz.myshopify.com"
+          },
+          {
+            "name": "US_COMMERCE_DB",
+            "valueFrom": {
+              "secretKeyRef": {
+                "key": "latest",
+                "name": "us-postgres-dsn"
+              }
+            }
+          },
+          {
+            "name": "US_LICENSE_SECRET",
+            "valueFrom": {
+              "secretKeyRef": {
+                "key": "latest",
+                "name": "us-license-signing"
+              }
+            }
+          },
+          {
+            "name": "US_MODEL_API_TOKEN",
+            "valueFrom": {
+              "secretKeyRef": {
+                "key": "latest",
+                "name": "us-model-token"
+              }
+            }
+          },
+          {
+            "name": "US_CREDIT_PRODUCTS",
+            "valueFrom": {
+              "secretKeyRef": {
+                "key": "latest",
+                "name": "us-credit-products"
+              }
+            }
+          },
+          {
+            "name": "US_SHOPIFY_ENABLED",
+            "value": "false"
+          }
+        ],
+        "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+        "name": "gateway-1",
+        "ports": [
+          {
+            "containerPort": 8080,
+            "name": "http1"
+          }
+        ],
+        "resources": {
+          "limits": {
+            "cpu": "1",
+            "memory": "512Mi"
+          }
+        },
+        "startupProbe": {
+          "failureThreshold": 24,
+          "httpGet": {
+            "path": "/health",
+            "port": 8080
+          },
+          "periodSeconds": 5,
+          "timeoutSeconds": 5
+        },
+        "volumeMounts": [
+          {
+            "mountPath": "/secrets/policy",
+            "name": "policy"
+          },
+          {
+            "mountPath": "/secrets/ca",
+            "name": "ca"
+          }
+        ]
+      }
+    ],
+    "serviceAccountName": "us-gateway@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "timeoutSeconds": 600,
+    "volumes": [
+      {
+        "name": "policy",
+        "secret": {
+          "items": [
+            {
+              "key": "latest",
+              "path": "workers.json"
+            }
+          ],
+          "secretName": "us-worker-policy"
+        }
+      },
+      {
+        "name": "ca",
+        "secret": {
+          "items": [
+            {
+              "key": "latest",
+              "path": "ca.pem"
+            }
+          ],
+          "secretName": "us-model-ca"
+        }
+      }
+    ]
+  },
+  "status": {
+    "conditions": [
+      {
+        "lastTransitionTime": "2026-11-07T21:48:34.832441Z",
+        "message": "Deploying revision succeeded in 11.04s.",
+        "reason": "Retired",
+        "status": "True",
+        "type": "Ready"
+      },
+      {
+        "lastTransitionTime": "2026-11-07T21:48:34.832441Z",
+        "message": "Revision retired.",
+        "reason": "Retired",
+        "severity": "Info",
+        "status": "False",
+        "type": "Active"
+      },
+      {
+        "lastTransitionTime": "2026-11-05T21:17:52.867736Z",
+        "message": "Containers became healthy in 5.13s.",
+        "status": "True",
+        "type": "ContainerHealthy"
+      },
+      {
+        "lastTransitionTime": "2026-11-05T21:17:43.865050Z",
+        "message": "Container image import completed in 1.26s.",
+        "status": "True",
+        "type": "ContainerReady"
+      },
+      {
+        "lastTransitionTime": "2026-11-07T21:48:34.832441Z",
+        "message": "Revision retired.",
+        "reason": "Retired",
+        "status": "Unknown",
+        "type": "ResourcesAvailable"
+      }
+    ],
+    "containerStatuses": [
+      {
+        "imageDigest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+        "name": "gateway-1"
+      }
+    ],
+    "imageDigest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+    "logUrl": "https://console.cloud.google.com/logs/viewer?project=project-27082a40-6083-4952-9db&resource=cloud_run_revision/service_name/us-commerce/revision_name/us-commerce-00002-pr2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22us-commerce%22%0Aresource.labels.revision_name%3D%22us-commerce-00002-pr2%22",
+    "observedGeneration": 1
+  }
+}

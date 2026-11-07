@@ -1,0 +1,7 @@
+{
+  "same_04_changes_except_indentation_moved_import": false,
+  "error_calls": 34,
+  "unique_old_texts": 28,
+  "byte_equal_and_status_equal": true,
+  "same_04_changes_except_indentation_blank_moved_import": true
+}

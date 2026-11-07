@@ -1,0 +1,39 @@
+# Policy v5 —600sn mock
+
+{
+  "source": "MOCK_LOGICAL_CLOCK",
+  "idle_seconds": 600,
+  "policy": "v5",
+  "decision": "Demir 2026-11-08 00:20 TSİ",
+  "live_gpu_tested": false,
+  "checks": [
+    {
+      "name": "599_not_idle",
+      "pass": true
+    },
+    {
+      "name": "600_idle",
+      "pass": true
+    },
+    {
+      "name": "active_prevents_stop",
+      "pass": true
+    },
+    {
+      "name": "queued_prevents_stop",
+      "pass": true
+    },
+    {
+      "name": "release_resets_timer",
+      "pass": true
+    },
+    {
+      "name": "new_request_cancels_stop",
+      "pass": true
+    },
+    {
+      "name": "last_work_plus600_idle",
+      "pass": true
+    }
+  ]
+}

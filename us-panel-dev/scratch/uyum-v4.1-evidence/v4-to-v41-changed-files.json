@@ -1,0 +1,7 @@
+[
+  "cmd/us-license-hook/privacy_v41_test.go",
+  "cmd/us-license-hook/main.go",
+  "internal/privacy/handler_test.go",
+  "internal/privacy/v41_origin_test.go",
+  "internal/privacy/handler.go"
+]

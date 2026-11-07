@@ -1,0 +1,15 @@
+{"item": "authentication", "status": "PASS", "log": "reports/r20261108/qa-raw/authentication.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "api_tokens", "status": "PASS", "log": "reports/r20261108/qa-raw/api_tokens.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "hmac", "status": "PASS", "log": "reports/r20261108/qa-raw/hmac.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "rate_limit", "status": "PASS", "log": "reports/r20261108/qa-raw/rate_limit.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "privilege_escalation", "status": "PASS", "log": "reports/r20261108/qa-raw/privilege_escalation.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "sensitive_logs", "status": "FAIL", "log": "reports/r20261108/qa-raw/sensitive_logs.log", "exit_code": 1, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "command_injection", "status": "PASS", "log": "reports/r20261108/qa-raw/command_injection.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "path_traversal", "status": "PASS", "log": "reports/r20261108/qa-raw/path_traversal.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "file_isolation", "status": "FAIL", "log": "reports/r20261108/qa-raw/file_isolation.log", "exit_code": 1, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "ssrf", "status": "FAIL", "log": "reports/r20261108/qa-raw/ssrf.log", "exit_code": 1, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "sqli", "status": "PASS", "log": "reports/r20261108/qa-raw/sqli.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "backup", "status": "FAIL", "log": "reports/r20261108/qa-raw/backup.log", "exit_code": 1, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "restore", "status": "PASS", "log": "reports/r20261108/qa-raw/restore.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+{"item": "secret_manager", "status": "BLOCKED", "log": "reports/r20261108/qa-raw/secret_manager.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+SUMMARY {"PASS": 9, "FAIL": 4, "BLOCKED": 1, "NOT TESTED": 0}

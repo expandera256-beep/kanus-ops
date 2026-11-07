@@ -1,0 +1,30 @@
+[
+  {
+    "creationTime": "1793944054855",
+    "id": "project-27082a40-6083-4952-9db:billing_export.gcp_billing_export_resource_v1_017786_B62E9C_E21182",
+    "kind": "bigquery#table",
+    "tableReference": {
+      "datasetId": "billing_export",
+      "projectId": "project-27082a40-6083-4952-9db",
+      "tableId": "gcp_billing_export_resource_v1_017786_B62E9C_E21182"
+    },
+    "timePartitioning": {
+      "type": "DAY"
+    },
+    "type": "TABLE"
+  },
+  {
+    "creationTime": "1793944056909",
+    "id": "project-27082a40-6083-4952-9db:billing_export.gcp_billing_export_v1_017786_B62E9C_E21182",
+    "kind": "bigquery#table",
+    "tableReference": {
+      "datasetId": "billing_export",
+      "projectId": "project-27082a40-6083-4952-9db",
+      "tableId": "gcp_billing_export_v1_017786_B62E9C_E21182"
+    },
+    "timePartitioning": {
+      "type": "DAY"
+    },
+    "type": "TABLE"
+  }
+]

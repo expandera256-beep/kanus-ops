@@ -1,0 +1,12 @@
+[
+  {
+    "clientSpecifiedPayloadChecksum": true,
+    "createTime": "2026-11-05T20:37:01.539811Z",
+    "etag": "\"165f8d753291e3\"",
+    "name": "projects/247516932580/secrets/us-credit-products/versions/1",
+    "replicationStatus": {
+      "automatic": {}
+    },
+    "state": "ENABLED"
+  }
+]

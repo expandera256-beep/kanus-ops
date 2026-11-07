@@ -1,0 +1,10 @@
+--- 00002-spec-minus-image
++++ sre-ready-r1-spec-minus-image
+@@ -60,6 +60,7 @@
+           "value": "false"
+         }
+       ],
++      "name": "gateway-1",
+       "ports": [
+         {
+           "containerPort": 8080,

@@ -1,0 +1,3 @@
+2026-11-08T00:21:26.306703+03:00
+curl -sS --max-time 25 -D /workspace/us-panel/reports/r20261108/evidence/us-watchdog-healthz.headers -o /workspace/us-panel/reports/r20261108/evidence/us-watchdog-healthz.body -w %{http_code} https://us-watchdog-iqhblf63dq-ez.a.run.app/healthz
+exit=0

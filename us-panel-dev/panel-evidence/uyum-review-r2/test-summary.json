@@ -1,0 +1,77 @@
+{
+  "race": {
+    "tests": {
+      "pass": 393,
+      "skip": 7
+    },
+    "packages": {
+      "skip": 1,
+      "pass": 4
+    }
+  },
+  "new-count3": {
+    "tests": {
+      "pass": 21
+    },
+    "packages": {
+      "pass": 2
+    }
+  },
+  "poc-store": {
+    "tests": {
+      "pass": 15
+    },
+    "packages": {
+      "pass": 1
+    }
+  },
+  "poc-global-race": {
+    "tests": {
+      "fail": 1,
+      "pass": 2
+    },
+    "packages": {
+      "fail": 1
+    }
+  },
+  "poc-http-prefs": {
+    "tests": {
+      "pass": 24
+    },
+    "packages": {
+      "pass": 1
+    }
+  },
+  "poc-cross-account": {
+    "tests": {
+      "pass": 3
+    },
+    "packages": {
+      "pass": 1
+    }
+  },
+  "poc-hook": {
+    "tests": {
+      "pass": 3
+    },
+    "packages": {
+      "pass": 1
+    }
+  },
+  "poc-confirm-body": {
+    "tests": {
+      "pass": 3
+    },
+    "packages": {
+      "pass": 1
+    }
+  },
+  "poc-erase-rate": {
+    "tests": {
+      "pass": 3
+    },
+    "packages": {
+      "pass": 1
+    }
+  }
+}

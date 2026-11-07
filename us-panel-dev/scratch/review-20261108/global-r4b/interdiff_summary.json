@@ -1,0 +1,12 @@
+{
+  "files": [
+    "i18n/pref.go",
+    "i18n/pref_handles_other_test.go",
+    "i18n/pref_handles_unix_test.go",
+    "i18n/pref_handles_windows_test.go",
+    "i18n/pref_rootcache_test.go"
+  ],
+  "file_count": 5,
+  "hunks": 16,
+  "matches_provided_ignoring_header_timestamps": true
+}

@@ -1,0 +1,46 @@
+=== RUN   TestAccountOwnershipIdempotencyAndAtomicRace
+    accounts_test.go:84: 0 0
+--- FAIL: TestAccountOwnershipIdempotencyAndAtomicRace (0.24s)
+=== RUN   TestAccountSignedSessionExpiryResetAndVerification
+    accounts_test.go:109: signature
+--- FAIL: TestAccountSignedSessionExpiryResetAndVerification (0.23s)
+=== RUN   TestAccountIPRateLimitAndDefaultBcrypt
+--- PASS: TestAccountIPRateLimitAndDefaultBcrypt (2.84s)
+=== RUN   TestAccountLegacyJSONOpensWithoutMigrationAndSessionRestart
+    accounts_test.go:213: session/ownership not persisted
+--- FAIL: TestAccountLegacyJSONOpensWithoutMigrationAndSessionRestart (0.42s)
+=== RUN   TestAccountLocalSSEE2EAndSharedHourlyLedger
+    accounts_test.go:271: HTTP 401
+--- FAIL: TestAccountLocalSSEE2EAndSharedHourlyLedger (0.22s)
+=== RUN   TestSMTPAllowlistNeverInvokesSenderForSkippedRecipient
+--- PASS: TestSMTPAllowlistNeverInvokesSenderForSkippedRecipient (0.23s)
+=== RUN   TestAccountNoCreditAndInvalidSessionNeverCallsModel
+    accounts_test.go:382: 401
+--- FAIL: TestAccountNoCreditAndInvalidSessionNeverCallsModel (0.21s)
+FAIL
+FAIL	kiyas/licensesrv	4.397s
+=== RUN   TestAccountClientLoginAndGatewayBinding
+--- PASS: TestAccountClientLoginAndGatewayBinding (0.00s)
+=== RUN   TestAccountClientRejectsRemoteCleartext
+--- PASS: TestAccountClientRejectsRemoteCleartext (0.00s)
+=== RUN   TestAccountCreditsUsesBearerAndValidatesBalance
+--- PASS: TestAccountCreditsUsesBearerAndValidatesBalance (0.00s)
+=== RUN   TestAccountRequestsUsesBearerAndRejectsInvalidMetadata
+=== RUN   TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/reserved
+=== RUN   TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/completed
+=== RUN   TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/refunded
+=== RUN   TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/unknown
+--- PASS: TestAccountRequestsUsesBearerAndRejectsInvalidMetadata (0.00s)
+    --- PASS: TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/reserved (0.00s)
+    --- PASS: TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/completed (0.00s)
+    --- PASS: TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/refunded (0.00s)
+    --- PASS: TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/unknown (0.00s)
+=== RUN   TestAccountsReleaseKeepsGoProxyAndAccountForm
+--- PASS: TestAccountsReleaseKeepsGoProxyAndAccountForm (0.00s)
+=== RUN   TestHeadlessCheckAccountFileAndNoCredentialLeak
+--- PASS: TestHeadlessCheckAccountFileAndNoCredentialLeak (0.00s)
+=== RUN   TestAccountGatewayDoesNotDoubleBillVPSLedger
+--- PASS: TestAccountGatewayDoesNotDoubleBillVPSLedger (0.00s)
+PASS
+ok  	kiyas	0.011s
+FAIL

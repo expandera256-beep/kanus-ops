@@ -1,0 +1,14 @@
+# CONFLICT_CHECK — release_us_fx2 (YÜKLENMEDİ)
+
+Ön koşul: `release_us_fx` canlıda (08.11 ~00:59 TSİ curl ile görüldü: index → i18nfx-5a375f29). Yüklemeden hemen önce canlı `public_html/index.html` sha256 = `__BASEIDX__` (release_us_fx index.html) olmalı. Değilse DUR.
+- Hâlâ orijinal canlı index (`__LIVEIDX__`) duruyorsa: önce release_us'i yükleyin ya da `public_html/assets/__PREV__` dosyasını da sunucuya koyun (bu paket o asset'i silmez ama referans vermez; geri alma için gerekli).
+
+| Dosya | Sunucuda | Etki |
+|---|---|---|
+| `public_html/assets/__ASSET__` | YOK | Yeni dosya |
+| `public_html/index.html` | VAR — ÜZERİNE YAZAR | Yalnız script src değişir |
+| `public_html/fx.json` | VAR — üzerine yazar (cron kuruluysa yüklemeyin; cron'un dosyası daha günceldir) | TCMB __FXDATE__ anlık görüntüsü |
+
+- `cron/upload_public_html/_fx/` (fx_cron.php + .htaccess) ayrı adımda public_html/_fx/'e yüklenir (YOK; yeni klasör). `cron/` altındaki diğer dosyalar yüklenmez.
+- Ödeme/ledger/api, .htaccess, eski asset'lere dokunulmaz.
+- Geri alma: `rollback/index.html` (release_us_fx durumu); `rollback/index.release_us.html`; tam başa dönüş `rollback/index.live_original.html`. Önceki asset `__PREV__` sunucuda kalır.

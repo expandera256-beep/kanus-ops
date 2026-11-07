@@ -1,0 +1,14 @@
+{
+  "command": [
+    "gcloud",
+    "run",
+    "services",
+    "describe",
+    "us-commerce",
+    "--project=project-27082a40-6083-4952-9db",
+    "--region=europe-west4",
+    "--format=json"
+  ],
+  "returncode": 0,
+  "time_istanbul": "2026-11-08T00:44:58.955845+03:00"
+}

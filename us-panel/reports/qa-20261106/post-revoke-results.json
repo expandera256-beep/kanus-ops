@@ -1,0 +1,281 @@
+{
+  "results": [
+    {
+      "name": "revoke_evidence_file_verified",
+      "status": "PASS",
+      "detail": {
+        "exists": true,
+        "sha256": "e5644c731e3b1f479d8109d879c0910403fe08feb0ac6a9560fbbca9f89eeea0",
+        "reported_records": [
+          {
+            "label": "B",
+            "order": 9000000000302,
+            "reported_webhook_http": 200,
+            "reported_status_http": 200,
+            "reported_valid": false,
+            "reported_revoked": true,
+            "structure_consistent": true
+          },
+          {
+            "label": "A",
+            "order": 9000000000301,
+            "reported_webhook_http": 200,
+            "reported_status_http": 200,
+            "reported_valid": false,
+            "reported_revoked": true,
+            "structure_consistent": true
+          }
+        ],
+        "note": "File evidence only; independent live endpoint checks below are authoritative"
+      }
+    },
+    {
+      "name": "post_revoke_A_status",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "fields": {
+          "valid": false,
+          "revoked": true,
+          "remaining": 0,
+          "credits": 0,
+          "available": 0,
+          "reserved": 0,
+          "committed": 1,
+          "released": 9
+        },
+        "expected": "200 valid=false revoked=true remaining/credits/available/reserved0"
+      }
+    },
+    {
+      "name": "post_revoke_A_chat",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401,
+          402,
+          403
+        ],
+        "scope": "auth denial; empty chat payload additionally prevents model dispatch if auth gate regresses"
+      }
+    },
+    {
+      "name": "post_revoke_A_chat_completions",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401,
+          402,
+          403
+        ],
+        "scope": "auth denial; empty chat payload additionally prevents model dispatch if auth gate regresses"
+      }
+    },
+    {
+      "name": "post_revoke_A_models",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401,
+          402,
+          403
+        ],
+        "scope": "auth denial; empty chat payload additionally prevents model dispatch if auth gate regresses"
+      }
+    },
+    {
+      "name": "post_revoke_A_reserve",
+      "status": "PASS",
+      "detail": {
+        "http": 403,
+        "expected": [
+          401,
+          402,
+          403
+        ],
+        "scope": "auth denial; empty chat payload additionally prevents model dispatch if auth gate regresses"
+      }
+    },
+    {
+      "name": "post_revoke_A_settle_release_unknown_resource",
+      "status": "PASS",
+      "detail": {
+        "http": [
+          409,
+          409
+        ],
+        "expected": [
+          401,
+          402,
+          403,
+          409
+        ],
+        "scope": "nonexistent ID denied;409 resource denial permitted; not an existing settlement replay auth proof"
+      }
+    },
+    {
+      "name": "post_revoke_A_no_credit_movement",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "before": {
+          "valid": false,
+          "revoked": true,
+          "remaining": 0,
+          "credits": 0,
+          "available": 0,
+          "reserved": 0,
+          "committed": 1,
+          "released": 9
+        },
+        "after": {
+          "valid": false,
+          "revoked": true,
+          "remaining": 0,
+          "credits": 0,
+          "available": 0,
+          "reserved": 0,
+          "committed": 1,
+          "released": 9
+        },
+        "additional_test_credit_consumption": 0,
+        "upstream_calls": "No direct upstream telemetry; chat401 is the proxy authorization rejection, not a model response"
+      }
+    },
+    {
+      "name": "post_revoke_A_existing_settlement_replay",
+      "status": "NOT TESTED",
+      "detail": "No pending reservations remain and old IDs were not retained. No new hold can be created after revoke; valid existing-ID replay not attempted."
+    },
+    {
+      "name": "post_revoke_B_status",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "fields": {
+          "valid": false,
+          "revoked": true,
+          "remaining": 0,
+          "credits": 0,
+          "available": 0,
+          "reserved": 0,
+          "committed": 0,
+          "released": 1
+        },
+        "expected": "200 valid=false revoked=true remaining/credits/available/reserved0"
+      }
+    },
+    {
+      "name": "post_revoke_B_chat",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401,
+          402,
+          403
+        ],
+        "scope": "auth denial; empty chat payload additionally prevents model dispatch if auth gate regresses"
+      }
+    },
+    {
+      "name": "post_revoke_B_chat_completions",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401,
+          402,
+          403
+        ],
+        "scope": "auth denial; empty chat payload additionally prevents model dispatch if auth gate regresses"
+      }
+    },
+    {
+      "name": "post_revoke_B_models",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401,
+          402,
+          403
+        ],
+        "scope": "auth denial; empty chat payload additionally prevents model dispatch if auth gate regresses"
+      }
+    },
+    {
+      "name": "post_revoke_B_reserve",
+      "status": "PASS",
+      "detail": {
+        "http": 403,
+        "expected": [
+          401,
+          402,
+          403
+        ],
+        "scope": "auth denial; empty chat payload additionally prevents model dispatch if auth gate regresses"
+      }
+    },
+    {
+      "name": "post_revoke_B_settle_release_unknown_resource",
+      "status": "PASS",
+      "detail": {
+        "http": [
+          409,
+          409
+        ],
+        "expected": [
+          401,
+          402,
+          403,
+          409
+        ],
+        "scope": "nonexistent ID denied;409 resource denial permitted; not an existing settlement replay auth proof"
+      }
+    },
+    {
+      "name": "post_revoke_B_no_credit_movement",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "before": {
+          "valid": false,
+          "revoked": true,
+          "remaining": 0,
+          "credits": 0,
+          "available": 0,
+          "reserved": 0,
+          "committed": 0,
+          "released": 1
+        },
+        "after": {
+          "valid": false,
+          "revoked": true,
+          "remaining": 0,
+          "credits": 0,
+          "available": 0,
+          "reserved": 0,
+          "committed": 0,
+          "released": 1
+        },
+        "additional_test_credit_consumption": 0,
+        "upstream_calls": "No direct upstream telemetry; chat401 is the proxy authorization rejection, not a model response"
+      }
+    },
+    {
+      "name": "post_revoke_B_existing_settlement_replay",
+      "status": "NOT TESTED",
+      "detail": "No pending reservations remain and old IDs were not retained. No new hold can be created after revoke; valid existing-ID replay not attempted."
+    }
+  ],
+  "counts": {
+    "PASS": 15,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT TESTED": 2
+  }
+}

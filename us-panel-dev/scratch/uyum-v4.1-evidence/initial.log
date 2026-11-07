@@ -1,0 +1,12 @@
+--- FAIL: TestOriginSchemeHTTPSOnly (0.77s)
+    handler_test.go:243: allowlisted localhost http want 200 got 403
+2026/11/08 01:20:31 privacy origin allowlist: invalid entry ignored (index 0)
+2026/11/08 01:20:31 privacy origin allowlist: invalid entry ignored (index 0)
+2026/11/08 01:20:31 privacy origin allowlist: invalid entry ignored (index 0)
+2026/11/08 01:20:31 privacy origin allowlist: invalid entry ignored (index 0)
+2026/11/08 01:20:31 privacy origin allowlist: invalid entry ignored (index 0)
+2026/11/08 01:20:31 privacy origin allowlist: invalid entry ignored (index 0)
+2026/11/08 01:20:31 privacy origin allowlist: invalid entry ignored (index 0)
+FAIL
+FAIL	kiyas/internal/privacy	2.168s
+FAIL

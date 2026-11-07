@@ -1,0 +1,220 @@
+package licensesrv
+
+import (
+	"crypto/rand"
+	"crypto/sha256"
+	"encoding/hex"
+	"errors"
+	"strings"
+	"time"
+
+	"golang.org/x/crypto/bcrypt"
+)
+
+// PrivacyExport is a portable snapshot of personal data tied to an account.
+// Ledger rows (orders/settlements/reservations) stay in the store; this DTO
+// carries only fields needed for access/portability responses.
+type PrivacyExport struct {
+	AccountID   string           `json:"accountId"`
+	Email       string           `json:"email"`
+	CreatedAt   time.Time        `json:"createdAt"`
+	Verified    bool             `json:"emailVerified"`
+	ExportedAt  time.Time        `json:"exportedAt"`
+	Licenses    []PrivacyLicense `json:"licenses"`
+	Requests    []AccountRequest `json:"requests"`
+	Preferences map[string]any   `json:"preferences,omitempty"`
+}
+
+type PrivacyLicense struct {
+	Key       string    `json:"key"`
+	OrderID   int64     `json:"orderId"`
+	ProductID int64     `json:"productId"`
+	Email     string    `json:"email"`
+	IssuedAt  time.Time `json:"issuedAt"`
+	ExpiresAt time.Time `json:"expiresAt"`
+	Revoked   bool      `json:"revoked"`
+	Credits   int       `json:"credits"`
+	Reserved  int       `json:"reserved"`
+	PlanKind  string    `json:"planKind"`
+}
+
+type RetentionResult struct {
+	WebhooksRemoved int `json:"webhooksRemoved"`
+	OutboxRemoved   int `json:"outboxRemoved"`
+	TokensCleared   int `json:"tokensCleared"`
+}
+
+var (
+	ErrPrivacyAuth     = errors.New("privacy: unauthorized")
+	ErrPrivacyNotFound = errors.New("privacy: account not found")
+)
+
+// ExportPrivacy builds an access/portability payload for the session account.
+func (s *Store) ExportPrivacy(token string, now time.Time, prefs map[string]any) (PrivacyExport, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	a := s.accountForTokenLocked(token, now)
+	if a == nil {
+		return PrivacyExport{}, ErrPrivacyAuth
+	}
+	out := PrivacyExport{
+		AccountID:   a.ID,
+		Email:       a.Email,
+		CreatedAt:   a.CreatedAt,
+		Verified:    a.Verified,
+		ExportedAt:  now.UTC(),
+		Licenses:    []PrivacyLicense{},
+		Requests:    s.accountHistoryLocked(a.ID),
+		Preferences: prefs,
+	}
+	for key, owner := range s.st.LicenseOwners {
+		if owner != a.ID {
+			continue
+		}
+		l := s.st.Licenses[key]
+		if l == nil {
+			continue
+		}
+		out.Licenses = append(out.Licenses, PrivacyLicense{
+			Key: l.Key, OrderID: l.OrderID, ProductID: l.ProductID, Email: l.Email,
+			IssuedAt: l.IssuedAt, ExpiresAt: l.ExpiresAt, Revoked: l.Revoked,
+			Credits: l.Credits, Reserved: l.Reserved, PlanKind: l.Plan.Kind,
+		})
+	}
+	return out, nil
+}
+
+// AnonymizeAccount fulfills an erasure request without deleting ledger rows.
+// License/credit/settlement/reservation/order maps stay; personal fields are
+// replaced with a stable pseudonym derived from the account id.
+func (s *Store) AnonymizeAccount(token string, now time.Time) (string, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	a := s.accountForTokenLocked(token, now)
+	if a == nil {
+		return "", ErrPrivacyAuth
+	}
+	oldEmail := a.Email
+	pseudo := pseudonymEmail(a.ID)
+	junk, err := bcrypt.GenerateFromPassword([]byte(randomHex(32)), s.costOrDefault())
+	if err != nil {
+		return "", err
+	}
+	return pseudo, s.transactionLocked(func() error {
+		delete(s.st.Accounts, oldEmail)
+		a.Email = pseudo
+		a.PasswordHash = string(junk)
+		a.Version++
+		a.Verified = false
+		a.VerifyHash = ""
+		a.VerifyExpiry = time.Time{}
+		a.ResetHash = ""
+		a.ResetExpiry = time.Time{}
+		s.st.Accounts[pseudo] = a
+		for _, l := range s.st.Licenses {
+			if l == nil {
+				continue
+			}
+			if l.Email == oldEmail || s.st.LicenseOwners[l.Key] == a.ID {
+				l.Email = pseudo
+			}
+		}
+		for _, m := range s.st.Outbox {
+			if m == nil {
+				continue
+			}
+			if strings.EqualFold(m.To, oldEmail) {
+				m.To = pseudo
+				m.Body = redactLicenseKeys(m.Body, s.st.Licenses)
+				m.Subject = "KAN.US — [anonymized]"
+			}
+		}
+		return nil
+	})
+}
+
+// RetentionSweep removes aged non-ledger personal residue.
+// keep defines how long webhook idempotency ids and finished outbox rows remain.
+func (s *Store) RetentionSweep(now time.Time, keep time.Duration) (RetentionResult, error) {
+	if keep <= 0 {
+		keep = 90 * 24 * time.Hour
+	}
+	cutoff := now.Add(-keep)
+	var res RetentionResult
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	err := s.transactionLocked(func() error {
+		for id, ts := range s.st.Webhooks {
+			if !ts.IsZero() && ts.Before(cutoff) {
+				delete(s.st.Webhooks, id)
+				res.WebhooksRemoved++
+			}
+		}
+		kept := make([]*Mail, 0, len(s.st.Outbox))
+		for _, m := range s.st.Outbox {
+			if m == nil {
+				continue
+			}
+			done := m.Dead || !m.SentAt.IsZero() || m.Skipped != ""
+			stamp := m.SentAt
+			if stamp.IsZero() {
+				stamp = m.NextTry
+			}
+			if done && !stamp.IsZero() && stamp.Before(cutoff) {
+				res.OutboxRemoved++
+				continue
+			}
+			kept = append(kept, m)
+		}
+		s.st.Outbox = kept
+		for _, a := range s.st.Accounts {
+			if a == nil {
+				continue
+			}
+			changed := false
+			if a.VerifyHash != "" && !a.VerifyExpiry.IsZero() && a.VerifyExpiry.Before(now) {
+				a.VerifyHash = ""
+				a.VerifyExpiry = time.Time{}
+				changed = true
+			}
+			if a.ResetHash != "" && !a.ResetExpiry.IsZero() && a.ResetExpiry.Before(now) {
+				a.ResetHash = ""
+				a.ResetExpiry = time.Time{}
+				changed = true
+			}
+			if changed {
+				res.TokensCleared++
+			}
+		}
+		return nil
+	})
+	return res, err
+}
+
+func (s *Store) costOrDefault() int {
+	// AccountHandler defaults cost to 12; mirror that without depending on handler.
+	return 12
+}
+
+func pseudonymEmail(accountID string) string {
+	sum := sha256.Sum256([]byte("kanus-privacy-v1:" + accountID))
+	return "deleted+" + hex.EncodeToString(sum[:8]) + "@anon.invalid"
+}
+
+func randomHex(n int) string {
+	b := make([]byte, n)
+	if _, err := rand.Read(b); err != nil {
+		return hex.EncodeToString([]byte("fallback-privacy-secret-key!!!!"))
+	}
+	return hex.EncodeToString(b)
+}
+
+func redactLicenseKeys(body string, licenses map[string]*License) string {
+	out := body
+	for key := range licenses {
+		if key != "" && strings.Contains(out, key) {
+			out = strings.ReplaceAll(out, key, "[REDACTED]")
+		}
+	}
+	return out
+}

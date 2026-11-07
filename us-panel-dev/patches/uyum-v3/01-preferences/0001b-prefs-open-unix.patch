@@ -1,0 +1,15 @@
+--- /dev/null
++++ b/internal/privacy/prefs_open_unix.go
+@@ -0,0 +1,12 @@
++//go:build unix
++
++package privacy
++
++import (
++	"os"
++	"syscall"
++)
++
++func openPrefsNoFollow(path string) (*os.File, error) {
++	return os.OpenFile(path, os.O_RDONLY|syscall.O_NOFOLLOW, 0)
++}

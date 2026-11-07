@@ -1,0 +1,49 @@
+[
+  {
+    "insertId": "17m307eftyjt64",
+    "jsonPayload": {
+      "@type": "type.googleapis.com/google.cloud.scheduler.logging.AttemptStarted",
+      "jobName": "projects/project-27082a40-6083-4952-9db/locations/europe-west4/jobs/us-idle-watchdog",
+      "scheduledTime": "2026-11-07T21:10:03.260344Z",
+      "targetType": "HTTP",
+      "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudscheduler.googleapis.com%2Fexecutions",
+    "receiveTimestamp": "2026-11-07T21:10:05.730977269Z",
+    "resource": {
+      "labels": {
+        "job_id": "us-idle-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db"
+      },
+      "type": "cloud_scheduler_job"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:10:05.730977269Z"
+  },
+  {
+    "httpRequest": {
+      "status": 200
+    },
+    "insertId": "s2kgjheil29r",
+    "jsonPayload": {
+      "@type": "type.googleapis.com/google.cloud.scheduler.logging.AttemptFinished",
+      "debugInfo": "URL_CRAWLED. Original HTTP response code number = 200",
+      "jobName": "projects/project-27082a40-6083-4952-9db/locations/europe-west4/jobs/us-idle-watchdog",
+      "targetType": "HTTP",
+      "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudscheduler.googleapis.com%2Fexecutions",
+    "receiveTimestamp": "2026-11-07T21:10:05.703446448Z",
+    "resource": {
+      "labels": {
+        "job_id": "us-idle-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db"
+      },
+      "type": "cloud_scheduler_job"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:10:05.703446448Z"
+  }
+]

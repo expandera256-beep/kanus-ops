@@ -1,0 +1,15 @@
+package main
+import("fmt";"kiyas/licensesrv";"net/http";"net/http/httptest";"os";"path/filepath";"strings";"sync/atomic";"testing";"time")
+func TestPanelMuxUnauthenticatedNeverWakes(t *testing.T){
+ var calls atomic.Int32;wake:=httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter,r *http.Request){calls.Add(1);fmt.Fprint(w,`{"model_ready":false}`)}));defer wake.Close()
+ t.Setenv("US_GPU_WAKE_DISABLE","0");t.Setenv("US_GPU_WAKE_URL",wake.URL+"/a100/start");t.Setenv("US_GPU_STATUS_URL",wake.URL+"/a100/status");t.Setenv("US_GPU_WAKE_PIN_FILE","");tok:=filepath.Join(t.TempDir(),"token");os.WriteFile(tok,[]byte("test-token"),0600);t.Setenv("US_GPU_WAKE_TOKEN_FILE",tok);t.Setenv("US_SESSION_SECRET",strings.Repeat("s",40));t.Setenv("US_MODEL_NAME","test-model")
+ var unavailable atomic.Bool;upstream:=httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter,r *http.Request){if unavailable.Load(){w.WriteHeader(503);return};fmt.Fprint(w,`{"data":[{"id":"test-model"}]}`)}));defer upstream.Close();t.Setenv("US_MODEL_UPSTREAM",upstream.URL)
+ ledger:=filepath.Join(t.TempDir(),"licenses.json");os.WriteFile(ledger,[]byte(`{"licenses":{"test-license":{"key":"test-license","plan":{"kind":"sub"},"credits":5,"expiresAt":"2030-01-01T00:00:00Z"}}}`),0600);st,e:=licensesrv.OpenStore(ledger);if e!=nil{t.Fatal(e)};defer st.Close();mux:=newMux(licensesrv.Config{},st)
+ for _,path:=range []string{"/v1/chat","/v1/chat/completions","/v1/models","/healthz","/health","/ready","/readiness","/account/workers","/v1/credits/status","/v1/credits/reserve","/v1/credits/settle"}{for _,method:=range []string{"GET","POST","OPTIONS"}{for _,auth:=range []string{"","Bearer unknown-key"}{r:=httptest.NewRequest(method,path,strings.NewReader(`{"model":"test-model","messages":[{"role":"user","content":"hi"}],"max_tokens":1}`));if auth!=""{r.Header.Set("Authorization",auth)};w:=httptest.NewRecorder();mux.ServeHTTP(w,r);if calls.Load()!=0{t.Fatalf("%s %s auth=%s called GPU control",method,path,auth)}}}}
+ // Authenticated metadata and OPTIONS also must never call the wake controller.
+ for _,c:=range []struct{method,path string}{{"GET","/v1/models"},{"OPTIONS","/v1/chat"},{"OPTIONS","/v1/chat/completions"},{"GET","/healthz"}}{r:=httptest.NewRequest(c.method,c.path,nil);r.Header.Set("Authorization","Bearer test-license");w:=httptest.NewRecorder();mux.ServeHTTP(w,r)}
+ if calls.Load()!=0{t.Fatal("metadata/options/health called wake")};t.Log("66 unauthenticated method/route/auth combinations + 4 authenticated read/options: control calls=0")
+ t.Setenv("US_GPU_WAKE_DISABLE","1");p,e:=configuredProxy(st);if e!=nil||p.Waker!=nil{t.Fatal("disable ignored",e)}
+ p.Client=&http.Client{Timeout:time.Second};unavailable.Store(true)
+ r:=httptest.NewRequest("POST","/v1/chat",strings.NewReader(`{"model":"test-model","messages":[{"role":"user","content":"hi"}],"max_tokens":1}`));r.Header.Set("Authorization","Bearer test-license");w:=httptest.NewRecorder();p.ServeHTTP(w,r);if calls.Load()!=0||w.Code!=503{t.Fatalf("disabled wake calls=%d code=%d",calls.Load(),w.Code)}
+}

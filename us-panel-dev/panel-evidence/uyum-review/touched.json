@@ -1,0 +1,10 @@
+{
+  "uyum-wiring": [
+    "cmd/us-license-hook/main.go"
+  ],
+  "uyum-export": [
+    "licensesrv/privacy_ops.go",
+    "licensesrv/privacy_ops_test.go",
+    "internal/privacy/handler.go"
+  ]
+}

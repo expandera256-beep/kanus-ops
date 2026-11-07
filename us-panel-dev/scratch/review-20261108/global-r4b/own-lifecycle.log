@@ -1,0 +1,9 @@
+=== RUN   TestReviewRootFDGrowth
+    review_fd_test.go:3: fds before=6 after=7 roots=1
+--- PASS: TestReviewRootFDGrowth (0.04s)
+=== RUN   TestReviewReferenceLifecycle
+--- PASS: TestReviewReferenceLifecycle (0.00s)
+=== RUN   TestReviewConcurrentRootClose
+--- PASS: TestReviewConcurrentRootClose (0.18s)
+PASS
+ok  	kiyas/i18n	1.232s

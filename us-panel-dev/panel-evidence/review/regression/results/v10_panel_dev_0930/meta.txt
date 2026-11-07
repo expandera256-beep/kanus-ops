@@ -1,0 +1,4 @@
+kaynak=/tmp/r9rev/a/b/m10 kopya=/tmp/s2reg.gdkp3T/term tarih=2026-11-06 09:30:17 +03 go=go version go1.27.3 linux/amd64
+const buildVersion = "2026.11.06.10"
+	return json.NewDecoder(io.LimitReader(resp.Body, 1024)).Decode(&value) == nil && value.Version == buildVersion
+go_test_exit=0

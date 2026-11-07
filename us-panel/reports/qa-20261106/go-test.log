@@ -1,0 +1,815 @@
+=== RUN   TestAccountClientLoginAndGatewayBinding
+--- PASS: TestAccountClientLoginAndGatewayBinding (0.00s)
+=== RUN   TestAccountClientRejectsRemoteCleartext
+--- PASS: TestAccountClientRejectsRemoteCleartext (0.00s)
+=== RUN   TestAccountCreditsUsesBearerAndValidatesBalance
+--- PASS: TestAccountCreditsUsesBearerAndValidatesBalance (0.00s)
+=== RUN   TestAccountRequestsUsesBearerAndRejectsInvalidMetadata
+=== RUN   TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/reserved
+=== RUN   TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/completed
+=== RUN   TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/refunded
+=== RUN   TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/unknown
+--- PASS: TestAccountRequestsUsesBearerAndRejectsInvalidMetadata (0.00s)
+    --- PASS: TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/reserved (0.00s)
+    --- PASS: TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/completed (0.00s)
+    --- PASS: TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/refunded (0.00s)
+    --- PASS: TestAccountRequestsUsesBearerAndRejectsInvalidMetadata/unknown (0.00s)
+=== RUN   TestAccountsReleaseKeepsGoProxyAndAccountForm
+--- PASS: TestAccountsReleaseKeepsGoProxyAndAccountForm (0.00s)
+=== RUN   TestHeadlessCheckAccountFileAndNoCredentialLeak
+--- PASS: TestHeadlessCheckAccountFileAndNoCredentialLeak (0.00s)
+=== RUN   TestSiteWithoutAKeyDoesNotPretend
+--- PASS: TestSiteWithoutAKeyDoesNotPretend (0.00s)
+=== RUN   TestEmptyFileLineDoesNotWipe
+--- PASS: TestEmptyFileLineDoesNotWipe (0.00s)
+=== RUN   TestSiteReplyWithoutAPageSaysSo
+--- PASS: TestSiteReplyWithoutAPageSaysSo (0.00s)
+=== RUN   TestModelReadsALocalFile
+--- PASS: TestModelReadsALocalFile (0.01s)
+=== RUN   TestContinueDoesNotStopOnTheEnglishPlan
+--- PASS: TestContinueDoesNotStopOnTheEnglishPlan (0.00s)
+=== RUN   TestLaterRoundSendsOnlyWhatIsNew
+--- PASS: TestLaterRoundSendsOnlyWhatIsNew (0.01s)
+=== RUN   TestAskedFileIsTheOneKept
+--- PASS: TestAskedFileIsTheOneKept (0.07s)
+=== RUN   TestModelKeepsGoingUntilTheJobIsDone
+--- PASS: TestModelKeepsGoingUntilTheJobIsDone (0.00s)
+=== RUN   TestEarlyFinishKeepsTheMissingFile
+--- PASS: TestEarlyFinishKeepsTheMissingFile (0.04s)
+=== RUN   TestEditedRepairRotatesTheNextAsk
+--- PASS: TestEditedRepairRotatesTheNextAsk (0.09s)
+=== RUN   TestStuckFailureRotatesTheFile
+--- PASS: TestStuckFailureRotatesTheFile (0.00s)
+=== RUN   TestDroppedFunctionIsRestored
+--- PASS: TestDroppedFunctionIsRestored (0.07s)
+=== RUN   TestOffTargetWriteIsDropped
+--- PASS: TestOffTargetWriteIsDropped (0.13s)
+=== RUN   TestSameAnswerContinuesWhileTheTestIsRed
+--- PASS: TestSameAnswerContinuesWhileTheTestIsRed (0.12s)
+=== RUN   TestStrayFolderIsDropped
+--- PASS: TestStrayFolderIsDropped (0.06s)
+=== RUN   TestStoreDiscoversTheTest
+--- PASS: TestStoreDiscoversTheTest (0.04s)
+=== RUN   TestServerGapSeesAMissingOrder
+--- PASS: TestServerGapSeesAMissingOrder (0.10s)
+=== RUN   TestRouteWordIsNotAFile
+--- PASS: TestRouteWordIsNotAFile (0.00s)
+=== RUN   TestRedTestIsSentBack
+--- PASS: TestRedTestIsSentBack (0.03s)
+=== RUN   TestStoreJobGoesToTheModel
+--- PASS: TestStoreJobGoesToTheModel (0.04s)
+=== RUN   TestBrokenPythonIsRejectedBeforeWrite
+--- PASS: TestBrokenPythonIsRejectedBeforeWrite (0.02s)
+=== RUN   TestFencedHTMLBecomesThePage
+--- PASS: TestFencedHTMLBecomesThePage (0.00s)
+=== RUN   TestModelReplyWritesTheFile
+--- PASS: TestModelReplyWritesTheFile (0.01s)
+=== RUN   TestQuestionAndProjectBothReachTheModel
+--- PASS: TestQuestionAndProjectBothReachTheModel (0.05s)
+=== RUN   TestAbsoluteReplyStaysInsideTheFolder
+--- PASS: TestAbsoluteReplyStaysInsideTheFolder (0.00s)
+=== RUN   TestCancellationClosesActualHTTPModelRequest
+--- PASS: TestCancellationClosesActualHTTPModelRequest (0.00s)
+=== RUN   TestPanelCancelWorksForShortTaskAndBlocksRootMutation
+--- PASS: TestPanelCancelWorksForShortTaskAndBlocksRootMutation (0.00s)
+=== RUN   TestUndoModelChangeRestoresOriginalAndRefusesLaterEdits
+--- PASS: TestUndoModelChangeRestoresOriginalAndRefusesLaterEdits (0.00s)
+=== RUN   TestUndoNewFileAndProtectBackupDirectory
+--- PASS: TestUndoNewFileAndProtectBackupDirectory (0.00s)
+=== RUN   TestModelCannotFollowSymlinkOutsideWorkspace
+--- PASS: TestModelCannotFollowSymlinkOutsideWorkspace (0.00s)
+=== RUN   TestChangedFileSinceModelReadIsNotOverwritten
+--- PASS: TestChangedFileSinceModelReadIsNotOverwritten (0.00s)
+=== RUN   TestChatMemoryPrefersRecentMessages
+--- PASS: TestChatMemoryPrefersRecentMessages (0.00s)
+=== RUN   TestStreamErrorAfterPartialTextIsNotSuccess
+--- PASS: TestStreamErrorAfterPartialTextIsNotSuccess (0.00s)
+=== RUN   TestEachChatKeepsItsOwnMemory
+--- PASS: TestEachChatKeepsItsOwnMemory (0.01s)
+=== RUN   TestInstallVerifiesAndCachesArchive
+--- PASS: TestInstallVerifiesAndCachesArchive (0.00s)
+=== RUN   TestInstallRejectsTamperingAndTraversal
+--- PASS: TestInstallRejectsTamperingAndTraversal (0.00s)
+=== RUN   TestChooseInstallLocationUsesAvailableAlternative
+--- PASS: TestChooseInstallLocationUsesAvailableAlternative (0.00s)
+=== RUN   TestChooseInstallLocationRejectsFullOrUnreadableVolumes
+--- PASS: TestChooseInstallLocationRejectsFullOrUnreadableVolumes (0.00s)
+=== RUN   TestCommercialReleaseCannotBypassAccountWithLocalOrLegacyKeys
+--- PASS: TestCommercialReleaseCannotBypassAccountWithLocalOrLegacyKeys (0.00s)
+=== RUN   TestNewProjectCreationUsesFileActionProtocol
+--- PASS: TestNewProjectCreationUsesFileActionProtocol (0.00s)
+=== RUN   TestCommercialGatewayUsesReleaseURLWithoutLegacyFallback
+--- PASS: TestCommercialGatewayUsesReleaseURLWithoutLegacyFallback (0.00s)
+=== RUN   TestContextBudgetKeepsPartialFileUnmodified
+--- PASS: TestContextBudgetKeepsPartialFileUnmodified (0.01s)
+=== RUN   TestClipUTF8KeepsValidCharacters
+--- PASS: TestClipUTF8KeepsValidCharacters (0.00s)
+=== RUN   TestOversizedWireFailsBeforeSending
+--- PASS: TestOversizedWireFailsBeforeSending (0.00s)
+=== RUN   TestContextLimitsDiscoverSelectedModel
+--- PASS: TestContextLimitsDiscoverSelectedModel (0.00s)
+=== RUN   TestContextLimitsUnknownModelUsesFallback
+--- PASS: TestContextLimitsUnknownModelUsesFallback (0.00s)
+=== RUN   TestContextLimitsReadsNestedServerMetadata
+--- PASS: TestContextLimitsReadsNestedServerMetadata (0.00s)
+=== RUN   TestConfiguredContextKeepsOutputReservation
+--- PASS: TestConfiguredContextKeepsOutputReservation (0.00s)
+=== RUN   TestConfiguredLargePromptReachesModelWithoutSummary
+--- PASS: TestConfiguredLargePromptReachesModelWithoutSummary (0.01s)
+=== RUN   TestLimitedStreamKeepsPartialOnlyForRecovery
+--- PASS: TestLimitedStreamKeepsPartialOnlyForRecovery (0.00s)
+=== RUN   TestNonStreamLengthIsNotAccepted
+--- PASS: TestNonStreamLengthIsNotAccepted (0.00s)
+=== RUN   TestLengthWinsOverJobMarker
+--- PASS: TestLengthWinsOverJobMarker (0.00s)
+=== RUN   TestContinuationJoinsExactAnchorAcrossTwoLimits
+--- PASS: TestContinuationJoinsExactAnchorAcrossTwoLimits (0.00s)
+=== RUN   TestContinuationRejectsMismatchedAnchor
+--- PASS: TestContinuationRejectsMismatchedAnchor (0.00s)
+=== RUN   TestRepairRetriesOneFullyReadFileAfterLimit
+--- PASS: TestRepairRetriesOneFullyReadFileAfterLimit (0.00s)
+=== RUN   TestRepairNeverWritesAnotherTargetAfterLimit
+--- PASS: TestRepairNeverWritesAnotherTargetAfterLimit (0.00s)
+=== RUN   TestRepairRetryDoesNotTruncateReadContext
+--- PASS: TestRepairRetryDoesNotTruncateReadContext (0.00s)
+=== RUN   TestPanelRejectsForeignHostHeader
+--- PASS: TestPanelRejectsForeignHostHeader (0.00s)
+=== RUN   TestWorkspacePaginationCoversMoreThanOneHundredFiles
+--- PASS: TestWorkspacePaginationCoversMoreThanOneHundredFiles (0.00s)
+=== RUN   TestModelFileReadRejectsBinaryAndInvalidUTF8
+--- PASS: TestModelFileReadRejectsBinaryAndInvalidUTF8 (0.00s)
+=== RUN   TestGenerationCannotOverwriteUnreadExistingFile
+--- PASS: TestGenerationCannotOverwriteUnreadExistingFile (0.00s)
+=== RUN   TestDirectWriteStopsAtEndMarker
+--- PASS: TestDirectWriteStopsAtEndMarker (0.00s)
+=== RUN   TestProjectRunnerReportsRealFailure
+--- PASS: TestProjectRunnerReportsRealFailure (0.04s)
+=== RUN   TestPartialOrRedactedEditorCannotOverwriteFile
+--- PASS: TestPartialOrRedactedEditorCannotOverwriteFile (0.00s)
+=== RUN   TestEditorRejectsChangedFileAfterOpening
+--- PASS: TestEditorRejectsChangedFileAfterOpening (0.00s)
+=== RUN   TestDefaultCapsSeparateWriteFromPatch
+--- PASS: TestDefaultCapsSeparateWriteFromPatch (0.00s)
+=== RUN   TestThreeLoops
+--- PASS: TestThreeLoops (0.00s)
+=== RUN   TestTightCapStitches
+--- PASS: TestTightCapStitches (0.00s)
+=== RUN   TestRedact
+--- PASS: TestRedact (0.00s)
+=== RUN   TestGatewayReserveBeforeModelCommitReleaseAndCancel
+=== RUN   TestGatewayReserveBeforeModelCommitReleaseAndCancel/success
+=== RUN   TestGatewayReserveBeforeModelCommitReleaseAndCancel/failure
+=== RUN   TestGatewayReserveBeforeModelCommitReleaseAndCancel/cancel
+--- PASS: TestGatewayReserveBeforeModelCommitReleaseAndCancel (0.02s)
+    --- PASS: TestGatewayReserveBeforeModelCommitReleaseAndCancel/success (0.01s)
+    --- PASS: TestGatewayReserveBeforeModelCommitReleaseAndCancel/failure (0.00s)
+    --- PASS: TestGatewayReserveBeforeModelCommitReleaseAndCancel/cancel (0.01s)
+=== RUN   TestGatewayNoCreditDoesNotCallModel
+--- PASS: TestGatewayNoCreditDoesNotCallModel (0.01s)
+=== RUN   TestGatewayReleasesCutModelStream
+--- PASS: TestGatewayReleasesCutModelStream (0.00s)
+=== RUN   TestGatewayFailsClosedAndRejectsRedirects
+--- PASS: TestGatewayFailsClosedAndRejectsRedirects (0.00s)
+=== RUN   TestCommercialGatewayRequiresCreditConfiguration
+--- PASS: TestCommercialGatewayRequiresCreditConfiguration (0.00s)
+=== RUN   TestGatewaySettlementFailureIsNotSuccess
+--- PASS: TestGatewaySettlementFailureIsNotSuccess (0.00s)
+=== RUN   TestSessionModelEntryPathsUseCreditGate
+=== RUN   TestSessionModelEntryPathsUseCreditGate/ask
+=== RUN   TestSessionModelEntryPathsUseCreditGate/start
+=== RUN   TestSessionModelEntryPathsUseCreditGate/program
+--- PASS: TestSessionModelEntryPathsUseCreditGate (0.01s)
+    --- PASS: TestSessionModelEntryPathsUseCreditGate/ask (0.00s)
+    --- PASS: TestSessionModelEntryPathsUseCreditGate/start (0.00s)
+    --- PASS: TestSessionModelEntryPathsUseCreditGate/program (0.00s)
+=== RUN   TestLongPromptCancellationReleasesCurrentModelCredit
+--- PASS: TestLongPromptCancellationReleasesCurrentModelCredit (0.01s)
+=== RUN   TestAccountGatewayDoesNotDoubleBillVPSLedger
+--- PASS: TestAccountGatewayDoesNotDoubleBillVPSLedger (0.00s)
+=== RUN   TestGatewayTransportSafety
+--- PASS: TestGatewayTransportSafety (0.00s)
+=== RUN   TestLocalTunnelDoesNotNeedRemoteKey
+--- PASS: TestLocalTunnelDoesNotNeedRemoteKey (0.00s)
+=== RUN   TestAutomaticTunnelDoesNotReuseLegacyCredential
+--- PASS: TestAutomaticTunnelDoesNotReuseLegacyCredential (0.00s)
+=== RUN   TestUSTerminalDropsTheKeyLine
+--- PASS: TestUSTerminalDropsTheKeyLine (0.00s)
+=== RUN   TestPanelOpensAfterItAnswers
+--- PASS: TestPanelOpensAfterItAnswers (0.00s)
+=== RUN   TestFolderListEntersASubdirectory
+--- PASS: TestFolderListEntersASubdirectory (0.00s)
+=== RUN   TestWorkspaceScanIncludesNestedPathsOnly
+--- PASS: TestWorkspaceScanIncludesNestedPathsOnly (0.00s)
+=== RUN   TestRunAndStopButtons
+--- PASS: TestRunAndStopButtons (0.19s)
+=== RUN   TestPanelExposesAKeyInput
+--- PASS: TestPanelExposesAKeyInput (0.00s)
+=== RUN   TestLocalFolderStaysOnARealDirectory
+--- PASS: TestLocalFolderStaysOnARealDirectory (0.00s)
+=== RUN   TestNamedUS
+--- PASS: TestNamedUS (0.00s)
+=== RUN   TestGUICoversTheTerminal
+--- PASS: TestGUICoversTheTerminal (0.01s)
+=== RUN   TestDeskToolsReadSaveFindTrackReview
+--- PASS: TestDeskToolsReadSaveFindTrackReview (0.01s)
+=== RUN   TestPanelShellMatchesTheStrataWindow
+--- PASS: TestPanelShellMatchesTheStrataWindow (0.00s)
+=== RUN   TestPickedFolderBecomesTheWorkingRoot
+--- PASS: TestPickedFolderBecomesTheWorkingRoot (0.00s)
+=== RUN   TestBrowserIsAskedBeforeTheWindowCanHang
+--- PASS: TestBrowserIsAskedBeforeTheWindowCanHang (0.00s)
+=== RUN   TestExistingPanelIsOpened
+--- PASS: TestExistingPanelIsOpened (0.00s)
+=== RUN   TestHookReleaseDefaultsNeverSelectPythonOrCloudRun
+--- PASS: TestHookReleaseDefaultsNeverSelectPythonOrCloudRun (0.00s)
+=== RUN   TestHookReleaseUsesRemoteLedgerWithoutDesktopSigningSecret
+--- PASS: TestHookReleaseUsesRemoteLedgerWithoutDesktopSigningSecret (0.00s)
+=== RUN   TestHookReleaseDisablesPythonAccountOperationsAndForm
+--- PASS: TestHookReleaseDisablesPythonAccountOperationsAndForm (0.00s)
+=== RUN   TestHookReleaseLicenseURLOverrideDoesNotChangeModelEndpoint
+--- PASS: TestHookReleaseLicenseURLOverrideDoesNotChangeModelEndpoint (0.00s)
+=== RUN   TestHookReleaseColdStartIsNotSuccessAndWaits45Minutes
+--- PASS: TestHookReleaseColdStartIsNotSuccessAndWaits45Minutes (0.00s)
+=== RUN   TestJournalKeepsThePromptAndDropsTheFileBody
+--- PASS: TestJournalKeepsThePromptAndDropsTheFileBody (0.04s)
+=== RUN   TestLicenseStopsTheCall
+--- PASS: TestLicenseStopsTheCall (0.00s)
+=== RUN   TestPHPLicenseMatchesThePanel
+    license_test.go:89: php yok
+--- SKIP: TestPHPLicenseMatchesThePanel (0.00s)
+=== RUN   TestCommercialModeFailsClosedWithoutConfiguration
+--- PASS: TestCommercialModeFailsClosedWithoutConfiguration (0.00s)
+=== RUN   TestBackgroundModelChecksAndCountsLicense
+--- PASS: TestBackgroundModelChecksAndCountsLicense (0.00s)
+=== RUN   TestPricingTextFromCatalog
+--- PASS: TestPricingTextFromCatalog (0.00s)
+=== RUN   TestLifeBarShowsCallLoadAndIdle
+--- PASS: TestLifeBarShowsCallLoadAndIdle (0.00s)
+=== RUN   TestLargeIndexDoesNotSummarizeShortRepairOrCrowdOutFiles
+--- PASS: TestLargeIndexDoesNotSummarizeShortRepairOrCrowdOutFiles (0.04s)
+=== RUN   TestRunIntentDoesNotMatchNounOrNegation
+--- PASS: TestRunIntentDoesNotMatchNounOrNegation (0.00s)
+=== RUN   TestStoppedProgramShowsLastExceptionAndWriterAcceptsFullOutput
+--- PASS: TestStoppedProgramShowsLastExceptionAndWriterAcceptsFullOutput (0.00s)
+=== RUN   TestLongCheckpointCorruptRecordIsPreserved
+--- PASS: TestLongCheckpointCorruptRecordIsPreserved (0.00s)
+=== RUN   TestLongCheckpointResumesOnlyFinishedChunks
+--- PASS: TestLongCheckpointResumesOnlyFinishedChunks (0.00s)
+=== RUN   TestLongCheckpointRejectsDifferentTask
+--- PASS: TestLongCheckpointRejectsDifferentTask (0.00s)
+=== RUN   TestSplitLongTextKeepsAllOfLargeUTF8Input
+--- PASS: TestSplitLongTextKeepsAllOfLargeUTF8Input (0.01s)
+=== RUN   TestLongTextProcessesEveryPartThenCombines
+--- PASS: TestLongTextProcessesEveryPartThenCombines (0.00s)
+=== RUN   TestOversizedIntermediateSummaryIsRetriedWithoutTruncation
+--- PASS: TestOversizedIntermediateSummaryIsRetriedWithoutTruncation (0.00s)
+=== RUN   TestInputWithinFullBudgetIsNotNeedlesslySummarized
+--- PASS: TestInputWithinFullBudgetIsNotNeedlesslySummarized (0.00s)
+=== RUN   TestLongInputFailureNeverWritesFiles
+--- PASS: TestLongInputFailureNeverWritesFiles (0.01s)
+=== RUN   TestLongInputCannotReplaceUnreadExistingFile
+--- PASS: TestLongInputCannotReplaceUnreadExistingFile (0.00s)
+=== RUN   TestLongPromptChargesOneLicensePrompt
+--- PASS: TestLongPromptChargesOneLicensePrompt (0.02s)
+=== RUN   TestLongPromptCancelStopsBeforeFinalResult
+--- PASS: TestLongPromptCancelStopsBeforeFinalResult (0.00s)
+=== RUN   TestGUIAcceptsLongPromptOverOneMiB
+--- PASS: TestGUIAcceptsLongPromptOverOneMiB (0.43s)
+=== RUN   TestStructuredListingReachesLaterPagesBeforeRepair
+--- PASS: TestStructuredListingReachesLaterPagesBeforeRepair (0.01s)
+=== RUN   TestStructuredListingRejectsEscapeAndHonorsPromptBudget
+--- PASS: TestStructuredListingRejectsEscapeAndHonorsPromptBudget (0.00s)
+=== RUN   TestStructuredSubdirectoryListingKeepsRootRelativePaths
+--- PASS: TestStructuredSubdirectoryListingKeepsRootRelativePaths (0.00s)
+=== RUN   TestOversizedSourceRangePagesWithoutLosingUTF8OrVersion
+--- PASS: TestOversizedSourceRangePagesWithoutLosingUTF8OrVersion (0.00s)
+=== RUN   TestPatchAcrossContiguousVerifiedChunksRejectsGapsAndChangedVersions
+--- PASS: TestPatchAcrossContiguousVerifiedChunksRejectsGapsAndChangedVersions (0.00s)
+=== RUN   TestMalformedActionGetsOneBoundedCorrectionAndNoPrematureWrite
+--- PASS: TestMalformedActionGetsOneBoundedCorrectionAndNoPrematureWrite (0.00s)
+=== RUN   TestLegacyReadProvidesHashForStructuredPatch
+--- PASS: TestLegacyReadProvidesHashForStructuredPatch (0.00s)
+=== RUN   TestStructuredActionsRejectAmbiguousOrIncompleteData
+--- PASS: TestStructuredActionsRejectAmbiguousOrIncompleteData (0.00s)
+=== RUN   TestStructuredCreatePreservesExactBody
+--- PASS: TestStructuredCreatePreservesExactBody (0.00s)
+=== RUN   TestSourceChunksCoverLargeUTF8FileAndRejectStaleVersion
+--- PASS: TestSourceChunksCoverLargeUTF8FileAndRejectStaleVersion (0.54s)
+=== RUN   TestSourceRangeDoesNotLeakSecretAcrossChunkBoundary
+--- PASS: TestSourceRangeDoesNotLeakSecretAcrossChunkBoundary (0.00s)
+=== RUN   TestSourceLinePatchRequiresObservedUniqueText
+--- PASS: TestSourceLinePatchRequiresObservedUniqueText (0.00s)
+=== RUN   TestStructuredModelReadsRangeThenPatches
+--- PASS: TestStructuredModelReadsRangeThenPatches (0.01s)
+=== RUN   TestSourceHTTPRejectsEscapeAndInvalidRange
+--- PASS: TestSourceHTTPRejectsEscapeAndInvalidRange (0.00s)
+=== RUN   TestAdmissionBoundedQueueCancelAndRelease
+--- PASS: TestAdmissionBoundedQueueCancelAndRelease (0.00s)
+=== RUN   TestAdmissionInvalidConfigFailsClosed
+--- PASS: TestAdmissionInvalidConfigFailsClosed (0.00s)
+=== RUN   TestCompletionPostsThePlanOnly
+--- PASS: TestCompletionPostsThePlanOnly (0.00s)
+=== RUN   TestLongCompletionIsKept
+--- PASS: TestLongCompletionIsKept (0.00s)
+=== RUN   TestDeepSeekFirstRoundUsesAShortThink
+--- PASS: TestDeepSeekFirstRoundUsesAShortThink (0.00s)
+=== RUN   TestStreamStopsWhenTheJobMarkArrives
+--- PASS: TestStreamStopsWhenTheJobMarkArrives (0.00s)
+=== RUN   TestModelAnswerKeepsThePriceVisible
+--- PASS: TestModelAnswerKeepsThePriceVisible (0.00s)
+=== RUN   TestSlowDoorStillAnswers
+--- PASS: TestSlowDoorStillAnswers (1.50s)
+=== RUN   TestStreamedDoorAnswerIsKept
+--- PASS: TestStreamedDoorAnswerIsKept (0.00s)
+=== RUN   TestDoorFallsThroughWhenTheFirstPortIsClosed
+--- PASS: TestDoorFallsThroughWhenTheFirstPortIsClosed (0.00s)
+=== RUN   TestLiveDoorAnswers
+    model_test.go:290: 
+--- SKIP: TestLiveDoorAnswers (0.00s)
+=== RUN   TestLegacyDirectDispatchDefaultOff
+--- PASS: TestLegacyDirectDispatchDefaultOff (0.00s)
+=== RUN   TestClassifyOrders
+--- PASS: TestClassifyOrders (0.00s)
+=== RUN   TestCreateOrderWritesAndRuns
+--- PASS: TestCreateOrderWritesAndRuns (0.00s)
+=== RUN   TestExampleSentenceAsksInsteadOfAPort
+--- PASS: TestExampleSentenceAsksInsteadOfAPort (0.00s)
+=== RUN   TestBareProjectOrderAsks
+--- PASS: TestBareProjectOrderAsks (0.00s)
+=== RUN   TestKnownJobStillWrites
+--- PASS: TestKnownJobStillWrites (0.05s)
+=== RUN   TestKeyedExampleWritesTheProgram
+--- PASS: TestKeyedExampleWritesTheProgram (0.04s)
+=== RUN   TestCreateOrderHidesTheSecret
+--- PASS: TestCreateOrderHidesTheSecret (0.00s)
+=== RUN   TestCreateOrderUsesASubfolder
+--- PASS: TestCreateOrderUsesASubfolder (0.01s)
+=== RUN   TestPlanOrderWritesTheFileOnly
+--- PASS: TestPlanOrderWritesTheFileOnly (0.00s)
+=== RUN   TestAddOrderExtendsOurProject
+--- PASS: TestAddOrderExtendsOurProject (0.00s)
+=== RUN   TestAddOrderLeavesAForeignProject
+--- PASS: TestAddOrderLeavesAForeignProject (0.00s)
+=== RUN   TestCalculatorAndNotesDoTheJob
+--- PASS: TestCalculatorAndNotesDoTheJob (0.08s)
+=== RUN   TestPlanNamesTheNextOrder
+--- PASS: TestPlanNamesTheNextOrder (0.00s)
+=== RUN   TestAnswerContinuesTheSameJob
+--- PASS: TestAnswerContinuesTheSameJob (0.05s)
+=== RUN   TestDecisionParseKeepsTheProgram
+--- PASS: TestDecisionParseKeepsTheProgram (0.00s)
+=== RUN   TestHandledOrderSkipsTheModel
+--- PASS: TestHandledOrderSkipsTheModel (0.04s)
+=== RUN   TestLyingAppRuns
+--- PASS: TestLyingAppRuns (0.01s)
+=== RUN   TestSysResetIsClosed
+--- PASS: TestSysResetIsClosed (0.00s)
+=== RUN   TestCommandBecomesTheProgram
+--- PASS: TestCommandBecomesTheProgram (0.05s)
+=== RUN   TestSchemaEchoIsDropped
+--- PASS: TestSchemaEchoIsDropped (0.00s)
+=== RUN   TestSingleExeUsesTheSpecAndSkipsTheModel
+--- PASS: TestSingleExeUsesTheSpecAndSkipsTheModel (0.00s)
+=== RUN   TestProjectInspectionSuppliesRealPaths
+--- PASS: TestProjectInspectionSuppliesRealPaths (0.00s)
+=== RUN   TestProjectRunnerDoesNotExposeInheritedSecrets
+--- PASS: TestProjectRunnerDoesNotExposeInheritedSecrets (0.00s)
+=== RUN   TestProjectRunnerReportsInvalidAndEmptyWorkspace
+--- PASS: TestProjectRunnerReportsInvalidAndEmptyWorkspace (0.03s)
+=== RUN   TestProjectRunnerRunsConfiguredNodeTest
+--- PASS: TestProjectRunnerRunsConfiguredNodeTest (0.21s)
+=== RUN   TestProjectTimeoutKillsDescendantProcesses
+--- PASS: TestProjectTimeoutKillsDescendantProcesses (1.80s)
+=== RUN   TestPanelCancelsActualTestAndPersistsCancelledState
+--- PASS: TestPanelCancelsActualTestAndPersistsCancelledState (1.36s)
+=== RUN   TestProjectRunnerRequiresRealGoAndNodeTestEvidence
+--- PASS: TestProjectRunnerRequiresRealGoAndNodeTestEvidence (0.37s)
+=== RUN   TestProposalBatchRollsBackWhenSecondWriteFails
+--- PASS: TestProposalBatchRollsBackWhenSecondWriteFails (0.00s)
+=== RUN   TestProposalBatchDoesNotOverwriteExternalChangeDuringRollback
+--- PASS: TestProposalBatchDoesNotOverwriteExternalChangeDuringRollback (0.00s)
+=== RUN   TestProposalBatchSuccessAndPreflight
+--- PASS: TestProposalBatchSuccessAndPreflight (0.00s)
+=== RUN   TestSyntaxFailurePreventsEntireMultiFileCommit
+--- PASS: TestSyntaxFailurePreventsEntireMultiFileCommit (0.02s)
+=== RUN   TestProposalReviewBeforeApplyAndRestart
+--- PASS: TestProposalReviewBeforeApplyAndRestart (0.00s)
+=== RUN   TestProposalRejectsFileChangedAfterReview
+--- PASS: TestProposalRejectsFileChangedAfterReview (0.00s)
+=== RUN   TestProposalRejectsReadDirectiveInFileBody
+--- PASS: TestProposalRejectsReadDirectiveInFileBody (0.00s)
+=== RUN   TestProposalStopsFileAtEndMarker
+--- PASS: TestProposalStopsFileAtEndMarker (0.00s)
+=== RUN   TestRelevantProjectPathsPrioritizesTask
+--- PASS: TestRelevantProjectPathsPrioritizesTask (0.00s)
+=== RUN   TestREAStaysInsideTheFolder
+--- PASS: TestREAStaysInsideTheFolder (0.00s)
+=== RUN   TestPanelRunsREAWithoutTheModel
+--- PASS: TestPanelRunsREAWithoutTheModel (0.00s)
+=== RUN   TestOfficialREAInspectsOwnedFile
+    rea_test.go:88: opt-in external npm REA integration
+--- SKIP: TestOfficialREAInspectsOwnedFile (0.00s)
+=== RUN   TestRealModelPanelMultiFileRepair
+    real_model_e2e_test.go:20: opt-in real model test
+--- SKIP: TestRealModelPanelMultiFileRepair (0.00s)
+=== RUN   TestRealModelPanelBuildRentalProject
+    real_project_build_test.go:21: opt-in: US_REAL_MODEL_E2E=1, US_PROXY_URL, US_TEST_LICENSE=<file path>
+--- SKIP: TestRealModelPanelBuildRentalProject (0.00s)
+=== RUN   TestRepairRequestListsActualPaths
+--- PASS: TestRepairRequestListsActualPaths (0.00s)
+=== RUN   TestRepairAcceptsOnlyListedBareFilePaths
+--- PASS: TestRepairAcceptsOnlyListedBareFilePaths (0.00s)
+=== RUN   TestWorkspaceCountDoesNotCountTruncationMarker
+--- PASS: TestWorkspaceCountDoesNotCountTruncationMarker (0.00s)
+=== RUN   TestRepairDoesNotApplyAnUnreadProject
+--- PASS: TestRepairDoesNotApplyAnUnreadProject (0.00s)
+=== RUN   TestRepairFollowupResetsProgress
+--- PASS: TestRepairFollowupResetsProgress (0.00s)
+=== RUN   TestRepairBatchRejectsUnreadTargetWithoutPartialWrite
+--- PASS: TestRepairBatchRejectsUnreadTargetWithoutPartialWrite (0.00s)
+=== RUN   TestMissingPythonIsUnverifiedNotASyntaxError
+--- PASS: TestMissingPythonIsUnverifiedNotASyntaxError (0.00s)
+=== RUN   TestPartialReadDoesNotAuthorizeOverwrite
+--- PASS: TestPartialReadDoesNotAuthorizeOverwrite (0.00s)
+=== RUN   TestCompletionWordDoesNotMakeNewProjectARepair
+--- PASS: TestCompletionWordDoesNotMakeNewProjectARepair (0.00s)
+=== RUN   TestCompletionFeatureIsNotProjectRepair
+--- PASS: TestCompletionFeatureIsNotProjectRepair (0.00s)
+=== RUN   TestSubmitRunsTheProgram
+--- PASS: TestSubmitRunsTheProgram (0.01s)
+=== RUN   TestSubmitLeavesTheServerRunning
+--- PASS: TestSubmitLeavesTheServerRunning (0.14s)
+=== RUN   TestRunStatusReachesBitti
+--- PASS: TestRunStatusReachesBitti (0.81s)
+=== RUN   TestPlanLeavesTheServerRunning
+--- PASS: TestPlanLeavesTheServerRunning (0.04s)
+=== RUN   TestKdvOrderDoesNotLaunch
+--- PASS: TestKdvOrderDoesNotLaunch (0.00s)
+=== RUN   TestPythonSkipsTheStoreStub
+--- PASS: TestPythonSkipsTheStoreStub (0.00s)
+=== RUN   TestUnsafeLaunchIsRefused
+--- PASS: TestUnsafeLaunchIsRefused (0.00s)
+=== RUN   TestSingleExplicitTargetRejectsWrongFileProposal
+--- PASS: TestSingleExplicitTargetRejectsWrongFileProposal (0.01s)
+=== RUN   TestHeadlessModesNoGUI
+--- PASS: TestHeadlessModesNoGUI (0.00s)
+=== RUN   TestHeadlessLicensedStatusAndHealth
+--- PASS: TestHeadlessLicensedStatusAndHealth (0.00s)
+=== RUN   TestHeadlessRejectsRedirectAndInvalidLicense
+--- PASS: TestHeadlessRejectsRedirectAndInvalidLicense (0.00s)
+=== RUN   TestHeadlessLogSurvivesMissingConsole
+--- PASS: TestHeadlessLogSurvivesMissingConsole (0.00s)
+=== RUN   TestRepairReadPhaseHasSmallBudget
+--- PASS: TestRepairReadPhaseHasSmallBudget (0.00s)
+=== RUN   TestRepairRequestsJSONResponseFormatWithoutForcingChat
+--- PASS: TestRepairRequestsJSONResponseFormatWithoutForcingChat (0.00s)
+=== RUN   TestIncompleteStreamDoesNotSucceed
+--- PASS: TestIncompleteStreamDoesNotSucceed (0.00s)
+=== RUN   TestCompletedStreamIsAccepted
+--- PASS: TestCompletedStreamIsAccepted (0.00s)
+=== RUN   TestMeteredStreamRequiresTerminalAndMatchesRequestID
+=== RUN   TestMeteredStreamRequiresTerminalAndMatchesRequestID/missing-terminal
+=== RUN   TestMeteredStreamRequiresTerminalAndMatchesRequestID/wrong-id
+=== RUN   TestMeteredStreamRequiresTerminalAndMatchesRequestID/complete
+--- PASS: TestMeteredStreamRequiresTerminalAndMatchesRequestID (0.00s)
+    --- PASS: TestMeteredStreamRequiresTerminalAndMatchesRequestID/missing-terminal (0.00s)
+    --- PASS: TestMeteredStreamRequiresTerminalAndMatchesRequestID/wrong-id (0.00s)
+    --- PASS: TestMeteredStreamRequiresTerminalAndMatchesRequestID/complete (0.00s)
+=== RUN   TestSubmittedRequestWithoutResponseIsNotRetried
+--- PASS: TestSubmittedRequestWithoutResponseIsNotRetried (0.00s)
+=== RUN   TestStudioTracksProjectsRepoAndPlugins
+--- PASS: TestStudioTracksProjectsRepoAndPlugins (0.02s)
+=== RUN   TestRepairWithoutFileProposalIsNotMarkedCompleted
+--- PASS: TestRepairWithoutFileProposalIsNotMarkedCompleted (0.00s)
+=== RUN   TestTaskHistoryPersistsUniqueIDsAndStatus
+--- PASS: TestTaskHistoryPersistsUniqueIDsAndStatus (0.00s)
+=== RUN   TestTaskHistoryRejectsSymlinkDirectory
+--- PASS: TestTaskHistoryRejectsSymlinkDirectory (0.00s)
+=== RUN   TestTaskHistoryTracksProposalUntilApplied
+--- PASS: TestTaskHistoryTracksProposalUntilApplied (0.00s)
+=== RUN   TestQueueRejectsInvalidTextAndOversizedEscapedRecordBeforePersistence
+--- PASS: TestQueueRejectsInvalidTextAndOversizedEscapedRecordBeforePersistence (0.24s)
+=== RUN   TestTaskQueueDeduplicatesAndBindsPayload
+--- PASS: TestTaskQueueDeduplicatesAndBindsPayload (0.00s)
+=== RUN   TestTaskQueueRunsSeriallyAndPersistsOutcomes
+--- PASS: TestTaskQueueRunsSeriallyAndPersistsOutcomes (0.01s)
+=== RUN   TestInterruptedQueueRequiresExplicitResumeAndViewHidesPrompt
+--- PASS: TestInterruptedQueueRequiresExplicitResumeAndViewHidesPrompt (0.00s)
+=== RUN   TestQueueAndTaskMetadataRejectSymlinksAndOldHistoryRemainsFindable
+--- PASS: TestQueueAndTaskMetadataRejectSymlinksAndOldHistoryRemainsFindable (0.03s)
+=== RUN   TestTerminalGUIActionReturnsRealExitCode
+--- PASS: TestTerminalGUIActionReturnsRealExitCode (0.01s)
+=== RUN   TestTerminalRealOutputExitTimeoutCancelAndIsolation
+=== RUN   TestTerminalRealOutputExitTimeoutCancelAndIsolation/exit
+=== RUN   TestTerminalRealOutputExitTimeoutCancelAndIsolation/timeout
+=== RUN   TestTerminalRealOutputExitTimeoutCancelAndIsolation/cancel
+--- PASS: TestTerminalRealOutputExitTimeoutCancelAndIsolation (0.17s)
+    --- PASS: TestTerminalRealOutputExitTimeoutCancelAndIsolation/exit (0.01s)
+    --- PASS: TestTerminalRealOutputExitTimeoutCancelAndIsolation/timeout (0.11s)
+    --- PASS: TestTerminalRealOutputExitTimeoutCancelAndIsolation/cancel (0.06s)
+=== RUN   TestTerminalRejectsShellEscapeAndMissingRuntime
+--- PASS: TestTerminalRejectsShellEscapeAndMissingRuntime (0.00s)
+=== RUN   TestGoLaunchDetection
+--- PASS: TestGoLaunchDetection (0.00s)
+=== RUN   TestTransactionSurvivesProcessExit
+--- PASS: TestTransactionSurvivesProcessExit (0.01s)
+=== RUN   TestRecoverInterruptedProposal
+--- PASS: TestRecoverInterruptedProposal (0.00s)
+=== RUN   TestRecoveryDoesNotOverwriteExternalEdits
+--- PASS: TestRecoveryDoesNotOverwriteExternalEdits (0.00s)
+=== RUN   TestModelAvailabilityRequiresMatchingModel
+--- PASS: TestModelAvailabilityRequiresMatchingModel (0.00s)
+=== RUN   TestTunnelClaimDoesNotStartTwice
+--- PASS: TestTunnelClaimDoesNotStartTwice (0.00s)
+=== RUN   TestTunnelUsesRequestedLocalPort
+--- PASS: TestTunnelUsesRequestedLocalPort (0.00s)
+=== RUN   TestTunnelRequiresReadyModelAndDoesNotFollowRedirects
+--- PASS: TestTunnelRequiresReadyModelAndDoesNotFollowRedirects (0.00s)
+=== RUN   TestCloudCommandQuotesPathAndPort
+--- PASS: TestCloudCommandQuotesPathAndPort (0.00s)
+=== RUN   TestModelReadinessWaitTimeoutCancelAndLoading
+--- PASS: TestModelReadinessWaitTimeoutCancelAndLoading (0.03s)
+=== RUN   TestModelReadinessBoundsHungHTTPWithoutClientTimeout
+--- PASS: TestModelReadinessBoundsHungHTTPWithoutClientTimeout (0.03s)
+=== RUN   TestModelReadinessLoadedAndSSHFailureOptions
+--- PASS: TestModelReadinessLoadedAndSSHFailureOptions (0.00s)
+=== RUN   TestRenderShowsTheComparison
+--- PASS: TestRenderShowsTheComparison (0.00s)
+=== RUN   TestShortScreenKeepsTheSelectedDetail
+--- PASS: TestShortScreenKeepsTheSelectedDetail (0.00s)
+=== RUN   TestTrialWritesTheFunctionAndChecksSyntax
+--- PASS: TestTrialWritesTheFunctionAndChecksSyntax (0.00s)
+=== RUN   TestAyrikTranscriptKeepsTheBodyLocal
+--- PASS: TestAyrikTranscriptKeepsTheBodyLocal (0.00s)
+=== RUN   TestTypingDoesNotQuitOrScroll
+--- PASS: TestTypingDoesNotQuitOrScroll (0.00s)
+=== RUN   TestPickerSelectsAFolder
+--- PASS: TestPickerSelectsAFolder (0.01s)
+=== RUN   TestLocalCheckPricesWithoutPhp
+--- PASS: TestLocalCheckPricesWithoutPhp (0.00s)
+=== RUN   TestRenderFitsTheScreen
+--- PASS: TestRenderFitsTheScreen (0.01s)
+=== RUN   TestNoPhpDoesNotClaimTheModelStayedHome
+--- PASS: TestNoPhpDoesNotClaimTheModelStayedHome (0.00s)
+=== RUN   TestKeyFieldStaysMaskedAndPlanOmitsTheBody
+--- PASS: TestKeyFieldStaysMaskedAndPlanOmitsTheBody (0.01s)
+=== RUN   TestProjectRequestIncludesWorkspacePaths
+--- PASS: TestProjectRequestIncludesWorkspacePaths (0.00s)
+=== RUN   TestExamplePathsAreNotCreated
+--- PASS: TestExamplePathsAreNotCreated (0.00s)
+PASS
+ok  	kiyas	9.720s
+=== RUN   TestAccountRoutesThroughProductionMux
+--- PASS: TestAccountRoutesThroughProductionMux (0.67s)
+=== RUN   TestWebhookRoutesAreTopicBound
+--- PASS: TestWebhookRoutesAreTopicBound (0.00s)
+=== RUN   TestSMTPDisabledDoesNotAttemptOrExhaustOutbox
+--- PASS: TestSMTPDisabledDoesNotAttemptOrExhaustOutbox (0.00s)
+=== RUN   TestPlansFilePrecedenceAndFailClosed
+--- PASS: TestPlansFilePrecedenceAndFailClosed (0.00s)
+=== RUN   TestModelRoutesAreLicenseProtected
+--- PASS: TestModelRoutesAreLicenseProtected (0.00s)
+PASS
+ok  	kiyas/cmd/us-license-hook	0.685s
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+=== RUN   TestAccountOwnershipIdempotencyAndAtomicRace
+--- PASS: TestAccountOwnershipIdempotencyAndAtomicRace (0.25s)
+=== RUN   TestAccountSignedSessionExpiryResetAndVerification
+--- PASS: TestAccountSignedSessionExpiryResetAndVerification (0.24s)
+=== RUN   TestAccountIPRateLimitAndDefaultBcrypt
+--- PASS: TestAccountIPRateLimitAndDefaultBcrypt (2.75s)
+=== RUN   TestAccountLegacyJSONOpensWithoutMigrationAndSessionRestart
+--- PASS: TestAccountLegacyJSONOpensWithoutMigrationAndSessionRestart (0.43s)
+=== RUN   TestAccountLocalSSEE2EAndSharedHourlyLedger
+    accounts_test.go:339: PASS local register/login/redeem/balance/session-SSE/raw-license shared ledger/release/hourly/cancel/history; upstream calls 5
+--- PASS: TestAccountLocalSSEE2EAndSharedHourlyLedger (1.33s)
+=== RUN   TestSMTPAllowlistNeverInvokesSenderForSkippedRecipient
+--- PASS: TestSMTPAllowlistNeverInvokesSenderForSkippedRecipient (0.30s)
+=== RUN   TestAccountNoCreditAndInvalidSessionNeverCallsModel
+--- PASS: TestAccountNoCreditAndInvalidSessionNeverCallsModel (0.21s)
+=== RUN   TestAccountSessionAndRawKeyConcurrentLastCredit
+--- PASS: TestAccountSessionAndRawKeyConcurrentLastCredit (0.25s)
+=== RUN   TestAccountPartialRefundImmediatelyReducesDerivedBalance
+--- PASS: TestAccountPartialRefundImmediatelyReducesDerivedBalance (0.22s)
+=== RUN   TestCreditStatusReadOnlyScopedAndPrivate
+--- PASS: TestCreditStatusReadOnlyScopedAndPrivate (0.00s)
+=== RUN   TestCreditStatusIsGETAndRequiresLicense
+--- PASS: TestCreditStatusIsGETAndRequiresLicense (0.00s)
+=== RUN   TestParsePlansBothExportSchemas
+--- PASS: TestParsePlansBothExportSchemas (0.00s)
+=== RUN   TestCreditHTTPAuthorizationAndIdempotentSettlement
+--- PASS: TestCreditHTTPAuthorizationAndIdempotentSettlement (0.00s)
+=== RUN   TestCreditConcurrentLastCreditExpiryAndPersistenceFailure
+--- PASS: TestCreditConcurrentLastCreditExpiryAndPersistenceFailure (0.00s)
+=== RUN   TestRejectsBadHMAC
+--- PASS: TestRejectsBadHMAC (0.00s)
+=== RUN   TestPaidOrderMintsPersistsQueuesIdempotent
+--- PASS: TestPaidOrderMintsPersistsQueuesIdempotent (0.00s)
+=== RUN   TestOutboxRetryAndSend
+--- PASS: TestOutboxRetryAndSend (0.00s)
+=== RUN   TestCreditReservation
+--- PASS: TestCreditReservation (0.01s)
+=== RUN   TestRound6SSE50LicensesQueue32
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":0,"http":429,"ms":25.813,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":1,"http":200,"ms":347.41,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":2,"http":200,"ms":194.585,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":3,"http":200,"ms":282.633,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":4,"http":200,"ms":336.801,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":5,"http":200,"ms":147.414,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":6,"http":429,"ms":25.621,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":7,"http":200,"ms":224.017,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":8,"http":200,"ms":119.755,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":9,"http":200,"ms":244.251,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":10,"http":200,"ms":62.207,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":11,"http":200,"ms":44.399,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":12,"http":429,"ms":25.85,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":13,"http":429,"ms":25.868,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":14,"http":429,"ms":25.719,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":15,"http":429,"ms":25.561,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":16,"http":429,"ms":25.616,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":17,"http":200,"ms":82.07,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":18,"http":200,"ms":101.188,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":19,"http":200,"ms":111.045,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":20,"http":200,"ms":128.414,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":21,"http":200,"ms":137.005,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":22,"http":200,"ms":214.07,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":23,"http":200,"ms":52.45,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":24,"http":200,"ms":204.283,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":25,"http":429,"ms":25.869,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":26,"http":429,"ms":25.678,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":27,"http":200,"ms":156.107,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":28,"http":200,"ms":253.289,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":29,"http":200,"ms":234.105,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":30,"http":200,"ms":183.332,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":31,"http":200,"ms":262.163,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":32,"http":429,"ms":25.599,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":33,"http":429,"ms":25.507,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":34,"http":429,"ms":25.568,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":35,"http":429,"ms":25.726,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":36,"http":200,"ms":35.518,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":37,"http":429,"ms":25.667,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":38,"http":200,"ms":316.943,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":39,"http":200,"ms":306.473,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":40,"http":200,"ms":271.251,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":41,"http":200,"ms":296.92,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":42,"http":429,"ms":25.637,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":43,"http":429,"ms":25.415,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":44,"http":429,"ms":25.63,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":45,"http":200,"ms":175.619,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":46,"http":200,"ms":167.163,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":47,"http":200,"ms":326.975,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":48,"http":200,"ms":89.857,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":49,"http":200,"ms":71.841,"sse_done":true}
+    load_round6_test.go:108: METRIC 50licenses_queue32 n=50 p50_ms=101.188 p95_ms=326.975 http=map[200:33 429:17]
+    load_round6_test.go:130: PASS expected_overflow=17 unexpected_errors=0 peak_admitted=33 active_capacity=1
+--- PASS: TestRound6SSE50LicensesQueue32 (0.39s)
+=== RUN   TestRound6SingleLicenseReserveRace
+    load_round6_test.go:189: single_license_reserve_race raw {"index":0,"http":200,"ms":2.78,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":1,"http":402,"ms":2.956,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":2,"http":402,"ms":3.024,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":3,"http":402,"ms":3.13,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":4,"http":402,"ms":2.788,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":5,"http":402,"ms":2.735,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":6,"http":402,"ms":2.859,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":7,"http":402,"ms":2.793,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":8,"http":402,"ms":2.821,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":9,"http":402,"ms":2.878,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":10,"http":402,"ms":2.926,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":11,"http":402,"ms":3.737,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":12,"http":402,"ms":3.591,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":13,"http":402,"ms":3.623,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":14,"http":402,"ms":3.539,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":15,"http":402,"ms":4.087,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":16,"http":402,"ms":4.223,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":17,"http":402,"ms":4.227,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":18,"http":402,"ms":4.406,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":19,"http":402,"ms":4.296,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":20,"http":402,"ms":4.332,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":21,"http":402,"ms":4.781,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":22,"http":402,"ms":4.397,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":23,"http":402,"ms":4.534,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":24,"http":402,"ms":4.635,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":25,"http":402,"ms":3.987,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":26,"http":402,"ms":2.849,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":27,"http":402,"ms":2.914,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":28,"http":402,"ms":2.89,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":29,"http":402,"ms":3.719,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":30,"http":402,"ms":3.608,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":31,"http":402,"ms":5.192,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":32,"http":402,"ms":3.571,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":33,"http":402,"ms":3.498,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":34,"http":402,"ms":4.17,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":35,"http":402,"ms":4.332,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":36,"http":402,"ms":4.257,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":37,"http":402,"ms":4.304,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":38,"http":402,"ms":4.88,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":39,"http":402,"ms":4.321,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":40,"http":402,"ms":4.387,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":41,"http":402,"ms":4.298,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":42,"http":402,"ms":3.019,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":43,"http":402,"ms":4.494,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":44,"http":402,"ms":3.861,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":45,"http":402,"ms":4.935,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":46,"http":402,"ms":3.299,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":47,"http":402,"ms":4.337,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":48,"http":402,"ms":4.425,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":49,"http":402,"ms":4.526,"sse_done":false}
+    load_round6_test.go:189: METRIC single_license_reserve_race n=50 p50_ms=3.861 p95_ms=4.880 http=map[200:1 402:49]
+    load_round6_test.go:190: PASS successes=1 expected_402=49 negative_balance=0 double_spend=0
+--- PASS: TestRound6SingleLicenseReserveRace (0.01s)
+=== RUN   TestRound6ExpiredRevokedHourlySSE
+    load_round6_test.go:226: expired_revoked_hourly raw {"index":0,"http":401,"ms":0.245,"sse_done":false}
+    load_round6_test.go:226: expired_revoked_hourly raw {"index":1,"http":401,"ms":0.056,"sse_done":false}
+    load_round6_test.go:226: expired_revoked_hourly raw {"index":2,"http":200,"ms":1104.019,"sse_done":true}
+    load_round6_test.go:226: METRIC expired_revoked_hourly n=3 p50_ms=0.245 p95_ms=1104.019 http=map[200:1 401:2]
+    load_round6_test.go:227: PASS hourly_debit=2 expected_ceil_seconds=2 expired_http=401 revoked_http=401 unexpected_errors=0
+--- PASS: TestRound6ExpiredRevokedHourlySSE (1.11s)
+=== RUN   TestProxyWriteDeadlineAndFlushFailure
+--- PASS: TestProxyWriteDeadlineAndFlushFailure (0.00s)
+=== RUN   TestModelProxySSEChargeAndNoLicenseLeak
+--- PASS: TestModelProxySSEChargeAndNoLicenseLeak (0.01s)
+=== RUN   TestModelProxyFailuresRelease
+=== RUN   TestModelProxyFailuresRelease/http
+=== RUN   TestModelProxyFailuresRelease/truncated
+=== RUN   TestModelProxyFailuresRelease/error
+=== RUN   TestModelProxyFailuresRelease/length
+=== RUN   TestModelProxyFailuresRelease/empty
+=== RUN   TestModelProxyFailuresRelease/timeout
+=== RUN   TestModelProxyFailuresRelease/cancel
+--- PASS: TestModelProxyFailuresRelease (0.32s)
+    --- PASS: TestModelProxyFailuresRelease/http (0.01s)
+    --- PASS: TestModelProxyFailuresRelease/truncated (0.00s)
+    --- PASS: TestModelProxyFailuresRelease/error (0.00s)
+    --- PASS: TestModelProxyFailuresRelease/length (0.00s)
+    --- PASS: TestModelProxyFailuresRelease/empty (0.00s)
+    --- PASS: TestModelProxyFailuresRelease/timeout (0.15s)
+    --- PASS: TestModelProxyFailuresRelease/cancel (0.15s)
+=== RUN   TestModelProxyHourlySecondsAndLegacyUpgrade
+=== RUN   TestModelProxyHourlySecondsAndLegacyUpgrade/false
+=== RUN   TestModelProxyHourlySecondsAndLegacyUpgrade/true
+--- PASS: TestModelProxyHourlySecondsAndLegacyUpgrade (0.01s)
+    --- PASS: TestModelProxyHourlySecondsAndLegacyUpgrade/false (0.01s)
+    --- PASS: TestModelProxyHourlySecondsAndLegacyUpgrade/true (0.01s)
+=== RUN   TestModelProxyJSONAuthBoundsAndMetadata
+--- PASS: TestModelProxyJSONAuthBoundsAndMetadata (0.00s)
+=== RUN   TestModelProxyRejectsUnsafeConfig
+--- PASS: TestModelProxyRejectsUnsafeConfig (0.00s)
+=== RUN   TestModelProxyLocalMultiuserAdmissionAndCreditConsistency
+=== RUN   TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/1
+=== RUN   TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/5
+=== RUN   TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/10
+=== RUN   TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/25
+=== RUN   TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/50
+--- PASS: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency (0.22s)
+    --- PASS: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/1 (0.00s)
+    --- PASS: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/5 (0.02s)
+    --- PASS: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/10 (0.03s)
+    --- PASS: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/25 (0.06s)
+    --- PASS: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/50 (0.11s)
+=== RUN   TestLicenseMailUsesOrderNameAndKeepsIDIdempotency
+--- PASS: TestLicenseMailUsesOrderNameAndKeepsIDIdempotency (0.00s)
+=== RUN   TestCreditUnitPriceMonotonic
+--- PASS: TestCreditUnitPriceMonotonic (0.00s)
+=== RUN   TestLivePlansJSON
+--- PASS: TestLivePlansJSON (0.00s)
+=== RUN   TestCancelRevokesPendingReservationsAndPersists
+--- PASS: TestCancelRevokesPendingReservationsAndPersists (0.00s)
+=== RUN   TestCancelBeforePaidTombstone
+--- PASS: TestCancelBeforePaidTombstone (0.00s)
+=== RUN   TestPartialRefundIdempotentAndOutOfOrder
+=== RUN   TestPartialRefundIdempotentAndOutOfOrder/true
+=== RUN   TestPartialRefundIdempotentAndOutOfOrder/false
+--- PASS: TestPartialRefundIdempotentAndOutOfOrder (0.01s)
+    --- PASS: TestPartialRefundIdempotentAndOutOfOrder/true (0.00s)
+    --- PASS: TestPartialRefundIdempotentAndOutOfOrder/false (0.01s)
+=== RUN   TestReversalHMACShopTopicAndInvalidPayload
+=== RUN   TestReversalHMACShopTopicAndInvalidPayload/orders/cancelled
+=== RUN   TestReversalHMACShopTopicAndInvalidPayload/refunds/create
+--- PASS: TestReversalHMACShopTopicAndInvalidPayload (0.00s)
+    --- PASS: TestReversalHMACShopTopicAndInvalidPayload/orders/cancelled (0.00s)
+    --- PASS: TestReversalHMACShopTopicAndInvalidPayload/refunds/create (0.00s)
+=== RUN   TestFinancialOnlyRefundDoesNotInventCreditConversion
+--- PASS: TestFinancialOnlyRefundDoesNotInventCreditConversion (0.00s)
+=== RUN   TestFailedWriteRollsBackAndRetrySucceeds
+=== RUN   TestFailedWriteRollsBackAndRetrySucceeds/orders/paid
+2026/11/06 08:06:37 webhook orders/paid: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsorderspaid3785477764/002/file: not a directory
+=== RUN   TestFailedWriteRollsBackAndRetrySucceeds/orders/cancelled
+2026/11/06 08:06:37 webhook orders/cancelled: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsorderscancelled4191184437/002/file: not a directory
+=== RUN   TestFailedWriteRollsBackAndRetrySucceeds/refunds/create
+2026/11/06 08:06:37 webhook refunds/create: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsrefundscreate1356697498/002/file: not a directory
+--- PASS: TestFailedWriteRollsBackAndRetrySucceeds (0.00s)
+    --- PASS: TestFailedWriteRollsBackAndRetrySucceeds/orders/paid (0.00s)
+    --- PASS: TestFailedWriteRollsBackAndRetrySucceeds/orders/cancelled (0.00s)
+    --- PASS: TestFailedWriteRollsBackAndRetrySucceeds/refunds/create (0.00s)
+=== RUN   TestOpenStoreEmptyFile
+--- PASS: TestOpenStoreEmptyFile (0.00s)
+=== RUN   TestOpenStoreWhitespaceAndInvalidFile
+--- PASS: TestOpenStoreWhitespaceAndInvalidFile (0.00s)
+=== RUN   TestStoreWriterProcess
+    store_lock_test.go:16: subprocess helper
+--- SKIP: TestStoreWriterProcess (0.00s)
+=== RUN   TestStoreConcurrentProcessWriterLock
+--- PASS: TestStoreConcurrentProcessWriterLock (0.01s)
+PASS
+ok  	kiyas/licensesrv	8.104s
+exit_code=0

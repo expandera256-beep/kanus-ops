@@ -1,0 +1,14 @@
+{
+  "command": [
+    "gcloud",
+    "logging",
+    "read",
+    "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"us-watchdog\" AND timestamp>=\"2026-11-07T21:10:00Z\" AND timestamp<=\"2026-11-07T21:30:10.060199Z\"",
+    "--project=project-27082a40-6083-4952-9db",
+    "--format=json",
+    "--limit=10000",
+    "--order=asc"
+  ],
+  "returncode": 0,
+  "end_istanbul": "2026-11-08T00:30:10.060199+03:00"
+}

@@ -1,0 +1,103 @@
+{"Time":"2026-11-06T09:40:20.778911567+03:00","Action":"start","Package":"command-line-arguments"}
+{"Time":"2026-11-06T09:40:20.786033875+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized"}
+{"Time":"2026-11-06T09:40:20.78609084+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized","Output":"=== RUN   TestUyumHTTPUnauthorized\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:23.358570161+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized","Output":"--- PASS: TestUyumHTTPUnauthorized (2.57s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:23.358630515+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized","Elapsed":2.57}
+{"Time":"2026-11-06T09:40:23.358652079+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret"}
+{"Time":"2026-11-06T09:40:23.35865515+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Output":"=== RUN   TestUyumHTTPIDORAndSecret\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:25.91949082+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Output":"    zz_uyum_review_test.go:15: CONFIRMED own live license key in export; foreign account ID ignored\n"}
+{"Time":"2026-11-06T09:40:25.919563095+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Output":"--- PASS: TestUyumHTTPIDORAndSecret (2.56s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:25.919569858+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Elapsed":2.56}
+{"Time":"2026-11-06T09:40:25.919588857+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote"}
+{"Time":"2026-11-06T09:40:25.919592163+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Output":"=== RUN   TestUyumHTTPForeignOriginAndRemote\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:28.484296501+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Output":"    zz_uyum_review_test.go:16: CONFIRMED foreign Origin and non-loopback RemoteAddr accepted with valid bearer; not proof of browser CSRF\n"}
+{"Time":"2026-11-06T09:40:28.484375794+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Output":"--- PASS: TestUyumHTTPForeignOriginAndRemote (2.56s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:28.484381351+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Elapsed":2.56}
+{"Time":"2026-11-06T09:40:28.484390516+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken"}
+{"Time":"2026-11-06T09:40:28.484394884+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Output":"=== RUN   TestUyumHTTPRawToken\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:31.049859446+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Output":"    zz_uyum_review_test.go:17: CONFIRMED Authorization accepts token without Bearer scheme\n"}
+{"Time":"2026-11-06T09:40:31.049986017+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Output":"--- PASS: TestUyumHTTPRawToken (2.57s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:31.050000459+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Elapsed":2.57}
+{"Time":"2026-11-06T09:40:31.050020706+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate"}
+{"Time":"2026-11-06T09:40:31.050026011+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Output":"=== RUN   TestUyumHTTPNoRate\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:33.61269025+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Output":"    zz_uyum_review_test.go:18: CONFIRMED 30 consecutive authenticated exports accepted, no rate limit\n"}
+{"Time":"2026-11-06T09:40:33.612767586+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Output":"--- PASS: TestUyumHTTPNoRate (2.56s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:33.61277279+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Elapsed":2.56}
+{"Time":"2026-11-06T09:40:33.612779876+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase"}
+{"Time":"2026-11-06T09:40:33.612781921+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Output":"=== RUN   TestUyumHTTPOneRequestErase\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:38.749814552+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Output":"    zz_uyum_review_test.go:19: CONFIRMED empty-body single-request erase from foreign origin/non-loopback invalidates account session without confirmation\n"}
+{"Time":"2026-11-06T09:40:38.749935629+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Output":"--- PASS: TestUyumHTTPOneRequestErase (5.14s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:38.749942162+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Elapsed":5.14}
+{"Time":"2026-11-06T09:40:38.749949573+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied"}
+{"Time":"2026-11-06T09:40:38.749952332+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied","Output":"=== RUN   TestUyumHTTPAdminDenied\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:41.345404405+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied","Output":"--- PASS: TestUyumHTTPAdminDenied (2.60s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:41.345464561+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied","Elapsed":2.6}
+{"Time":"2026-11-06T09:40:41.345492408+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized"}
+{"Time":"2026-11-06T09:40:41.345495599+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized","Output":"=== RUN   TestUyumHTTPUnauthorized\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:43.935374373+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized","Output":"--- PASS: TestUyumHTTPUnauthorized (2.59s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:43.935447958+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized","Elapsed":2.59}
+{"Time":"2026-11-06T09:40:43.935461879+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret"}
+{"Time":"2026-11-06T09:40:43.93546583+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Output":"=== RUN   TestUyumHTTPIDORAndSecret\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:46.550670012+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Output":"    zz_uyum_review_test.go:15: CONFIRMED own live license key in export; foreign account ID ignored\n"}
+{"Time":"2026-11-06T09:40:46.550846462+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Output":"--- PASS: TestUyumHTTPIDORAndSecret (2.62s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:46.55085824+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Elapsed":2.62}
+{"Time":"2026-11-06T09:40:46.550893528+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote"}
+{"Time":"2026-11-06T09:40:46.550899337+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Output":"=== RUN   TestUyumHTTPForeignOriginAndRemote\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:49.182906231+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Output":"    zz_uyum_review_test.go:16: CONFIRMED foreign Origin and non-loopback RemoteAddr accepted with valid bearer; not proof of browser CSRF\n"}
+{"Time":"2026-11-06T09:40:49.183136939+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Output":"--- PASS: TestUyumHTTPForeignOriginAndRemote (2.63s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:49.183157574+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Elapsed":2.63}
+{"Time":"2026-11-06T09:40:49.183179889+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken"}
+{"Time":"2026-11-06T09:40:49.183184437+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Output":"=== RUN   TestUyumHTTPRawToken\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:51.8997995+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Output":"    zz_uyum_review_test.go:17: CONFIRMED Authorization accepts token without Bearer scheme\n"}
+{"Time":"2026-11-06T09:40:51.899945984+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Output":"--- PASS: TestUyumHTTPRawToken (2.72s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:51.899965564+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Elapsed":2.72}
+{"Time":"2026-11-06T09:40:51.899986611+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate"}
+{"Time":"2026-11-06T09:40:51.899991514+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Output":"=== RUN   TestUyumHTTPNoRate\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:54.608469919+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Output":"    zz_uyum_review_test.go:18: CONFIRMED 30 consecutive authenticated exports accepted, no rate limit\n"}
+{"Time":"2026-11-06T09:40:54.608685613+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Output":"--- PASS: TestUyumHTTPNoRate (2.71s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:54.608693178+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Elapsed":2.71}
+{"Time":"2026-11-06T09:40:54.608701134+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase"}
+{"Time":"2026-11-06T09:40:54.608703102+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Output":"=== RUN   TestUyumHTTPOneRequestErase\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:59.968660819+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Output":"    zz_uyum_review_test.go:19: CONFIRMED empty-body single-request erase from foreign origin/non-loopback invalidates account session without confirmation\n"}
+{"Time":"2026-11-06T09:40:59.968836337+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Output":"--- PASS: TestUyumHTTPOneRequestErase (5.36s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:59.96890615+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Elapsed":5.36}
+{"Time":"2026-11-06T09:40:59.968951416+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied"}
+{"Time":"2026-11-06T09:40:59.968958679+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied","Output":"=== RUN   TestUyumHTTPAdminDenied\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:02.596393648+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied","Output":"--- PASS: TestUyumHTTPAdminDenied (2.63s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:02.596450706+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied","Elapsed":2.63}
+{"Time":"2026-11-06T09:41:02.596458161+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized"}
+{"Time":"2026-11-06T09:41:02.596484496+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized","Output":"=== RUN   TestUyumHTTPUnauthorized\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:05.181765943+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized","Output":"--- PASS: TestUyumHTTPUnauthorized (2.59s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:05.181819574+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPUnauthorized","Elapsed":2.59}
+{"Time":"2026-11-06T09:41:05.181828298+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret"}
+{"Time":"2026-11-06T09:41:05.181831373+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Output":"=== RUN   TestUyumHTTPIDORAndSecret\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:07.781446244+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Output":"    zz_uyum_review_test.go:15: CONFIRMED own live license key in export; foreign account ID ignored\n"}
+{"Time":"2026-11-06T09:41:07.78160776+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Output":"--- PASS: TestUyumHTTPIDORAndSecret (2.60s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:07.781620446+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPIDORAndSecret","Elapsed":2.6}
+{"Time":"2026-11-06T09:41:07.781633238+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote"}
+{"Time":"2026-11-06T09:41:07.781639411+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Output":"=== RUN   TestUyumHTTPForeignOriginAndRemote\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:10.510993635+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Output":"    zz_uyum_review_test.go:16: CONFIRMED foreign Origin and non-loopback RemoteAddr accepted with valid bearer; not proof of browser CSRF\n"}
+{"Time":"2026-11-06T09:41:10.512841102+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Output":"--- PASS: TestUyumHTTPForeignOriginAndRemote (2.73s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:10.512870562+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPForeignOriginAndRemote","Elapsed":2.73}
+{"Time":"2026-11-06T09:41:10.51287986+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken"}
+{"Time":"2026-11-06T09:41:10.512883547+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Output":"=== RUN   TestUyumHTTPRawToken\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:13.148311513+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Output":"    zz_uyum_review_test.go:17: CONFIRMED Authorization accepts token without Bearer scheme\n"}
+{"Time":"2026-11-06T09:41:13.148700971+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Output":"--- PASS: TestUyumHTTPRawToken (2.64s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:13.148818968+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPRawToken","Elapsed":2.64}
+{"Time":"2026-11-06T09:41:13.14890794+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate"}
+{"Time":"2026-11-06T09:41:13.149068842+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Output":"=== RUN   TestUyumHTTPNoRate\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:15.740774391+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Output":"    zz_uyum_review_test.go:18: CONFIRMED 30 consecutive authenticated exports accepted, no rate limit\n"}
+{"Time":"2026-11-06T09:41:15.740875287+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Output":"--- PASS: TestUyumHTTPNoRate (2.59s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:15.740880887+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPNoRate","Elapsed":2.59}
+{"Time":"2026-11-06T09:41:15.740888983+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase"}
+{"Time":"2026-11-06T09:41:15.740890902+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Output":"=== RUN   TestUyumHTTPOneRequestErase\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:21.17569363+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Output":"    zz_uyum_review_test.go:19: CONFIRMED empty-body single-request erase from foreign origin/non-loopback invalidates account session without confirmation\n"}
+{"Time":"2026-11-06T09:41:21.176147477+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Output":"--- PASS: TestUyumHTTPOneRequestErase (5.43s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:21.176168777+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPOneRequestErase","Elapsed":5.43}
+{"Time":"2026-11-06T09:41:21.176179086+03:00","Action":"run","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied"}
+{"Time":"2026-11-06T09:41:21.176181505+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied","Output":"=== RUN   TestUyumHTTPAdminDenied\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:23.780832898+03:00","Action":"output","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied","Output":"--- PASS: TestUyumHTTPAdminDenied (2.60s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:23.780910024+03:00","Action":"pass","Package":"command-line-arguments","Test":"TestUyumHTTPAdminDenied","Elapsed":2.6}
+{"Time":"2026-11-06T09:41:23.780922724+03:00","Action":"output","Package":"command-line-arguments","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:41:24.784481635+03:00","Action":"output","Package":"command-line-arguments","Output":"ok  \tcommand-line-arguments\t64.005s\n"}
+{"Time":"2026-11-06T09:41:24.784536048+03:00","Action":"pass","Package":"command-line-arguments","Elapsed":64.006}

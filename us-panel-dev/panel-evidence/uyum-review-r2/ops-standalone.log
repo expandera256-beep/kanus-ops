@@ -1,0 +1,12 @@
+/workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch: 0
+
+/workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch: 0
+
+['go', 'test', './...', '-run', '^$']: 0
+ok  	kiyas	0.009s [no tests to run]
+ok  	kiyas/cmd/us-license-hook	0.006s [no tests to run]
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+ok  	kiyas/licensesrv	0.009s [no tests to run]
+
+['go', 'test', '-race', './licensesrv', '-run', 'Privacy|Erase|Retention', '-count=1']: 0
+ok  	kiyas/licensesrv	20.781s

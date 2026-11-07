@@ -1,0 +1,134 @@
+{
+  "race": {
+    "test_counts_including_subtests": {
+      "pass": 257,
+      "skip": 2
+    },
+    "failed_tests": [],
+    "packages": [
+      [
+        "kiyas/cmd/us-pricing-gen",
+        "skip"
+      ],
+      [
+        "kiyas/i18n",
+        "pass"
+      ],
+      [
+        "kiyas/cmd/us-license-hook",
+        "pass"
+      ],
+      [
+        "kiyas",
+        "fail"
+      ],
+      [
+        "kiyas/licensesrv",
+        "pass"
+      ]
+    ],
+    "exit": 1
+  },
+  "race_retry": {
+    "test_counts_including_subtests": {
+      "pass": 344,
+      "skip": 6
+    },
+    "failed_tests": [],
+    "packages": [
+      [
+        "kiyas/cmd/us-pricing-gen",
+        "skip"
+      ],
+      [
+        "kiyas/i18n",
+        "pass"
+      ],
+      [
+        "kiyas/cmd/us-license-hook",
+        "pass"
+      ],
+      [
+        "kiyas",
+        "pass"
+      ],
+      [
+        "kiyas/licensesrv",
+        "fail"
+      ]
+    ],
+    "exit": 1
+  },
+  "new8_count3": {
+    "test_counts_including_subtests": {
+      "pass": 24
+    },
+    "failed_tests": [],
+    "packages": [
+      [
+        "kiyas/i18n",
+        "pass"
+      ],
+      [
+        "kiyas",
+        "pass"
+      ]
+    ],
+    "exit": 0
+  },
+  "old8_negative": {
+    "test_counts_including_subtests": {
+      "fail": 7,
+      "pass": 1
+    },
+    "failed_tests": [
+      "TestLangPostRejectsForeignOrigin",
+      "TestLangPostRejectsTrailingAndOversized",
+      "TestPrefGetFIFODoesNotBlock",
+      "TestPrefGetRejectsSymlinkFile",
+      "TestPrefGetRejectsLargeFileQuickly",
+      "TestPrefSetRejectsSymlinkParent",
+      "TestPrefSetRejectsSymlinkFile"
+    ],
+    "packages": [
+      [
+        "kiyas",
+        "fail"
+      ],
+      [
+        "kiyas/i18n",
+        "fail"
+      ]
+    ],
+    "exit": 1
+  },
+  "race_serial": {
+    "test_counts_including_subtests": {
+      "pass": 410,
+      "skip": 7
+    },
+    "packages": [
+      [
+        "kiyas",
+        "pass"
+      ],
+      [
+        "kiyas/cmd/us-license-hook",
+        "pass"
+      ],
+      [
+        "kiyas/cmd/us-pricing-gen",
+        "skip"
+      ],
+      [
+        "kiyas/i18n",
+        "pass"
+      ],
+      [
+        "kiyas/licensesrv",
+        "pass"
+      ]
+    ],
+    "exit": 0
+  }
+}

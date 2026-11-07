@@ -1,0 +1,11 @@
+1:--- FAIL: TestHookReleaseUsesRemoteLedgerWithoutDesktopSigningSecret (0.00s)
+5:FAIL	kiyas	41.871s
+8:--- FAIL: TestAccountNoCreditAndInvalidSessionNeverCallsModel (2.58s)
+11:--- FAIL: TestParsePlansBothExportSchemas (0.00s)
+13:--- FAIL: TestGPUWakeProxyWarmingNoChargeThenSSE (0.04s)
+15:--- FAIL: TestRound6SSE50LicensesQueue32 (5.30s)
+68:--- FAIL: TestRound6ExpiredRevokedHourlySSE (1.10s)
+70:--- FAIL: TestModelProxySSEChargeAndNoLicenseLeak (0.01s)
+73:--- FAIL: TestModelProxyHourlySecondsAndLegacyUpgrade (0.01s)
+78:--- FAIL: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency (0.04s)
+184:FAIL	kiyas/licensesrv	73.121s

@@ -1,0 +1,6 @@
+Embedded JavaScript syntax and static DOM bindings passed.
+PASS 500 reverts and shows TR error {"value":"tr","loadedEn":false,"htmlLang":"tr","statusShown":true,"statusText":"Dil tercihi kaydedilemedi; önceki dil korunuyor."}
+PASS 503 not-persisted reverts {"value":"tr","loadedEn":false,"htmlLang":"tr","statusShown":true,"statusText":"Dil tercihi kaydedilemedi; önceki dil korunuyor."}
+PASS network error reverts {"value":"tr","loadedEn":false,"htmlLang":"tr","statusShown":true,"statusText":"Dil tercihi kaydedilemedi; önceki dil korunuyor."}
+PASS 200 switches to en {"value":"en","loadedEn":true,"htmlLang":"en","statusShown":false,"statusText":""}
+gui lang UI test passed

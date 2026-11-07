@@ -1,0 +1,75 @@
+{
+  "baseline-race": {
+    "tests": {
+      "pass": 386,
+      "skip": 7
+    },
+    "packages": {
+      "skip": 1,
+      "pass": 3
+    }
+  },
+  "race": {
+    "tests": {
+      "pass": 382,
+      "skip": 7
+    },
+    "packages": {
+      "fail": 2,
+      "skip": 1,
+      "pass": 2
+    }
+  },
+  "new-count3": {
+    "tests": {
+      "pass": 3
+    },
+    "packages": {
+      "pass": 1
+    }
+  },
+  "poc-store": {
+    "tests": {
+      "pass": 3
+    },
+    "packages": {
+      "pass": 1
+    }
+  },
+  "poc-http": {
+    "tests": {
+      "pass": 21
+    },
+    "packages": {
+      "pass": 1
+    }
+  },
+  "absent_from_patched": [
+    [
+      "kiyas/cmd/us-license-hook",
+      "TestAccountRoutesThroughProductionMux"
+    ],
+    [
+      "kiyas/cmd/us-license-hook",
+      "TestModelRoutesAreLicenseProtected"
+    ],
+    [
+      "kiyas/cmd/us-license-hook",
+      "TestPlansFilePrecedenceAndFailClosed"
+    ],
+    [
+      "kiyas/cmd/us-license-hook",
+      "TestSMTPDisabledDoesNotAttemptOrExhaustOutbox"
+    ],
+    [
+      "kiyas/cmd/us-license-hook",
+      "TestWebhookRoutesAreTopicBound"
+    ]
+  ],
+  "new_in_patched": [
+    [
+      "kiyas/licensesrv",
+      "TestPrivacyExportAnonymizeRetention"
+    ]
+  ]
+}

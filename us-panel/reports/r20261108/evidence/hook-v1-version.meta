@@ -1,0 +1,4 @@
+2026-11-08T00:22:51.706541+03:00
+GET https://api-test.kanus.org/v1/version
+HTTP 404
+exit=0

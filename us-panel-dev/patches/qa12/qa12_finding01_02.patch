@@ -1,0 +1,135 @@
+diff -ruN -x '*.json' term.orig/repair_loop.go term/repair_loop.go
+--- term.orig/repair_loop.go	2026-11-06 13:38:34.179589306 +0300
++++ term/repair_loop.go	2026-11-08 00:42:39.966625607 +0300
+@@ -267,10 +267,17 @@
+ 	if l.Key != "" {
+ 		hreq.Header.Set("Authorization", "Bearer "+l.Key)
+ 	}
+-	client := l.Client
+-	if client == nil {
++	// Never follow redirects: a 3xx would resend Authorization and the project
++	// body to another origin (QA FINDING-02). Work on a shallow copy so the
++	// caller's client is never mutated.
++	var client *http.Client
++	if l.Client != nil {
++		c := *l.Client
++		client = &c
++	} else {
+ 		client = &http.Client{Timeout: 10 * time.Minute}
+ 	}
++	client.CheckRedirect = func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }
+ 	resp, err := client.Do(hreq)
+ 	if err != nil {
+ 		return nil, err
+diff -ruN -x '*.json' term.orig/repair_redirect_test.go term/repair_redirect_test.go
+--- term.orig/repair_redirect_test.go	1970-01-01 02:00:00.000000000 +0200
++++ term/repair_redirect_test.go	2026-11-08 00:42:29.358389813 +0300
+@@ -0,0 +1,61 @@
++package main
++
++import (
++	"context"
++	"net/http"
++	"net/http/httptest"
++	"os"
++	"path/filepath"
++	"sync/atomic"
++	"testing"
++	"time"
++)
++
++// FINDING-02: the repair loop must never follow redirects (cross-port 307 would
++// resend Authorization and the project body to another origin).
++func TestRepairLoopRefusesRedirects(t *testing.T) {
++	const key = "SYNTHETIC_REPAIR_KEY_FOR_TEST"
++	for _, tc := range []struct {
++		name   string
++		client func() *http.Client
++	}{
++		{"default_client", func() *http.Client { return nil }},
++		{"caller_client", func() *http.Client { return &http.Client{Timeout: 5 * time.Second} }},
++	} {
++		t.Run(tc.name, func(t *testing.T) {
++			var hit, auth atomic.Bool
++			sink := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++				hit.Store(true)
++				if r.Header.Get("Authorization") != "" {
++					auth.Store(true)
++				}
++				w.Write([]byte(`{"choices":[{"message":{"content":"{\"files\":[]}"}}]}`))
++			}))
++			defer sink.Close()
++			origin := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++				http.Redirect(w, r, sink.URL+"/sink", http.StatusTemporaryRedirect)
++			}))
++			defer origin.Close()
++			root := t.TempDir()
++			os.WriteFile(filepath.Join(root, "main.go"), []byte("package main\nfunc main(){}\n"), 0o600)
++			ft, err := newFileTools(root)
++			if err != nil {
++				t.Fatal(err)
++			}
++			caller := tc.client()
++			loop := &repairLoop{Root: root, Endpoint: origin.URL, Key: key, Model: "m", Client: caller}
++			ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
++			defer cancel()
++			_, err = loop.askFix(ctx, ft, repairStep{State: "failed", Stderr: "x"})
++			if hit.Load() || auth.Load() {
++				t.Fatalf("redirect followed: sink_hit=%t authorization_leaked=%t", hit.Load(), auth.Load())
++			}
++			if err == nil {
++				t.Fatal("expected error on 307 response")
++			}
++			if caller != nil && caller.CheckRedirect != nil {
++				t.Fatal("caller client was mutated")
++			}
++		})
++	}
++}
+diff -ruN -x '*.json' term.orig/workspace_isolation_guard_test.go term/workspace_isolation_guard_test.go
+--- term.orig/workspace_isolation_guard_test.go	1970-01-01 02:00:00.000000000 +0200
++++ term/workspace_isolation_guard_test.go	2026-11-08 00:43:09.103273240 +0300
+@@ -0,0 +1,43 @@
++package main
++
++import (
++	"os"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++// FINDING-01 cheap-hardening guards. These do NOT close the finding: project
++// code under the same OS user can still open sibling paths directly.
++
++func TestFileToolsRefuseSiblingWorkspace(t *testing.T) {
++	parent := t.TempDir()
++	a, b := filepath.Join(parent, "user-a"), filepath.Join(parent, "user-b")
++	os.Mkdir(a, 0o700)
++	os.Mkdir(b, 0o700)
++	os.WriteFile(filepath.Join(b, "s.txt"), []byte("SYNTH"), 0o600)
++	os.Symlink(b, filepath.Join(a, "link"))
++	ft, err := newFileTools(a)
++	if err != nil {
++		t.Fatal(err)
++	}
++	for _, p := range []string{"../user-b/s.txt", filepath.Join(b, "s.txt"), "link/s.txt"} {
++		if body, err := ft.Read(p); err == nil {
++			t.Fatalf("sibling read via %q allowed: %q", p, body)
++		}
++		if err := ft.Write(p, []byte("x")); err == nil {
++			t.Fatalf("sibling write via %q allowed", p)
++		}
++	}
++}
++
++func TestSafeExecEnvDoesNotExposeWorkspaceRoots(t *testing.T) {
++	for _, k := range []string{"US_PROJECT_ROOT", "US_WORKSPACE", "US_ROOT", "US_DATA_DIR", "PWD", "OLDPWD"} {
++		t.Setenv(k, "/synthetic/other-workspace")
++	}
++	for _, kv := range safeExecEnv() {
++		if strings.Contains(kv, "/synthetic/other-workspace") {
++			t.Fatalf("child env exposes workspace path: %s", kv)
++		}
++	}
++}

@@ -1,0 +1,2 @@
+{"name": "remote_credit_write_gate", "status": "BLOCKED", "detail": "Requires --allow-one-test-credit; consumes exactly one synthetic A credit, B0; no requests made"}
+SUMMARY {"PASS": 0, "FAIL": 0, "BLOCKED": 1, "NOT TESTED": 0}

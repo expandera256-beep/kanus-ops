@@ -1,0 +1,11 @@
+{
+  "pass": 222,
+  "fail": 0,
+  "skip": 5,
+  "result": {
+    "Time": "2026-11-05T22:59:48.238144637+03:00",
+    "Action": "pass",
+    "Package": "kiyas",
+    "Elapsed": 34.319
+  }
+}

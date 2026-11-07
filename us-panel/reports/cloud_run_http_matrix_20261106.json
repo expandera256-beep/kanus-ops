@@ -1,0 +1,258 @@
+[
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 405 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: f1d3a622d79019358fccba5a370d0045\ndate: Fri, 06 Nov 2026 02:52:29 GMT\nserver: Google Frontend\ncontent-length: 19\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"method\"}",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 405 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: a7736bc7593bf775b0d05ff0c35f26df\ndate: Fri, 06 Nov 2026 02:52:29 GMT\nserver: Google Frontend\ncontent-length: 19\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"method\"}",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/healthz",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: text/html; charset=UTF-8\nreferrer-policy: no-referrer\ncontent-length: 1568\ndate: Fri, 06 Nov 2026 02:52:29 GMT\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That\u2019s an error.</ins>\n  <p>The requested URL <code>/healthz</code> was not found on this server.  <ins>That\u2019s all we know.</ins>\n",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/healthz",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: text/html; charset=UTF-8\nreferrer-policy: no-referrer\ncontent-length: 1568\ndate: Fri, 06 Nov 2026 02:52:29 GMT\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That\u2019s an error.</ins>\n  <p>The requested URL <code>/healthz</code> was not found on this server.  <ins>That\u2019s all we know.</ins>\n",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/health",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 200 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: 5005be4c330b46dec154c032d1d3c98a\ndate: Fri, 06 Nov 2026 02:52:29 GMT\nserver: Google Frontend\ncontent-length: 39\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"ok\": true, \"shopify_webhooks\": false}",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/health",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 200 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: 7616d06a71b2d67baa2fe85ade09ceba;o=1\ndate: Fri, 06 Nov 2026 02:52:29 GMT\nserver: Google Frontend\ncontent-length: 39\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"ok\": true, \"shopify_webhooks\": false}",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/status",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 405 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: e8fb381e1d82cf0b939db3bdb947a271\ndate: Fri, 06 Nov 2026 02:52:29 GMT\nserver: Google Frontend\ncontent-length: 19\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"method\"}",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app/status",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 405 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: fa5aeecc9f58021652513e4a43bb97d6\ndate: Fri, 06 Nov 2026 02:52:29 GMT\nserver: Google Frontend\ncontent-length: 19\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"method\"}",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-247516932580.europe-west4.run.app/",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 405 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: a49c1877635acfd0182ef45f64243d17\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nserver: Google Frontend\ncontent-length: 19\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"method\"}",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-247516932580.europe-west4.run.app/",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 405 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: c7169b3c054d1015ee2e944b58f32573\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nserver: Google Frontend\ncontent-length: 19\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"method\"}",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-247516932580.europe-west4.run.app/healthz",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: text/html; charset=UTF-8\nreferrer-policy: no-referrer\ncontent-length: 1568\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That\u2019s an error.</ins>\n  <p>The requested URL <code>/healthz</code> was not found on this server.  <ins>That\u2019s all we know.</ins>\n",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-247516932580.europe-west4.run.app/healthz",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: text/html; charset=UTF-8\nreferrer-policy: no-referrer\ncontent-length: 1568\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That\u2019s an error.</ins>\n  <p>The requested URL <code>/healthz</code> was not found on this server.  <ins>That\u2019s all we know.</ins>\n",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-247516932580.europe-west4.run.app/health",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 200 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: 1593280ea633d57d25e7098a3456586b\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nserver: Google Frontend\ncontent-length: 39\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"ok\": true, \"shopify_webhooks\": false}",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-247516932580.europe-west4.run.app/health",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 200 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: 05d8562032a7c843c1984e624154932a\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nserver: Google Frontend\ncontent-length: 39\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"ok\": true, \"shopify_webhooks\": false}",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-247516932580.europe-west4.run.app/status",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 405 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: 39ee8751b2438d9d1b6f0693955965fc\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nserver: Google Frontend\ncontent-length: 19\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"method\"}",
+    "error": ""
+  },
+  {
+    "service": "us-commerce",
+    "url": "https://us-commerce-247516932580.europe-west4.run.app/status",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 405 \ncontent-type: application/json; charset=utf-8\ncache-control: no-store\nx-cloud-trace-context: f4055531962f572079658dd4a3e8c450\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nserver: Google Frontend\ncontent-length: 19\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"method\"}",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 403 \ndate: Fri, 06 Nov 2026 02:52:30 GMT\ncontent-type: text/html; charset=UTF-8\nserver: Google Frontend\ncontent-length: 295\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>403 Forbidden</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Forbidden</h1>\n<h2>Your client does not have permission to get URL <code>/</code> from this server.</h2>\n<h2></h2>\n</body></html>\n",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: application/json\ncache-control: no-store\nx-cloud-trace-context: 8a6f07efebd175e1c6e44352897fd517\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nserver: Google Frontend\ncontent-length: 18\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"route\"}",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/healthz",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: text/html; charset=UTF-8\nreferrer-policy: no-referrer\ncontent-length: 1568\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That\u2019s an error.</ins>\n  <p>The requested URL <code>/healthz</code> was not found on this server.  <ins>That\u2019s all we know.</ins>\n",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/healthz",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: text/html; charset=UTF-8\nreferrer-policy: no-referrer\ncontent-length: 1568\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That\u2019s an error.</ins>\n  <p>The requested URL <code>/healthz</code> was not found on this server.  <ins>That\u2019s all we know.</ins>\n",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 403 \ndate: Fri, 06 Nov 2026 02:52:30 GMT\ncontent-type: text/html; charset=UTF-8\nserver: Google Frontend\ncontent-length: 301\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>403 Forbidden</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Forbidden</h1>\n<h2>Your client does not have permission to get URL <code>/health</code> from this server.</h2>\n<h2></h2>\n</body></html>\n",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 200 \ncontent-type: application/json\ncache-control: no-store\nx-cloud-trace-context: 94b05e19b29b9f50c5fbf59fe6a2787c\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nserver: Google Frontend\ncontent-length: 12\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"ok\": true}",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/status",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 403 \ndate: Fri, 06 Nov 2026 02:52:30 GMT\ncontent-type: text/html; charset=UTF-8\nserver: Google Frontend\ncontent-length: 301\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>403 Forbidden</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Forbidden</h1>\n<h2>Your client does not have permission to get URL <code>/status</code> from this server.</h2>\n<h2></h2>\n</body></html>\n",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app/status",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: application/json\ncache-control: no-store\nx-cloud-trace-context: adb3bc5fe3ac951c167951bfab877d09\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nserver: Google Frontend\ncontent-length: 18\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"route\"}",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-247516932580.europe-west4.run.app/",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 403 \ndate: Fri, 06 Nov 2026 02:52:31 GMT\ncontent-type: text/html; charset=UTF-8\nserver: Google Frontend\ncontent-length: 295\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>403 Forbidden</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Forbidden</h1>\n<h2>Your client does not have permission to get URL <code>/</code> from this server.</h2>\n<h2></h2>\n</body></html>\n",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-247516932580.europe-west4.run.app/",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: application/json\ncache-control: no-store\nx-cloud-trace-context: 88d6e3ec19b04333f163e5d5c8683002\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nserver: Google Frontend\ncontent-length: 18\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"route\"}",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-247516932580.europe-west4.run.app/healthz",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: text/html; charset=UTF-8\nreferrer-policy: no-referrer\ncontent-length: 1568\ndate: Fri, 06 Nov 2026 02:52:30 GMT\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That\u2019s an error.</ins>\n  <p>The requested URL <code>/healthz</code> was not found on this server.  <ins>That\u2019s all we know.</ins>\n",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-247516932580.europe-west4.run.app/healthz",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: text/html; charset=UTF-8\nreferrer-policy: no-referrer\ncontent-length: 1568\ndate: Fri, 06 Nov 2026 02:52:31 GMT\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That\u2019s an error.</ins>\n  <p>The requested URL <code>/healthz</code> was not found on this server.  <ins>That\u2019s all we know.</ins>\n",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-247516932580.europe-west4.run.app/health",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 403 \ndate: Fri, 06 Nov 2026 02:52:31 GMT\ncontent-type: text/html; charset=UTF-8\nserver: Google Frontend\ncontent-length: 301\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>403 Forbidden</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Forbidden</h1>\n<h2>Your client does not have permission to get URL <code>/health</code> from this server.</h2>\n<h2></h2>\n</body></html>\n",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-247516932580.europe-west4.run.app/health",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 200 \ncontent-type: application/json\ncache-control: no-store\nx-cloud-trace-context: a1453f1c3e2b2df574ebfd84fa6e6f45\ndate: Fri, 06 Nov 2026 02:52:31 GMT\nserver: Google Frontend\ncontent-length: 12\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"ok\": true}",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-247516932580.europe-west4.run.app/status",
+    "auth": "none",
+    "curl_exit": 0,
+    "response": "HTTP/2 403 \ndate: Fri, 06 Nov 2026 02:52:31 GMT\ncontent-type: text/html; charset=UTF-8\nserver: Google Frontend\ncontent-length: 301\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>403 Forbidden</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Forbidden</h1>\n<h2>Your client does not have permission to get URL <code>/status</code> from this server.</h2>\n<h2></h2>\n</body></html>\n",
+    "error": ""
+  },
+  {
+    "service": "us-watchdog",
+    "url": "https://us-watchdog-247516932580.europe-west4.run.app/status",
+    "auth": "identity token",
+    "curl_exit": 0,
+    "response": "HTTP/2 404 \ncontent-type: application/json\ncache-control: no-store\nx-cloud-trace-context: 38f248db8e6b6527590564caa70cc320\ndate: Fri, 06 Nov 2026 02:52:31 GMT\nserver: Google Frontend\ncontent-length: 18\nalt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000\n\n{\"error\": \"route\"}",
+    "error": ""
+  }
+]

@@ -1,0 +1,9 @@
+kiyas/term/main.go
+kiyas/term/release.go
+kiyas/term/US_DERLE.bat
+kiyas/term/real_project_build_test.go
+kiyas/term/smoke_cli.go
+kiyas/term/smoke_cli_test.go
+kiyas/term/smoke_console_windows.go
+kiyas/term/smoke_console_other.go
+kiyas/term/licensesrv/load_round6_test.go

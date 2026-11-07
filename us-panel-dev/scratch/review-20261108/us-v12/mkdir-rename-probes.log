@@ -1,0 +1,8 @@
+=== RUN   TestPanelIndependentPinnedMkdirRename
+--- PASS: TestPanelIndependentPinnedMkdirRename (0.00s)
+=== RUN   TestPanelIndependentPinnedMkdirRename
+--- PASS: TestPanelIndependentPinnedMkdirRename (0.01s)
+=== RUN   TestPanelIndependentPinnedMkdirRename
+--- PASS: TestPanelIndependentPinnedMkdirRename (0.01s)
+PASS
+ok  	kiyas	1.053s

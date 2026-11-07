@@ -1,0 +1,186 @@
+{"Time":"2026-11-08T01:33:54.846909852+03:00","Action":"start","Package":"kiyas"}
+{"Time":"2026-11-08T01:33:54.856826053+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix"}
+{"Time":"2026-11-08T01:33:54.85687508+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix","Output":"=== RUN   TestOwnFetchMatrix\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.862989324+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/http"}
+{"Time":"2026-11-08T01:33:54.863014061+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/http","Output":"=== RUN   TestOwnFetchMatrix/http\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.86302335+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/http","Output":"    review_unsigned_test.go:4: http fx: https required 5.833µs\n"}
+{"Time":"2026-11-08T01:33:54.863029096+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/http","Output":"--- PASS: TestOwnFetchMatrix/http (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.863031592+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/http","Elapsed":0}
+{"Time":"2026-11-08T01:33:54.863039486+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/redirect"}
+{"Time":"2026-11-08T01:33:54.863041469+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/redirect","Output":"=== RUN   TestOwnFetchMatrix/redirect\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.865520931+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/redirect","Output":"    review_unsigned_test.go:4: redirect fx: status 302 4.882097ms\n"}
+{"Time":"2026-11-08T01:33:54.866019986+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/redirect","Output":"--- PASS: TestOwnFetchMatrix/redirect (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.866071798+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/redirect","Elapsed":0.01}
+{"Time":"2026-11-08T01:33:54.866117395+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/4097"}
+{"Time":"2026-11-08T01:33:54.866134685+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/4097","Output":"=== RUN   TestOwnFetchMatrix/4097\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.872897618+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/4097","Output":"    review_unsigned_test.go:4: 4097 fx: body 5.017338ms\n"}
+{"Time":"2026-11-08T01:33:54.873396022+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/4097","Output":"--- PASS: TestOwnFetchMatrix/4097 (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.873459411+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/4097","Elapsed":0.01}
+{"Time":"2026-11-08T01:33:54.87351743+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/bad-json"}
+{"Time":"2026-11-08T01:33:54.873538549+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/bad-json","Output":"=== RUN   TestOwnFetchMatrix/bad-json\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.87911585+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/bad-json","Output":"    review_unsigned_test.go:4: bad-json fx: json 4.114281ms\n"}
+{"Time":"2026-11-08T01:33:54.879529799+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/bad-json","Output":"--- PASS: TestOwnFetchMatrix/bad-json (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.879615521+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/bad-json","Elapsed":0.01}
+{"Time":"2026-11-08T01:33:54.879673877+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/missing-sig-allowed"}
+{"Time":"2026-11-08T01:33:54.879677712+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/missing-sig-allowed","Output":"=== RUN   TestOwnFetchMatrix/missing-sig-allowed\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.885292811+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/missing-sig-allowed","Output":"    review_unsigned_test.go:4: missing-sig-allowed \u003cnil\u003e 4.148793ms\n"}
+{"Time":"2026-11-08T01:33:54.885761771+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/missing-sig-allowed","Output":"--- PASS: TestOwnFetchMatrix/missing-sig-allowed (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.885829277+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/missing-sig-allowed","Elapsed":0.01}
+{"Time":"2026-11-08T01:33:54.885931798+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/wrong-sig-ignored"}
+{"Time":"2026-11-08T01:33:54.885936538+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/wrong-sig-ignored","Output":"=== RUN   TestOwnFetchMatrix/wrong-sig-ignored\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.891724706+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/wrong-sig-ignored","Output":"    review_unsigned_test.go:4: wrong-sig-ignored \u003cnil\u003e 4.082327ms\n"}
+{"Time":"2026-11-08T01:33:54.891981267+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/wrong-sig-ignored","Output":"--- PASS: TestOwnFetchMatrix/wrong-sig-ignored (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.893183404+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/wrong-sig-ignored","Elapsed":0.01}
+{"Time":"2026-11-08T01:33:54.893201676+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/replay"}
+{"Time":"2026-11-08T01:33:54.893207086+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/replay","Output":"=== RUN   TestOwnFetchMatrix/replay\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.897578891+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/replay","Output":"    review_unsigned_test.go:4: replay fx: stale or future 4.136639ms\n"}
+{"Time":"2026-11-08T01:33:54.897935661+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/replay","Output":"--- PASS: TestOwnFetchMatrix/replay (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.897980602+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/replay","Elapsed":0.01}
+{"Time":"2026-11-08T01:33:54.898016916+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/valid"}
+{"Time":"2026-11-08T01:33:54.898029338+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/valid","Output":"=== RUN   TestOwnFetchMatrix/valid\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.903569621+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/valid","Output":"    review_unsigned_test.go:4: valid \u003cnil\u003e 4.13277ms\n"}
+{"Time":"2026-11-08T01:33:54.903890195+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/valid","Output":"--- PASS: TestOwnFetchMatrix/valid (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.903932309+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/valid","Elapsed":0.01}
+{"Time":"2026-11-08T01:33:54.903974963+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted"}
+{"Time":"2026-11-08T01:33:54.903978538+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted","Output":"=== RUN   TestOwnFetchMatrix/tls-untrusted\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.98459493+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted","Output":"2026/11/08 01:33:54 http: TLS handshake error from 127.0.0.1:41030: remote error: tls: bad certificate\n"}
+{"Time":"2026-11-08T01:33:54.984767206+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted","Output":"    review_unsigned_test.go:4: tls-untrusted Get \"https://127.0.0.1:42361/v1/fx\": tls: failed to verify certificate: x509: certificate signed by unknown authority 79.408026ms\n"}
+{"Time":"2026-11-08T01:33:54.985037559+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted","Output":"--- PASS: TestOwnFetchMatrix/tls-untrusted (0.08s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:54.990404933+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/tls-untrusted","Elapsed":0.08}
+{"Time":"2026-11-08T01:33:54.990446165+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFetchMatrix/timeout5"}
+{"Time":"2026-11-08T01:33:54.990450163+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/timeout5","Output":"=== RUN   TestOwnFetchMatrix/timeout5\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.987234216+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/timeout5","Output":"    review_unsigned_test.go:4: timeout5 Get \"https://127.0.0.1:36399/v1/fx\": context deadline exceeded (Client.Timeout exceeded while awaiting headers) 5.000826029s\n"}
+{"Time":"2026-11-08T01:33:59.987686833+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix/timeout5","Output":"--- PASS: TestOwnFetchMatrix/timeout5 (5.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.989429238+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix/timeout5","Elapsed":5}
+{"Time":"2026-11-08T01:33:59.989454921+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFetchMatrix","Output":"--- PASS: TestOwnFetchMatrix (5.13s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.989462022+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFetchMatrix","Elapsed":5.13}
+{"Time":"2026-11-08T01:33:59.989464918+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix"}
+{"Time":"2026-11-08T01:33:59.989467615+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix","Output":"=== RUN   TestOwnCacheMatrix\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.989470414+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/valid"}
+{"Time":"2026-11-08T01:33:59.9894723+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/valid","Output":"=== RUN   TestOwnCacheMatrix/valid\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.989475474+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/valid","Output":"--- PASS: TestOwnCacheMatrix/valid (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.989478043+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/valid","Elapsed":0}
+{"Time":"2026-11-08T01:33:59.989480043+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/local-tamper"}
+{"Time":"2026-11-08T01:33:59.989481585+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/local-tamper","Output":"=== RUN   TestOwnCacheMatrix/local-tamper\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.989484064+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/local-tamper","Output":"--- PASS: TestOwnCacheMatrix/local-tamper (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.9894858+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/local-tamper","Elapsed":0}
+{"Time":"2026-11-08T01:33:59.98948754+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/corrupt"}
+{"Time":"2026-11-08T01:33:59.98948923+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/corrupt","Output":"=== RUN   TestOwnCacheMatrix/corrupt\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.98949563+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/corrupt","Output":"--- PASS: TestOwnCacheMatrix/corrupt (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.989497285+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/corrupt","Elapsed":0}
+{"Time":"2026-11-08T01:33:59.989499736+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/stale"}
+{"Time":"2026-11-08T01:33:59.98950131+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/stale","Output":"=== RUN   TestOwnCacheMatrix/stale\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.989504842+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/stale","Output":"--- PASS: TestOwnCacheMatrix/stale (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.989514649+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/stale","Elapsed":0}
+{"Time":"2026-11-08T01:33:59.989518559+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/symlink"}
+{"Time":"2026-11-08T01:33:59.989520449+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/symlink","Output":"=== RUN   TestOwnCacheMatrix/symlink\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.989866574+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/symlink","Output":"--- PASS: TestOwnCacheMatrix/symlink (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.989872356+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/symlink","Elapsed":0}
+{"Time":"2026-11-08T01:33:59.98991154+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/root-swap"}
+{"Time":"2026-11-08T01:33:59.989929543+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/root-swap","Output":"=== RUN   TestOwnCacheMatrix/root-swap\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.995224498+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/root-swap","Output":"--- PASS: TestOwnCacheMatrix/root-swap (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.995278081+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/root-swap","Elapsed":0.01}
+{"Time":"2026-11-08T01:33:59.995320868+03:00","Action":"run","Package":"kiyas","Test":"TestOwnCacheMatrix/max-body-cache"}
+{"Time":"2026-11-08T01:33:59.995331883+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/max-body-cache","Output":"=== RUN   TestOwnCacheMatrix/max-body-cache\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.00593615+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix/max-body-cache","Output":"--- PASS: TestOwnCacheMatrix/max-body-cache (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.006003819+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix/max-body-cache","Elapsed":0.01}
+{"Time":"2026-11-08T01:34:00.006051119+03:00","Action":"output","Package":"kiyas","Test":"TestOwnCacheMatrix","Output":"--- PASS: TestOwnCacheMatrix (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.006079196+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnCacheMatrix","Elapsed":0.02}
+{"Time":"2026-11-08T01:34:00.006107978+03:00","Action":"run","Package":"kiyas","Test":"TestOwnConcurrentRefresh"}
+{"Time":"2026-11-08T01:34:00.006109975+03:00","Action":"output","Package":"kiyas","Test":"TestOwnConcurrentRefresh","Output":"=== RUN   TestOwnConcurrentRefresh\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.072895387+03:00","Action":"output","Package":"kiyas","Test":"TestOwnConcurrentRefresh","Output":"--- PASS: TestOwnConcurrentRefresh (0.07s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.072935335+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnConcurrentRefresh","Elapsed":0.07}
+{"Time":"2026-11-08T01:34:00.072941115+03:00","Action":"run","Package":"kiyas","Test":"TestOwnPricingCannotOverrideGateway"}
+{"Time":"2026-11-08T01:34:00.072944164+03:00","Action":"output","Package":"kiyas","Test":"TestOwnPricingCannotOverrideGateway","Output":"=== RUN   TestOwnPricingCannotOverrideGateway\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.090296026+03:00","Action":"output","Package":"kiyas","Test":"TestOwnPricingCannotOverrideGateway","Output":"--- PASS: TestOwnPricingCannotOverrideGateway (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.090328711+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnPricingCannotOverrideGateway","Elapsed":0.02}
+{"Time":"2026-11-08T01:34:00.090337577+03:00","Action":"run","Package":"kiyas","Test":"TestOwnTLSMore"}
+{"Time":"2026-11-08T01:34:00.090340672+03:00","Action":"output","Package":"kiyas","Test":"TestOwnTLSMore","Output":"=== RUN   TestOwnTLSMore\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.090345315+03:00","Action":"run","Package":"kiyas","Test":"TestOwnTLSMore/hostname"}
+{"Time":"2026-11-08T01:34:00.090348142+03:00","Action":"output","Package":"kiyas","Test":"TestOwnTLSMore/hostname","Output":"=== RUN   TestOwnTLSMore/hostname\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.09483432+03:00","Action":"output","Package":"kiyas","Test":"TestOwnTLSMore/hostname","Output":"2026/11/08 01:34:00 http: TLS handshake error from 127.0.0.1:59484: remote error: tls: bad certificate\n"}
+{"Time":"2026-11-08T01:34:00.09503173+03:00","Action":"output","Package":"kiyas","Test":"TestOwnTLSMore/hostname","Output":"    review_unsigned_test.go:13: Get \"https://127.0.0.1:41981/v1/fx\": tls: failed to verify certificate: x509: certificate is valid for example.com, *.example.com, not wrong.invalid\n"}
+{"Time":"2026-11-08T01:34:00.095330805+03:00","Action":"output","Package":"kiyas","Test":"TestOwnTLSMore/hostname","Output":"--- PASS: TestOwnTLSMore/hostname (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.09847394+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnTLSMore/hostname","Elapsed":0}
+{"Time":"2026-11-08T01:34:00.098500786+03:00","Action":"run","Package":"kiyas","Test":"TestOwnTLSMore/tls11"}
+{"Time":"2026-11-08T01:34:00.098504589+03:00","Action":"output","Package":"kiyas","Test":"TestOwnTLSMore/tls11","Output":"=== RUN   TestOwnTLSMore/tls11\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.098509528+03:00","Action":"output","Package":"kiyas","Test":"TestOwnTLSMore/tls11","Output":"2026/11/08 01:34:00 http: TLS handshake error from 127.0.0.1:42284: tls: client offered only unsupported versions: [304 303]\n"}
+{"Time":"2026-11-08T01:34:00.09851311+03:00","Action":"output","Package":"kiyas","Test":"TestOwnTLSMore/tls11","Output":"    review_unsigned_test.go:13: Get \"https://127.0.0.1:43797/v1/fx\": remote error: tls: protocol version not supported\n"}
+{"Time":"2026-11-08T01:34:00.098517225+03:00","Action":"output","Package":"kiyas","Test":"TestOwnTLSMore/tls11","Output":"--- PASS: TestOwnTLSMore/tls11 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.098519354+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnTLSMore/tls11","Elapsed":0}
+{"Time":"2026-11-08T01:34:00.098521664+03:00","Action":"output","Package":"kiyas","Test":"TestOwnTLSMore","Output":"--- PASS: TestOwnTLSMore (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.098524188+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnTLSMore","Elapsed":0.01}
+{"Time":"2026-11-08T01:34:00.098526409+03:00","Action":"run","Package":"kiyas","Test":"TestOwnUnsignedExtras"}
+{"Time":"2026-11-08T01:34:00.098528382+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras","Output":"=== RUN   TestOwnUnsignedExtras\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.098531004+03:00","Action":"run","Package":"kiyas","Test":"TestOwnUnsignedExtras/4097-cache"}
+{"Time":"2026-11-08T01:34:00.098532631+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/4097-cache","Output":"=== RUN   TestOwnUnsignedExtras/4097-cache\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.098535201+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/4097-cache","Output":"--- PASS: TestOwnUnsignedExtras/4097-cache (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.098537316+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnUnsignedExtras/4097-cache","Elapsed":0}
+{"Time":"2026-11-08T01:34:00.098539108+03:00","Action":"run","Package":"kiyas","Test":"TestOwnUnsignedExtras/write-log"}
+{"Time":"2026-11-08T01:34:00.098541123+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/write-log","Output":"=== RUN   TestOwnUnsignedExtras/write-log\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.103137034+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/write-log","Output":"--- PASS: TestOwnUnsignedExtras/write-log (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.103163902+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnUnsignedExtras/write-log","Elapsed":0.01}
+{"Time":"2026-11-08T01:34:00.10316991+03:00","Action":"run","Package":"kiyas","Test":"TestOwnUnsignedExtras/503-envelope"}
+{"Time":"2026-11-08T01:34:00.103178697+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/503-envelope","Output":"=== RUN   TestOwnUnsignedExtras/503-envelope\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.111550514+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/503-envelope","Output":"--- PASS: TestOwnUnsignedExtras/503-envelope (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.111572665+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnUnsignedExtras/503-envelope","Elapsed":0.01}
+{"Time":"2026-11-08T01:34:00.111577244+03:00","Action":"run","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback"}
+{"Time":"2026-11-08T01:34:00.111579359+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"=== RUN   TestOwnUnsignedExtras/stale-fallback\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.121382229+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"==================\n"}
+{"Time":"2026-11-08T01:34:00.12146201+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"WARNING: DATA RACE\n"}
+{"Time":"2026-11-08T01:34:00.121490703+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"Read at 0x0000013f60a8 by goroutine 285:\n"}
+{"Time":"2026-11-08T01:34:00.121509325+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  kiyas.fetchFX()\n"}
+{"Time":"2026-11-08T01:34:00.121512233+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/probe-tree/fx_panel.go:163 +0x1390\n"}
+{"Time":"2026-11-08T01:34:00.12153239+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  kiyas.refreshFX()\n"}
+{"Time":"2026-11-08T01:34:00.121535373+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/probe-tree/fx_panel.go:182 +0x4b\n"}
+{"Time":"2026-11-08T01:34:00.121551863+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  kiyas.currentFX.gowrap2()\n"}
+{"Time":"2026-11-08T01:34:00.121565686+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/probe-tree/fx_panel.go:224 +0x38\n"}
+{"Time":"2026-11-08T01:34:00.121579454+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"\n"}
+{"Time":"2026-11-08T01:34:00.121760484+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"Previous write at 0x0000013f60a8 by goroutine 275:\n"}
+{"Time":"2026-11-08T01:34:00.121766525+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  kiyas.TestOwnUnsignedExtras.func1()\n"}
+{"Time":"2026-11-08T01:34:00.121769493+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/probe-tree/review_unsigned_test.go:18 +0x550\n"}
+{"Time":"2026-11-08T01:34:00.121771959+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  testing.tRunner()\n"}
+{"Time":"2026-11-08T01:34:00.121773959+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /usr/local/go/src/testing/testing.go:2195 +0x21c\n"}
+{"Time":"2026-11-08T01:34:00.121775873+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  testing.(*T).Run.gowrap1()\n"}
+{"Time":"2026-11-08T01:34:00.121777779+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /usr/local/go/src/testing/testing.go:2260 +0x38\n"}
+{"Time":"2026-11-08T01:34:00.12178421+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"\n"}
+{"Time":"2026-11-08T01:34:00.121786215+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"Goroutine 285 (running) created at:\n"}
+{"Time":"2026-11-08T01:34:00.121788119+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  kiyas.currentFX()\n"}
+{"Time":"2026-11-08T01:34:00.121789939+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/probe-tree/fx_panel.go:224 +0x39c\n"}
+{"Time":"2026-11-08T01:34:00.121791859+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  kiyas.pricingSummaryFor()\n"}
+{"Time":"2026-11-08T01:34:00.121793681+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/probe-tree/pricing.go:48 +0xb1\n"}
+{"Time":"2026-11-08T01:34:00.121795721+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  kiyas.TestOwnUnsignedExtras.func1()\n"}
+{"Time":"2026-11-08T01:34:00.121797539+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/probe-tree/review_unsigned_test.go:18 +0x4db\n"}
+{"Time":"2026-11-08T01:34:00.121799406+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  testing.tRunner()\n"}
+{"Time":"2026-11-08T01:34:00.121800964+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /usr/local/go/src/testing/testing.go:2195 +0x21c\n"}
+{"Time":"2026-11-08T01:34:00.121803146+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  testing.(*T).Run.gowrap1()\n"}
+{"Time":"2026-11-08T01:34:00.121804782+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /usr/local/go/src/testing/testing.go:2260 +0x38\n"}
+{"Time":"2026-11-08T01:34:00.121806169+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"\n"}
+{"Time":"2026-11-08T01:34:00.121808082+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"Goroutine 275 (running) created at:\n"}
+{"Time":"2026-11-08T01:34:00.121809774+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  testing.(*T).Run()\n"}
+{"Time":"2026-11-08T01:34:00.121811419+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /usr/local/go/src/testing/testing.go:2260 +0xb12\n"}
+{"Time":"2026-11-08T01:34:00.121812972+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  kiyas.TestOwnUnsignedExtras()\n"}
+{"Time":"2026-11-08T01:34:00.121814833+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/probe-tree/review_unsigned_test.go:14 +0x132\n"}
+{"Time":"2026-11-08T01:34:00.121816626+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  testing.tRunner()\n"}
+{"Time":"2026-11-08T01:34:00.121818148+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /usr/local/go/src/testing/testing.go:2195 +0x21c\n"}
+{"Time":"2026-11-08T01:34:00.121819596+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"  testing.(*T).Run.gowrap1()\n"}
+{"Time":"2026-11-08T01:34:00.121821245+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"      /usr/local/go/src/testing/testing.go:2260 +0x38\n"}
+{"Time":"2026-11-08T01:34:00.121824832+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"==================\n"}
+{"Time":"2026-11-08T01:34:00.121826691+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"2026/11/08 01:34:00 us: fx refresh failed: fetch-or-validate\n"}
+{"Time":"2026-11-08T01:34:00.130772659+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"    testing.go:1867: race detected during execution of test\n","OutputType":"error"}
+{"Time":"2026-11-08T01:34:00.130804656+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Output":"--- FAIL: TestOwnUnsignedExtras/stale-fallback (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.130809116+03:00","Action":"fail","Package":"kiyas","Test":"TestOwnUnsignedExtras/stale-fallback","Elapsed":0.02}
+{"Time":"2026-11-08T01:34:00.130842598+03:00","Action":"run","Package":"kiyas","Test":"TestOwnUnsignedExtras/base-fixed"}
+{"Time":"2026-11-08T01:34:00.130858941+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/base-fixed","Output":"=== RUN   TestOwnUnsignedExtras/base-fixed\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.131097648+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/base-fixed","Output":"--- PASS: TestOwnUnsignedExtras/base-fixed (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.131129866+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnUnsignedExtras/base-fixed","Elapsed":0}
+{"Time":"2026-11-08T01:34:00.131195116+03:00","Action":"run","Package":"kiyas","Test":"TestOwnUnsignedExtras/production-test-value"}
+{"Time":"2026-11-08T01:34:00.131203752+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/production-test-value","Output":"=== RUN   TestOwnUnsignedExtras/production-test-value\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.131348659+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/production-test-value","Output":"    review_unsigned_test.go:19: commercial channel with compiled test host resolves api-test; build setting, not runtime override\n"}
+{"Time":"2026-11-08T01:34:00.131462796+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras/production-test-value","Output":"--- PASS: TestOwnUnsignedExtras/production-test-value (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.13148316+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnUnsignedExtras/production-test-value","Elapsed":0}
+{"Time":"2026-11-08T01:34:00.131492355+03:00","Action":"output","Package":"kiyas","Test":"TestOwnUnsignedExtras","Output":"--- FAIL: TestOwnUnsignedExtras (0.03s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.13149539+03:00","Action":"fail","Package":"kiyas","Test":"TestOwnUnsignedExtras","Elapsed":0.03}
+{"Time":"2026-11-08T01:34:00.131676751+03:00","Action":"output","Package":"kiyas","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.134951166+03:00","Action":"output","Package":"kiyas","Output":"FAIL\tkiyas\t5.288s\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.134981291+03:00","Action":"fail","Package":"kiyas","Elapsed":5.288}

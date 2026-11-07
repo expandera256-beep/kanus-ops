@@ -1,0 +1,83 @@
+=== RUN   TestReviewPrivacyEraseDoesNotTouchUnrelatedOutbox
+    review_regression_test.go:41: unrelated mail was altered: &{Skipped:anonymized OrderName: OrderID:99 ID:other-mail To:deleted+9e5d010004cc3b17@anon.invalid Subject:KAN.US — [anonymized] Body:[anonymized — personal content removed] Attempts:0 NextTry:2026-11-08 00:13:13.525189745 +0300 +03 m=+0.001911380 SentAt:0001-01-01 00:00:00 +0000 UTC LastErr: Dead:false}
+--- FAIL: TestReviewPrivacyEraseDoesNotTouchUnrelatedOutbox (5.45s)
+=== RUN   TestReviewPrivacyEraseChallengeMultiStoreNoRace
+==================
+WARNING: DATA RACE
+Write at 0x00c0000b3980 by goroutine 10:
+  runtime.mapassign_faststr()
+      /usr/local/go/src/internal/runtime/maps/runtime_faststr.go:261 +0x0
+  kiyas/licensesrv.(*Store).RequestErase.func1()
+      /workspace/us-panel-dev/scratch/review-20261108/B/v2-probe/licensesrv/privacy_ops.go:160 +0x177
+  kiyas/licensesrv.(*Store).transactionLocked()
+      /workspace/us-panel-dev/scratch/review-20261108/B/v2-probe/licensesrv/store.go:220 +0xd6
+  kiyas/licensesrv.(*Store).RequestErase()
+      /workspace/us-panel-dev/scratch/review-20261108/B/v2-probe/licensesrv/privacy_ops.go:159 +0x32f
+  kiyas/licensesrv.TestReviewPrivacyEraseChallengeMultiStoreNoRace.func2()
+      /workspace/us-panel-dev/scratch/review-20261108/B/v2-probe/licensesrv/review_regression_test.go:77 +0x84
+
+Previous write at 0x00c0000b3980 by goroutine 11:
+  runtime.mapassign_faststr()
+      /usr/local/go/src/internal/runtime/maps/runtime_faststr.go:261 +0x0
+  kiyas/licensesrv.(*Store).RequestErase.func1()
+      /workspace/us-panel-dev/scratch/review-20261108/B/v2-probe/licensesrv/privacy_ops.go:160 +0x177
+  kiyas/licensesrv.(*Store).transactionLocked()
+      /workspace/us-panel-dev/scratch/review-20261108/B/v2-probe/licensesrv/store.go:220 +0xd6
+  kiyas/licensesrv.(*Store).RequestErase()
+      /workspace/us-panel-dev/scratch/review-20261108/B/v2-probe/licensesrv/privacy_ops.go:159 +0x32f
+  kiyas/licensesrv.TestReviewPrivacyEraseChallengeMultiStoreNoRace.func3()
+      /workspace/us-panel-dev/scratch/review-20261108/B/v2-probe/licensesrv/review_regression_test.go:78 +0x84
+
+Goroutine 10 (running) created at:
+  kiyas/licensesrv.TestReviewPrivacyEraseChallengeMultiStoreNoRace()
+      /workspace/us-panel-dev/scratch/review-20261108/B/v2-probe/licensesrv/review_regression_test.go:77 +0x7e6
+  testing.tRunner()
+      /usr/local/go/src/testing/testing.go:2195 +0x21c
+  testing.(*T).Run.gowrap1()
+      /usr/local/go/src/testing/testing.go:2260 +0x38
+
+Goroutine 11 (running) created at:
+  kiyas/licensesrv.TestReviewPrivacyEraseChallengeMultiStoreNoRace()
+      /workspace/us-panel-dev/scratch/review-20261108/B/v2-probe/licensesrv/review_regression_test.go:78 +0x95c
+  testing.tRunner()
+      /usr/local/go/src/testing/testing.go:2195 +0x21c
+  testing.(*T).Run.gowrap1()
+      /usr/local/go/src/testing/testing.go:2260 +0x38
+==================
+    testing.go:1867: race detected during execution of test
+--- FAIL: TestReviewPrivacyEraseChallengeMultiStoreNoRace (2.76s)
+=== RUN   TestReviewPrivacyEraseChallengeSurvivesFailedSave
+    review_regression_test.go:131: retry after failed save: privacy: invalid or expired confirmation
+--- FAIL: TestReviewPrivacyEraseChallengeSurvivesFailedSave (8.14s)
+FAIL
+FAIL	kiyas/licensesrv	16.355s
+=== RUN   TestReviewBadConfirmMustNotDeletePrefs
+    review_extra_test.go:9: HTTP=400 prefs={AccountID:c56d342a64a74dff52bba745d7a7d468 MarketingConsent:true ProductUpdates:false CookieAnalytics:false UpdatedAt:2026-11-07 21:13:38.678139884 +0000 UTC Source:sentinel}
+--- PASS: TestReviewBadConfirmMustNotDeletePrefs (8.27s)
+=== RUN   TestReviewOriginAllowlistMustNotPermitInsecureRemote
+=== RUN   TestReviewOriginAllowlistMustNotPermitInsecureRemote/http://localhost.evil.com
+    review_extra_test.go:11: allowlist bypasses https/loopback policy
+=== RUN   TestReviewOriginAllowlistMustNotPermitInsecureRemote/http://127.0.0.1.nip.io
+    review_extra_test.go:11: allowlist bypasses https/loopback policy
+=== RUN   TestReviewOriginAllowlistMustNotPermitInsecureRemote/ftp://public.example
+    review_extra_test.go:11: allowlist bypasses https/loopback policy
+--- FAIL: TestReviewOriginAllowlistMustNotPermitInsecureRemote (0.00s)
+    --- FAIL: TestReviewOriginAllowlistMustNotPermitInsecureRemote/http://localhost.evil.com (0.00s)
+    --- FAIL: TestReviewOriginAllowlistMustNotPermitInsecureRemote/http://127.0.0.1.nip.io (0.00s)
+    --- FAIL: TestReviewOriginAllowlistMustNotPermitInsecureRemote/ftp://public.example (0.00s)
+=== RUN   TestReviewOriginUnlistedLookalikesRejected
+    review_extra_test.go:12: ftp://public.example
+--- FAIL: TestReviewOriginUnlistedLookalikesRejected (0.00s)
+=== RUN   TestReviewRetentionOverflow
+    review_extra_test.go:13: 213504 days -> 25m26.290448384s
+    review_extra_test.go:13: overflow drastically shortened retention
+--- FAIL: TestReviewRetentionOverflow (0.00s)
+=== RUN   TestReviewParentSymlinkMustNotEscape
+    review_extra_test.go:14: write traversed symlink parent
+--- FAIL: TestReviewParentSymlinkMustNotEscape (0.00s)
+=== RUN   TestReviewRenameFailureMustCleanTemp
+    review_extra_test.go:15: sensitive temp remains: 1
+--- FAIL: TestReviewRenameFailureMustCleanTemp (0.00s)
+FAIL
+FAIL	kiyas/internal/privacy	8.287s
+FAIL

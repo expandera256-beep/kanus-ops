@@ -1,0 +1,20 @@
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/license.go:35:func licenseSecret() string {
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/license.go:46:	return licenseSecret() != ""
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/license.go:104:	secret := licenseSecret()
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/license.go:113:	mac := hmac.New(sha256.New, []byte(secret))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/license.go:129:	secret := licenseSecret()
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/license.go:133:	mac := hmac.New(sha256.New, []byte(secret))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/gateway_credit_test.go:46:	mac := hmac.New(sha256.New, []byte("test-webhook"))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/gateway.go:20:func activeGateway() string {
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/cmd/us-license-hook/main_test.go:30:		mac := hmac.New(sha256.New, []byte("test"))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/cmd/us-license-hook/main_test.go:73:	mac := hmac.New(sha256.New, []byte("test"))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/hook_release_test.go:74:	if s.licenseBlock(time.Now()) != "" || licenseSecret() != "" {
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/task_state.go:82:	m := hmac.New(sha256.New, key)
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/licensesrv/store.go:344:	mac := hmac.New(sha256.New, []byte(secret))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/licensesrv/licensesrv_test.go:19:	m := hmac.New(sha256.New, []byte(secret))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/fx_panel.go:66:	m := hmac.New(sha256.New, []byte(secret))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/fx_panel.go:73:	secret := licenseSecret()
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/fx_panel.go:179:	if !fx.inflight && !now.Before(fx.next) && licenseSecret() != "" {
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/licensesrv/accounts.go:61:	mac := hmac.New(sha256.New, []byte(s.sessionSecret))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/licensesrv/accounts.go:85:	mac := hmac.New(sha256.New, []byte(s.sessionSecret))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/licensesrv/webhook.go:38:	mac := hmac.New(sha256.New, []byte(secret))

@@ -1,0 +1,123 @@
+{"Time":"2026-11-08T00:32:57.678149143+03:00","Action":"start","Package":"kiyas/internal/privacy"}
+{"Time":"2026-11-08T00:32:57.692313881+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds"}
+{"Time":"2026-11-08T00:32:57.692384904+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds","Output":"=== RUN   TestReviewV4RetentionExactBounds\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692404118+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/#00"}
+{"Time":"2026-11-08T00:32:57.692406949+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/#00","Output":"=== RUN   TestReviewV4RetentionExactBounds/#00\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.69241716+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/#00","Output":"--- PASS: TestReviewV4RetentionExactBounds/#00 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692425705+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/#00","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.692434244+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/1"}
+{"Time":"2026-11-08T00:32:57.692436419+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/1","Output":"=== RUN   TestReviewV4RetentionExactBounds/1\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692441246+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/1","Output":"--- PASS: TestReviewV4RetentionExactBounds/1 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692447031+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/1","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.692452408+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/3650"}
+{"Time":"2026-11-08T00:32:57.692454386+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/3650","Output":"=== RUN   TestReviewV4RetentionExactBounds/3650\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692504458+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/3650","Output":"--- PASS: TestReviewV4RetentionExactBounds/3650 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692509188+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/3650","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.692512528+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/3651"}
+{"Time":"2026-11-08T00:32:57.6925143+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/3651","Output":"=== RUN   TestReviewV4RetentionExactBounds/3651\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692595442+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/3651","Output":"    review_v4_matrix_test.go:3: input=\"3651\" got=87624h0m0s want=2160h0m0s\n","OutputType":"error"}
+{"Time":"2026-11-08T00:32:57.692616722+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/3651","Output":"--- FAIL: TestReviewV4RetentionExactBounds/3651 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692626028+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/3651","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.692649554+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/0"}
+{"Time":"2026-11-08T00:32:57.692653116+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/0","Output":"=== RUN   TestReviewV4RetentionExactBounds/0\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692699384+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/0","Output":"--- PASS: TestReviewV4RetentionExactBounds/0 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.69270655+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/0","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.692731834+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/-1"}
+{"Time":"2026-11-08T00:32:57.692733913+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/-1","Output":"=== RUN   TestReviewV4RetentionExactBounds/-1\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.69279939+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/-1","Output":"--- PASS: TestReviewV4RetentionExactBounds/-1 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692839142+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/-1","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.692845927+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/213504"}
+{"Time":"2026-11-08T00:32:57.692848682+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/213504","Output":"=== RUN   TestReviewV4RetentionExactBounds/213504\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692851722+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/213504","Output":"    review_v4_matrix_test.go:3: input=\"213504\" got=25m26.290448384s want=2160h0m0s\n","OutputType":"error"}
+{"Time":"2026-11-08T00:32:57.692870545+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/213504","Output":"--- FAIL: TestReviewV4RetentionExactBounds/213504 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692882599+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/213504","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.69289966+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/9223372036854775807"}
+{"Time":"2026-11-08T00:32:57.692903165+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/9223372036854775807","Output":"=== RUN   TestReviewV4RetentionExactBounds/9223372036854775807\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.692969201+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/9223372036854775807","Output":"    review_v4_matrix_test.go:3: input=\"9223372036854775807\" got=-24h0m0s want=2160h0m0s\n","OutputType":"error"}
+{"Time":"2026-11-08T00:32:57.692998917+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/9223372036854775807","Output":"--- FAIL: TestReviewV4RetentionExactBounds/9223372036854775807 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693006341+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/9223372036854775807","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.693032664+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/9999999999999999999999"}
+{"Time":"2026-11-08T00:32:57.693037422+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/9999999999999999999999","Output":"=== RUN   TestReviewV4RetentionExactBounds/9999999999999999999999\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693112241+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/9999999999999999999999","Output":"--- PASS: TestReviewV4RetentionExactBounds/9999999999999999999999 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693118059+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/9999999999999999999999","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.693130604+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/1d"}
+{"Time":"2026-11-08T00:32:57.693133536+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/1d","Output":"=== RUN   TestReviewV4RetentionExactBounds/1d\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693183796+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/1d","Output":"--- PASS: TestReviewV4RetentionExactBounds/1d (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693189202+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/1d","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.693201688+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/_"}
+{"Time":"2026-11-08T00:32:57.693204817+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/_","Output":"=== RUN   TestReviewV4RetentionExactBounds/_\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693273113+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/_","Output":"--- PASS: TestReviewV4RetentionExactBounds/_ (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.69327762+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds/_","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.693281333+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds","Output":"--- FAIL: TestReviewV4RetentionExactBounds (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693302103+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestReviewV4RetentionExactBounds","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.693328113+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix"}
+{"Time":"2026-11-08T00:32:57.693331122+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix","Output":"=== RUN   TestReviewV4OriginMatrix\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693383625+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost.evil.com"}
+{"Time":"2026-11-08T00:32:57.693386627+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost.evil.com","Output":"=== RUN   TestReviewV4OriginMatrix/http://localhost.evil.com\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693509213+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost.evil.com","Output":"    review_v4_matrix_test.go:17: got=true want=false\n","OutputType":"error"}
+{"Time":"2026-11-08T00:32:57.693530559+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost.evil.com","Output":"--- FAIL: TestReviewV4OriginMatrix/http://localhost.evil.com (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693535087+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost.evil.com","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.69355854+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://127.0.0.1.nip.io"}
+{"Time":"2026-11-08T00:32:57.693562232+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://127.0.0.1.nip.io","Output":"=== RUN   TestReviewV4OriginMatrix/http://127.0.0.1.nip.io\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693626237+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://127.0.0.1.nip.io","Output":"    review_v4_matrix_test.go:17: got=true want=false\n","OutputType":"error"}
+{"Time":"2026-11-08T00:32:57.693659161+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://127.0.0.1.nip.io","Output":"--- FAIL: TestReviewV4OriginMatrix/http://127.0.0.1.nip.io (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693674856+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://127.0.0.1.nip.io","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.693702194+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://user@api.example"}
+{"Time":"2026-11-08T00:32:57.693706371+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://user@api.example","Output":"=== RUN   TestReviewV4OriginMatrix/https://user@api.example\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693772016+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://user@api.example","Output":"    review_v4_matrix_test.go:17: got=true want=false\n","OutputType":"error"}
+{"Time":"2026-11-08T00:32:57.693800653+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://user@api.example","Output":"--- FAIL: TestReviewV4OriginMatrix/https://user@api.example (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693808589+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://user@api.example","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.693826178+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://user@localhost:3000"}
+{"Time":"2026-11-08T00:32:57.693829964+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://user@localhost:3000","Output":"=== RUN   TestReviewV4OriginMatrix/http://user@localhost:3000\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693901805+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://user@localhost:3000","Output":"    review_v4_matrix_test.go:17: got=true want=false\n","OutputType":"error"}
+{"Time":"2026-11-08T00:32:57.693927651+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://user@localhost:3000","Output":"--- FAIL: TestReviewV4OriginMatrix/http://user@localhost:3000 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.693946503+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://user@localhost:3000","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.693953083+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://[::1]:3000"}
+{"Time":"2026-11-08T00:32:57.693955185+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://[::1]:3000","Output":"=== RUN   TestReviewV4OriginMatrix/http://[::1]:3000\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694023764+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://[::1]:3000","Output":"--- PASS: TestReviewV4OriginMatrix/http://[::1]:3000 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694031404+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://[::1]:3000","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.694052099+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://[::1]:3001"}
+{"Time":"2026-11-08T00:32:57.694055397+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://[::1]:3001","Output":"=== RUN   TestReviewV4OriginMatrix/http://[::1]:3001\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694128467+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://[::1]:3001","Output":"--- PASS: TestReviewV4OriginMatrix/http://[::1]:3001 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694133617+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://[::1]:3001","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.694160786+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost:3000"}
+{"Time":"2026-11-08T00:32:57.694164442+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost:3000","Output":"=== RUN   TestReviewV4OriginMatrix/http://localhost:3000\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694226459+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost:3000","Output":"--- PASS: TestReviewV4OriginMatrix/http://localhost:3000 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694230971+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost:3000","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.694252012+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost:3000#01"}
+{"Time":"2026-11-08T00:32:57.694256784+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost:3000#01","Output":"=== RUN   TestReviewV4OriginMatrix/http://localhost:3000#01\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694304123+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost:3000#01","Output":"--- PASS: TestReviewV4OriginMatrix/http://localhost:3000#01 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694309976+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/http://localhost:3000#01","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.694333096+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example:443"}
+{"Time":"2026-11-08T00:32:57.694336254+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example:443","Output":"=== RUN   TestReviewV4OriginMatrix/https://api.example:443\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694397269+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example:443","Output":"--- PASS: TestReviewV4OriginMatrix/https://api.example:443 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694403062+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example:443","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.694454699+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example:444"}
+{"Time":"2026-11-08T00:32:57.694460108+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example:444","Output":"=== RUN   TestReviewV4OriginMatrix/https://api.example:444\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694520175+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example:444","Output":"--- PASS: TestReviewV4OriginMatrix/https://api.example:444 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694524444+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example:444","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.694544758+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example/x"}
+{"Time":"2026-11-08T00:32:57.694547752+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example/x","Output":"=== RUN   TestReviewV4OriginMatrix/https://api.example/x\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694617389+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example/x","Output":"    review_v4_matrix_test.go:17: got=true want=false\n","OutputType":"error"}
+{"Time":"2026-11-08T00:32:57.694642387+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example/x","Output":"--- FAIL: TestReviewV4OriginMatrix/https://api.example/x (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694648973+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/https://api.example/x","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.694664271+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/ftp://api.example"}
+{"Time":"2026-11-08T00:32:57.694667397+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/ftp://api.example","Output":"=== RUN   TestReviewV4OriginMatrix/ftp://api.example\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.694986933+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/ftp://api.example","Output":"    review_v4_matrix_test.go:17: got=true want=false\n","OutputType":"error"}
+{"Time":"2026-11-08T00:32:57.695025091+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/ftp://api.example","Output":"--- FAIL: TestReviewV4OriginMatrix/ftp://api.example (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.695049276+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix/ftp://api.example","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.695067431+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix","Output":"--- FAIL: TestReviewV4OriginMatrix (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.695079145+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestReviewV4OriginMatrix","Elapsed":0}
+{"Time":"2026-11-08T00:32:57.69511437+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.696711779+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"FAIL\tkiyas/internal/privacy\t0.018s\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:57.696738221+03:00","Action":"fail","Package":"kiyas/internal/privacy","Elapsed":0.019}
+{"Time":"2026-11-08T00:32:58.008832528+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-08T00:32:58.018476181+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"testing: warning: no tests to run\n"}
+{"Time":"2026-11-08T00:32:58.018524728+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:32:59.020913169+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"ok  \tkiyas/licensesrv\t1.012s [no tests to run]\n"}
+{"Time":"2026-11-08T00:32:59.020979451+03:00","Action":"pass","Package":"kiyas/licensesrv","Elapsed":1.012}
+{"Time":"2026-11-08T00:32:59.573553455+03:00","Action":"start","Package":"kiyas/cmd/us-license-hook"}
+{"Time":"2026-11-08T00:32:59.583428668+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Output":"testing: warning: no tests to run\n"}
+{"Time":"2026-11-08T00:32:59.583491871+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T00:33:00.58539375+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Output":"ok  \tkiyas/cmd/us-license-hook\t1.012s [no tests to run]\n"}
+{"Time":"2026-11-08T00:33:00.585450636+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Elapsed":1.012}

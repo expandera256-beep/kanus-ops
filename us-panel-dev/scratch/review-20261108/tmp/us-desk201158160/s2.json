@@ -1,0 +1,11 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "test",
+      "text": "Test komutu başarılı (çıkış kodu 0; süre 43ms).\nKomut: /usr/bin/python3 -m unittest discover\n.\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK"
+    }
+  ]
+}

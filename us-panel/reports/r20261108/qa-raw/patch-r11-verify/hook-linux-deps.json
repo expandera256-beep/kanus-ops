@@ -1,0 +1,33 @@
+[
+  {
+    "ImportPath": "kiyas/licensesrv",
+    "Name": "licensesrv",
+    "GoFiles": [
+      "account_workers.go",
+      "accounts.go",
+      "b64.go",
+      "backpressure.go",
+      "credits.go",
+      "gpu_pin.go",
+      "gpu_wake.go",
+      "lock_unix.go",
+      "login_limiter.go",
+      "mail.go",
+      "model_meter.go",
+      "model_proxy.go",
+      "plans.go",
+      "pricing.go",
+      "privacy_mask.go",
+      "reversals.go",
+      "store.go",
+      "webhook.go"
+    ]
+  },
+  {
+    "ImportPath": "kiyas/cmd/us-license-hook",
+    "Name": "main",
+    "GoFiles": [
+      "main.go"
+    ]
+  }
+]

@@ -1,0 +1,209 @@
+=== term_check sequential check+apply ===
+--- check 0003 ---
+Checking patch licensesrv/accounts.go...
+error: while searching for:
+	json.NewEncoder(w).Encode(v)
+}
+func accountError(w http.ResponseWriter, status int) {
+	accountJSON(w, status, map[string]string{"error": "account request rejected"})
+}
+func (h *AccountHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+
+error: patch failed: licensesrv/accounts.go:289
+error: licensesrv/accounts.go: patch does not apply
+Checking patch licensesrv/api_error.go...
+Checking patch licensesrv/api_error_test.go...
+Checking patch licensesrv/credits.go...
+Checking patch licensesrv/model_proxy.go...
+Hunk #1 succeeded at 62 (offset 16 lines).
+Hunk #2 succeeded at 124 (offset 30 lines).
+Hunk #3 succeeded at 144 (offset 30 lines).
+Hunk #4 succeeded at 186 (offset 30 lines).
+error: while searching for:
+		select {
+		case v := <-ready:
+			if v.err != nil {
+				http.Error(w, "upstream unavailable", 502)
+				return
+			}
+			resp = v.resp
+		case <-ctx.Done():
+			http.Error(w, "model timeout or cancellation", 504)
+			return
+		}
+	}
+
+error: patch failed: licensesrv/model_proxy.go:208
+error: licensesrv/model_proxy.go: patch does not apply
+CHECK_FAIL=1
+CHECK_EXIT=0
+Checking patch licensesrv/accounts.go...
+error: while searching for:
+	json.NewEncoder(w).Encode(v)
+}
+func accountError(w http.ResponseWriter, status int) {
+	accountJSON(w, status, map[string]string{"error": "account request rejected"})
+}
+func (h *AccountHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+
+error: patch failed: licensesrv/accounts.go:289
+error: licensesrv/accounts.go: patch does not apply
+Checking patch licensesrv/api_error.go...
+Checking patch licensesrv/api_error_test.go...
+Checking patch licensesrv/credits.go...
+Checking patch licensesrv/model_proxy.go...
+Hunk #1 succeeded at 62 (offset 16 lines).
+Hunk #2 succeeded at 124 (offset 30 lines).
+Hunk #3 succeeded at 144 (offset 30 lines).
+Hunk #4 succeeded at 186 (offset 30 lines).
+error: while searching for:
+		select {
+		case v := <-ready:
+			if v.err != nil {
+				http.Error(w, "upstream unavailable", 502)
+				return
+			}
+			resp = v.resp
+		case <-ctx.Done():
+			http.Error(w, "model timeout or cancellation", 504)
+			return
+		}
+	}
+
+error: patch failed: licensesrv/model_proxy.go:208
+error: licensesrv/model_proxy.go: patch does not apply
+APPLY_FAIL=1
+APPLY_EXIT=0
+--- check 0005 ---
+Checking patch cmd/us-license-hook/accounts_routes_test.go...
+Checking patch cmd/us-license-hook/main.go...
+error: while searching for:
+	} {
+		mux.Handle(path, &licensesrv.Handler{Cfg: cfg, Store: st, Topic: topic})
+	}
+	credits := &licensesrv.CreditHandler{Store: st}
+	mux.Handle("/v1/credits/reserve", credits)
+	mux.Handle("/v1/credits/settle", credits)
+	mux.Handle("/v1/credits/status", credits)
+	proxy, err := configuredProxy(st)
+	var handler http.Handler
+	if err != nil {
+		handler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { http.Error(w, "model configuration invalid", 503) })
+	} else {
+		handler = proxy
+		mux.HandleFunc("/v1/models", proxy.Models)
+	}
+	mux.Handle("/v1/chat", handler)
+	mux.Handle("/v1/chat/completions", handler)
+	ttl, e := strconv.Atoi(env("US_SESSION_TTL_SECONDS", "86400"))
+	if e != nil {
+		ttl = 0
+
+error: patch failed: cmd/us-license-hook/main.go:77
+error: cmd/us-license-hook/main.go: patch does not apply
+Checking patch licensesrv/api_version.go...
+Checking patch licensesrv/api_version_test.go...
+CHECK_FAIL=1
+CHECK_EXIT=0
+Checking patch cmd/us-license-hook/accounts_routes_test.go...
+Checking patch cmd/us-license-hook/main.go...
+error: while searching for:
+	} {
+		mux.Handle(path, &licensesrv.Handler{Cfg: cfg, Store: st, Topic: topic})
+	}
+	credits := &licensesrv.CreditHandler{Store: st}
+	mux.Handle("/v1/credits/reserve", credits)
+	mux.Handle("/v1/credits/settle", credits)
+	mux.Handle("/v1/credits/status", credits)
+	proxy, err := configuredProxy(st)
+	var handler http.Handler
+	if err != nil {
+		handler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { http.Error(w, "model configuration invalid", 503) })
+	} else {
+		handler = proxy
+		mux.HandleFunc("/v1/models", proxy.Models)
+	}
+	mux.Handle("/v1/chat", handler)
+	mux.Handle("/v1/chat/completions", handler)
+	ttl, e := strconv.Atoi(env("US_SESSION_TTL_SECONDS", "86400"))
+	if e != nil {
+		ttl = 0
+
+error: patch failed: cmd/us-license-hook/main.go:77
+error: cmd/us-license-hook/main.go: patch does not apply
+Checking patch licensesrv/api_version.go...
+Checking patch licensesrv/api_version_test.go...
+APPLY_FAIL=1
+APPLY_EXIT=0
+--- check 0006 ---
+Checking patch cmd/us-license-hook/main.go...
+error: while searching for:
+	}
+	mux.Handle("/account/", accounts)
+	mux.Handle("/v1/account/", licensesrv.StripV1AccountPrefix(accounts))
+	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte("ok")) })
+	return mux
+}
+
+error: patch failed: cmd/us-license-hook/main.go:103
+error: cmd/us-license-hook/main.go: patch does not apply
+Checking patch licensesrv/accounts.go...
+Hunk #1 succeeded at 682 (offset 36 lines).
+Checking patch licensesrv/api_keys.go...
+Checking patch licensesrv/api_keys_test.go...
+Checking patch licensesrv/credits.go...
+error: while searching for:
+		return
+	}
+	key := strings.TrimPrefix(r.Header.Get("Authorization"), "Bearer ")
+	if r.URL.Path == "/v1/credits/status" && strings.HasPrefix(key, "usa1.") {
+		if key == r.Header.Get("Authorization") {
+			WriteAPIError(w, r, 401, "unauthorized", "session")
+
+error: patch failed: licensesrv/credits.go:25
+error: licensesrv/credits.go: patch does not apply
+Checking patch licensesrv/store.go...
+CHECK_FAIL=1
+CHECK_EXIT=0
+/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch:517: trailing whitespace.
+// by resolving owned license for downstream credit/model paths via request context... 
+Checking patch cmd/us-license-hook/main.go...
+error: while searching for:
+	}
+	mux.Handle("/account/", accounts)
+	mux.Handle("/v1/account/", licensesrv.StripV1AccountPrefix(accounts))
+	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte("ok")) })
+	return mux
+}
+
+error: patch failed: cmd/us-license-hook/main.go:103
+error: cmd/us-license-hook/main.go: patch does not apply
+Checking patch licensesrv/accounts.go...
+Hunk #1 succeeded at 682 (offset 36 lines).
+Checking patch licensesrv/api_keys.go...
+Checking patch licensesrv/api_keys_test.go...
+Checking patch licensesrv/credits.go...
+error: while searching for:
+		return
+	}
+	key := strings.TrimPrefix(r.Header.Get("Authorization"), "Bearer ")
+	if r.URL.Path == "/v1/credits/status" && strings.HasPrefix(key, "usa1.") {
+		if key == r.Header.Get("Authorization") {
+			WriteAPIError(w, r, 401, "unauthorized", "session")
+
+error: patch failed: licensesrv/credits.go:25
+error: licensesrv/credits.go: patch does not apply
+Checking patch licensesrv/store.go...
+APPLY_FAIL=1
+APPLY_EXIT=0
+--- check 0008 ---
+Checking patch licensesrv/api_keys_test.go...
+error: licensesrv/api_keys_test.go: No such file or directory
+CHECK_FAIL=1
+CHECK_EXIT=0
+Checking patch licensesrv/api_keys_test.go...
+error: licensesrv/api_keys_test.go: No such file or directory
+APPLY_FAIL=1
+APPLY_EXIT=0

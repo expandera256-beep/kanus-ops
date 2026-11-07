@@ -1,0 +1,60 @@
+=== RUN   TestQAScratchPanelSmallProject
+    zz_qa_scratch_panel_test.go:47: PANEL STAGE generate queue -> model -> review -> atomic apply PASS
+    zz_qa_scratch_panel_test.go:58: BUILD py_compile PASS
+    zz_qa_scratch_panel_test.go:63: EXPECTED/OBSERVED BASELINE TEST FAILURE: test_auth (test_service.ServiceTests.test_auth) ... ok
+        test_cross_user_isolation (test_service.ServiceTests.test_cross_user_isolation) ... ok
+        test_health (test_service.ServiceTests.test_health) ... FAIL
+        test_validation (test_service.ServiceTests.test_validation) ... ok
+        
+        ======================================================================
+        FAIL: test_health (test_service.ServiceTests.test_health)
+        ----------------------------------------------------------------------
+        Traceback (most recent call last):
+          File "/tmp/TestQAScratchPanelSmallProject1674876354/003/test_service.py", line 24, in test_health
+            def test_health(self): self.assertEqual(self.call('/healthz'), (200, {'ok': True}))
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        AssertionError: Tuples differ: (200, {'ok': False}) != (200, {'ok': True})
+        
+        First differing element 1:
+        {'ok': False}
+        {'ok': True}
+        
+        - (200, {'ok': False})
+        ?              ^^^^
+        
+        + (200, {'ok': True})
+        ?              ^^^
+        
+        
+        ----------------------------------------------------------------------
+        Ran 4 tests in 0.522s
+        
+        FAILED (failures=1)
+        
+    zz_qa_scratch_panel_test.go:47: PANEL STAGE repair queue -> model -> review -> atomic apply PASS
+    zz_qa_scratch_panel_test.go:68: GENERATED REAL HTTP TESTS: test_auth (test_service.ServiceTests.test_auth) ... ok
+        test_cross_user_isolation (test_service.ServiceTests.test_cross_user_isolation) ... ok
+        test_health (test_service.ServiceTests.test_health) ... ok
+        test_validation (test_service.ServiceTests.test_validation) ... ok
+        
+        ----------------------------------------------------------------------
+        Ran 4 tests in 0.520s
+        
+        OK
+        
+    zz_qa_scratch_panel_test.go:70: PANEL project-tests: Test komutu başarılı (çıkış kodu 0; süre 596ms).
+        Komut: /usr/bin/python3 -m unittest discover
+        ....
+        ----------------------------------------------------------------------
+        Ran 4 tests in 0.523s
+        
+        OK
+    zz_qa_scratch_panel_test.go:76: E2E PANEL agent queue -> OpenAI proxy -> reviewed generated files -> build -> failing HTTP test -> model feedback -> read/hash patch -> passing HTTP tests -> panel test runner PASS
+--- PASS: TestQAScratchPanelSmallProject (1.95s)
+=== RUN   TestQAScratchPanelTerminalInjection
+    zz_qa_scratch_panel_test.go:83: actual panel terminal argv rejects shell, traversal, shell metacharacters and eval
+--- PASS: TestQAScratchPanelTerminalInjection (0.00s)
+PASS
+ok  	kiyas	1.959s
+
+exit_code=0

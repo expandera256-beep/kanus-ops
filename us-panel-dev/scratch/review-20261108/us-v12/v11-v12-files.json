@@ -1,0 +1,178 @@
+[
+  {
+    "file": "change_history.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "change_history_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "chat_quality_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "cloud_install.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "cloud_install_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "cloud_space.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "cloud_space_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "cmd/us-pricing-gen/main.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "context_budget_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "context_limits_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "continuation.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "continuation_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "core_safety_regression_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "editor_safety_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "file_open_unix.go",
+    "change": "CONTENT"
+  },
+  {
+    "file": "file_open_windows.go",
+    "change": "CONTENT"
+  },
+  {
+    "file": "file_tools.go",
+    "change": "CONTENT"
+  },
+  {
+    "file": "gateway_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "journal.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "licensesrv/accounts.go",
+    "change": "CONTENT"
+  },
+  {
+    "file": "licensesrv/gpu_pin.go",
+    "change": "CONTENT"
+  },
+  {
+    "file": "licensesrv/gpu_pin_test.go",
+    "change": "CONTENT"
+  },
+  {
+    "file": "licensesrv/gpu_wake.go",
+    "change": "CONTENT"
+  },
+  {
+    "file": "licensesrv/model_proxy.go",
+    "change": "CONTENT"
+  },
+  {
+    "file": "licensesrv/r12_review_test.go",
+    "change": "ADDED"
+  },
+  {
+    "file": "log_regression_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "long_checkpoint.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "long_checkpoint_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "project.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "project_inspection_regression_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "project_map.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "proposal_batch_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "proposal_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "release.go",
+    "change": "CONTENT"
+  },
+  {
+    "file": "repair_intent_regression_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "repair_loop.go",
+    "change": "CONTENT"
+  },
+  {
+    "file": "repair_redirect_test.go",
+    "change": "ADDED"
+  },
+  {
+    "file": "review_root_swap_linux_test.go",
+    "change": "ADDED"
+  },
+  {
+    "file": "scope_guard_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "transaction_recovery.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "transaction_recovery_test.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "tunnel_other.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "tunnel_windows.go",
+    "change": "FORMAT"
+  },
+  {
+    "file": "workspace_isolation_guard_test.go",
+    "change": "ADDED"
+  }
+]

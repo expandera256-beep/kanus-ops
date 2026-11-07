@@ -1,0 +1,6 @@
+=== RUN   TestReviewOpenHelperAcceptsFIFO
+    review_fifo_open_test.go:4: helper blocked and accepted FIFO; no opened-handle type validation
+--- FAIL: TestReviewOpenHelperAcceptsFIFO (0.10s)
+FAIL
+FAIL	kiyas/internal/privacy	0.105s
+FAIL

@@ -1,0 +1,31 @@
+{
+  "source": "MOCK_NETWORK",
+  "target": "http://127.0.0.1:33239/healthz",
+  "timestamp": "2026-11-06T09:34:30.715812+03:00",
+  "zone": "TSİ / Europe/Istanbul",
+  "samples": [
+    {
+      "http_code": 200,
+      "remote_ip": "127.0.0.1",
+      "http_connect": 0,
+      "num_connects": 1,
+      "size_download": 30,
+      "size_header": 96,
+      "ssl_verify_result": 0,
+      "proxy_used": 0,
+      "dns_ms": 0.015000000000000001,
+      "ttfb_ms": 0.6859999999999999,
+      "total_ms": 0.712,
+      "tcp_connect_ms": 0.059,
+      "tls_ms": null,
+      "post_tls_to_first_byte_ms": null,
+      "ttft_ms": null
+    }
+  ],
+  "notes": [
+    "TCP connect is connect completion minus DNS, NOT pure RTT.",
+    "TLS increment can include network/proxy overhead; no packet-level RTT inferred.",
+    "Health HTTP TTFB is NOT LLM TTFT.",
+    "Single box vantage does not measure US/Europe end-user latency."
+  ]
+}

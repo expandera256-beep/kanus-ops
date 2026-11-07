@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "name": "Deutsch",
+    "dir": "ltr",
+    "bcp47": "de-DE",
+    "currency": "TRY"
+  },
+  "brand.name": "Kanus",
+  "brand.slogan": "Verwandle deine Ideen in Software.",
+  "email.license.body": "Hallo,\n\ndein Lizenzschlüssel für die Bestellung {order} ist bereit. Öffne US Panel und gib den Schlüssel ein.\n\nFragen: support@kanus.org",
+  "email.license.subject": "Dein US Panel Lizenzschlüssel",
+  "product.name": "US Panel"
+}

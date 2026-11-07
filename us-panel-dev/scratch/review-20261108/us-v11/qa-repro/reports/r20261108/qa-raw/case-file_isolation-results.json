@@ -1,0 +1,18 @@
+{
+  "results": [
+    {
+      "item": "file_isolation",
+      "status": "FAIL",
+      "log": "reports/r20261108/qa-raw/file_isolation.log",
+      "exit_code": 1,
+      "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"
+    }
+  ],
+  "counts": {
+    "PASS": 0,
+    "FAIL": 1,
+    "BLOCKED": 0,
+    "NOT TESTED": 0
+  },
+  "scope": "Local automated case outcomes; production backup/restore and cloud IAM require separate read-only evidence"
+}

@@ -1,0 +1,4 @@
+patching file POST12_A_PROTOCOL_PROPOSAL_TR.md
+patching file gateway.go
+patching file licensesrv/post12_retry_repro_test.go
+patching file post12_settle_retry_test.go

@@ -1,0 +1,17 @@
+=== RUN   TestReviewInvalidOriginPort
+=== RUN   TestReviewInvalidOriginPort/http://localhost:65536
+    review_port_test.go:3: invalid/empty port accepted when allowlisted
+=== RUN   TestReviewInvalidOriginPort/http://[::1]:65536
+    review_port_test.go:3: invalid/empty port accepted when allowlisted
+=== RUN   TestReviewInvalidOriginPort/https://api.example:65536
+    review_port_test.go:3: invalid/empty port accepted when allowlisted
+=== RUN   TestReviewInvalidOriginPort/http://localhost:
+    review_port_test.go:3: invalid/empty port accepted when allowlisted
+--- FAIL: TestReviewInvalidOriginPort (0.00s)
+    --- FAIL: TestReviewInvalidOriginPort/http://localhost:65536 (0.00s)
+    --- FAIL: TestReviewInvalidOriginPort/http://[::1]:65536 (0.00s)
+    --- FAIL: TestReviewInvalidOriginPort/https://api.example:65536 (0.00s)
+    --- FAIL: TestReviewInvalidOriginPort/http://localhost: (0.00s)
+FAIL
+FAIL	kiyas/internal/privacy	0.003s
+FAIL

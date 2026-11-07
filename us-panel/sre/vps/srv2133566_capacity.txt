@@ -1,0 +1,62 @@
+== 2026-11-06T06:18:45+00:00
+== uptime
+ 06:18:45 up 56 min,  1 user,  load average: 0.14, 0.04, 0.01
+== nproc
+2
+== vmstat 1 10
+procs -----------memory---------- ---swap-- -----io---- -system-- -------cpu-------
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st gu
+ 2  0      0 6944816  39796 900072    0    0    78   398  211    0  1  1 98  0  0  0
+ 0  0      0 6944816  39796 900128    0    0     0    12  179  113  0  0 100  0  0  0
+ 0  0      0 6944816  39796 900128    0    0     0     4  130  101  0  0 100  0  0  0
+ 0  0      0 6944816  39796 900128    0    0     0     0  129  101  0  0 100  0  0  0
+ 0  0      0 6944816  39796 900128    0    0     0     0  143  112  0  0 100  0  0  0
+ 0  0      0 6944816  39796 900128    0    0     0     4  124   97  0  0 100  0  0  0
+ 0  0      0 6944816  39796 900128    0    0     0     0  136  103  1  0 100  0  0  0
+ 0  0      0 6944816  39796 900128    0    0     0     0  111   86  0  0 100  0  0  0
+ 0  0      0 6944816  39796 900128    0    0     0     0  124   98  0  0 100  0  0  0
+ 0  0      0 6944816  39796 900128    0    0     0     0  124   93  0  0 100  0  0  0
+== pressure/cpu
+some avg10=0.18 avg60=0.13 avg300=0.03 total=9913192
+full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+== pressure/memory
+some avg10=0.00 avg60=0.00 avg300=0.00 total=1
+full avg10=0.00 avg60=0.00 avg300=0.00 total=1
+== pressure/io
+some avg10=0.00 avg60=0.00 avg300=0.00 total=15511920
+full avg10=0.00 avg60=0.00 avg300=0.00 total=14574240
+== free -m
+               total        used        free      shared  buff/cache   available
+Mem:            7935         480        6782           1         917        7454
+Swap:              0           0           0
+== ps
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root        9977  2.0  0.1  22440 13084 ?        Ss   06:18   0:00 /usr/lib/systemd/systemd --user
+root           1  0.2  0.2  25524 16556 ?        Ss   05:22   0:08 /usr/lib/systemd/systemd --system --deserialize=70
+root        8664  0.1  0.4 721072 32892 ?        Ssl  05:33   0:04 /usr/bin/python3 /usr/bin/fail2ban-server -xf start
+root        9972  0.0  0.1  18404 12012 ?        Ss   06:18   0:00 sshd-session: root [priv]
+root        6991  0.0  0.0  81296  4932 ?        Ssl  05:33   0:02 /usr/sbin/qemu-ga
+root          15  0.0  0.0      0     0 ?        S<   05:22   0:00 [pr/ttyS0]
+message+     938  0.0  0.0   8840  5448 ?        Ss   05:22   0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root          16  0.0  0.0      0     0 ?        I    05:22   0:00 [rcu_preempt]
+root        1299  0.0  0.0      0     0 ?        I    05:29   0:00 [kworker/u8:0-events_power_efficient]
+root          70  0.0  0.0      0     0 ?        I    05:22   0:00 [kworker/1:2-events]
+root        9663  0.0  0.0      0     0 ?        I    06:10   0:00 [kworker/0:0-events]
+root        9796  0.0  0.0      0     0 ?        I    06:12   0:00 [kworker/u8:1-events_power_efficient]
+root         952  0.0  0.1  18628  9728 ?        Ss   05:22   0:00 /usr/lib/systemd/systemd-logind
+root        8067  0.0  0.1  33872 13872 ?        S<s  05:33   0:00 /usr/lib/systemd/systemd-journald
+root          66  0.0  0.0      0     0 ?        I    05:22   0:00 [kworker/u8:3-flush-8:0]
+root          88  0.0  0.0      0     0 ?        I    05:22   0:00 [kworker/0:2-rcu_gp]
+polkitd     6990  0.0  0.1 306448  8296 ?        Ssl  05:33   0:00 /usr/lib/polkit-1/polkitd --no-debug --log-level=notice
+root          39  0.0  0.0      0     0 ?        S    05:22   0:00 [kcompactd0]
+root         330  0.0  0.0      0     0 ?        S    05:22   0:00 [jbd2/sda1-8]
+== fail2ban sshd
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed:	0
+|  |- Total failed:	0
+|  `- Journal matches:	_SYSTEMD_UNIT=ssh.service + _COMM=sshd
+`- Actions
+   |- Currently banned:	0
+   |- Total banned:	0
+   `- Banned IP list:	

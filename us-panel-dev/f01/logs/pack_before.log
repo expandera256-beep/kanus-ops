@@ -1,0 +1,7 @@
+=== RUN   TestF01PackUsesSandbox
+    sandbox_linux_test.go:124: pack izolasyon atlaması: Tek exe yazıldı. dist/app.exe
+        F01_BYPASS_READ
+--- FAIL: TestF01PackUsesSandbox (0.02s)
+FAIL
+FAIL	kiyas	0.032s
+FAIL

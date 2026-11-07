@@ -1,0 +1,8 @@
+=== RUN   TestQAAuditRepairRedirectIsolation
+    zz_qa_audit12_test.go:67: redirect_contacted=true authorization_forwarded=true project_body_forwarded=true
+    zz_qa_audit12_test.go:68: repair default HTTP client followed cross-port redirect; expected refusal
+--- FAIL: TestQAAuditRepairRedirectIsolation (0.00s)
+FAIL
+FAIL	kiyas	0.005s
+FAIL
+exit_code=1

@@ -1,0 +1,28 @@
+=== RUN   TestPanelReadinessRejectsTrailingJSON
+    zz_panel_readiness_test.go:6: malformed trailing JSON cached as model ready
+--- FAIL: TestPanelReadinessRejectsTrailingJSON (0.00s)
+=== RUN   TestPanelMetadataMissingDataInvalidates
+=== RUN   TestPanelMetadataMissingDataInvalidates/null
+    zz_panel_readiness_test.go:10: missing model list kept readiness: code=200 body=null
+=== RUN   TestPanelMetadataMissingDataInvalidates/{}
+    zz_panel_readiness_test.go:10: missing model list kept readiness: code=200 body={}
+=== RUN   TestPanelMetadataMissingDataInvalidates/{"data":null}
+    zz_panel_readiness_test.go:10: missing model list kept readiness: code=200 body={"data":null}
+--- FAIL: TestPanelMetadataMissingDataInvalidates (0.03s)
+    --- FAIL: TestPanelMetadataMissingDataInvalidates/null (0.00s)
+    --- FAIL: TestPanelMetadataMissingDataInvalidates/{} (0.00s)
+    --- FAIL: TestPanelMetadataMissingDataInvalidates/{"data":null} (0.00s)
+=== RUN   TestPanelBcryptCancelledWaitersDoNotLeak
+2026/11/08 00:37:22 account /account/register email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:37:27 account /account/login email=u***@example.test queue_wait_ms=20 result=client_gone
+2026/11/08 00:37:27 account /account/login email=u***@example.test queue_wait_ms=20 result=client_gone
+2026/11/08 00:37:27 account /account/login email=u***@example.test queue_wait_ms=20 result=client_gone
+2026/11/08 00:37:27 account /account/login email=u***@example.test queue_wait_ms=20 result=client_gone
+2026/11/08 00:37:27 account /account/login email=u***@example.test queue_wait_ms=20 result=client_gone
+2026/11/08 00:37:27 account /account/login email=u***@example.test queue_wait_ms=20 result=client_gone
+2026/11/08 00:37:27 account /account/login email=u***@example.test queue_wait_ms=20 result=client_gone
+2026/11/08 00:37:27 account /account/login email=u***@example.test queue_wait_ms=20 result=client_gone
+--- PASS: TestPanelBcryptCancelledWaitersDoNotLeak (8.05s)
+FAIL
+FAIL	kiyas/licensesrv	8.100s
+FAIL

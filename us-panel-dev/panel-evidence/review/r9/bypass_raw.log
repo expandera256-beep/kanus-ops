@@ -1,0 +1,70 @@
+=== RUN   TestR9_ReadRaceHighIter
+    zz_r9_bypass_test.go:20: R9|B1-READ-RACE-20s|PASS|başarılı okuma=15121 kök dışı=0
+--- PASS: TestR9_ReadRaceHighIter (20.00s)
+=== RUN   TestR9_WriteRace
+    zz_r9_bypass_test.go:20: R9|B2-WRITE-RACE|FAIL|başarılı yazım=5 kök dışına yazıldı=true dış_klasör=[.us-write-1540392192 .us-write-2286328561 .us-write-3009178298 .us-write-3785630170 w.txt]
+--- PASS: TestR9_WriteRace (0.02s)
+=== RUN   TestR9_DeleteRace
+    zz_r9_bypass_test.go:20: R9|B3-DELETE-RACE|FAIL|kök dışı dosya silindi=true
+--- PASS: TestR9_DeleteRace (0.00s)
+=== RUN   TestR9_OpenBeneath
+    zz_r9_bypass_test.go:20: R9|B4-OPENBENEATH a/lnk/s.txt|PASS|ret:yol çalışma klasörünün dışında
+    zz_r9_bypass_test.go:20: R9|B4-OPENBENEATH a/b/../../../002/s.txt|PASS|ret:yol çalışma klasörünün dışında
+    zz_r9_bypass_test.go:20: R9|B4-OPENBENEATH ../x|PASS|ret:yol çalışma klasörünün dışında
+    zz_r9_bypass_test.go:20: R9|B4-OPENBENEATH a/../../x|PASS|ret:yol çalışma klasörünün dışında
+    zz_r9_bypass_test.go:20: R9|B4-OPENBENEATH /proc/self/fd/0|PASS|ret:yol çalışma klasörünün dışında
+    zz_r9_bypass_test.go:20: R9|B4-OPENBENEATH fdl/0|PASS|ret:yol çalışma klasörünün dışında
+    zz_r9_bypass_test.go:20: R9|B4-OPENBENEATH .us-write-123456|PASS|ret:yol çalışma klasörünün dışında
+    zz_r9_bypass_test.go:20: R9|B4-OPENBENEATH fifo|PASS|ret:normal dosya değil veya birden çok bağlantılı (hard link)
+    zz_r9_bypass_test.go:20: R9|B4-OPENBENEATH a/./ok.txt|PASS|AÇILDI:in
+    zz_r9_bypass_test.go:20: R9|B4-ROOT-SWAP|PASS|kök sonradan symlink'e çevrilince okuma err=yol çalışma klasörünün dışında içerik=""
+--- PASS: TestR9_OpenBeneath (0.00s)
+=== RUN   TestR9_TerminalArgv
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node --require=./a.js a.js|PASS|err=Node seçeneği izinli değil: --require=./a.js
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node -r ./a.js a.js|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node --experimental-loader=./a.js a.js|PASS|err=Node seçeneği izinli değil: --experimental-loader=./a.js
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node --loader ./a.js a.js|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node --env-file=.env a.js|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node --inspect a.js|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node --inspect-brk=0.0.0.0:9229 a.js|PASS|err=Yalnız proje içi göreli yollar kullanılabilir.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node -- a.js|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node --test -- -e|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node --test --import=./a.js|PASS|err=Node seçeneği izinli değil: --import=./a.js
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node --print 1|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV node --check a.js -e|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go build -toolexec=sh|PASS|err=Go bayrağı izinli değil: -toolexec
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go test -exec=sh .|PASS|err=Go bayrağı izinli değil: -exec
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go run -overlay=ov.json .|PASS|err=Go bayrağı izinli değil: -overlay
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go build -ldflags=-X main.v=1|PASS|err=Go bayrağı izinli değil: -ldflags
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go build --toolexec=sh|PASS|err=Go bayrağı izinli değil: -toolexec
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go test . -toolexec=sh|PASS|err=Go bayrağı izinli değil: -toolexec
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go generate ./...|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go test -o -toolexec|PASS|err=Go bayrağı izinli değil: -o
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go build -o x -tags a|FAIL|err=<nil>
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go test -run X . -args -x|PASS|err=Go bayrağı izinli değil: -args
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go env -w GOFLAGS=-toolexec=sh|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV go tool x|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV python3 -X dev a.py|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV python3 -W error a.py|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV python3 -I a.py|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV python3 -m pip install x|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV npm --script-shell=sh test|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV npx cowsay|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV git status|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+    zz_r9_bypass_test.go:20: R9|B5-ARGV pyinstaller a.py|PASS|err=Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.
+--- PASS: TestR9_TerminalArgv (0.00s)
+=== RUN   TestR9_EnvInjection
+    zz_r9_bypass_test.go:20: R9|B6-NODE_OPTIONS-ENV|PASS|state=success err=<nil> marker=false out=""
+    zz_r9_bypass_test.go:20: R9|B6-PYTHONPATH-ENV|PASS|state=success err=<nil> marker=false out="1"
+    zz_r9_bypass_test.go:20: R9|B6-PYTHONSTARTUP-ENV|PASS|state=success err=<nil> marker=false out="1"
+    zz_r9_bypass_test.go:20: R9|B6-PY-M-SHADOW|FAIL|state=success err=<nil> marker=true out=""
+--- PASS: TestR9_EnvInjection (0.05s)
+=== RUN   TestR9_VenvPath
+    zz_r9_bypass_test.go:20: R9|B7-VENV|PASS|detectLaunch ok=true argv=["/usr/bin/python3" "main.py"] venv_çalıştı=false trustedBin(venv)_err=güvenilir PATH içinde python bulunamadı
+--- PASS: TestR9_VenvPath (0.00s)
+=== RUN   TestR9_TaskStateForgedWithKey
+    zz_r9_bypass_test.go:20: R9|B8-TASKSTATE-VALIDMAC|PASS|geçerli MAC'li sahte kayıt: onay_soruldu=true yazıldı=false
+    zz_r9_bypass_test.go:20: R9|B8-TASKSTATE-NOMAC|PASS|MAC'siz kayıt (onay=true olsa bile) err=görev durumu bozuk; korundu: f2.json.corrupt-1793946812266591222 yazıldı=false
+--- PASS: TestR9_TaskStateForgedWithKey (0.00s)
+PASS
+ok  	kiyas	21.094s

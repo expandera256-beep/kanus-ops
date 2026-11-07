@@ -1,0 +1,7 @@
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/pricing.go:48:	snap, fxOK := currentFX()
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/pricing.go:54:		a, _ := l.ApproxFX(int64(v)*100, snap)
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/pricing.go:66:		_, note := l.ApproxFX(int64(m.PriceTRY)*100, snap)
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/i18n/fx.go:133:func (l *Localizer) ApproxFX(tryMinor int64, s FXSnapshot) (approx, note string) {
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/fx_panel.go:65:func fxMAC(secret string, body []byte) string {
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/fx_panel.go:77:	return hmac.Equal([]byte(fxMAC(secret, body)), []byte(strings.TrimPrefix(sig, fxSigPrefix)))
+/workspace/us-panel-dev/scratch/review-20261108/global08b/tree/fx_panel.go:164:func currentFX() (i18n.FXSnapshot, bool) {

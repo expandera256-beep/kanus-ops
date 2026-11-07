@@ -1,0 +1,4 @@
+kaynak=/workspace/us-panel/work2/kiyas/term kopya=/tmp/s2reg.6rcGgs/term tarih=2026-11-06 09:22:48 +03 go=go version go1.27.3 linux/amd64
+const buildVersion = "2026.11.06.9"
+	return json.NewDecoder(io.LimitReader(resp.Body, 1024)).Decode(&value) == nil && value.Version == buildVersion
+go_test_exit=0

@@ -1,0 +1,12 @@
+=== Order A claimed: 0006 0006b 0008 0004 ===
+ID=0001 CHECK=0 APPLY=0
+ID=0003 CHECK=0 APPLY=0
+ID=0005 CHECK=0 APPLY=0
+ID=0006 CHECK=0 APPLY=0
+ID=0006b CHECK=1 APPLY=skip
+error: patch failed: licensesrv/api_keys_test.go:215
+error: licensesrv/api_keys_test.go: patch does not apply
+ID=0008 CHECK=0 APPLY=0
+ID=0004 CHECK=1 APPLY=skip
+error: patch failed: licensesrv/api_keys_test.go:240
+error: licensesrv/api_keys_test.go: patch does not apply

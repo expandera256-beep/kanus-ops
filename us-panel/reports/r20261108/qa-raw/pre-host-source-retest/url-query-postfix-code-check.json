@@ -1,0 +1,20 @@
+{
+  "hits": [
+    {
+      "path": "source/from-demir-20261106/kanus/deploy/gcp_apply.py",
+      "line": 147,
+      "values_not_rendered": true
+    },
+    {
+      "path": "work2/kanus/deploy/gcp_apply.py",
+      "line": 147,
+      "values_not_rendered": true
+    },
+    {
+      "path": "qa/audit12/test_url_query_guard.py",
+      "line": 9,
+      "values_not_rendered": true
+    }
+  ],
+  "scope": "current product source plus historical delivered source and qa; lexical review not formal whole-program proof"
+}

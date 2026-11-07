@@ -1,0 +1,7 @@
+Akış düzeltmesi: Üç dakika boyunca sunucudan yanıt verisi gelmezse istek iptal edilir. Bağlantı bitiş işareti gelmeden kesilirse veya token sınırına ulaşılırsa eksik yanıt dosyalara uygulanmaz ve hata gösterilir. Bu, yavaş veya takılan modelin nedenini tek başına çözmez. Testler Go üzerinde çalıştırılmıştır; gerçek Windows ve canlı modelle bu yeni sürümün uçtan uca testi yapılmamıştır. Ticari sürüm tamamlanmış değildir.
+
+Tur düzeltmesi: Her model çağrısında ilerleme sayacı sıfırlanır. Proje onarımında ilk dosya seçimi daha kısa ve sadece OKU isteği üretecek şekilde ayrılmıştır. Gerçek projede başarısı henüz test edilmemiştir.
+
+Gerçek model sınamasında OKU öneki olmadan dosya adları dönebildiği gözlendi. Bu biçim, yalnızca tüm satırlar listelenen ve çalışma alanı içinde çözümlenen normal dosyalarsa okuma isteği olarak kabul edilir. Gerçek kullanıcı projesinde uçtan uca doğrulanmamıştır.
+
+Bağlam düzeltmesi: 8192 token bağlamlı sunucu için istem ve dosya içeriği korumalı bir bayt bütçesiyle sınırlandırılır, yanıta en fazla 2048 token ayrılır. Bayt sınırı token sayısının yaklaşık ve muhafazakâr bir karşılığıdır; sunucu bağlamı belirleyicidir. Bütçeye sığmayan dosya parçaları kısaltılmış kabul edilir ve dosyanın üzerine yazılmasını yetkilendirmez. Geniş dosyaları düzenlemek için daha kapsamlı parça bazlı düzenleme gerekir.

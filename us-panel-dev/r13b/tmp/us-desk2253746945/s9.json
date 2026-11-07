@@ -1,0 +1,58 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "düşünce",
+      "text": "İstek modele gidiyor."
+    },
+    {
+      "n": 2,
+      "kind": "istem",
+      "text": "İş modele gitti: iki dosyayı da yaz. Klasörde 0 ad."
+    },
+    {
+      "n": 3,
+      "kind": "işlem",
+      "text": "İstek modele gitti."
+    },
+    {
+      "n": 4,
+      "kind": "işlem",
+      "text": "Yazıldı: a.txt, b.txt. Dosyanın gövdesi kayda geçmedi."
+    },
+    {
+      "n": 5,
+      "kind": "özet",
+      "text": "Özet. İstem: iki dosyayı da yaz. Okunan: yok. Yazılan: a.txt, b.txt. Sonuç: dosyalar yazıldı; projenin tamamı doğrulanmadı."
+    }
+  ],
+  "chat": [
+    {
+      "role": "panel",
+      "text": "kullanıcı: iki dosyayı da yaz\nKlasörde 0 ad var."
+    },
+    {
+      "role": "model",
+      "text": "DOSYA a.txt\nDOSYA b.txt\ndosya gövdesi loglanmadı."
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "iki dosyayı da yaz",
+      "turns": [
+        {
+          "role": "panel",
+          "text": "kullanıcı: iki dosyayı da yaz\nKlasörde 0 ad var."
+        },
+        {
+          "role": "model",
+          "text": "DOSYA a.txt\nDOSYA b.txt\ndosya gövdesi loglanmadı."
+        }
+      ]
+    }
+  ],
+  "chatId": "s1"
+}

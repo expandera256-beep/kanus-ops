@@ -1,0 +1,22 @@
+=== RUN   TestPrefRootCacheBounded
+--- PASS: TestPrefRootCacheBounded (0.08s)
+=== RUN   TestPrefRootHandleScaling
+    pref_rootcache_test.go:77: handle delta: 64 roots +64, 512 roots +512
+    pref_rootcache_test.go:79: handle growth scales with roots: 64 -> +64, 512 -> +512
+--- FAIL: TestPrefRootHandleScaling (0.76s)
+=== RUN   TestPrefRootClosedHandleInvalid
+    pref_rootcache_test.go:103: [still valid after close still valid after close still valid after close still valid after close still valid after close still valid after close still valid after close still valid after close still valid after close still valid after close still valid after close still valid after close still valid after close still valid after close still valid after close still valid after close]
+--- FAIL: TestPrefRootClosedHandleInvalid (0.03s)
+=== RUN   TestPrefRootEvictionWhileInUse
+--- PASS: TestPrefRootEvictionWhileInUse (0.00s)
+=== RUN   TestPrefRootConcurrentSwitch
+--- PASS: TestPrefRootConcurrentSwitch (0.47s)
+=== RUN   TestPrefRootRebindPinned
+--- PASS: TestPrefRootRebindPinned (0.00s)
+=== RUN   TestReviewRootFDGrowth
+    review_fd_test.go:3: fds before=1304 after=1368 roots=1
+    review_fd_test.go:3: root handles accumulate without Close/eviction
+--- FAIL: TestReviewRootFDGrowth (0.05s)
+FAIL
+FAIL	kiyas/i18n	1.431s
+FAIL

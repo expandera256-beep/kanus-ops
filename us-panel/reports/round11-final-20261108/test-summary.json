@@ -1,0 +1,84 @@
+{
+  "test": {
+    "counts": {
+      "pass": 453,
+      "skip": 7
+    },
+    "packages": [
+      {
+        "Time": "2026-11-08T00:27:57.242527411+03:00",
+        "Action": "skip",
+        "Package": "kiyas/cmd/us-pricing-gen",
+        "Elapsed": 0
+      },
+      {
+        "Time": "2026-11-08T00:27:57.943521164+03:00",
+        "Action": "pass",
+        "Package": "kiyas/cmd/us-license-hook",
+        "Elapsed": 0.701
+      },
+      {
+        "Time": "2026-11-08T00:28:21.518256242+03:00",
+        "Action": "pass",
+        "Package": "kiyas/licensesrv",
+        "Elapsed": 24.276
+      },
+      {
+        "Time": "2026-11-08T00:28:30.040099043+03:00",
+        "Action": "pass",
+        "Package": "kiyas",
+        "Elapsed": 32.798
+      }
+    ],
+    "skipped_tests": [
+      "TestPHPLicenseMatchesThePanel",
+      "TestLiveDoorAnswers",
+      "TestOfficialREAInspectsOwnedFile",
+      "TestRealModelPanelMultiFileRepair",
+      "TestRealModelPanelBuildRentalProject",
+      "TestStoreWriterProcess",
+      "TestTaskStateCrashChild"
+    ]
+  },
+  "race": {
+    "counts": {
+      "pass": 453,
+      "skip": 7
+    },
+    "packages": [
+      {
+        "Time": "2026-11-08T00:28:30.48775495+03:00",
+        "Action": "skip",
+        "Package": "kiyas/cmd/us-pricing-gen",
+        "Elapsed": 0
+      },
+      {
+        "Time": "2026-11-08T00:28:39.594604775+03:00",
+        "Action": "pass",
+        "Package": "kiyas/cmd/us-license-hook",
+        "Elapsed": 9.107
+      },
+      {
+        "Time": "2026-11-08T00:29:27.003090952+03:00",
+        "Action": "pass",
+        "Package": "kiyas",
+        "Elapsed": 56.516
+      },
+      {
+        "Time": "2026-11-08T00:32:15.675417668+03:00",
+        "Action": "pass",
+        "Package": "kiyas/licensesrv",
+        "Elapsed": 225.188
+      }
+    ],
+    "skipped_tests": [
+      "TestPHPLicenseMatchesThePanel",
+      "TestLiveDoorAnswers",
+      "TestOfficialREAInspectsOwnedFile",
+      "TestRealModelPanelMultiFileRepair",
+      "TestRealModelPanelBuildRentalProject",
+      "TestTaskStateCrashChild",
+      "TestStoreWriterProcess"
+    ]
+  }
+}

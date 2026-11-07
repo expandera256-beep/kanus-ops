@@ -1,0 +1,24 @@
+{
+  "exit": "0",
+  "counts": {
+    "pass": 415,
+    "skip": 7
+  },
+  "packages": {
+    "kiyas": {
+      "pass": 315,
+      "skip": 6
+    },
+    "kiyas/cmd/us-license-hook": {
+      "pass": 5
+    },
+    "kiyas/i18n": {
+      "pass": 22
+    },
+    "kiyas/licensesrv": {
+      "pass": 73,
+      "skip": 1
+    }
+  },
+  "race_warnings": 0
+}

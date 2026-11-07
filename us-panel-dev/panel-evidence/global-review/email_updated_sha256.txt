@@ -1,0 +1,1 @@
+7c917564df055f151f8bd0a0b334a09e248db1481723123196fbfb0377093f3d  /workspace/us-panel-dev/patches/global_i18n_05_email_loader.patch

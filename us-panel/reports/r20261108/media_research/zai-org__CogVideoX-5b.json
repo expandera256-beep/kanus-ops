@@ -1,0 +1,295 @@
+{
+  "_id": "66c08ca4e61ccd71d7635cfd",
+  "id": "zai-org/CogVideoX-5b",
+  "private": false,
+  "pipeline_tag": "text-to-video",
+  "library_name": "diffusers",
+  "tags": [
+    "diffusers",
+    "safetensors",
+    "cogvideox",
+    "video-generation",
+    "thudm",
+    "text-to-video",
+    "en",
+    "arxiv:2408.06072",
+    "license:other",
+    "diffusers:CogVideoXPipeline",
+    "region:us"
+  ],
+  "downloads": 8304,
+  "likes": 707,
+  "modelId": "zai-org/CogVideoX-5b",
+  "author": "zai-org",
+  "sha": "8fc5b281006c82b82d34fd2543d2f0ebb4e7e321",
+  "lastModified": "2024-11-23T06:30:11.000Z",
+  "gated": false,
+  "disabled": false,
+  "model-index": null,
+  "config": {
+    "diffusers": {
+      "_class_name": "CogVideoXPipeline"
+    }
+  },
+  "cardData": {
+    "license": "other",
+    "license_link": "https://huggingface.co/THUDM/CogVideoX-5b/blob/main/LICENSE",
+    "language": [
+      "en"
+    ],
+    "tags": [
+      "cogvideox",
+      "video-generation",
+      "thudm",
+      "text-to-video"
+    ],
+    "inference": false
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes",
+      "blobId": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+      "size": 1519
+    },
+    {
+      "rfilename": "LICENSE",
+      "blobId": "7f8da3b25118859f68e9c77a92267e80c84b7864",
+      "size": 5704
+    },
+    {
+      "rfilename": "README.md",
+      "blobId": "97e8724ddbfc940141a797e384310f228c9f96d0",
+      "size": 19520
+    },
+    {
+      "rfilename": "README_zh.md",
+      "blobId": "ef851332ac9968a7e3d2436e26f3df9fd3277f38",
+      "size": 18460
+    },
+    {
+      "rfilename": "configuration.json",
+      "blobId": "edfade116796660135c78181dad54487d8ff2ce3",
+      "size": 56
+    },
+    {
+      "rfilename": "model_index.json",
+      "blobId": "4a41f43529aa4898eed1dcaea458b7200b06171f",
+      "size": 411
+    },
+    {
+      "rfilename": "scheduler/scheduler_config.json",
+      "blobId": "806684e0f0ccd0fa4eeb90a5ba867fbe67b29877",
+      "size": 482
+    },
+    {
+      "rfilename": "text_encoder/config.json",
+      "blobId": "d567cb594064ddfdf051542bbaf62a64bfcab02c",
+      "size": 809
+    },
+    {
+      "rfilename": "text_encoder/model-00001-of-00002.safetensors",
+      "blobId": "f2880ca61fe4fe0ec7b101a4ea7e78c52889aa8c",
+      "size": 4994582224,
+      "lfs": {
+        "sha256": "9162b8ae9152e7a8e3bbebc535c8692783f50aec8cd3bb8ef6a751c432dd6392",
+        "size": 4994582224,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "text_encoder/model-00002-of-00002.safetensors",
+      "blobId": "0bf289fb8e84b2c0325c7ae8f4486f6253a2dbce",
+      "size": 4530066360,
+      "lfs": {
+        "sha256": "d3edef29693d52402b1cc7c362f031e052f2e9482ed0c765c6351950434349b0",
+        "size": 4530066360,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "text_encoder/model.safetensors.index.json",
+      "blobId": "c8728bc3dca59d2616a2a594cbac3ddb9eb77d5b",
+      "size": 19885
+    },
+    {
+      "rfilename": "tokenizer/added_tokens.json",
+      "blobId": "3f5132007c4fcf42b75b65c8b6aa49c7098bcdf4",
+      "size": 2593
+    },
+    {
+      "rfilename": "tokenizer/special_tokens_map.json",
+      "blobId": "17ade346a1042cbe0c1436f5bedcbd85c099d582",
+      "size": 2543
+    },
+    {
+      "rfilename": "tokenizer/spiece.model",
+      "blobId": "317a5ccbde45300f5d1d970d4d449af2108b147e",
+      "size": 791656,
+      "lfs": {
+        "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+        "size": 791656,
+        "pointerSize": 131
+      }
+    },
+    {
+      "rfilename": "tokenizer/tokenizer_config.json",
+      "blobId": "161715af5ee99558c9fcce7b31d3d547a72c349b",
+      "size": 20617
+    },
+    {
+      "rfilename": "transformer/config.json",
+      "blobId": "7298d569fb645c249614fa3763c56046e0a34e90",
+      "size": 757
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model-00001-of-00002.safetensors",
+      "blobId": "250d0f534ad9e02ddb6ca5a3654f786f62cdec38",
+      "size": 9925342208,
+      "lfs": {
+        "sha256": "b7101be7e75631130cdf4a63ad798452bdce29716aaa47829e882dd384c398bf",
+        "size": 9925342208,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model-00002-of-00002.safetensors",
+      "blobId": "2e1837373f42c682f37f455f9029c0a1ed987d4b",
+      "size": 1215340384,
+      "lfs": {
+        "sha256": "ebe6c0e34a52c89f8ea8032a3a8a278a9ff1880dc70e1e6f3b840bcfd0396647",
+        "size": 1215340384,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "transformer/diffusion_pytorch_model.safetensors.index.json",
+      "blobId": "d41c26fe26e4ab7adc941550d534ff27a17e7bea",
+      "size": 103074
+    },
+    {
+      "rfilename": "vae/config.json",
+      "blobId": "8f2badea95227e1c8ce0df5c11920a930ae09829",
+      "size": 872
+    },
+    {
+      "rfilename": "vae/diffusion_pytorch_model.safetensors",
+      "blobId": "bb977c24bd502a1b34c74b78bc8c524fcc0833aa",
+      "size": 862388596,
+      "lfs": {
+        "sha256": "a410e48d988c8224cef392b68db0654485cfd41f345f4a3a81d3e6b765bb995e",
+        "size": 862388596,
+        "pointerSize": 134
+      }
+    }
+  ],
+  "spaces": [
+    "hugging-apps/t3-video-4k",
+    "neksjgg/wan22-animate-character-replace",
+    "zai-org/CogVideoX-5B-Space",
+    "kandinskylab/Kandinsky-6.0-Pro-distill-5s",
+    "hugging-apps/sparkle-video-background-replacement-2605",
+    "hugging-apps/trajloc",
+    "wileewang/TransPixar",
+    "fantos/VoiceClone",
+    "alibaba-pai/CogVideoX-Fun-5b",
+    "TencentARC/ColorFlow",
+    "alibaba-pai/Wan2.1-Fun-1.3B-InP",
+    "haodongli/DVD",
+    "jbilcke-hf/VideoModelStudio",
+    "VideoSys/CogVideoX",
+    "ai-forever/kandinsky-4-t2v-flash",
+    "alexnasa/ReCamMaster-ZEROGPU",
+    "fffiloni/Stand-In",
+    "jbilcke-hf/OmniAvatar",
+    "ShuoChen20/DimensionX",
+    "LTT/DiMeR",
+    "theSure/Omnieraser",
+    "multimodalart/Cosmos-Predict2-2B",
+    "fffiloni/Go-With-The-Flow",
+    "rahul7star/PusaV1",
+    "LTT/Kiss3DGen",
+    "Iceyy4400/wan22-animate-character-replace",
+    "fffiloni/Cobra",
+    "jbilcke-hf/ReCamMaster",
+    "JoPmt/ConsisID",
+    "nazdridoy/inferoxy-hub",
+    "hugging-apps/kandinsky-6-lite-distill-5s",
+    "PengWeixuanSZU/Senorita",
+    "Kunbyte/Lumen",
+    "JunhaoZhuang/Cobra",
+    "Ntdeseb/ntia",
+    "patrol114/CogVideoX-5B-Space",
+    "jjz5463/Diary-AI-Video",
+    "svjack/CogVideoX-5B-Space",
+    "kevalfst/visionary-ai",
+    "AiCoderv2/Wan2.1-Fun-1.3B-InP",
+    "buxiangzhiren/GeoRemover",
+    "VirtualOasis/CineGen",
+    "hugging-apps/lip-forcing",
+    "terryrubble/CogVideoX-5B-Space",
+    "manozSameer/my_spaces",
+    "benos/CogVideoX-5B-Space",
+    "123LETSPLAY/iforgotagian",
+    "123LETSPLAY/txt-to-video",
+    "maxdemon/CogVideoX-5B-Max-Fun",
+    "Felguk/Decraft",
+    "OneOverZero/Go-With-The-Flow",
+    "JakeNickson/THUDM-CogVideoX-5b",
+    "etherealbeats/THUDM-CogVideoX-5b",
+    "jewelt123/VoiceCloneABC2",
+    "OneOverZero/Go-With-The-Flow_CogVideoXI2V",
+    "yanboding/MTVCrafter",
+    "shaheerawan3/Pro-Advertisement-Generator",
+    "MCP-1st-Birthday/CineGen",
+    "DJ-Goanna-Coding/citadel-agentic-swarm",
+    "umar8902/Nexa.ai",
+    "iimmortall/InstantRetouch",
+    "fffiloni/Relit-LIVE-ZeroGPU-demo",
+    "chgm599-ch/Mujtaba",
+    "dan-ai-studio/my-ai-studio",
+    "yn4989/minimax-h3",
+    "Mahmoudtele/pluto-video-engine",
+    "AmpleBasis/CogVideoX-5B-Space",
+    "AnasAqeel/Wind-AI-Video-Gen",
+    "rauni/CogVideoX-5B-Space",
+    "GiuliDev/MMAI",
+    "kp-forks/CogVideoX-5B-Space",
+    "MihaiHuggingFace/CogVideoX-Fun-5b",
+    "seawolf2357/cog5bvid",
+    "K00B404/CogVideoX-Fun-5b-custom",
+    "tsqn/CogVideoX-5B-24frames_20steps-low_vram",
+    "blinklink/T2V",
+    "neuralleap/CogVideoX-5B-API-V2",
+    "Sandaru-J/im2",
+    "Dukewill/CogVideoX-5B-Space",
+    "Jagad1234unique/Jadeu",
+    "Maximofn/finetrainers_video_effects",
+    "svjack/ColorFlow",
+    "ENSOspain/CogVideoX-5B-Space",
+    "yijin928/Test",
+    "rieanth/CogVideoX-5B-Space",
+    "Jwrockon/ArtemisVoiceCloner",
+    "zetong/CogVideoX-5B-Space",
+    "peterpeter8585/VoiceClone",
+    "nastybastrd/CogVideoX-5B-Space",
+    "Shivp1413/local-ai-video-generator",
+    "chafik88/CogVideoX-5B-Space",
+    "SinapsisSpace/text-to-image",
+    "samiabat/CogVideoX-5B-Space",
+    "EagleHosters/Video",
+    "LexDF/CogVideoX-5B-Space",
+    "svjack/VideoModelStudio",
+    "PitterTMYT/CogVideoX-5B-Space",
+    "liuyilin610/THUDM-CogVideoX-5b",
+    "ahmis/CogVideoX-5B-Space",
+    "xillus0120/THUDM-CogVideoX-5b"
+  ],
+  "createdAt": "2024-08-17T11:42:28.000Z",
+  "safetensors": {
+    "parameters": {
+      "BF16": 5570283072
+    },
+    "total": 5570283072
+  },
+  "usedStorage": 21960222900
+}

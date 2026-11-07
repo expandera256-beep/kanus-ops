@@ -1,0 +1,23 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "işlem",
+      "text": "Program çalıştırıldı."
+    },
+    {
+      "n": 2,
+      "kind": "işlem",
+      "text": "Program durduruldu."
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "Sohbet 1"
+    }
+  ],
+  "chatId": "s1"
+}

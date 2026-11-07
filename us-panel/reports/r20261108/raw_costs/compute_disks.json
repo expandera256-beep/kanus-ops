@@ -1,0 +1,107 @@
+[
+  {
+    "architecture": "X86_64",
+    "creationTimestamp": "2026-10-30T22:14:33.322-07:00",
+    "enableConfidentialCompute": false,
+    "guestOsFeatures": [
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "GVNIC"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_LIVE_MIGRATABLE_V2"
+      },
+      {
+        "type": "SUSPEND_SAFE_FPR"
+      }
+    ],
+    "id": "9073568210569709526",
+    "kind": "compute#disk",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "lastAttachTimestamp": "2026-10-30T22:14:34.029-07:00",
+    "licenseCodes": [
+      "2147286739765738111"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-12-bookworm"
+    ],
+    "name": "usta-wake",
+    "physicalBlockSizeBytes": "4096",
+    "satisfiesPzi": true,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/disks/usta-wake",
+    "sizeGb": "10",
+    "sourceImage": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-12-bookworm-v20261023",
+    "sourceImageId": "2443613614497996558",
+    "status": "READY",
+    "type": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/diskTypes/pd-balanced",
+    "users": [
+      "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/instances/usta-wake"
+    ],
+    "zone": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c"
+  },
+  {
+    "architecture": "X86_64",
+    "creationTimestamp": "2026-11-03T05:47:44.309-08:00",
+    "enableConfidentialCompute": false,
+    "guestOsFeatures": [
+      {
+        "type": "VIRTIO_SCSI_MULTIQUEUE"
+      },
+      {
+        "type": "SEV_CAPABLE"
+      },
+      {
+        "type": "SEV_SNP_CAPABLE"
+      },
+      {
+        "type": "SEV_LIVE_MIGRATABLE"
+      },
+      {
+        "type": "SEV_LIVE_MIGRATABLE_V2"
+      },
+      {
+        "type": "IDPF"
+      },
+      {
+        "type": "TDX_CAPABLE"
+      },
+      {
+        "type": "UEFI_COMPATIBLE"
+      },
+      {
+        "type": "GVNIC"
+      }
+    ],
+    "id": "3413453960491849967",
+    "kind": "compute#disk",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "lastAttachTimestamp": "2026-11-03T05:47:45.177-08:00",
+    "licenseCodes": [
+      "5511465778777431107"
+    ],
+    "licenses": [
+      "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-2204-lts"
+    ],
+    "name": "ds-a100",
+    "physicalBlockSizeBytes": "4096",
+    "satisfiesPzi": true,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/disks/ds-a100",
+    "sizeGb": "50",
+    "sourceImage": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20261021",
+    "sourceImageId": "8458814414621311273",
+    "status": "READY",
+    "type": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/diskTypes/pd-balanced",
+    "users": [
+      "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/instances/ds-a100"
+    ],
+    "zone": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b"
+  }
+]

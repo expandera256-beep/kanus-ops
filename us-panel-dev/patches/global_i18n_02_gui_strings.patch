@@ -1,0 +1,532 @@
+diff --git a/gui.go b/gui.go
+index 30501c0..08ad169 100644
+--- a/gui.go
++++ b/gui.go
+@@ -7,6 +7,7 @@ import (
+ 	"encoding/json"
+ 	"errors"
+ 	"io"
++	"kiyas/i18n"
+ 	"net"
+ 	"net/http"
+ 	"net/url"
+@@ -148,6 +149,7 @@ func guiMux(s *session) http.Handler {
+ 		w.Header().Set("Cache-Control", "no-store")
+ 		writeJSON(w, map[string]string{"version": buildVersion})
+ 	})
++	mux.Handle("/api/i18n", i18n.Handler(nil))
+ 	mux.HandleFunc("/api/files", g.filesPage)
+ 	mux.HandleFunc("/api/source", g.sourceRange)
+ 	mux.HandleFunc("/api/act", g.act)
+diff --git a/gui.html b/gui.html
+index 1669375..5ab084f 100644
+--- a/gui.html
++++ b/gui.html
+@@ -83,22 +83,23 @@
+ <div class="app">
+   <nav class="rail" aria-label="Bölümler">
+     <div class="mark">US.</div>
+-    <button type="button" data-screen="files" class="on">Dosya</button>
+-    <button type="button" data-screen="terminal">Terminal</button>
+-    <button type="button" data-screen="preview">Önizleme</button>
+-    <button type="button" data-screen="models">Modeller</button>
+-    <button type="button" data-screen="serve">Servis</button>
+-    <button type="button" data-screen="monitor">İzleme</button>
+-    <button type="button" data-screen="tasks">Görev</button>
+-    <button type="button" data-screen="studio">Stüdyo</button>
+-    <button type="button" data-screen="skills">Araç</button>
++    <button type="button" data-screen="files" class="on" data-i18n="gui.nav.files">Dosya</button>
++    <button type="button" data-screen="terminal" data-i18n="gui.nav.terminal">Terminal</button>
++    <button type="button" data-screen="preview" data-i18n="gui.nav.preview">Önizleme</button>
++    <button type="button" data-screen="models" data-i18n="gui.nav.models">Modeller</button>
++    <button type="button" data-screen="serve" data-i18n="gui.nav.serve">Servis</button>
++    <button type="button" data-screen="monitor" data-i18n="gui.nav.monitor">İzleme</button>
++    <button type="button" data-screen="tasks" data-i18n="gui.nav.tasks">Görev</button>
++    <button type="button" data-screen="studio" data-i18n="gui.nav.studio">Stüdyo</button>
++    <button type="button" data-screen="skills" data-i18n="gui.nav.skills">Araç</button>
+   </nav>
+   <section class="chat">
+     <div class="top">
+       <div>
+-        <h1>US <span class="muted">/ çalışma alanı</span></h1>
++        <h1>US <span class="muted" data-i18n="gui.workspace">/ çalışma alanı</span></h1>
+         <p id="buildversion" class="muted"></p>
+-        <p class="muted">Modelle çalışın, projelerinizi yönetin ve sonuçları izleyin.</p><p id="tunneltop" class="muted" role="status">Hesap bağlantısı bekleniyor.</p>
++        <label class="muted"><span data-i18n="gui.lang.label">Dil</span> <select id="langsel" aria-label="Dil / Language"><option value="tr">Türkçe</option></select></label>
++        <p class="muted" data-i18n="gui.intro">Modelle çalışın, projelerinizi yönetin ve sonuçları izleyin.</p><p id="tunneltop" class="muted" role="status">Hesap bağlantısı bekleniyor.</p>
+       </div>
+     </div>
+     <div class="chats" id="chats" aria-label="Sohbetler"></div>
+@@ -112,35 +113,35 @@
+       <div id="mine"></div>
+       <ol id="talk"></ol>
+       <ol id="steps"></ol>
+-      <h2 class="muted">Günlük</h2>
++      <h2 class="muted" data-i18n="gui.log">Günlük</h2>
+       <ol id="journal"></ol>
+     </div>
+     <form id="form">
+       <div id="slash"></div>
+       <p id="ask" class="ask"></p>
+-      <textarea id="task" placeholder="Mesajınızı yazın. Ctrl+Enter ile gönderin."></textarea>
++      <textarea id="task" placeholder="Mesajınızı yazın. Ctrl+Enter ile gönderin." data-i18n-ph="gui.ph.task"></textarea>
+       <div class="row">
+         <button type="button" data-fill="hesap makinesi yapan proje kur">hesap</button>
+         <button type="button" data-fill="not tutan proje kur">not</button>
+         <button type="button" data-fill="projeyi geliştirmek için plan çiz">plan</button>
+         <button type="button" data-fill="proje kur">proje kur</button>
+-        <button type="button" id="runprog">Çalıştır</button>
+-        <button type="button" id="stopprog">Durdur</button>
++        <button type="button" id="runprog" data-i18n="gui.run">Çalıştır</button>
++        <button type="button" id="stopprog" data-i18n="gui.stop">Durdur</button>
+         <button type="button" id="stopmodel" hidden>Model isteğini iptal et</button>
+ 		<button type="button" id="resumetask" hidden>Uzun göreve devam et</button>
+ 		<button type="button" id="discardtask" hidden>Uzun görev kaydını kaldır</button>
+-        <button class="go" type="submit">Yürüt</button>
++        <button class="go" type="submit" data-i18n="gui.execute">Yürüt</button>
+       </div>
+     </form>
+   </section>
+   <aside class="side">
+     <div class="pane" id="pane-files">
+-      <h2>Dosyalar</h2>
++      <h2 data-i18n="gui.files.title">Dosyalar</h2>
+       <p id="root" class="muted"></p>
+       <div class="row">
+         <button type="button" id="places">Yerel</button>
+-        <button type="button" id="browse">Klasör seç</button>
+-        <button type="button" id="up">Üst</button>
++        <button type="button" id="browse" data-i18n="gui.files.browse">Klasör seç</button>
++        <button type="button" id="up" data-i18n="gui.files.up">Üst</button>
+       </div>
+       <form id="placeform" class="row">
+         <input id="place" type="text" placeholder="C:\ veya D:\">
+@@ -151,30 +152,30 @@
+       <div class="row">
+         <button type="button" id="filesprev" disabled>Önceki dosyalar</button>
+         <button type="button" id="filesnext" disabled>Sonraki dosyalar</button>
+-        <button type="button" id="filesrefresh">Listeyi yenile</button>
++        <button type="button" id="filesrefresh" data-i18n="gui.files.refresh">Listeyi yenile</button>
+       </div>
+       <p id="filespage" class="muted"></p>
+       <form id="findform" class="row">
+-        <input id="find" type="text" placeholder="dosyada ara">
++        <input id="find" type="text" placeholder="dosyada ara" data-i18n-ph="gui.ph.find">
+         <button type="submit">Ara</button>
+       </form>
+       <ul id="hits"></ul>
+       <p id="openpath" class="muted">Dosya seçilmedi.</p>
+-      <textarea id="editor" spellcheck="false" placeholder="Listeden bir dosya aç. Kaydet yazıyı klasöre koyar."></textarea>
++      <textarea id="editor" spellcheck="false" placeholder="Listeden bir dosya aç. Kaydet yazıyı klasöre koyar." data-i18n-ph="gui.ph.editor"></textarea>
+       <div class="row">
+-        <button type="button" id="savefile">Kaydet</button>
++        <button type="button" id="savefile" data-i18n="gui.files.save">Kaydet</button>
+ 		<button type="button" id="undomodel">Son model değişikliğini geri al</button>
+       </div>
+       <div class="row"><button type="button" id="sourcefirst">Parçalı incele</button><button type="button" id="sourcenext" disabled>Sonraki parça</button><label>İlk satır <input id="sourcestart" type="number" min="1" value="1"></label><label>Son satır <input id="sourceend" type="number" min="1" value="50"></label><button type="button" id="sourcelines">Satırları oku</button></div>
+       <p id="sourcemeta" class="muted"></p><pre id="sourcechunk"></pre>
+     </div>
+     <div class="pane" id="pane-preview">
+-      <h2>Önizleme</h2>
++      <h2 data-i18n="gui.preview.title">Önizleme</h2>
+ 	  <h3>Bekleyen dosya değişiklikleri</h3>
+ 	  <pre id="proposal">Bekleyen değişiklik yok.</pre>
+-	  <div class="row"><button type="button" id="applyproposal">Değişiklikleri uygula</button><button type="button" id="discardproposal">Reddet</button><button type="button" id="recovertransaction" hidden>Kesilen işlemi geri al</button></div>
++	  <div class="row"><button type="button" id="applyproposal" data-i18n="gui.preview.apply">Değişiklikleri uygula</button><button type="button" id="discardproposal" data-i18n="gui.preview.discard">Reddet</button><button type="button" id="recovertransaction" hidden>Kesilen işlemi geri al</button></div>
+ 	  <h3>Proje testleri</h3><p>Testler proje kodunu çalıştırabilir.</p><pre id="testreport">Henüz test çalıştırılmadı.</pre>
+-	  <div class="row"><button type="button" id="projecttests">Testleri çalıştır</button><button type="button" id="testrepair">Test et ve onarım öner</button><button type="button" id="stoptests" hidden>Testi iptal et</button><button type="button" id="repairtests">Test hatasını isteğe ekle</button></div>
++	  <div class="row"><button type="button" id="projecttests" data-i18n="gui.preview.tests">Testleri çalıştır</button><button type="button" id="testrepair">Test et ve onarım öner</button><button type="button" id="stoptests" hidden>Testi iptal et</button><button type="button" id="repairtests">Test hatasını isteğe ekle</button></div>
+       <pre id="result">Henüz sonuç yok.</pre>
+       <iframe id="previewframe" title="Önizleme"></iframe>
+       <div class="row">
+@@ -182,22 +183,22 @@
+         <button type="button" id="render">Tuval</button>
+       </div>
+       <p id="visualnote" class="muted"></p>
+-      <h2>İnceleme</h2>
++      <h2 data-i18n="gui.review.title">İnceleme</h2>
+       <pre id="reviewtext">Henüz inceleme yok.</pre>
+     </div>
+     <div class="pane" id="pane-terminal">
+-      <h2>Terminal</h2>
++      <h2 data-i18n="gui.terminal.title">Terminal</h2>
+       <p class="muted">Yalnız seçili proje, kabuk yok. Go / Python / Node; JSON argüman dizisi. 120 sn ve sınırlı çıktı. Proje kodu OS yetkilerinizle çalışır; CPU/RAM sandbox değildir. Bağımlılıklar otomatik kurulmaz.</p>
+-      <form id="terminalform"><label>Komut<textarea id="terminalcommand">["go","test","./..."]</textarea></label><label><input type="checkbox" id="terminalapprove" required> Bu proje kodunu çalıştırmayı onaylıyorum.</label><div class="row"><button id="terminalstart" type="submit">Komutu çalıştır</button><button id="terminalstop" type="button">İptal et</button></div></form>
++      <form id="terminalform"><label>Komut<textarea id="terminalcommand">["go","test","./..."]</textarea></label><label><input type="checkbox" id="terminalapprove" required> Bu proje kodunu çalıştırmayı onaylıyorum.</label><div class="row"><button id="terminalstart" type="submit" data-i18n="gui.terminal.start">Komutu çalıştır</button><button id="terminalstop" type="button" data-i18n="gui.terminal.stop">İptal et</button></div></form>
+       <pre id="terminaloutput" role="status">Henüz komut çalıştırılmadı.</pre>
+     </div>
+     <div class="pane" id="pane-models">
+-      <h2>Modeller</h2>
++      <h2 data-i18n="gui.models.title">Modeller</h2>
+       <p class="muted">Q8 işlemci, Q5 ekran kartı, DeepSeek Flash, KAN. Kurulum sihirbazı yok.</p>
+       <div class="connection">
+         <strong>Model bağlantısı</strong>
+ <button type="button" id="hookbalance">Go kredi durumunu yenile</button><pre id="hookcredits">Sunucu bakiyesi henüz doğrulanmadı.</pre><pre id="modeladmission"></pre>
+-		<form id="accountform"><label for="accountemail">E-posta</label><input id="accountemail" type="email" autocomplete="username" required><label for="accountpassword">Parola</label><input id="accountpassword" type="password" autocomplete="current-password" required><label for="accountlicense">Lisans veya kredi paketi anahtarı</label><input id="accountlicense" type="password" autocomplete="off"><div class="row"><button type="submit">Hesaba giriş</button><button type="button" id="accountregister">Lisansla hesap aç</button><button type="button" id="accountredeem">Kredi yükle</button><button type="button" id="accountbalance">Bakiyeyi göster</button></div><p id="accountstatus" role="status"></p></form>
++		<form id="accountform"><label for="accountemail" data-i18n="gui.account.email">E-posta</label><input id="accountemail" type="email" autocomplete="username" required><label for="accountpassword" data-i18n="gui.account.password">Parola</label><input id="accountpassword" type="password" autocomplete="current-password" required><label for="accountlicense" data-i18n="gui.account.license">Lisans veya kredi paketi anahtarı</label><input id="accountlicense" type="password" autocomplete="off"><div class="row"><button type="submit" data-i18n="gui.account.login">Hesaba giriş</button><button type="button" id="accountregister" data-i18n="gui.account.register">Lisansla hesap aç</button><button type="button" id="accountredeem" data-i18n="gui.account.redeem">Kredi yükle</button><button type="button" id="accountbalance" data-i18n="gui.account.balance">Bakiyeyi göster</button></div><p id="accountstatus" role="status"></p></form>
+         <button type="button" id="accountrequests">Model çağrısı ve kredi geçmişi</button><pre id="accounthistory">Hesap geçmişi henüz alınmadı.</pre>
+         <button type="button" id="accountworkers">Sunucu durumunu yenile</button><pre id="workerstates">Sunucu durumu henüz alınmadı.</pre>
+         <p id="tunnelstatus" role="status">Hesap bağlantısı bekleniyor.</p>
+@@ -821,6 +822,27 @@ document.body.addEventListener("click", (event) => {
+ });
+ const oldPaint = paint;
+ paint = (desk) => { state.cache = desk.steps; oldPaint(desk); };
++// i18n: dynamic language switching; TR markup is the default and stays untouched until another language is chosen.
++const i18nState = { lang: "tr" };
++function applyLocale(doc) {
++  const msgs = doc.messages || {};
++  document.querySelectorAll("[data-i18n]").forEach(el => { const v = msgs[el.dataset.i18n]; if (typeof v === "string") el.textContent = v; });
++  document.querySelectorAll("[data-i18n-ph]").forEach(el => { const v = msgs[el.dataset.i18nPh]; if (typeof v === "string") el.placeholder = v; });
++  document.documentElement.lang = doc.lang || "tr";
++  document.documentElement.dir = doc.dir === "rtl" ? "rtl" : "ltr";
++  i18nState.lang = doc.lang || "tr";
++  const sel = document.querySelector("#langsel");
++  if (sel && Array.isArray(doc.languages)) {
++    sel.replaceChildren(...doc.languages.map(l => { const o = document.createElement("option"); o.value = l.code; o.textContent = l.name; return o; }));
++    sel.value = i18nState.lang;
++  }
++}
++function loadLocale(lang) {
++  const q = lang ? "?lang=" + encodeURIComponent(lang) : "";
++  return fetch("/api/i18n" + q, { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(doc => { if (doc) applyLocale(doc); }).catch(() => {});
++}
++document.querySelector("#langsel").addEventListener("change", ev => loadLocale(ev.target.value));
++loadLocale("");
+ load();
+ </script>
+ </body>
+diff --git a/gui_i18n_test.go b/gui_i18n_test.go
+new file mode 100644
+index 0000000..953e306
+--- /dev/null
++++ b/gui_i18n_test.go
+@@ -0,0 +1,80 @@
++package main
++
++import (
++	"encoding/json"
++	"net/http"
++	"net/http/httptest"
++	"regexp"
++	"strings"
++	"testing"
++
++	"kiyas/i18n"
++)
++
++// TR markup must equal tr.json so the default (TR) panel is unchanged.
++func TestGUIDataI18nMatchesTurkishDefault(t *testing.T) {
++	b, err := i18n.Load()
++	if err != nil {
++		t.Fatal(err)
++	}
++	tr := b.For("tr")
++	page := string(guiPage)
++	re := regexp.MustCompile(`data-i18n="([^"]+)">([^<]*)<`)
++	ms := re.FindAllStringSubmatch(page, -1)
++	if len(ms) < 30 {
++		t.Fatalf("expected >=30 translatable elements, got %d", len(ms))
++	}
++	for _, m := range ms {
++		if got := tr.T(m[1]); got != m[2] {
++			t.Errorf("%s: markup %q != tr.json %q", m[1], m[2], got)
++		}
++		if en := b.For("en").T(m[1]); en == m[1] || en == "" {
++			t.Errorf("%s: no English text", m[1])
++		}
++	}
++	for _, m := range regexp.MustCompile(`placeholder="([^"]*)"[^>]*data-i18n-ph="([^"]+)"`).FindAllStringSubmatch(page, -1) {
++		if got := tr.T(m[2]); got != m[1] {
++			t.Errorf("%s: placeholder %q != %q", m[2], m[1], got)
++		}
++	}
++	for _, want := range []string{`<html lang="tr">`, `<title>US</title>`, `id="langsel"`, `fetch("/api/i18n"`, `document.documentElement.dir`} {
++		if !strings.Contains(page, want) {
++			t.Errorf("page missing %q", want)
++		}
++	}
++}
++
++func TestGUII18nEndpoint(t *testing.T) {
++	s := newView("i18n")
++	s.root = t.TempDir()
++	h := guiMux(&s)
++	for _, c := range []struct{ q, lang, sample string }{
++		{"", "tr", "Dosya"}, {"?lang=en", "en", "Files"}, {"?lang=xx", "tr", "Dosya"}, {"?lang=EN-us", "en", "Files"},
++	} {
++		req := httptest.NewRequest(http.MethodGet, "http://127.0.0.1/api/i18n"+c.q, nil)
++		rec := httptest.NewRecorder()
++		h.ServeHTTP(rec, req)
++		if rec.Code != 200 {
++			t.Fatalf("%s: status %d", c.q, rec.Code)
++		}
++		var d i18n.Document
++		if err := json.Unmarshal(rec.Body.Bytes(), &d); err != nil {
++			t.Fatal(err)
++		}
++		if d.Lang != c.lang || d.Messages["gui.nav.files"] != c.sample || d.Dir != "ltr" || len(d.Languages) < 2 {
++			t.Errorf("%s: got lang=%s dir=%s sample=%q", c.q, d.Lang, d.Dir, d.Messages["gui.nav.files"])
++		}
++	}
++	req := httptest.NewRequest(http.MethodPost, "http://127.0.0.1/api/i18n", nil)
++	rec := httptest.NewRecorder()
++	h.ServeHTTP(rec, req)
++	if rec.Code != http.StatusMethodNotAllowed {
++		t.Errorf("POST status %d", rec.Code)
++	}
++	req = httptest.NewRequest(http.MethodGet, "http://evil.example/api/i18n", nil)
++	rec = httptest.NewRecorder()
++	h.ServeHTTP(rec, req)
++	if rec.Code != http.StatusForbidden {
++		t.Errorf("foreign host status %d", rec.Code)
++	}
++}
+diff --git a/i18n/http.go b/i18n/http.go
+new file mode 100644
+index 0000000..a182ede
+--- /dev/null
++++ b/i18n/http.go
+@@ -0,0 +1,69 @@
++package i18n
++
++import (
++	"encoding/json"
++	"net/http"
++)
++
++// LangInfo describes one selectable language.
++type LangInfo struct {
++	Code string `json:"code"`
++	Name string `json:"name"`
++	Dir  string `json:"dir"`
++}
++
++// Document is the JSON payload served to the panel UI.
++type Document struct {
++	Lang      string            `json:"lang"`
++	Dir       string            `json:"dir"`
++	BCP47     string            `json:"bcp47"`
++	Languages []LangInfo        `json:"languages"`
++	Messages  map[string]string `json:"messages"`
++}
++
++// Doc builds the UI document for lang with fallback-resolved messages.
++func (b *Bundle) Doc(lang string) Document {
++	l := b.For(lang)
++	b.mu.RLock()
++	keys := make([]string, 0, len(b.cats[Default].msgs))
++	for k := range b.cats[Default].msgs {
++		keys = append(keys, k)
++	}
++	langs := make([]LangInfo, 0, len(b.cats))
++	b.mu.RUnlock()
++	for _, code := range b.Languages() {
++		m := b.For(code).Meta()
++		langs = append(langs, LangInfo{Code: code, Name: m.Name, Dir: m.Dir})
++	}
++	msgs := make(map[string]string, len(keys))
++	for _, k := range keys {
++		msgs[k] = l.T(k)
++	}
++	m := l.Meta()
++	return Document{Lang: l.Lang(), Dir: m.Dir, BCP47: m.BCP47, Languages: langs, Messages: msgs}
++}
++
++// Handler serves GET /api/i18n?lang=xx. Without lang it negotiates from
++// the resolver (user preference) and Accept-Language; default is TR.
++func Handler(pref func() string) http.Handler {
++	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		if r.Method != http.MethodGet {
++			w.Header().Set("Allow", http.MethodGet)
++			http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
++			return
++		}
++		b, err := Load()
++		if err != nil {
++			http.Error(w, "i18n unavailable", http.StatusInternalServerError)
++			return
++		}
++		p := r.URL.Query().Get("lang")
++		if p == "" && pref != nil {
++			p = pref()
++		}
++		lang := b.Negotiate(p, "") // unknown or empty -> Default (TR)
++		w.Header().Set("Content-Type", "application/json; charset=utf-8")
++		w.Header().Set("Cache-Control", "no-store")
++		_ = json.NewEncoder(w).Encode(b.Doc(lang))
++	})
++}
+diff --git a/i18n/locales/en.json b/i18n/locales/en.json
+index abcf4d2..d0b4692 100644
+--- a/i18n/locales/en.json
++++ b/i18n/locales/en.json
+@@ -1,22 +1,67 @@
+ {
+-  "_meta": {"name": "English", "dir": "ltr", "bcp47": "en-US", "currency": "USD"},
+-  "brand.slogan": "Turn your ideas into software.",
++  "_meta": {
++    "name": "English",
++    "dir": "ltr",
++    "bcp47": "en-US",
++    "currency": "USD"
++  },
+   "brand.name": "Kanus",
+-  "product.name": "US Panel",
+-  "ui.language": "Language",
+-  "ui.open_panel": "Open US Panel",
+-  "ui.download": "Download US Panel",
+-  "ui.credits": "Credits left: {count}",
+-  "ui.login": "Sign in",
+-  "ui.logout": "Sign out",
+-  "ui.help_center": "Help center",
+-  "err.network": "Could not reach the server. Please check your connection and try again.",
+-  "err.license_invalid": "The license is invalid or has expired.",
++  "brand.slogan": "Turn your ideas into software.",
++  "email.license.body": "Hello,\n\nYour license key for order {order} is ready. Open US Panel and enter the key.\n\nQuestions: support@kanus.org",
++  "email.license.subject": "Your US Panel license key",
+   "err.insufficient_credit": "Not enough credits. You can get credits at shop.kanus.org.",
++  "err.license_invalid": "The license is invalid or has expired.",
+   "err.model_unavailable": "The model is not ready yet; please try again shortly.",
++  "err.network": "Could not reach the server. Please check your connection and try again.",
+   "err.unknown": "An unexpected error occurred.",
+-  "email.license.subject": "Your US Panel license key",
+-  "email.license.body": "Hello,\n\nYour license key for order {order} is ready. Open US Panel and enter the key.\n\nQuestions: support@kanus.org",
++  "gui.account.balance": "Show balance",
++  "gui.account.email": "Email",
++  "gui.account.license": "License or credit pack key",
++  "gui.account.login": "Sign in",
++  "gui.account.password": "Password",
++  "gui.account.redeem": "Add credits",
++  "gui.account.register": "Create account with license",
++  "gui.execute": "Execute",
++  "gui.files.browse": "Choose folder",
++  "gui.files.refresh": "Refresh list",
++  "gui.files.save": "Save",
++  "gui.files.title": "Files",
++  "gui.files.up": "Up",
++  "gui.intro": "Work with the model, manage your projects and follow the results.",
++  "gui.lang.label": "Language",
++  "gui.log": "Log",
++  "gui.models.title": "Models",
++  "gui.nav.files": "Files",
++  "gui.nav.models": "Models",
++  "gui.nav.monitor": "Monitor",
++  "gui.nav.preview": "Preview",
++  "gui.nav.serve": "Serve",
++  "gui.nav.skills": "Tools",
++  "gui.nav.studio": "Studio",
++  "gui.nav.tasks": "Tasks",
++  "gui.nav.terminal": "Terminal",
++  "gui.ph.editor": "Open a file from the list. Save writes it to the folder.",
++  "gui.ph.find": "search in file",
++  "gui.ph.task": "Type your message. Press Ctrl+Enter to send.",
++  "gui.preview.apply": "Apply changes",
++  "gui.preview.discard": "Discard",
++  "gui.preview.tests": "Run tests",
++  "gui.preview.title": "Preview",
++  "gui.review.title": "Review",
++  "gui.run": "Run",
++  "gui.stop": "Stop",
++  "gui.terminal.start": "Run command",
++  "gui.terminal.stop": "Cancel",
++  "gui.terminal.title": "Terminal",
++  "gui.workspace": "/ workspace",
++  "help.intro": "Questions about US Panel or your order? Leave a note at support@kanus.org.",
+   "help.title": "Help center",
+-  "help.intro": "Questions about US Panel or your order? Leave a note at support@kanus.org."
++  "product.name": "US Panel",
++  "ui.credits": "Credits left: {count}",
++  "ui.download": "Download US Panel",
++  "ui.help_center": "Help center",
++  "ui.language": "Language",
++  "ui.login": "Sign in",
++  "ui.logout": "Sign out",
++  "ui.open_panel": "Open US Panel"
+ }
+diff --git a/i18n/locales/tr.json b/i18n/locales/tr.json
+index 777fe32..bfa8fa3 100644
+--- a/i18n/locales/tr.json
++++ b/i18n/locales/tr.json
+@@ -1,22 +1,67 @@
+ {
+-  "_meta": {"name": "Türkçe", "dir": "ltr", "bcp47": "tr-TR", "currency": "TRY"},
+-  "brand.slogan": "Fikirlerini yazılıma dönüştür.",
++  "_meta": {
++    "name": "Türkçe",
++    "dir": "ltr",
++    "bcp47": "tr-TR",
++    "currency": "TRY"
++  },
+   "brand.name": "Kanus",
+-  "product.name": "US Panel",
+-  "ui.language": "Dil",
+-  "ui.open_panel": "US Panel'i aç",
+-  "ui.download": "US Panel indir",
+-  "ui.credits": "Kalan kredi: {count}",
+-  "ui.login": "Giriş yap",
+-  "ui.logout": "Çıkış yap",
+-  "ui.help_center": "Yardım merkezi",
+-  "err.network": "Sunucuya bağlanılamadı. Lütfen bağlantını kontrol edip tekrar dene.",
+-  "err.license_invalid": "Lisans geçersiz veya süresi dolmuş.",
++  "brand.slogan": "Fikirlerini yazılıma dönüştür.",
++  "email.license.body": "Merhaba,\n\nSiparişin ({order}) için lisans anahtarın hazır. US Panel'i açıp anahtarı girebilirsin.\n\nSoruların için: support@kanus.org",
++  "email.license.subject": "US Panel lisans anahtarın",
+   "err.insufficient_credit": "Yetersiz kredi. Kredini shop.kanus.org'dan alabilirsin.",
++  "err.license_invalid": "Lisans geçersiz veya süresi dolmuş.",
+   "err.model_unavailable": "Model şu anda hazır değil; birazdan tekrar dene.",
++  "err.network": "Sunucuya bağlanılamadı. Lütfen bağlantını kontrol edip tekrar dene.",
+   "err.unknown": "Beklenmeyen bir hata oluştu.",
+-  "email.license.subject": "US Panel lisans anahtarın",
+-  "email.license.body": "Merhaba,\n\nSiparişin ({order}) için lisans anahtarın hazır. US Panel'i açıp anahtarı girebilirsin.\n\nSoruların için: support@kanus.org",
++  "gui.account.balance": "Bakiyeyi göster",
++  "gui.account.email": "E-posta",
++  "gui.account.license": "Lisans veya kredi paketi anahtarı",
++  "gui.account.login": "Hesaba giriş",
++  "gui.account.password": "Parola",
++  "gui.account.redeem": "Kredi yükle",
++  "gui.account.register": "Lisansla hesap aç",
++  "gui.execute": "Yürüt",
++  "gui.files.browse": "Klasör seç",
++  "gui.files.refresh": "Listeyi yenile",
++  "gui.files.save": "Kaydet",
++  "gui.files.title": "Dosyalar",
++  "gui.files.up": "Üst",
++  "gui.intro": "Modelle çalışın, projelerinizi yönetin ve sonuçları izleyin.",
++  "gui.lang.label": "Dil",
++  "gui.log": "Günlük",
++  "gui.models.title": "Modeller",
++  "gui.nav.files": "Dosya",
++  "gui.nav.models": "Modeller",
++  "gui.nav.monitor": "İzleme",
++  "gui.nav.preview": "Önizleme",
++  "gui.nav.serve": "Servis",
++  "gui.nav.skills": "Araç",
++  "gui.nav.studio": "Stüdyo",
++  "gui.nav.tasks": "Görev",
++  "gui.nav.terminal": "Terminal",
++  "gui.ph.editor": "Listeden bir dosya aç. Kaydet yazıyı klasöre koyar.",
++  "gui.ph.find": "dosyada ara",
++  "gui.ph.task": "Mesajınızı yazın. Ctrl+Enter ile gönderin.",
++  "gui.preview.apply": "Değişiklikleri uygula",
++  "gui.preview.discard": "Reddet",
++  "gui.preview.tests": "Testleri çalıştır",
++  "gui.preview.title": "Önizleme",
++  "gui.review.title": "İnceleme",
++  "gui.run": "Çalıştır",
++  "gui.stop": "Durdur",
++  "gui.terminal.start": "Komutu çalıştır",
++  "gui.terminal.stop": "İptal et",
++  "gui.terminal.title": "Terminal",
++  "gui.workspace": "/ çalışma alanı",
++  "help.intro": "US Panel veya siparişin hakkında soru mu var? support@kanus.org'a not bırak.",
+   "help.title": "Yardım merkezi",
+-  "help.intro": "US Panel veya siparişin hakkında soru mu var? support@kanus.org'a not bırak."
++  "product.name": "US Panel",
++  "ui.credits": "Kalan kredi: {count}",
++  "ui.download": "US Panel indir",
++  "ui.help_center": "Yardım merkezi",
++  "ui.language": "Dil",
++  "ui.login": "Giriş yap",
++  "ui.logout": "Çıkış yap",
++  "ui.open_panel": "US Panel'i aç"
+ }

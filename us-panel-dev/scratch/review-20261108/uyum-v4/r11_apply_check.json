@@ -1,0 +1,450 @@
+[
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch",
+    "target": "read-only live .11",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "--check"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "patch": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch",
+    "target": "snapshot",
+    "command": [
+      "git",
+      "apply",
+      "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch"
+    ],
+    "exit": 0,
+    "output": ""
+  }
+]

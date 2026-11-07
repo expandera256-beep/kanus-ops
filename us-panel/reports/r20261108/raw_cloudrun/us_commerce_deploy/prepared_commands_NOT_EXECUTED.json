@@ -1,0 +1,55 @@
+{
+  "cloud_build_not_executed": [
+    "gcloud",
+    "builds",
+    "submit",
+    "/workspace/us-panel/sre/cloudrun/fixes/build-context-us-commerce",
+    "--project=project-27082a40-6083-4952-9db",
+    "--config=/workspace/us-panel/sre/cloudrun/fixes/build-context-us-commerce/deploy/cloudbuild.yaml",
+    "--substitutions=_IMAGE=europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway:2026-11-08-sre-commerce-ready",
+    "--service-account=projects/project-27082a40-6083-4952-9db/serviceAccounts/us-builder@project-27082a40-6083-4952-9db.iam.gserviceaccount.com"
+  ],
+  "image_digest_read_after_build": [
+    "gcloud",
+    "artifacts",
+    "docker",
+    "images",
+    "describe",
+    "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway:2026-11-08-sre-commerce-ready",
+    "--project=project-27082a40-6083-4952-9db",
+    "--format=value(image_summary.fully_qualified_digest)"
+  ],
+  "candidate_deploy_not_executed": [
+    "gcloud",
+    "run",
+    "services",
+    "update",
+    "us-commerce",
+    "--project=project-27082a40-6083-4952-9db",
+    "--region=europe-west4",
+    "--image=<VERIFIED_IMMUTABLE_DIGEST>",
+    "--revision-suffix=sre-ready-r1",
+    "--no-traffic",
+    "--tag=sre-candidate-commerce"
+  ],
+  "promote_only_after_candidate_pass": [
+    "gcloud",
+    "run",
+    "services",
+    "update-traffic",
+    "us-commerce",
+    "--project=project-27082a40-6083-4952-9db",
+    "--region=europe-west4",
+    "--to-revisions=<VERIFIED_CANDIDATE_REVISION>=100"
+  ],
+  "rollback_not_executed": [
+    "gcloud",
+    "run",
+    "services",
+    "update-traffic",
+    "us-commerce",
+    "--project=project-27082a40-6083-4952-9db",
+    "--region=europe-west4",
+    "--to-revisions=us-commerce-00002-pr2=100"
+  ]
+}

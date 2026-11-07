@@ -1,0 +1,3 @@
+{"Time":"2026-11-08T01:30:22.100131202+03:00","Action":"start","Package":"kiyas/cmd/us-pricing-gen"}
+{"Time":"2026-11-08T01:30:22.100180104+03:00","Action":"output","Package":"kiyas/cmd/us-pricing-gen","Output":"?   \tkiyas/cmd/us-pricing-gen\t[no test files]\n"}
+{"Time":"2026-11-08T01:30:22.100198516+03:00","Action":"skip","Package":"kiyas/cmd/us-pricing-gen","Elapsed":0}

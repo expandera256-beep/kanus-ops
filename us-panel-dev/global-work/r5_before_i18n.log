@@ -1,0 +1,7 @@
+    r2_before_test.go:18: save through legit symlinked root failed: i18n: unsafe preference path
+--- FAIL: TestR2SymlinkedRootPersists (0.00s)
+    r2_before_test.go:35: first save failed: i18n: unsafe preference path
+--- FAIL: TestR2RootRebindPinned (0.00s)
+FAIL
+FAIL	kiyas/i18n	0.003s
+FAIL

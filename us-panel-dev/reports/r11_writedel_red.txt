@@ -1,0 +1,4 @@
+--- FAIL: TestReviewDeleteRaceNoEscape (0.00s)
+    review_write_race_linux_test.go:84: kök dışındaki dosya silindi
+--- FAIL: TestReviewWriteRaceNoEscapeNoTempLeak (0.00s)
+    review_write_race_linux_test.go:57: kök dışına yazıldı/geçici dosya sızdı (başarılı=0): [.us-write-3424134265]

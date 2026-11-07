@@ -1,0 +1,123 @@
+package privacy
+
+import (
+	"os"
+	"path/filepath"
+	"sync"
+	"sync/atomic"
+	"testing"
+	"time"
+)
+
+func TestPrefStoreRoundTripAndDeleteError(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "p.json")
+	ps, err := OpenPrefStore(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := ps.Put(Preferences{AccountID: "a1", MarketingConsent: true, Source: "t"}, time.Now()); err != nil {
+		t.Fatal(err)
+	}
+	ps2, err := OpenPrefStore(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !ps2.Get("a1").MarketingConsent {
+		t.Fatal("missing")
+	}
+	if err := ps2.Delete("a1"); err != nil {
+		t.Fatal(err)
+	}
+	broken := &PrefStore{path: "", byID: map[string]Preferences{}}
+	if err := broken.Delete("x"); err == nil {
+		t.Fatal("expected delete error on empty path")
+	}
+}
+
+func TestPrefStoreRefusesSymlink(t *testing.T) {
+	dir := t.TempDir()
+	real := filepath.Join(dir, "real.json")
+	if err := os.WriteFile(real, []byte(`{"a1":{"accountId":"a1","marketingConsent":true}}`), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	link := filepath.Join(dir, "link.json")
+	if err := os.Symlink(real, link); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := OpenPrefStore(link); err == nil {
+		t.Fatal("symlink should be refused")
+	}
+}
+
+func TestPrefStoreConcurrentUpdateNoLostWrites(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "c.json")
+	ps, err := OpenPrefStore(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	const n = 200
+	var wg sync.WaitGroup
+	var fails atomic.Int32
+	wg.Add(n)
+	for i := 0; i < n; i++ {
+		i := i
+		go func() {
+			defer wg.Done()
+			id := "acc-" + string(rune('a'+(i%26))) + "-" + filepath.Base(path) + "-" + itoa(i)
+			m, p, c := true, i%2 == 0, i%3 == 0
+			if err := ps.Update(id, &m, &p, &c, "race", time.Now()); err != nil {
+				fails.Add(1)
+			}
+		}()
+	}
+	wg.Wait()
+	if fails.Load() != 0 {
+		t.Fatalf("updates failed: %d", fails.Load())
+	}
+	ps2, err := OpenPrefStore(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(ps2.byID) != n {
+		t.Fatalf("lost updates: got %d want %d", len(ps2.byID), n)
+	}
+}
+
+func TestPrefStoreSaveFailureRollsBackMemory(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "ok.json")
+	ps, err := OpenPrefStore(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := ps.Put(Preferences{AccountID: "a1", Source: "v1"}, time.Now()); err != nil {
+		t.Fatal(err)
+	}
+	ps.path = filepath.Join(dir, "missing-dir", "x.json")
+	// Make parent unwritable by pointing at a file-as-dir trick: use a file named as parent
+	blocker := filepath.Join(dir, "blocked")
+	if err := os.WriteFile(blocker, []byte("x"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	ps.path = filepath.Join(blocker, "prefs.json") // MkdirAll/rename should fail
+	if err := ps.Put(Preferences{AccountID: "a1", Source: "unsaved", MarketingConsent: true}, time.Now()); err == nil {
+		t.Fatal("expected save error")
+	}
+	if ps.Get("a1").Source != "v1" || ps.Get("a1").MarketingConsent {
+		t.Fatalf("memory not rolled back: %+v", ps.Get("a1"))
+	}
+}
+
+func itoa(i int) string {
+	if i == 0 {
+		return "0"
+	}
+	var b [16]byte
+	pos := len(b)
+	for i > 0 {
+		pos--
+		b[pos] = byte('0' + i%10)
+		i /= 10
+	}
+	return string(b[pos:])
+}

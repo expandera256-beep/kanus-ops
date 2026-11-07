@@ -1,0 +1,4 @@
+Pre-fix (commitGrace=0 / legacy): settleFor commit after r.Expires returns "rezervasyon süresi doldu".
+PoC expectation for TestTTLCommitAnchorAcceptsCommitWithinGrace with grace=0:
+  late := now.Add(time.Minute + 30*time.Second) → err != nil → test FAIL.
+After api-0012 (grace=10m): same late commit succeeds → PASS (see focused/race logs).

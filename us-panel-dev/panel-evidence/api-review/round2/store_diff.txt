@@ -1,0 +1,24 @@
+--- /tmp/api-review-r2/pristine/licensesrv/store.go	2026-11-06 07:59:05.041749334 +0300
++++ /tmp/api-review-r2/patched/licensesrv/store.go	2026-11-06 09:47:10.908124752 +0300
+@@ -87,6 +87,8 @@
+ 	Settlements   map[string]Settlement   `json:"settlements"`
+ 	Cancelled     map[string]bool         `json:"cancelled"`
+ 	Refunds       map[string]Refund       `json:"refunds"`
++	APIKeys       map[string]*APIKeyRecord `json:"apiKeys"`
++	UsageEvents   []UsageEvent            `json:"usageEvents,omitempty"`
+ }
+ 
+ type Store struct {
+@@ -146,6 +148,12 @@
+ 	if s.st.LicenseOwners == nil {
+ 		s.st.LicenseOwners = map[string]string{}
+ 	}
++	if s.st.APIKeys == nil {
++		s.st.APIKeys = map[string]*APIKeyRecord{}
++	}
++	if s.st.UsageEvents == nil {
++		s.st.UsageEvents = []UsageEvent{}
++	}
+ 	good = true
+ 	return s, nil
+ }

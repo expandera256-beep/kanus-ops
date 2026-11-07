@@ -1,0 +1,33 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "uyarı",
+      "text": "Dosya kısmi veya gizlenmiş gösteriliyor; üzerine kaydedilemez."
+    },
+    {
+      "n": 2,
+      "kind": "işlem",
+      "text": "Dosya kaydedildi: ek.txt. Gövde kayda geçmedi."
+    },
+    {
+      "n": 3,
+      "kind": "uyarı",
+      "text": "Metin boş. Dosya duruyor."
+    },
+    {
+      "n": 4,
+      "kind": "uyarı",
+      "text": "Dosya klasörün dışında."
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "Sohbet 1"
+    }
+  ],
+  "chatId": "s1"
+}

@@ -1,0 +1,88 @@
+{"Time":"2026-11-06T09:59:52.510667747+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-06T09:59:52.520075277+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII"}
+{"Time":"2026-11-06T09:59:52.520123475+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"=== RUN   TestPanelR2LedgerPII\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:55.178149188+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:11: PASS deep equal all ledger financial/time/audit fields; owners remapped; history matches new account\n"}
+{"Time":"2026-11-06T09:59:55.178307746+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:12: PASS old exact residue and body-email outside To cleaned\n"}
+{"Time":"2026-11-06T09:59:55.178393107+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:13: CONFIRMED remaining PII: Subject-only email and related OrderID-only mail name/IP/device not scrubbed\n"}
+{"Time":"2026-11-06T09:59:55.178423812+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:14: OPEN DECISION active license credential remains valid\n"}
+{"Time":"2026-11-06T09:59:55.178686543+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"--- PASS: TestPanelR2LedgerPII (2.66s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:55.178731813+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Elapsed":2.66}
+{"Time":"2026-11-06T09:59:55.178800579+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed"}
+{"Time":"2026-11-06T09:59:55.178806008+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Output":"=== RUN   TestPanelR2HMACFailClosed\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:55.190006833+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Output":"    zz_panel_r2_test.go:16: PASS no fallback/panic/mutation for absent or short HMAC key\n"}
+{"Time":"2026-11-06T09:59:55.190293051+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Output":"--- PASS: TestPanelR2HMACFailClosed (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:55.190344268+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Elapsed":0.01}
+{"Time":"2026-11-06T09:59:55.19509704+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules"}
+{"Time":"2026-11-06T09:59:55.195106798+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Output":"=== RUN   TestPanelR2CodeRules\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:57.903316169+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Output":"    zz_panel_r2_test.go:21: PASS code 128-bit source/32 hex; expiry, cross-account denial, password, one-use; no code in captured logger; store has no per-challenge attempt cap\n"}
+{"Time":"2026-11-06T09:59:57.90349164+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Output":"--- PASS: TestPanelR2CodeRules (2.71s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:59:57.903519313+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Elapsed":2.71}
+{"Time":"2026-11-06T09:59:57.903581741+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent"}
+{"Time":"2026-11-06T09:59:57.903585642+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Output":"=== RUN   TestPanelR2SameCodeConcurrent\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:00.686791958+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Output":"    zz_panel_r2_test.go:22: PASS same-code concurrent confirmation exactly one success\n"}
+{"Time":"2026-11-06T10:00:00.687022199+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Output":"--- PASS: TestPanelR2SameCodeConcurrent (2.78s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:00.687033422+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Elapsed":2.78}
+{"Time":"2026-11-06T10:00:00.687067764+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure"}
+{"Time":"2026-11-06T10:00:00.687071524+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Output":"=== RUN   TestPanelR2ChallengeSaveFailure\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:03.61910799+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Output":"    zz_panel_r2_test.go:23: CONFIRMED save failure rolls ledger back but consumes challenge; retry of same code impossible\n"}
+{"Time":"2026-11-06T10:00:03.619151618+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Output":"--- PASS: TestPanelR2ChallengeSaveFailure (2.93s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:03.619160153+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Elapsed":2.93}
+{"Time":"2026-11-06T10:00:03.619171471+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII"}
+{"Time":"2026-11-06T10:00:03.61917499+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"=== RUN   TestPanelR2LedgerPII\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:06.529182056+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:11: PASS deep equal all ledger financial/time/audit fields; owners remapped; history matches new account\n"}
+{"Time":"2026-11-06T10:00:06.529339826+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:12: PASS old exact residue and body-email outside To cleaned\n"}
+{"Time":"2026-11-06T10:00:06.529344898+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:13: CONFIRMED remaining PII: Subject-only email and related OrderID-only mail name/IP/device not scrubbed\n"}
+{"Time":"2026-11-06T10:00:06.529506484+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:14: OPEN DECISION active license credential remains valid\n"}
+{"Time":"2026-11-06T10:00:06.535255322+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"--- PASS: TestPanelR2LedgerPII (2.92s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:06.535512321+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Elapsed":2.92}
+{"Time":"2026-11-06T10:00:06.535522747+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed"}
+{"Time":"2026-11-06T10:00:06.535525811+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Output":"=== RUN   TestPanelR2HMACFailClosed\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:06.553208653+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Output":"    zz_panel_r2_test.go:16: PASS no fallback/panic/mutation for absent or short HMAC key\n"}
+{"Time":"2026-11-06T10:00:06.553280389+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Output":"--- PASS: TestPanelR2HMACFailClosed (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:06.553389017+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Elapsed":0.02}
+{"Time":"2026-11-06T10:00:06.553395824+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules"}
+{"Time":"2026-11-06T10:00:06.553398697+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Output":"=== RUN   TestPanelR2CodeRules\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:09.608662862+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Output":"    zz_panel_r2_test.go:21: PASS code 128-bit source/32 hex; expiry, cross-account denial, password, one-use; no code in captured logger; store has no per-challenge attempt cap\n"}
+{"Time":"2026-11-06T10:00:09.609466936+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Output":"--- PASS: TestPanelR2CodeRules (3.06s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:09.609502431+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Elapsed":3.06}
+{"Time":"2026-11-06T10:00:09.609509826+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent"}
+{"Time":"2026-11-06T10:00:09.609512336+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Output":"=== RUN   TestPanelR2SameCodeConcurrent\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:12.375050448+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Output":"    zz_panel_r2_test.go:22: PASS same-code concurrent confirmation exactly one success\n"}
+{"Time":"2026-11-06T10:00:12.375214657+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Output":"--- PASS: TestPanelR2SameCodeConcurrent (2.77s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:12.375240443+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Elapsed":2.77}
+{"Time":"2026-11-06T10:00:12.375274582+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure"}
+{"Time":"2026-11-06T10:00:12.375279176+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Output":"=== RUN   TestPanelR2ChallengeSaveFailure\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:15.086385184+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Output":"    zz_panel_r2_test.go:23: CONFIRMED save failure rolls ledger back but consumes challenge; retry of same code impossible\n"}
+{"Time":"2026-11-06T10:00:15.08686422+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Output":"--- PASS: TestPanelR2ChallengeSaveFailure (2.71s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:15.086904302+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Elapsed":2.71}
+{"Time":"2026-11-06T10:00:15.087825626+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII"}
+{"Time":"2026-11-06T10:00:15.087861998+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"=== RUN   TestPanelR2LedgerPII\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:17.771774684+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:11: PASS deep equal all ledger financial/time/audit fields; owners remapped; history matches new account\n"}
+{"Time":"2026-11-06T10:00:17.771838308+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:12: PASS old exact residue and body-email outside To cleaned\n"}
+{"Time":"2026-11-06T10:00:17.771843685+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:13: CONFIRMED remaining PII: Subject-only email and related OrderID-only mail name/IP/device not scrubbed\n"}
+{"Time":"2026-11-06T10:00:17.771847201+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"    zz_panel_r2_test.go:14: OPEN DECISION active license credential remains valid\n"}
+{"Time":"2026-11-06T10:00:17.772010231+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Output":"--- PASS: TestPanelR2LedgerPII (2.68s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:17.772096542+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2LedgerPII","Elapsed":2.68}
+{"Time":"2026-11-06T10:00:17.772208896+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed"}
+{"Time":"2026-11-06T10:00:17.77221471+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Output":"=== RUN   TestPanelR2HMACFailClosed\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:17.784600296+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Output":"    zz_panel_r2_test.go:16: PASS no fallback/panic/mutation for absent or short HMAC key\n"}
+{"Time":"2026-11-06T10:00:17.784861762+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Output":"--- PASS: TestPanelR2HMACFailClosed (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:17.791104707+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2HMACFailClosed","Elapsed":0.01}
+{"Time":"2026-11-06T10:00:17.791126022+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules"}
+{"Time":"2026-11-06T10:00:17.791129695+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Output":"=== RUN   TestPanelR2CodeRules\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:20.598812958+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Output":"    zz_panel_r2_test.go:21: PASS code 128-bit source/32 hex; expiry, cross-account denial, password, one-use; no code in captured logger; store has no per-challenge attempt cap\n"}
+{"Time":"2026-11-06T10:00:20.599016908+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Output":"--- PASS: TestPanelR2CodeRules (2.81s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:20.599045674+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2CodeRules","Elapsed":2.81}
+{"Time":"2026-11-06T10:00:20.599161062+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent"}
+{"Time":"2026-11-06T10:00:20.599168939+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Output":"=== RUN   TestPanelR2SameCodeConcurrent\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:23.319739634+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Output":"    zz_panel_r2_test.go:22: PASS same-code concurrent confirmation exactly one success\n"}
+{"Time":"2026-11-06T10:00:23.320024052+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Output":"--- PASS: TestPanelR2SameCodeConcurrent (2.72s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:23.320040842+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2SameCodeConcurrent","Elapsed":2.72}
+{"Time":"2026-11-06T10:00:23.3231025+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure"}
+{"Time":"2026-11-06T10:00:23.323113624+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Output":"=== RUN   TestPanelR2ChallengeSaveFailure\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:25.954602016+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Output":"    zz_panel_r2_test.go:23: CONFIRMED save failure rolls ledger back but consumes challenge; retry of same code impossible\n"}
+{"Time":"2026-11-06T10:00:25.95511398+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Output":"--- PASS: TestPanelR2ChallengeSaveFailure (2.63s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:25.95529031+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2ChallengeSaveFailure","Elapsed":2.63}
+{"Time":"2026-11-06T10:00:25.955301041+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:26.958800507+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"ok  \tkiyas/licensesrv\t34.448s\n"}
+{"Time":"2026-11-06T10:00:26.958857189+03:00","Action":"pass","Package":"kiyas/licensesrv","Elapsed":34.448}

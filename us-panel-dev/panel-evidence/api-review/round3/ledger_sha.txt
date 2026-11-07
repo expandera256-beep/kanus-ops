@@ -1,0 +1,63 @@
+func (s *Store) Reserve(: pristine=d8722217594bad53 patched=916b9b3d0320a80f SAME=False len 611->662
+func (s *Store) Settle(: pristine=841292ef7794f9bd patched=841292ef7794f9bd SAME=True len 255->255
+func (s *Store) settleFor(: pristine=92863d110339854c patched=0e771ae660c2659a SAME=False len 988->1233
+func (s *Store) expireLocked(: pristine=25cc5eafd56c4490 patched=180004665821b5ff SAME=False len 321->556
+applyReservedDelta in pristine False
+applyReservedDelta in patched True
+commitGrace in pristine False
+reservationCommitDeadline in patched True
+--- DIFF func (s *Store) Reserve( ---
+--- 
++++ 
+@@ -12,5 +12,7 @@
+ 			return ErrNoCredit
+ 		}
+-		l.Reserved += amount
++		if err := applyReservedDelta(l, amount); err != nil {
++			return err
++		}
+ 		s.st.Reservations[id] = &Reservation{CreatedAt: now, Key: key, Amount: amount, Expires: now.Add(ttl)}
+ 		return nil
+--- DIFF func (s *Store) settleFor( ---
+--- 
++++ 
+@@ -15,5 +15,5 @@
+ 		return ErrInvalid
+ 	}
+-	if commit && !now.Before(r.Expires) {
++	if commit && !now.Before(s.reservationCommitDeadline(r)) {
+ 		return errors.New("rezervasyon süresi doldu")
+ 	}
+@@ -24,7 +24,14 @@
+ 		}
+ 		if ok {
+-			l.Reserved -= r.Amount
++			if err := applyReservedDelta(l, -r.Amount); err != nil {
++				return err
++			}
+ 			if commit {
+ 				l.Credits -= r.Amount
++				if l.Credits < 0 {
++					l.Credits += r.Amount
++					_ = applyReservedDelta(l, r.Amount) // restore reserved
++					return errors.New("credits invariant violated")
++				}
+ 			}
+ 		}
+--- DIFF func (s *Store) expireLocked( ---
+--- 
++++ 
+@@ -1,7 +1,11 @@
+ func (s *Store) expireLocked(now time.Time) {
+ 	for id, r := range s.st.Reservations {
+-		if !now.Before(r.Expires) {
++		// Defer release until commit-grace after reservation Expires (api-0012).
++		if !now.Before(s.reservationCommitDeadline(r)) {
+ 			if l, ok := s.st.Licenses[r.Key]; ok {
+-				l.Reserved -= r.Amount
++				if err := applyReservedDelta(l, -r.Amount); err != nil {
++					// Corrupt ledger: clamp rather than panic; still tombstone reservation.
++					l.Reserved = 0
++				}
+ 			}
+ 			s.st.Settlements[id] = Settlement{CreatedAt: r.CreatedAt, Key: r.Key, SettledAt: now}

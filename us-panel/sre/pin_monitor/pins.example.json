@@ -1,0 +1,60 @@
+{
+  "note": "Pinleme iptal edildi; yalnız tarihsel public gözlem, productionda kullanmayın.",
+  "hosts": [
+    {
+      "host": "api-test.kanus.org",
+      "note": "taslak, karar bekliyor; HOST teyidi bekliyor; observed values are NOT approved pins",
+      "previous_leaf": "/mDQtXQR7xQxXMCtk3hPpVy9EvYNgIYODuGXjxl1cjc=",
+      "pins": [
+        "/mDQtXQR7xQxXMCtk3hPpVy9EvYNgIYODuGXjxl1cjc=",
+        "brzvtCELCIZUo4sD/qPX0ccRtPsd3DY6RfmxpOU9oB4=",
+        "sCkq5UWXjg+7mKu9lMhhYF5bGLsy7VI/UNW3tccdR7w=",
+        "diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI=",
+        "C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M="
+      ],
+      "backup_pins": [],
+      "backup_candidates": [
+        "C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=",
+        "diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI="
+      ],
+      "previous_not_before": "2026-11-06T00:48:12+00:00"
+    },
+    {
+      "host": "api.kanus.org",
+      "note": "taslak, karar bekliyor; HOST teyidi bekliyor; observed values are NOT approved pins",
+      "previous_leaf": "RMWkVD8VDAnv0bthc/pfT0BDB54THxSNo6UcGicoRTI=",
+      "pins": [
+        "RMWkVD8VDAnv0bthc/pfT0BDB54THxSNo6UcGicoRTI=",
+        "brzvtCELCIZUo4sD/qPX0ccRtPsd3DY6RfmxpOU9oB4=",
+        "sCkq5UWXjg+7mKu9lMhhYF5bGLsy7VI/UNW3tccdR7w=",
+        "diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI=",
+        "C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M="
+      ],
+      "backup_pins": [],
+      "backup_candidates": [
+        "C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=",
+        "diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI="
+      ],
+      "previous_not_before": "2026-11-06T05:13:21+00:00"
+    },
+    {
+      "host": "kanus.org",
+      "note": "taslak, karar bekliyor; HOST teyidi bekliyor; observed values are NOT approved pins",
+      "previous_leaf": "GdXXNrVDeARQ//2r0Zap3bV/ZkrGAxBVUAmKfZPrNHg=",
+      "pins": [
+        "GdXXNrVDeARQ//2r0Zap3bV/ZkrGAxBVUAmKfZPrNHg=",
+        "brzvtCELCIZUo4sD/qPX0ccRtPsd3DY6RfmxpOU9oB4=",
+        "sCkq5UWXjg+7mKu9lMhhYF5bGLsy7VI/UNW3tccdR7w=",
+        "diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI=",
+        "C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M="
+      ],
+      "backup_pins": [],
+      "backup_candidates": [
+        "C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=",
+        "diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI="
+      ],
+      "previous_not_before": "2026-11-02T15:28:14+00:00"
+    }
+  ],
+  "status": "İPTAL, KULLANILMAYACAK"
+}

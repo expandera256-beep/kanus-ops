@@ -1,0 +1,14 @@
+package main
+import("net/http/httptest";"net/http";"strings";"os";"path/filepath";"testing";"net/url")
+func TestR2IndependentOriginAndBounds(t *testing.T){
+ t.Setenv("US_DESK",filepath.Join(t.TempDir(),"desk.json"));s:=newView("r2");s.root=t.TempDir();h:=guiMux(&s)
+ post:=func(path,origin,body string)*httptest.ResponseRecorder{r:=httptest.NewRequest("POST","http://127.0.0.1:4477"+path,strings.NewReader(body));if origin!=""{r.Header.Set("Origin",origin)};r.Header.Set("Content-Type","application/json");w:=httptest.NewRecorder();h.ServeHTTP(w,r);return w}
+ for _,o:=range []string{"","https://evil.example","http://127.0.0.1:4477","null","http://localhost:4477","http://127.0.0.1:4478"}{r:=httptest.NewRequest("POST","http://127.0.0.1:4477/api/lang",nil);r.Header.Set("Origin",o);old:=true;if o!=""{u,e:=url.Parse(o);old=e==nil&&u.Scheme=="http"&&strings.EqualFold(u.Host,r.Host)};if sameOriginRequest(r)!=old{t.Fatal("origin changed",o)};want:=200;if !old{want=403};w:=post("/api/lang",o,`{"lang":"en"}`);if w.Code!=want{t.Fatalf("origin=%q code=%d",o,w.Code)};t.Logf("Origin=%q lang=%d legacy-guard=%t",o,w.Code,old);if !old&&post("/api/act",o,`{"op":"refresh"}`).Code!=403{t.Fatal("act foreign origin")}}
+ raw:=`{"lang":"en"}`;cases:=[]struct{body string;want int}{{raw+" xxx",400},{raw+`{"lang":"tr"}`,400},{raw+strings.Repeat(" ",2<<20),413},{raw+strings.Repeat(" ",4096-len(raw)),200},{raw+strings.Repeat(" ",4097-len(raw)),413},{raw+strings.Repeat("x",2<<20),400}}
+ for _,c:=range cases{w:=post("/api/lang","",c.body);t.Logf("HTTP body size=%d got=%d want=%d",len(c.body),w.Code,c.want);if w.Code!=c.want{t.Error(w.Code,c.want)}}
+}
+func TestR2IndependentLegitimateSymlinkConfig(t *testing.T){
+ root:=t.TempDir();real:=filepath.Join(root,"realhome");os.Mkdir(real,0700);link:=filepath.Join(root,"home");os.Symlink(real,link);t.Setenv("US_DESK",filepath.Join(link,"us","desk.json"));s:=newView("symlinkhome");t.Setenv("US_DESK",filepath.Join(link,"us","desk.json"));s.root=t.TempDir();h:=guiMux(&s)
+ r:=httptest.NewRequest(http.MethodPost,"http://127.0.0.1/api/lang",strings.NewReader(`{"lang":"en"}`));r.Header.Set("Content-Type","application/json");w:=httptest.NewRecorder();h.ServeHTTP(w,r);t.Logf("legitimate symlink config POST=%d body=%q pref=%q",w.Code,w.Body.String(),langPref.Get());if w.Code!=500||w.Body.String()!="could not save\n"{t.Fatal("observation changed")}
+ r=httptest.NewRequest("GET","http://127.0.0.1/api/i18n?lang=en",nil);w=httptest.NewRecorder();h.ServeHTTP(w,r);if !strings.Contains(w.Body.String(),`"lang":"en"`){t.Fatal("explicit UI locale failed")};t.Log("explicit locale EN still loads; saved preference/default remains TR")
+}

@@ -1,0 +1,18 @@
+BUILD_OK
+vet exit 0
+ok  	kiyas	15.592s
+ok  	kiyas/cmd/us-license-hook	1.300s
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+ok  	kiyas/i18n	0.009s
+--- FAIL: TestParsePlansBothExportSchemas (0.00s)
+    credits_test.go:19: open ../../../../reports/US_PLANS_JSON_TEST.json: no such file or directory
+2026/11/06 09:36:41 webhook orders/paid: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsorderspaid3315308050/002/file: not a directory
+2026/11/06 09:36:41 webhook orders/cancelled: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsorderscancelled602581227/002/file: not a directory
+2026/11/06 09:36:41 webhook refunds/create: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsrefundscreate2505388358/002/file: not a directory
+FAIL
+FAIL	kiyas/licensesrv	9.240s
+FAIL
+test exit 1
+ok  	kiyas	37.821s
+ok  	kiyas/i18n	1.024s
+race exit 0

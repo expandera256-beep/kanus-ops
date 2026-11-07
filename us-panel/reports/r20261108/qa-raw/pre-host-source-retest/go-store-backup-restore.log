@@ -1,0 +1,7 @@
+=== RUN   TestQAAuditGoStoreBackupRestore
+    zz_qa_audit_store_test.go:27: synthetic JSON ledger backup+reopen: credits/history/validity and exclusive lock preserved; no customer data
+--- PASS: TestQAAuditGoStoreBackupRestore (0.00s)
+PASS
+ok  	kiyas/licensesrv	0.015s
+
+exit_code=0

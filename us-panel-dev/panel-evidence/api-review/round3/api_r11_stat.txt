@@ -1,0 +1,6 @@
+ apiv1/README.md             |    7 +++++
+ apiv1/errors.go             |   57 +++++++++++++++++++++++++++++++++++++++++++
+ apiv1/version.go            |   26 ++++++++++++++++++++
+ apiv1/version_test.go       |   32 ++++++++++++++++++++++++
+ cmd/us-license-hook/main.go |    3 ++
+ 5 files changed, 125 insertions(+)

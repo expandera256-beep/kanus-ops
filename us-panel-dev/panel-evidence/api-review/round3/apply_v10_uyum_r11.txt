@@ -1,0 +1,10 @@
+=== pinned v10 + uyum-v2 + api-r11 ===
+OK 0000-iface.patch
+OK 0001-prefs-store.patch
+OK 0002-prefs-test.patch
+OK 0001-privacy-ops.patch
+OK 0002-privacy-ops-test.patch
+OK 0001-handler.patch
+OK 0002-handler-test.patch
+OK 0001-main-privacy-mount.patch
+R11_ON_V10_CHECK=0

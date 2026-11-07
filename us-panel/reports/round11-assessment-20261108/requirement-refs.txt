@@ -1,0 +1,68 @@
+cmd/us-license-hook/main.go:89:			w.Header().Set("Retry-After", "30")
+cmd/us-license-hook/main.go:90:			w.Header().Set("X-US-Queue-Depth", "0")
+cmd/us-license-hook/main.go:147:	wake, status := os.Getenv("US_GPU_WAKE_URL"), os.Getenv("US_GPU_STATUS_URL")
+cmd/us-license-hook/main.go:151:	warm, err := time.ParseDuration(env("US_GPU_WARMUP_TIMEOUT", "15m"))
+cmd/us-license-hook/main.go:155:	w, err := licensesrv.NewGPUWaker(wake, status, env("US_GPU_WAKE_TOKEN_FILE", "/etc/us-model/wake.token"), warm)
+cmd/us-license-hook/main.go:161:		log.Printf("UYARI: GPU wake düz HTTP kullanıyor (%s, %s; US_GPU_WAKE_HTTP_ALLOW ile izinli). Bearer token ağda şifresiz gider; https veya özel ağ/tünel önerilir.", wake, status)
+licensesrv/login_limiter.go:32:		limit:   envInt("US_LOGIN_ACCOUNT_LIMIT", 10, 1, 1000),
+licensesrv/login_limiter.go:33:		window:  time.Duration(envInt("US_LOGIN_ACCOUNT_WINDOW_SECONDS", 900, 10, 86400)) * time.Second,
+licensesrv/gpu_pin.go:84:		InsecureSkipVerify: true, // replaced by VerifyConnection (pin + SAN)
+licensesrv/gpu_pin.go:144:// pinFileFromEnv: explicit US_GPU_WAKE_PIN_FILE (must exist at call time,
+licensesrv/gpu_pin.go:147:	if v, set := os.LookupEnv("US_GPU_WAKE_PIN_FILE"); set {
+licensesrv/gpu_wake.go:64:		return fmt.Errorf("plain http to %s is refused: use https, a loopback host, or list exactly %s in US_GPU_WAKE_HTTP_ALLOW", hostPort(u), hostPort(u))
+licensesrv/gpu_wake.go:85:// ParseHTTPAllow parses US_GPU_WAKE_HTTP_ALLOW ("host:port[,host:port]").
+licensesrv/gpu_wake.go:98:// non-loopback host (allowed only via US_GPU_WAKE_HTTP_ALLOW).
+licensesrv/gpu_wake.go:108:// NewGPUWaker reads the plain-http allowlist from US_GPU_WAKE_HTTP_ALLOW.
+licensesrv/gpu_wake.go:110:	g, err := NewGPUWakerAllow(wakeURL, statusURL, tokenFile, warmup, ParseHTTPAllow(os.Getenv("US_GPU_WAKE_HTTP_ALLOW")))
+licensesrv/gpu_wake.go:215:		log.Printf("gpu_wake INFO method=%s scheme=%s host=%s path=%s status=%d pin_matched=%s duration_ms=%d err=%s", method, scheme, hostport, path, code, pin, time.Since(started).Milliseconds(), e)
+licensesrv/gpu_wake.go:309:	w.Header().Set("Retry-After", "30")
+licensesrv/ready_check_test.go:84:			if w.Code != 503 || !strings.Contains(w.Body.String(), "GPU ısınıyor") || w.Header().Get("Retry-After") == "" {
+licensesrv/bcrypt_limit_test.go:58:	t.Setenv("US_BCRYPT_CONCURRENCY", "2")
+licensesrv/bcrypt_limit_test.go:59:	t.Setenv("US_BCRYPT_WAIT_SECONDS", "1")
+licensesrv/bcrypt_limit_test.go:64:	if w.Code != 503 || w.Header().Get("Retry-After") != "5" || !strings.Contains(w.Body.String(), `"status":"busy"`) {
+licensesrv/bcrypt_limit_test.go:65:		t.Fatalf("üçüncü giriş: %d %q %s", w.Code, w.Header().Get("Retry-After"), w.Body.String())
+licensesrv/bcrypt_limit_test.go:80:	t.Setenv("US_BCRYPT_WAIT_SECONDS", "10")
+licensesrv/bcrypt_limit_test.go:107:	t.Setenv("US_BCRYPT_CONCURRENCY", "2")
+licensesrv/bcrypt_limit_test.go:164:		if w.Code != 503 || w.Header().Get("Retry-After") != "5" || w.Header().Get("X-US-Queue-Wait-Ms") == "" || w.Header().Get(hdrQueueDepth) != fmt.Sprint(cap(a.work)) || w.Header().Get(hdrQueueLimit) != fmt.Sprint(cap(a.work)) || !strings.Contains(w.Body.String(), `"status":"busy"`) {
+licensesrv/gpu_wake_test.go:85:	t.Setenv("US_GPU_WAKE_HTTP_ALLOW", "34.41.186.170:80")
+licensesrv/gpu_wake_test.go:228:			if i == 0 && w.Header().Get("Retry-After") == "" {
+licensesrv/gpu_wake_test.go:229:				t.Error("Retry-After yok")
+licensesrv/gpu_transport_test.go:40:	if _, err := NewGPUWakerAllow("http://34.41.186.170/a100/start", "http://34.41.186.170/a100/status", "/x", time.Hour, nil); err == nil || !strings.Contains(err.Error(), "US_GPU_WAKE_HTTP_ALLOW") {
+licensesrv/gpu_transport_test.go:43:	t.Setenv("US_GPU_WAKE_HTTP_ALLOW", "34.41.186.170:80")
+licensesrv/model_proxy.go:31:	// StrictDone (US_STRICT_DONE, default 1): a stream is complete and
+licensesrv/model_proxy.go:58:	return &ModelProxy{Store: st, Upstream: strings.TrimRight(upstream, "/"), Token: token, Model: model, Timeout: timeout, Client: client, slots: make(chan struct{}, capacity), requests: make(chan struct{}, capacity+queued), StrictDone: strings.TrimSpace(os.Getenv("US_STRICT_DONE")) != "0"}, nil
+licensesrv/gpu_pin_test.go:46:	t.Setenv("US_GPU_WAKE_PIN_FILE", pinFile)
+licensesrv/gpu_pin_test.go:93:	t.Setenv("US_GPU_WAKE_PIN_FILE", "")
+licensesrv/gpu_pin_test.go:127:	t.Setenv("US_GPU_WAKE_PIN_FILE", writePin(t, hex.EncodeToString(sum[:])))
+licensesrv/gpu_pin_test.go:147:	for _, want := range []string{"gpu_wake INFO", "scheme=https", "host=" + host, "path=/a100/status", "status=200", "pin_matched=yes", "duration_ms="} {
+licensesrv/backpressure.go:8:// Header names follow PERF proposal 01 (Retry-After, X-US-Queue-Wait-Ms)
+licensesrv/backpressure.go:9:// plus X-US-Queue-Depth / X-US-Queue-Limit.
+licensesrv/backpressure.go:11:	hdrQueueDepth = "X-US-Queue-Depth"
+licensesrv/backpressure.go:16:// carries Retry-After (unless the handler set a more specific one) and the
+licensesrv/backpressure.go:32:		if h.Get("Retry-After") == "" {
+licensesrv/backpressure.go:33:			h.Set("Retry-After", b.retry)
+licensesrv/strict_done_test.go:42:		t.Fatal("US_STRICT_DONE=0: stop tamamlanma sayılmalı")
+licensesrv/strict_done_test.go:53:	t.Setenv("US_STRICT_DONE", "")
+licensesrv/strict_done_test.go:58:	t.Setenv("US_STRICT_DONE", "0")
+licensesrv/strict_done_test.go:61:		t.Fatal("US_STRICT_DONE=0 uygulanmadı")
+licensesrv/login_limiter_test.go:41:		if last.Code != 429 || last.Header().Get("Retry-After") == "" || last.Header().Get(hdrQueueDepth) == "" || last.Header().Get(hdrQueueLimit) == "" {
+licensesrv/login_limiter_test.go:65:	t.Setenv("US_LOGIN_ACCOUNT_LIMIT", "3")
+licensesrv/credits_test.go:15:func TestParsePlansBothExportSchemas(t *testing.T) {
+licensesrv/accounts.go:236:	work  chan struct{} // bcrypt semaphore (US_BCRYPT_CONCURRENCY, default 2)
+licensesrv/accounts.go:237:	// bcryptWait: longest wait for a bcrypt slot (US_BCRYPT_WAIT_SECONDS, default 10s).
+licensesrv/accounts.go:244:	h := &AccountHandler{Store: st, TTL: ttl, cost: 12, rates: map[string]rateBucket{}, work: make(chan struct{}, envInt("US_BCRYPT_CONCURRENCY", 2, 1, 64)), bcryptWait: time.Duration(envInt("US_BCRYPT_WAIT_SECONDS", 10, 1, 120)) * time.Second, acctLimit: newAccountLimiter()}
+licensesrv/accounts.go:299:// accountBusy: bcrypt capacity exhausted (or client gone). 503 + Retry-After 5.
+licensesrv/accounts.go:301:	w.Header().Set("Retry-After", "5")
+licensesrv/accounts.go:371:				w.Header().Set("Retry-After", retryAfterSeconds(left))
+licensesrv/accounts.go:379:			w.Header().Set("X-US-Queue-Wait-Ms", "0")
+licensesrv/accounts.go:386:			w.Header().Set("X-US-Queue-Wait-Ms", strconv.FormatInt(ms, 10))
+licensesrv/accounts.go:387:			log.Printf("account %s email=%s queue_wait_ms=%d result=%s", route, maskEmail(email), ms, result)
+licensesrv/backpressure_test.go:18:	if w.Header().Get("Retry-After") == "" || w.Header().Get(hdrQueueDepth) == "" || w.Header().Get(hdrQueueLimit) == "" {
+licensesrv/backpressure_test.go:66:	t.Setenv("US_BCRYPT_WAIT_SECONDS", "1")
+rea.go:63:		return "REA yok. Kurulum: npx rea-agents@" + reaAgentsVersion()
+rea.go:188:	return npx, []string{"--yes", "rea-agents@" + reaAgentsVersion()}, nil
+terminal.go:66:			allowed = strings.HasSuffix(argv[1], ".py") || (argv[1] == "-m" && len(argv) > 2 && map[string]bool{"unittest": true, "py_compile": true, "compileall": true}[argv[2]]) || argv[1] == "--version"
+terminal.go:87:		return nil, fmt.Errorf("Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz.")
+terminal.go:89:	// py_compile/compileall: isolated mode (-I) so a project-local
+terminal.go:90:	// py_compile.py / compileall.py cannot shadow the stdlib module.
+terminal.go:91:	if len(argv) > 2 && argv[1] == "-m" && (argv[2] == "py_compile" || argv[2] == "compileall") {

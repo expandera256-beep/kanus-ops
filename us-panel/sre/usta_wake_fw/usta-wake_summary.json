@@ -1,0 +1,21 @@
+{
+  "name": "usta-wake",
+  "zone": "us-central1-c",
+  "status": "RUNNING",
+  "machineType": "e2-micro",
+  "tags": [
+    "kalfa-http"
+  ],
+  "network": "default",
+  "subnetwork": "default",
+  "networkIP": "10.128.0.3",
+  "natIP": "34.41.186.170",
+  "accessConfigName": "external-nat",
+  "serviceAccount": "[REDACTED] (Compute Engine default SA @developer.gserviceaccount.com)",
+  "scopes": [
+    "https://www.googleapis.com/auth/cloud-platform"
+  ],
+  "creationTimestamp": "2026-10-30T22:14:33.312-07:00",
+  "canIpForward": false,
+  "metadata_item_keys": []
+}

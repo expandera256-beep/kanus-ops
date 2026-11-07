@@ -1,0 +1,6 @@
+Deploying...
+Creating Revision.............................................................................................................................done
+Routing traffic.....done
+Done.
+Service [us-commerce] revision [us-commerce-sre-ready-r1] has been deployed and is serving 0 percent of traffic.
+The revision can be reached directly at https://sre-candidate-commerce---us-commerce-iqhblf63dq-ez.a.run.app

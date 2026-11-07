@@ -1,0 +1,198 @@
+package main
+
+import (
+	"context"
+	"os"
+	"os/exec"
+	"path/filepath"
+	"strconv"
+	"strings"
+	"syscall"
+	"testing"
+	"time"
+
+	"golang.org/x/sys/unix"
+)
+
+func alive(pid int) bool { return syscall.Kill(pid, 0) == nil }
+
+func readPids(t *testing.T, f string) []int {
+	b, _ := os.ReadFile(f)
+	var out []int
+	for _, s := range strings.Fields(string(b)) {
+		n, _ := strconv.Atoi(s)
+		out = append(out, n)
+	}
+	return out
+}
+
+// P1: allowlist only checks base name -> any absolute binary named "go" runs.
+func TestProbeAllowlistBaseNameAbsolutePath(t *testing.T) {
+	root := t.TempDir()
+	bin := filepath.Join(t.TempDir(), "go")
+	os.WriteFile(bin, []byte("#!/bin/sh\necho PWNED_NOT_GO\n"), 0o755)
+	sc, err := newSafeCmd(context.Background(), root, root, []string{bin}, 5*time.Second)
+	if err != nil {
+		t.Logf("RESULT P1: rejected: %v", err)
+		return
+	}
+	st, code, _ := sc.Run()
+	t.Logf("RESULT P1: state=%s code=%d stdout=%q", st, code, sc.Stdout.String())
+}
+
+// P2: terminalArgv accepts -toolexec carrying a shell command.
+func TestProbeTerminalToolexecShell(t *testing.T) {
+	root := t.TempDir()
+	os.WriteFile(filepath.Join(root, "go.mod"), []byte("module p\n\ngo 1.21\n"), 0o644)
+	os.WriteFile(filepath.Join(root, "main.go"), []byte("package main\nfunc main(){}\n"), 0o644)
+	raw := `["go","build","-toolexec=sh -c 'touch PWNED_SHELL'"]`
+	argv, err := terminalArgv(raw, root)
+	if err != nil {
+		t.Logf("RESULT P2: terminalArgv rejected: %v", err)
+		return
+	}
+	bin, _ := resolveBin("go")
+	sc, err := newSafeCmd(context.Background(), root, root, append([]string{bin}, argv[1:]...), 60*time.Second)
+	if err != nil {
+		t.Fatal(err)
+	}
+	st, code, _ := sc.Run()
+	_, statErr := os.Stat(filepath.Join(root, "PWNED_SHELL"))
+	t.Logf("RESULT P2: accepted argv=%q state=%s code=%d shellSideEffectFileExists=%v stderr=%q", argv, st, code, statErr == nil, sc.Stderr.String())
+	for _, r := range []string{`["go","test","-exec","bash","./..."]`, `["python3","-c","print(1)"]`, `["node","-e","1"]`, `["go","run","-exec=sh","main.go"]`, `["npm","run","x"]`} {
+		_, err := terminalArgv(r, root)
+		t.Logf("RESULT P2b: %s -> err=%v", r, err)
+	}
+}
+
+// P3: env allowlist on safe path.
+func TestProbeSafeEnv(t *testing.T) {
+	t.Setenv("REVIEW_FAKE_SECRET", "s3cr3t-review")
+	t.Setenv("US_LICENSE_KEY", "lic-review")
+	root := t.TempDir()
+	py, _ := exec.LookPath("python3")
+	os.WriteFile(filepath.Join(root, "e.py"), []byte("import os\nprint(sorted(os.environ.keys()))\nprint('LEAK' if any('review' in v for v in os.environ.values()) else 'NOLEAK')\n"), 0o644)
+	sc, _ := newSafeCmd(context.Background(), root, root, []string{py, "e.py"}, 10*time.Second)
+	sc.Run()
+	t.Logf("RESULT P3: %s", sc.Stdout.String())
+}
+
+// P4: findPython executes a project-local .venv/bin/python with the FULL panel env.
+func TestProbeFindPythonVenvLeak(t *testing.T) {
+	t.Setenv("REVIEW_FAKE_SECRET", "s3cr3t-review")
+	root := t.TempDir()
+	os.MkdirAll(filepath.Join(root, ".venv", "bin"), 0o755)
+	dump := filepath.Join(root, "envdump.txt")
+	os.WriteFile(filepath.Join(root, ".venv", "bin", "python"), []byte("#!/bin/sh\nenv > "+dump+"\necho 'Python 3.12.0'\n"), 0o755)
+	bin, _, ok := findPython(root, root)
+	b, _ := os.ReadFile(dump)
+	t.Logf("RESULT P4: findPython -> %s ok=%v; project script executed=%v; secret in child env=%v", bin, ok, len(b) > 0, strings.Contains(string(b), "s3cr3t-review"))
+}
+
+func treeScript(root string, setsid bool) string {
+	s := "import os,subprocess,time\np=subprocess.Popen(['sleep','37'])\npids=[p.pid]\n"
+	if setsid {
+		s += "q=subprocess.Popen(['sleep','38'],start_new_session=True)\npids.append(q.pid)\n"
+	}
+	s += "open('pids.txt','w').write(' '.join(map(str,pids)))\ntime.sleep(60)\n"
+	os.WriteFile(filepath.Join(root, "tree.py"), []byte(s), 0o644)
+	return "tree.py"
+}
+
+// P5: timeout and cancel kill the process group; a setsid grandchild escapes.
+func TestProbeTimeoutCancelOrphans(t *testing.T) {
+	py, _ := exec.LookPath("python3")
+	for _, mode := range []string{"timeout", "cancel"} {
+		root := t.TempDir()
+		f := treeScript(root, true)
+		sc, err := newSafeCmd(context.Background(), root, root, []string{py, f}, 1500*time.Millisecond)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := sc.Start(); err != nil {
+			t.Fatal(err)
+		}
+		var pids []int
+		for i := 0; i < 50 && len(pids) < 2; i++ {
+			time.Sleep(50 * time.Millisecond)
+			pids = readPids(t, filepath.Join(root, "pids.txt"))
+		}
+		if mode == "cancel" {
+			sc.Cancel()
+		}
+		st, code, _ := sc.Wait()
+		time.Sleep(300 * time.Millisecond)
+		main := sc.Cmd.Process.Pid
+		t.Logf("RESULT P5 %s: state=%s code=%d main_alive=%v samePgidSleep(pid %d)_alive=%v setsidSleep(pid %d)_alive=%v", mode, st, code, alive(main), pids[0], alive(pids[0]), pids[1], alive(pids[1]))
+		for _, p := range pids {
+			syscall.Kill(p, syscall.SIGKILL)
+		}
+	}
+}
+
+// P6: rlimits only on child; panel unchanged; child limit visibility over time.
+func TestProbeRlimitScope(t *testing.T) {
+	var before, after unix.Rlimit
+	unix.Getrlimit(unix.RLIMIT_CPU, &before)
+	root := t.TempDir()
+	py, _ := exec.LookPath("python3")
+	os.WriteFile(filepath.Join(root, "r.py"), []byte("import resource,time,subprocess\nprint('t0',resource.getrlimit(resource.RLIMIT_CPU),flush=True)\nc=subprocess.run(['python3','-c','import resource;print(resource.getrlimit(resource.RLIMIT_CPU))'],capture_output=True,text=True)\nprint('child_t0',c.stdout.strip())\ntime.sleep(0.5)\nprint('t1',resource.getrlimit(resource.RLIMIT_CPU),resource.getrlimit(resource.RLIMIT_NPROC))\n"), 0o644)
+	sc, _ := newSafeCmd(context.Background(), root, root, []string{py, "r.py"}, 10*time.Second)
+	sc.Run()
+	unix.Getrlimit(unix.RLIMIT_CPU, &after)
+	t.Logf("RESULT P6: panel CPU rlimit before=%+v after=%+v; child: %s", before, after, sc.Stdout.String())
+}
+
+// P7: hard link inside root to a file outside root is readable by fileTools.
+func TestProbeHardlinkRead(t *testing.T) {
+	root := t.TempDir()
+	out := filepath.Join(filepath.Dir(root), "outside-secret.txt")
+	os.WriteFile(out, []byte("OUTSIDE-SECRET"), 0o600)
+	defer os.Remove(out)
+	if err := os.Link(out, filepath.Join(root, "hl.txt")); err != nil {
+		t.Skip(err)
+	}
+	ft, _ := newFileTools(root)
+	b, err := ft.Read("hl.txt")
+	t.Logf("RESULT P7: read via hardlink err=%v content=%q", err, b)
+	_, err = ft.resolve("a.txt:stream")
+	_, err2 := ft.resolve(`C:evil.txt`)
+	t.Logf("RESULT P7b: resolve('a.txt:stream') err=%v ; resolve('C:evil.txt') err=%v (Windows ADS/drive-relative not rejected on this OS)", err, err2)
+}
+
+// P8: tampered task state applies edits without Approve.
+func TestProbeTaskStateTamperBypassesApproval(t *testing.T) {
+	root := t.TempDir()
+	os.WriteFile(filepath.Join(root, "go.mod"), []byte("module p\n\ngo 1.21\n"), 0o644)
+	os.WriteFile(filepath.Join(root, "main.go"), []byte("package main\nfunc main(){}\n"), 0o644)
+	evil := "package main\n\nfunc main() {}\n\n// INJECTED_BY_TAMPERED_STATE\n"
+	st := &taskState{ID: "t1", Root: root, Phase: "applying", PendingEdits: []pendingEdit{{Path: "main.go", Content: evil, Hash: hashContent([]byte(evil))}}}
+	if err := saveTaskState(st); err != nil {
+		t.Fatal(err)
+	}
+	approved := false
+	l := &repairLoop{Root: root, Endpoint: "http://127.0.0.1:1", Approve: func(int, []repairEdit) bool { approved = true; return false }}
+	res, err := runPersistentRepair(context.Background(), l, "t1", false)
+	b, _ := os.ReadFile(filepath.Join(root, "main.go"))
+	t.Logf("RESULT P8: err=%v status=%v approveCalled=%v injectedOnDisk=%v", err, func() string { if res != nil { return res.Status }; return "" }(), approved, strings.Contains(string(b), "INJECTED"))
+	_, e1 := taskStatePath(root, "../x")
+	_, e2 := taskStatePath(root, "..")
+	t.Logf("RESULT P8b: id '../x' err=%v ; '..' err=%v", e1, e2)
+}
+
+// P9: Run path (detectLaunch) probes the project venv with the full env before newSafeCmd.
+func TestProbeRunPathVenvLeak(t *testing.T) {
+	t.Setenv("REVIEW_FAKE_SECRET", "s3cr3t-review")
+	root := t.TempDir()
+	os.WriteFile(filepath.Join(root, "main.py"), []byte("print(1)\n"), 0o644)
+	os.MkdirAll(filepath.Join(root, ".venv", "bin"), 0o755)
+	dump := filepath.Join(t.TempDir(), "envdump.txt")
+	os.WriteFile(filepath.Join(root, ".venv", "bin", "python"), []byte("#!/bin/sh\nenv >> "+dump+"\necho 'Python 3.12.0'\n"), 0o755)
+	found, ok := detectLaunch(root)
+	b, _ := os.ReadFile(dump)
+	t.Logf("RESULT P9: detectLaunch ok=%v argv=%q ; project venv executed with secret in env=%v", ok, found.Argv, strings.Contains(string(b), "s3cr3t-review"))
+	out := runProjectTestsWithContext(context.Background(), root, 10*time.Second)
+	b, _ = os.ReadFile(dump)
+	t.Logf("RESULT P9b: after Tests path, secret seen count=%d ; report head=%q", strings.Count(string(b), "s3cr3t-review"), reviewFirstLine(out))
+}
+func reviewFirstLine(s string) string { l, _, _ := strings.Cut(s, "\n"); return l }

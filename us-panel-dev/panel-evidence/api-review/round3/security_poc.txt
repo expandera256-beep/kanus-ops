@@ -1,0 +1,15 @@
+=== RUN   TestPoC_RotateRevokeOldImmediate401
+--- PASS: TestPoC_RotateRevokeOldImmediate401 (2.74s)
+=== RUN   TestPoC_TTLCommitExpireRaceNoDoubleDebit
+    panel_r3_poc_test.go:87: start=500 end=499 reserved=0 errs=[<nil> <nil> <nil>]
+--- PASS: TestPoC_TTLCommitExpireRaceNoDoubleDebit (0.01s)
+=== RUN   TestPoC_TTLGraceEnvParse
+--- PASS: TestPoC_TTLGraceEnvParse (0.00s)
+=== RUN   TestPoC_ReservedHeldDuringGraceNotSpendableTwice
+--- PASS: TestPoC_ReservedHeldDuringGraceNotSpendableTwice (0.01s)
+=== RUN   TestPoC_ClockSkewCommitAfterGrace
+--- PASS: TestPoC_ClockSkewCommitAfterGrace (0.00s)
+=== RUN   TestTTLCommitAnchorAcceptsCommitWithinGrace
+--- PASS: TestTTLCommitAnchorAcceptsCommitWithinGrace (0.00s)
+PASS
+ok  	kiyas/licensesrv	3.787s

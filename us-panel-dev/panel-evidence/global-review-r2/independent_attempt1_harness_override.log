@@ -1,0 +1,37 @@
+=== RUN   TestR2IndependentOriginAndBounds
+    zz_r2_gui_test.go:6: Origin="" lang=200 legacy-guard=true
+    zz_r2_gui_test.go:6: Origin="https://evil.example" lang=403 legacy-guard=false
+    zz_r2_gui_test.go:6: Origin="http://127.0.0.1:4477" lang=200 legacy-guard=true
+    zz_r2_gui_test.go:6: Origin="null" lang=403 legacy-guard=false
+    zz_r2_gui_test.go:6: Origin="http://localhost:4477" lang=403 legacy-guard=false
+    zz_r2_gui_test.go:6: Origin="http://127.0.0.1:4478" lang=403 legacy-guard=false
+    zz_r2_gui_test.go:8: HTTP body size=17 got=400 want=400
+    zz_r2_gui_test.go:8: HTTP body size=26 got=400 want=400
+    zz_r2_gui_test.go:8: HTTP body size=2097165 got=413 want=413
+    zz_r2_gui_test.go:8: HTTP body size=4096 got=200 want=200
+    zz_r2_gui_test.go:8: HTTP body size=4097 got=413 want=413
+    zz_r2_gui_test.go:8: HTTP body size=2097165 got=400 want=400
+--- PASS: TestR2IndependentOriginAndBounds (0.05s)
+=== RUN   TestR2IndependentLegitimateSymlinkConfig
+    zz_r2_gui_test.go:12: legitimate symlink config POST=200 body="{\"lang\":\"en\"}\n" pref="en"
+    zz_r2_gui_test.go:12: observation changed
+--- FAIL: TestR2IndependentLegitimateSymlinkConfig (0.01s)
+FAIL
+FAIL	kiyas	0.088s
+=== RUN   TestR2IndependentReadAndLock
+    zz_r2_independent_test.go:5: regular size=13 value="en"
+    zz_r2_independent_test.go:5: regular size=4096 value="en"
+    zz_r2_independent_test.go:5: regular size=4097 value=""
+    zz_r2_independent_test.go:7: FIFO rejected elapsed=27.816µs
+    zz_r2_independent_test.go:9: 1GiB sparse rejected elapsed=15.943µs
+--- PASS: TestR2IndependentReadAndLock (0.01s)
+=== RUN   TestR2IndependentParentRace
+    zz_r2_independent_test.go:16: parent-swap races=108 Set success=1481 reject=19 outside entries=0
+--- PASS: TestR2IndependentParentRace (1.14s)
+=== RUN   TestR2IndependentWriteCleanup
+    zz_r2_independent_test.go:19: injected rename error=file name too long
+    zz_r2_independent_test.go:20: rename-error cleanup and normal0600 PASS
+--- PASS: TestR2IndependentWriteCleanup (0.01s)
+PASS
+ok  	kiyas/i18n	2.189s
+FAIL

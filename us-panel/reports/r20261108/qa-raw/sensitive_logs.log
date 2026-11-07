@@ -1,0 +1,10 @@
+=== RUN   TestGPUWakeAuthErrorAndTimeoutAndRedaction
+--- PASS: TestGPUWakeAuthErrorAndTimeoutAndRedaction (0.16s)
+=== RUN   TestPrivacyOutboxNoRawKeyLogsNoEmail
+--- PASS: TestPrivacyOutboxNoRawKeyLogsNoEmail (0.00s)
+=== RUN   TestPrivacyMaskHelpers
+--- PASS: TestPrivacyMaskHelpers (0.00s)
+PASS
+ok  	kiyas/licensesrv	0.169s
+
+exit_code=0

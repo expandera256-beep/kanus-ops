@@ -1,0 +1,5 @@
+RUN_DIR /workspace/us-panel/reports/r20261108/qa-raw/runs/20261108T012328_051246+0300-is9ra877
+{"item": "rate_limit", "status": "PASS", "log": "reports/r20261108/qa-raw/runs/20261108T012328_051246+0300-is9ra877/rate_limit.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+SUMMARY {"PASS": 1, "FAIL": 0, "BLOCKED": 0, "NOT TESTED": 0}
+
+exit_code=0

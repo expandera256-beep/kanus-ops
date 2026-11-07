@@ -1,0 +1,14 @@
+{
+  "r12-ssrf": {
+    "run_dir": "/workspace/us-panel/reports/r20261108/qa-raw/runs/20261108T011251_224499+0300-vcv8htfn",
+    "status": "PASS"
+  },
+  "r12-file-isolation": {
+    "run_dir": "/workspace/us-panel/reports/r20261108/qa-raw/runs/20261108T011253_055581+0300-av2aqkgh",
+    "status": "FAIL"
+  },
+  "r11-rate-limit": {
+    "run_dir": "/workspace/us-panel/reports/r20261108/qa-raw/runs/20261108T011247_939236+0300-itzucrt9",
+    "status": "PASS"
+  }
+}

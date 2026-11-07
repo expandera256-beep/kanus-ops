@@ -1,0 +1,60 @@
+{"Time":"2026-11-08T01:16:03.277860399+03:00","Action":"start","Package":"kiyas/i18n"}
+{"Time":"2026-11-08T01:16:03.288034693+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries"}
+{"Time":"2026-11-08T01:16:03.288082274+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries","Output":"=== RUN   TestOwnBoundaries\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288205301+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/5days"}
+{"Time":"2026-11-08T01:16:03.288211024+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/5days","Output":"=== RUN   TestOwnBoundaries/5days\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288311109+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/5days","Output":"--- PASS: TestOwnBoundaries/5days (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288350926+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/5days","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.288384425+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/5days1sec"}
+{"Time":"2026-11-08T01:16:03.288387223+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/5days1sec","Output":"=== RUN   TestOwnBoundaries/5days1sec\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288431767+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/5days1sec","Output":"--- PASS: TestOwnBoundaries/5days1sec (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288446692+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/5days1sec","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.28846651+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/before-midnight"}
+{"Time":"2026-11-08T01:16:03.288468966+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/before-midnight","Output":"=== RUN   TestOwnBoundaries/before-midnight\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288516353+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/before-midnight","Output":"--- PASS: TestOwnBoundaries/before-midnight (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288532004+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/before-midnight","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.288551197+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/midnight-sixth"}
+{"Time":"2026-11-08T01:16:03.288553384+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/midnight-sixth","Output":"=== RUN   TestOwnBoundaries/midnight-sixth\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288585965+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/midnight-sixth","Output":"--- PASS: TestOwnBoundaries/midnight-sixth (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288600135+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/midnight-sixth","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.288631066+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/future-at-midnight"}
+{"Time":"2026-11-08T01:16:03.288633414+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/future-at-midnight","Output":"=== RUN   TestOwnBoundaries/future-at-midnight\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288667262+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/future-at-midnight","Output":"--- PASS: TestOwnBoundaries/future-at-midnight (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288680055+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/future-at-midnight","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.288699866+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate-1"}
+{"Time":"2026-11-08T01:16:03.288702157+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate-1","Output":"=== RUN   TestOwnBoundaries/rate-1\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.288965892+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate-1","Output":"--- PASS: TestOwnBoundaries/rate-1 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.28899973+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate-1","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.289022721+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate0"}
+{"Time":"2026-11-08T01:16:03.289024721+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate0","Output":"=== RUN   TestOwnBoundaries/rate0\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.289120833+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate0","Output":"--- PASS: TestOwnBoundaries/rate0 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.289141037+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate0","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.289159307+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate0.00000000001"}
+{"Time":"2026-11-08T01:16:03.289161302+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate0.00000000001","Output":"=== RUN   TestOwnBoundaries/rate0.00000000001\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.289262788+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate0.00000000001","Output":"--- PASS: TestOwnBoundaries/rate0.00000000001 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.289282923+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/rate0.00000000001","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.294973347+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m39.999999999s"}
+{"Time":"2026-11-08T01:16:03.294998426+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m39.999999999s","Output":"=== RUN   TestOwnBoundaries/277h46m39.999999999s\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.295161586+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m39.999999999s","Output":"--- PASS: TestOwnBoundaries/277h46m39.999999999s (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.295191137+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m39.999999999s","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.295221033+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m40s"}
+{"Time":"2026-11-08T01:16:03.295225194+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m40s","Output":"=== RUN   TestOwnBoundaries/277h46m40s\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.295278334+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m40s","Output":"--- PASS: TestOwnBoundaries/277h46m40s (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.295296929+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m40s","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.295317266+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m40.000000001s"}
+{"Time":"2026-11-08T01:16:03.2953207+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m40.000000001s","Output":"=== RUN   TestOwnBoundaries/277h46m40.000000001s\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.295365561+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m40.000000001s","Output":"--- PASS: TestOwnBoundaries/277h46m40.000000001s (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.295385042+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/277h46m40.000000001s","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.295401555+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/-1ns"}
+{"Time":"2026-11-08T01:16:03.295405087+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/-1ns","Output":"=== RUN   TestOwnBoundaries/-1ns\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.29544052+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/-1ns","Output":"--- PASS: TestOwnBoundaries/-1ns (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.295463143+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/-1ns","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.295485032+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestOwnBoundaries/negative-half-cent-hidden"}
+{"Time":"2026-11-08T01:16:03.295489203+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/negative-half-cent-hidden","Output":"=== RUN   TestOwnBoundaries/negative-half-cent-hidden\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.295531602+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries/negative-half-cent-hidden","Output":"--- PASS: TestOwnBoundaries/negative-half-cent-hidden (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.295548636+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries/negative-half-cent-hidden","Elapsed":0}
+{"Time":"2026-11-08T01:16:03.295567588+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestOwnBoundaries","Output":"--- PASS: TestOwnBoundaries (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:03.295584658+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestOwnBoundaries","Elapsed":0.01}
+{"Time":"2026-11-08T01:16:03.2956184+03:00","Action":"output","Package":"kiyas/i18n","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:04.30698222+03:00","Action":"output","Package":"kiyas/i18n","Output":"ok  \tkiyas/i18n\t1.029s\n"}
+{"Time":"2026-11-08T01:16:04.307103272+03:00","Action":"pass","Package":"kiyas/i18n","Elapsed":1.029}

@@ -1,0 +1,848 @@
+diff -ruN -x kiyas -x '*.exe' baseline_tree/go.mod snap_item1/go.mod
+--- baseline_tree/go.mod	2026-11-06 07:51:39.517474000 +0300
++++ snap_item1/go.mod	2026-11-06 08:28:52.855493870 +0300
+@@ -22,5 +22,5 @@
+ 	github.com/rivo/uniseg v0.4.7 // indirect
+ 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
+ 	golang.org/x/crypto v0.33.0
+-	golang.org/x/sys v0.30.0 // indirect
++	golang.org/x/sys v0.30.0
+ )
+diff -ruN -x kiyas -x '*.exe' baseline_tree/gui.go snap_item1/gui.go
+--- baseline_tree/gui.go	2026-11-06 07:53:15.232974191 +0300
++++ snap_item1/gui.go	2026-11-06 08:29:34.916009612 +0300
+@@ -814,7 +814,11 @@
+ 		g.mu.Lock()
+ 		unlock = g.s.hold()
+ 		g.s.project.RunLine = line
+-		g.s.noteLog("işlem", "Program çalıştırıldı.")
++		if g.s.runStarted {
++			g.s.noteLog("işlem", "Program çalıştırıldı.")
++		} else {
++			g.s.noteLog("işlem", "Program başlatılamadı.")
++		}
+ 		g.s.notice = ""
+ 	case "stop":
+ 		g.s.runGen++
+diff -ruN -x kiyas -x '*.exe' baseline_tree/main.go snap_item1/main.go
+--- baseline_tree/main.go	2026-11-06 07:15:30.620053293 +0300
++++ snap_item1/main.go	2026-11-06 08:29:34.916009612 +0300
+@@ -164,6 +164,7 @@
+ 	proc              *os.Process
+ 	procDone          chan programNote
+ 	runStatus         string
++	runStarted        bool
+ 	runGen            int
+ 	ask               *clarification
+ 	program           string
+diff -ruN -x kiyas -x '*.exe' baseline_tree/project_test_runner.go snap_item1/project_test_runner.go
+--- baseline_tree/project_test_runner.go	2026-11-06 06:11:41.722802179 +0300
++++ snap_item1/project_test_runner.go	2026-11-06 08:29:16.623775745 +0300
+@@ -19,17 +19,7 @@
+ 	return runProjectTestsWithContext(context.Background(), root, 60*time.Second)
+ }
+ 
+-func projectTestEnv() []string {
+-	var env []string
+-	allowed := map[string]bool{"PATH": true, "HOME": true, "USERPROFILE": true, "SYSTEMROOT": true, "WINDIR": true, "TEMP": true, "TMP": true, "TMPDIR": true, "LANG": true, "LC_ALL": true, "PATHEXT": true, "COMSPEC": true}
+-	for _, value := range os.Environ() {
+-		key, _, _ := strings.Cut(value, "=")
+-		if allowed[strings.ToUpper(key)] {
+-			env = append(env, value)
+-		}
+-	}
+-	return append(env, "PYTHONIOENCODING=utf-8")
+-}
++func projectTestEnv() []string { return safeExecEnv("PYTHONIOENCODING=utf-8") }
+ 
+ func runProjectTestsWithContext(parent context.Context, root string, timeout time.Duration) string {
+ 	info, err := os.Stat(root)
+diff -ruN -x kiyas -x '*.exe' baseline_tree/run.go snap_item1/run.go
+--- baseline_tree/run.go	2026-11-06 05:53:52.906176174 +0300
++++ snap_item1/run.go	2026-11-06 08:29:57.880322382 +0300
+@@ -38,16 +38,8 @@
+ 	return false
+ }
+ 
+-func pythonEnv() []string {
+-	env := make([]string, 0, len(os.Environ())+1)
+-	for _, item := range os.Environ() {
+-		if strings.HasPrefix(item, "PYTHONIOENCODING=") {
+-			continue
+-		}
+-		env = append(env, item)
+-	}
+-	return append(env, "PYTHONIOENCODING=utf-8")
+-}
++// pythonEnv is the filtered allowlist env (no parent secrets).
++func pythonEnv() []string { return safeExecEnv("PYTHONIOENCODING=utf-8") }
+ 
+ func (s *session) stopProgram() {
+ 	if s.proc == nil {
+@@ -62,6 +54,7 @@
+ 	gen := s.runGen
+ 	s.stopProgram()
+ 	s.runStatus = ""
++	s.runStarted = false
+ 	found, ok := detectLaunch(root)
+ 	if !ok {
+ 		return "Çalıştırılacak program yok."
+@@ -75,20 +68,22 @@
+ 	if extra != "" && commandSafe(append(argv, extra)) {
+ 		argv = append(argv, extra)
+ 	}
+-	cmd := exec.Command(argv[0], argv[1:]...)
+-	configureProcessTree(cmd)
+-	cmd.Dir = found.Dir
+-	cmd.Stdin = bytes.NewReader(nil)
+-	cmd.Env = pythonEnv()
+-	var buf cappedBuf
+-	cmd.Stdout = &buf
+-	cmd.Stderr = &buf
+-	if err := cmd.Start(); err != nil {
++	sc, err := newSafeCmd(context.Background(), root, found.Dir, argv, runProgramTimeout, "PYTHONIOENCODING=utf-8")
++	if err != nil {
++		s.runStatus = "durum  durdu"
++		return s.runStatus + "\n" + found.Label + " reddedildi: " + err.Error()
++	}
++	out := func() string { return runOutput(sc.Stdout, sc.Stderr) }
++	if err := sc.Start(); err != nil {
+ 		s.runStatus = "durum  durdu"
+ 		return s.runStatus + "\n" + found.Label + " başlamadı."
+ 	}
++	s.runStarted = true
+ 	exited := make(chan error, 1)
+-	go func() { exited <- cmd.Wait() }()
++	go func() {
++		_, _, err := sc.Wait()
++		exited <- err
++	}()
+ 	ticker := time.NewTicker(40 * time.Millisecond)
+ 	defer ticker.Stop()
+ 	deadline := time.After(3 * time.Second)
+@@ -100,24 +95,39 @@
+ 				state = "durdu"
+ 			}
+ 			s.runStatus = statusReport(state)
+-			return formatRun(found.Label, buf.String(), state)
++			return formatRun(found.Label, out(), state)
+ 		case <-ticker.C:
+-			if programReady(buf.String()) {
+-				s.proc = cmd.Process
++			if programReady(out()) {
++				s.proc = sc.Cmd.Process
+ 				s.runStatus = statusReport("çalışıyor")
+-				s.watchExit(exited, gen, found.Label, &buf)
+-				return formatRun(found.Label, buf.String(), "çalışıyor")
++				s.watchExit(exited, gen, found.Label, out)
++				return formatRun(found.Label, out(), "çalışıyor")
+ 			}
+ 		case <-deadline:
+-			s.proc = cmd.Process
++			s.proc = sc.Cmd.Process
+ 			s.runStatus = statusReport("çalışıyor")
+-			s.watchExit(exited, gen, found.Label, &buf)
+-			return formatRun(found.Label, buf.String(), "çalışıyor")
++			s.watchExit(exited, gen, found.Label, out)
++			return formatRun(found.Label, out(), "çalışıyor")
+ 		}
+ 	}
+ }
+ 
+-func (s *session) watchExit(exited <-chan error, gen int, label string, buf *cappedBuf) {
++// runProgramTimeout bounds a Run-path program's lifetime (servers included).
++const runProgramTimeout = 4 * time.Hour
++
++// runOutput keeps stdout and stderr separate in the panel view.
++func runOutput(stdout, stderr *cappedBuf) string {
++	o, e := stdout.String(), stderr.String()
++	if strings.TrimSpace(e) == "" {
++		return o
++	}
++	if strings.TrimSpace(o) == "" {
++		return "[stderr]\n" + e
++	}
++	return o + "\n[stderr]\n" + e
++}
++
++func (s *session) watchExit(exited <-chan error, gen int, label string, out func() string) {
+ 	ch := s.procDone
+ 	go func() {
+ 		err := <-exited
+@@ -125,7 +135,7 @@
+ 		if err != nil {
+ 			state = "durdu"
+ 		}
+-		note := programNote{gen: gen, status: statusReport(state), line: formatRun(label, buf.String(), state)}
++		note := programNote{gen: gen, status: statusReport(state), line: formatRun(label, out(), state)}
+ 		if ch == nil {
+ 			return
+ 		}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_exec.go snap_item1/safe_exec.go
+--- baseline_tree/safe_exec.go	1970-01-01 02:00:00.000000000 +0200
++++ snap_item1/safe_exec.go	2026-11-06 08:30:59.289250582 +0300
+@@ -0,0 +1,190 @@
++package main
++
++import (
++	"context"
++	"errors"
++	"fmt"
++	"os"
++	"os/exec"
++	"path/filepath"
++	"strings"
++	"time"
++)
++
++// Shared safe execution used by both the Terminal and the Run paths.
++// It is a defence-in-depth layer for trusted single-user projects, NOT an
++// OS/container sandbox: allowed interpreters still run project code.
++
++// safeRunBins is the allowlist of executables (by base name) that any panel
++// path may start. Terminal applies the stricter terminalArgv sub-command policy
++// on top of this.
++var safeRunBins = map[string]bool{"go": true, "python": true, "python3": true, "py": true, "node": true, "npm": true, "uvicorn": true, "flask": true, "gunicorn": true, "php": true}
++
++// safeEnvKeys is the environment allowlist. Everything else (tokens, license
++// secrets, cloud credentials) is dropped before a child process starts.
++var safeEnvKeys = map[string]bool{"PATH": true, "HOME": true, "USERPROFILE": true, "SYSTEMROOT": true, "WINDIR": true, "TEMP": true, "TMP": true, "TMPDIR": true, "LANG": true, "LC_ALL": true, "PATHEXT": true, "COMSPEC": true, "GOPATH": true, "GOCACHE": true, "GOMODCACHE": true, "GOFLAGS": true, "GOPROXY": true, "LOCALAPPDATA": true, "APPDATA": true}
++
++const (
++	safeExecMaxOutput    = 16 << 10
++	safeExecDefaultLimit = 10 * time.Minute
++)
++
++// safeLimits are per-process resource limits. Applied with setrlimit on
++// Linux and a Job Object on Windows (see safe_limits_*.go).
++type safeLimits struct {
++	CPUSeconds  uint64
++	MemoryBytes uint64
++	Processes   uint64
++	FileBytes   uint64
++}
++
++var defaultSafeLimits = safeLimits{CPUSeconds: 600, MemoryBytes: 4 << 30, Processes: 256, FileBytes: 512 << 20}
++
++func safeExecEnv(extra ...string) []string {
++	var env []string
++	for _, value := range os.Environ() {
++		key, _, _ := strings.Cut(value, "=")
++		if safeEnvKeys[strings.ToUpper(key)] {
++			env = append(env, value)
++		}
++	}
++	return append(env, extra...)
++}
++
++func safeBinAllowed(bin string) bool {
++	base := strings.ToLower(filepath.Base(bin))
++	base = strings.TrimSuffix(base, ".exe")
++	return safeRunBins[base]
++}
++
++// lockCwd resolves root and dir (following symlinks) and refuses any dir that
++// is not root itself or below it. It returns the resolved dir.
++func lockCwd(root, dir string) (string, error) {
++	if strings.TrimSpace(root) == "" || refusedFolder(root) {
++		return "", errors.New("geçerli proje klasörü yok")
++	}
++	if dir == "" {
++		dir = root
++	}
++	for _, part := range strings.Split(filepath.ToSlash(dir), "/") {
++		if part == ".." {
++			return "", errors.New("proje dışı çalışma dizini")
++		}
++	}
++	realRoot, err := filepath.EvalSymlinks(root)
++	if err != nil {
++		return "", errors.New("proje klasörü çözülemedi")
++	}
++	if !filepath.IsAbs(dir) {
++		dir = filepath.Join(root, dir)
++	}
++	realDir, err := filepath.EvalSymlinks(dir)
++	if err != nil {
++		return "", errors.New("çalışma dizini çözülemedi")
++	}
++	info, err := os.Stat(realDir)
++	if err != nil || !info.IsDir() {
++		return "", errors.New("çalışma dizini klasör değil")
++	}
++	if realDir != realRoot && !insideRoot(realRoot, realDir) {
++		return "", errors.New("çalışma dizini proje dışına çıkıyor")
++	}
++	return realDir, nil
++}
++
++type safeCmd struct {
++	Cmd    *exec.Cmd
++	Stdout *cappedBuf
++	Stderr *cappedBuf
++	ctx    context.Context
++	cancel context.CancelFunc
++	limit  func()
++}
++
++// newSafeCmd builds a command with the allowlisted binary, locked cwd,
++// filtered env, separate capped stdout/stderr, a timeout and process-group
++// cancellation. Start must be called through (*safeCmd).Start.
++func newSafeCmd(parent context.Context, root, dir string, argv []string, timeout time.Duration, extraEnv ...string) (*safeCmd, error) {
++	if len(argv) == 0 || !safeBinAllowed(argv[0]) {
++		return nil, errors.New("komut izinli değil")
++	}
++	for _, arg := range argv {
++		if strings.ContainsRune(arg, 0) {
++			return nil, errors.New("geçersiz argüman")
++		}
++	}
++	cwd, err := lockCwd(root, dir)
++	if err != nil {
++		return nil, err
++	}
++	if timeout <= 0 || timeout > safeExecDefaultLimit*6 {
++		timeout = safeExecDefaultLimit
++	}
++	if parent == nil {
++		parent = context.Background()
++	}
++	ctx, cancel := context.WithTimeout(parent, timeout)
++	cmd := exec.CommandContext(ctx, argv[0], argv[1:]...)
++	configureProcessTree(cmd)
++	cmd.Cancel = func() error { return killProcessTree(cmd.Process) }
++	cmd.WaitDelay = 2 * time.Second
++	cmd.Dir = cwd
++	cmd.Env = safeExecEnv(extraEnv...)
++	cmd.Stdin = strings.NewReader("")
++	sc := &safeCmd{Cmd: cmd, Stdout: &cappedBuf{}, Stderr: &cappedBuf{}, ctx: ctx, cancel: cancel}
++	cmd.Stdout = sc.Stdout
++	cmd.Stderr = sc.Stderr
++	return sc, nil
++}
++
++// Start starts the process and applies OS resource limits. On failure the
++// context is released and an error is returned; callers must not report the
++// program as started.
++func (c *safeCmd) Start() error {
++	if err := c.Cmd.Start(); err != nil {
++		c.cancel()
++		return fmt.Errorf("işlem başlamadı: %w", err)
++	}
++	release, err := applySafeLimits(c.Cmd.Process, defaultSafeLimits)
++	if err != nil {
++		_ = killProcessTree(c.Cmd.Process)
++		_ = c.Cmd.Wait()
++		c.cancel()
++		return fmt.Errorf("kaynak sınırı uygulanamadı: %w", err)
++	}
++	c.limit = release
++	return nil
++}
++
++// Wait waits and returns the state: success, failed, timeout or cancelled.
++func (c *safeCmd) Wait() (string, int, error) {
++	err := c.Cmd.Wait()
++	cause := c.ctx.Err()
++	c.cancel()
++	if c.limit != nil {
++		c.limit()
++	}
++	code := -1
++	if c.Cmd.ProcessState != nil {
++		code = c.Cmd.ProcessState.ExitCode()
++	}
++	switch {
++	case errors.Is(cause, context.DeadlineExceeded):
++		return "timeout", code, err
++	case cause != nil:
++		return "cancelled", code, err
++	case err != nil:
++		return "failed", code, err
++	}
++	return "success", code, nil
++}
++
++func (c *safeCmd) Cancel() { c.cancel() }
++
++// Run is Start+Wait.
++func (c *safeCmd) Run() (string, int, error) {
++	if err := c.Start(); err != nil {
++		return "start_failed", -1, err
++	}
++	return c.Wait()
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_exec_test.go snap_item1/safe_exec_test.go
+--- baseline_tree/safe_exec_test.go	1970-01-01 02:00:00.000000000 +0200
++++ snap_item1/safe_exec_test.go	2026-11-06 08:31:10.213428061 +0300
+@@ -0,0 +1,171 @@
++package main
++
++import (
++	"context"
++	"net/http/httptest"
++	"os"
++	"os/exec"
++	"path/filepath"
++	"strings"
++	"testing"
++	"time"
++)
++
++func needPython(t *testing.T) string {
++	t.Helper()
++	bin, err := exec.LookPath("python3")
++	if err != nil {
++		t.Skip("python3 yok")
++	}
++	return bin
++}
++
++func TestSafeExecRejectsNonAllowlistedBinary(t *testing.T) {
++	root := t.TempDir()
++	for _, argv := range [][]string{{"sh", "-c", "id"}, {"/bin/bash"}, {"curl", "x"}, {"rm", "-rf", "."}} {
++		if _, err := newSafeCmd(context.Background(), root, root, argv, time.Second); err == nil {
++			t.Fatalf("izinsiz komut kabul edildi: %v", argv)
++		}
++	}
++	for _, raw := range []string{`["sh","-c","id"]`, `["go","env","-w","X=1"]`, `["python3","-c","print(1)"]`, `["node","-e","1"]`, `["go","test","../x"]`} {
++		if _, err := terminalArgv(raw, root); err == nil {
++			t.Fatalf("terminal izinsiz komutu kabul etti: %s", raw)
++		}
++	}
++}
++
++func TestSafeExecCwdLockBlocksDotDotAndSymlink(t *testing.T) {
++	root := t.TempDir()
++	outside := t.TempDir()
++	if err := os.Mkdir(filepath.Join(root, "sub"), 0o755); err != nil {
++		t.Fatal(err)
++	}
++	if err := os.Symlink(outside, filepath.Join(root, "kacis")); err != nil {
++		t.Skip("symlink yok")
++	}
++	if _, err := lockCwd(root, "sub"); err != nil {
++		t.Fatalf("proje içi alt dizin reddedildi: %v", err)
++	}
++	for _, dir := range []string{"..", "sub/../..", filepath.Join(root, ".."), "kacis", filepath.Join(root, "kacis"), outside} {
++		if _, err := lockCwd(root, dir); err == nil {
++			t.Fatalf("kaçış kabul edildi: %s", dir)
++		}
++	}
++	if _, err := newSafeCmd(context.Background(), root, "kacis", []string{"go", "version"}, time.Second); err == nil {
++		t.Fatal("symlink cwd ile komut hazırlandı")
++	}
++}
++
++func TestSafeExecEnvDoesNotLeakSecrets(t *testing.T) {
++	py := needPython(t)
++	t.Setenv("US_LICENSE_SECRET", "sizinti-lisans-123")
++	t.Setenv("SHOPIFY_WEBHOOK_SECRET", "sizinti-shopify-456")
++	t.Setenv("US_MODEL_UPSTREAM_TOKEN", "sizinti-token-789")
++	t.Setenv("AWS_SECRET_ACCESS_KEY", "sizinti-aws")
++	for _, item := range safeExecEnv() {
++		if strings.Contains(item, "sizinti") {
++			t.Fatalf("env allowlist sızdırdı: %s", item)
++		}
++	}
++	root := t.TempDir()
++	sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", "import os\nfor k,v in os.environ.items(): print(k+'='+v)"}, 10*time.Second)
++	if err != nil {
++		t.Fatal(err)
++	}
++	state, code, _ := sc.Run()
++	if state != "success" || code != 0 {
++		t.Fatalf("%s %d %s", state, code, sc.Stderr.String())
++	}
++	if strings.Contains(sc.Stdout.String(), "sizinti") {
++		t.Fatalf("çocuk süreç gizli değeri gördü:\n%s", sc.Stdout.String())
++	}
++	// Run path uses the same filtered env.
++	for _, item := range pythonEnv() {
++		if strings.Contains(item, "sizinti") {
++			t.Fatalf("Run env sızdırdı: %s", item)
++		}
++	}
++}
++
++func TestRunPathDoesNotLeakSecretsToProgram(t *testing.T) {
++	needPython(t)
++	t.Setenv("US_LICENSE_SECRET", "sizinti-run-path")
++	root := t.TempDir()
++	script := "import os,sys\nprint('err-line', file=sys.stderr)\nprint('LEAK' if any('sizinti' in v for v in os.environ.values()) else 'CLEAN')\n"
++	if err := os.WriteFile(filepath.Join(root, "main.py"), []byte(script), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	s := newView("q-safe")
++	defer s.stopProgram()
++	line := s.startProgram(root, "")
++	if !s.runStarted {
++		t.Fatalf("program başlamadı: %s", line)
++	}
++	if !strings.Contains(line, "CLEAN") || strings.Contains(line, "LEAK") || strings.Contains(line, "US_LICENSE_SECRET") {
++		t.Fatalf("Run yolu gizli env sızdırdı:\n%s", line)
++	}
++	if !strings.Contains(line, "[stderr]") || !strings.Contains(line, "err-line") {
++		t.Fatalf("stderr ayrı gösterilmedi:\n%s", line)
++	}
++}
++
++func TestSafeExecSeparateStreamsAndCap(t *testing.T) {
++	py := needPython(t)
++	root := t.TempDir()
++	sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", "import sys\nsys.stdout.write('o'*100000)\nsys.stderr.write('E-ONLY')\nsys.exit(7)"}, 10*time.Second)
++	if err != nil {
++		t.Fatal(err)
++	}
++	state, code, _ := sc.Run()
++	if state != "failed" || code != 7 {
++		t.Fatalf("durum/kod yanlış: %s %d", state, code)
++	}
++	if got := len(sc.Stdout.String()); got > safeExecMaxOutput {
++		t.Fatalf("stdout sınırı aşıldı: %d", got)
++	}
++	if strings.Contains(sc.Stdout.String(), "E-ONLY") || sc.Stderr.String() != "E-ONLY" {
++		t.Fatal("stdout/stderr karıştı")
++	}
++}
++
++func TestSafeExecStartFailureIsReported(t *testing.T) {
++	root := t.TempDir()
++	fake := filepath.Join(root, "go")
++	if err := os.WriteFile(fake, []byte{0, 1, 2, 3}, 0o755); err != nil {
++		t.Fatal(err)
++	}
++	sc, err := newSafeCmd(context.Background(), root, root, []string{fake}, time.Second)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if state, _, err := sc.Run(); state != "start_failed" || err == nil {
++		t.Fatalf("başlatma hatası raporlanmadı: %s %v", state, err)
++	}
++}
++
++func TestRunLogNotWrittenWhenProgramDidNotStart(t *testing.T) {
++	root := t.TempDir()
++	if err := os.WriteFile(filepath.Join(root, "main.py"), []byte("print(1)\n"), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	t.Setenv("PATH", t.TempDir()) // no python3/go/node: launch cannot start
++	s := newView("q-nostart")
++	s.root = root
++	s.browse = root
++	srv := httptest.NewServer(guiMux(&s))
++	defer srv.Close()
++	defer s.stopProgram()
++	snap := guiPost(t, srv.URL+"/api/act", `{"op":"run"}`)
++	for _, item := range snap.Journal {
++		if strings.Contains(item.Text, "Program çalıştırıldı") {
++			t.Fatalf("başlamayan program için başarı günlüğü yazıldı: %+v", snap.Journal)
++		}
++	}
++	found := false
++	for _, item := range snap.Journal {
++		found = found || strings.Contains(item.Text, "Program başlatılamadı")
++	}
++	if !found {
++		t.Fatalf("başarısızlık günlüğü yok: %+v", snap.Journal)
++	}
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_exec_unix_test.go snap_item1/safe_exec_unix_test.go
+--- baseline_tree/safe_exec_unix_test.go	1970-01-01 02:00:00.000000000 +0200
++++ snap_item1/safe_exec_unix_test.go	2026-11-06 08:30:59.293250646 +0300
+@@ -0,0 +1,72 @@
++//go:build linux
++
++package main
++
++import (
++	"context"
++	"os"
++	"path/filepath"
++	"strconv"
++	"strings"
++	"syscall"
++	"testing"
++	"time"
++)
++
++func TestSafeExecTimeoutKillsProcessGroup(t *testing.T) {
++	py := needPython(t)
++	root := t.TempDir()
++	pidFile := filepath.Join(root, "child.pid")
++	script := "import subprocess,sys,time\np=subprocess.Popen([sys.executable,'-c','import time; time.sleep(60)'])\nopen('child.pid','w').write(str(p.pid))\nprint('ready',flush=True)\ntime.sleep(60)"
++	for _, mode := range []string{"timeout", "cancel"} {
++		_ = os.Remove(pidFile)
++		timeout := 30 * time.Second
++		if mode == "timeout" {
++			timeout = 1500 * time.Millisecond
++		}
++		sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", script}, timeout)
++		if err != nil {
++			t.Fatal(err)
++		}
++		if err := sc.Start(); err != nil {
++			t.Fatal(err)
++		}
++		deadline := time.Now().Add(10 * time.Second)
++		var childPid int
++		for time.Now().Before(deadline) {
++			if raw, err := os.ReadFile(pidFile); err == nil && len(raw) > 0 {
++				childPid, _ = strconv.Atoi(string(raw))
++				break
++			}
++			time.Sleep(20 * time.Millisecond)
++		}
++		if childPid == 0 {
++			t.Fatal("alt süreç pid yok")
++		}
++		if mode == "cancel" {
++			sc.Cancel()
++		}
++		start := time.Now()
++		state, _, _ := sc.Wait()
++		want := map[string]string{"timeout": "timeout", "cancel": "cancelled"}[mode]
++		if state != want {
++			t.Fatalf("%s: durum %s", mode, state)
++		}
++		if time.Since(start) > 8*time.Second {
++			t.Fatalf("%s: iptal gecikti", mode)
++		}
++		alive := true
++		for i := 0; i < 100 && alive; i++ {
++			// Reaped by init or zombie: both mean killed; check /proc state.
++			raw, err := os.ReadFile("/proc/" + strconv.Itoa(childPid) + "/stat")
++			alive = err == nil && !strings.Contains(string(raw), ") Z ") && syscall.Kill(childPid, 0) == nil
++			if alive {
++				time.Sleep(50 * time.Millisecond)
++			}
++		}
++		if alive {
++			_ = syscall.Kill(childPid, syscall.SIGKILL)
++			t.Fatalf("%s: torun süreç öldürülmedi (pid %d)", mode, childPid)
++		}
++	}
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_linux.go snap_item1/safe_limits_linux.go
+--- baseline_tree/safe_limits_linux.go	1970-01-01 02:00:00.000000000 +0200
++++ snap_item1/safe_limits_linux.go	2026-11-06 08:31:10.213428061 +0300
+@@ -0,0 +1,43 @@
++//go:build linux
++
++package main
++
++import (
++	"os"
++
++	"golang.org/x/sys/unix"
++)
++
++// applySafeLimits sets RLIMIT_CPU/DATA/FSIZE (DATA, not AS, so Go/V8 address-space reservations still work) on the started child via
++// prlimit(2). Children forked later inherit these limits.
++func applySafeLimits(proc *os.Process, l safeLimits) (func(), error) {
++	if proc == nil {
++		return func() {}, nil
++	}
++	set := func(res int, v uint64) error {
++		if v == 0 {
++			return nil
++		}
++		var cur unix.Rlimit
++		if err := unix.Prlimit(proc.Pid, res, nil, &cur); err != nil {
++			return err
++		}
++		if cur.Max != unix.RLIM_INFINITY && cur.Max < v {
++			v = cur.Max
++		}
++		return unix.Prlimit(proc.Pid, res, &unix.Rlimit{Cur: v, Max: v}, nil)
++	}
++	for _, item := range []struct {
++		res int
++		v   uint64
++	}{{unix.RLIMIT_CPU, l.CPUSeconds}, {unix.RLIMIT_DATA, l.MemoryBytes}, {unix.RLIMIT_FSIZE, l.FileBytes}} {
++		if err := set(item.res, item.v); err != nil {
++			return nil, err
++		}
++	}
++	// RLIMIT_NPROC is deliberately NOT set: on Linux it counts every
++	// thread of the real UID (the panel itself included), so a low value
++	// breaks threaded servers. Process count is bounded on Windows by the
++	// Job Object; on Linux use a cgroup/container for multi-tenant hosting.
++	return func() {}, nil
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_linux_test.go snap_item1/safe_limits_linux_test.go
+--- baseline_tree/safe_limits_linux_test.go	1970-01-01 02:00:00.000000000 +0200
++++ snap_item1/safe_limits_linux_test.go	2026-11-06 08:30:34.752864901 +0300
+@@ -0,0 +1,24 @@
++//go:build linux
++
++package main
++
++import (
++	"context"
++	"strings"
++	"testing"
++	"time"
++)
++
++func TestSafeExecAppliesLinuxRlimits(t *testing.T) {
++	py := needPython(t)
++	root := t.TempDir()
++	sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", "import resource,time\ntime.sleep(0.3)\nprint(resource.getrlimit(resource.RLIMIT_CPU)[0], resource.getrlimit(resource.RLIMIT_DATA)[0], resource.getrlimit(resource.RLIMIT_FSIZE)[0])"}, 10*time.Second)
++	if err != nil {
++		t.Fatal(err)
++	}
++	state, _, _ := sc.Run()
++	got := strings.Fields(sc.Stdout.String())
++	if state != "success" || len(got) != 3 || got[0] != "600" || got[1] != "4294967296" || got[2] != "536870912" {
++		t.Fatalf("rlimit uygulanmadı: %s %q %s", state, got, sc.Stderr.String())
++	}
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_other.go snap_item1/safe_limits_other.go
+--- baseline_tree/safe_limits_other.go	1970-01-01 02:00:00.000000000 +0200
++++ snap_item1/safe_limits_other.go	2026-11-06 08:28:52.831493598 +0300
+@@ -0,0 +1,8 @@
++//go:build !linux && !windows
++
++package main
++
++import "os"
++
++// No portable rlimit for an already started child on this platform.
++func applySafeLimits(proc *os.Process, l safeLimits) (func(), error) { return func() {}, nil }
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_windows.go snap_item1/safe_limits_windows.go
+--- baseline_tree/safe_limits_windows.go	1970-01-01 02:00:00.000000000 +0200
++++ snap_item1/safe_limits_windows.go	2026-11-06 08:28:52.831493598 +0300
+@@ -0,0 +1,52 @@
++//go:build windows
++
++package main
++
++import (
++	"os"
++	"unsafe"
++
++	"golang.org/x/sys/windows"
++)
++
++// applySafeLimits assigns the child to a Job Object with memory, process
++// count and CPU time limits and KILL_ON_JOB_CLOSE, so closing the job kills
++// the whole tree. NOT TESTED on a live Windows host from Linux CI.
++func applySafeLimits(proc *os.Process, l safeLimits) (func(), error) {
++	if proc == nil {
++		return func() {}, nil
++	}
++	job, err := windows.CreateJobObject(nil, nil)
++	if err != nil {
++		return nil, err
++	}
++	var info windows.JOBOBJECT_EXTENDED_LIMIT_INFORMATION
++	info.BasicLimitInformation.LimitFlags = windows.JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE
++	if l.MemoryBytes > 0 {
++		info.BasicLimitInformation.LimitFlags |= windows.JOB_OBJECT_LIMIT_PROCESS_MEMORY
++		info.ProcessMemoryLimit = uintptr(l.MemoryBytes)
++	}
++	if l.Processes > 0 {
++		info.BasicLimitInformation.LimitFlags |= windows.JOB_OBJECT_LIMIT_ACTIVE_PROCESS
++		info.BasicLimitInformation.ActiveProcessLimit = uint32(l.Processes)
++	}
++	if l.CPUSeconds > 0 {
++		info.BasicLimitInformation.LimitFlags |= windows.JOB_OBJECT_LIMIT_PROCESS_TIME
++		info.BasicLimitInformation.PerProcessUserTimeLimit = int64(l.CPUSeconds) * 10_000_000
++	}
++	if _, err = windows.SetInformationJobObject(job, windows.JobObjectExtendedLimitInformation, uintptr(unsafe.Pointer(&info)), uint32(unsafe.Sizeof(info))); err != nil {
++		windows.CloseHandle(job)
++		return nil, err
++	}
++	h, err := windows.OpenProcess(windows.PROCESS_SET_QUOTA|windows.PROCESS_TERMINATE, false, uint32(proc.Pid))
++	if err != nil {
++		windows.CloseHandle(job)
++		return nil, err
++	}
++	defer windows.CloseHandle(h)
++	if err = windows.AssignProcessToJobObject(job, h); err != nil {
++		windows.CloseHandle(job)
++		return nil, err
++	}
++	return func() { windows.CloseHandle(job) }, nil
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/terminal.go snap_item1/terminal.go
+--- baseline_tree/terminal.go	2026-11-06 05:53:52.906176174 +0300
++++ snap_item1/terminal.go	2026-11-06 08:29:16.623775745 +0300
+@@ -25,7 +25,7 @@
+ type panelTerminal struct {
+ 	mu             sync.Mutex
+ 	state          terminalState
+-	stdout, stderr cappedBuf
++	stdout, stderr *cappedBuf
+ 	cancel         context.CancelFunc
+ }
+ 
+@@ -99,42 +99,25 @@
+ 	if t.state.State == "running" {
+ 		return fmt.Errorf("Terminal işlemi sürüyor; önce iptal edin.")
+ 	}
+-	ctx, cancel := context.WithTimeout(context.Background(), timeout)
+-	cmd := exec.CommandContext(ctx, bin, argv[1:]...)
+-	configureProcessTree(cmd)
+-	cmd.Cancel = func() error { return killProcessTree(cmd.Process) }
+-	cmd.WaitDelay = 2 * time.Second
+-	cmd.Dir = root
+-	cmd.Env = projectTestEnv()
++	sc, err := newSafeCmd(context.Background(), root, root, append([]string{bin}, argv[1:]...), timeout, "PYTHONIOENCODING=utf-8")
++	if err != nil {
++		return fmt.Errorf("Terminal işlemi reddedildi: %v", err)
++	}
+ 	// A new bounded buffer belongs to this generation; old output is discarded.
+-	t.stdout = cappedBuf{}
+-	t.stderr = cappedBuf{}
+-	cmd.Stdout = &t.stdout
+-	cmd.Stderr = &t.stderr
+-	if err = cmd.Start(); err != nil {
+-		cancel()
++	t.stdout = sc.Stdout
++	t.stderr = sc.Stderr
++	if err = sc.Start(); err != nil {
+ 		return fmt.Errorf("Terminal işlemi başlamadı: %s", argv[0])
+ 	}
+ 	t.state = terminalState{State: "running", Root: root, Argv: argv, ExitCode: -1}
+-	t.cancel = cancel
++	t.cancel = sc.Cancel
+ 	go func() {
+-		err := cmd.Wait()
+-		cause := ctx.Err()
+-		cancel()
++		state, code, _ := sc.Wait()
+ 		t.mu.Lock()
+ 		defer t.mu.Unlock()
+ 		t.cancel = nil
+-		t.state.ExitCode = cmd.ProcessState.ExitCode()
+-		switch {
+-		case cause == context.DeadlineExceeded:
+-			t.state.State = "timeout"
+-		case cause != nil:
+-			t.state.State = "cancelled"
+-		case err != nil:
+-			t.state.State = "failed"
+-		default:
+-			t.state.State = "success"
+-		}
++		t.state.ExitCode = code
++		t.state.State = state
+ 	}()
+ 	return nil
+ }
+@@ -154,7 +137,11 @@
+ 		v.ExitCode = -1
+ 	}
+ 	v.Argv = append([]string(nil), v.Argv...)
+-	v.Stdout = redactLine(t.stdout.String())
+-	v.Stderr = redactLine(t.stderr.String())
++	if t.stdout != nil {
++		v.Stdout = redactLine(t.stdout.String())
++	}
++	if t.stderr != nil {
++		v.Stderr = redactLine(t.stderr.String())
++	}
+ 	return v
+ }

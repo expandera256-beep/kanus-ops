@@ -1,0 +1,43 @@
+Files /workspace/us-panel-dev/r11_base/US_DERLE.bat and /workspace/us-panel/work2/kiyas/term/US_DERLE.bat differ
+Files /workspace/us-panel-dev/r11_base/cmd/us-license-hook/main.go and /workspace/us-panel/work2/kiyas/term/cmd/us-license-hook/main.go differ
+Files /workspace/us-panel-dev/r11_base/file_open_unix.go and /workspace/us-panel/work2/kiyas/term/file_open_unix.go differ
+Files /workspace/us-panel-dev/r11_base/file_open_windows.go and /workspace/us-panel/work2/kiyas/term/file_open_windows.go differ
+Files /workspace/us-panel-dev/r11_base/file_tools.go and /workspace/us-panel/work2/kiyas/term/file_tools.go differ
+Files /workspace/us-panel-dev/r11_base/gateway_credit_test.go and /workspace/us-panel/work2/kiyas/term/gateway_credit_test.go differ
+Files /workspace/us-panel-dev/r11_base/gpu_warming.go and /workspace/us-panel/work2/kiyas/term/gpu_warming.go differ
+Files /workspace/us-panel-dev/r11_base/hook_release_test.go and /workspace/us-panel/work2/kiyas/term/hook_release_test.go differ
+Files /workspace/us-panel-dev/r11_base/licensesrv/accounts.go and /workspace/us-panel/work2/kiyas/term/licensesrv/accounts.go differ
+Files /workspace/us-panel-dev/r11_base/licensesrv/accounts_test.go and /workspace/us-panel/work2/kiyas/term/licensesrv/accounts_test.go differ
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: api_regression_baseline_test.go
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: backpressure.go
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: backpressure_test.go
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: bcrypt_limit_test.go
+Files /workspace/us-panel-dev/r11_base/licensesrv/credits_test.go and /workspace/us-panel/work2/kiyas/term/licensesrv/credits_test.go differ
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: gpu_pin.go
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: gpu_pin_test.go
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: gpu_transport_test.go
+Files /workspace/us-panel-dev/r11_base/licensesrv/gpu_wake.go and /workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake.go differ
+Files /workspace/us-panel-dev/r11_base/licensesrv/gpu_wake_test.go and /workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake_test.go differ
+Files /workspace/us-panel-dev/r11_base/licensesrv/load_round6_test.go and /workspace/us-panel/work2/kiyas/term/licensesrv/load_round6_test.go differ
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: login_limiter.go
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: login_limiter_test.go
+Files /workspace/us-panel-dev/r11_base/licensesrv/mail.go and /workspace/us-panel/work2/kiyas/term/licensesrv/mail.go differ
+Files /workspace/us-panel-dev/r11_base/licensesrv/model_proxy.go and /workspace/us-panel/work2/kiyas/term/licensesrv/model_proxy.go differ
+Files /workspace/us-panel-dev/r11_base/licensesrv/model_proxy_test.go and /workspace/us-panel/work2/kiyas/term/licensesrv/model_proxy_test.go differ
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: privacy_mask.go
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: privacy_outbox_test.go
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: ready_check_test.go
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: ready_helpers_test.go
+Files /workspace/us-panel-dev/r11_base/licensesrv/reversals.go and /workspace/us-panel/work2/kiyas/term/licensesrv/reversals.go differ
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: strict_done_test.go
+Only in /workspace/us-panel/work2/kiyas/term/licensesrv: testdata
+Files /workspace/us-panel-dev/r11_base/licensesrv/webhook.go and /workspace/us-panel/work2/kiyas/term/licensesrv/webhook.go differ
+Files /workspace/us-panel-dev/r11_base/model.go and /workspace/us-panel/work2/kiyas/term/model.go differ
+Only in /workspace/us-panel/work2/kiyas/term: py_isolated_test.go
+Files /workspace/us-panel-dev/r11_base/rea.go and /workspace/us-panel/work2/kiyas/term/rea.go differ
+Only in /workspace/us-panel/work2/kiyas/term: rea_safe_test.go
+Files /workspace/us-panel-dev/r11_base/release.go and /workspace/us-panel/work2/kiyas/term/release.go differ
+Only in /workspace/us-panel/work2/kiyas/term: review_write_race_linux_test.go
+Files /workspace/us-panel-dev/r11_base/safe_exec.go and /workspace/us-panel/work2/kiyas/term/safe_exec.go differ
+Only in /workspace/us-panel/work2/kiyas/term: stream_done_test.go
+Files /workspace/us-panel-dev/r11_base/terminal.go and /workspace/us-panel/work2/kiyas/term/terminal.go differ

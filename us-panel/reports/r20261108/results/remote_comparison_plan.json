@@ -1,0 +1,9 @@
+{
+  "status": "NOT RUN",
+  "25": "BLOCKED cap20",
+  "50": "BLOCKED cap20",
+  "network_requests_sent": 0,
+  "old_vps_comparable_load_data": "NOT MEASURED",
+  "local_login_reference": "/workspace/us-panel/reports/r20261108/results/login_results.json",
+  "local_credits_reference": "/workspace/us-panel/reports/r20261108/results/credit_status_results.json"
+}

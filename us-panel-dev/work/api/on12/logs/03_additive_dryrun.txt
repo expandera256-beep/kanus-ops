@@ -1,0 +1,16 @@
+# orijinal additive
+checking file apiv1/README.md
+checking file apiv1/errors.go
+checking file apiv1/version.go
+checking file apiv1/version_test.go
+checking file cmd/us-license-hook/main.go
+Hunk #2 FAILED at 122.
+1 out of 2 hunks FAILED
+EXIT=1
+# rebased-on-11 additive
+checking file apiv1/README.md
+checking file apiv1/errors.go
+checking file apiv1/version.go
+checking file apiv1/version_test.go
+checking file cmd/us-license-hook/main.go
+EXIT=0

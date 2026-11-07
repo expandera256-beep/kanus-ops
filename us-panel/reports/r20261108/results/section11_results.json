@@ -1,0 +1,134 @@
+{
+  "data_source": "MOCK_UPSTREAM_REAL_LOCAL_DOT11_HOOK",
+  "levels": [
+    {
+      "concurrency": 1,
+      "n": 4,
+      "latency_ms": {
+        "p50": 46.876,
+        "p95": 65.583,
+        "p99": 68.223
+      },
+      "success_rate": 1.0,
+      "error_rate": 0.0,
+      "gpu_memory_bytes": null,
+      "gpu_memory_reason": "MOCK upstream / no GPU telemetry",
+      "queue_ms": {
+        "p50": null,
+        "p95": null,
+        "p99": null
+      },
+      "queue_reason": "NOT_EXPOSED_BY_TARGET",
+      "expected_credit_debit": 4,
+      "actual_credit_debit": 4,
+      "hold_after": 0,
+      "response_and_credit_isolation": true,
+      "billed_total_cost_usd": null,
+      "simulated_credit_cost_usd": 0.008
+    },
+    {
+      "concurrency": 5,
+      "n": 20,
+      "latency_ms": {
+        "p50": 50.749,
+        "p95": 98.514,
+        "p99": 99.769
+      },
+      "success_rate": 1.0,
+      "error_rate": 0.0,
+      "gpu_memory_bytes": null,
+      "gpu_memory_reason": "MOCK upstream / no GPU telemetry",
+      "queue_ms": {
+        "p50": null,
+        "p95": null,
+        "p99": null
+      },
+      "queue_reason": "NOT_EXPOSED_BY_TARGET",
+      "expected_credit_debit": 20,
+      "actual_credit_debit": 20,
+      "hold_after": 0,
+      "response_and_credit_isolation": true,
+      "billed_total_cost_usd": null,
+      "simulated_credit_cost_usd": 0.04
+    },
+    {
+      "concurrency": 10,
+      "n": 40,
+      "latency_ms": {
+        "p50": 97.243,
+        "p95": 190.731,
+        "p99": 203.731
+      },
+      "success_rate": 1.0,
+      "error_rate": 0.0,
+      "gpu_memory_bytes": null,
+      "gpu_memory_reason": "MOCK upstream / no GPU telemetry",
+      "queue_ms": {
+        "p50": null,
+        "p95": null,
+        "p99": null
+      },
+      "queue_reason": "NOT_EXPOSED_BY_TARGET",
+      "expected_credit_debit": 40,
+      "actual_credit_debit": 40,
+      "hold_after": 0,
+      "response_and_credit_isolation": true,
+      "billed_total_cost_usd": null,
+      "simulated_credit_cost_usd": 0.08
+    },
+    {
+      "concurrency": 25,
+      "n": 100,
+      "latency_ms": {
+        "p50": 237.858,
+        "p95": 431.044,
+        "p99": 456.785
+      },
+      "success_rate": 1.0,
+      "error_rate": 0.0,
+      "gpu_memory_bytes": null,
+      "gpu_memory_reason": "MOCK upstream / no GPU telemetry",
+      "queue_ms": {
+        "p50": null,
+        "p95": null,
+        "p99": null
+      },
+      "queue_reason": "NOT_EXPOSED_BY_TARGET",
+      "expected_credit_debit": 100,
+      "actual_credit_debit": 100,
+      "hold_after": 0,
+      "response_and_credit_isolation": true,
+      "billed_total_cost_usd": null,
+      "simulated_credit_cost_usd": 0.2
+    },
+    {
+      "concurrency": 50,
+      "n": 200,
+      "latency_ms": {
+        "p50": 477.116,
+        "p95": 856.501,
+        "p99": 910.857
+      },
+      "success_rate": 1.0,
+      "error_rate": 0.0,
+      "gpu_memory_bytes": null,
+      "gpu_memory_reason": "MOCK upstream / no GPU telemetry",
+      "queue_ms": {
+        "p50": null,
+        "p95": null,
+        "p99": null
+      },
+      "queue_reason": "NOT_EXPOSED_BY_TARGET",
+      "expected_credit_debit": 200,
+      "actual_credit_debit": 200,
+      "hold_after": 0,
+      "response_and_credit_isolation": true,
+      "billed_total_cost_usd": null,
+      "simulated_credit_cost_usd": 0.4
+    }
+  ],
+  "simulated_main_load_total_usd": 0.728,
+  "billed_total_cost_usd": null,
+  "gpu_calls": 0,
+  "remote_requests_this_turn": 0
+}

@@ -1,0 +1,111 @@
+/workspace/us-panel/work2/kiyas/term/life_test.go:9:func TestLifeBarShowsCallLoadAndIdle(t *testing.T) {
+/workspace/us-panel/work2/kiyas/term/life_test.go:14:	call, _, idle, full := s.lifeLines(now)
+/workspace/us-panel/work2/kiyas/term/life_test.go:15:	if !strings.Contains(call, "sürüyor") || !strings.Contains(call, "42 sn") || !strings.Contains(idle, "doğrulanmadı") || full != 0 {
+/workspace/us-panel/work2/kiyas/term/life_test.go:16:		t.Fatalf("%s %s %d", call, idle, full)
+/workspace/us-panel/work2/kiyas/term/life_test.go:29:	_, load, idle, _ := s.lifeLines(now)
+/workspace/us-panel/work2/kiyas/term/life_test.go:30:	if !strings.Contains(load, "yükleniyor") || !strings.Contains(load, "1 dk 5 sn") || !strings.Contains(idle, "doğrulanmadı") {
+/workspace/us-panel/work2/kiyas/term/life_test.go:31:		t.Fatalf("%s %s", load, idle)
+/workspace/us-panel/work2/kiyas/term/life_test.go:39:	s.resources.Managed = []accountWorkerState{{Worker: "gpu", Model: selectedModel(s.worker), ProviderStatus: "RUNNING", IdleSeconds: 120, IdleRemaining: new(int), ObservedAt: now.Unix(), Live: true}}
+/workspace/us-panel/work2/kiyas/term/life_test.go:40:	*s.resources.Managed[0].IdleRemaining = 90
+/workspace/us-panel/work2/kiyas/term/life_test.go:42:	_, load, idle, left := s.lifeLines(now)
+/workspace/us-panel/work2/kiyas/term/life_test.go:43:	if !strings.Contains(load, "yüklendi") || !strings.Contains(load, "3 dk 20 sn") || !strings.Contains(idle, "kapanış eşiği") || left <= 0 || left >= 100 {
+/workspace/us-panel/work2/kiyas/term/life_test.go:44:		t.Fatalf("%s %s %d", load, idle, left)
+/workspace/us-panel/work2/kiyas/term/life_test.go:51:	_, _, idle, _ = s.lifeLines(now)
+/workspace/us-panel/work2/kiyas/term/life_test.go:52:	if !strings.Contains(idle, "doğrulanmadı") {
+/workspace/us-panel/work2/kiyas/term/life_test.go:53:		t.Fatal(idle)
+/workspace/us-panel/work2/kiyas/term/life_test.go:57:	_, _, idle, left = s.lifeLines(now)
+/workspace/us-panel/work2/kiyas/term/life_test.go:58:	if !strings.Contains(idle, "doğrulanmadı") || left != 0 {
+/workspace/us-panel/work2/kiyas/term/life_test.go:59:		t.Fatalf("%s %d", idle, left)
+/workspace/us-panel/deploy/us-license-hook/README_TR.md:21:Requests en çok20 gerçek reservation/settlement kaydı; legacy bilinmeyen zaman0, tahmin edilmez. Workers upstream model metadata'dır; provider_status unknown/livefalse; GCP canlı yönetimi olduğu iddia edilmez. Upstream yoksa503. Go proxy HTTPS :8443 wake/status adaptörüne bağlıdır; idle-stop/watchdog dış servisin işidir. Bu paket için canlı GPU kabulü NOT TESTED.
+/workspace/us-panel/deploy/us-license-hook/README_TR.md:42:- Ardından `US_GPU_STATUS_URL` (`GET`, `{instance, model_ready}`) 5–30 sn geri çekilmeli yoklanır; `US_GPU_WARMUP_TIMEOUT` (varsayılan 15 dk, 5–60 dk) dolarsa durum `failed` olur, 30 sn sonra yeniden denenebilir.
+/workspace/us-panel/deploy/us-license-hook/README_TR.md:47:- Özellik varsayılan açıktır; env boş/unset olsa da kod içindeki HTTPS :8443 URL'leri kullanılır. Yalnız `US_GPU_WAKE_DISABLE=1` ile açıkça kapatılır. Testler gerçek GPU'yu çağırmaz: route testlerinde disable, diğerlerinde yerel mock URL'ler kullanılır.
+/workspace/us-panel/deploy/us-license-hook/README_TR.md:79:- Hesap başına giriş sınırı (`US_LOGIN_ACCOUNT_LIMIT=10`, `US_LOGIN_ACCOUNT_WINDOW_SECONDS=900`): normalize e-posta başına başarısız deneme; aşılınca 429. IP sınırı da korunur. Başarılı giriş sayacı sıfırlar.
+/workspace/us-panel/deploy/us-license-hook/README_TR.md:90:- Operatör log kontrolü: `journalctl -u us-license-hook | grep gpu_wake`; gerçek hedef için `scheme=https host=34.41.186.170:8443` ve `pin_ok=yes` görülmeli. Bu komut burada çalıştırılmadı; token kapatma/değiştirme yapılmadı.
+/workspace/us-panel/work2/kiyas/term/tunnel_windows.go:103:            client := &http.Client{Timeout: 15*time.Minute}
+/workspace/us-panel/deploy/us-license-hook/us-license-hook.env.example:69:US_LOGIN_ACCOUNT_WINDOW_SECONDS=900
+/workspace/us-panel/work2/kiyas/term/ui.go:228:		text = "cevap yaz    enter gönder    esc soruyu kapat    ^C çık"
+/workspace/us-panel/work2/kiyas/term/ui.go:230:		text = "enter aç    bs yukarı    esc kapat    ^C çık"
+/workspace/us-panel/work2/kiyas/term/ONARIM_NOTU.txt:11:Bağlantı: Bilgisayardaki 127.0.0.1:1923, Google Cloud ds-a100 üzerindeki 127.0.0.1:8080 model servisine SSH ile yönlendirilir. Windows'ta Google Cloud CLI bulunamazsa US, Python içeren Google CLI 592.0.0 arşivini resmi kaynaktan (yaklaşık 105 MB) indirir, SHA-256 ile doğrular ve kullanıcının yerel önbelleğindeki US klasörüne kurar. Sistem PATH ayarını değiştirmez. İndirme ve açma sırasında en az 1 GiB boş alan aranır. Önce kullanıcının yerel önbelleği; alan yetersizse ağ veya taşınabilir sürücüler hariç diğer sabit sürücüler denenir ve bulunan sürücüde US_Cache klasörü kullanılır. Uygun sabit sürücü yoksa dosya indirilmez ve kullanıcıya durum bildirilir. Windows ve Google kimlik doğrulaması için sistem sürücüsünde de bir miktar boş alan gerekebilir. İlgili hesapla Google oturum açma ve gerektiğinde SSH onayları kullanıcı tarafından tamamlanır. SSH penceresini açık tutun. Önceki US sürecini Görev Yöneticisi'nden kapatın.
+/workspace/us-panel/work2/kiyas/term/ui_test.go:72:	idle := s.view()
+/workspace/us-panel/work2/kiyas/term/ui_test.go:73:	idle.width = 100
+/workspace/us-panel/work2/kiyas/term/ui_test.go:74:	idle.height = 36
+/workspace/us-panel/work2/kiyas/term/ui_test.go:75:	before := render(idle)
+/workspace/us-panel/work2/kiyas/term/ui_test.go:80:		t.Fatalf("idle board missing\n%s", before)
+/workspace/us-panel/work2/kiyas/term/ui_test.go:82:	v := idle
+/workspace/us-panel/work2/kiyas/term/life.go:97:func (s *session) lifeLines(now time.Time) (call, load, idle string, idleLeft int) {
+/workspace/us-panel/work2/kiyas/term/life.go:131:	idle = "Otomatik kapanış durumu doğrulanmadı"
+/workspace/us-panel/work2/kiyas/term/life.go:132:	idleLeft = 0
+/workspace/us-panel/work2/kiyas/term/life.go:142:			idle = "kapalı"
+/workspace/us-panel/work2/kiyas/term/life.go:145:			idle = fmt.Sprintf("Sunucuda etkin istek: %d", item.Active)
+/workspace/us-panel/work2/kiyas/term/life.go:146:			idleLeft = 100
+/workspace/us-panel/work2/kiyas/term/life.go:148:			idle = "kapanış sürüyor"
+/workspace/us-panel/work2/kiyas/term/life.go:149:		case item.IdleRemaining != nil:
+/workspace/us-panel/work2/kiyas/term/life.go:150:			left := *item.IdleRemaining - int(now.Unix()-item.ObservedAt)
+/workspace/us-panel/work2/kiyas/term/life.go:155:				idle = "Kapanış denetimi bekleniyor"
+/workspace/us-panel/work2/kiyas/term/life.go:157:				idle = clockText(time.Duration(left)*time.Second) + " · sunucu kapanış eşiği"
+/workspace/us-panel/work2/kiyas/term/life.go:159:			idleLeft = remainPercent(time.Duration(item.IdleSeconds)*time.Second, time.Duration(item.IdleSeconds-left)*time.Second)
+/workspace/us-panel/work2/kiyas/term/life.go:161:			idle = "Sunucu bekleme süresi henüz başlamadı"
+/workspace/us-panel/work2/kiyas/term/life.go:165:	return call, load, idle, idleLeft
+/workspace/us-panel/work2/kiyas/term/gui.go:63:			return errors.New("Başka bir US sürümü hâlâ çalışıyor. Çalışan US işlemini kapatıp yeni sürümü yeniden başlatın; eski panel yeni sürüm olarak açılmadı.")
+/workspace/us-panel/work2/kiyas/term/gui.go:1017:	IdleLine        string                `json:"idleLine"`
+/workspace/us-panel/work2/kiyas/term/gui.go:1018:	IdleLeft        int                   `json:"idleLeft"`
+/workspace/us-panel/work2/kiyas/term/gui.go:1068:	callLine, loadLine, idleLine, idleLeft := s.lifeLines(time.Now())
+/workspace/us-panel/work2/kiyas/term/gui.go:1138:		IdleLine:        idleLine,
+/workspace/us-panel/work2/kiyas/term/gui.go:1139:		IdleLeft:        idleLeft,
+/workspace/us-panel/work2/kiyas/term/license_test.go:78:	if err != nil || !strings.Contains(describeLicense(doc, licenseState{}), "200") || !strings.Contains(describeLicense(doc, licenseState{}), "18.900 TL") {
+/workspace/us-panel/work2/kiyas/term/license_test.go:111:	if err != nil || sub.Kind != "sub" || sub.Prompts != 200 || sub.TRY != 18900 || sub.Seconds != 0 || sub.Exp != now.Add(30*24*time.Hour).Unix() {
+/workspace/us-panel/work2/kiyas/term/license_test.go:125:	if err != nil || seated.Kind != "sub" || seated.Prompts != 200 || seated.TRY != 18900 {
+/workspace/us-panel/work2/kiyas/term/license_test.go:176:	if strings.Contains(page, pricingMarker) || strings.Contains(page, "200 USD") || !strings.Contains(page, "18.900 TL") || !strings.Contains(page, "1.990 TL") || !strings.Contains(page, "100 istem 9.900 TL") {
+/workspace/us-panel/work2/kiyas/term/main.go:473:			s.notice = "Soru kapatıldı."
+/workspace/us-panel/work2/kiyas/term/worker_client.go:18:	IdleSeconds    int    `json:"idle_seconds"`
+/workspace/us-panel/work2/kiyas/term/worker_client.go:19:	IdleRemaining  *int   `json:"idle_remaining"`
+/workspace/us-panel/work2/kiyas/term/worker_client.go:52:		if item.Worker == "" || len(item.Worker) > 63 || item.Model == "" || len(item.Model) > 128 || item.Active < 0 || item.Active > 10 || item.IdleSeconds < 0 || item.IdleSeconds > 1800 || item.ObservedAt < 0 || item.IdleRemaining != nil && (*item.IdleRemaining < 0 || *item.IdleRemaining > item.IdleSeconds) {
+/workspace/us-panel/work2/kiyas/term/cmd/us-license-hook/wake_defaults_test.go:27:	if w.WakeURL != "https://34.41.186.170:8443/a100/start" || w.StatusURL != "https://34.41.186.170:8443/a100/status" || w.PinFile != "/etc/us-model/wake.pin" || w.TokenFile != "/etc/us-model/wake.token" || w.WarmupTimeout != 15*time.Minute {
+/workspace/us-panel/work2/kiyas/term/cmd/us-license-hook/main.go:68:	log.Fatal((&http.Server{Addr: addr, Handler: mux, ReadHeaderTimeout: 10 * time.Second, ReadTimeout: 30 * time.Second, IdleTimeout: 90 * time.Second}).ListenAndServe())
+/workspace/us-panel/work2/kiyas/term/testdata/project_acceptance.py:76:    finally:http.shutdown();http.server_close();thread.join(5)
+/workspace/us-panel/work2/kiyas/term/log_regression_test.go:19:	content := strings.Repeat("a", 2900) + "\n"
+/workspace/us-panel/work2/kiyas/term/terminal.go:151:		v.State = "idle"
+/workspace/us-panel/work2/kiyas/term/account_auth_timeout_test.go:21:	withAuthTimeout(t, 900*time.Millisecond) // scaled 90s budget
+/workspace/us-panel/work2/kiyas/term/gui.html:61:  @media (max-width: 900px) {
+/workspace/us-panel/work2/kiyas/term/gui.html:78:  @media(max-width:900px){.app{grid-template-columns:1fr;grid-template-rows:auto minmax(360px,1fr) minmax(200px,40vh)}.rail{padding:8px;gap:4px}.rail .mark{margin:10px}.rail button{min-width:72px}.life{grid-template-columns:repeat(2,minmax(0,1fr));margin:4px 16px 8px}.top,#thread{padding-left:16px;padding-right:16px}#form{padding:8px 16px 16px}}
+/workspace/us-panel/work2/kiyas/term/gui.html:108:      <div><span class="k">Kapanma</span><span class="v" id="lifeidle">bakılıyor</span><span class="meter"><span id="lifeidlebar"></span></span></div>
+/workspace/us-panel/work2/kiyas/term/gui.html:382:  document.querySelector('#terminaloutput').textContent=`${term.state||'idle'} · çıkış kodu ${term.exitCode==null?'-':term.exitCode}\n${term.root||''}\nSTDOUT\n${term.stdout||''}\nSTDERR\n${term.stderr||''}`;
+/workspace/us-panel/work2/kiyas/term/gui.html:396:  document.querySelector('#workerstates').textContent=(desk.workerStates||[]).map(item=>`${item.model} · ${item.provider_status} · ${item.active} etkin istek · ${item.live?'son canlı sorgu':'doğrulanmadı'}${item.idle_remaining==null?'':` · kapanış eşiğine ${item.idle_remaining} sn`}`).join('\n') || 'Sunucu durumu doğrulanmadı.';
+/workspace/us-panel/work2/kiyas/term/gui.html:402:  document.querySelector("#lifeidle").textContent = desk.idleLine || "bakılıyor";
+/workspace/us-panel/work2/kiyas/term/gui.html:403:  document.querySelector("#lifeidlebar").style.width = Math.max(0, Math.min(100, desk.idleLeft || 0)) + "%";
+/workspace/us-panel/work2/kiyas/term/context_budget_test.go:13:	original := strings.Repeat("a", 3900)
+/workspace/us-panel/work2/kiyas/term/gateway.go:158:			out.body = "Kredi kapatma doğrulanamadı; tekrar göndermeden önce bakiyeyi kontrol edin."
+/workspace/us-panel/work2/kiyas/term/repair_loop.go:29:var defaultRepairBudget = repairBudget{MaxIterations: 4, MaxModelCalls: 4, MaxDuration: 15 * time.Minute, StepTimeout: 3 * time.Minute, MaxEditBytes: 256 << 10}
+/workspace/us-panel/work2/kiyas/term/licensesrv/login_limiter.go:33:		window:  time.Duration(envInt("US_LOGIN_ACCOUNT_WINDOW_SECONDS", 900, 10, 86400)) * time.Second,
+/workspace/us-panel/work2/kiyas/term/licensesrv/order_name_test.go:31:	if c := postTopic(h, "refunds/create", `{"id":900,"order_id":555,"refund_line_items":[{"line_item_id":1,"quantity":1}]}`, "partial-name"); c != 200 {
+/workspace/us-panel/work2/kiyas/term/licensesrv/pricing_test.go:40:	if TRYText(18900) != "18.900 TL" || TRYText(149) != "149 TL" {
+/workspace/us-panel/work2/kiyas/term/licensesrv/pricing_test.go:41:		t.Fatal(TRYText(18900))
+/workspace/us-panel/work2/kiyas/term/model.go:31:const streamIdleTimeout = 3 * time.Minute
+/workspace/us-panel/work2/kiyas/term/model.go:2148:	MaxIdleConns:          4,
+/workspace/us-panel/work2/kiyas/term/model.go:2149:	IdleConnTimeout:       30 * time.Second,
+/workspace/us-panel/work2/kiyas/term/model.go:2290:	idleTimer := time.AfterFunc(streamIdleTimeout, cancel)
+/workspace/us-panel/work2/kiyas/term/model.go:2291:	defer idleTimer.Stop()
+/workspace/us-panel/work2/kiyas/term/model.go:2292:	content, thinking, errText := readLimitedBodyPolicy(&streamIdleReader{reader: resp.Body, timer: idleTimer}, resp.Header.Get("Content-Type"), progress, resp.Header.Get("X-US-Metered") != "1")
+/workspace/us-panel/work2/kiyas/term/model.go:2325:type streamIdleReader struct {
+/workspace/us-panel/work2/kiyas/term/model.go:2330:func (r *streamIdleReader) Read(p []byte) (int, error) {
+/workspace/us-panel/work2/kiyas/term/model.go:2333:		r.timer.Reset(streamIdleTimeout)
+/workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake.go:34:	state   string // idle, starting, polling, ready, failed
+/workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake.go:54:	DefaultGPUWarmup    = 15 * time.Minute
+/workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake.go:136:		Client: &http.Client{Timeout: 20 * time.Second, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}, state: "idle", since: time.Now()}
+/workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake.go:187:		g.state, g.reason, g.since = "idle", "upstream_down", time.Now()
+/workspace/us-panel/work2/kiyas/term/licensesrv/account_workers.go:57:		workers = append(workers, map[string]any{"worker": "model-upstream", "model": m.ID, "phase": phase, "provider_status": "unknown", "active": len(p.slots), "idle_seconds": 900, "idle_remaining": nil, "observed_at": time.Now().Unix(), "live": false, "model_ready": ready})
+/workspace/us-panel/work2/kiyas/term/licensesrv/accounts.go:272:		if now.Sub(v.Start) >= 15*time.Minute {
+/workspace/us-panel/work2/kiyas/term/licensesrv/accounts.go:505:				a.ResetExpiry = now.Add(15 * time.Minute)
+/workspace/us-panel/work2/kiyas/term/licensesrv/pricing.go:41:	{SKU: "US-CREDIT-100", Title: "Kanus AI — 100 Model İsteği", PriceTRY: 9900, LiveID: 15432761442532, Plan: Plan{Kind: "sub", Days: 365, Prompts: 100, Credits: 100}},
+/workspace/us-panel/work2/kiyas/term/licensesrv/pricing.go:42:	{SKU: "US-MONTHLY-200", Title: "Kanus AI — 1 Aylık Erişim / 200 İstem", PriceTRY: 18900, LiveID: 15424693010660, Plan: Plan{Kind: "sub", Days: 30, Prompts: 200, Credits: 200}},
+/workspace/us-panel/work2/kiyas/term/licensesrv/pricing.go:67:// TRYText: 18900 -> "18.900 TL"
+/workspace/us-panel/work2/kiyas/term/licensesrv/bcrypt_limit_test.go:67:	if d < 900*time.Millisecond || d > 3*time.Second {
+/workspace/us-panel/work2/kiyas/term/licensesrv/store.go:269:			return errors.New("rezervasyon zaten kapatıldı")
+/workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake_test.go:101:	if g2, _ := NewGPUWaker("http://34.41.186.170/a100/start", "http://34.41.186.170/a100/status", "/x", 0); g2.WarmupTimeout != 15*time.Minute {
+/workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake_test.go:102:		t.Fatalf("varsayılan 15 dk olmalı: %v", g2.WarmupTimeout)
+/workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake_test.go:118:			if g.Status().State != "idle" {
+/workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake_test.go:266:func TestGPUWakeRestartAfterIdleStop(t *testing.T) {
+/workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake_test.go:271:	g.MarkDown() // VM idle-stopped later
+/workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake_test.go:275:		t.Fatalf("boşta durdurma sonrası yeniden başlatma: %d", n)
+/workspace/us-panel/work2/kiyas/term/licensesrv/testdata/US_PLANS_JSON_CANLI.json:2:  "15424693010660": {"plan":"monthly","credits":200,"days":30,"price_try":18900},
+/workspace/us-panel/work2/kiyas/term/licensesrv/testdata/US_PLANS_JSON_CANLI.json:9:  "15432761442532": {"plan":"credit","credits":100,"days":365,"price_try":9900}

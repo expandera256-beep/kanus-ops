@@ -1,0 +1,92 @@
+{"Time":"2026-11-06T10:00:33.652357055+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-06T10:00:33.652580255+03:00","Action":"start","Package":"kiyas/internal/privacy"}
+{"Time":"2026-11-06T10:00:33.660765028+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux"}
+{"Time":"2026-11-06T10:00:33.660834813+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux","Output":"=== RUN   TestPrivacyHTTPExportBearerOriginRatePrefsMux\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:33.667128175+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue"}
+{"Time":"2026-11-06T10:00:33.667163674+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue","Output":"=== RUN   TestPrivacyExportMaskAnonymizeLedgerAndResidue\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:38.896892056+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue","Output":"--- PASS: TestPrivacyExportMaskAnonymizeLedgerAndResidue (5.23s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:38.896959608+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue","Elapsed":5.23}
+{"Time":"2026-11-06T10:00:38.89697672+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag"}
+{"Time":"2026-11-06T10:00:38.89697888+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag","Output":"=== RUN   TestEraseTwoStepAndDisabledFlag\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:41.708285282+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux","Output":"--- PASS: TestPrivacyHTTPExportBearerOriginRatePrefsMux (8.04s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:41.708394168+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux","Elapsed":8.04}
+{"Time":"2026-11-06T10:00:41.708418096+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep"}
+{"Time":"2026-11-06T10:00:41.708431705+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep","Output":"=== RUN   TestEraseRoutesWhenEnabledTwoStep\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:50.291012361+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag","Output":"--- PASS: TestEraseTwoStepAndDisabledFlag (11.39s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:50.291067163+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag","Elapsed":11.39}
+{"Time":"2026-11-06T10:00:50.291101171+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestRetentionSweep"}
+{"Time":"2026-11-06T10:00:50.2911052+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestRetentionSweep","Output":"=== RUN   TestRetentionSweep\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:50.292241484+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestRetentionSweep","Output":"--- PASS: TestRetentionSweep (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:50.295122888+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestRetentionSweep","Elapsed":0}
+{"Time":"2026-11-06T10:00:50.299675362+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue"}
+{"Time":"2026-11-06T10:00:50.299701302+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue","Output":"=== RUN   TestPrivacyExportMaskAnonymizeLedgerAndResidue\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:55.649221695+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue","Output":"--- PASS: TestPrivacyExportMaskAnonymizeLedgerAndResidue (5.35s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:55.649576439+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue","Elapsed":5.35}
+{"Time":"2026-11-06T10:00:55.649599969+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag"}
+{"Time":"2026-11-06T10:00:55.649606072+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag","Output":"=== RUN   TestEraseTwoStepAndDisabledFlag\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:55.663688742+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep","Output":"--- PASS: TestEraseRoutesWhenEnabledTwoStep (13.96s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:55.663739869+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep","Elapsed":13.96}
+{"Time":"2026-11-06T10:00:55.667099275+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks"}
+{"Time":"2026-11-06T10:00:55.667104743+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks","Output":"=== RUN   TestPrefsNilExportStillWorks\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:04.024051599+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks","Output":"--- PASS: TestPrefsNilExportStillWorks (8.36s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:04.024304007+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks","Elapsed":8.36}
+{"Time":"2026-11-06T10:01:04.024531464+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError"}
+{"Time":"2026-11-06T10:01:04.024555162+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError","Output":"=== RUN   TestPrefStoreRoundTripAndDeleteError\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:04.026278836+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError","Output":"--- PASS: TestPrefStoreRoundTripAndDeleteError (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:04.026715121+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError","Elapsed":0}
+{"Time":"2026-11-06T10:01:04.026726772+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux"}
+{"Time":"2026-11-06T10:01:04.026729851+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux","Output":"=== RUN   TestPrivacyHTTPExportBearerOriginRatePrefsMux\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:06.517117397+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag","Output":"--- PASS: TestEraseTwoStepAndDisabledFlag (10.87s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:06.517236575+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag","Elapsed":10.87}
+{"Time":"2026-11-06T10:01:06.517401512+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestRetentionSweep"}
+{"Time":"2026-11-06T10:01:06.517407421+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestRetentionSweep","Output":"=== RUN   TestRetentionSweep\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:06.522399433+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestRetentionSweep","Output":"--- PASS: TestRetentionSweep (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:06.522431577+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestRetentionSweep","Elapsed":0}
+{"Time":"2026-11-06T10:01:06.529398985+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue"}
+{"Time":"2026-11-06T10:01:06.529427773+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue","Output":"=== RUN   TestPrivacyExportMaskAnonymizeLedgerAndResidue\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:12.085281754+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue","Output":"--- PASS: TestPrivacyExportMaskAnonymizeLedgerAndResidue (5.56s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:12.08538269+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPrivacyExportMaskAnonymizeLedgerAndResidue","Elapsed":5.56}
+{"Time":"2026-11-06T10:01:12.08541844+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag"}
+{"Time":"2026-11-06T10:01:12.085429552+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag","Output":"=== RUN   TestEraseTwoStepAndDisabledFlag\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:12.564478143+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux","Output":"--- PASS: TestPrivacyHTTPExportBearerOriginRatePrefsMux (8.54s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:12.564532154+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux","Elapsed":8.54}
+{"Time":"2026-11-06T10:01:12.564542464+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep"}
+{"Time":"2026-11-06T10:01:12.564547665+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep","Output":"=== RUN   TestEraseRoutesWhenEnabledTwoStep\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:23.386081975+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag","Output":"--- PASS: TestEraseTwoStepAndDisabledFlag (11.30s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:23.386123895+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestEraseTwoStepAndDisabledFlag","Elapsed":11.3}
+{"Time":"2026-11-06T10:01:23.38613455+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestRetentionSweep"}
+{"Time":"2026-11-06T10:01:23.386138949+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestRetentionSweep","Output":"=== RUN   TestRetentionSweep\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:23.389366798+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestRetentionSweep","Output":"--- PASS: TestRetentionSweep (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:23.389404169+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestRetentionSweep","Elapsed":0}
+{"Time":"2026-11-06T10:01:23.389410178+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:24.395632636+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"ok  \tkiyas/licensesrv\t50.743s\n"}
+{"Time":"2026-11-06T10:01:24.395694594+03:00","Action":"pass","Package":"kiyas/licensesrv","Elapsed":50.743}
+{"Time":"2026-11-06T10:01:26.704832173+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep","Output":"--- PASS: TestEraseRoutesWhenEnabledTwoStep (14.14s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:26.704887296+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep","Elapsed":14.14}
+{"Time":"2026-11-06T10:01:26.704906955+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks"}
+{"Time":"2026-11-06T10:01:26.704910775+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks","Output":"=== RUN   TestPrefsNilExportStillWorks\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:36.460892966+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks","Output":"--- PASS: TestPrefsNilExportStillWorks (9.76s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:36.46094898+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks","Elapsed":9.76}
+{"Time":"2026-11-06T10:01:36.460965383+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError"}
+{"Time":"2026-11-06T10:01:36.461003367+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError","Output":"=== RUN   TestPrefStoreRoundTripAndDeleteError\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:36.467148147+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError","Output":"--- PASS: TestPrefStoreRoundTripAndDeleteError (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:36.46716802+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError","Elapsed":0}
+{"Time":"2026-11-06T10:01:36.467172593+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux"}
+{"Time":"2026-11-06T10:01:36.467174666+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux","Output":"=== RUN   TestPrivacyHTTPExportBearerOriginRatePrefsMux\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:45.04864753+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux","Output":"--- PASS: TestPrivacyHTTPExportBearerOriginRatePrefsMux (8.58s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:45.048695213+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPrivacyHTTPExportBearerOriginRatePrefsMux","Elapsed":8.58}
+{"Time":"2026-11-06T10:01:45.048773985+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep"}
+{"Time":"2026-11-06T10:01:45.048780472+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep","Output":"=== RUN   TestEraseRoutesWhenEnabledTwoStep\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:58.679757077+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep","Output":"--- PASS: TestEraseRoutesWhenEnabledTwoStep (13.63s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:58.679831189+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestEraseRoutesWhenEnabledTwoStep","Elapsed":13.63}
+{"Time":"2026-11-06T10:01:58.679849911+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks"}
+{"Time":"2026-11-06T10:01:58.679858511+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks","Output":"=== RUN   TestPrefsNilExportStillWorks\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:02:06.579512557+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks","Output":"--- PASS: TestPrefsNilExportStillWorks (7.90s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:02:06.579604649+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPrefsNilExportStillWorks","Elapsed":7.9}
+{"Time":"2026-11-06T10:02:06.579621126+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError"}
+{"Time":"2026-11-06T10:02:06.57962523+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError","Output":"=== RUN   TestPrefStoreRoundTripAndDeleteError\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:02:06.582821387+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError","Output":"--- PASS: TestPrefStoreRoundTripAndDeleteError (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:02:06.582877271+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPrefStoreRoundTripAndDeleteError","Elapsed":0}
+{"Time":"2026-11-06T10:02:06.583038448+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:02:07.591159592+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"ok  \tkiyas/internal/privacy\t93.938s\n"}
+{"Time":"2026-11-06T10:02:07.591223328+03:00","Action":"pass","Package":"kiyas/internal/privacy","Elapsed":93.939}

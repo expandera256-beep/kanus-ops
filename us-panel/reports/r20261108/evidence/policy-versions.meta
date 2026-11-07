@@ -1,0 +1,3 @@
+2026-11-08T00:21:25.543441+03:00
+gcloud secrets versions list us-worker-policy --format=json
+exit=0

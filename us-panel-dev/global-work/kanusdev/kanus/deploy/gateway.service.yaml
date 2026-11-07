@@ -1,0 +1,47 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: us-commerce
+  annotations:
+    run.googleapis.com/ingress: all
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '0'
+        autoscaling.knative.dev/maxScale: '2'
+        run.googleapis.com/network-interfaces: '[{"network":"default","subnetwork":"default"}]'
+        run.googleapis.com/vpc-access-egress: private-ranges-only
+    spec:
+      serviceAccountName: REPLACE_GATEWAY_SERVICE_ACCOUNT
+      containerConcurrency: 32
+      timeoutSeconds: 600
+      containers:
+        - image: REPLACE_VERIFIED_IMAGE_DIGEST
+          ports:
+            - containerPort: 8080
+          resources:
+            limits: {cpu: '1', memory: 512Mi}
+          env:
+            - {name: US_ENV, value: production}
+            - {name: US_WORKERS_CONFIG, value: /secrets/policy/workers.json}
+            - {name: US_MODEL_CA_FILE, value: /secrets/ca/ca.pem}
+            - {name: SHOPIFY_SHOP, value: 19einb-qz.myshopify.com}
+            - name: US_COMMERCE_DB
+              valueFrom: {secretKeyRef: {name: us-postgres-dsn, key: latest}}
+            - name: SHOPIFY_WEBHOOK_SECRET
+              valueFrom: {secretKeyRef: {name: us-shopify-webhook, key: latest}}
+            - name: US_LICENSE_SECRET
+              valueFrom: {secretKeyRef: {name: us-license-signing, key: latest}}
+            - name: US_MODEL_API_TOKEN
+              valueFrom: {secretKeyRef: {name: us-model-token, key: latest}}
+            - name: US_CREDIT_PRODUCTS
+              valueFrom: {secretKeyRef: {name: us-credit-products, key: latest}}
+          volumeMounts:
+            - {name: policy, mountPath: /secrets/policy}
+            - {name: ca, mountPath: /secrets/ca}
+      volumes:
+        - name: policy
+          secret: {secretName: us-worker-policy, items: [{key: latest, path: workers.json}]}
+        - name: ca
+          secret: {secretName: us-model-ca, items: [{key: latest, path: ca.pem}]}

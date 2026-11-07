@@ -1,0 +1,8 @@
+--- FAIL: TestMetadataFailureInvalidatesReadiness (0.01s)
+    --- FAIL: TestMetadataFailureInvalidatesReadiness/upstream_failed (0.01s)
+        readiness_failure_test.go:117: metadata failure retained cache
+    --- FAIL: TestMetadataFailureInvalidatesReadiness/{ (0.00s)
+        readiness_failure_test.go:117: metadata failure retained cache
+FAIL
+FAIL	kiyas/licensesrv	0.012s
+FAIL

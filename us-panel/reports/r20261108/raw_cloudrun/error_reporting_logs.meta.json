@@ -1,0 +1,17 @@
+{
+  "command": [
+    "gcloud",
+    "logging",
+    "read",
+    "(resource.type=\"cloud_run_revision\" AND (resource.labels.service_name=\"us-commerce\" OR resource.labels.service_name=\"us-watchdog\")) AND (severity>=ERROR OR jsonPayload.@type=\"type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent\") AND timestamp<=\"2026-11-07T21:27:56.393580Z\" AND timestamp>=\"2026-11-06T21:27:56.393580Z\"",
+    "--freshness=24h",
+    "--limit=2000",
+    "--order=asc",
+    "--project=project-27082a40-6083-4952-9db",
+    "--format=json",
+    "--quiet"
+  ],
+  "started_istanbul": "2026-11-08T00:27:56.398447+03:00",
+  "returncode": 0,
+  "stderr": ""
+}

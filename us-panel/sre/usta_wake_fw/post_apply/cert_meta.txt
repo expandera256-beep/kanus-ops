@@ -1,0 +1,6 @@
+subject=CN=34.41.186.170, O=usta-wake, C=TR
+issuer=CN=34.41.186.170, O=usta-wake, C=TR
+notBefore=Nov  6 06:46:48 2026 GMT
+notAfter=Nov  5 06:46:48 2028 GMT
+X509v3 Subject Alternative Name: 
+    IP Address:34.41.186.170

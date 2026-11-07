@@ -1,0 +1,4 @@
+2026-11-08T00:20:52.698266+03:00
+GET https://api-test.kanus.org/healthz
+200 198.18.0.1 https://api-test.kanus.org/healthz
+exit=0

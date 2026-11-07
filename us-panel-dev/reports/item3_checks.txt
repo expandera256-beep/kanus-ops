@@ -1,0 +1,23 @@
+## 2026-11-06 08:42:30 +03  tree=/workspace/us-panel-dev/work2/kiyas/term
+### gofmt -l (changed/new files): 
+./change_history.go
+gofmt_done
+### go vet ./...
+vet_exit=0
+### GOOS=windows go vet .
+winvet_exit=0
+### go test -race -count=1 ./...
+--- SKIP: TestPHPLicenseMatchesThePanel (0.00s)
+--- SKIP: TestLiveDoorAnswers (0.00s)
+--- SKIP: TestOfficialREAInspectsOwnedFile (0.00s)
+--- SKIP: TestRealModelPanelMultiFileRepair (0.00s)
+--- SKIP: TestRealModelPanelBuildRentalProject (0.00s)
+ok  	kiyas	35.537s
+ok  	kiyas/cmd/us-license-hook	8.956s
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+--- SKIP: TestStoreWriterProcess (0.00s)
+ok  	kiyas/licensesrv	65.046s
+test_exit=0
+PASS_count=355 FAIL_count=0 SKIP_count=6
+### GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build
+winbuild_exit=0

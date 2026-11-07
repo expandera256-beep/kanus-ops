@@ -1,0 +1,122 @@
+[
+  {
+    "file": "continuation.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "continuation_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "chat_quality_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "tunnel_other.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "log_regression_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "long_checkpoint.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "change_history.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "tunnel_windows.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "gateway_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "project_map.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "proposal_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "editor_safety_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "core_safety_regression_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "cloud_space.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "transaction_recovery.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "scope_guard_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "cloud_space_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "long_checkpoint_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "context_limits_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "repair_intent_regression_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "proposal_batch_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "project.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "cloud_install.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "journal.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "transaction_recovery_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "change_history_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "project_inspection_regression_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "context_budget_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "cloud_install_test.go",
+    "same_as_v10": true
+  },
+  {
+    "file": "cmd/us-pricing-gen/main.go",
+    "same_as_v10": true
+  }
+]

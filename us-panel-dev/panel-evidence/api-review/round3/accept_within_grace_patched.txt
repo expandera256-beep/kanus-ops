@@ -1,0 +1,4 @@
+# kiyas/licensesrv [kiyas/licensesrv.test]
+licensesrv/panel_r3_poc_test.go:6:2: "os" imported and not used
+FAIL	kiyas/licensesrv [build failed]
+FAIL

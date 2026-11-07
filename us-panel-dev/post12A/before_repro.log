@@ -1,0 +1,9 @@
+--- FAIL: TestPost12AChatRetryMustSettleOnce (0.01s)
+    post12a_before_test.go:63: replay of committed request: code=200 body=": GPU isiniyor; model hazirligi dogrulanmadi\n\ndata: {\"choices\":[{\"delta\":{\"content\":\"merhaba\"}}]}\n\ndata: {\"choices\":[{\"delta\":{},\"finish_reason\":\"stop\"}]}\n\ndata: [DONE]\n\n"
+--- FAIL: TestPost12AReserveLostResponseMustNotLeak (0.00s)
+    post12a_before_test.go:89: lost reserve response leaks hold: reserved=2 ids=[5cb12d9f50dcf1e021697537 3002504c3633a591df1c4062] want=1 same
+--- FAIL: TestPost12AChatTransientRetrySharesHold (0.00s)
+    post12a_before_test.go:124: failed attempt must park (not charge) the hold: {Key:us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6IjJjZGFiYWEyNTA1ZWFmYmYzYmExZGFhMyIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.XqsJK_XTmM-GEklKXG5T6O2dYqjGc4wzkyRNaNhV4rw OrderID:555 LineID:1 Email:a@example.com ProductID:42 Plan:{Kind:sub Days:30 Prompts:500 Seconds:0 Credits:500} IssuedAt:2026-11-06 00:00:00 +0000 UTC ExpiresAt:2026-12-06 00:00:00 +0000 UTC Revoked:false Credits:500 MeterUnit:credits Reserved:0}
+FAIL
+FAIL	kiyas/licensesrv	0.012s
+FAIL

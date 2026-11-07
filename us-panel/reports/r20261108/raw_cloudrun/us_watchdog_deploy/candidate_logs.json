@@ -1,0 +1,597 @@
+[
+  {
+    "httpRequest": {
+      "latency": "0.000164s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa01b000e1ade468b29b4",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "d60aa0aec42b41c78d73c7eb618d3d4c"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:08.235456769Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:07.924382Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/83e336dcbeefadcc3490105dbbf317d0"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000180s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa01b000a236ed9ba7901",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "a2fc6db582184cf993518ddd1bf7956d"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:07.899996789Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:07.664430Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/8454b057885def7876dc6aed2efcd436"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000237s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa01b00032567fe829f36",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "7bb78c81e9b341a38df2835271c2c1ef"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:07.237855149Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:07.206183Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/1e947982e20da737a3af8e87aebe794c"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000229s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa01a000e91e666dd2b04",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "0238defb2d7744a69c02826453263719"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:07.237855149Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:06.954854Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/861f396698d7a9a76ee3b031aa2a7f4c"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000194s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa01a000b5e391f505a75",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "de47eeab9cd249d3b723e49081f2e044"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:06.900587419Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:06.745017Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/455b81bcbc708401e20d225cfd2b53e3"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000167s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa01a00057bac869e0136",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "95c59c1300a24eb0a6c124f7e3a98b3e"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:06.569003224Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:06.359340Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/c35e9c1190ce1e3ab7168ddcc12ac276"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000167s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa019000d93c70f77f5ba",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "d231779d40144b5db97f4698707a9e2f"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:05.902161391Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:05.889799Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/72f26bd99000d9dc471541f53138ad33"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000176s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa019000a61e607592ba1",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "bc20e8551acd46679aaa9af554985d61"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:05.902161391Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:05.680422Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/69dcc3a3fc0533cab9100f7c2751105f"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000202s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa0190006d3c6204eda7e",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "bc7294f85ee14833af090ae43839a91b"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:05.573559178Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:05.447430Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/1d1d14a66d4f374435515c655ce2235c"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000170s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa01900031d48b3ba2280",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "f1184ea8cb6d436ab3d39a5a017baaf6"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:05.235462582Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:05.204104Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/778fcc3fbfe6b2cda439c86cef278136"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000161s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa018000ef12406eb8a66",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "0197e7c603284b5c934da9662acb5e78"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:05.235462582Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:04.979236Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/3c320cefee2638d7cdc56fa9faa404b8"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000227s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa0180004d2df68b7239d",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "165f20ad5151416e9944a04e77b8542c"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:04.571940378Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:04.316127Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/c8d5aee748004bb70f80f55fac490969"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000532s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa017000e6fcf18bf7b6c",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "ffb1882772e84533a720b85d20278ece"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:04.240134979Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:03.946127Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/ec3af2cdb9f8019c5058327b0f869e6a"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000182s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa017000afb16288e72db",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "d195b14891e54b89926836056fb838f6"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:03.903816512Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:03.719638Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/8254d2a24ce1d47420010ffaf2fd48b5"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.041417s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/ready",
+      "responseSize": "58",
+      "status": 200
+    },
+    "insertId": "6aefa01700079995b1c05a9c",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "96bc3c9f4e794f8198a30fc77a1f046c"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:03.572652813Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:03.498069Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/774e16a60175b28691bdfe30215a6cc7"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000242s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa01700038d037257f8c5",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "b05daff5fb574a06876fb831f112be3f"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:03:03.237905358Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:03:03.232707Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/6bf8e6a8ec3622d3314e39e1613a1b25"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000514s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "12",
+      "status": 200
+    },
+    "insertId": "6aefa003000b7143868a5cce",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "903d822abc8d4902b6857764596540db"
+    },
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bde0df691b1f2d002d1638fb932f1c6e66a3a5ceda41f220c85bb9d68ca39202ea334444980fd2a67aa2ede41f5df0ebf0d067102547898a04be9df6e2b06ddb0129c762e09c83245ea383f0078da55ed39239209e9f",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T22:02:43.754583860Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-sre-ready-r1",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T22:02:43.749891Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/4ceb8dd348594244bf96727d2ef1a698"
+  }
+]

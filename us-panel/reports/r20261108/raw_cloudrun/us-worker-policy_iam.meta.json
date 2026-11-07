@@ -1,0 +1,14 @@
+{
+  "command": [
+    "gcloud",
+    "secrets",
+    "get-iam-policy",
+    "us-worker-policy",
+    "--project=project-27082a40-6083-4952-9db",
+    "--format=json",
+    "--quiet"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "time_istanbul": "2026-11-08T00:24:34.584129+03:00"
+}

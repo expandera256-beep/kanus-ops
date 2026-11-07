@@ -1,0 +1,7 @@
+=== RUN   TestQAAuditExecSiblingIsolation
+    zz_qa_audit12_test.go:48: synthetic_sibling_read=false state=failed
+--- PASS: TestQAAuditExecSiblingIsolation (0.08s)
+PASS
+ok  	kiyas	0.092s
+
+exit_code=0

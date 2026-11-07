@@ -1,0 +1,16 @@
+Only in /workspace/us-panel-dev/work/api-r11-term: .git
+Only in /workspace/us-panel-dev/work/api-r11-term: apiv1
+Files /workspace/us-panel/work2/kiyas/term/cmd/us-license-hook/main.go and /workspace/us-panel-dev/work/api-r11-term/cmd/us-license-hook/main.go differ
+Files /workspace/us-panel/work2/kiyas/term/gateway_credit_test.go and /workspace/us-panel-dev/work/api-r11-term/gateway_credit_test.go differ
+Files /workspace/us-panel/work2/kiyas/term/gpu_warming.go and /workspace/us-panel-dev/work/api-r11-term/gpu_warming.go differ
+Files /workspace/us-panel/work2/kiyas/term/hook_release_test.go and /workspace/us-panel-dev/work/api-r11-term/hook_release_test.go differ
+Only in /workspace/us-panel-dev/work/api-r11-term: internal
+Files /workspace/us-panel/work2/kiyas/term/licensesrv/accounts.go and /workspace/us-panel-dev/work/api-r11-term/licensesrv/accounts.go differ
+Files /workspace/us-panel/work2/kiyas/term/licensesrv/bcrypt_limit_test.go and /workspace/us-panel-dev/work/api-r11-term/licensesrv/bcrypt_limit_test.go differ
+Files /workspace/us-panel/work2/kiyas/term/licensesrv/gpu_pin_test.go and /workspace/us-panel-dev/work/api-r11-term/licensesrv/gpu_pin_test.go differ
+Files /workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake.go and /workspace/us-panel-dev/work/api-r11-term/licensesrv/gpu_wake.go differ
+Files /workspace/us-panel/work2/kiyas/term/licensesrv/gpu_wake_test.go and /workspace/us-panel-dev/work/api-r11-term/licensesrv/gpu_wake_test.go differ
+Only in /workspace/us-panel-dev/work/api-r11-term/licensesrv: privacy_ops.go
+Only in /workspace/us-panel-dev/work/api-r11-term/licensesrv: privacy_ops_test.go
+Files /workspace/us-panel/work2/kiyas/term/model.go and /workspace/us-panel-dev/work/api-r11-term/model.go differ
+Only in /workspace/us-panel/work2/kiyas/term: stream_done_test.go

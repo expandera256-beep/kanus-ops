@@ -1,0 +1,259 @@
+{"Time":"2026-11-06T09:05:48.665189849+03:00","Action":"start","Package":"kiyas"}
+{"Time":"2026-11-06T09:05:48.678660927+03:00","Action":"run","Package":"kiyas","Test":"TestFileToolsRefuseEscapes"}
+{"Time":"2026-11-06T09:05:48.678715806+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsRefuseEscapes","Output":"=== RUN   TestFileToolsRefuseEscapes\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:48.679565137+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsRefuseEscapes","Output":"--- PASS: TestFileToolsRefuseEscapes (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:48.679597443+03:00","Action":"pass","Package":"kiyas","Test":"TestFileToolsRefuseEscapes","Elapsed":0}
+{"Time":"2026-11-06T09:05:48.679609062+03:00","Action":"run","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits"}
+{"Time":"2026-11-06T09:05:48.679610893+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits","Output":"=== RUN   TestFileToolsAtomicWriteAndLimits\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:48.683626144+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits","Output":"--- PASS: TestFileToolsAtomicWriteAndLimits (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:48.683663428+03:00","Action":"pass","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits","Elapsed":0}
+{"Time":"2026-11-06T09:05:48.683672898+03:00","Action":"run","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate"}
+{"Time":"2026-11-06T09:05:48.683677065+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate","Output":"=== RUN   TestFileToolsWorkspacesAreSeparate\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:48.684685117+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate","Output":"--- PASS: TestFileToolsWorkspacesAreSeparate (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:48.684707316+03:00","Action":"pass","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate","Elapsed":0}
+{"Time":"2026-11-06T09:05:48.684715341+03:00","Action":"run","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp"}
+{"Time":"2026-11-06T09:05:48.684717685+03:00","Action":"output","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp","Output":"=== RUN   TestAppendFileIsAtomicAndBackedUp\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:48.685978576+03:00","Action":"output","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp","Output":"--- PASS: TestAppendFileIsAtomicAndBackedUp (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:48.685983826+03:00","Action":"pass","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp","Elapsed":0}
+{"Time":"2026-11-06T09:05:48.689937584+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E"}
+{"Time":"2026-11-06T09:05:48.689965174+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E","Output":"=== RUN   TestRepairLoopFixesBrokenGoProjectE2E\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:49.07993463+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E","Output":"--- PASS: TestRepairLoopFixesBrokenGoProjectE2E (0.39s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:49.079977314+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E","Elapsed":0.39}
+{"Time":"2026-11-06T09:05:49.079991366+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget"}
+{"Time":"2026-11-06T09:05:49.079995654+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget","Output":"=== RUN   TestRepairLoopStopsAtBudget\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:49.170457236+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget","Output":"--- PASS: TestRepairLoopStopsAtBudget (0.09s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:49.170500612+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget","Elapsed":0.09}
+{"Time":"2026-11-06T09:05:49.170561342+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON"}
+{"Time":"2026-11-06T09:05:49.170571699+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON","Output":"=== RUN   TestRepairLoopRefusesEscapeUnapprovedAndBadJSON\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:49.256672385+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON","Output":"--- PASS: TestRepairLoopRefusesEscapeUnapprovedAndBadJSON (0.09s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:49.256711705+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON","Elapsed":0.09}
+{"Time":"2026-11-06T09:05:49.256763968+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopCancellation"}
+{"Time":"2026-11-06T09:05:49.256768452+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopCancellation","Output":"=== RUN   TestRepairLoopCancellation\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.758484102+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopCancellation","Output":"--- PASS: TestRepairLoopCancellation (1.50s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.758556884+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopCancellation","Elapsed":1.5}
+{"Time":"2026-11-06T09:05:50.75856837+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary"}
+{"Time":"2026-11-06T09:05:50.758570726+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary","Output":"=== RUN   TestSafeExecRejectsNonAllowlistedBinary\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.758854054+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary","Output":"--- PASS: TestSafeExecRejectsNonAllowlistedBinary (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.758861664+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary","Elapsed":0}
+{"Time":"2026-11-06T09:05:50.758909346+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink"}
+{"Time":"2026-11-06T09:05:50.758914279+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink","Output":"=== RUN   TestSafeExecCwdLockBlocksDotDotAndSymlink\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.759576781+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink","Output":"--- PASS: TestSafeExecCwdLockBlocksDotDotAndSymlink (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.759611861+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink","Elapsed":0}
+{"Time":"2026-11-06T09:05:50.759616584+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets"}
+{"Time":"2026-11-06T09:05:50.759618921+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets","Output":"=== RUN   TestSafeExecEnvDoesNotLeakSecrets\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.770062176+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets","Output":"--- PASS: TestSafeExecEnvDoesNotLeakSecrets (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.770091781+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets","Elapsed":0.01}
+{"Time":"2026-11-06T09:05:50.770098836+03:00","Action":"run","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram"}
+{"Time":"2026-11-06T09:05:50.770101517+03:00","Action":"output","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram","Output":"=== RUN   TestRunPathDoesNotLeakSecretsToProgram\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.781445117+03:00","Action":"output","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram","Output":"--- PASS: TestRunPathDoesNotLeakSecretsToProgram (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.781473059+03:00","Action":"pass","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram","Elapsed":0.01}
+{"Time":"2026-11-06T09:05:50.781486047+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap"}
+{"Time":"2026-11-06T09:05:50.781490045+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap","Output":"=== RUN   TestSafeExecSeparateStreamsAndCap\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.791267943+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap","Output":"--- PASS: TestSafeExecSeparateStreamsAndCap (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.791296077+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap","Elapsed":0.01}
+{"Time":"2026-11-06T09:05:50.791303052+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported"}
+{"Time":"2026-11-06T09:05:50.791305369+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported","Output":"=== RUN   TestSafeExecStartFailureIsReported\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.795103528+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported","Output":"--- PASS: TestSafeExecStartFailureIsReported (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.795128488+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported","Elapsed":0}
+{"Time":"2026-11-06T09:05:50.795145268+03:00","Action":"run","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart"}
+{"Time":"2026-11-06T09:05:50.795147656+03:00","Action":"output","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart","Output":"=== RUN   TestRunLogNotWrittenWhenProgramDidNotStart\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.805156795+03:00","Action":"output","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart","Output":"--- PASS: TestRunLogNotWrittenWhenProgramDidNotStart (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:50.805184602+03:00","Action":"pass","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart","Elapsed":0.01}
+{"Time":"2026-11-06T09:05:50.805193869+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup"}
+{"Time":"2026-11-06T09:05:50.805196195+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup","Output":"=== RUN   TestSafeExecTimeoutKillsProcessGroup\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:52.328831377+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup","Output":"--- PASS: TestSafeExecTimeoutKillsProcessGroup (1.52s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:52.328896531+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup","Elapsed":1.52}
+{"Time":"2026-11-06T09:05:52.328904847+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits"}
+{"Time":"2026-11-06T09:05:52.328907701+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits","Output":"=== RUN   TestSafeExecAppliesLinuxRlimits\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:52.639013064+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits","Output":"--- PASS: TestSafeExecAppliesLinuxRlimits (0.31s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:52.63906441+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits","Elapsed":0.31}
+{"Time":"2026-11-06T09:05:52.640327287+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateCrashChild"}
+{"Time":"2026-11-06T09:05:52.640344332+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCrashChild","Output":"=== RUN   TestTaskStateCrashChild\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:52.640398555+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCrashChild","Output":"    task_state_test.go:36: yalnız çökme simülasyonu alt süreci\n"}
+{"Time":"2026-11-06T09:05:52.640417+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCrashChild","Output":"--- SKIP: TestTaskStateCrashChild (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:52.640430375+03:00","Action":"skip","Package":"kiyas","Test":"TestTaskStateCrashChild","Elapsed":0}
+{"Time":"2026-11-06T09:05:52.640460929+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply"}
+{"Time":"2026-11-06T09:05:52.64046404+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply","Output":"=== RUN   TestTaskStateResumeAfterCrashMidApply\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:52.99501193+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply","Output":"--- PASS: TestTaskStateResumeAfterCrashMidApply (0.35s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:52.995065458+03:00","Action":"pass","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply","Elapsed":0.35}
+{"Time":"2026-11-06T09:05:52.995102391+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed"}
+{"Time":"2026-11-06T09:05:52.995114614+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed","Output":"=== RUN   TestTaskStateUncertainModelCallNotReplayed\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.344156653+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed","Output":"--- PASS: TestTaskStateUncertainModelCallNotReplayed (0.35s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.344198941+03:00","Action":"pass","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed","Elapsed":0.35}
+{"Time":"2026-11-06T09:05:53.344281564+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved"}
+{"Time":"2026-11-06T09:05:53.344286566+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved","Output":"=== RUN   TestTaskStateCorruptFileIsPreserved\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.344713492+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved","Output":"--- PASS: TestTaskStateCorruptFileIsPreserved (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.344723515+03:00","Action":"pass","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved","Elapsed":0}
+{"Time":"2026-11-06T09:05:53.346660138+03:00","Action":"run","Package":"kiyas","Test":"TestFileToolsRefuseEscapes"}
+{"Time":"2026-11-06T09:05:53.346664172+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsRefuseEscapes","Output":"=== RUN   TestFileToolsRefuseEscapes\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.347508238+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsRefuseEscapes","Output":"--- PASS: TestFileToolsRefuseEscapes (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.347537782+03:00","Action":"pass","Package":"kiyas","Test":"TestFileToolsRefuseEscapes","Elapsed":0}
+{"Time":"2026-11-06T09:05:53.347542712+03:00","Action":"run","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits"}
+{"Time":"2026-11-06T09:05:53.347544924+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits","Output":"=== RUN   TestFileToolsAtomicWriteAndLimits\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.34924298+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits","Output":"--- PASS: TestFileToolsAtomicWriteAndLimits (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.349265541+03:00","Action":"pass","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits","Elapsed":0}
+{"Time":"2026-11-06T09:05:53.349285109+03:00","Action":"run","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate"}
+{"Time":"2026-11-06T09:05:53.349288759+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate","Output":"=== RUN   TestFileToolsWorkspacesAreSeparate\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.349966777+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate","Output":"--- PASS: TestFileToolsWorkspacesAreSeparate (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.349980013+03:00","Action":"pass","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate","Elapsed":0}
+{"Time":"2026-11-06T09:05:53.350073067+03:00","Action":"run","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp"}
+{"Time":"2026-11-06T09:05:53.350077715+03:00","Action":"output","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp","Output":"=== RUN   TestAppendFileIsAtomicAndBackedUp\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.351134371+03:00","Action":"output","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp","Output":"--- PASS: TestAppendFileIsAtomicAndBackedUp (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.351146276+03:00","Action":"pass","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp","Elapsed":0}
+{"Time":"2026-11-06T09:05:53.353405635+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E"}
+{"Time":"2026-11-06T09:05:53.353409838+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E","Output":"=== RUN   TestRepairLoopFixesBrokenGoProjectE2E\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.695733749+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E","Output":"--- PASS: TestRepairLoopFixesBrokenGoProjectE2E (0.34s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.695774172+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E","Elapsed":0.34}
+{"Time":"2026-11-06T09:05:53.695824459+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget"}
+{"Time":"2026-11-06T09:05:53.69582856+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget","Output":"=== RUN   TestRepairLoopStopsAtBudget\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.784322868+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget","Output":"--- PASS: TestRepairLoopStopsAtBudget (0.09s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.784361103+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget","Elapsed":0.09}
+{"Time":"2026-11-06T09:05:53.784418024+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON"}
+{"Time":"2026-11-06T09:05:53.784423013+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON","Output":"=== RUN   TestRepairLoopRefusesEscapeUnapprovedAndBadJSON\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.872370054+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON","Output":"--- PASS: TestRepairLoopRefusesEscapeUnapprovedAndBadJSON (0.09s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:53.872404478+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON","Elapsed":0.09}
+{"Time":"2026-11-06T09:05:53.872480522+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopCancellation"}
+{"Time":"2026-11-06T09:05:53.872485479+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopCancellation","Output":"=== RUN   TestRepairLoopCancellation\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.373920288+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopCancellation","Output":"--- PASS: TestRepairLoopCancellation (1.50s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.373976913+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopCancellation","Elapsed":1.5}
+{"Time":"2026-11-06T09:05:55.37408356+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary"}
+{"Time":"2026-11-06T09:05:55.37408959+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary","Output":"=== RUN   TestSafeExecRejectsNonAllowlistedBinary\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.374410279+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary","Output":"--- PASS: TestSafeExecRejectsNonAllowlistedBinary (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.374423927+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary","Elapsed":0}
+{"Time":"2026-11-06T09:05:55.374456715+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink"}
+{"Time":"2026-11-06T09:05:55.374463341+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink","Output":"=== RUN   TestSafeExecCwdLockBlocksDotDotAndSymlink\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.374888349+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink","Output":"--- PASS: TestSafeExecCwdLockBlocksDotDotAndSymlink (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.374892999+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink","Elapsed":0}
+{"Time":"2026-11-06T09:05:55.374965711+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets"}
+{"Time":"2026-11-06T09:05:55.375009281+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets","Output":"=== RUN   TestSafeExecEnvDoesNotLeakSecrets\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.385280935+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets","Output":"--- PASS: TestSafeExecEnvDoesNotLeakSecrets (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.385309773+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets","Elapsed":0.01}
+{"Time":"2026-11-06T09:05:55.385334844+03:00","Action":"run","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram"}
+{"Time":"2026-11-06T09:05:55.385338312+03:00","Action":"output","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram","Output":"=== RUN   TestRunPathDoesNotLeakSecretsToProgram\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.396270684+03:00","Action":"output","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram","Output":"--- PASS: TestRunPathDoesNotLeakSecretsToProgram (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.396297553+03:00","Action":"pass","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram","Elapsed":0.01}
+{"Time":"2026-11-06T09:05:55.396302488+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap"}
+{"Time":"2026-11-06T09:05:55.396304692+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap","Output":"=== RUN   TestSafeExecSeparateStreamsAndCap\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.405354093+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap","Output":"--- PASS: TestSafeExecSeparateStreamsAndCap (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.405381185+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap","Elapsed":0.01}
+{"Time":"2026-11-06T09:05:55.405385737+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported"}
+{"Time":"2026-11-06T09:05:55.405387774+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported","Output":"=== RUN   TestSafeExecStartFailureIsReported\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.407887034+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported","Output":"--- PASS: TestSafeExecStartFailureIsReported (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.407913593+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported","Elapsed":0}
+{"Time":"2026-11-06T09:05:55.407917903+03:00","Action":"run","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart"}
+{"Time":"2026-11-06T09:05:55.407920217+03:00","Action":"output","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart","Output":"=== RUN   TestRunLogNotWrittenWhenProgramDidNotStart\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.416074484+03:00","Action":"output","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart","Output":"--- PASS: TestRunLogNotWrittenWhenProgramDidNotStart (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:55.416099938+03:00","Action":"pass","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart","Elapsed":0.01}
+{"Time":"2026-11-06T09:05:55.41610665+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup"}
+{"Time":"2026-11-06T09:05:55.416109759+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup","Output":"=== RUN   TestSafeExecTimeoutKillsProcessGroup\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:56.940427436+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup","Output":"--- PASS: TestSafeExecTimeoutKillsProcessGroup (1.52s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:56.940487133+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup","Elapsed":1.52}
+{"Time":"2026-11-06T09:05:56.940500251+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits"}
+{"Time":"2026-11-06T09:05:56.940504703+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits","Output":"=== RUN   TestSafeExecAppliesLinuxRlimits\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.250785465+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits","Output":"--- PASS: TestSafeExecAppliesLinuxRlimits (0.31s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.250840021+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits","Elapsed":0.31}
+{"Time":"2026-11-06T09:05:57.252380863+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateCrashChild"}
+{"Time":"2026-11-06T09:05:57.252406918+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCrashChild","Output":"=== RUN   TestTaskStateCrashChild\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.252413651+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCrashChild","Output":"    task_state_test.go:36: yalnız çökme simülasyonu alt süreci\n"}
+{"Time":"2026-11-06T09:05:57.252434938+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCrashChild","Output":"--- SKIP: TestTaskStateCrashChild (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.252439123+03:00","Action":"skip","Package":"kiyas","Test":"TestTaskStateCrashChild","Elapsed":0}
+{"Time":"2026-11-06T09:05:57.252445396+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply"}
+{"Time":"2026-11-06T09:05:57.252447582+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply","Output":"=== RUN   TestTaskStateResumeAfterCrashMidApply\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.614714625+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply","Output":"--- PASS: TestTaskStateResumeAfterCrashMidApply (0.36s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.614758214+03:00","Action":"pass","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply","Elapsed":0.36}
+{"Time":"2026-11-06T09:05:57.614840665+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed"}
+{"Time":"2026-11-06T09:05:57.614845132+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed","Output":"=== RUN   TestTaskStateUncertainModelCallNotReplayed\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.974165942+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed","Output":"--- PASS: TestTaskStateUncertainModelCallNotReplayed (0.36s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.974207396+03:00","Action":"pass","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed","Elapsed":0.36}
+{"Time":"2026-11-06T09:05:57.974256425+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved"}
+{"Time":"2026-11-06T09:05:57.974268548+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved","Output":"=== RUN   TestTaskStateCorruptFileIsPreserved\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.974718296+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved","Output":"--- PASS: TestTaskStateCorruptFileIsPreserved (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.974743817+03:00","Action":"pass","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved","Elapsed":0}
+{"Time":"2026-11-06T09:05:57.977423834+03:00","Action":"run","Package":"kiyas","Test":"TestFileToolsRefuseEscapes"}
+{"Time":"2026-11-06T09:05:57.977441079+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsRefuseEscapes","Output":"=== RUN   TestFileToolsRefuseEscapes\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.978057731+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsRefuseEscapes","Output":"--- PASS: TestFileToolsRefuseEscapes (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.978063473+03:00","Action":"pass","Package":"kiyas","Test":"TestFileToolsRefuseEscapes","Elapsed":0}
+{"Time":"2026-11-06T09:05:57.978098162+03:00","Action":"run","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits"}
+{"Time":"2026-11-06T09:05:57.97810302+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits","Output":"=== RUN   TestFileToolsAtomicWriteAndLimits\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.980886273+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits","Output":"--- PASS: TestFileToolsAtomicWriteAndLimits (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.980894423+03:00","Action":"pass","Package":"kiyas","Test":"TestFileToolsAtomicWriteAndLimits","Elapsed":0}
+{"Time":"2026-11-06T09:05:57.980966448+03:00","Action":"run","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate"}
+{"Time":"2026-11-06T09:05:57.980998829+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate","Output":"=== RUN   TestFileToolsWorkspacesAreSeparate\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.982739249+03:00","Action":"output","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate","Output":"--- PASS: TestFileToolsWorkspacesAreSeparate (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.982744932+03:00","Action":"pass","Package":"kiyas","Test":"TestFileToolsWorkspacesAreSeparate","Elapsed":0}
+{"Time":"2026-11-06T09:05:57.982779786+03:00","Action":"run","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp"}
+{"Time":"2026-11-06T09:05:57.982784093+03:00","Action":"output","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp","Output":"=== RUN   TestAppendFileIsAtomicAndBackedUp\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.984021749+03:00","Action":"output","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp","Output":"--- PASS: TestAppendFileIsAtomicAndBackedUp (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:57.984038129+03:00","Action":"pass","Package":"kiyas","Test":"TestAppendFileIsAtomicAndBackedUp","Elapsed":0}
+{"Time":"2026-11-06T09:05:57.986735607+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E"}
+{"Time":"2026-11-06T09:05:57.986754361+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E","Output":"=== RUN   TestRepairLoopFixesBrokenGoProjectE2E\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:58.33579208+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E","Output":"--- PASS: TestRepairLoopFixesBrokenGoProjectE2E (0.35s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:58.335821857+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopFixesBrokenGoProjectE2E","Elapsed":0.35}
+{"Time":"2026-11-06T09:05:58.335875807+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget"}
+{"Time":"2026-11-06T09:05:58.335884043+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget","Output":"=== RUN   TestRepairLoopStopsAtBudget\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:58.420651022+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget","Output":"--- PASS: TestRepairLoopStopsAtBudget (0.08s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:58.42068971+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopStopsAtBudget","Elapsed":0.08}
+{"Time":"2026-11-06T09:05:58.420698102+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON"}
+{"Time":"2026-11-06T09:05:58.420701015+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON","Output":"=== RUN   TestRepairLoopRefusesEscapeUnapprovedAndBadJSON\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:58.504355851+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON","Output":"--- PASS: TestRepairLoopRefusesEscapeUnapprovedAndBadJSON (0.08s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:05:58.504388435+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopRefusesEscapeUnapprovedAndBadJSON","Elapsed":0.08}
+{"Time":"2026-11-06T09:05:58.504418966+03:00","Action":"run","Package":"kiyas","Test":"TestRepairLoopCancellation"}
+{"Time":"2026-11-06T09:05:58.504422895+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopCancellation","Output":"=== RUN   TestRepairLoopCancellation\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.006129028+03:00","Action":"output","Package":"kiyas","Test":"TestRepairLoopCancellation","Output":"--- PASS: TestRepairLoopCancellation (1.50s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.006189312+03:00","Action":"pass","Package":"kiyas","Test":"TestRepairLoopCancellation","Elapsed":1.5}
+{"Time":"2026-11-06T09:06:00.006409039+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary"}
+{"Time":"2026-11-06T09:06:00.006414494+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary","Output":"=== RUN   TestSafeExecRejectsNonAllowlistedBinary\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.006739053+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary","Output":"--- PASS: TestSafeExecRejectsNonAllowlistedBinary (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.006744591+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecRejectsNonAllowlistedBinary","Elapsed":0}
+{"Time":"2026-11-06T09:06:00.006778911+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink"}
+{"Time":"2026-11-06T09:06:00.006782444+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink","Output":"=== RUN   TestSafeExecCwdLockBlocksDotDotAndSymlink\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.007460801+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink","Output":"--- PASS: TestSafeExecCwdLockBlocksDotDotAndSymlink (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.007489519+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecCwdLockBlocksDotDotAndSymlink","Elapsed":0}
+{"Time":"2026-11-06T09:06:00.007494091+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets"}
+{"Time":"2026-11-06T09:06:00.007496515+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets","Output":"=== RUN   TestSafeExecEnvDoesNotLeakSecrets\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.017366374+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets","Output":"--- PASS: TestSafeExecEnvDoesNotLeakSecrets (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.017392306+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecEnvDoesNotLeakSecrets","Elapsed":0.01}
+{"Time":"2026-11-06T09:06:00.017481067+03:00","Action":"run","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram"}
+{"Time":"2026-11-06T09:06:00.017491679+03:00","Action":"output","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram","Output":"=== RUN   TestRunPathDoesNotLeakSecretsToProgram\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.028146761+03:00","Action":"output","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram","Output":"--- PASS: TestRunPathDoesNotLeakSecretsToProgram (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.028174723+03:00","Action":"pass","Package":"kiyas","Test":"TestRunPathDoesNotLeakSecretsToProgram","Elapsed":0.01}
+{"Time":"2026-11-06T09:06:00.028180312+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap"}
+{"Time":"2026-11-06T09:06:00.028182406+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap","Output":"=== RUN   TestSafeExecSeparateStreamsAndCap\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.037555641+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap","Output":"--- PASS: TestSafeExecSeparateStreamsAndCap (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.037584104+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecSeparateStreamsAndCap","Elapsed":0.01}
+{"Time":"2026-11-06T09:06:00.037590635+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported"}
+{"Time":"2026-11-06T09:06:00.037593102+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported","Output":"=== RUN   TestSafeExecStartFailureIsReported\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.039978037+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported","Output":"--- PASS: TestSafeExecStartFailureIsReported (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.0400054+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecStartFailureIsReported","Elapsed":0}
+{"Time":"2026-11-06T09:06:00.040009904+03:00","Action":"run","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart"}
+{"Time":"2026-11-06T09:06:00.040011942+03:00","Action":"output","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart","Output":"=== RUN   TestRunLogNotWrittenWhenProgramDidNotStart\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.048560317+03:00","Action":"output","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart","Output":"--- PASS: TestRunLogNotWrittenWhenProgramDidNotStart (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:00.048588122+03:00","Action":"pass","Package":"kiyas","Test":"TestRunLogNotWrittenWhenProgramDidNotStart","Elapsed":0.01}
+{"Time":"2026-11-06T09:06:00.048593474+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup"}
+{"Time":"2026-11-06T09:06:00.048610033+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup","Output":"=== RUN   TestSafeExecTimeoutKillsProcessGroup\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:01.572398614+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup","Output":"--- PASS: TestSafeExecTimeoutKillsProcessGroup (1.52s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:01.572460723+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecTimeoutKillsProcessGroup","Elapsed":1.52}
+{"Time":"2026-11-06T09:06:01.572472606+03:00","Action":"run","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits"}
+{"Time":"2026-11-06T09:06:01.57248884+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits","Output":"=== RUN   TestSafeExecAppliesLinuxRlimits\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:01.882996901+03:00","Action":"output","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits","Output":"--- PASS: TestSafeExecAppliesLinuxRlimits (0.31s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:01.883049066+03:00","Action":"pass","Package":"kiyas","Test":"TestSafeExecAppliesLinuxRlimits","Elapsed":0.31}
+{"Time":"2026-11-06T09:06:01.884262974+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateCrashChild"}
+{"Time":"2026-11-06T09:06:01.884290334+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCrashChild","Output":"=== RUN   TestTaskStateCrashChild\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:01.88429779+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCrashChild","Output":"    task_state_test.go:36: yalnız çökme simülasyonu alt süreci\n"}
+{"Time":"2026-11-06T09:06:01.884304386+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCrashChild","Output":"--- SKIP: TestTaskStateCrashChild (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:01.884307974+03:00","Action":"skip","Package":"kiyas","Test":"TestTaskStateCrashChild","Elapsed":0}
+{"Time":"2026-11-06T09:06:01.884313693+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply"}
+{"Time":"2026-11-06T09:06:01.884316829+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply","Output":"=== RUN   TestTaskStateResumeAfterCrashMidApply\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:02.243467212+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply","Output":"--- PASS: TestTaskStateResumeAfterCrashMidApply (0.36s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:02.243511191+03:00","Action":"pass","Package":"kiyas","Test":"TestTaskStateResumeAfterCrashMidApply","Elapsed":0.36}
+{"Time":"2026-11-06T09:06:02.243559887+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed"}
+{"Time":"2026-11-06T09:06:02.243565354+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed","Output":"=== RUN   TestTaskStateUncertainModelCallNotReplayed\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:02.628997213+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed","Output":"--- PASS: TestTaskStateUncertainModelCallNotReplayed (0.39s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:02.629049681+03:00","Action":"pass","Package":"kiyas","Test":"TestTaskStateUncertainModelCallNotReplayed","Elapsed":0.39}
+{"Time":"2026-11-06T09:06:02.629057298+03:00","Action":"run","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved"}
+{"Time":"2026-11-06T09:06:02.629063792+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved","Output":"=== RUN   TestTaskStateCorruptFileIsPreserved\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:02.629348747+03:00","Action":"output","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved","Output":"--- PASS: TestTaskStateCorruptFileIsPreserved (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:02.62935393+03:00","Action":"pass","Package":"kiyas","Test":"TestTaskStateCorruptFileIsPreserved","Elapsed":0}
+{"Time":"2026-11-06T09:06:02.630118039+03:00","Action":"output","Package":"kiyas","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:06:03.633319838+03:00","Action":"output","Package":"kiyas","Output":"ok  \tkiyas\t14.968s\n"}
+{"Time":"2026-11-06T09:06:03.633381812+03:00","Action":"pass","Package":"kiyas","Elapsed":14.968}

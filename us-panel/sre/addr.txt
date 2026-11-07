@@ -1,0 +1,3 @@
+NAME                                          ADDRESS/RANGE   TYPE      PURPOSE     NETWORK  REGION        SUBNET   STATUS
+usta-ip                                       34.41.186.170   EXTERNAL                       us-central1            IN_USE
+serverless-ipv4-cloudrun-1793911467892935660  10.164.0.16/28  INTERNAL  SERVERLESS           europe-west4  default  RESERVED

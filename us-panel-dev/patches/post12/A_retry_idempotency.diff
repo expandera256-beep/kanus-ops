@@ -1,0 +1,257 @@
+--- /dev/null
++++ b/POST12_A_PROTOCOL_PROPOSAL_TR.md
+@@ -0,0 +1,18 @@
++# A: protokol onayı bekleyen bölüm
++
++Durum: NOT DONE. Bu dosya bir uygulama veya onay değildir.
++
++.12 chat istemcisi X-US-Request-ID gönderir ama hook bunu okumaz; reserve uç noktası ise istemci anahtarı kabul etmez. Aynı başlıklı iki başarılı chat 2 kredi düşürür. Reserve cevabı kaybolup yeniden gönderilirse iki hold oluşur. Bu nedenle model/repair/reserve için kör retry eklenmedi.
++
++Öneri (uygulanmadı):
++1. Chat'te mevcut X-US-Request-ID başlığını kimliği doğrulanmış hesap/lisans + canonical request hash ile bağla. Aynı kimlikte farklı gövde 409, concurrent retry aynı singleflight işini bekler. Başlık isim olarak zaten var fakat idempotency semantiği yeni sözleşmedir.
++2. /v1/credits/reserve'e de aynı başlığı yeni protokol alanı olarak kabul et (alternatif: body request_id; iki ayrı alan açma). İlk reserve öncesi kimlik istemcide oluşturulur ve task/checkpoint'te saklanır; reserve ACK kaybolunca aynı kimlikle sorgulanır/tekrarlanır.
++3. Ledger'da request->reservation + request hash + pending/committed/released terminal durumunu kalıcı/atomic tut. Session yenilemesinden etkilenmeyecek hesap/lisans kimliğiyle scope et. Yanıt kaybolması için sınırlandırılmış replay mekanizması gerekir; terminal isteği yeni ücretli modele dönüştürme. Başarı gövdesi saklanmayacaksa 409/ayrı durum sözleşmesi ve UX açıkça kararlaştırılmalı.
++4. Failed attempt release ile logical request terminal durumunu ayır. Aynı logical request'teki transient denemeler aynı hold'u paylaşmalı; hiçbir 4xx otomatik retry edilmemeli. Tamamlanan yanıt için aynı commit tek kez uygulanmalı.
++5. Orphan TTL sweep startup ve periyodik olarak, aktif timeout'tan uzun TTL ile, transactionLocked içinde yapılmalı. Süreç yeniden başladıktan sonra aktif olmayan hold'lar timeout sonrası release edilir; committed kayıt asla release'e çevrilmez. Ledger tombstone saklama süresi/replay sınırı API ile kesinleşmeli.
++6. EXE ve repair-loop en fazla 3 deneme, jitter'lı 100/300 ms bounded backoff; sadece 5xx, timeout ve reset. Header ve body aynı kalır, task devamında aynı mantıksal model isteği için request id korunur. Farklı içerik üreten continuation/repair turu ayrı ücretli iştir; id paylaşılmaz.
++
++Yeni protokol alanı ve replay davranışı onayı gelmeden bu kısım durduruldu. Yerel güvenli değişiklik sadece zaten idempotent /settle isteğinin aynı id ve aynı commit kararıyla 3 denemesidir.
++
++Tekrarlama: go test -tags post12repro -run '^TestPost12Repro' ./licensesrv
++Bu iki kabul testi bilerek kırmızıdır; default build'e dahil değildir.
+--- a/gateway.go
++++ b/gateway.go
+@@ -4,6 +4,7 @@
+ 	"bytes"
+ 	"context"
+ 	"encoding/json"
++	"errors"
+ 	"fmt"
+ 	"io"
+ 	"net"
+@@ -112,23 +113,23 @@
+ 	client := &http.Client{Timeout: 10 * time.Second, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}
+ 	resp, err := client.Do(req)
+ 	if err != nil {
+-		return fmt.Errorf("kredi servisine ulaşılamadı")
++		return &creditRequestError{transient: true, message: "kredi servisine ulaşılamadı"}
+ 	}
+ 	defer resp.Body.Close()
+ 	if resp.StatusCode != http.StatusOK {
+-		return fmt.Errorf("kredi servisi HTTP %d", resp.StatusCode)
++		return &creditRequestError{transient: resp.StatusCode >= 500 && resp.StatusCode <= 599, message: fmt.Sprintf("kredi servisi HTTP %d", resp.StatusCode)}
+ 	}
+ 	if out != nil {
+ 		if json.NewDecoder(io.LimitReader(resp.Body, 4096)).Decode(out) != nil {
+-			return fmt.Errorf("kredi servisi yanıtı geçersiz")
++			return &creditRequestError{transient: true, message: "kredi servisi yanıtı geçersiz"}
+ 		}
+ 	}
+ 	return nil
+ }
+ 
+ // call reserves before any model call and settles once using a fresh cleanup
+-// context, even if the model context was cancelled. Uncertain settlement is an
+-// error, not a successful response; retry/reconciliation is an operational gap.
++// context, even if the model context was cancelled. Only identical settlement
++// requests are retried: reserve/model calls do not yet have an idempotency contract.
+ func (g creditGate) call(ctx context.Context, fn func() modelResult) (out modelResult) {
+ 	if !g.required {
+ 		return fn()
+@@ -153,7 +154,7 @@
+ 		if ctx.Err() != nil {
+ 			out = modelResult{body: "Model çağrısı iptal edildi."}
+ 		}
+-		if err := g.request(context.Background(), "/v1/credits/settle", map[string]any{"id": reserved.ID, "commit": commit}, nil); err != nil {
++		if err := g.settle(reserved.ID, commit); err != nil {
+ 			out.ok = false
+ 			out.body = "Kredi kapatma doğrulanamadı; tekrar göndermeden önce bakiyeyi kontrol edin."
+ 		}
+@@ -229,3 +230,41 @@
+ 	}
+ 	return s.creditGateway()
+ }
++
++// creditRequestError carries only retry classification, never credentials.
++type creditRequestError struct {
++	transient bool
++	message   string
++}
++
++func (e *creditRequestError) Error() string { return e.message }
++
++// settle retries the SAME id and decision, which settleFor already makes
++// idempotent. Never release after an uncertain commit: it could have succeeded.
++// The cleanup deadline is independent of a cancelled model request.
++func (g creditGate) settle(id string, commit bool) error {
++	ctx, cancel := context.WithTimeout(context.Background(), 31*time.Second)
++	defer cancel()
++	payload := map[string]any{"id": id, "commit": commit}
++	var err error
++	for attempt := 0; attempt < 3; attempt++ {
++		if attempt > 0 {
++			timer := time.NewTimer(time.Duration(attempt) * 100 * time.Millisecond)
++			select {
++			case <-timer.C:
++			case <-ctx.Done():
++				timer.Stop()
++				return ctx.Err()
++			}
++		}
++		err = g.request(ctx, "/v1/credits/settle", payload, nil)
++		if err == nil {
++			return nil
++		}
++		var failure *creditRequestError
++		if !errors.As(err, &failure) || !failure.transient || ctx.Err() != nil {
++			return err
++		}
++	}
++	return err
++}
+--- /dev/null
++++ b/licensesrv/post12_retry_repro_test.go
+@@ -0,0 +1,55 @@
++//go:build post12repro
++
++package licensesrv
++
++// These acceptance reproducers intentionally FAIL until the idempotency
++// protocol proposal is approved. Not included in the default regression run.
++import (
++	"context"
++	"fmt"
++	"net/http"
++	"net/http/httptest"
++	"strings"
++	"testing"
++)
++
++func TestPost12ReproChatRetryMustSettleOnce(t *testing.T) {
++	p, st, key := proxyFixture(t, func(w http.ResponseWriter, r *http.Request) {
++		w.Header().Set("Content-Type", "text/event-stream")
++		fmt.Fprint(w, goodEvents)
++	})
++	for i := 0; i < 2; i++ {
++		r := httptest.NewRequest("POST", "/v1/chat", strings.NewReader(proxyInput)).WithContext(context.Background())
++		r.Header.Set("Authorization", "Bearer "+key)
++		r.Header.Set("X-US-Request-ID", "same-logical-request")
++		w := httptest.NewRecorder()
++		p.ServeHTTP(w, r)
++		if !strings.Contains(w.Body.String(), "[DONE]") {
++			t.Fatal("request failed")
++		}
++	}
++	l, _ := st.License(key)
++	if l.Credits != 499 || l.Reserved != 0 {
++		t.Fatalf("same request charged twice: credits=%d reserved=%d want=499/0", l.Credits, l.Reserved)
++	}
++}
++func TestPost12ReproReserveLostResponseMustNotLeak(t *testing.T) {
++	h, _ := setup(t)
++	post(h, payload, sign("whsec", payload), "post12")
++	key := h.Store.st.Orders["555"][0]
++	api := &CreditHandler{Store: h.Store, Now: h.Cfg.Now}
++	for i := 0; i < 2; i++ {
++		r := httptest.NewRequest("POST", "/v1/credits/reserve", strings.NewReader(`{}`))
++		r.Header.Set("Authorization", "Bearer "+key)
++		r.Header.Set("X-US-Request-ID", "same-reserve-attempt")
++		w := httptest.NewRecorder()
++		api.ServeHTTP(w, r)
++		if w.Code != 200 {
++			t.Fatal(w.Code)
++		}
++	}
++	l, _ := h.Store.License(key)
++	if l.Reserved != 1 {
++		t.Fatalf("lost reserve response leaks hold: reserved=%d want=1", l.Reserved)
++	}
++}
+--- /dev/null
++++ b/post12_settle_retry_test.go
+@@ -0,0 +1,85 @@
++package main
++
++import (
++	"context"
++	"fmt"
++	"net/http"
++	"net/http/httptest"
++	"sync/atomic"
++	"testing"
++	"time"
++
++	"kiyas/licensesrv"
++)
++
++func TestPost12SettleLostAcknowledgementRetriesSameID(t *testing.T) {
++	gate, st, key := gatewayCreditFixture(t)
++	var hits atomic.Int32
++	api := &licensesrv.CreditHandler{Store: st}
++	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		if r.URL.Path == "/v1/credits/settle" && hits.Add(1) == 1 {
++			rec := httptest.NewRecorder()
++			api.ServeHTTP(rec, r)
++			if rec.Code != 200 {
++				t.Errorf("first settle rejected: %d", rec.Code)
++			}
++			c, _, err := w.(http.Hijacker).Hijack()
++			if err != nil {
++				t.Error(err)
++				return
++			}
++			_ = c.Close()
++			return
++		}
++		api.ServeHTTP(w, r)
++	}))
++	defer srv.Close()
++	gate.base = srv.URL
++	calls := 0
++	out := gate.call(context.Background(), func() modelResult { calls++; return modelResult{ok: true, body: "answer"} })
++	status, _ := st.CreditStatus(key, time.Now())
++	if !out.ok || calls != 1 || hits.Load() != 2 || status.Credits != 1 || status.Reserved != 0 || status.Committed != 1 {
++		t.Fatalf("ok=%v model=%d settle=%d credit=%d reserved=%d commits=%d", out.ok, calls, hits.Load(), status.Credits, status.Reserved, status.Committed)
++	}
++}
++
++func TestPost12ReleaseTransientFailureRetries(t *testing.T) {
++	gate, st, key := gatewayCreditFixture(t)
++	var hits atomic.Int32
++	api := &licensesrv.CreditHandler{Store: st}
++	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		if r.URL.Path == "/v1/credits/settle" && hits.Add(1) == 1 {
++			http.Error(w, "temporary", 503)
++			return
++		}
++		api.ServeHTTP(w, r)
++	}))
++	defer srv.Close()
++	gate.base = srv.URL
++	out := gate.call(context.Background(), func() modelResult { return modelResult{body: "model failed"} })
++	status, _ := st.CreditStatus(key, time.Now())
++	if out.ok || hits.Load() != 2 || status.Reserved != 0 || status.Credits != 2 || status.Released != 1 {
++		t.Fatalf("settle=%d reserved=%d credits=%d released=%d", hits.Load(), status.Reserved, status.Credits, status.Released)
++	}
++}
++
++func TestPost12ReserveNeverRetriedAndSettleNeverRetries4xx(t *testing.T) {
++	for _, path := range []string{"/v1/credits/reserve", "/v1/credits/settle"} {
++		t.Run(path, func(t *testing.T) {
++			var hits atomic.Int32
++			srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++				if r.URL.Path == path {
++					hits.Add(1)
++					http.Error(w, "reject", 409)
++					return
++				}
++				fmt.Fprint(w, `{"id":"r"}`)
++			}))
++			defer srv.Close()
++			_ = (creditGate{base: srv.URL, token: "test", required: true}).call(context.Background(), func() modelResult { return modelResult{ok: true} })
++			if hits.Load() != 1 {
++				t.Fatalf("retried non-idempotent reserve or 4xx: %d", hits.Load())
++			}
++		})
++	}
++}

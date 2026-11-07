@@ -1,0 +1,4 @@
+Base: /workspace/us-panel-dev/post12/term
+Read-only snapshot: /workspace/us-panel-dev/work/api/limiter/base
+Result: /workspace/us-panel-dev/work/api/limiter/term
+accounts.go and login_limiter.go hashes identical to pinned/v12; work2/kiyas is older and lacks account limiter.

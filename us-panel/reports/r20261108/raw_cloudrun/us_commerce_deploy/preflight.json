@@ -1,0 +1,13 @@
+{
+  "expected_revision": "us-commerce-00002-pr2",
+  "actual_latest_created": "us-commerce-00002-pr2",
+  "actual_latest_ready": "us-commerce-00002-pr2",
+  "traffic": [
+    {
+      "latestRevision": true,
+      "percent": 100,
+      "revisionName": "us-commerce-00002-pr2"
+    }
+  ],
+  "pass": true
+}

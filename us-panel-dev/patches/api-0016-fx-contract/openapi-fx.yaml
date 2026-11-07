@@ -1,0 +1,87 @@
+# api-0016 — GET /v1/fx (GLOBAL kanus.fx/1 şemasına göre, İMZASIZ). Handler yok; US uygulayacak.
+paths:
+  /v1/fx:
+    get:
+      tags: [fx]
+      operationId: getFx
+      summary: TCMB döviz satış kurları (EUR, USD) — yalnız yaklaşık gösterim
+      description: >-
+        Kimlik doğrulama yok, imza yok (Demir kararı: bütünlük yalnız HTTPS + host doğrulaması).
+        Sunucu kuru TCMB today.xml ForexSelling'den kendisi çeker; son geçerli kuru korur ve
+        bayat diye reddetmez. 5 gün tazelik kuralını panel uygular. Ödeme/ledger TL'dir; bu veri
+        hiçbir ücret veya kredi hesabına girmez. IP başına rate limit uygulanır.
+      security: []
+      responses:
+        "200":
+          description: Son geçerli TCMB kuru
+          headers:
+            Cache-Control:
+              schema: { type: string, example: "public, max-age=3600" }
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/FxSnapshot" }
+              example:
+                schema: kanus.fx/1
+                source: TCMB today.xml ForexSelling (döviz satış)
+                source_url: https://www.tcmb.gov.tr/kurlar/today.xml
+                rate_type: forex_selling
+                tcmb_tarih: "06.11.2026"
+                bulten_no: "2026/209"
+                date: "2026-11-06"
+                base: TRY
+                rates: { USD: 50.0724, EUR: 55.9609 }
+                generated_at: "2026-11-07T21:39:17+03:00"
+        "405":
+          description: GET/HEAD dışı metot (Allow GET, HEAD)
+        "429":
+          description: IP başına sınır aşıldı
+          headers:
+            Retry-After:
+              schema: { type: integer }
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorBody" }
+        "503":
+          description: Sunucuda hiç geçerli kur yok (bayat kur 503 sebebi DEĞİLDİR)
+          headers:
+            Cache-Control:
+              schema: { type: string, example: no-store }
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorBody" }
+              example:
+                error: fx_unavailable
+                code: fx_unavailable
+                message: FX rate unavailable
+                request_id: opaque-generated-id
+    head:
+      tags: [fx]
+      operationId: headFx
+      summary: GET /v1/fx başlıkları, gövdesiz
+      security: []
+      responses:
+        "200": { description: OK }
+        "503": { description: Geçerli kur yok }
+components:
+  schemas:
+    FxSnapshot:
+      type: object
+      additionalProperties: true
+      required: [schema, source, date, base, rates, generated_at]
+      properties:
+        schema: { type: string, const: kanus.fx/1 }
+        source: { type: string, description: "TCMB kaynak açıklaması" }
+        source_url: { type: string, format: uri }
+        rate_type: { type: string, const: forex_selling, description: "Ek alan (API önerisi); panel bilinmeyen alanları yok sayar" }
+        tcmb_tarih: { type: string, pattern: '^\d{2}\.\d{2}\.\d{4}$', description: "TCMB bülten tarihi (GG.AA.YYYY)" }
+        bulten_no: { type: string }
+        date: { type: string, format: date, description: "TCMB yayın tarihi, Europe/Istanbul takvim günü" }
+        base: { type: string, const: TRY }
+        rates:
+          type: object
+          additionalProperties: false
+          required: [EUR, USD]
+          properties:
+            EUR: { type: number, minimum: 1, maximum: 1000, description: "1 EUR = x TRY (ForexSelling); kanus.fx/1'de JSON number" }
+            USD: { type: number, minimum: 1, maximum: 1000 }
+        generated_at: { type: string, format: date-time, description: "Sunucunun TCMB'den çektiği an (RFC3339)" }

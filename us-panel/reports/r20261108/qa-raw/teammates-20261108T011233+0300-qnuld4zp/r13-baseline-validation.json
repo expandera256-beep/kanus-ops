@@ -1,0 +1,42 @@
+[
+  {
+    "label": "r12",
+    "summary": "/workspace/us-panel/reports/r20261108/qa-raw/r13-runs/20261108T012326+0300-xq3dfmzt/summary.json",
+    "counts": {
+      "PASS": 2,
+      "FAIL": 2,
+      "SKIP": 0,
+      "NOT TESTED": 1,
+      "BLOCKED": 0,
+      "PLANNED": 0
+    },
+    "kernel_probe": {
+      "platform": "Linux",
+      "arch": "x86_64",
+      "kernel": "6.12.113+",
+      "supported": true,
+      "abi": 6,
+      "reason": "Kernel ABI query succeeded; actual child boundary still must pass"
+    }
+  },
+  {
+    "label": "r11_with_F02_patch",
+    "summary": "/workspace/us-panel/reports/r20261108/qa-raw/r13-runs/20261108T012439+0300-qb9qej0o/summary.json",
+    "counts": {
+      "PASS": 2,
+      "FAIL": 2,
+      "SKIP": 0,
+      "NOT TESTED": 1,
+      "BLOCKED": 0,
+      "PLANNED": 0
+    },
+    "kernel_probe": {
+      "platform": "Linux",
+      "arch": "x86_64",
+      "kernel": "6.12.113+",
+      "supported": true,
+      "abi": 6,
+      "reason": "Kernel ABI query succeeded; actual child boundary still must pass"
+    }
+  }
+]

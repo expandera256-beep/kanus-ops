@@ -1,0 +1,27 @@
+[
+  {
+    "day": "2026-11-06",
+    "service": "us-commerce",
+    "count": 45
+  },
+  {
+    "day": "2026-11-06",
+    "service": "us-watchdog",
+    "count": 1463
+  },
+  {
+    "day": "2026-11-07",
+    "service": "us-watchdog",
+    "count": 1439
+  },
+  {
+    "day": "2026-11-08",
+    "service": "us-commerce",
+    "count": 3
+  },
+  {
+    "day": "2026-11-08",
+    "service": "us-watchdog",
+    "count": 25
+  }
+]

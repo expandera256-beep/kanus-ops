@@ -1,0 +1,5 @@
+noauth health: 403
+auth health: {"ok": true} HTTP200
+auth ready: {"ready": true, "checks": {"config": true, "store": true}} HTTP200
+429 at 18; retry-after: 1; body={"error": "rate limit exceeded"}
+son kod 429 istek 18

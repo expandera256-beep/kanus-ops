@@ -1,0 +1,16 @@
+/tmp/api-review-r3/pristine/licensesrv/store.go:62:	Commit    bool      `json:"commit"`
+/tmp/api-review-r3/pristine/licensesrv/store.go:232:func (s *Store) Reserve(key string, amount int, ttl time.Duration, now time.Time) (string, error) {
+/tmp/api-review-r3/pristine/licensesrv/store.go:237:		s.expireLocked(now)
+/tmp/api-review-r3/pristine/licensesrv/store.go:255:func (s *Store) Settle(id string, commit bool) error {
+/tmp/api-review-r3/pristine/licensesrv/store.go:261:func (s *Store) settleFor(key, id string, commit bool, now time.Time) error {
+/tmp/api-review-r3/pristine/licensesrv/store.go:268:		if done.Commit != commit {
+/tmp/api-review-r3/pristine/licensesrv/store.go:291:		s.st.Settlements[id] = Settlement{CreatedAt: r.CreatedAt, Key: r.Key, Commit: commit, Amount: func() int {
+/tmp/api-review-r3/pristine/licensesrv/store.go:302:func (s *Store) expireLocked(now time.Time) {
+/tmp/api-review-r3/patched/licensesrv/store.go:62:	Commit    bool      `json:"commit"`
+/tmp/api-review-r3/patched/licensesrv/store.go:240:func (s *Store) Reserve(key string, amount int, ttl time.Duration, now time.Time) (string, error) {
+/tmp/api-review-r3/patched/licensesrv/store.go:245:		s.expireLocked(now)
+/tmp/api-review-r3/patched/licensesrv/store.go:263:func (s *Store) Settle(id string, commit bool) error {
+/tmp/api-review-r3/patched/licensesrv/store.go:269:func (s *Store) settleFor(key, id string, commit bool, now time.Time) error {
+/tmp/api-review-r3/patched/licensesrv/store.go:276:		if done.Commit != commit {
+/tmp/api-review-r3/patched/licensesrv/store.go:299:		s.st.Settlements[id] = Settlement{CreatedAt: r.CreatedAt, Key: r.Key, Commit: commit, Amount: func() int {
+/tmp/api-review-r3/patched/licensesrv/store.go:310:func (s *Store) expireLocked(now time.Time) {

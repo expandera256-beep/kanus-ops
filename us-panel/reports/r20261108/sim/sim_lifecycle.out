@@ -1,0 +1,40 @@
+test_W01_v5_policy_valid (__main__.T.test_W01_v5_policy_valid) ... ok
+test_W02_health_and_reconcile_never_start (__main__.T.test_W02_health_and_reconcile_never_start) ... ok
+test_W03_unreserved_cannot_wake (__main__.T.test_W03_unreserved_cannot_wake) ... ok
+test_W04_cold_start_states (__main__.T.test_W04_cold_start_states) ... ok
+test_W05_concurrent_share_one_start (__main__.T.test_W05_concurrent_share_one_start) ... ok
+test_W06_capacity_queue_full (__main__.T.test_W06_capacity_queue_full) ... ok
+test_W07_cancel_releases (__main__.T.test_W07_cancel_releases) ... ok
+test_W08_no_stop_before_600_with_preserve_true (__main__.T.test_W08_no_stop_before_600_with_preserve_true) ... ok
+test_W09_stop_at_600_with_preserve_true (__main__.T.test_W09_stop_at_600_with_preserve_true) ... ok
+test_W10_active_lease_blocks_stop (__main__.T.test_W10_active_lease_blocks_stop) ... ok
+test_W11_health_does_not_reset_idle (__main__.T.test_W11_health_does_not_reset_idle) ... ok
+test_W12_reopen_after_stop (__main__.T.test_W12_reopen_after_stop) ... ok
+test_W13_max_uptime_stop (__main__.T.test_W13_max_uptime_stop) ... ok
+test_W14_daily_start_budget (__main__.T.test_W14_daily_start_budget) ... ok
+test_W14b_daily_runtime_binds_before_starts (__main__.T.test_W14b_daily_runtime_binds_before_starts) ... ok
+test_W15_watchdog_stale_blocks_wake (__main__.T.test_W15_watchdog_stale_blocks_wake) ... ok
+test_W16_watchdog_recovery_after_restart (__main__.T.test_W16_watchdog_recovery_after_restart) ... ok
+test_W17_spot_preemption_mid_request_then_restart (__main__.T.test_W17_spot_preemption_mid_request_then_restart) ... ok
+test_W18_boot_deadline_exceeded (__main__.T.test_W18_boot_deadline_exceeded) ... ok
+test_W19_EXPECTED_FAIL_v5_idle_stop_refused_local_ssd (__main__.T.test_W19_EXPECTED_FAIL_v5_idle_stop_refused_local_ssd) ... ok
+test_W20_EXPECTED_FAIL_real_GCEProvider_stop_refuses (__main__.T.test_W20_EXPECTED_FAIL_real_GCEProvider_stop_refuses) ... ok
+test_W21_real_GCEProvider_stop_preserve_true_url (__main__.T.test_W21_real_GCEProvider_stop_preserve_true_url) ... ok
+test_W22_stale_watchdog_after_failed_reconcile (__main__.T.test_W22_stale_watchdog_after_failed_reconcile) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 5.757s
+
+OK
+
+  W13 drained: worker draining for uptime limit | stop at uptime limit, stops= 1
+
+  W14b cold cycles before refusal: 3 | daily runtime budget exhausted
+
+  W18 request lease expired after 600 s
+
+  W19 reconcile -> [{'worker': 'ds-a100', 'error': 'reconciliation failed'}] | VM stays RUNNING
+
+  W20 local_ssd= True error= refusing to discard local SSD POSTs= []
+
+  W21 beta/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/instances/ds-a100/stop?requestId=op1&discardLocalSsd=false

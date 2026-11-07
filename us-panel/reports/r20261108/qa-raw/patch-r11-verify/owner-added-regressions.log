@@ -1,0 +1,14 @@
+=== RUN   TestRepairLoopRefusesRedirects
+=== RUN   TestRepairLoopRefusesRedirects/default_client
+=== RUN   TestRepairLoopRefusesRedirects/caller_client
+--- PASS: TestRepairLoopRefusesRedirects (0.00s)
+    --- PASS: TestRepairLoopRefusesRedirects/default_client (0.00s)
+    --- PASS: TestRepairLoopRefusesRedirects/caller_client (0.00s)
+=== RUN   TestFileToolsRefuseSiblingWorkspace
+--- PASS: TestFileToolsRefuseSiblingWorkspace (0.00s)
+=== RUN   TestSafeExecEnvDoesNotExposeWorkspaceRoots
+--- PASS: TestSafeExecEnvDoesNotExposeWorkspaceRoots (0.00s)
+PASS
+ok  	kiyas	0.006s
+
+exit_code=0

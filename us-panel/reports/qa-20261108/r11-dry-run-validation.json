@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "arguments": [
+        "--dry-run"
+      ],
+      "status": "PASS",
+      "guarded": [
+        "DNS",
+        "network",
+        "credential reads",
+        "subprocesses"
+      ],
+      "attempts": 0
+    },
+    {
+      "arguments": [],
+      "status": "PASS",
+      "guarded": [
+        "DNS",
+        "network",
+        "credential reads",
+        "subprocesses"
+      ],
+      "attempts": 0
+    }
+  ],
+  "scope": "Final runner; dry-run only; no live DNS/HTTP"
+}

@@ -1,0 +1,2092 @@
+diff -ruN -x kiyas -x '*.exe' baseline_tree/change_history.go work2/kiyas/term/change_history.go
+--- baseline_tree/change_history.go	2026-11-05 02:33:56.000000000 +0300
++++ work2/kiyas/term/change_history.go	2026-11-06 08:33:15.438829331 +0300
+@@ -69,15 +69,7 @@
+ }
+ 
+ func writeModelFile(root, full string, data []byte) error {
+-	if err := noSymlinkPath(root,full); err != nil { return err }
+-	if err := os.MkdirAll(filepath.Dir(full),0755); err != nil { return err }
+-	if err := noSymlinkPath(root,full); err != nil { return err }
+-	mode := os.FileMode(0644)
+-	if info, err := os.Stat(full); err == nil { mode = info.Mode().Perm() }
+-	f, err := os.CreateTemp(filepath.Dir(full),".us-write-*"); if err != nil { return err }
+-	tmp := f.Name(); defer os.Remove(tmp)
+-	if err = f.Chmod(mode); err == nil { _, err = f.Write(data) }; if closeErr := f.Close(); err == nil { err = closeErr }; if err != nil { return err }
+-	return os.Rename(tmp,full)
++	return atomicWriteFile(root, full, data)
+ }
+ 
+ func undoLastChange(root string) (string, error) {
+diff -ruN -x kiyas -x '*.exe' baseline_tree/desk.go work2/kiyas/term/desk.go
+--- baseline_tree/desk.go	2026-11-05 14:22:32.000000000 +0300
++++ work2/kiyas/term/desk.go	2026-11-06 08:33:15.438829331 +0300
+@@ -114,23 +114,23 @@
+ 		s.notice = "Dosya klasörün dışında."
+ 		return
+ 	}
+-	prev, _ := os.ReadFile(path)
+-	if len(prev)+len(text) > 256*1024 {
+-		s.notice = "Metin büyük. Eklenmedi."
++	prev, err := os.ReadFile(path)
++	if err != nil && !os.IsNotExist(err) {
++		s.notice = "Dosya okunamadı."
+ 		return
+ 	}
+-	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+-		s.notice = "Klasör açılmadı."
++	if len(prev)+len(text) > 256*1024 {
++		s.notice = "Metin büyük. Eklenmedi."
+ 		return
+ 	}
+-	f, err := os.OpenFile(path, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o644)
++	next := append(append([]byte{}, prev...), text...)
++	record, err := recordChange(s.root, relPath(s.root, path), next)
+ 	if err != nil {
+-		s.notice = "Dosya yazılamadı."
++		s.notice = "Dosya yedeği oluşturulamadı."
+ 		return
+ 	}
+-	_, err = f.WriteString(text)
+-	_ = f.Close()
+-	if err != nil {
++	if err := writeModelFile(s.root, path, next); err != nil {
++		_ = os.Remove(record)
+ 		s.notice = "Dosya yazılamadı."
+ 		return
+ 	}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/file_tools.go work2/kiyas/term/file_tools.go
+--- baseline_tree/file_tools.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/file_tools.go	2026-11-06 08:33:45.386168577 +0300
+@@ -0,0 +1,201 @@
++package main
++
++import (
++	"errors"
++	"io"
++	"os"
++	"path/filepath"
++	"strings"
++)
++
++// Root-confined file tools for the agent/editor paths. Every path is
++// resolved relative to one workspace root; "..", absolute paths outside the
++// root and any symlink component are refused. Writes are atomic
++// (temp file + fsync + rename + dir fsync) and size-limited.
++
++const (
++	fileToolMaxRead  = 8 << 20
++	fileToolMaxWrite = maxBackupBytes // restores of backed-up files must still fit
++)
++
++var errFileToolEscape = errors.New("yol çalışma klasörünün dışında")
++
++type fileTools struct {
++	Root     string
++	MaxRead  int64
++	MaxWrite int64
++}
++
++func newFileTools(root string) (*fileTools, error) {
++	if strings.TrimSpace(root) == "" || refusedFolder(root) {
++		return nil, errors.New("geçerli proje klasörü yok")
++	}
++	abs, err := filepath.Abs(root)
++	if err != nil {
++		return nil, err
++	}
++	info, err := os.Lstat(abs)
++	if err != nil || !info.IsDir() || info.Mode()&os.ModeSymlink != 0 {
++		return nil, errors.New("geçersiz çalışma klasörü")
++	}
++	return &fileTools{Root: abs, MaxRead: fileToolMaxRead, MaxWrite: fileToolMaxWrite}, nil
++}
++
++// resolve maps rel to a full path inside Root or returns errFileToolEscape.
++func (ft *fileTools) resolve(rel string) (string, error) {
++	rel = strings.TrimSpace(rel)
++	if rel == "" || strings.ContainsRune(rel, 0) {
++		return "", errFileToolEscape
++	}
++	for _, part := range strings.Split(strings.ReplaceAll(rel, `\`, "/"), "/") {
++		if part == ".." {
++			return "", errFileToolEscape
++		}
++	}
++	full := rel
++	if !filepath.IsAbs(full) {
++		full = filepath.Join(ft.Root, filepath.FromSlash(rel))
++	}
++	full = filepath.Clean(full)
++	if full == ft.Root || !insideRoot(ft.Root, full) {
++		return "", errFileToolEscape
++	}
++	if err := noSymlinkPath(ft.Root, full); err != nil {
++		return "", errFileToolEscape
++	}
++	// Defence in depth: the deepest existing ancestor must resolve inside.
++	probe := full
++	for {
++		if _, err := os.Lstat(probe); err == nil {
++			break
++		}
++		next := filepath.Dir(probe)
++		if next == probe {
++			break
++		}
++		probe = next
++	}
++	realRoot, err := filepath.EvalSymlinks(ft.Root)
++	if err != nil {
++		return "", errFileToolEscape
++	}
++	realProbe, err := filepath.EvalSymlinks(probe)
++	if err != nil || (realProbe != realRoot && !insideRoot(realRoot, realProbe)) {
++		return "", errFileToolEscape
++	}
++	return full, nil
++}
++
++func (ft *fileTools) Read(rel string) ([]byte, error) {
++	full, err := ft.resolve(rel)
++	if err != nil {
++		return nil, err
++	}
++	f, err := os.OpenFile(full, os.O_RDONLY, 0)
++	if err != nil {
++		return nil, err
++	}
++	defer f.Close()
++	info, err := f.Stat()
++	if err != nil || !info.Mode().IsRegular() {
++		return nil, errors.New("normal dosya değil")
++	}
++	if info.Size() > ft.MaxRead {
++		return nil, errors.New("dosya okuma sınırını aşıyor")
++	}
++	body, err := io.ReadAll(io.LimitReader(f, ft.MaxRead+1))
++	if err != nil {
++		return nil, err
++	}
++	if int64(len(body)) > ft.MaxRead {
++		return nil, errors.New("dosya okuma sınırını aşıyor")
++	}
++	return body, nil
++}
++
++func (ft *fileTools) Write(rel string, data []byte) error {
++	if int64(len(data)) > ft.MaxWrite {
++		return errors.New("yazma boyut sınırı aşıldı")
++	}
++	full, err := ft.resolve(rel)
++	if err != nil {
++		return err
++	}
++	if info, err := os.Lstat(full); err == nil && !info.Mode().IsRegular() {
++		return errors.New("normal dosya değil")
++	}
++	return atomicWriteFile(ft.Root, full, data)
++}
++
++func (ft *fileTools) Delete(rel string) error {
++	full, err := ft.resolve(rel)
++	if err != nil {
++		return err
++	}
++	info, err := os.Lstat(full)
++	if err != nil {
++		return err
++	}
++	if !info.Mode().IsRegular() {
++		return errors.New("yalnız normal dosya silinir")
++	}
++	return os.Remove(full)
++}
++
++// atomicWriteFile writes via a synced temp file in the same directory and an
++// atomic rename. Readers see either the old or the new content, never a
++// partial file. writeTestHook lets tests simulate a crash mid-write.
++var atomicWriteTestHook func(tmp string) error
++
++func atomicWriteFile(root, full string, data []byte) error {
++	if int64(len(data)) > fileToolMaxWrite {
++		return errors.New("yazma boyut sınırı aşıldı")
++	}
++	if err := noSymlinkPath(root, full); err != nil {
++		return err
++	}
++	dir := filepath.Dir(full)
++	if err := os.MkdirAll(dir, 0o755); err != nil {
++		return err
++	}
++	if err := noSymlinkPath(root, full); err != nil {
++		return err
++	}
++	mode := os.FileMode(0o644)
++	if info, err := os.Lstat(full); err == nil {
++		mode = info.Mode().Perm()
++	}
++	f, err := os.CreateTemp(dir, ".us-write-*")
++	if err != nil {
++		return err
++	}
++	tmp := f.Name()
++	defer os.Remove(tmp)
++	if err = f.Chmod(mode); err == nil {
++		_, err = f.Write(data)
++	}
++	if err == nil {
++		err = f.Sync()
++	}
++	if closeErr := f.Close(); err == nil {
++		err = closeErr
++	}
++	if err == nil && atomicWriteTestHook != nil {
++		err = atomicWriteTestHook(tmp)
++	}
++	if err != nil {
++		return err
++	}
++	if err = os.Rename(tmp, full); err != nil {
++		return err
++	}
++	syncDir(dir)
++	return nil
++}
++
++func syncDir(dir string) {
++	if d, err := os.Open(dir); err == nil {
++		_ = d.Sync()
++		_ = d.Close()
++	}
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/file_tools_test.go work2/kiyas/term/file_tools_test.go
+--- baseline_tree/file_tools_test.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/file_tools_test.go	2026-11-06 08:33:35.938369433 +0300
+@@ -0,0 +1,129 @@
++package main
++
++import (
++	"errors"
++	"os"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++func TestFileToolsRefuseEscapes(t *testing.T) {
++	root := t.TempDir()
++	outside := t.TempDir()
++	if err := os.WriteFile(filepath.Join(outside, "secret.txt"), []byte("gizli"), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	ft, err := newFileTools(root)
++	if err != nil {
++		t.Fatal(err)
++	}
++	symOK := os.Symlink(outside, filepath.Join(root, "linkdir")) == nil
++	if symOK {
++		_ = os.Symlink(filepath.Join(outside, "secret.txt"), filepath.Join(root, "link.txt"))
++	}
++	bad := []string{"../x", "a/../../x", `..\x`, filepath.Join(outside, "secret.txt"), "/etc/passwd", "", "."}
++	if symOK {
++		bad = append(bad, "linkdir/secret.txt", "linkdir/new.txt", "link.txt")
++	}
++	for _, rel := range bad {
++		if _, err := ft.Read(rel); err == nil {
++			t.Fatalf("okuma kaçışı kabul edildi: %q", rel)
++		}
++		if err := ft.Write(rel, []byte("x")); err == nil {
++			t.Fatalf("yazma kaçışı kabul edildi: %q", rel)
++		}
++		if err := ft.Delete(rel); err == nil {
++			t.Fatalf("silme kaçışı kabul edildi: %q", rel)
++		}
++	}
++	if raw, _ := os.ReadFile(filepath.Join(outside, "secret.txt")); string(raw) != "gizli" {
++		t.Fatal("kök dışı dosya değişti")
++	}
++	if entries, _ := os.ReadDir(outside); len(entries) != 1 {
++		t.Fatal("kök dışına dosya yazıldı")
++	}
++	if _, err := newFileTools(filepath.Join(root, "linkdir")); symOK && err == nil {
++		t.Fatal("symlink kök kabul edildi")
++	}
++}
++
++func TestFileToolsAtomicWriteAndLimits(t *testing.T) {
++	root := t.TempDir()
++	ft, _ := newFileTools(root)
++	ft.MaxWrite = 1024
++	ft.MaxRead = 2048
++	if err := ft.Write("pkg/a.go", []byte("package a\n")); err != nil {
++		t.Fatal(err)
++	}
++	if got, err := ft.Read("pkg/a.go"); err != nil || string(got) != "package a\n" {
++		t.Fatalf("%q %v", got, err)
++	}
++	if err := ft.Write("pkg/big.txt", make([]byte, 1025)); err == nil {
++		t.Fatal("yazma sınırı uygulanmadı")
++	}
++	if err := os.WriteFile(filepath.Join(root, "huge.txt"), make([]byte, 4096), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	if _, err := ft.Read("huge.txt"); err == nil {
++		t.Fatal("okuma sınırı uygulanmadı")
++	}
++	// Simulated crash between temp write and rename: original stays intact,
++	// no partial or temp file remains.
++	atomicWriteTestHook = func(string) error { return errors.New("çökme simülasyonu") }
++	err := ft.Write("pkg/a.go", []byte("package a // YARIM"))
++	atomicWriteTestHook = nil
++	if err == nil {
++		t.Fatal("çökme simülasyonu hata vermedi")
++	}
++	if got, _ := os.ReadFile(filepath.Join(root, "pkg", "a.go")); string(got) != "package a\n" {
++		t.Fatalf("kısmi yazım görünür: %q", got)
++	}
++	entries, _ := os.ReadDir(filepath.Join(root, "pkg"))
++	for _, e := range entries {
++		if strings.HasPrefix(e.Name(), ".us-write-") {
++			t.Fatal("geçici dosya kaldı")
++		}
++	}
++	if err := ft.Delete("pkg/a.go"); err != nil {
++		t.Fatal(err)
++	}
++}
++
++func TestFileToolsWorkspacesAreSeparate(t *testing.T) {
++	a, b := t.TempDir(), t.TempDir()
++	fa, _ := newFileTools(a)
++	fb, _ := newFileTools(b)
++	if err := fa.Write("x.txt", []byte("A")); err != nil {
++		t.Fatal(err)
++	}
++	if _, err := fb.Read(filepath.Join(a, "x.txt")); err == nil {
++		t.Fatal("B çalışma alanı A dosyasını okudu")
++	}
++	if _, err := fb.Read("x.txt"); err == nil {
++		t.Fatal("B'de olmayan dosya okundu")
++	}
++}
++
++func TestAppendFileIsAtomicAndBackedUp(t *testing.T) {
++	root := t.TempDir()
++	if err := os.WriteFile(filepath.Join(root, "n.txt"), []byte("bir\n"), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	s := newView("q-append")
++	s.root = root
++	s.appendFile("n.txt", "iki\n")
++	if got, _ := os.ReadFile(filepath.Join(root, "n.txt")); string(got) != "bir\niki\n" {
++		t.Fatalf("%q notice=%q", got, s.notice)
++	}
++	hist, _ := os.ReadDir(filepath.Join(root, changeHistoryDir))
++	if len(hist) == 0 {
++		t.Fatal("ekleme öncesi yedek yok")
++	}
++	if os.Symlink(t.TempDir(), filepath.Join(root, "dis")) == nil {
++		s.appendFile("dis/y.txt", "x")
++		if _, err := os.Stat(filepath.Join(root, "dis", "y.txt")); err == nil {
++			t.Fatal("symlink üzerinden ekleme yapıldı")
++		}
++	}
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/go.mod work2/kiyas/term/go.mod
+--- baseline_tree/go.mod	2026-11-06 07:51:39.517474000 +0300
++++ work2/kiyas/term/go.mod	2026-11-06 08:28:52.855493870 +0300
+@@ -22,5 +22,5 @@
+ 	github.com/rivo/uniseg v0.4.7 // indirect
+ 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
+ 	golang.org/x/crypto v0.33.0
+-	golang.org/x/sys v0.30.0 // indirect
++	golang.org/x/sys v0.30.0
+ )
+diff -ruN -x kiyas -x '*.exe' baseline_tree/gui.go work2/kiyas/term/gui.go
+--- baseline_tree/gui.go	2026-11-06 07:53:15.232974191 +0300
++++ work2/kiyas/term/gui.go	2026-11-06 08:29:34.916009612 +0300
+@@ -814,7 +814,11 @@
+ 		g.mu.Lock()
+ 		unlock = g.s.hold()
+ 		g.s.project.RunLine = line
+-		g.s.noteLog("işlem", "Program çalıştırıldı.")
++		if g.s.runStarted {
++			g.s.noteLog("işlem", "Program çalıştırıldı.")
++		} else {
++			g.s.noteLog("işlem", "Program başlatılamadı.")
++		}
+ 		g.s.notice = ""
+ 	case "stop":
+ 		g.s.runGen++
+diff -ruN -x kiyas -x '*.exe' baseline_tree/main.go work2/kiyas/term/main.go
+--- baseline_tree/main.go	2026-11-06 07:15:30.620053293 +0300
++++ work2/kiyas/term/main.go	2026-11-06 08:29:34.916009612 +0300
+@@ -164,6 +164,7 @@
+ 	proc              *os.Process
+ 	procDone          chan programNote
+ 	runStatus         string
++	runStarted        bool
+ 	runGen            int
+ 	ask               *clarification
+ 	program           string
+diff -ruN -x kiyas -x '*.exe' baseline_tree/project_test_runner.go work2/kiyas/term/project_test_runner.go
+--- baseline_tree/project_test_runner.go	2026-11-06 06:11:41.722802179 +0300
++++ work2/kiyas/term/project_test_runner.go	2026-11-06 08:29:16.623775745 +0300
+@@ -19,17 +19,7 @@
+ 	return runProjectTestsWithContext(context.Background(), root, 60*time.Second)
+ }
+ 
+-func projectTestEnv() []string {
+-	var env []string
+-	allowed := map[string]bool{"PATH": true, "HOME": true, "USERPROFILE": true, "SYSTEMROOT": true, "WINDIR": true, "TEMP": true, "TMP": true, "TMPDIR": true, "LANG": true, "LC_ALL": true, "PATHEXT": true, "COMSPEC": true}
+-	for _, value := range os.Environ() {
+-		key, _, _ := strings.Cut(value, "=")
+-		if allowed[strings.ToUpper(key)] {
+-			env = append(env, value)
+-		}
+-	}
+-	return append(env, "PYTHONIOENCODING=utf-8")
+-}
++func projectTestEnv() []string { return safeExecEnv("PYTHONIOENCODING=utf-8") }
+ 
+ func runProjectTestsWithContext(parent context.Context, root string, timeout time.Duration) string {
+ 	info, err := os.Stat(root)
+diff -ruN -x kiyas -x '*.exe' baseline_tree/repair_loop.go work2/kiyas/term/repair_loop.go
+--- baseline_tree/repair_loop.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/repair_loop.go	2026-11-06 08:44:51.967730456 +0300
+@@ -0,0 +1,324 @@
++package main
++
++import (
++	"bytes"
++	"context"
++	"encoding/json"
++	"errors"
++	"fmt"
++	"io"
++	"net/http"
++	"os"
++	"path/filepath"
++	"strings"
++	"time"
++)
++
++// Budgeted build -> error -> fix -> retest loop. The model is any
++// OpenAI-compatible /v1/chat/completions endpoint. Edits are applied only
++// through root-confined atomic fileTools and only after Approve says yes.
++
++type repairBudget struct {
++	MaxIterations int           // build+fix rounds
++	MaxModelCalls int           // paid model calls
++	MaxDuration   time.Duration // wall clock for the whole loop
++	StepTimeout   time.Duration // one build/test command
++	MaxEditBytes  int           // total bytes the model may write per round
++}
++
++var defaultRepairBudget = repairBudget{MaxIterations: 4, MaxModelCalls: 4, MaxDuration: 15 * time.Minute, StepTimeout: 3 * time.Minute, MaxEditBytes: 256 << 10}
++
++type repairEdit struct {
++	Path    string `json:"path"`
++	Content string `json:"content"`
++}
++
++type repairStep struct {
++	Iteration int      `json:"iteration"`
++	Argv      []string `json:"argv"`
++	State     string   `json:"state"`
++	ExitCode  int      `json:"exitCode"`
++	Stdout    string   `json:"stdout"`
++	Stderr    string   `json:"stderr"`
++	Edits     []string `json:"edits,omitempty"`
++	Note      string   `json:"note,omitempty"`
++}
++
++type repairResult struct {
++	Status     string       `json:"status"` // fixed, already_ok, budget_exhausted, cancelled, rejected, model_error
++	Iterations int          `json:"iterations"`
++	ModelCalls int          `json:"modelCalls"`
++	Steps      []repairStep `json:"steps"`
++}
++
++type repairLoop struct {
++	Root     string
++	Endpoint string // base URL, e.g. https://api-test.kanus.org
++	Key      string
++	Model    string
++	Budget   repairBudget
++	Client   *http.Client
++	// Approve must return true for the edits to be written. nil = refuse.
++	Approve func(iteration int, edits []repairEdit) bool
++	// Checkpoint, if set, is called after every state change (item 4).
++	Checkpoint func(r *repairResult) error
++	// Resume state (item 4): steps already done are not repeated.
++	resume *repairResult
++	hooks  *repairHooks
++}
++
++// repairHooks persist intent before side effects (item 4).
++type repairHooks struct {
++	beforeModel func(r *repairResult) error
++	beforeApply func(r *repairResult, edits []repairEdit) error
++}
++
++// repairCrashHook lets tests simulate a process crash at a named point.
++var repairCrashHook func(point string)
++
++// repairCommands picks the build/test argv for a project.
++func repairCommands(root string) ([][]string, error) {
++	if _, err := os.Stat(filepath.Join(root, "go.mod")); err == nil {
++		return [][]string{{"go", "build", "./..."}, {"go", "vet", "./..."}, {"go", "test", "./..."}}, nil
++	}
++	return nil, errors.New("desteklenen derleme bulunamadı (go.mod yok)")
++}
++
++func (l *repairLoop) runChecks(ctx context.Context, iteration int) (repairStep, bool) {
++	cmds, err := repairCommands(l.Root)
++	if err != nil {
++		return repairStep{Iteration: iteration, State: "start_failed", ExitCode: -1, Note: err.Error()}, false
++	}
++	var last repairStep
++	for _, argv := range cmds {
++		bin, err := lookPathSafe(argv[0])
++		if err != nil {
++			return repairStep{Iteration: iteration, Argv: argv, State: "start_failed", ExitCode: -1, Note: err.Error()}, false
++		}
++		sc, err := newSafeCmd(ctx, l.Root, l.Root, append([]string{bin}, argv[1:]...), l.Budget.StepTimeout)
++		if err != nil {
++			return repairStep{Iteration: iteration, Argv: argv, State: "start_failed", ExitCode: -1, Note: err.Error()}, false
++		}
++		state, code, _ := sc.Run()
++		last = repairStep{Iteration: iteration, Argv: argv, State: state, ExitCode: code, Stdout: redactLine(sc.Stdout.String()), Stderr: redactLine(sc.Stderr.String())}
++		if state != "success" {
++			return last, false
++		}
++	}
++	return last, true
++}
++
++func (l *repairLoop) Run(parent context.Context) (*repairResult, error) {
++	b := l.Budget
++	if b.MaxIterations <= 0 {
++		b = defaultRepairBudget
++	}
++	l.Budget = b
++	ft, err := newFileTools(l.Root)
++	if err != nil {
++		return nil, err
++	}
++	ctx, cancel := context.WithTimeout(parent, b.MaxDuration)
++	defer cancel()
++	res := &repairResult{Status: "running"}
++	if l.resume != nil {
++		*res = *l.resume
++		res.Status = "running"
++	}
++	save := func() {
++		if l.Checkpoint != nil {
++			_ = l.Checkpoint(res)
++		}
++	}
++	finish := func(status string) (*repairResult, error) {
++		res.Status = status
++		save()
++		return res, nil
++	}
++	for {
++		if ctx.Err() != nil {
++			if errors.Is(ctx.Err(), context.DeadlineExceeded) && parent.Err() == nil {
++				return finish("budget_exhausted")
++			}
++			return finish("cancelled")
++		}
++		step, ok := l.runChecks(ctx, res.Iterations)
++		res.Steps = append(res.Steps, step)
++		save()
++		if ok {
++			if res.Iterations == 0 {
++				return finish("already_ok")
++			}
++			return finish("fixed")
++		}
++		if step.State == "cancelled" || ctx.Err() != nil {
++			if parent.Err() != nil {
++				return finish("cancelled")
++			}
++			return finish("budget_exhausted")
++		}
++		if step.State == "start_failed" {
++			return finish("start_failed")
++		}
++		if res.Iterations >= b.MaxIterations || res.ModelCalls >= b.MaxModelCalls {
++			return finish("budget_exhausted")
++		}
++		res.Iterations++
++		res.ModelCalls++
++		save()
++		if l.hooks != nil && l.hooks.beforeModel != nil {
++			if err := l.hooks.beforeModel(res); err != nil {
++				return nil, err
++			}
++		}
++		if repairCrashHook != nil {
++			repairCrashHook("model_in_flight")
++		}
++		edits, err := l.askFix(ctx, ft, step)
++		if err != nil {
++			res.Steps = append(res.Steps, repairStep{Iteration: res.Iterations, State: "model_error", ExitCode: -1, Note: err.Error()})
++			if ctx.Err() != nil && parent.Err() != nil {
++				return finish("cancelled")
++			}
++			return finish("model_error")
++		}
++		total := 0
++		for _, e := range edits {
++			total += len(e.Content)
++			if _, err := ft.resolve(e.Path); err != nil {
++				res.Steps = append(res.Steps, repairStep{Iteration: res.Iterations, State: "rejected", ExitCode: -1, Note: "model kök dışı yol önerdi: " + e.Path})
++				return finish("rejected")
++			}
++		}
++		if total > b.MaxEditBytes {
++			res.Steps = append(res.Steps, repairStep{Iteration: res.Iterations, State: "rejected", ExitCode: -1, Note: "düzeltme boyut bütçesini aşıyor"})
++			return finish("rejected")
++		}
++		if l.Approve == nil || !l.Approve(res.Iterations, edits) {
++			res.Steps = append(res.Steps, repairStep{Iteration: res.Iterations, State: "rejected", ExitCode: -1, Note: "kullanıcı onayı yok"})
++			return finish("rejected")
++		}
++		if l.hooks != nil && l.hooks.beforeApply != nil {
++			if err := l.hooks.beforeApply(res, edits); err != nil {
++				return nil, err
++			}
++		}
++		var names []string
++		for i, e := range edits {
++			if i == 1 && repairCrashHook != nil {
++				repairCrashHook("mid_apply")
++			}
++			if _, err := recordChange(ft.Root, filepath.ToSlash(e.Path), []byte(e.Content)); err != nil {
++				return nil, fmt.Errorf("yedek alınamadı: %w", err)
++			}
++			if err := ft.Write(e.Path, []byte(e.Content)); err != nil {
++				return nil, fmt.Errorf("düzeltme yazılamadı: %w", err)
++			}
++			names = append(names, e.Path)
++		}
++		if repairCrashHook != nil {
++			repairCrashHook("after_apply")
++		}
++		res.Steps = append(res.Steps, repairStep{Iteration: res.Iterations, State: "applied", ExitCode: -1, Edits: names})
++		save()
++	}
++}
++
++const repairSystemPrompt = `You fix build/test errors in a project. Reply with ONLY a JSON object: {"files":[{"path":"relative/path","content":"full new file content"}]}. Paths are relative to the project root.`
++
++func (l *repairLoop) askFix(ctx context.Context, ft *fileTools, step repairStep) ([]repairEdit, error) {
++	var prompt strings.Builder
++	fmt.Fprintf(&prompt, "Komut: %s\nÇıkış kodu: %d\nstdout:\n%s\nstderr:\n%s\n\nDosyalar:\n", strings.Join(step.Argv, " "), step.ExitCode, step.Stdout, step.Stderr)
++	budget := 64 << 10
++	_ = filepath.WalkDir(ft.Root, func(path string, d os.DirEntry, err error) error {
++		if err != nil || budget <= 0 {
++			return nil
++		}
++		if d.IsDir() {
++			if path != ft.Root && strings.HasPrefix(d.Name(), ".") {
++				return filepath.SkipDir
++			}
++			return nil
++		}
++		name := d.Name()
++		if !(strings.HasSuffix(name, ".go") || name == "go.mod") {
++			return nil
++		}
++		rel, _ := filepath.Rel(ft.Root, path)
++		body, err := ft.Read(rel)
++		if err != nil || len(body) > budget {
++			return nil
++		}
++		budget -= len(body)
++		fmt.Fprintf(&prompt, "--- %s\n%s\n", filepath.ToSlash(rel), redactLine(string(body)))
++		return nil
++	})
++	req := map[string]any{
++		"model":    l.Model,
++		"stream":   false,
++		"messages": []map[string]string{{"role": "system", "content": repairSystemPrompt}, {"role": "user", "content": prompt.String()}},
++	}
++	raw, _ := json.Marshal(req)
++	hreq, err := http.NewRequestWithContext(ctx, http.MethodPost, strings.TrimRight(l.Endpoint, "/")+"/v1/chat/completions", bytes.NewReader(raw))
++	if err != nil {
++		return nil, err
++	}
++	hreq.Header.Set("Content-Type", "application/json")
++	if l.Key != "" {
++		hreq.Header.Set("Authorization", "Bearer "+l.Key)
++	}
++	client := l.Client
++	if client == nil {
++		client = &http.Client{Timeout: 10 * time.Minute}
++	}
++	resp, err := client.Do(hreq)
++	if err != nil {
++		return nil, err
++	}
++	defer resp.Body.Close()
++	body, err := io.ReadAll(io.LimitReader(resp.Body, 4<<20))
++	if err != nil {
++		return nil, err
++	}
++	if resp.StatusCode != http.StatusOK {
++		return nil, fmt.Errorf("model HTTP %d", resp.StatusCode)
++	}
++	var out struct {
++		Choices []struct {
++			Message struct {
++				Content string `json:"content"`
++			} `json:"message"`
++		} `json:"choices"`
++	}
++	if err := json.Unmarshal(body, &out); err != nil || len(out.Choices) == 0 {
++		return nil, errors.New("model yanıtı çözümlenemedi")
++	}
++	return parseRepairEdits(out.Choices[0].Message.Content)
++}
++
++func parseRepairEdits(content string) ([]repairEdit, error) {
++	content = strings.TrimSpace(content)
++	if i := strings.Index(content, "{"); i >= 0 {
++		if j := strings.LastIndex(content, "}"); j > i {
++			content = content[i : j+1]
++		}
++	}
++	var payload struct {
++		Files []repairEdit `json:"files"`
++	}
++	if err := json.Unmarshal([]byte(content), &payload); err != nil {
++		return nil, errors.New("model düzeltme JSON'u geçersiz")
++	}
++	if len(payload.Files) == 0 || len(payload.Files) > 20 {
++		return nil, errors.New("model düzeltme önermedi")
++	}
++	return payload.Files, nil
++}
++
++func lookPathSafe(name string) (string, error) {
++	bin, ok := resolveBin(name)
++	if !ok {
++		return "", fmt.Errorf("%s bulunamadı", name)
++	}
++	return bin, nil
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/repair_loop_test.go work2/kiyas/term/repair_loop_test.go
+--- baseline_tree/repair_loop_test.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/repair_loop_test.go	2026-11-06 08:42:20.030845871 +0300
+@@ -0,0 +1,161 @@
++package main
++
++import (
++	"context"
++	"encoding/json"
++	"io"
++	"net/http"
++	"net/http/httptest"
++	"os"
++	"os/exec"
++	"path/filepath"
++	"strings"
++	"sync/atomic"
++	"testing"
++	"time"
++)
++
++const brokenMain = "package main\n\nimport \"fmt\"\n\nfunc add(a, b int) int {\n\treturn a + c\n}\n\nfunc main() { fmt.Println(add(1, 2)) }\n"
++const fixedMain = "package main\n\nimport \"fmt\"\n\nfunc add(a, b int) int {\n\treturn a + b\n}\n\nfunc main() { fmt.Println(add(1, 2)) }\n"
++const addTest = "package main\n\nimport \"testing\"\n\nfunc TestAdd(t *testing.T) {\n\tif add(2, 3) != 5 {\n\t\tt.Fatal(add(2, 3))\n\t}\n}\n"
++
++func brokenGoProject(t *testing.T) string {
++	t.Helper()
++	if _, err := exec.LookPath("go"); err != nil {
++		t.Skip("go yok")
++	}
++	root := t.TempDir()
++	for name, body := range map[string]string{"go.mod": "module broken\n\ngo 1.22\n", "main.go": brokenMain, "main_test.go": addTest} {
++		if err := os.WriteFile(filepath.Join(root, name), []byte(body), 0o644); err != nil {
++			t.Fatal(err)
++		}
++	}
++	return root
++}
++
++// mockModel is an OpenAI-compatible /v1/chat/completions mock.
++func mockModel(t *testing.T, answer func(prompt string, n int) string) (*httptest.Server, *int32) {
++	var calls int32
++	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		if r.URL.Path != "/v1/chat/completions" || r.Method != http.MethodPost || r.Header.Get("Authorization") != "Bearer test-key" {
++			http.Error(w, "bad", http.StatusBadRequest)
++			return
++		}
++		var req struct {
++			Messages []struct{ Content string } `json:"messages"`
++		}
++		_ = json.NewDecoder(r.Body).Decode(&req)
++		n := int(atomic.AddInt32(&calls, 1))
++		content := answer(req.Messages[len(req.Messages)-1].Content, n)
++		_ = json.NewEncoder(w).Encode(map[string]any{"choices": []any{map[string]any{"message": map[string]string{"role": "assistant", "content": content}}}})
++	}))
++	t.Cleanup(srv.Close)
++	return srv, &calls
++}
++
++func fileJSON(path, content string) string {
++	raw, _ := json.Marshal(map[string]any{"files": []repairEdit{{Path: path, Content: content}}})
++	return string(raw)
++}
++
++func TestRepairLoopFixesBrokenGoProjectE2E(t *testing.T) {
++	root := brokenGoProject(t)
++	srv, calls := mockModel(t, func(prompt string, n int) string {
++		if !strings.Contains(prompt, "undefined: c") || !strings.Contains(prompt, "--- main.go") {
++			return `{"files":[]}`
++		}
++		return "Düzeltme:\n```json\n" + fileJSON("main.go", fixedMain) + "\n```"
++	})
++	approved := 0
++	loop := &repairLoop{Root: root, Endpoint: srv.URL, Key: "test-key", Model: "mock", Budget: repairBudget{MaxIterations: 3, MaxModelCalls: 3, MaxDuration: 3 * time.Minute, StepTimeout: 2 * time.Minute, MaxEditBytes: 1 << 16},
++		Approve: func(int, []repairEdit) bool { approved++; return true }}
++	res, err := loop.Run(context.Background())
++	if err != nil {
++		t.Fatal(err)
++	}
++	if res.Status != "fixed" || res.Iterations != 1 || *calls != 1 || approved != 1 {
++		t.Fatalf("beklenmeyen sonuç: %+v calls=%d", res, *calls)
++	}
++	if got, _ := os.ReadFile(filepath.Join(root, "main.go")); string(got) != fixedMain {
++		t.Fatal("düzeltme yazılmadı")
++	}
++	first, last := res.Steps[0], res.Steps[len(res.Steps)-1]
++	if first.State != "failed" || first.ExitCode == 0 || !strings.Contains(first.Stderr, "undefined: c") {
++		t.Fatalf("ilk derleme hatası yakalanmadı: %+v", first)
++	}
++	if last.State != "success" || last.ExitCode != 0 || strings.Join(last.Argv, " ") != "go test ./..." {
++		t.Fatalf("yeniden test geçmedi: %+v", last)
++	}
++	// Independent retest outside the loop.
++	cmd := exec.Command("go", "test", "./...")
++	cmd.Dir = root
++	if out, err := cmd.CombinedOutput(); err != nil {
++		t.Fatalf("bağımsız test: %v %s", err, out)
++	}
++}
++
++func TestRepairLoopStopsAtBudget(t *testing.T) {
++	root := brokenGoProject(t)
++	srv, calls := mockModel(t, func(string, int) string { return fileJSON("main.go", brokenMain) })
++	loop := &repairLoop{Root: root, Endpoint: srv.URL, Key: "test-key", Budget: repairBudget{MaxIterations: 2, MaxModelCalls: 2, MaxDuration: 3 * time.Minute, StepTimeout: time.Minute, MaxEditBytes: 1 << 16},
++		Approve: func(int, []repairEdit) bool { return true }}
++	res, err := loop.Run(context.Background())
++	if err != nil {
++		t.Fatal(err)
++	}
++	if res.Status != "budget_exhausted" || *calls != 2 || res.ModelCalls != 2 {
++		t.Fatalf("bütçe uygulanmadı: %s calls=%d", res.Status, *calls)
++	}
++}
++
++func TestRepairLoopRefusesEscapeUnapprovedAndBadJSON(t *testing.T) {
++	root := brokenGoProject(t)
++	outside := t.TempDir()
++	cases := map[string]struct {
++		answer  string
++		approve bool
++	}{
++		"escape":     {fileJSON("../"+filepath.Base(outside)+"/pwn.go", "x"), true},
++		"unapproved": {fileJSON("main.go", fixedMain), false},
++		"badjson":    {"düzeltemedim", true},
++	}
++	for name, c := range cases {
++		srv, _ := mockModel(t, func(string, int) string { return c.answer })
++		approve := c.approve
++		loop := &repairLoop{Root: root, Endpoint: srv.URL, Key: "test-key", Budget: repairBudget{MaxIterations: 2, MaxModelCalls: 2, MaxDuration: time.Minute, StepTimeout: time.Minute, MaxEditBytes: 1 << 16},
++			Approve: func(int, []repairEdit) bool { return approve }}
++		res, err := loop.Run(context.Background())
++		if err != nil {
++			t.Fatal(name, err)
++		}
++		want := map[string]string{"escape": "rejected", "unapproved": "rejected", "badjson": "model_error"}[name]
++		if res.Status != want {
++			t.Fatalf("%s: %s", name, res.Status)
++		}
++		if got, _ := os.ReadFile(filepath.Join(root, "main.go")); string(got) != brokenMain {
++			t.Fatalf("%s: dosya değişti", name)
++		}
++	}
++	if entries, _ := os.ReadDir(outside); len(entries) != 0 {
++		t.Fatal("kök dışına yazıldı")
++	}
++}
++
++func TestRepairLoopCancellation(t *testing.T) {
++	root := brokenGoProject(t)
++	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		_, _ = io.Copy(io.Discard, r.Body)
++		<-r.Context().Done()
++	}))
++	defer srv.Close()
++	ctx, cancel := context.WithCancel(context.Background())
++	loop := &repairLoop{Root: root, Endpoint: srv.URL, Budget: repairBudget{MaxIterations: 2, MaxModelCalls: 2, MaxDuration: time.Minute, StepTimeout: time.Minute, MaxEditBytes: 1 << 16}, Approve: func(int, []repairEdit) bool { return true }}
++	go func() { time.Sleep(1500 * time.Millisecond); cancel() }()
++	res, err := loop.Run(ctx)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if res.Status != "cancelled" {
++		t.Fatalf("iptal edilmedi: %s", res.Status)
++	}
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/run.go work2/kiyas/term/run.go
+--- baseline_tree/run.go	2026-11-06 05:53:52.906176174 +0300
++++ work2/kiyas/term/run.go	2026-11-06 08:29:57.880322382 +0300
+@@ -38,16 +38,8 @@
+ 	return false
+ }
+ 
+-func pythonEnv() []string {
+-	env := make([]string, 0, len(os.Environ())+1)
+-	for _, item := range os.Environ() {
+-		if strings.HasPrefix(item, "PYTHONIOENCODING=") {
+-			continue
+-		}
+-		env = append(env, item)
+-	}
+-	return append(env, "PYTHONIOENCODING=utf-8")
+-}
++// pythonEnv is the filtered allowlist env (no parent secrets).
++func pythonEnv() []string { return safeExecEnv("PYTHONIOENCODING=utf-8") }
+ 
+ func (s *session) stopProgram() {
+ 	if s.proc == nil {
+@@ -62,6 +54,7 @@
+ 	gen := s.runGen
+ 	s.stopProgram()
+ 	s.runStatus = ""
++	s.runStarted = false
+ 	found, ok := detectLaunch(root)
+ 	if !ok {
+ 		return "Çalıştırılacak program yok."
+@@ -75,20 +68,22 @@
+ 	if extra != "" && commandSafe(append(argv, extra)) {
+ 		argv = append(argv, extra)
+ 	}
+-	cmd := exec.Command(argv[0], argv[1:]...)
+-	configureProcessTree(cmd)
+-	cmd.Dir = found.Dir
+-	cmd.Stdin = bytes.NewReader(nil)
+-	cmd.Env = pythonEnv()
+-	var buf cappedBuf
+-	cmd.Stdout = &buf
+-	cmd.Stderr = &buf
+-	if err := cmd.Start(); err != nil {
++	sc, err := newSafeCmd(context.Background(), root, found.Dir, argv, runProgramTimeout, "PYTHONIOENCODING=utf-8")
++	if err != nil {
++		s.runStatus = "durum  durdu"
++		return s.runStatus + "\n" + found.Label + " reddedildi: " + err.Error()
++	}
++	out := func() string { return runOutput(sc.Stdout, sc.Stderr) }
++	if err := sc.Start(); err != nil {
+ 		s.runStatus = "durum  durdu"
+ 		return s.runStatus + "\n" + found.Label + " başlamadı."
+ 	}
++	s.runStarted = true
+ 	exited := make(chan error, 1)
+-	go func() { exited <- cmd.Wait() }()
++	go func() {
++		_, _, err := sc.Wait()
++		exited <- err
++	}()
+ 	ticker := time.NewTicker(40 * time.Millisecond)
+ 	defer ticker.Stop()
+ 	deadline := time.After(3 * time.Second)
+@@ -100,24 +95,39 @@
+ 				state = "durdu"
+ 			}
+ 			s.runStatus = statusReport(state)
+-			return formatRun(found.Label, buf.String(), state)
++			return formatRun(found.Label, out(), state)
+ 		case <-ticker.C:
+-			if programReady(buf.String()) {
+-				s.proc = cmd.Process
++			if programReady(out()) {
++				s.proc = sc.Cmd.Process
+ 				s.runStatus = statusReport("çalışıyor")
+-				s.watchExit(exited, gen, found.Label, &buf)
+-				return formatRun(found.Label, buf.String(), "çalışıyor")
++				s.watchExit(exited, gen, found.Label, out)
++				return formatRun(found.Label, out(), "çalışıyor")
+ 			}
+ 		case <-deadline:
+-			s.proc = cmd.Process
++			s.proc = sc.Cmd.Process
+ 			s.runStatus = statusReport("çalışıyor")
+-			s.watchExit(exited, gen, found.Label, &buf)
+-			return formatRun(found.Label, buf.String(), "çalışıyor")
++			s.watchExit(exited, gen, found.Label, out)
++			return formatRun(found.Label, out(), "çalışıyor")
+ 		}
+ 	}
+ }
+ 
+-func (s *session) watchExit(exited <-chan error, gen int, label string, buf *cappedBuf) {
++// runProgramTimeout bounds a Run-path program's lifetime (servers included).
++const runProgramTimeout = 4 * time.Hour
++
++// runOutput keeps stdout and stderr separate in the panel view.
++func runOutput(stdout, stderr *cappedBuf) string {
++	o, e := stdout.String(), stderr.String()
++	if strings.TrimSpace(e) == "" {
++		return o
++	}
++	if strings.TrimSpace(o) == "" {
++		return "[stderr]\n" + e
++	}
++	return o + "\n[stderr]\n" + e
++}
++
++func (s *session) watchExit(exited <-chan error, gen int, label string, out func() string) {
+ 	ch := s.procDone
+ 	go func() {
+ 		err := <-exited
+@@ -125,7 +135,7 @@
+ 		if err != nil {
+ 			state = "durdu"
+ 		}
+-		note := programNote{gen: gen, status: statusReport(state), line: formatRun(label, buf.String(), state)}
++		note := programNote{gen: gen, status: statusReport(state), line: formatRun(label, out(), state)}
+ 		if ch == nil {
+ 			return
+ 		}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_exec.go work2/kiyas/term/safe_exec.go
+--- baseline_tree/safe_exec.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/safe_exec.go	2026-11-06 08:30:59.289250582 +0300
+@@ -0,0 +1,190 @@
++package main
++
++import (
++	"context"
++	"errors"
++	"fmt"
++	"os"
++	"os/exec"
++	"path/filepath"
++	"strings"
++	"time"
++)
++
++// Shared safe execution used by both the Terminal and the Run paths.
++// It is a defence-in-depth layer for trusted single-user projects, NOT an
++// OS/container sandbox: allowed interpreters still run project code.
++
++// safeRunBins is the allowlist of executables (by base name) that any panel
++// path may start. Terminal applies the stricter terminalArgv sub-command policy
++// on top of this.
++var safeRunBins = map[string]bool{"go": true, "python": true, "python3": true, "py": true, "node": true, "npm": true, "uvicorn": true, "flask": true, "gunicorn": true, "php": true}
++
++// safeEnvKeys is the environment allowlist. Everything else (tokens, license
++// secrets, cloud credentials) is dropped before a child process starts.
++var safeEnvKeys = map[string]bool{"PATH": true, "HOME": true, "USERPROFILE": true, "SYSTEMROOT": true, "WINDIR": true, "TEMP": true, "TMP": true, "TMPDIR": true, "LANG": true, "LC_ALL": true, "PATHEXT": true, "COMSPEC": true, "GOPATH": true, "GOCACHE": true, "GOMODCACHE": true, "GOFLAGS": true, "GOPROXY": true, "LOCALAPPDATA": true, "APPDATA": true}
++
++const (
++	safeExecMaxOutput    = 16 << 10
++	safeExecDefaultLimit = 10 * time.Minute
++)
++
++// safeLimits are per-process resource limits. Applied with setrlimit on
++// Linux and a Job Object on Windows (see safe_limits_*.go).
++type safeLimits struct {
++	CPUSeconds  uint64
++	MemoryBytes uint64
++	Processes   uint64
++	FileBytes   uint64
++}
++
++var defaultSafeLimits = safeLimits{CPUSeconds: 600, MemoryBytes: 4 << 30, Processes: 256, FileBytes: 512 << 20}
++
++func safeExecEnv(extra ...string) []string {
++	var env []string
++	for _, value := range os.Environ() {
++		key, _, _ := strings.Cut(value, "=")
++		if safeEnvKeys[strings.ToUpper(key)] {
++			env = append(env, value)
++		}
++	}
++	return append(env, extra...)
++}
++
++func safeBinAllowed(bin string) bool {
++	base := strings.ToLower(filepath.Base(bin))
++	base = strings.TrimSuffix(base, ".exe")
++	return safeRunBins[base]
++}
++
++// lockCwd resolves root and dir (following symlinks) and refuses any dir that
++// is not root itself or below it. It returns the resolved dir.
++func lockCwd(root, dir string) (string, error) {
++	if strings.TrimSpace(root) == "" || refusedFolder(root) {
++		return "", errors.New("geçerli proje klasörü yok")
++	}
++	if dir == "" {
++		dir = root
++	}
++	for _, part := range strings.Split(filepath.ToSlash(dir), "/") {
++		if part == ".." {
++			return "", errors.New("proje dışı çalışma dizini")
++		}
++	}
++	realRoot, err := filepath.EvalSymlinks(root)
++	if err != nil {
++		return "", errors.New("proje klasörü çözülemedi")
++	}
++	if !filepath.IsAbs(dir) {
++		dir = filepath.Join(root, dir)
++	}
++	realDir, err := filepath.EvalSymlinks(dir)
++	if err != nil {
++		return "", errors.New("çalışma dizini çözülemedi")
++	}
++	info, err := os.Stat(realDir)
++	if err != nil || !info.IsDir() {
++		return "", errors.New("çalışma dizini klasör değil")
++	}
++	if realDir != realRoot && !insideRoot(realRoot, realDir) {
++		return "", errors.New("çalışma dizini proje dışına çıkıyor")
++	}
++	return realDir, nil
++}
++
++type safeCmd struct {
++	Cmd    *exec.Cmd
++	Stdout *cappedBuf
++	Stderr *cappedBuf
++	ctx    context.Context
++	cancel context.CancelFunc
++	limit  func()
++}
++
++// newSafeCmd builds a command with the allowlisted binary, locked cwd,
++// filtered env, separate capped stdout/stderr, a timeout and process-group
++// cancellation. Start must be called through (*safeCmd).Start.
++func newSafeCmd(parent context.Context, root, dir string, argv []string, timeout time.Duration, extraEnv ...string) (*safeCmd, error) {
++	if len(argv) == 0 || !safeBinAllowed(argv[0]) {
++		return nil, errors.New("komut izinli değil")
++	}
++	for _, arg := range argv {
++		if strings.ContainsRune(arg, 0) {
++			return nil, errors.New("geçersiz argüman")
++		}
++	}
++	cwd, err := lockCwd(root, dir)
++	if err != nil {
++		return nil, err
++	}
++	if timeout <= 0 || timeout > safeExecDefaultLimit*6 {
++		timeout = safeExecDefaultLimit
++	}
++	if parent == nil {
++		parent = context.Background()
++	}
++	ctx, cancel := context.WithTimeout(parent, timeout)
++	cmd := exec.CommandContext(ctx, argv[0], argv[1:]...)
++	configureProcessTree(cmd)
++	cmd.Cancel = func() error { return killProcessTree(cmd.Process) }
++	cmd.WaitDelay = 2 * time.Second
++	cmd.Dir = cwd
++	cmd.Env = safeExecEnv(extraEnv...)
++	cmd.Stdin = strings.NewReader("")
++	sc := &safeCmd{Cmd: cmd, Stdout: &cappedBuf{}, Stderr: &cappedBuf{}, ctx: ctx, cancel: cancel}
++	cmd.Stdout = sc.Stdout
++	cmd.Stderr = sc.Stderr
++	return sc, nil
++}
++
++// Start starts the process and applies OS resource limits. On failure the
++// context is released and an error is returned; callers must not report the
++// program as started.
++func (c *safeCmd) Start() error {
++	if err := c.Cmd.Start(); err != nil {
++		c.cancel()
++		return fmt.Errorf("işlem başlamadı: %w", err)
++	}
++	release, err := applySafeLimits(c.Cmd.Process, defaultSafeLimits)
++	if err != nil {
++		_ = killProcessTree(c.Cmd.Process)
++		_ = c.Cmd.Wait()
++		c.cancel()
++		return fmt.Errorf("kaynak sınırı uygulanamadı: %w", err)
++	}
++	c.limit = release
++	return nil
++}
++
++// Wait waits and returns the state: success, failed, timeout or cancelled.
++func (c *safeCmd) Wait() (string, int, error) {
++	err := c.Cmd.Wait()
++	cause := c.ctx.Err()
++	c.cancel()
++	if c.limit != nil {
++		c.limit()
++	}
++	code := -1
++	if c.Cmd.ProcessState != nil {
++		code = c.Cmd.ProcessState.ExitCode()
++	}
++	switch {
++	case errors.Is(cause, context.DeadlineExceeded):
++		return "timeout", code, err
++	case cause != nil:
++		return "cancelled", code, err
++	case err != nil:
++		return "failed", code, err
++	}
++	return "success", code, nil
++}
++
++func (c *safeCmd) Cancel() { c.cancel() }
++
++// Run is Start+Wait.
++func (c *safeCmd) Run() (string, int, error) {
++	if err := c.Start(); err != nil {
++		return "start_failed", -1, err
++	}
++	return c.Wait()
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_exec_test.go work2/kiyas/term/safe_exec_test.go
+--- baseline_tree/safe_exec_test.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/safe_exec_test.go	2026-11-06 08:31:10.213428061 +0300
+@@ -0,0 +1,171 @@
++package main
++
++import (
++	"context"
++	"net/http/httptest"
++	"os"
++	"os/exec"
++	"path/filepath"
++	"strings"
++	"testing"
++	"time"
++)
++
++func needPython(t *testing.T) string {
++	t.Helper()
++	bin, err := exec.LookPath("python3")
++	if err != nil {
++		t.Skip("python3 yok")
++	}
++	return bin
++}
++
++func TestSafeExecRejectsNonAllowlistedBinary(t *testing.T) {
++	root := t.TempDir()
++	for _, argv := range [][]string{{"sh", "-c", "id"}, {"/bin/bash"}, {"curl", "x"}, {"rm", "-rf", "."}} {
++		if _, err := newSafeCmd(context.Background(), root, root, argv, time.Second); err == nil {
++			t.Fatalf("izinsiz komut kabul edildi: %v", argv)
++		}
++	}
++	for _, raw := range []string{`["sh","-c","id"]`, `["go","env","-w","X=1"]`, `["python3","-c","print(1)"]`, `["node","-e","1"]`, `["go","test","../x"]`} {
++		if _, err := terminalArgv(raw, root); err == nil {
++			t.Fatalf("terminal izinsiz komutu kabul etti: %s", raw)
++		}
++	}
++}
++
++func TestSafeExecCwdLockBlocksDotDotAndSymlink(t *testing.T) {
++	root := t.TempDir()
++	outside := t.TempDir()
++	if err := os.Mkdir(filepath.Join(root, "sub"), 0o755); err != nil {
++		t.Fatal(err)
++	}
++	if err := os.Symlink(outside, filepath.Join(root, "kacis")); err != nil {
++		t.Skip("symlink yok")
++	}
++	if _, err := lockCwd(root, "sub"); err != nil {
++		t.Fatalf("proje içi alt dizin reddedildi: %v", err)
++	}
++	for _, dir := range []string{"..", "sub/../..", filepath.Join(root, ".."), "kacis", filepath.Join(root, "kacis"), outside} {
++		if _, err := lockCwd(root, dir); err == nil {
++			t.Fatalf("kaçış kabul edildi: %s", dir)
++		}
++	}
++	if _, err := newSafeCmd(context.Background(), root, "kacis", []string{"go", "version"}, time.Second); err == nil {
++		t.Fatal("symlink cwd ile komut hazırlandı")
++	}
++}
++
++func TestSafeExecEnvDoesNotLeakSecrets(t *testing.T) {
++	py := needPython(t)
++	t.Setenv("US_LICENSE_SECRET", "sizinti-lisans-123")
++	t.Setenv("SHOPIFY_WEBHOOK_SECRET", "sizinti-shopify-456")
++	t.Setenv("US_MODEL_UPSTREAM_TOKEN", "sizinti-token-789")
++	t.Setenv("AWS_SECRET_ACCESS_KEY", "sizinti-aws")
++	for _, item := range safeExecEnv() {
++		if strings.Contains(item, "sizinti") {
++			t.Fatalf("env allowlist sızdırdı: %s", item)
++		}
++	}
++	root := t.TempDir()
++	sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", "import os\nfor k,v in os.environ.items(): print(k+'='+v)"}, 10*time.Second)
++	if err != nil {
++		t.Fatal(err)
++	}
++	state, code, _ := sc.Run()
++	if state != "success" || code != 0 {
++		t.Fatalf("%s %d %s", state, code, sc.Stderr.String())
++	}
++	if strings.Contains(sc.Stdout.String(), "sizinti") {
++		t.Fatalf("çocuk süreç gizli değeri gördü:\n%s", sc.Stdout.String())
++	}
++	// Run path uses the same filtered env.
++	for _, item := range pythonEnv() {
++		if strings.Contains(item, "sizinti") {
++			t.Fatalf("Run env sızdırdı: %s", item)
++		}
++	}
++}
++
++func TestRunPathDoesNotLeakSecretsToProgram(t *testing.T) {
++	needPython(t)
++	t.Setenv("US_LICENSE_SECRET", "sizinti-run-path")
++	root := t.TempDir()
++	script := "import os,sys\nprint('err-line', file=sys.stderr)\nprint('LEAK' if any('sizinti' in v for v in os.environ.values()) else 'CLEAN')\n"
++	if err := os.WriteFile(filepath.Join(root, "main.py"), []byte(script), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	s := newView("q-safe")
++	defer s.stopProgram()
++	line := s.startProgram(root, "")
++	if !s.runStarted {
++		t.Fatalf("program başlamadı: %s", line)
++	}
++	if !strings.Contains(line, "CLEAN") || strings.Contains(line, "LEAK") || strings.Contains(line, "US_LICENSE_SECRET") {
++		t.Fatalf("Run yolu gizli env sızdırdı:\n%s", line)
++	}
++	if !strings.Contains(line, "[stderr]") || !strings.Contains(line, "err-line") {
++		t.Fatalf("stderr ayrı gösterilmedi:\n%s", line)
++	}
++}
++
++func TestSafeExecSeparateStreamsAndCap(t *testing.T) {
++	py := needPython(t)
++	root := t.TempDir()
++	sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", "import sys\nsys.stdout.write('o'*100000)\nsys.stderr.write('E-ONLY')\nsys.exit(7)"}, 10*time.Second)
++	if err != nil {
++		t.Fatal(err)
++	}
++	state, code, _ := sc.Run()
++	if state != "failed" || code != 7 {
++		t.Fatalf("durum/kod yanlış: %s %d", state, code)
++	}
++	if got := len(sc.Stdout.String()); got > safeExecMaxOutput {
++		t.Fatalf("stdout sınırı aşıldı: %d", got)
++	}
++	if strings.Contains(sc.Stdout.String(), "E-ONLY") || sc.Stderr.String() != "E-ONLY" {
++		t.Fatal("stdout/stderr karıştı")
++	}
++}
++
++func TestSafeExecStartFailureIsReported(t *testing.T) {
++	root := t.TempDir()
++	fake := filepath.Join(root, "go")
++	if err := os.WriteFile(fake, []byte{0, 1, 2, 3}, 0o755); err != nil {
++		t.Fatal(err)
++	}
++	sc, err := newSafeCmd(context.Background(), root, root, []string{fake}, time.Second)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if state, _, err := sc.Run(); state != "start_failed" || err == nil {
++		t.Fatalf("başlatma hatası raporlanmadı: %s %v", state, err)
++	}
++}
++
++func TestRunLogNotWrittenWhenProgramDidNotStart(t *testing.T) {
++	root := t.TempDir()
++	if err := os.WriteFile(filepath.Join(root, "main.py"), []byte("print(1)\n"), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	t.Setenv("PATH", t.TempDir()) // no python3/go/node: launch cannot start
++	s := newView("q-nostart")
++	s.root = root
++	s.browse = root
++	srv := httptest.NewServer(guiMux(&s))
++	defer srv.Close()
++	defer s.stopProgram()
++	snap := guiPost(t, srv.URL+"/api/act", `{"op":"run"}`)
++	for _, item := range snap.Journal {
++		if strings.Contains(item.Text, "Program çalıştırıldı") {
++			t.Fatalf("başlamayan program için başarı günlüğü yazıldı: %+v", snap.Journal)
++		}
++	}
++	found := false
++	for _, item := range snap.Journal {
++		found = found || strings.Contains(item.Text, "Program başlatılamadı")
++	}
++	if !found {
++		t.Fatalf("başarısızlık günlüğü yok: %+v", snap.Journal)
++	}
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_exec_unix_test.go work2/kiyas/term/safe_exec_unix_test.go
+--- baseline_tree/safe_exec_unix_test.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/safe_exec_unix_test.go	2026-11-06 08:30:59.293250646 +0300
+@@ -0,0 +1,72 @@
++//go:build linux
++
++package main
++
++import (
++	"context"
++	"os"
++	"path/filepath"
++	"strconv"
++	"strings"
++	"syscall"
++	"testing"
++	"time"
++)
++
++func TestSafeExecTimeoutKillsProcessGroup(t *testing.T) {
++	py := needPython(t)
++	root := t.TempDir()
++	pidFile := filepath.Join(root, "child.pid")
++	script := "import subprocess,sys,time\np=subprocess.Popen([sys.executable,'-c','import time; time.sleep(60)'])\nopen('child.pid','w').write(str(p.pid))\nprint('ready',flush=True)\ntime.sleep(60)"
++	for _, mode := range []string{"timeout", "cancel"} {
++		_ = os.Remove(pidFile)
++		timeout := 30 * time.Second
++		if mode == "timeout" {
++			timeout = 1500 * time.Millisecond
++		}
++		sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", script}, timeout)
++		if err != nil {
++			t.Fatal(err)
++		}
++		if err := sc.Start(); err != nil {
++			t.Fatal(err)
++		}
++		deadline := time.Now().Add(10 * time.Second)
++		var childPid int
++		for time.Now().Before(deadline) {
++			if raw, err := os.ReadFile(pidFile); err == nil && len(raw) > 0 {
++				childPid, _ = strconv.Atoi(string(raw))
++				break
++			}
++			time.Sleep(20 * time.Millisecond)
++		}
++		if childPid == 0 {
++			t.Fatal("alt süreç pid yok")
++		}
++		if mode == "cancel" {
++			sc.Cancel()
++		}
++		start := time.Now()
++		state, _, _ := sc.Wait()
++		want := map[string]string{"timeout": "timeout", "cancel": "cancelled"}[mode]
++		if state != want {
++			t.Fatalf("%s: durum %s", mode, state)
++		}
++		if time.Since(start) > 8*time.Second {
++			t.Fatalf("%s: iptal gecikti", mode)
++		}
++		alive := true
++		for i := 0; i < 100 && alive; i++ {
++			// Reaped by init or zombie: both mean killed; check /proc state.
++			raw, err := os.ReadFile("/proc/" + strconv.Itoa(childPid) + "/stat")
++			alive = err == nil && !strings.Contains(string(raw), ") Z ") && syscall.Kill(childPid, 0) == nil
++			if alive {
++				time.Sleep(50 * time.Millisecond)
++			}
++		}
++		if alive {
++			_ = syscall.Kill(childPid, syscall.SIGKILL)
++			t.Fatalf("%s: torun süreç öldürülmedi (pid %d)", mode, childPid)
++		}
++	}
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_linux.go work2/kiyas/term/safe_limits_linux.go
+--- baseline_tree/safe_limits_linux.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/safe_limits_linux.go	2026-11-06 08:31:10.213428061 +0300
+@@ -0,0 +1,43 @@
++//go:build linux
++
++package main
++
++import (
++	"os"
++
++	"golang.org/x/sys/unix"
++)
++
++// applySafeLimits sets RLIMIT_CPU/DATA/FSIZE (DATA, not AS, so Go/V8 address-space reservations still work) on the started child via
++// prlimit(2). Children forked later inherit these limits.
++func applySafeLimits(proc *os.Process, l safeLimits) (func(), error) {
++	if proc == nil {
++		return func() {}, nil
++	}
++	set := func(res int, v uint64) error {
++		if v == 0 {
++			return nil
++		}
++		var cur unix.Rlimit
++		if err := unix.Prlimit(proc.Pid, res, nil, &cur); err != nil {
++			return err
++		}
++		if cur.Max != unix.RLIM_INFINITY && cur.Max < v {
++			v = cur.Max
++		}
++		return unix.Prlimit(proc.Pid, res, &unix.Rlimit{Cur: v, Max: v}, nil)
++	}
++	for _, item := range []struct {
++		res int
++		v   uint64
++	}{{unix.RLIMIT_CPU, l.CPUSeconds}, {unix.RLIMIT_DATA, l.MemoryBytes}, {unix.RLIMIT_FSIZE, l.FileBytes}} {
++		if err := set(item.res, item.v); err != nil {
++			return nil, err
++		}
++	}
++	// RLIMIT_NPROC is deliberately NOT set: on Linux it counts every
++	// thread of the real UID (the panel itself included), so a low value
++	// breaks threaded servers. Process count is bounded on Windows by the
++	// Job Object; on Linux use a cgroup/container for multi-tenant hosting.
++	return func() {}, nil
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_linux_test.go work2/kiyas/term/safe_limits_linux_test.go
+--- baseline_tree/safe_limits_linux_test.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/safe_limits_linux_test.go	2026-11-06 08:30:34.752864901 +0300
+@@ -0,0 +1,24 @@
++//go:build linux
++
++package main
++
++import (
++	"context"
++	"strings"
++	"testing"
++	"time"
++)
++
++func TestSafeExecAppliesLinuxRlimits(t *testing.T) {
++	py := needPython(t)
++	root := t.TempDir()
++	sc, err := newSafeCmd(context.Background(), root, root, []string{py, "-c", "import resource,time\ntime.sleep(0.3)\nprint(resource.getrlimit(resource.RLIMIT_CPU)[0], resource.getrlimit(resource.RLIMIT_DATA)[0], resource.getrlimit(resource.RLIMIT_FSIZE)[0])"}, 10*time.Second)
++	if err != nil {
++		t.Fatal(err)
++	}
++	state, _, _ := sc.Run()
++	got := strings.Fields(sc.Stdout.String())
++	if state != "success" || len(got) != 3 || got[0] != "600" || got[1] != "4294967296" || got[2] != "536870912" {
++		t.Fatalf("rlimit uygulanmadı: %s %q %s", state, got, sc.Stderr.String())
++	}
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_other.go work2/kiyas/term/safe_limits_other.go
+--- baseline_tree/safe_limits_other.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/safe_limits_other.go	2026-11-06 08:28:52.831493598 +0300
+@@ -0,0 +1,8 @@
++//go:build !linux && !windows
++
++package main
++
++import "os"
++
++// No portable rlimit for an already started child on this platform.
++func applySafeLimits(proc *os.Process, l safeLimits) (func(), error) { return func() {}, nil }
+diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_windows.go work2/kiyas/term/safe_limits_windows.go
+--- baseline_tree/safe_limits_windows.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/safe_limits_windows.go	2026-11-06 08:28:52.831493598 +0300
+@@ -0,0 +1,52 @@
++//go:build windows
++
++package main
++
++import (
++	"os"
++	"unsafe"
++
++	"golang.org/x/sys/windows"
++)
++
++// applySafeLimits assigns the child to a Job Object with memory, process
++// count and CPU time limits and KILL_ON_JOB_CLOSE, so closing the job kills
++// the whole tree. NOT TESTED on a live Windows host from Linux CI.
++func applySafeLimits(proc *os.Process, l safeLimits) (func(), error) {
++	if proc == nil {
++		return func() {}, nil
++	}
++	job, err := windows.CreateJobObject(nil, nil)
++	if err != nil {
++		return nil, err
++	}
++	var info windows.JOBOBJECT_EXTENDED_LIMIT_INFORMATION
++	info.BasicLimitInformation.LimitFlags = windows.JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE
++	if l.MemoryBytes > 0 {
++		info.BasicLimitInformation.LimitFlags |= windows.JOB_OBJECT_LIMIT_PROCESS_MEMORY
++		info.ProcessMemoryLimit = uintptr(l.MemoryBytes)
++	}
++	if l.Processes > 0 {
++		info.BasicLimitInformation.LimitFlags |= windows.JOB_OBJECT_LIMIT_ACTIVE_PROCESS
++		info.BasicLimitInformation.ActiveProcessLimit = uint32(l.Processes)
++	}
++	if l.CPUSeconds > 0 {
++		info.BasicLimitInformation.LimitFlags |= windows.JOB_OBJECT_LIMIT_PROCESS_TIME
++		info.BasicLimitInformation.PerProcessUserTimeLimit = int64(l.CPUSeconds) * 10_000_000
++	}
++	if _, err = windows.SetInformationJobObject(job, windows.JobObjectExtendedLimitInformation, uintptr(unsafe.Pointer(&info)), uint32(unsafe.Sizeof(info))); err != nil {
++		windows.CloseHandle(job)
++		return nil, err
++	}
++	h, err := windows.OpenProcess(windows.PROCESS_SET_QUOTA|windows.PROCESS_TERMINATE, false, uint32(proc.Pid))
++	if err != nil {
++		windows.CloseHandle(job)
++		return nil, err
++	}
++	defer windows.CloseHandle(h)
++	if err = windows.AssignProcessToJobObject(job, h); err != nil {
++		windows.CloseHandle(job)
++		return nil, err
++	}
++	return func() { windows.CloseHandle(job) }, nil
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/task_state.go work2/kiyas/term/task_state.go
+--- baseline_tree/task_state.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/task_state.go	2026-11-06 08:44:19.607496680 +0300
+@@ -0,0 +1,203 @@
++package main
++
++import (
++	"context"
++	"encoding/json"
++	"errors"
++	"fmt"
++	"os"
++	"path/filepath"
++	"regexp"
++	"time"
++)
++
++// Persistent, versioned, atomic JSON state for the agent build/fix loop so a
++// task can resume after a crash or restart without re-applying edits,
++// re-running completed phases, or silently replaying a paid model call.
++
++const taskStateVersion = 1
++
++type taskState struct {
++	Version      int           `json:"version"`
++	ID           string        `json:"id"`
++	Root         string        `json:"root"`
++	Model        string        `json:"model"`
++	Phase        string        `json:"phase"` // checking, model_call, applying, done
++	Result       repairResult  `json:"result"`
++	PendingEdits []pendingEdit `json:"pendingEdits,omitempty"`
++	UpdatedAt    time.Time     `json:"updatedAt"`
++}
++
++type pendingEdit struct {
++	Path    string `json:"path"`
++	Content string `json:"content"`
++	Hash    string `json:"hash"`
++	Applied bool   `json:"applied"`
++}
++
++var taskIDPattern = regexp.MustCompile(`^[A-Za-z0-9_-]{1,64}$`)
++
++func taskStatePath(root, id string) (string, error) {
++	if !taskIDPattern.MatchString(id) {
++		return "", errors.New("geçersiz görev kimliği")
++	}
++	return filepath.Join(root, taskDir, "agent", id+".json"), nil
++}
++
++func saveTaskState(st *taskState) error {
++	path, err := taskStatePath(st.Root, st.ID)
++	if err != nil {
++		return err
++	}
++	dir := filepath.Dir(path)
++	for _, d := range []string{filepath.Join(st.Root, taskDir), dir} {
++		if info, err := os.Lstat(d); err == nil && (!info.IsDir() || info.Mode()&os.ModeSymlink != 0) {
++			return errors.New("görev klasörü geçersiz")
++		}
++	}
++	if err := os.MkdirAll(dir, 0o700); err != nil {
++		return err
++	}
++	st.Version = taskStateVersion
++	st.UpdatedAt = time.Now().UTC()
++	raw, err := json.MarshalIndent(st, "", " ")
++	if err != nil {
++		return err
++	}
++	f, err := os.CreateTemp(dir, ".state-*")
++	if err != nil {
++		return err
++	}
++	tmp := f.Name()
++	defer os.Remove(tmp)
++	if err = f.Chmod(0o600); err == nil {
++		_, err = f.Write(raw)
++	}
++	if err == nil {
++		err = f.Sync()
++	}
++	if c := f.Close(); err == nil {
++		err = c
++	}
++	if err != nil {
++		return err
++	}
++	if err = os.Rename(tmp, path); err != nil {
++		return err
++	}
++	syncDir(dir)
++	return nil
++}
++
++// loadTaskState returns (nil, nil) when no state exists. A corrupt or
++// foreign file is preserved as <id>.json.corrupt-<ts> and reported.
++func loadTaskState(root, id string) (*taskState, error) {
++	path, err := taskStatePath(root, id)
++	if err != nil {
++		return nil, err
++	}
++	info, err := os.Lstat(path)
++	if os.IsNotExist(err) {
++		return nil, nil
++	}
++	if err != nil || !info.Mode().IsRegular() || info.Size() > 16<<20 {
++		return nil, errors.New("görev durumu okunamadı")
++	}
++	raw, err := os.ReadFile(path)
++	if err != nil {
++		return nil, err
++	}
++	var st taskState
++	if json.Unmarshal(raw, &st) != nil || st.Version != taskStateVersion || st.ID != id || st.Root != root {
++		keep := fmt.Sprintf("%s.corrupt-%d", path, time.Now().UnixNano())
++		_ = os.Rename(path, keep)
++		return nil, fmt.Errorf("görev durumu bozuk; korundu: %s", filepath.Base(keep))
++	}
++	return &st, nil
++}
++
++// errUncertainModelCall: the process stopped while a model request was in
++// flight. It is not replayed automatically because it may have been billed.
++var errUncertainModelCall = errors.New("önceki model isteğinin sonucu belirsiz; otomatik tekrar yapılmadı")
++
++// runPersistentRepair runs (or resumes) a repair loop whose every state
++// change is checkpointed atomically. allowReplay must be set explicitly by
++// the user to re-issue an in-flight model call after a crash.
++func runPersistentRepair(ctx context.Context, l *repairLoop, id string, allowReplay bool) (*repairResult, error) {
++	st, err := loadTaskState(l.Root, id)
++	if err != nil {
++		return nil, err
++	}
++	if st == nil {
++		st = &taskState{ID: id, Root: l.Root, Model: l.Model, Phase: "checking"}
++	} else {
++		switch {
++		case st.Phase == "done":
++			r := st.Result
++			return &r, nil
++		case st.Phase == "model_call" && !allowReplay:
++			return nil, errUncertainModelCall
++		case st.Phase == "model_call":
++			// User approved a replay: the uncounted call stays counted.
++		}
++		if len(st.PendingEdits) > 0 {
++			ft, err := newFileTools(l.Root)
++			if err != nil {
++				return nil, err
++			}
++			for i := range st.PendingEdits {
++				e := &st.PendingEdits[i]
++				cur, err := ft.Read(e.Path)
++				if err == nil && hashContent(cur) == e.Hash {
++					e.Applied = true // already on disk: never write twice
++					continue
++				}
++				if _, err := recordChange(ft.Root, filepath.ToSlash(e.Path), []byte(e.Content)); err != nil {
++					return nil, err
++				}
++				if err := ft.Write(e.Path, []byte(e.Content)); err != nil {
++					return nil, err
++				}
++				e.Applied = true
++			}
++			var names []string
++			for _, e := range st.PendingEdits {
++				names = append(names, e.Path)
++			}
++			st.Result.Steps = append(st.Result.Steps, repairStep{Iteration: st.Result.Iterations, State: "applied", ExitCode: -1, Edits: names, Note: "devam: bekleyen düzeltme tamamlandı"})
++			st.PendingEdits = nil
++		}
++		st.Phase = "checking"
++		if err := saveTaskState(st); err != nil {
++			return nil, err
++		}
++		resume := st.Result
++		l.resume = &resume
++	}
++	l.hooks = &repairHooks{
++		beforeModel: func(r *repairResult) error {
++			st.Result, st.Phase = *r, "model_call"
++			return saveTaskState(st)
++		},
++		beforeApply: func(r *repairResult, edits []repairEdit) error {
++			st.Result, st.Phase = *r, "applying"
++			st.PendingEdits = nil
++			for _, e := range edits {
++				st.PendingEdits = append(st.PendingEdits, pendingEdit{Path: e.Path, Content: e.Content, Hash: hashContent([]byte(e.Content))})
++			}
++			return saveTaskState(st)
++		},
++	}
++	l.Checkpoint = func(r *repairResult) error {
++		st.Result = *r
++		st.PendingEdits = nil
++		st.Phase = "checking"
++		switch r.Status {
++		case "running":
++		default:
++			st.Phase = "done"
++		}
++		return saveTaskState(st)
++	}
++	return l.Run(ctx)
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/task_state_test.go work2/kiyas/term/task_state_test.go
+--- baseline_tree/task_state_test.go	1970-01-01 02:00:00.000000000 +0200
++++ work2/kiyas/term/task_state_test.go	2026-11-06 08:44:51.971730487 +0300
+@@ -0,0 +1,145 @@
++package main
++
++import (
++	"context"
++	"errors"
++	"os"
++	"os/exec"
++	"path/filepath"
++	"strings"
++	"testing"
++	"time"
++)
++
++const utilFixed = "package main\n\nfunc helper() int { return 1 }\n"
++
++func twoFileFix() string {
++	return `{"files":[{"path":"main.go","content":` + jsonString(fixedMain) + `},{"path":"util.go","content":` + jsonString(utilFixed) + `}]}`
++}
++
++func jsonString(s string) string {
++	r := strings.NewReplacer(`\`, `\\`, `"`, `\"`, "\n", `\n`, "\t", `\t`)
++	return `"` + r.Replace(s) + `"`
++}
++
++func crashTestLoop(root, url string) *repairLoop {
++	return &repairLoop{Root: root, Endpoint: url, Key: "test-key", Model: "mock",
++		Budget:  repairBudget{MaxIterations: 3, MaxModelCalls: 3, MaxDuration: 2 * time.Minute, StepTimeout: time.Minute, MaxEditBytes: 1 << 16},
++		Approve: func(int, []repairEdit) bool { return true }}
++}
++
++// Child process body: runs the persistent loop and hard-exits at the crash
++// point, like a killed panel process (no deferred cleanup, no final save).
++func TestTaskStateCrashChild(t *testing.T) {
++	point := os.Getenv("US_TASK_CRASH_POINT")
++	if point == "" {
++		t.Skip("yalnız çökme simülasyonu alt süreci")
++	}
++	repairCrashHook = func(p string) {
++		if p == point {
++			os.Exit(3)
++		}
++	}
++	_, _ = runPersistentRepair(context.Background(), crashTestLoop(os.Getenv("US_TASK_CRASH_ROOT"), os.Getenv("US_TASK_CRASH_URL")), "gorev1", false)
++	os.Exit(0)
++}
++
++func runCrashChild(t *testing.T, root, url, point string) {
++	t.Helper()
++	cmd := exec.Command(os.Args[0], "-test.run=^TestTaskStateCrashChild$", "-test.count=1")
++	cmd.Env = append(os.Environ(), "US_TASK_CRASH_POINT="+point, "US_TASK_CRASH_ROOT="+root, "US_TASK_CRASH_URL="+url)
++	out, err := cmd.CombinedOutput()
++	var exit *exec.ExitError
++	if !errors.As(err, &exit) || exit.ExitCode() != 3 {
++		t.Fatalf("alt süreç çökme noktasında durmadı (%s): %v\n%s", point, err, out)
++	}
++}
++
++func historyCount(t *testing.T, root, rel string) int {
++	entries, _ := os.ReadDir(filepath.Join(root, changeHistoryDir))
++	n := 0
++	for _, e := range entries {
++		raw, _ := os.ReadFile(filepath.Join(root, changeHistoryDir, e.Name()))
++		if strings.Contains(string(raw), `"path":"`+rel+`"`) || strings.Contains(string(raw), `"Path":"`+rel+`"`) {
++			n++
++		}
++	}
++	return n
++}
++
++func TestTaskStateResumeAfterCrashMidApply(t *testing.T) {
++	root := brokenGoProject(t)
++	if err := os.WriteFile(filepath.Join(root, "util.go"), []byte("package main\n"), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	srv, calls := mockModel(t, func(string, int) string { return twoFileFix() })
++	runCrashChild(t, root, srv.URL, "mid_apply")
++	if *calls != 1 {
++		t.Fatalf("çökme öncesi model çağrısı %d", *calls)
++	}
++	st, err := loadTaskState(root, "gorev1")
++	if err != nil || st == nil || st.Phase != "applying" || len(st.PendingEdits) != 2 {
++		t.Fatalf("kalıcı durum yanlış: %+v %v", st, err)
++	}
++	if got, _ := os.ReadFile(filepath.Join(root, "main.go")); string(got) != fixedMain {
++		t.Fatal("ilk dosya çökme öncesi yazılmamış")
++	}
++	if got, _ := os.ReadFile(filepath.Join(root, "util.go")); string(got) == utilFixed {
++		t.Fatal("ikinci dosya beklenmedik şekilde yazılmış")
++	}
++	res, err := runPersistentRepair(context.Background(), crashTestLoop(root, srv.URL), "gorev1", false)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if res.Status != "fixed" || *calls != 1 || res.ModelCalls != 1 {
++		t.Fatalf("devam yanlış: %s calls=%d modelCalls=%d", res.Status, *calls, res.ModelCalls)
++	}
++	if historyCount(t, root, "main.go") != 1 || historyCount(t, root, "util.go") != 1 {
++		t.Fatalf("düzeltme çift uygulandı: main=%d util=%d", historyCount(t, root, "main.go"), historyCount(t, root, "util.go"))
++	}
++	if got, _ := os.ReadFile(filepath.Join(root, "util.go")); string(got) != utilFixed {
++		t.Fatal("bekleyen düzeltme tamamlanmadı")
++	}
++	// Completed task is not re-run.
++	again, err := runPersistentRepair(context.Background(), crashTestLoop(root, srv.URL), "gorev1", false)
++	if err != nil || again.Status != "fixed" || *calls != 1 {
++		t.Fatalf("tamamlanan görev tekrarlandı: %+v %v", again, err)
++	}
++}
++
++func TestTaskStateUncertainModelCallNotReplayed(t *testing.T) {
++	root := brokenGoProject(t)
++	srv, calls := mockModel(t, func(string, int) string { return fileJSON("main.go", fixedMain) })
++	runCrashChild(t, root, srv.URL, "model_in_flight")
++	if _, err := runPersistentRepair(context.Background(), crashTestLoop(root, srv.URL), "gorev1", false); !errors.Is(err, errUncertainModelCall) {
++		t.Fatalf("belirsiz istek otomatik tekrarlandı: %v", err)
++	}
++	if *calls != 0 {
++		t.Fatalf("model çağrıldı: %d", *calls)
++	}
++	res, err := runPersistentRepair(context.Background(), crashTestLoop(root, srv.URL), "gorev1", true)
++	if err != nil || res.Status != "fixed" || *calls != 1 {
++		t.Fatalf("onaylı tekrar başarısız: %+v %v calls=%d", res, err, *calls)
++	}
++}
++
++func TestTaskStateCorruptFileIsPreserved(t *testing.T) {
++	root := t.TempDir()
++	path, _ := taskStatePath(root, "bozuk")
++	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
++		t.Fatal(err)
++	}
++	if err := os.WriteFile(path, []byte("{yarım"), 0o600); err != nil {
++		t.Fatal(err)
++	}
++	if st, err := loadTaskState(root, "bozuk"); err == nil || st != nil {
++		t.Fatal("bozuk kayıt kabul edildi")
++	}
++	matches, _ := filepath.Glob(path + ".corrupt-*")
++	if len(matches) != 1 {
++		t.Fatal("bozuk kayıt korunmadı")
++	}
++	if _, err := taskStatePath(root, "../x"); err == nil {
++		t.Fatal("kimlik ile yol kaçışı")
++	}
++}
+diff -ruN -x kiyas -x '*.exe' baseline_tree/terminal.go work2/kiyas/term/terminal.go
+--- baseline_tree/terminal.go	2026-11-06 05:53:52.906176174 +0300
++++ work2/kiyas/term/terminal.go	2026-11-06 08:29:16.623775745 +0300
+@@ -25,7 +25,7 @@
+ type panelTerminal struct {
+ 	mu             sync.Mutex
+ 	state          terminalState
+-	stdout, stderr cappedBuf
++	stdout, stderr *cappedBuf
+ 	cancel         context.CancelFunc
+ }
+ 
+@@ -99,42 +99,25 @@
+ 	if t.state.State == "running" {
+ 		return fmt.Errorf("Terminal işlemi sürüyor; önce iptal edin.")
+ 	}
+-	ctx, cancel := context.WithTimeout(context.Background(), timeout)
+-	cmd := exec.CommandContext(ctx, bin, argv[1:]...)
+-	configureProcessTree(cmd)
+-	cmd.Cancel = func() error { return killProcessTree(cmd.Process) }
+-	cmd.WaitDelay = 2 * time.Second
+-	cmd.Dir = root
+-	cmd.Env = projectTestEnv()
++	sc, err := newSafeCmd(context.Background(), root, root, append([]string{bin}, argv[1:]...), timeout, "PYTHONIOENCODING=utf-8")
++	if err != nil {
++		return fmt.Errorf("Terminal işlemi reddedildi: %v", err)
++	}
+ 	// A new bounded buffer belongs to this generation; old output is discarded.
+-	t.stdout = cappedBuf{}
+-	t.stderr = cappedBuf{}
+-	cmd.Stdout = &t.stdout
+-	cmd.Stderr = &t.stderr
+-	if err = cmd.Start(); err != nil {
+-		cancel()
++	t.stdout = sc.Stdout
++	t.stderr = sc.Stderr
++	if err = sc.Start(); err != nil {
+ 		return fmt.Errorf("Terminal işlemi başlamadı: %s", argv[0])
+ 	}
+ 	t.state = terminalState{State: "running", Root: root, Argv: argv, ExitCode: -1}
+-	t.cancel = cancel
++	t.cancel = sc.Cancel
+ 	go func() {
+-		err := cmd.Wait()
+-		cause := ctx.Err()
+-		cancel()
++		state, code, _ := sc.Wait()
+ 		t.mu.Lock()
+ 		defer t.mu.Unlock()
+ 		t.cancel = nil
+-		t.state.ExitCode = cmd.ProcessState.ExitCode()
+-		switch {
+-		case cause == context.DeadlineExceeded:
+-			t.state.State = "timeout"
+-		case cause != nil:
+-			t.state.State = "cancelled"
+-		case err != nil:
+-			t.state.State = "failed"
+-		default:
+-			t.state.State = "success"
+-		}
++		t.state.ExitCode = code
++		t.state.State = state
+ 	}()
+ 	return nil
+ }
+@@ -154,7 +137,11 @@
+ 		v.ExitCode = -1
+ 	}
+ 	v.Argv = append([]string(nil), v.Argv...)
+-	v.Stdout = redactLine(t.stdout.String())
+-	v.Stderr = redactLine(t.stderr.String())
++	if t.stdout != nil {
++		v.Stdout = redactLine(t.stdout.String())
++	}
++	if t.stderr != nil {
++		v.Stderr = redactLine(t.stderr.String())
++	}
+ 	return v
+ }

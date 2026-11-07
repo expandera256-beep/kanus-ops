@@ -1,0 +1,48 @@
+=== PHASE2 install 2026-11-06T07:06:49+00:00 ===
+binary_sha=7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0
+prod_hook_active=inactive
+prod_hook_dir_before=licenses.json plans.json us-license-hook us-license-hook.real 
+created uslic-test
+prod_real_sha=7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0
+test_real_sha=7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0
+licenses_size=30328
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+nginx_reloaded sites=api-test.kanus.org
+api.kanus.org
+api.kanus.org_site_ok
+active
+LISTEN 0      4096       127.0.0.1:8788      0.0.0.0:*    users:(("us-license-hook",pid=11289,fd=6))                                          
+healthz_code=200 body=ok
+unsigned_orders_paid_code=401 body=unauthorized
+account_login_code=401 body_prefix={"error":"account request rejected"}
+licenses_sha_before_signed=c2a1502239422a9e047633ed86905cae822174dd6aa98a06c80603e556e149be
+INSTALL_SMOKE_PARTIAL_DONE
+signed_cancelled_code=400 body_prefix=topic 
+licenses_sha_after_signed=c2a1502239422a9e047633ed86905cae822174dd6aa98a06c80603e556e149be pre=c2a1502239422a9e047633ed86905cae822174dd6aa98a06c80603e556e149be
+licenses_sha_restored=c2a1502239422a9e047633ed86905cae822174dd6aa98a06c80603e556e149be
+RESTORE_SHA_OK
+test_unit_active=inactive
+test_unit_enabled=disabled
+listen_8788=none
+listen_8787=none
+prod_unit_active=inactive
+prod_dir=. .. licenses.json plans.json us-license-hook us-license-hook.real 
+prod_env_mtime=1793943230
+test_env_perm=640 root:uslic-test
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+api_kanus_http=301
+api_test_http=502
+PHASE2_COMPLETE
+---
+inactive
+disabled
+inactive
+no_878x
+api-test.kanus.org
+api.kanus.org
+640 root:uslic-test
+755 uslic-test:uslic-test

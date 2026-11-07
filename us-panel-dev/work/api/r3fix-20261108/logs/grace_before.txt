@@ -1,0 +1,41 @@
+=== RUN   TestCommitGraceFromEnvPanelEdges
+=== RUN   TestCommitGraceFromEnvPanelEdges/#00
+=== RUN   TestCommitGraceFromEnvPanelEdges/_
+=== RUN   TestCommitGraceFromEnvPanelEdges/0
+=== RUN   TestCommitGraceFromEnvPanelEdges/-0
+=== RUN   TestCommitGraceFromEnvPanelEdges/-1
+=== RUN   TestCommitGraceFromEnvPanelEdges/900
+=== RUN   TestCommitGraceFromEnvPanelEdges/901
+=== RUN   TestCommitGraceFromEnvPanelEdges/+901
+=== RUN   TestCommitGraceFromEnvPanelEdges/_901_
+=== RUN   TestCommitGraceFromEnvPanelEdges/1s
+=== RUN   TestCommitGraceFromEnvPanelEdges/abc
+=== RUN   TestCommitGraceFromEnvPanelEdges/9999999999999999999999999
+=== RUN   TestCommitGraceFromEnvPanelEdges/9223372036
+=== RUN   TestCommitGraceFromEnvPanelEdges/9223372037
+    ttl_commit_anchor_test.go:164: input "9223372037": got -2562047h47m16.709551616s, want 15m0s
+=== RUN   TestCommitGraceFromEnvPanelEdges/18446744074
+    ttl_commit_anchor_test.go:164: input "18446744074": got 290.448384ms, want 15m0s
+=== RUN   TestCommitGraceFromEnvPanelEdges/9223372036854775807
+    ttl_commit_anchor_test.go:164: input "9223372036854775807": got -1s, want 15m0s
+--- FAIL: TestCommitGraceFromEnvPanelEdges (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/#00 (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/_ (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/0 (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/-0 (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/-1 (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/900 (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/901 (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/+901 (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/_901_ (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/1s (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/abc (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/9999999999999999999999999 (0.00s)
+    --- PASS: TestCommitGraceFromEnvPanelEdges/9223372036 (0.00s)
+    --- FAIL: TestCommitGraceFromEnvPanelEdges/9223372037 (0.00s)
+    --- FAIL: TestCommitGraceFromEnvPanelEdges/18446744074 (0.00s)
+    --- FAIL: TestCommitGraceFromEnvPanelEdges/9223372036854775807 (0.00s)
+FAIL
+FAIL	kiyas/licensesrv	0.009s
+FAIL
+EXIT:1

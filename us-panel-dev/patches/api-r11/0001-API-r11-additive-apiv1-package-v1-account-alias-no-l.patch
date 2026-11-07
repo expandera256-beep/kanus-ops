@@ -1,0 +1,188 @@
+From 09dd1e3022c2c624dad27d34a7c0ec09a53e7ff6 Mon Sep 17 00:00:00 2001
+From: bot <bot@local>
+Date: Fri, 6 Nov 2026 09:58:30 +0300
+Subject: [PATCH] API-r11 additive: apiv1 package + /v1/account alias (no
+ licensesrv edits)
+
+---
+ apiv1/README.md             |  7 +++++
+ apiv1/errors.go             | 57 +++++++++++++++++++++++++++++++++++++
+ apiv1/version.go            | 26 +++++++++++++++++
+ apiv1/version_test.go       | 32 +++++++++++++++++++++
+ cmd/us-license-hook/main.go |  3 ++
+ 5 files changed, 125 insertions(+)
+ create mode 100644 apiv1/README.md
+ create mode 100644 apiv1/errors.go
+ create mode 100644 apiv1/version.go
+ create mode 100644 apiv1/version_test.go
+
+diff --git a/apiv1/README.md b/apiv1/README.md
+new file mode 100644
+index 0000000..096772a
+--- /dev/null
++++ b/apiv1/README.md
+@@ -0,0 +1,7 @@
++# apiv1 — US .11 + UYUM üzerine ekleyici API yüzeyi
++
++Bu paket `licensesrv/**` ve `model_proxy.go` dosyalarına dokunmaz.
++`cmd/us-license-hook/api_mount.go` yalnızca mux’a `/v1/account/` alias ve
++`API-Version` sarmalayıcı ekler; UYUM `privacy.Mount` çağrısından **sonra** gelir.
++
++Tam hata zarfı / API key / credits usk_ entegrasyonu için bkz. `patches/api-r11/US_ONERILER.md`.
+diff --git a/apiv1/errors.go b/apiv1/errors.go
+new file mode 100644
+index 0000000..110d4dd
+--- /dev/null
++++ b/apiv1/errors.go
+@@ -0,0 +1,57 @@
++package apiv1
++
++import (
++	"crypto/rand"
++	"encoding/hex"
++	"encoding/json"
++	"net/http"
++	"strings"
++)
++
++type ErrorBody struct {
++	Error     string `json:"error"`
++	Code      string `json:"code"`
++	Message   string `json:"message"`
++	RequestID string `json:"request_id"`
++}
++
++func newRequestID() string {
++	b := make([]byte, 8)
++	if _, err := rand.Read(b); err != nil {
++		return "0000000000000000"
++	}
++	return hex.EncodeToString(b)
++}
++
++func wantsEnvelope(r *http.Request) bool {
++	if r == nil {
++		return false
++	}
++	if strings.EqualFold(r.Header.Get("X-Kanus-Error-Envelope"), "1") {
++		return true
++	}
++	if r.URL != nil && r.URL.Query().Get("error_envelope") == "1" {
++		return true
++	}
++	a := r.Header.Get("Accept")
++	return strings.Contains(a, "application/json") || strings.Contains(a, "application/problem+json")
++}
++
++func WriteAPIError(w http.ResponseWriter, r *http.Request, status int, code, message string) {
++	if message == "" {
++		message = http.StatusText(status)
++	}
++	if code == "" {
++		code = "request_rejected"
++	}
++	rid := newRequestID()
++	w.Header().Set("X-Request-Id", rid)
++	if wantsEnvelope(r) {
++		w.Header().Set("Content-Type", "application/json")
++		w.Header().Set("Cache-Control", "no-store")
++		w.WriteHeader(status)
++		_ = json.NewEncoder(w).Encode(ErrorBody{Error: message, Code: code, Message: message, RequestID: rid})
++		return
++	}
++	http.Error(w, message, status)
++}
+diff --git a/apiv1/version.go b/apiv1/version.go
+new file mode 100644
+index 0000000..0c6a9a8
+--- /dev/null
++++ b/apiv1/version.go
+@@ -0,0 +1,26 @@
++package apiv1
++
++import (
++	"net/http"
++	"strings"
++)
++
++const APIVersion = "1"
++
++func WithAPIVersion(next http.Handler) http.Handler {
++	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		w.Header().Set("API-Version", APIVersion)
++		next.ServeHTTP(w, r)
++	})
++}
++
++// MountAccountAlias rewrites /v1/account/* → /account/* without replacing legacy routes.
++func MountAccountAlias(mux *http.ServeMux, accounts http.Handler) {
++	mux.Handle("/v1/account/", WithAPIVersion(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		r2 := r.Clone(r.Context())
++		u := *r.URL
++		u.Path = strings.TrimPrefix(r.URL.Path, "/v1")
++		r2.URL = &u
++		accounts.ServeHTTP(w, r2)
++	})))
++}
+diff --git a/apiv1/version_test.go b/apiv1/version_test.go
+new file mode 100644
+index 0000000..ba761d5
+--- /dev/null
++++ b/apiv1/version_test.go
+@@ -0,0 +1,32 @@
++package apiv1
++
++import (
++	"net/http"
++	"net/http/httptest"
++	"testing"
++)
++
++func TestWithAPIVersionHeader(t *testing.T) {
++	h := WithAPIVersion(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { w.WriteHeader(204) }))
++	w := httptest.NewRecorder()
++	h.ServeHTTP(w, httptest.NewRequest("GET", "/v1/x", nil))
++	if w.Header().Get("API-Version") != "1" {
++		t.Fatal(w.Header().Get("API-Version"))
++	}
++}
++
++func TestMountAccountAlias(t *testing.T) {
++	mux := http.NewServeMux()
++	var saw string
++	accounts := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		saw = r.URL.Path
++		w.WriteHeader(200)
++	})
++	mux.Handle("/account/", accounts)
++	MountAccountAlias(mux, accounts)
++	w := httptest.NewRecorder()
++	mux.ServeHTTP(w, httptest.NewRequest("POST", "/v1/account/login", nil))
++	if w.Code != 200 || saw != "/account/login" || w.Header().Get("API-Version") != "1" {
++		t.Fatal(w.Code, saw, w.Header().Get("API-Version"))
++	}
++}
+diff --git a/cmd/us-license-hook/main.go b/cmd/us-license-hook/main.go
+index 460e13b..1aa8588 100644
+--- a/cmd/us-license-hook/main.go
++++ b/cmd/us-license-hook/main.go
+@@ -12,6 +12,7 @@ import (
+ 	"strconv"
+ 	"time"
+ 
++	"kiyas/apiv1"
+ 	"kiyas/internal/privacy"
+ 	"kiyas/licensesrv"
+ )
+@@ -121,6 +122,8 @@ func newMux(cfg licensesrv.Config, st *licensesrv.Store) *http.ServeMux {
+ 		EraseEnabled: os.Getenv("US_PRIVACY_ERASE_ENABLED") == "1",
+ 		AdminToken:   os.Getenv("US_PRIVACY_ADMIN_TOKEN"),
+ 	})
++	apiv1.MountAccountAlias(mux, accounts)
++	// NOTE: full /v1 api-keys/usage + error-envelope on credits requires US-approved licensesrv edits (US_ONERILER.md).
+ 	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte("ok")) })
+ 	return mux
+ }
+-- 
+2.47.3
+

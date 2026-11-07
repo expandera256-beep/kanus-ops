@@ -1,0 +1,254 @@
+# ÖNERİ — UYGULANMADI. Yalnız api.kanus.org server block.
+# Kaynak: salt okunur mevcut site + prod snippet; api-test login/register/body/header düzeni.
+# uslic_account_auth zone mevcut http conf içinde tanımlı (1r/s); ortak conf değişmez.
+# Retry-After için upstream başlığı korunur; nginx 429 başlığı ayrıca aşağıdaki notla ele alınır.
+--- /etc/nginx/sites-available/api.kanus.org
++++ /etc/nginx/sites-available/api.kanus.org (öneri)
+@@ -33,7 +33,243 @@
+     add_header Content-Security-Policy "frame-ancestors 'none'" always;
+     add_header Referrer-Policy "no-referrer" always;
+ 
+-    include /etc/nginx/snippets/us-license-hook-locations.conf;
++    # Prod snippet içeriği inline: başka site/snippet değişmez.
++# Prod api.kanus.org — no /account/ proxy (explicit 404). Webhooks global zone; /v1 per-IP; SSE 2700s.
++
++location = /webhooks/shopify/orders-paid {
++    limit_req zone=uslic_webhooks_global burst=80 nodelay;
++    client_max_body_size 1m;
++    proxy_pass http://127.0.0.1:8787;
++    proxy_set_header Host $host;
++    proxy_set_header X-Real-IP $remote_addr;
++    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++    proxy_set_header X-Forwarded-Proto $scheme;
++    proxy_read_timeout 30s;
++}
++location = /webhooks/shopify/orders-cancelled {
++    limit_req zone=uslic_webhooks_global burst=80 nodelay;
++    client_max_body_size 1m;
++    proxy_pass http://127.0.0.1:8787;
++    proxy_set_header Host $host;
++    proxy_set_header X-Real-IP $remote_addr;
++    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++    proxy_set_header X-Forwarded-Proto $scheme;
++    proxy_read_timeout 30s;
++}
++location = /webhooks/shopify/refunds-create {
++    limit_req zone=uslic_webhooks_global burst=80 nodelay;
++    client_max_body_size 1m;
++    proxy_pass http://127.0.0.1:8787;
++    proxy_set_header Host $host;
++    proxy_set_header X-Real-IP $remote_addr;
++    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++    proxy_set_header X-Forwarded-Proto $scheme;
++    proxy_read_timeout 30s;
++}
++
++location = /v1/credits/reserve {
++    limit_req zone=uslic_v1 burst=20 nodelay;
++    client_max_body_size 4k;
++    proxy_pass http://127.0.0.1:8787;
++    proxy_set_header Host $host;
++    proxy_set_header X-Real-IP $remote_addr;
++    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++    proxy_set_header X-Forwarded-Proto $scheme;
++    proxy_read_timeout 30s;
++}
++location = /v1/credits/settle {
++    limit_req zone=uslic_v1 burst=20 nodelay;
++    client_max_body_size 4k;
++    proxy_pass http://127.0.0.1:8787;
++    proxy_set_header Host $host;
++    proxy_set_header X-Real-IP $remote_addr;
++    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++    proxy_set_header X-Forwarded-Proto $scheme;
++    proxy_read_timeout 30s;
++}
++location = /v1/credits/status {
++    limit_req zone=uslic_v1 burst=20 nodelay;
++    client_max_body_size 4k;
++    proxy_pass http://127.0.0.1:8787;
++    proxy_set_header Host $host;
++    proxy_set_header X-Real-IP $remote_addr;
++    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++    proxy_set_header X-Forwarded-Proto $scheme;
++    proxy_http_version 1.1;
++    proxy_buffering off;
++    proxy_cache off;
++    proxy_read_timeout 2700s;
++    proxy_send_timeout 2700s;
++}
++location = /v1/models {
++    limit_req zone=uslic_v1 burst=20 nodelay;
++    client_max_body_size 4k;
++    proxy_pass http://127.0.0.1:8787;
++    proxy_set_header Host $host;
++    proxy_set_header X-Real-IP $remote_addr;
++    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++    proxy_set_header X-Forwarded-Proto $scheme;
++    proxy_http_version 1.1;
++    proxy_buffering off;
++    proxy_cache off;
++    proxy_read_timeout 2700s;
++    proxy_send_timeout 2700s;
++}
++location = /v1/chat {
++    limit_req zone=uslic_v1 burst=10 nodelay;
++    client_max_body_size 1m;
++    proxy_pass http://127.0.0.1:8787;
++    proxy_set_header Host $host;
++    proxy_set_header X-Real-IP $remote_addr;
++    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++    proxy_set_header X-Forwarded-Proto $scheme;
++    proxy_http_version 1.1;
++    proxy_buffering off;
++    proxy_cache off;
++    proxy_request_buffering on;
++    proxy_ignore_client_abort off;
++    proxy_read_timeout 2700s;
++    proxy_send_timeout 2700s;
++    send_timeout 2700s;
++}
++location = /v1/chat/completions {
++    limit_req zone=uslic_v1 burst=10 nodelay;
++    client_max_body_size 1m;
++    proxy_pass http://127.0.0.1:8787;
++    proxy_set_header Host $host;
++    proxy_set_header X-Real-IP $remote_addr;
++    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++    proxy_set_header X-Forwarded-Proto $scheme;
++    proxy_http_version 1.1;
++    proxy_buffering off;
++    proxy_cache off;
++    proxy_request_buffering on;
++    proxy_ignore_client_abort off;
++    proxy_read_timeout 2700s;
++    proxy_send_timeout 2700s;
++    send_timeout 2700s;
++}
++
++location = /healthz {
++    client_max_body_size 4k;
++    proxy_pass http://127.0.0.1:8787;
++    proxy_set_header Host $host;
++    proxy_read_timeout 30s;
++}
++
++location = /webhooks/shopify { return 404; }
++location /webhooks/shopify/ { return 404; }
++    location = /account/login {
++        limit_req zone=uslic_account_auth burst=2 nodelay;
++        limit_req_status 429;
++        proxy_intercept_errors on;
++        error_page 429 = @prod_account_429;
++        client_max_body_size 16k;
++        proxy_pass http://127.0.0.1:8787;
++        proxy_set_header Host $host;
++        proxy_set_header Authorization $http_authorization;
++        proxy_set_header X-Real-IP $remote_addr;
++        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++        proxy_set_header X-Forwarded-Proto $scheme;
++        proxy_read_timeout 90s;
++    }
++    location = /account/register {
++        limit_req zone=uslic_account_auth burst=2 nodelay;
++        limit_req_status 429;
++        proxy_intercept_errors on;
++        error_page 429 = @prod_account_429;
++        client_max_body_size 16k;
++        proxy_pass http://127.0.0.1:8787;
++        proxy_set_header Host $host;
++        proxy_set_header Authorization $http_authorization;
++        proxy_set_header X-Real-IP $remote_addr;
++        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++        proxy_set_header X-Forwarded-Proto $scheme;
++        proxy_read_timeout 90s;
++    }
++    location = /account/password-reset/request {
++        limit_req zone=uslic_account_auth burst=2 nodelay;
++        limit_req_status 429;
++        proxy_intercept_errors on;
++        error_page 429 = @prod_account_429;
++        client_max_body_size 16k;
++        proxy_pass http://127.0.0.1:8787;
++        proxy_set_header Host $host;
++        proxy_set_header Authorization $http_authorization;
++        proxy_set_header X-Real-IP $remote_addr;
++        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++        proxy_set_header X-Forwarded-Proto $scheme;
++        proxy_read_timeout 90s;
++    }
++    location = /account/password-reset/confirm {
++        limit_req zone=uslic_account_auth burst=2 nodelay;
++        limit_req_status 429;
++        proxy_intercept_errors on;
++        error_page 429 = @prod_account_429;
++        client_max_body_size 16k;
++        proxy_pass http://127.0.0.1:8787;
++        proxy_set_header Host $host;
++        proxy_set_header Authorization $http_authorization;
++        proxy_set_header X-Real-IP $remote_addr;
++        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++        proxy_set_header X-Forwarded-Proto $scheme;
++        proxy_read_timeout 90s;
++    }
++    location = /account/verification/request {
++        limit_req zone=uslic_account_auth burst=2 nodelay;
++        limit_req_status 429;
++        proxy_intercept_errors on;
++        error_page 429 = @prod_account_429;
++        client_max_body_size 16k;
++        proxy_pass http://127.0.0.1:8787;
++        proxy_set_header Host $host;
++        proxy_set_header Authorization $http_authorization;
++        proxy_set_header X-Real-IP $remote_addr;
++        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++        proxy_set_header X-Forwarded-Proto $scheme;
++        proxy_read_timeout 90s;
++    }
++    location = /account/verify-email {
++        limit_req zone=uslic_account_auth burst=2 nodelay;
++        limit_req_status 429;
++        proxy_intercept_errors on;
++        error_page 429 = @prod_account_429;
++        client_max_body_size 16k;
++        proxy_pass http://127.0.0.1:8787;
++        proxy_set_header Host $host;
++        proxy_set_header Authorization $http_authorization;
++        proxy_set_header X-Real-IP $remote_addr;
++        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++        proxy_set_header X-Forwarded-Proto $scheme;
++        proxy_read_timeout 90s;
++    }
++    location ^~ /account/ {
++        client_max_body_size 16k;
++        proxy_pass http://127.0.0.1:8787;
++        proxy_set_header Host $host;
++        proxy_set_header Authorization $http_authorization;
++        proxy_set_header X-Real-IP $remote_addr;
++        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++        proxy_set_header X-Forwarded-Proto $scheme;
++        proxy_read_timeout 90s;
++    }
++
++location /internal/ { return 404; }
++
++
++
++    location @prod_account_429 {
++        internal;
++        default_type application/json;
++        add_header Retry-After "900" always;
++        add_header Cache-Control "no-store" always;
++        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
++        add_header X-Content-Type-Options "nosniff" always;
++        add_header X-Frame-Options "DENY" always;
++        add_header Content-Security-Policy "frame-ancestors 'none'" always;
++        add_header Referrer-Policy "no-referrer" always;
++        return 429 '{"error":"rate_limited"}';
++    }
+ 
+     location / {
+         return 404;
+
+# 900 sn konservatif öneri; upstream 429 body/header normalleşir. PANEL DEV/PERF incelemesi zorunlu.
+# Backup -> nginx -t -> yalnız ayrı onayla reload; FAIL ise backup restore, reload yok.

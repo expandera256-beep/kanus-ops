@@ -1,0 +1,16 @@
+=== RUN   TestPanelAPIGraceHeldCreditMustNotWake
+=== RUN   TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/license
+    zz_panel_grace_wake_test.go:16: gateErr=yetersiz kredi reserveErr=yetersiz kredi held_before=500 held_after=500 credits=500 code=402 wake=0 status=0 upstream=0
+=== RUN   TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/session
+    zz_panel_grace_wake_test.go:16: gateErr=yetersiz kredi reserveErr=yetersiz kredi held_before=500 held_after=500 credits=500 code=402 wake=0 status=0 upstream=0
+=== RUN   TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/completions/license
+    zz_panel_grace_wake_test.go:16: gateErr=yetersiz kredi reserveErr=yetersiz kredi held_before=500 held_after=500 credits=500 code=402 wake=0 status=0 upstream=0
+=== RUN   TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/completions/session
+    zz_panel_grace_wake_test.go:16: gateErr=yetersiz kredi reserveErr=yetersiz kredi held_before=500 held_after=500 credits=500 code=402 wake=0 status=0 upstream=0
+--- PASS: TestPanelAPIGraceHeldCreditMustNotWake (0.02s)
+    --- PASS: TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/license (0.01s)
+    --- PASS: TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/session (0.01s)
+    --- PASS: TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/completions/license (0.00s)
+    --- PASS: TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/completions/session (0.00s)
+PASS
+ok  	kiyas/licensesrv	1.030s

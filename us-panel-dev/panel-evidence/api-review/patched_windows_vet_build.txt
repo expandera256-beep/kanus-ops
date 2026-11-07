@@ -1,0 +1,6 @@
+=== GOOS=windows go vet ===
+WIN_VET:0
+=== GOOS=windows go build licensesrv + hook ===
+WIN_BUILD_HOOK:0
+WIN_BUILD_LIC:0
+WIN_BUILD_PANEL:0

@@ -1,0 +1,6 @@
+patching file apiv1/README.md
+patching file apiv1/errors.go
+patching file apiv1/version.go
+patching file apiv1/version_test.go
+patching file cmd/us-license-hook/main.go
+EXIT=0

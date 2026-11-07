@@ -1,0 +1,12 @@
+=== RUN   TestRejectsBadHMAC
+--- PASS: TestRejectsBadHMAC (0.00s)
+=== RUN   TestReversalHMACShopTopicAndInvalidPayload
+=== RUN   TestReversalHMACShopTopicAndInvalidPayload/orders/cancelled
+=== RUN   TestReversalHMACShopTopicAndInvalidPayload/refunds/create
+--- PASS: TestReversalHMACShopTopicAndInvalidPayload (0.00s)
+    --- PASS: TestReversalHMACShopTopicAndInvalidPayload/orders/cancelled (0.00s)
+    --- PASS: TestReversalHMACShopTopicAndInvalidPayload/refunds/create (0.00s)
+PASS
+ok  	kiyas/licensesrv	0.003s
+
+exit_code=0

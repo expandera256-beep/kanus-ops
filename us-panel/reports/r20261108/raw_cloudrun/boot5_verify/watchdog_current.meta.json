@@ -1,0 +1,15 @@
+{
+  "command": [
+    "gcloud",
+    "run",
+    "services",
+    "describe",
+    "us-watchdog",
+    "--region=europe-west4",
+    "--project=project-27082a40-6083-4952-9db",
+    "--format=json"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "end_istanbul": "2026-11-08T00:55:02.334751+03:00"
+}

@@ -1,0 +1,4 @@
+kiyas 0
+kiyas/cmd/us-license-hook 0
+kiyas/cmd/us-pricing-gen 0
+kiyas/internal/privacy 0

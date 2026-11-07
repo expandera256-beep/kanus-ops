@@ -1,0 +1,7 @@
+=== RUN   TestF01UnsupportedWarningReachesTerminal
+2026/11/08 01:21:59 UYARI: Landlock dosya izolasyonu uygulanamadı; güvenlik için komut çalıştırılmadı (sessiz geri dönüş yok): function not implemented
+    sandbox_linux_test.go:155: panel uyarıyı gizliyor: Terminal işlemi başlamadı: go
+--- FAIL: TestF01UnsupportedWarningReachesTerminal (0.00s)
+FAIL
+FAIL	kiyas	0.004s
+FAIL

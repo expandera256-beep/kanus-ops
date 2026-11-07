@@ -1,0 +1,18 @@
+{
+  "01-preferences": [
+    "b/internal/privacy/iface.go",
+    "b/internal/privacy/prefs.go",
+    "b/internal/privacy/prefs_test.go"
+  ],
+  "02-ops": [
+    "b/licensesrv/privacy_ops.go",
+    "b/licensesrv/privacy_ops_test.go"
+  ],
+  "03-handler": [
+    "b/internal/privacy/handler.go",
+    "b/internal/privacy/handler_test.go"
+  ],
+  "04-hook-us": [
+    "b/cmd/us-license-hook/main.go"
+  ]
+}

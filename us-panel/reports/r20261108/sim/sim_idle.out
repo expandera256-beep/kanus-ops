@@ -1,0 +1,49 @@
+test_I01_constants (__main__.T.test_I01_constants) ... ok
+test_I02_ready_marks_activity_no_stop_on_first_tick (__main__.T.test_I02_ready_marks_activity_no_stop_on_first_tick) ... ok
+test_I03_599s_no_stop (__main__.T.test_I03_599s_no_stop) ... /tmp/idlesim/idle600.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpxyz4a_vl/off' mode='r' encoding='utf-8'>
+  offset = int(open(NGINX_OFFSET, encoding="utf-8").read().strip() or 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_I04_601s_stop_discard (__main__.T.test_I04_601s_stop_discard) ... /tmp/idlesim/idle600.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpv9sj2zkp/off' mode='r' encoding='utf-8'>
+  offset = int(open(NGINX_OFFSET, encoding="utf-8").read().strip() or 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_I05_model_request_resets (__main__.T.test_I05_model_request_resets) ... /tmp/idlesim/idle600.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp2pa6vds8/off' mode='r' encoding='utf-8'>
+  offset = int(open(NGINX_OFFSET, encoding="utf-8").read().strip() or 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_I06_health_poll_does_not_reset (__main__.T.test_I06_health_poll_does_not_reset) ... /tmp/idlesim/idle600.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpplun7jl7/off' mode='r' encoding='utf-8'>
+  offset = int(open(NGINX_OFFSET, encoding="utf-8").read().strip() or 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_I07_inbound_client_counts (__main__.T.test_I07_inbound_client_counts) ... /tmp/idlesim/idle600.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpb4nmjrn9/off' mode='r' encoding='utf-8'>
+  offset = int(open(NGINX_OFFSET, encoding="utf-8").read().strip() or 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_I08_outbound_metadata_not_counted (__main__.T.test_I08_outbound_metadata_not_counted) ... /tmp/idlesim/idle600.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpv3s89bin/off' mode='r' encoding='utf-8'>
+  offset = int(open(NGINX_OFFSET, encoding="utf-8").read().strip() or 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_I09_not_ready_no_idle_stop (__main__.T.test_I09_not_ready_no_idle_stop) ... ok
+test_I10_health_fail_after_70min_stops (__main__.T.test_I10_health_fail_after_70min_stops) ... ok
+test_I11_log_rotation (__main__.T.test_I11_log_rotation) ... /tmp/idlesim/idle600.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpu9nkc734/off' mode='r' encoding='utf-8'>
+  offset = int(open(NGINX_OFFSET, encoding="utf-8").read().strip() or 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_I12_old_15min_would_not_stop_at_601 (__main__.T.test_I12_old_15min_would_not_stop_at_601) ... /tmp/idlesim/idle900.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpplnjop8e/off' mode='r' encoding='utf-8'>
+  offset = int(open(NGINX_OFFSET, encoding="utf-8").read().strip() or 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_I13_ss_failure_counts_as_busy (__main__.T.test_I13_ss_failure_counts_as_busy) ... /tmp/idlesim/idle600.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmppvqyp8uc/off' mode='r' encoding='utf-8'>
+  offset = int(open(NGINX_OFFSET, encoding="utf-8").read().strip() or 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_I14_health_drop_while_ready_no_idle_stop_until_70min (__main__.T.test_I14_health_drop_while_ready_no_idle_stop_until_70min) ... /tmp/idlesim/idle600.py:62: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp8xrqr33_/off' mode='r' encoding='utf-8'>
+  offset = int(open(NGINX_OFFSET, encoding="utf-8").read().strip() or 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.028s
+
+OK

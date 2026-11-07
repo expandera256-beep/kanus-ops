@@ -1,0 +1,11 @@
+--- idle.py.current	2026-11-06 13:38:33.407657987 +0300
++++ idle.py.600	2026-11-08 00:22:16.159423473 +0300
+@@ -11,7 +11,7 @@
+ PROJECT = "project-27082a40-6083-4952-9db"
+ ZONE = "europe-west4-b"
+ NAME = "ds-a100"
+-IDLE = 15 * 60
++IDLE = 10 * 60  # Demir 2026-11-08 00:20: 10 min
+ FAIL_STOP = 70 * 60
+ READY = "/run/ds-a100-ready"
+ ACTIVITY = "/run/ds-a100-activity"

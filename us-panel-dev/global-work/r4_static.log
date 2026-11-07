@@ -1,0 +1,7 @@
+build exit 0
+vet exit 0
+win vet exit 0
+win build exit 0
+gofmt -l (yama dosyaları):
+gofmt end
+Embedded JavaScript syntax and static DOM bindings passed.

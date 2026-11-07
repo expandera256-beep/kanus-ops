@@ -1,0 +1,193 @@
+{
+  "apiVersion": "serving.knative.dev/v1",
+  "kind": "Revision",
+  "metadata": {
+    "annotations": {
+      "autoscaling.knative.dev/maxScale": "1",
+      "autoscaling.knative.dev/minScale": "0",
+      "run.googleapis.com/client-name": "gcloud",
+      "run.googleapis.com/client-version": "592.0.0",
+      "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+      "run.googleapis.com/execution-environment": "gen2",
+      "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+      "run.googleapis.com/operation-id": "c3bca9ae-e46c-47dc-8c7c-7dbed44fb315",
+      "run.googleapis.com/vpc-access-egress": "private-ranges-only",
+      "serving.knative.dev/creator": "demirtumen08@gmail.com"
+    },
+    "creationTimestamp": "2026-11-07T21:26:01.245707Z",
+    "generation": 1,
+    "labels": {
+      "client.knative.dev/nonce": "yqlyhiwqpa",
+      "cloud.googleapis.com/location": "europe-west4",
+      "discard-fix": "20261108",
+      "run.googleapis.com/satisfiesPzs": "true",
+      "run.googleapis.com/startupProbeType": "Custom",
+      "serving.knative.dev/configuration": "us-watchdog",
+      "serving.knative.dev/configurationGeneration": "6",
+      "serving.knative.dev/route": "us-watchdog",
+      "serving.knative.dev/service": "us-watchdog",
+      "serving.knative.dev/serviceUid": "440f1173-98a5-4919-9bcf-7369043d5cf7",
+      "worker-policy": "v5"
+    },
+    "name": "us-watchdog-00006-88h",
+    "namespace": "247516932580",
+    "ownerReferences": [
+      {
+        "apiVersion": "serving.knative.dev/v1",
+        "blockOwnerDeletion": true,
+        "controller": true,
+        "kind": "Configuration",
+        "name": "us-watchdog",
+        "uid": "df7a2c9a-d427-44f3-af17-a383b6639cf7"
+      }
+    ],
+    "resourceVersion": "AAZftmDW9gk",
+    "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/revisions/us-watchdog-00006-88h",
+    "uid": "bda59726-6125-4825-ad17-b8402f6d5f30"
+  },
+  "spec": {
+    "containerConcurrency": 1,
+    "containers": [
+      {
+        "env": [
+          {
+            "name": "US_ENV",
+            "value": "production"
+          },
+          {
+            "name": "US_APP_FACTORY",
+            "value": "runtime:watchdog_app()"
+          },
+          {
+            "name": "US_WORKERS_CONFIG",
+            "value": "/secrets/policy/workers.json"
+          },
+          {
+            "name": "US_MODEL_CA_FILE",
+            "value": "/secrets/ca/ca.pem"
+          },
+          {
+            "name": "US_COMMERCE_DB",
+            "valueFrom": {
+              "secretKeyRef": {
+                "key": "latest",
+                "name": "us-postgres-dsn"
+              }
+            }
+          },
+          {
+            "name": "US_MODEL_API_TOKEN",
+            "valueFrom": {
+              "secretKeyRef": {
+                "key": "latest",
+                "name": "us-model-token"
+              }
+            }
+          },
+          {
+            "name": "US_ALLOW_DISCARD_LOCAL_SSD",
+            "value": "1"
+          }
+        ],
+        "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:5bf7bc8e276d907f65ae0f274b6de2a9853b5b32b73ed0f59bf9cb0f66392122",
+        "name": "gateway-1",
+        "ports": [
+          {
+            "containerPort": 8080,
+            "name": "http1"
+          }
+        ],
+        "resources": {
+          "limits": {
+            "cpu": "1",
+            "memory": "512Mi"
+          }
+        },
+        "startupProbe": {
+          "failureThreshold": 24,
+          "httpGet": {
+            "path": "/health",
+            "port": 8080
+          },
+          "periodSeconds": 5,
+          "timeoutSeconds": 5
+        },
+        "volumeMounts": [
+          {
+            "mountPath": "/secrets/policy",
+            "name": "policy"
+          },
+          {
+            "mountPath": "/secrets/ca",
+            "name": "ca"
+          }
+        ]
+      }
+    ],
+    "serviceAccountName": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "timeoutSeconds": 300,
+    "volumes": [
+      {
+        "name": "policy",
+        "secret": {
+          "items": [
+            {
+              "key": "latest",
+              "path": "workers.json"
+            }
+          ],
+          "secretName": "us-worker-policy"
+        }
+      },
+      {
+        "name": "ca",
+        "secret": {
+          "items": [
+            {
+              "key": "latest",
+              "path": "ca.pem"
+            }
+          ],
+          "secretName": "us-model-ca"
+        }
+      }
+    ]
+  },
+  "status": {
+    "conditions": [
+      {
+        "lastTransitionTime": "2026-11-07T21:26:12.200972Z",
+        "message": "Deploying revision succeeded in 10.95s.",
+        "status": "True",
+        "type": "Ready"
+      },
+      {
+        "lastTransitionTime": "2026-11-07T21:26:12.410842Z",
+        "severity": "Info",
+        "status": "True",
+        "type": "Active"
+      },
+      {
+        "lastTransitionTime": "2026-11-07T21:26:12.144827Z",
+        "message": "Containers became healthy in 5.23s.",
+        "status": "True",
+        "type": "ContainerHealthy"
+      },
+      {
+        "lastTransitionTime": "2026-11-07T21:26:03.136336Z",
+        "message": "Container image import completed in 1.24s.",
+        "status": "True",
+        "type": "ContainerReady"
+      },
+      {
+        "lastTransitionTime": "2026-11-07T21:26:06.165318Z",
+        "message": "Provisioning imported containers completed in 3.03s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+        "status": "True",
+        "type": "ResourcesAvailable"
+      }
+    ],
+    "imageDigest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:5bf7bc8e276d907f65ae0f274b6de2a9853b5b32b73ed0f59bf9cb0f66392122",
+    "logUrl": "https://console.cloud.google.com/logs/viewer?project=project-27082a40-6083-4952-9db&resource=cloud_run_revision/service_name/us-watchdog/revision_name/us-watchdog-00006-88h&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22us-watchdog%22%0Aresource.labels.revision_name%3D%22us-watchdog-00006-88h%22",
+    "observedGeneration": 1
+  }
+}

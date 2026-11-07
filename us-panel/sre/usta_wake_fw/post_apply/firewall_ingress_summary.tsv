@@ -1,0 +1,11 @@
+name	priority	sourceRanges	targetTags	allowed_or_denied	disabled
+us-model-private-allow	800	['10.164.0.0/20']	['us-managed-model']	ALLOW tcp:8443	False
+us-model-private-deny	810	['0.0.0.0/0']	['us-managed-model']	DENY tcp:8443	False
+usta-a100-api-allow	900	['31.220.63.191/32', '82.29.184.225/32']	['usta-a100-api']	ALLOW tcp:8443	False
+allow-iap-ssh	1000	['35.235.240.0/20']	None	ALLOW tcp:22	False
+kalfa-allow-http	1000	['0.0.0.0/0']	['kalfa-http']	ALLOW tcp:80	False
+kalfa-allow-worker	1000	['0.0.0.0/0']	['kalfa-http']	ALLOW tcp:8788	False
+default-allow-icmp	65534	['0.0.0.0/0']	None	ALLOW [{'IPProtocol': 'icmp'}]	False
+default-allow-internal	65534	['10.128.0.0/9']	None	ALLOW tcp:0-65535;udp:0-65535	False
+default-allow-rdp	65534	['0.0.0.0/0']	None	ALLOW tcp:3389	False
+default-allow-ssh	65534	['0.0.0.0/0']	None	ALLOW tcp:22	False

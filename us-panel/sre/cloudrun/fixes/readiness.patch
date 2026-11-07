@@ -1,0 +1,56 @@
+--- a/commerce_http.py
++++ b/commerce_http.py
+@@ -14,6 +14,7 @@
+ import urllib.parse
+ import urllib.request
+ from account_store import AccountStore
++from readiness_checks import readiness
+ from metering_stream import CompletionReceipt, ClosingBody
+ from shopify_ledger import receive_paid_order, receive_cancelled_order, receive_full_refund, validate_credit_products
+ 
+@@ -80,6 +81,9 @@
+                 # Read-only: does not contact the model, create a reservation,
+                 # or refresh the independent watchdog heartbeat.
+                 return respond('200 OK',{'ok':True,'shopify_webhooks':webhooks_enabled})
++            if env.get('REQUEST_METHOD')=='GET' and env.get('PATH_INFO')=='/ready':
++                ok, checks = readiness(store, configured=upstream is not None)
++                return respond('200 OK' if ok else '503 Service Unavailable', {'ready':ok,'checks':checks})
+             if env.get('PATH_INFO')=='/webhooks/shopify' and not webhooks_enabled:
+                 return respond('503 Service Unavailable',{'error':'shopify integration not configured'})
+             if env.get('REQUEST_METHOD')=='GET' and env.get('PATH_INFO')=='/v1/models':
+--- a/readiness_checks.py
++++ b/readiness_checks.py
+@@ -0,0 +1,13 @@
++"""Read-only readiness: never contacts a GPU/provider or touches activity."""
++def readiness(store, configured=True):
++    checks = {'config': bool(configured), 'store': False}
++    try:
++        factory = getattr(store, '_db', None) or getattr(store, 'db', None)
++        if not callable(factory):
++            raise RuntimeError('store unavailable')
++        with factory() as db:
++            db.execute('SELECT 1')
++        checks['store'] = True
++    except Exception:
++        pass  # Never expose driver errors or a DSN to HTTP/log consumers.
++    return all(checks.values()), checks
+--- a/runtime.py
++++ b/runtime.py
+@@ -10,6 +10,7 @@
+ from commerce_http import make_app
+ from commercial_server import require
+ from lifecycle_config import configure_managed
++from readiness_checks import readiness
+ 
+ 
+ def configured_store():
+@@ -37,6 +38,9 @@
+         status='404 Not Found';doc={'error':'route'}
+         if env.get('REQUEST_METHOD')=='GET' and env.get('PATH_INFO') in ('/health','/healthz'):
+             status='200 OK';doc={'ok':True} # Probe cannot wake or extend leases.
++        elif env.get('REQUEST_METHOD')=='GET' and env.get('PATH_INFO')=='/ready':
++            ok,checks=readiness(getattr(controller,'store',None), configured=bool(getattr(controller,'policies',None)))
++            status='200 OK' if ok else '503 Service Unavailable';doc={'ready':ok,'checks':checks}
+         elif env.get('REQUEST_METHOD')=='POST' and env.get('PATH_INFO')=='/internal/reconcile':
+             try:
+                 if int(env.get('CONTENT_LENGTH') or 0)>1024:raise ValueError('size')

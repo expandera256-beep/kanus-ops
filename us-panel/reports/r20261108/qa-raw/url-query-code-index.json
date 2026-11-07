@@ -1,0 +1,124 @@
+[
+  {
+    "path": "qa/sec8/run.py",
+    "line": 100,
+    "rules": [
+      "\\?(?:[^\\s\"\\']*&)?(?:license|key|token|password|email)=",
+      "quote\\("
+    ],
+    "test_only": false
+  },
+  {
+    "path": "work2/kiyas/term/gateway.go",
+    "line": 41,
+    "rules": [
+      "RawQuery"
+    ],
+    "test_only": false
+  },
+  {
+    "path": "work2/kiyas/term/gui.html",
+    "line": 728,
+    "rules": [
+      "URLSearchParams"
+    ],
+    "test_only": false
+  },
+  {
+    "path": "work2/kiyas/term/gui.go",
+    "line": 177,
+    "rules": [
+      "Query\\(\\)"
+    ],
+    "test_only": false
+  },
+  {
+    "path": "work2/kiyas/term/gui.go",
+    "line": 213,
+    "rules": [
+      "Query\\(\\)"
+    ],
+    "test_only": false
+  },
+  {
+    "path": "work2/kiyas/term/gui.go",
+    "line": 1157,
+    "rules": [
+      "Query\\(\\)"
+    ],
+    "test_only": false
+  },
+  {
+    "path": "work2/kiyas/term/gui.go",
+    "line": 1162,
+    "rules": [
+      "Query\\(\\)"
+    ],
+    "test_only": false
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/model_proxy.go",
+    "line": 48,
+    "rules": [
+      "RawQuery"
+    ],
+    "test_only": false
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/gpu_wake.go",
+    "line": 59,
+    "rules": [
+      "RawQuery"
+    ],
+    "test_only": false
+  },
+  {
+    "path": "work2/kanus/test_production_runtime.py",
+    "line": 28,
+    "rules": [
+      "urlencode\\("
+    ],
+    "test_only": true
+  },
+  {
+    "path": "work2/kanus/test_postgres_contract.py",
+    "line": 25,
+    "rules": [
+      "urlencode\\("
+    ],
+    "test_only": true
+  },
+  {
+    "path": "work2/kanus/test_postgres_contract.py",
+    "line": 53,
+    "rules": [
+      "urlencode\\("
+    ],
+    "test_only": true
+  },
+  {
+    "path": "work2/kanus/gce_provider.py",
+    "line": 81,
+    "rules": [
+      "urlencode\\("
+    ],
+    "test_only": false
+  },
+  {
+    "path": "work2/kanus/gce_provider.py",
+    "line": 91,
+    "rules": [
+      "urlencode\\("
+    ],
+    "test_only": false
+  },
+  {
+    "path": "work2/kanus/deploy/gcp_apply.py",
+    "line": 147,
+    "rules": [
+      "urlencode\\(",
+      "quote\\("
+    ],
+    "test_only": false
+  }
+]

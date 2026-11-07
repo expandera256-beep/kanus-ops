@@ -1,0 +1,14 @@
+--- FAIL: TestPrefGetFIFODoesNotBlock (0.50s)
+    pref_security_unix_test.go:36: Get blocked on FIFO
+--- FAIL: TestPrefGetRejectsSymlinkFile (0.00s)
+    pref_security_unix_test.go:57: symlink followed: "en"
+--- FAIL: TestPrefGetRejectsLargeFileQuickly (1.12s)
+    pref_security_unix_test.go:77: large file read took 1.086340819s (unbounded read)
+--- FAIL: TestPrefSetRejectsSymlinkParent (0.00s)
+    pref_security_unix_test.go:89: Set through symlinked parent succeeded
+    pref_security_unix_test.go:92: write escaped to symlink target directory
+--- FAIL: TestPrefSetRejectsSymlinkFile (0.00s)
+    pref_security_unix_test.go:108: Set over symlink succeeded
+FAIL
+FAIL	kiyas/i18n	1.662s
+FAIL

@@ -1,0 +1,1 @@
+İPTAL, KULLANILMAYACAK: pin_check.py ve pins.example.json yalnız tarihsel taslaktır. Pinleme iptal edildi. Standart sistem CA + hostname/SAN doğrulaması kullanılacak. Bu dosyaları production yapılandırmasına taşımayın.

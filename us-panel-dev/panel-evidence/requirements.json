@@ -1,0 +1,461 @@
+{
+  "s2": [
+    [
+      "A01",
+      "Doğal dilde projeyi analiz",
+      "VAR",
+      "order.go:34; model.go:175",
+      "İstem sınıflama ve model akışı var; genel proje yetkinliği canlı test değil."
+    ],
+    [
+      "A02",
+      "Proje mimarisi oluşturma",
+      "KISMİ",
+      "order.go:463,752; model.go:67",
+      "Plan/özet var; doğrulanabilir genel mimari çıktısı/sözleşmesi yok."
+    ],
+    [
+      "A03",
+      "Görevi aşamalara bölme",
+      "KISMİ",
+      "order.go:529,752; long_context.go:93",
+      "Plan adımları ve uzun girdi parçalama var; bağımlılıklı yürütülebilir görev DAG yok."
+    ],
+    [
+      "A04",
+      "Çok dosyalı kod üretme",
+      "VAR",
+      "proposal.go:42; proposal_batch.go:50",
+      "Öneri hazırlama, toplu uygulama; model üretim kalitesi ayrı kabul ister."
+    ],
+    [
+      "A05",
+      "Mevcut dosyaları okuma",
+      "VAR",
+      "model_actions.go:192; source_range.go:42",
+      "Sınırlandırılmış okuma ve kaynak özeti."
+    ],
+    [
+      "A06",
+      "Dosyaları değiştirme",
+      "VAR",
+      "desk.go:49; proposal.go:156; change_history.go:71",
+      "Editör ve model önerisi uygulama yolları."
+    ],
+    [
+      "A07",
+      "Kod hatalarını tespit",
+      "KISMİ",
+      "model.go:1367; project_test_runner.go:34",
+      "Python sözdizimi ve açık test koşusu; genel çok dil hata analiz zinciri eksik."
+    ],
+    [
+      "A08",
+      "Hataları onarma",
+      "KISMİ",
+      "gui.go:785-796; model.go:264",
+      "Test hatası modele verilip öneri isteniyor; otomatik tekrar test zorunlu değil."
+    ],
+    [
+      "A09",
+      "Bağımlılık yönetimi",
+      "YOK",
+      "terminal.go:77; project_test_runner.go:116",
+      "Bağımlılıklar bilerek otomatik kurulmaz; kilit dosyası/izinli kurulum iş akışı bulunmadı."
+    ],
+    [
+      "A10",
+      "Test oluşturma",
+      "KISMİ",
+      "model_actions.go:283; proposal.go:42",
+      "Genel dosya önerisi test yazabilir; ayrı test üretim-kapsama kabul zinciri yok."
+    ],
+    [
+      "A11",
+      "Testleri çalıştırma",
+      "VAR",
+      "project_test_runner.go:34; gui.go:743",
+      "Go, Python unittest, yapılandırılmış Node test komutu."
+    ],
+    [
+      "A12",
+      "Derleme yapma",
+      "KISMİ",
+      "terminal.go:64; run.go:199",
+      "Go build terminalde var; ajanın yapılandırılmış build aracı yok."
+    ],
+    [
+      "A13",
+      "Hata çıktısını yorumlama",
+      "KISMİ",
+      "gui.go:790; model.go:1080",
+      "Hata kuyruğu/özet modele gönderiliyor; yapılandırılmış çok dil tanılama yok."
+    ],
+    [
+      "A14",
+      "Düzeltme döngüsünü sürdürme",
+      "KISMİ",
+      "gui.go:743-798; model.go:583-599",
+      "Tek test→öneri akışı; build→tanı→onaylı düzeltme→yeniden test bütçeli döngüsü yok."
+    ],
+    [
+      "A15",
+      "Proje durumunu kaydetme",
+      "VAR",
+      "task_history.go:87,142; studio.go:81",
+      "Görev geçmişi ve masa durumu kaydı."
+    ],
+    [
+      "A16",
+      "Kesintiden sonra devam",
+      "KISMİ",
+      "long_checkpoint.go:14-18; transaction_recovery.go:42; task_queue.go:251",
+      "Uzun girdi checkpoint ve yarım yazım recovery var; bütün ajan/build durum makinesinin resume kabulü yok."
+    ],
+    [
+      "T01",
+      "Yetkilendirilmiş komutlar",
+      "KISMİ",
+      "terminal.go:32-79; gui.html:190-191",
+      "Allowlist var; proje kodu aynı OS yetkileriyle çalışır, sandbox değildir."
+    ],
+    [
+      "T02",
+      "Çalışma dizinini koruma",
+      "VAR",
+      "terminal.go:85-89,107",
+      "cmd.Dir seçili kök; alt programın OS dosya erişimini engellemez."
+    ],
+    [
+      "T03",
+      "Gerçek stdout/stderr",
+      "VAR",
+      "terminal.go:110-113,148-159; gui.html:381-384",
+      "Ayrı sınırlı buffer ve arayüz gösterimi."
+    ],
+    [
+      "T04",
+      "İşlem iptali",
+      "VAR",
+      "terminal.go:104-105,141-146; process_tree_unix.go:11-20",
+      "İptal + süreç grubu öldürme. Windows runtime ayrı NOT TESTED."
+    ],
+    [
+      "T05",
+      "Zaman aşımı",
+      "VAR",
+      "terminal.go:81-83,102,129-130",
+      "Context timeout ve timeout durumu."
+    ],
+    [
+      "T06",
+      "Kaynak sınırları",
+      "KISMİ",
+      "terminal.go:16,102,110; gui.html:190",
+      "Süre/çıktı sınırlı; CPU/RAM/PID/disk/ağ sınırları YOK."
+    ],
+    [
+      "T07",
+      "Doğru hata kodları",
+      "VAR",
+      "terminal.go:127-136; gui.html:382",
+      "Gerçek ProcessState.ExitCode ve terminal durumu."
+    ],
+    [
+      "T08",
+      "Kullanıcı çalışma alanı izolasyonu",
+      "KISMİ",
+      "terminal.go:16,107-108; desk.go:339; project_test_runner.go:24",
+      "Kök ve env filtreleme var; aynı OS kullanıcısı/HOME paylaşımı, tenant sandbox yok."
+    ],
+    [
+      "L01",
+      "Python ortamı",
+      "VAR",
+      "terminal.go:65-66; project_test_runner.go:51-57",
+      "Çalıştırma, unittest, parse desteği."
+    ],
+    [
+      "L02",
+      "Go ortamı",
+      "VAR",
+      "terminal.go:63-64; project_test_runner.go:41-43",
+      "Test/build/run/vet var."
+    ],
+    [
+      "L03",
+      "Node.js ortamı",
+      "VAR",
+      "terminal.go:67-68; project_test_runner.go:100",
+      "Node komutları ve npm test var; kurulum yönetilmez."
+    ],
+    [
+      "L04",
+      "JavaScript ortamı",
+      "VAR",
+      "terminal.go:68; run.go:199",
+      "JS/MJS çalıştırma ve check var."
+    ],
+    [
+      "L05",
+      "TypeScript ortamı",
+      "KISMİ",
+      "model.go:935; project_test_runner.go:100",
+      "TS/TSX dosya tanıma ve npm test mümkün; tsc/TS runner yerleşik aracı yok."
+    ],
+    [
+      "L06",
+      "HTML/CSS ortamı",
+      "KISMİ",
+      "agent.go:52-55,130; gui.html:179",
+      "Yerel statik servis/önizleme var; CSS/HTML doğrulama test matrisi yok."
+    ],
+    [
+      "L07",
+      "JSON/YAML ortamı",
+      "KISMİ",
+      "model.go:935; desk.go:49",
+      "Metin editörü/JSON dosya tanıma; YAML parser/şema doğrulama aracı yok."
+    ],
+    [
+      "L08",
+      "SQL ortamı",
+      "KISMİ",
+      "desk.go:49; terminal.go:62-69",
+      "Metin olarak düzenlenebilir; SQL runner, DB izolasyonu/migration aracı yok."
+    ],
+    [
+      "U01",
+      "Terminal bölümü",
+      "VAR",
+      "gui.html:188-192; gui.go:297",
+      "Gerçek süreç API bağlanmış; native UI kabulü NOT TESTED."
+    ],
+    [
+      "U02",
+      "Projeler bölümü",
+      "VAR",
+      "gui.html:300-309; gui.go:854",
+      "Proje listesi ve seçme."
+    ],
+    [
+      "U03",
+      "Dosyalar bölümü",
+      "VAR",
+      "gui.html:137-169; gui.go:206",
+      "Dosya listesi/okuma/arama/sayfalama."
+    ],
+    [
+      "U04",
+      "AI Ajanı bölümü",
+      "KISMİ",
+      "gui.html:118-132,254-259; model.go:175",
+      "Sohbet/görev arayüzü var; genel otonom geliştirme döngüsü eksik."
+    ],
+    [
+      "U05",
+      "Kod editörü",
+      "VAR",
+      "gui.html:163-168,723; desk.go:49",
+      "Textarea ve kaydetme; IDE düzeyinde LSP iddiası yok."
+    ],
+    [
+      "U06",
+      "Çalıştır bölümü",
+      "KISMİ",
+      "gui.go:809-817; run.go:78-82; run.go:41-49",
+      "Çalışır süreç yolu var; terminaldeki env filtrelemesini kullanmıyor (HATALI güvenlik farkı)."
+    ],
+    [
+      "U07",
+      "Testler bölümü",
+      "VAR",
+      "gui.html:176-177; gui.go:743",
+      "Gerçek test raporu ve iptal."
+    ],
+    [
+      "U08",
+      "İşlem günlüğü",
+      "VAR",
+      "gui.html:115-116; journal.go:16",
+      "Gerçek günlük ve redaksiyon."
+    ],
+    [
+      "U09",
+      "GPU/model durumu",
+      "KISMİ",
+      "gui.html:202; worker_client.go:59-119",
+      "Hesap/model durumu var; gerçek GPU kapasitesi/tahsis durumu unknown olabilir."
+    ],
+    [
+      "U10",
+      "Hesap/kredi bilgileri",
+      "VAR",
+      "gui.html:199-202; gui.go:1076",
+      "Sunucudan yenilenen durum; canlı doğrulama yapılmadı, US sahipliği."
+    ],
+    [
+      "U11",
+      "Ayarlar bölümü",
+      "KISMİ",
+      "gui.html:206-218",
+      "Gelişmiş bağlantı ayarları var; bütünleşik terminal/çalışma alanı/kaynak politikası ayarları eksik."
+    ],
+    [
+      "R01",
+      "Sahte başarı mesajı olmaması",
+      "KISMİ",
+      "model.go:556,599; gui.go:817",
+      "Çoğu sonuç gerçek; başarısız startProgram sonucunda da “Program çalıştırıldı” günlüğü yazılır (HATALI ifade)."
+    ],
+    [
+      "R02",
+      "Çalışmayan teste başarı yazmama",
+      "VAR",
+      "project_test_runner.go:83-95,139-152",
+      "Sıfır test ve kanıtsız exit=0 başarı sayılmaz."
+    ],
+    [
+      "R03",
+      "Model hazır değilken hazır göstermeme",
+      "KISMİ",
+      "worker_client.go:87-95,114-116",
+      "Accounts hazır bilgisi var; legacy hook yolunda boş status da Awake kabul ediliyor. Canlı hazır kanıtı değil."
+    ],
+    [
+      "R04",
+      "Sonuçların gerçek duruma bağlı olması",
+      "KISMİ",
+      "terminal.go:127-136; gui.go:817; worker_client.go:94",
+      "Terminal gerçek; çalıştır günlüğü ve legacy hazır yorumu düzeltilmeli."
+    ]
+  ],
+  "s3": [
+    [
+      "M00",
+      "Mevcut DeepSeek bağlantısını koruma",
+      "VAR",
+      "context_limits.go:51-68; model.go:2214-2217",
+      "Kaynakta model seçimi korunmuş; bu görevde kod değiştirilmedi."
+    ],
+    [
+      "M01",
+      "Gerçek model API bağlantısı",
+      "KISMİ",
+      "model.go:2172-2299",
+      "Gerçek HTTP istemcisi var; gerçek model uç bağlantısı BLOCKED/kapsam dışı, mock ile doğrulanmalı."
+    ],
+    [
+      "M02",
+      "SSE streaming",
+      "VAR",
+      "model.go:2292-2294,2361",
+      "SSE okuyucu/progress; canlı akış değil birim kapsamı."
+    ],
+    [
+      "M03",
+      "Uzun görev desteği",
+      "KISMİ",
+      "long_context.go:93; long_checkpoint.go:11-18",
+      "Parçalı özetleme/checkpoint var; tam proje yaşam döngüsü değil."
+    ],
+    [
+      "M04",
+      "Çok aşamalı model çağrısı",
+      "VAR",
+      "model.go:319-425; long_context.go:214",
+      "Okuma/yeniden istem/özet birleştirme aşamaları."
+    ],
+    [
+      "M05",
+      "Konuşma bağlamı yönetimi",
+      "VAR",
+      "journal.go:254,278; model.go:800",
+      "Sohbet belleği ve sınırlı bağlam."
+    ],
+    [
+      "M06",
+      "Token sınırı kontrolü",
+      "KISMİ",
+      "context_limits.go:13-15,29-48,72; model.go:2183-2188",
+      "Çıkış token limiti var; giriş byte bütçesi, gerçek tokenizer sayımı değil."
+    ],
+    [
+      "M07",
+      "Model hazır olma denetimi",
+      "KISMİ",
+      "worker_client.go:59-119; licensesrv/model_proxy.go:413",
+      "Model listesi/status denetimi; gerçek GPU readiness uçtan uca NOT TESTED."
+    ],
+    [
+      "M08",
+      "Yeniden bağlanma",
+      "KISMİ",
+      "model.go:2057; model.go:2278-2284; continuation.go:58",
+      "Uç listesi/yanıt devamı var; SSE kesintisinde güvenli replay ve idempotent resume garantisi yok."
+    ],
+    [
+      "M09",
+      "İptal işlemleri",
+      "VAR",
+      "model.go:206,2197; gui.go:440",
+      "Context iptal yolu var."
+    ],
+    [
+      "M10",
+      "Eşzamanlı istek yönetimi",
+      "VAR",
+      "model_admission.go:47; licensesrv/model_proxy.go:27-43,90-97",
+      "Yerel admission ve sunucu kapasite kanalları var."
+    ],
+    [
+      "M11",
+      "GPU kapasitesine göre kuyruk",
+      "KISMİ",
+      "model_admission.go:11-12,28; licensesrv/model_proxy.go:27-43",
+      "Sabit yapılandırılan kapasite var; GPU telemetrisinden dinamik türetme yok."
+    ],
+    [
+      "M12",
+      "Kullanıcı bazlı kullanım kayıtları",
+      "VAR",
+      "account_client.go:101-144; licensesrv/accounts.go:554,614-626",
+      "Accounts/istek-kredi geçmişi mevcut; US alanı, canlı kabul değil."
+    ],
+    [
+      "M13",
+      "Yanıtların güvenli dosya değişiklikleri olarak uygulanması",
+      "KISMİ",
+      "proposal.go:42,156; proposal_batch.go:22,50; change_history.go:30,71",
+      "Okuma kanıtı, hash, önizleme/geri alma var; OS düzeyi yarış/izolasyon sertleştirmesi ayrıca gerekli."
+    ],
+    [
+      "E01",
+      "Yetenekleri gereksiz uygulama kısıtlarıyla daraltmama",
+      "KISMİ",
+      "model.go:2223,2234-2242; context_limits.go:29-48",
+      "think=false, reasoning/stop/output varsayılanları var; model desteğine göre yapılandırılabilirlik ve kalite karşılaştırması gerekli."
+    ],
+    [
+      "E02",
+      "Açık, esnek, teknik olarak güçlü deneyim",
+      "KISMİ",
+      "gui.html:206-218; model_actions.go:34",
+      "Özel uç/model ve yapılandırılmış dosya eylemi var; bağımlılık/build/otomatik onarım eksikleri sürüyor."
+    ],
+    [
+      "E03",
+      "Yetki, güvenlik, veri koruma ve kötüye kullanım önleme korunmalı",
+      "KISMİ",
+      "gui.go:127; project_test_runner.go:24; run.go:41-49; model_admission.go:47",
+      "Panel guard/env/admission var; Run env mirası ve OS/tenant sandbox eksikliği önemli."
+    ],
+    [
+      "E04",
+      "“Filtresiz” pazarlama gerçeği temsil etmeli; güvenlik kaldırılmamalı",
+      "KISMİ",
+      "gui.html:190,223; model.go:2223-2242",
+      "Teknik sınırlamalar bazı yerlerde açıklanıyor; gerçek model davranışı/pazarlama uyumu NOT TESTED."
+    ]
+  ]
+}

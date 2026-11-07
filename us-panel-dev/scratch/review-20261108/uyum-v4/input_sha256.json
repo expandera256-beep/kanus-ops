@@ -1,0 +1,23 @@
+{
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch": "f6d660142e23f9121e6f621037b9aeaf901155f8be875ac31513152859fee3be",
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch": "6f3cf673a93cfd0e1372ce85b4edef90a339f228f02b0f1ad67b14b9227d23a3",
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch": "04a272e8b7e6f2d35feb96d231b244b485be54ae602a4732c9ca10f8a783d177",
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch": "48529e9d44881f891d7de65d2a2b6787eff44d314c5393e2a6351840308604a1",
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch": "26d47990502fb49fe9a9461e76a1c17e3fd62a543e038037cce0f6d4fe670592",
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch": "1f4e0b90b13380a2feb431eb817b4ca0586f78d98c853518605ebddbb42e0fcf",
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch": "bfed494d32ebf15d0324db0985305e722e5913aa075a72ab3a188474851a4893",
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/README.md": "20efd644a6825754172de6e4fabcd53ff02996d67a6012b6fe3938d95532a3c2",
+  "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch": "ee133c8facd3d0397c5529085fc1a1857f8b2ac2e492ad075df2805180aa9e33",
+  "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch": "4f291280b0c6c02bdaa2899ef3d6acc193ac14a56e366d7b84d77bfe72b4cf8d",
+  "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch": "e697d07cf2cd3e93b29c19ff543ad9efbb24f6f0ca6744bd94fe89d827cf2b7d",
+  "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch": "7453211f1c51bc0fb8b64fc97e5abd5ba3c587a2a1020139b8681f43375f1b34",
+  "/workspace/us-panel-dev/patches/uyum-v4/02-ops/README.md": "1b3405acacb05f0b8551a95ecba4cd89d612c5ad398bef30327b1dfdb7977cc6",
+  "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch": "dc9ef3b99b1c64aa225c74031248bc7287e72496cbae90fa783c9d5da36185ae",
+  "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch": "d8b2d8d6ef229c7cefb94272280b99c2a945f7f8b7c0f474e7cef09e616021cd",
+  "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch": "a617e950feaa95dbaa147f1788e68f79f1e93fd9b80ca6b9deb8e8f0bea3aae3",
+  "/workspace/us-panel-dev/patches/uyum-v4/03-handler/README.md": "4fe4df076ae951f7bf19e5b8957dac687b9652c26412caab354b065d7c9d9b53",
+  "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch": "801da3cedaa56eba6522a31ff0d424e464e7fdb759e07351510c0eb1738fbea4",
+  "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch": "0a06b78f48944529ee19b822ee05d9c49b3b2fee4eec842177cfd20f56cac903",
+  "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/README.md": "33aeaeaf7920241dab0766186d9a6c6f6813acfbe8de18893ef3f36ae39da9db",
+  "/workspace/us-panel-dev/patches/uyum-v4/README.md": "4007652bc98207359333b36897fd618ffcbd30629bf6c89f0050521f4353e3bb"
+}

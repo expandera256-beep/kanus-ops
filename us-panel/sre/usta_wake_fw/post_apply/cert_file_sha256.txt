@@ -1,0 +1,2 @@
+7cdac1a62f6f65078c4443cccc38918cc08f9e48900343da694dfbcf787b4918  /workspace/secrets/usta-wake/cert.pem
+7cdac1a62f6f65078c4443cccc38918cc08f9e48900343da694dfbcf787b4918  /workspace/secrets/usta-wake/wake.pin

@@ -1,0 +1,26 @@
+package main
+import("testing";"time";"strings";"net/http";"net/http/httptest";"sync";"sync/atomic";"os";"path/filepath";"encoding/json";"encoding/base64")
+func TestOwnFetchMatrix(t *testing.T){
+ for _, name:=range []string{"http","redirect","4097","bad-json","missing","wrong","replay","valid","tls-untrusted","timeout5"}{t.Run(name,func(t *testing.T){
+ fxReset(t);var followed atomic.Int32
+ dest:=httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter,r *http.Request){followed.Add(1)}));defer dest.Close()
+ body:=fxBody;if name=="4097"{body+=strings.Repeat(" ",4097-len(body))};if name=="bad-json"{body="{"};if name=="replay"{body=strings.Replace(body,"2026-11-06","2026-11-01",1)}
+ s:=httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter,r *http.Request){if name=="redirect"{http.Redirect(w,r,dest.URL,302);return};if name=="timeout5"{select{case <-r.Context().Done():return;case <-time.After(7*time.Second):}}
+ sig:=fxSigPrefix+fxMAC(fxTestSecret,[]byte(body));if name=="wrong"{sig="v1=wrong"};if name!="missing"{w.Header().Set(fxSigHeader,sig)};w.Write([]byte(body))}));defer s.Close()
+ old:=fxHTTP;defer func(){fxHTTP=old}();c:=s.Client();fxHTTP=&http.Client{Timeout:5*time.Second,Transport:c.Transport,CheckRedirect:old.CheckRedirect};if name=="tls-untrusted"{fxHTTP.Transport=http.DefaultTransport};u:=s.URL;if name=="http"{u="http://127.0.0.1:1"}
+ start:=time.Now();_,_,_,_,err:=fetchFX(u);elapsed:=time.Since(start);t.Log(name,err,elapsed)
+ if (err==nil)!=(name=="valid"){t.Fatal("unexpected acceptance",err)};if followed.Load()!=0{t.Fatal("redirect followed")};if name=="timeout5"&&(elapsed<4800*time.Millisecond||elapsed>6500*time.Millisecond){t.Fatal("timeout not 5s",elapsed)}
+ })}}
+func TestOwnCacheMatrix(t *testing.T){for _,name:=range []string{"valid","unsigned","corrupt","stale","symlink","root-swap","max-body-cache"}{t.Run(name,func(t *testing.T){fxReset(t);dir:=filepath.Dir(os.Getenv("US_DESK"));body:=fxBody;if name=="stale"{body=strings.Replace(body,"2026-11-06","2026-11-01",1)};if name=="max-body-cache"{body+=strings.Repeat(" ",4096-len(body))}
+ sig:=fxSigPrefix+fxMAC(fxTestSecret,[]byte(body));if name=="unsigned"{sig=""};raw,_:=json.Marshal(fxCacheDoc{Body:base64.RawURLEncoding.EncodeToString([]byte(body)),Sig:sig});if name=="corrupt"{raw=[]byte("{")}
+ if name=="symlink"{out:=t.TempDir();victim:=filepath.Join(out,"victim");os.WriteFile(victim,[]byte("sentinel"),0600);os.Symlink(victim,filepath.Join(dir,"fx.json"));_ = fxCache.WriteRaw(raw);v,_:=os.ReadFile(victim);if string(v)!="sentinel"{t.Fatal("outside write")};return}
+ if name=="root-swap"{if e:=fxCache.WriteRaw(raw);e!=nil{t.Fatal(e)};moved:=dir+"-moved";if e:=os.Rename(dir,moved);e!=nil{t.Fatal(e)};defer os.RemoveAll(moved);out:=t.TempDir();os.WriteFile(filepath.Join(out,"fx.json"),[]byte("sentinel"),0600);if e:=os.Symlink(out,dir);e!=nil{t.Fatal(e)};_ = fxCache.WriteRaw(raw);v,_:=os.ReadFile(filepath.Join(out,"fx.json"));if string(v)!="sentinel"{t.Fatal("root swap outside write")};return}
+ if name=="max-body-cache"{s:=newFXServer(t,signed(body));refreshFX(s.URL);_,ok:=fxFromCache();if !ok{t.Fatal("valid 4096-byte response cannot persist")};return}
+ if e:=os.WriteFile(filepath.Join(dir,"fx.json"),raw,0600);e!=nil{t.Fatal(e)};_,ok:=fxFromCache();if ok!=(name=="valid"){t.Fatal("cache acceptance",ok)}
+ })}}
+func TestOwnConcurrentRefresh(t *testing.T){fxReset(t);s:=newFXServer(t,func(w http.ResponseWriter,r *http.Request){time.Sleep(50*time.Millisecond);signed(fxBody)(w,r)});t.Setenv("US_GATEWAY_URL",s.URL);fxSetState(true,time.Time{});var wg sync.WaitGroup;for i:=0;i<100;i++{wg.Add(1);go func(){defer wg.Done();currentFX()}()};wg.Wait();fxWaitIdle(t);for i:=0;i<100;i++{currentFX()};if n:=s.hits.Load();n!=1{t.Fatal("not single-flight/rate limited",n)}}
+func TestOwnPricingCannotOverrideGateway(t *testing.T){fxReset(t);s:=newFXServer(t,signed(fxBody));t.Setenv("US_GATEWAY_URL",s.URL);fxSetState(true,time.Time{});w:=httptest.NewRecorder();pricingHandler(w,httptest.NewRequest("GET","/api/pricing?lang=en&gateway=https://invalid.invalid",nil));fxWaitIdle(t);if s.hits.Load()!=1{t.Fatal("configured gateway not used")}}
+
+func TestOwnFailureRateLimit(t *testing.T){fxReset(t);s:=newFXServer(t,func(w http.ResponseWriter,r *http.Request){http.Error(w,"no",503)});t.Setenv("US_GATEWAY_URL",s.URL);fxSetState(true,time.Time{});currentFX();fxWaitIdle(t);for i:=0;i<100;i++{currentFX()};if n:=s.hits.Load();n!=1{t.Fatal(n)}}
+func TestOwn4096Fetch(t *testing.T){fxReset(t);body:=fxBody+strings.Repeat(" ",4096-len(fxBody));s:=newFXServer(t,signed(body));_,raw,_,_,err:=fetchFX(s.URL);if err!=nil||len(raw)!=4096{t.Fatal(err,len(raw))}}
+func TestOwnForgedCache(t *testing.T){fxReset(t);body:=strings.ReplaceAll(fxBody,"50.0724","40");body=strings.ReplaceAll(body,"55.9609","44");raw,_:=json.Marshal(fxCacheDoc{Body:base64.RawURLEncoding.EncodeToString([]byte(body)),Sig:fxSigPrefix+fxMAC(licenseSecret(),[]byte(body))});if e:=fxCache.WriteRaw(raw);e!=nil{t.Fatal(e)};s,ok:=fxFromCache();if !ok||s.USD!=40{t.Fatal("expected symmetric-key forgery demonstration",s,ok)};t.Log("Synthetic local holder of the same license secret successfully signed and loaded a forged FX cache")}

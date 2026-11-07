@@ -1,0 +1,8 @@
+new pass: -File=0 -Command(&)=0 sh-c/-Command=0
+new fail: -File=1 -Command(&)=1 sh-c/-Command=1
+new skip: -File=2 -Command(&)=2 sh-c/-Command=2
+new bad: -File=3 -Command(&)=3 sh-c/-Command=3
+old pass: -File=0 -Command(&)=0 sh-c/-Command=0
+old fail: -File=1 -Command(&)=1 sh-c/-Command=1
+old skip: -File=2 -Command(&)=1 sh-c/-Command=1
+old bad: -File=3 -Command(&)=1 sh-c/-Command=1

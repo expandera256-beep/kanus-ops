@@ -1,0 +1,160 @@
+--- /dev/null
++++ b/POST12_B_FX_BLOCKER_TR.md
+@@ -0,0 +1,15 @@
++# B: Ed25519 FX anahtar önkoşulu
++
++Durum: NOT DONE (yalnız TL-only güvenli fallback DONE).
++
++.12 doğrulandı; tüm kaynakta crypto/ed25519, Ed25519 private key yükleme veya gömülü public key yok. Lisans üretimi/parseLicense ve licensesrv webhook mint'i HMAC-SHA256 kullanıyor. Config.LicenseSecret string'i bir Ed25519 anahtarı değildir. Gömülü embeddedLicenseSecret public key değil, legacy HMAC secret alanıdır; ticari hook modunda boştur. Sır dosyası okunmadı.
++
++İstenen EXISTING Ed25519 anahtarını ve EXE'de zaten gömülü public key'i yeniden kullanmak bu kaynak sürümünde doğrulanamıyor. HMAC secret'tan Ed25519 seed türetmek, ayrı key yaratmak, algoritmayı HMAC'a çevirmek veya EXE'ye HMAC secret dağıtmak yapılmadı. Sahte key slotu/çalışmayan doğrulayıcı eklenmedi.
++
++Devam için mevcut Ed25519 lisans imzalayıcısının ve EXE public-key çözümleyicisinin bulunduğu doğru kaynak dosya/sürüm paylaşılmalı (key değerini değil dosya/simge konumunu). O sürüm yoksa yeni anahtar/algoritma migrasyonu tasarım kararı gerekiyor.
++
++GLOBAL global_i18n_08_fx.patch incelendi. Tam uygulanmadı: .12'de i18n, Localizer, PrefStore, langPref ve önceki 01..07 yamalarının altyapısı yok. Patch08 /v1/fx, HMAC, EUR+USD, kanus.fx/1 şeması bekliyor; yeni /v1/fx/usd-try + Ed25519 ile mantıksal çakışmalı. GLOBAL'in Türkçe price.summary TL-only fallback metni yeniden kullanıldı. Yeni bir paralel i18n/formatlama katmanı yaratılmadı. FXMaxAge ve approx-notes mantığı doğru kaynak/key geldiğinde aynı i18n/fx.go içinde birleştirilmeli; 5 günlük sınırda patch08'in +24h toleransı yeni şartla aynen alınmamalı.
++
++Sabit kur kaldırıldı: katalog PriceText TL-only; lisans mint'i artık doğrulanmamış USD tutarı üretmez (USD JSON alanı geriye uyum için 0 olarak kalır); eski USD-only lisans fiyatı gösterilmez; pricing-gen JSON/csv ödemeleri TRY kalır ve usdtry_ref/hesaplanmış USD kolonları kaldırıldı. Ledger, lisans HMAC algoritması, anahtarlar ve hesap protokolü değiştirilmedi.
++
++Endpoint/fetcher/cache/signature ve EXE doğrulama bu yama içinde uygulanmadı. 503, imza, bayat kur, TCMB fixture ve rate-limit testleri NOT TESTED. Bunlar tamamlanmış özellik olarak sunulmamalı.
+--- a/cmd/us-pricing-gen/main.go
++++ b/cmd/us-pricing-gen/main.go
+@@ -8,7 +8,7 @@
+ )
+ 
+ func main() {
+-	b, _ := json.MarshalIndent(map[string]any{"currency": "TRY", "usdtry_ref": licensesrv.USDTRYRef, "note": "TEST mağazası içindir; canlı fiyatlar değiştirilmedi. Fiyatlar KDV dahil.", "products": licensesrv.Catalog}, "", "  ")
++	b, _ := json.MarshalIndent(map[string]any{"currency": "TRY", "note": "TEST mağazası içindir; canlı fiyatlar değiştirilmedi. Fiyatlar KDV dahil.", "products": licensesrv.Catalog}, "", "  ")
+ 	os.WriteFile(os.Args[1]+".json", b, 0644)
+ 	f, _ := os.Create(os.Args[1] + ".csv")
+ 	defer f.Close()
+@@ -18,6 +18,6 @@
+ 	}
+ 	fmt.Println(licensesrv.LivePlansJSON())
+ 	for _, o := range licensesrv.Catalog {
+-		fmt.Printf("%s %d %.2f %.2f\n", o.SKU, o.PriceTRY, o.UnitTRY(), o.PriceUSD())
++		fmt.Printf("%s %d %.2f\n", o.SKU, o.PriceTRY, o.UnitTRY())
+ 	}
+ }
+--- a/license.go
++++ b/license.go
+@@ -96,7 +96,7 @@
+ 	default:
+ 		return "", errors.New("tür yok")
+ 	}
+-	doc := licenseDoc{Kind: o.Plan.Kind, Exp: now.Add(time.Duration(o.Plan.Days) * 24 * time.Hour).Unix(), Prompts: o.Plan.Prompts, Seconds: o.Plan.Seconds, TRY: o.PriceTRY, USD: int(o.PriceUSD() + 0.5)}
++	doc := licenseDoc{Kind: o.Plan.Kind, Exp: now.Add(time.Duration(o.Plan.Days) * 24 * time.Hour).Unix(), Prompts: o.Plan.Prompts, Seconds: o.Plan.Seconds, TRY: o.PriceTRY}
+ 	return mintLicenseDoc(doc)
+ }
+ 
+--- a/licensesrv/pricing.go
++++ b/licensesrv/pricing.go
+@@ -2,15 +2,13 @@
+ 
+ import (
+ 	"encoding/json"
+-	"fmt"
+ 	"strconv"
+ )
+ 
+ // Fiyat tablosu: tek kaynak. İstemci metinleri, US_PLANS_JSON taslağı ve test
+ // mağazası ürün dosyası buradan üretilir. Ayrıntı: reports/FIYATLANDIRMA_TR.md
+-// Fiyatlar KDV dahil TL; USD yalnızca referanstır (USDTRYRef ile).
+-
+-const USDTRYRef = 50.05 // TCMB 05.11.2026 döviz satış ≈ 50,05
++// Fiyatlar KDV dahil TL. Döviz gösterimi yalnız doğrulanmış güncel FX ile
++// istemci tarafında eklenebilir; katalog sabit bir kur sağlamaz.
+ 
+ type Offer struct {
+ 	SKU      string `json:"sku"`
+@@ -29,8 +27,6 @@
+ 	}
+ 	return float64(o.PriceTRY) / float64(o.Plan.Prompts)
+ }
+-
+-func (o Offer) PriceUSD() float64 { return float64(o.PriceTRY) / USDTRYRef }
+ 
+ var Catalog = []Offer{
+ 	{SKU: "US-CREDIT-1", Title: "Kanus AI — 1 Model İsteği", PriceTRY: 149, LiveID: 15428080632036, Plan: Plan{Kind: "sub", Days: 90, Prompts: 1, Credits: 1}},
+@@ -78,5 +74,5 @@
+ }
+ 
+ func (o Offer) PriceText() string {
+-	return fmt.Sprintf("%s (≈%.0f USD)", TRYText(o.PriceTRY), o.PriceUSD())
++	return TRYText(o.PriceTRY)
+ }
+--- /dev/null
++++ b/post12_fx_fallback_test.go
+@@ -0,0 +1,44 @@
++package main
++
++import (
++	"kiyas/licensesrv"
++	"strings"
++	"testing"
++	"time"
++)
++
++// An authenticated Ed25519 FX source is not present in .12. No price may
++// retain the previous hardcoded conversion while that prerequisite is absent.
++func TestPost12PricingTLOnlyWithoutVerifiedFX(t *testing.T) {
++	text := pricingSummary()
++	if strings.Contains(text, "USD") || strings.Contains(text, "≈") || !strings.Contains(text, "18.900 TL") || !strings.Contains(text, "9.900 TL") {
++		t.Fatalf("unverified FX or missing TRY: %s", text)
++	}
++	for _, o := range licensesrv.Catalog {
++		if o.PriceText() != licensesrv.TRYText(o.PriceTRY) {
++			t.Fatalf("offer includes unverified FX: %s", o.SKU)
++		}
++	}
++}
++func TestPost12LegacyUSDNotDisplayedWithoutVerifiedFX(t *testing.T) {
++	if got := priceNote(licenseDoc{USD: 99}); got != "" {
++		t.Fatalf("legacy dollar approximation shown without verified rate: %s", got)
++	}
++	if got := priceNote(licenseDoc{TRY: 149, USD: 99}); got != " 149 TL" {
++		t.Fatal(got)
++	}
++}
++func TestPost12LicenseMintOmitsUnverifiedDollarPrice(t *testing.T) {
++	t.Setenv("US_LICENSE_SECRET", "post12-test-only")
++	token, err := mintLicense("sub", time.Now())
++	if err != nil {
++		t.Fatal(err)
++	}
++	doc, err := parseLicense(token, time.Now())
++	if err != nil {
++		t.Fatal(err)
++	}
++	if doc.USD != 0 || doc.TRY != monthlyOffer().PriceTRY {
++		t.Fatalf("minted unverified dollar amount: USD=%d TRY=%d", doc.USD, doc.TRY)
++	}
++}
+--- a/pricing.go
++++ b/pricing.go
+@@ -25,13 +25,11 @@
+ 	if doc.TRY > 0 {
+ 		return " " + licensesrv.TRYText(doc.TRY)
+ 	}
+-	if doc.USD > 0 {
+-		return " " + itoa(doc.USD) + " USD"
+-	}
+ 	return ""
+ }
+ 
+-// pricingSummary: paneldeki fiyat paragrafı.
++// pricingSummary uses GLOBAL patch 08's TRY-only fallback wording.
++// No FX approximation is shown until a trusted signed rate is available.
+ func pricingSummary() string {
+ 	m, h := monthlyOffer(), hourlyOffer()
+ 	var packs []string
+@@ -40,8 +38,8 @@
+ 			packs = append(packs, fmt.Sprintf("%d istem %s", o.Plan.Prompts, licensesrv.TRYText(o.PriceTRY)))
+ 		}
+ 	}
+-	return fmt.Sprintf("Aylık abonelik %s, %d istem / %d gün. Saatlik kullanım %s, 1 saat işlem veya açık panel. İstem paketleri: %s. Fiyatlar KDV dahil TL; USD karşılığı ≈%.2f TL/USD ile bilgi amaçlıdır.",
+-		m.PriceText(), m.Plan.Prompts, m.Plan.Days, h.PriceText(), strings.Join(packs, ", "), licensesrv.USDTRYRef)
++	return fmt.Sprintf("Aylık abonelik %s, %d istem / %d gün. Saatlik kullanım %s, 1 saat işlem veya açık panel. İstem paketleri: %s. Fiyatlar KDV dahil TL.",
++		m.PriceText(), m.Plan.Prompts, m.Plan.Days, h.PriceText(), strings.Join(packs, ", "))
+ }
+ 
+ const pricingMarker = "{{US_FIYAT}}"

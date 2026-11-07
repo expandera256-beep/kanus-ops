@@ -1,0 +1,6 @@
+=== RUN   TestTTLGraceKeepsReservedLockedThenReleases
+    ttl_grace_lock_test.go:26: in grace: want reserved=2 credits=500, got reserved=1 credits=500
+--- FAIL: TestTTLGraceKeepsReservedLockedThenReleases (0.01s)
+FAIL
+FAIL	kiyas/licensesrv	0.016s
+FAIL

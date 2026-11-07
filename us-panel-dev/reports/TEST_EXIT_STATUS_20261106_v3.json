@@ -1,0 +1,14 @@
+{
+  "go_test": 0,
+  "go_race_all_packages": 0,
+  "go_vet": 0,
+  "windows_cross_build": 0,
+  "load_test": 0,
+  "linux_main_version_selftest": 0,
+  "hook_changed": false,
+  "counts": {
+    "top_level": 289,
+    "subtests": 37,
+    "skip_rows": 6
+  }
+}

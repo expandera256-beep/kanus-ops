@@ -1,0 +1,24 @@
+US panel kaynak kodu
+
+Arşiv düzeni:
+
+  kiyas/term    Windows masaüstü paneli. Go 1.22, paket main.
+  kanus/api     Yalnız lisans imzasını panel ile karşılaştıran iki PHP dosyası.
+
+Ticari kapı anahtarı ve lisans imza sırrı bu arşivde yoktur.
+Model çağrısı için US_KEY veya USTA_KEY ortam değişkenini ver.
+Lisans defteri için US_LICENSE_SECRET ver.
+
+Panel klasöründe:
+
+  cd kiyas/term
+  go test .
+  go build -o US .
+
+Pencereli Windows exe:
+
+  CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-H windowsgui -s -w" -o US.exe .
+
+Gömülü anahtarlı ticari derleme, embedded_key.go ve embedded_license.go
+içindeki boş değerleri kendi değerlerinle doldurduktan sonra -tags uskey ister.
+Bu arşivdeki iki dosya bilerek boştur.

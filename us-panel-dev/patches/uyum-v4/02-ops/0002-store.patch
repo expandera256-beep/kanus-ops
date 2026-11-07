@@ -1,0 +1,9 @@
+--- a/licensesrv/store.go
++++ b/licensesrv/store.go
+@@ -355,5 +355,6 @@
+ 		return nil
+ 	}
+ 	s.closed = true
++	eraseBooks.Delete(s) // release per-Store confirmation memory; mu serializes erase/Close
+ 	return unlockStore(s.lock)
+ }

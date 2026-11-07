@@ -1,0 +1,2 @@
+bq query --maximum_bytes_billed=20000000 (billing-sku-query.sql)
+exit=0

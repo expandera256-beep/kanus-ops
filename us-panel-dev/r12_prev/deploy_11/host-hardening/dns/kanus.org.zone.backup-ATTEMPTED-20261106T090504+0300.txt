@@ -1,0 +1,4 @@
+BACKUP NOT CREATED — dns_records_list via user-Hostinger-dns MCP timed out on every attempt.
+Attempts (Europe/Istanbul wall clock ~08:54–09:00+): 6+ execute(dns_records_list) → MCP error -32001 Request timed out.
+search tool responded OK; GetMcpServerStatus: Hostinger-dns [connected].
+No zone JSON obtained. No dns_records_update called. No certbot. No other DNS path used (per instructions).

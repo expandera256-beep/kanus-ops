@@ -1,0 +1,4 @@
+=== RUN   TestPanelCompatRoundtrip
+--- PASS: TestPanelCompatRoundtrip (0.00s)
+PASS
+ok  	kiyas/licensesrv	0.005s

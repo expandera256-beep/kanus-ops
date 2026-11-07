@@ -1,0 +1,48 @@
+{"Time":"2026-11-08T01:32:12.046189818+03:00","Action":"start","Package":"kiyas/cmd/us-license-hook"}
+{"Time":"2026-11-08T01:32:12.066459161+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux"}
+{"Time":"2026-11-08T01:32:12.066531434+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux","Output":"=== RUN   TestAccountRoutesThroughProductionMux\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.777375586+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux","Output":"--- PASS: TestAccountRoutesThroughProductionMux (8.71s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.777495203+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux","Elapsed":8.71}
+{"Time":"2026-11-08T01:32:20.777618657+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestWebhookRoutesAreTopicBound"}
+{"Time":"2026-11-08T01:32:20.777628533+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestWebhookRoutesAreTopicBound","Output":"=== RUN   TestWebhookRoutesAreTopicBound\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.784252321+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestWebhookRoutesAreTopicBound","Output":"--- PASS: TestWebhookRoutesAreTopicBound (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.784360829+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestWebhookRoutesAreTopicBound","Elapsed":0.01}
+{"Time":"2026-11-08T01:32:20.784511034+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestSMTPDisabledDoesNotAttemptOrExhaustOutbox"}
+{"Time":"2026-11-08T01:32:20.784519847+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestSMTPDisabledDoesNotAttemptOrExhaustOutbox","Output":"=== RUN   TestSMTPDisabledDoesNotAttemptOrExhaustOutbox\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.788756488+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestSMTPDisabledDoesNotAttemptOrExhaustOutbox","Output":"--- PASS: TestSMTPDisabledDoesNotAttemptOrExhaustOutbox (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.788964873+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestSMTPDisabledDoesNotAttemptOrExhaustOutbox","Elapsed":0}
+{"Time":"2026-11-08T01:32:20.78897577+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestPlansFilePrecedenceAndFailClosed"}
+{"Time":"2026-11-08T01:32:20.788985197+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPlansFilePrecedenceAndFailClosed","Output":"=== RUN   TestPlansFilePrecedenceAndFailClosed\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.790611098+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPlansFilePrecedenceAndFailClosed","Output":"--- PASS: TestPlansFilePrecedenceAndFailClosed (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.790842907+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestPlansFilePrecedenceAndFailClosed","Elapsed":0}
+{"Time":"2026-11-08T01:32:20.790852933+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestModelRoutesAreLicenseProtected"}
+{"Time":"2026-11-08T01:32:20.790856123+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestModelRoutesAreLicenseProtected","Output":"=== RUN   TestModelRoutesAreLicenseProtected\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.791516246+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestModelRoutesAreLicenseProtected","Output":"--- PASS: TestModelRoutesAreLicenseProtected (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.791588487+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestModelRoutesAreLicenseProtected","Elapsed":0}
+{"Time":"2026-11-08T01:32:20.791628315+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestPrivacyRetentionDaysMounted"}
+{"Time":"2026-11-08T01:32:20.791637168+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPrivacyRetentionDaysMounted","Output":"=== RUN   TestPrivacyRetentionDaysMounted\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.794269911+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPrivacyRetentionDaysMounted","Output":"--- PASS: TestPrivacyRetentionDaysMounted (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:20.794316299+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestPrivacyRetentionDaysMounted","Elapsed":0}
+{"Time":"2026-11-08T01:32:20.794333361+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestV41PrefsFailureRoutesReadinessAndLiveness"}
+{"Time":"2026-11-08T01:32:20.794344595+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestV41PrefsFailureRoutesReadinessAndLiveness","Output":"=== RUN   TestV41PrefsFailureRoutesReadinessAndLiveness\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:23.624411298+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestV41PrefsFailureRoutesReadinessAndLiveness","Output":"--- PASS: TestV41PrefsFailureRoutesReadinessAndLiveness (2.83s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:23.62460406+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestV41PrefsFailureRoutesReadinessAndLiveness","Elapsed":2.83}
+{"Time":"2026-11-08T01:32:23.624629803+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled"}
+{"Time":"2026-11-08T01:32:23.625162423+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled","Output":"=== RUN   TestV41ReadinessAvailableOptionalAndDisabled\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:23.625212085+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/configured"}
+{"Time":"2026-11-08T01:32:23.625217421+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/configured","Output":"=== RUN   TestV41ReadinessAvailableOptionalAndDisabled/configured\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:26.332949745+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/configured","Output":"--- PASS: TestV41ReadinessAvailableOptionalAndDisabled/configured (2.71s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:26.332988322+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/configured","Elapsed":2.71}
+{"Time":"2026-11-08T01:32:26.333008694+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/optional"}
+{"Time":"2026-11-08T01:32:26.333017071+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/optional","Output":"=== RUN   TestV41ReadinessAvailableOptionalAndDisabled/optional\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:29.031025736+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/optional","Output":"--- PASS: TestV41ReadinessAvailableOptionalAndDisabled/optional (2.70s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:29.031166066+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/optional","Elapsed":2.7}
+{"Time":"2026-11-08T01:32:29.031205356+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/erase-disabled"}
+{"Time":"2026-11-08T01:32:29.031210817+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/erase-disabled","Output":"=== RUN   TestV41ReadinessAvailableOptionalAndDisabled/erase-disabled\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:31.663211129+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/erase-disabled","Output":"--- PASS: TestV41ReadinessAvailableOptionalAndDisabled/erase-disabled (2.63s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:31.663274718+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled/erase-disabled","Elapsed":2.63}
+{"Time":"2026-11-08T01:32:31.663283588+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled","Output":"--- PASS: TestV41ReadinessAvailableOptionalAndDisabled (8.04s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:31.663286838+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestV41ReadinessAvailableOptionalAndDisabled","Elapsed":8.04}
+{"Time":"2026-11-08T01:32:31.663290408+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:32:32.665385716+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Output":"ok  \tkiyas/cmd/us-license-hook\t20.618s\n"}
+{"Time":"2026-11-08T01:32:32.665437373+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Elapsed":20.619}

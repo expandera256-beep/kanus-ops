@@ -1,0 +1,9 @@
+{"Time":"2026-11-06T09:43:54.271905827+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-06T09:43:54.274582596+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestParsePlansBothExportSchemas"}
+{"Time":"2026-11-06T09:43:54.274632161+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestParsePlansBothExportSchemas","Output":"=== RUN   TestParsePlansBothExportSchemas\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:43:54.274653631+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestParsePlansBothExportSchemas","Output":"    credits_test.go:19: open ../../../../reports/US_PLANS_JSON_TEST.json: no such file or directory\n","OutputType":"error"}
+{"Time":"2026-11-06T09:43:54.274664277+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestParsePlansBothExportSchemas","Output":"--- FAIL: TestParsePlansBothExportSchemas (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:43:54.274667368+03:00","Action":"fail","Package":"kiyas/licensesrv","Test":"TestParsePlansBothExportSchemas","Elapsed":0}
+{"Time":"2026-11-06T09:43:54.274672673+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:43:54.275147163+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"FAIL\tkiyas/licensesrv\t0.003s\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:43:54.27518102+03:00","Action":"fail","Package":"kiyas/licensesrv","Elapsed":0.003}

@@ -1,0 +1,45 @@
+▶ kanus-sdk-ts
+  ✖ maps error envelope with masked toString (28.796236ms)
+  ✔ retries GET on 429 within maxRetries (9.340761ms)
+  ✔ caps Retry-After (0.254174ms)
+  ✔ PoC: reserve POST is NOT retried on 429 (single hit) (3.090288ms)
+  ✔ requires https except localhost (0.20629ms)
+  ✔ sends api key without leaking secret (2.448345ms)
+  ✔ forwards Idempotency-Key once (no multi-retry) (3.413977ms)
+  ✔ parses fragmented SSE (2.854814ms)
+  ✔ SSE buffer limit (2.649099ms)
+✖ kanus-sdk-ts (54.419645ms)
+ℹ tests 9
+ℹ suites 1
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 222.293596
+
+✖ failing tests:
+
+test at tests/client.test.ts:1:373
+✖ maps error envelope with masked toString (28.796236ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  401 !== 999
+  
+      at Object.<anonymous> (/tmp/api-review-r3/sdk-ts/tests/client.test.ts:20:16)
+      at expectedException (node:assert:578:17)
+      at expectsError (node:assert:703:21)
+      at strict.rejects (node:assert:769:3)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/tmp/api-review-r3/sdk-ts/tests/client.test.ts:18:7)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 401,
+    expected: 999,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

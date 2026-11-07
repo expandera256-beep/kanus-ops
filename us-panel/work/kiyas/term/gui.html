@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>US</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #101114; color: #f4f1ea; font: 15px/1.5 "Segoe UI", sans-serif; }
+  a { color: #d6f25c; }
+  button, input, textarea { font: inherit; color: inherit; }
+  button { border: 1px solid rgba(255,255,255,.12); background: #1a1d24; border-radius: 12px; padding: 8px 12px; }
+  button.on, .rail button.on { background: #f4f1ea; color: #14161c; }
+  button.go { background: #d6f25c; color: #1a2208; border: 0; font-weight: 700; border-radius: 999px; }
+  button:disabled { opacity: .5; }
+  .app { height: 100%; display: grid; grid-template-columns: 76px minmax(0, 1fr) minmax(280px, 360px); }
+  .rail { display: flex; flex-direction: column; gap: 6px; padding: 10px 8px; background: #0c0d11; border-right: 1px solid rgba(255,255,255,.08); }
+  .rail .mark { margin: 4px 0 10px; text-align: center; font: 11px ui-monospace, monospace; letter-spacing: .14em; color: #d6f25c; }
+  .rail button { width: 100%; min-height: 42px; padding: 6px 4px; font-size: 11px; line-height: 1.2; }
+  .chat { min-width: 0; display: flex; flex-direction: column; background: #14161c; }
+  .top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-end; padding: 16px 22px 8px; }
+  .chats { display: flex; gap: 6px; overflow: auto; padding: 0 22px 8px; }
+  .chats button { white-space: nowrap; }
+  .life { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 4px 22px 8px; }
+  .life div { background: #0c0d11; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 8px 10px; min-width: 0; }
+  .life .k { display: block; color: #d6f25c; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+  .life .v { display: block; font-variant-numeric: tabular-nums; }
+  .meter { display: block; height: 4px; margin-top: 8px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+  .meter span { display: block; height: 100%; width: 0; background: #d6f25c; }
+  h1 { margin: 0; font-size: 28px; letter-spacing: -.03em; }
+  .muted { color: #a39e93; }
+  #thread { flex: 1; overflow: auto; padding: 8px 22px 12px; display: flex; flex-direction: column; gap: 12px; }
+  .bubble { max-width: 34rem; margin-left: auto; background: #243049; border-radius: 16px 16px 4px 16px; padding: 10px 12px; }
+  .doc { max-width: 46rem; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 12px 14px; }
+  .doc p { margin: 0 0 6px; }
+  .doc .kind { color: #d6f25c; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+  .yerel { color: #d6f25c; } .uzak { color: #e7a06a; } .soru, .user { color: #8eb6ff; } .uyari { color: #f0a3a3; }
+  #form { padding: 0 22px 16px; }
+  #slash { display: none; margin: 0 0 8px; padding: 8px; border-radius: 14px; background: #0c0d11; border: 1px solid rgba(255,255,255,.08); }
+  #slash button { display: block; width: 100%; text-align: left; margin-top: 4px; }
+  textarea, input[type="text"] { width: 100%; background: #0c0e13; border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 12px; }
+  textarea { min-height: 84px; resize: vertical; }
+  #editor { min-height: 140px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px; }
+  .side { overflow: auto; border-left: 1px solid rgba(255,255,255,.08); padding: 14px; background: #101114; }
+  .pane { display: none; }
+  body[data-screen="files"] #pane-files,
+  body[data-screen="preview"] #pane-preview,
+  body[data-screen="models"] #pane-models,
+  body[data-screen="serve"] #pane-serve,
+  body[data-screen="monitor"] #pane-monitor,
+  body[data-screen="tasks"] #pane-tasks,
+  body[data-screen="skills"] #pane-skills,
+  body[data-screen="studio"] #pane-studio { display: block; }
+  ul { list-style: none; margin: 8px 0; padding: 0; }
+  li { margin: 4px 0; }
+  pre { white-space: pre-wrap; margin: 0; font: 12px/1.45 ui-monospace, monospace; }
+  #previewframe { width: 100%; height: 220px; border: 0; border-radius: 12px; background: #fff; display: none; }
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr) minmax(180px, 40vh); }
+    .rail { flex-direction: row; overflow: auto; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .rail button { width: auto; }
+    .side { border-left: 0; border-top: 1px solid rgba(255,255,255,.08); }
+    .life { grid-template-columns: 1fr; margin: 4px 16px 8px; }
+  }
+
+  /* US workspace refresh: existing controls and screen routes stay intact. */
+  :root { color-scheme: dark; --canvas:#0a0c13; --panel:#121722; --line:#293244; --muted:#9aaac1; --accent:#b6eb79; }
+  html,body{background:var(--canvas);color:#eff4fb;font-family:"Segoe UI",system-ui,sans-serif}
+  a{color:#c0f397} button{cursor:pointer;transition:background .16s,border-color .16s,transform .16s}button:hover:not(:disabled){border-color:#83bd81;background:#253141}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #b6eb79;outline-offset:2px}button.go{background:var(--accent);color:#142115;padding:10px 24px;border-radius:10px}
+  .app{grid-template-columns:92px minmax(0,1fr) minmax(300px,360px)} .rail{background:#0d111b;border-color:var(--line);gap:8px;padding:18px 9px} .rail .mark{font:800 20px/1 system-ui;color:var(--accent);letter-spacing:-.05em;margin:4px 0 22px}.rail button{font-size:12px;color:#9caec4;min-height:44px;border-color:transparent;background:transparent;border-radius:10px}.rail button.on{background:#283c35;color:#d8f9c8;border-color:#3e6052}
+  .chat{background:radial-gradient(ellipse at 50% -20%,#1e2d3d 0,transparent 48%),#10151f;min-height:0}.top{padding:23px 28px 10px;align-items:center}.top h1{font-size:25px;letter-spacing:-.04em}.top p{margin:3px 0 0;font-size:13px}.muted{color:var(--muted)}.chats{padding:0 28px 10px}.chats button{border-radius:9px;font-size:12px}
+  .life{margin:4px 28px 12px;gap:9px}.life div{background:#161e2a;border-color:var(--line);padding:10px 12px;border-radius:11px}.life .k{color:#9db7a9;font-size:10px}.life .v{font-size:12px;color:#f0f5f8;overflow-wrap:anywhere}
+  #thread{padding:12px 28px;scroll-behavior:smooth}.bubble,.doc{padding:14px 16px;border:1px solid var(--line);border-radius:14px;white-space:pre-wrap;overflow-wrap:anywhere}.bubble{background:#293b37}.doc{background:#161e2a}.doc .kind{color:#a9d992;font-size:10px;font-weight:700}.side{background:#10151e;border-color:var(--line);padding:20px}.side h2{font-size:16px;letter-spacing:-.01em;margin:8px 0 12px}.side input,.side textarea{border-radius:10px}.side button{border-radius:9px}.side li button{width:100%;text-align:left}pre{overflow-wrap:anywhere}.row{gap:7px}
+  #form{padding:8px 28px 22px}#form textarea{border-radius:14px;background:#0c111a;border-color:#364258;min-height:90px;padding:15px} #form .row{justify-content:flex-end}#form .row [data-fill]{font-size:11px;color:#b1bdcb}#ask{margin:0 0 6px;color:#b6eb79;font-size:12px}.cards{display:grid;gap:8px;margin-top:12px}.cards button{text-align:left;display:grid}.cards small{color:#9aaac1}.connection{background:#182231;border:1px solid var(--line);padding:12px;border-radius:12px;margin:14px 0}.connection label{display:block;font-size:12px;color:#bdcce0;margin:9px 0 5px}.connection input{width:100%;background:#0c111a;border:1px solid #40506b;color:white;padding:10px;border-radius:8px}.connection p{font-size:12px;color:#aebcd1;line-height:1.5} #talk p{white-space:pre-wrap}
+  @media(max-width:900px){.app{grid-template-columns:1fr;grid-template-rows:auto minmax(360px,1fr) minmax(200px,40vh)}.rail{padding:8px;gap:4px}.rail .mark{margin:10px}.rail button{min-width:72px}.life{grid-template-columns:repeat(2,minmax(0,1fr));margin:4px 16px 8px}.top,#thread{padding-left:16px;padding-right:16px}#form{padding:8px 16px 16px}}
+
+</style>
+</head>
+<body data-screen="files">
+<div class="app">
+  <nav class="rail" aria-label="Bölümler">
+    <div class="mark">US.</div>
+    <button type="button" data-screen="files" class="on">Dosya</button>
+    <button type="button" data-screen="preview">Önizleme</button>
+    <button type="button" data-screen="models">Modeller</button>
+    <button type="button" data-screen="serve">Servis</button>
+    <button type="button" data-screen="monitor">İzleme</button>
+    <button type="button" data-screen="tasks">Görev</button>
+    <button type="button" data-screen="studio">Stüdyo</button>
+    <button type="button" data-screen="skills">Araç</button>
+  </nav>
+  <section class="chat">
+    <div class="top">
+      <div>
+        <h1>US <span class="muted">/ çalışma alanı</span></h1>
+        <p class="muted">Modelle çalışın, projelerinizi yönetin ve sonuçları izleyin.</p><p id="tunneltop" class="muted" role="status">Otomatik bağlantı hazırlanıyor.</p>
+      </div>
+    </div>
+    <div class="chats" id="chats" aria-label="Sohbetler"></div>
+    <div class="life" aria-label="İşçi durumu">
+      <div><span class="k">Çağrı</span><span class="v" id="lifecall">yok</span></div>
+      <div><span class="k">Yükleme</span><span class="v" id="lifeload">bakılıyor</span></div>
+      <div><span class="k">Kapanma</span><span class="v" id="lifeidle">bakılıyor</span><span class="meter"><span id="lifeidlebar"></span></span></div>
+      <div><span class="k">Lisans</span><span class="v" id="lifelicense">bakılıyor</span></div>
+    </div>
+    <div id="thread">
+      <div id="mine"></div>
+      <ol id="talk"></ol>
+      <ol id="steps"></ol>
+      <h2 class="muted">Günlük</h2>
+      <ol id="journal"></ol>
+    </div>
+    <form id="form">
+      <div id="slash"></div>
+      <p id="ask" class="ask"></p>
+      <textarea id="task" placeholder="Mesajınızı yazın. Ctrl+Enter ile gönderin."></textarea>
+      <div class="row">
+        <button type="button" data-fill="hesap makinesi yapan proje kur">hesap</button>
+        <button type="button" data-fill="not tutan proje kur">not</button>
+        <button type="button" data-fill="projeyi geliştirmek için plan çiz">plan</button>
+        <button type="button" data-fill="proje kur">proje kur</button>
+        <button type="button" id="runprog">Çalıştır</button>
+        <button type="button" id="stopprog">Durdur</button>
+        <button type="button" id="stopmodel" hidden>Parçadan sonra durdur</button>
+        <button class="go" type="submit">Yürüt</button>
+      </div>
+    </form>
+  </section>
+  <aside class="side">
+    <div class="pane" id="pane-files">
+      <h2>Dosyalar</h2>
+      <p id="root" class="muted"></p>
+      <div class="row">
+        <button type="button" id="places">Yerel</button>
+        <button type="button" id="browse">Klasör seç</button>
+        <button type="button" id="up">Üst</button>
+      </div>
+      <form id="placeform" class="row">
+        <input id="place" type="text" placeholder="C:\ veya D:\">
+        <button type="submit">Aç</button>
+      </form>
+      <ul id="picks"></ul>
+      <ul id="files"></ul>
+      <form id="findform" class="row">
+        <input id="find" type="text" placeholder="dosyada ara">
+        <button type="submit">Ara</button>
+      </form>
+      <ul id="hits"></ul>
+      <p id="openpath" class="muted">Dosya seçilmedi.</p>
+      <textarea id="editor" spellcheck="false" placeholder="Listeden bir dosya aç. Kaydet yazıyı klasöre koyar."></textarea>
+      <div class="row">
+        <button type="button" id="savefile">Kaydet</button>
+      </div>
+    </div>
+    <div class="pane" id="pane-preview">
+      <h2>Önizleme</h2>
+      <pre id="result">Henüz sonuç yok.</pre>
+      <iframe id="previewframe" title="Önizleme"></iframe>
+      <div class="row">
+        <button type="button" id="review">İncele</button>
+        <button type="button" id="render">Tuval</button>
+      </div>
+      <p id="visualnote" class="muted"></p>
+      <h2>İnceleme</h2>
+      <pre id="reviewtext">Henüz inceleme yok.</pre>
+    </div>
+    <div class="pane" id="pane-models">
+      <h2>Modeller</h2>
+      <p class="muted">Q8 işlemci, Q5 ekran kartı, DeepSeek Flash, KAN. Kurulum sihirbazı yok.</p>
+      <div class="connection">
+        <strong>Model bağlantısı</strong>
+        <p id="tunnelstatus" role="status">Otomatik bağlantı hazırlanıyor.</p>
+        <button type="button" id="tunnelretry">Yeniden bağlan</button>
+        <p>DeepSeek bağlantısı hazır olduğunda otomatik seçilir; model anahtarı girmeniz gerekmez.</p>
+        <details><summary>Gelişmiş bağlantı ayarları</summary>
+        <p>Farklı bir sunucu kullanıyorsanız adres ve anahtar bu oturum içindir.</p>
+        <form id="gatewayform">
+          <label for="gateway">Kapı adresi</label>
+          <input id="gateway" type="text" placeholder="https://sunucu.example veya http://127.0.0.1:8788" autocomplete="off">
+          <label for="modelname">Model adı</label>
+          <input id="modelname" type="text" placeholder="deepseek-v4.1-flash" autocomplete="off">
+          <label for="accesskey">Erişim anahtarı (yerel tünelde isteğe bağlı)</label>
+          <input id="accesskey" type="password" placeholder="Anahtarı bu oturum için girin" autocomplete="off">
+          <div class="row"><button type="submit">Bağlantıyı uygula</button></div>
+        </form>
+        <p id="gatewaystatus" role="status"></p>
+        </details>
+      </div>
+      <div class="row" id="workers"></div>
+      <div class="cards" id="modes"></div>
+      <h2>Lisans</h2>
+      <p class="muted">{{US_FIYAT}} Satış https://shop.kanus.org. İndirme https://kanus.org/downloads/US.exe. Lisans metni, ödenmiş siparişin e-postasında gelir.</p>
+      <p id="allowance"></p>
+      <form id="licenseform" class="row">
+        <input id="license" type="text" placeholder="Lisans">
+        <button type="submit">Kaydet</button>
+      </form>
+      <div id="adminbox">
+        <p class="muted">Yönetim yerelde ve ödemesizdir. Lisansı kutuya yapıştırıp Kaydet.</p>
+        <div class="row">
+          <button type="button" id="mintsub">Abonelik üret</button>
+          <button type="button" id="mintuse">Kullanım üret</button>
+          <button type="button" id="checklic">Lisansı yokla</button>
+        </div>
+        <p id="licensenote" class="muted"></p>
+      </div>
+    </div>
+    <div class="pane" id="pane-serve">
+      <h2>Servis</h2>
+      <p>Yerel kapı <b>127.0.0.1:4477</b>. Bu pencere o adresi tutar.</p>
+      <div class="row">
+        <button type="button" id="runprog2">Çalıştır</button>
+        <button type="button" id="stopprog2">Durdur</button>
+      </div>
+      <p id="status"></p>
+    </div>
+    <div class="pane" id="pane-monitor">
+      <h2>İzleme</h2>
+      <p id="door" class="muted"></p>
+      <p id="summary" class="muted"></p>
+      <p id="notice" class="uyari"></p>
+    </div>
+    <div class="pane" id="pane-tasks">
+      <h2>Görevler</h2>
+      <ul id="tracks"></ul>
+      <form id="trackform" class="row">
+        <input id="track" type="text" placeholder="madde">
+        <button type="submit">Ekle</button>
+      </form>
+      <h2>Not</h2>
+      <ul id="notes"></ul>
+      <form id="noteform" class="row">
+        <input id="note" type="text" placeholder="projeye not">
+        <button type="submit">Tut</button>
+      </form>
+    </div>
+    <div class="pane" id="pane-skills">
+      <h2>Araçlar</h2>
+      <p id="tools" class="muted"></p>
+      <h2>Kuram</h2>
+      <pre id="theory"></pre>
+      <h2>REA</h2>
+      <p class="muted">Seçili dosya resmi rea CLI ile statik incelenir. Hopper kurulmaz.</p>
+      <button type="button" id="rea">Tersten incele</button>
+      <pre id="reatext">Henüz tersten inceleme yok.</pre>
+      <h2>Eklenti</h2>
+      <p class="muted">Skill, MCP, görsel ve otomasyon kaydı. MCP komutu çalıştırılmaz.</p>
+      <ul id="plugins"></ul>
+      <form id="pluginform" class="row">
+        <input id="plugin" type="text" placeholder="mcp ad komut">
+        <button type="submit">Kaydet</button>
+      </form>
+      <div class="row">
+        <button type="button" data-skill="rea">Skill REA</button>
+        <button type="button" data-skill="tek exe">Skill exe</button>
+        <button type="button" data-skill="depo">Skill depo</button>
+        <button type="button" data-auto="bakış">Bakış</button>
+      </div>
+      <h2>Ek</h2>
+      <div class="row">
+        <button type="button" id="attach">İliştir</button>
+      </div>
+      <ul id="attached"></ul>
+    </div>
+    <div class="pane" id="pane-studio">
+      <h2>Projeler</h2>
+      <ul id="projects"></ul>
+      <h2>Depo</h2>
+      <pre id="repoline">Depo bakılmadı.</pre>
+      <div class="row">
+        <button type="button" id="repo">Depo</button>
+        <button type="button" id="github">GitHub</button>
+      </div>
+      <pre id="githonline">GitHub bakılmadı.</pre>
+    </div>
+  </aside>
+</div>
+<script>
+const state = { id: "", shown: 0, last: 0, openPath: "" };
+const stepsEl = document.querySelector("#steps");
+const taskEl = document.querySelector("#task");
+const slashEl = document.querySelector("#slash");
+const commands = [
+  { cmd: "/dosya", screen: "files", hint: "Dosyaları aç" },
+  { cmd: "/onizleme", screen: "preview", hint: "Önizlemeyi aç" },
+  { cmd: "/model", screen: "models", hint: "Modelleri aç" },
+  { cmd: "/tune", screen: "models", hint: "Model ayarını aç" },
+  { cmd: "/servis", screen: "serve", hint: "Servisi aç" },
+  { cmd: "/izleme", screen: "monitor", hint: "İzlemeyi aç" },
+  { cmd: "/gorev", screen: "tasks", hint: "Görevleri aç" },
+  { cmd: "/arac", screen: "skills", hint: "Araçları aç" },
+  { cmd: "/rea", screen: "skills", hint: "Seçili dosyayı REA ile incele" },
+  { cmd: "/studio", screen: "studio", hint: "Projeleri aç" },
+  { cmd: "/depo", screen: "studio", hint: "Depo durumunu aç" },
+  { cmd: "/github", screen: "studio", hint: "GitHub durumunu aç" },
+  { cmd: "/tuval", screen: "preview", hint: "Tuvali aç" }
+];
+
+function showScreen(screen) {
+  document.body.dataset.screen = screen;
+  document.querySelectorAll(".rail button").forEach((button) => {
+    button.classList.toggle("on", button.dataset.screen === screen);
+  });
+}
+
+async function act(body) {
+  const response = await fetch("/api/act", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  if (!response.ok) throw new Error((await response.text()).trim() || "İşlem durdu.");
+  return response.json();
+}
+async function load() {
+  const response = await fetch("/api/state");
+  paint(await response.json());
+}
+function paint(desk) {
+  const workers = [{ id: "q8", label: "Q8" }, { id: "q5", label: "Q5" }, { id: "flash", label: "Flash" }, { id: "a100", label: "KAN" }];
+  document.querySelector("#workers").innerHTML = workers.map((item) => `<button type="button" data-worker="${item.id}" class="${desk.worker === item.id ? "on" : ""}">${item.label}</button>`).join("");
+  document.querySelector("#modes").innerHTML = desk.rows.map((row, index) => `<button type="button" class="${desk.selected === index ? "on" : ""}" data-select="${index}"><b>${row.name}</b><small>${row.egress} B · ${row.calls} çağrı</small></button>`).join("");
+  document.querySelector("#summary").textContent = desk.summary || "";
+  document.querySelector("#tunnelstatus").textContent = desk.tunnel || "Bağlantı bilgisi yok.";
+  document.querySelector("#tunneltop").textContent = desk.tunnel || "Bağlantı bilgisi yok.";
+  document.querySelector("#root").textContent = desk.picking ? desk.browse : desk.root;
+  document.querySelector("#status").textContent = desk.runStatus || "Servis duruyor.";
+  document.querySelector("#lifecall").textContent = desk.callLine || "yok";
+  document.querySelector("#lifeload").textContent = desk.loadLine || "bakılıyor";
+  document.querySelector("#lifeidle").textContent = desk.idleLine || "bakılıyor";
+  document.querySelector("#lifeidlebar").style.width = Math.max(0, Math.min(100, desk.idleLeft || 0)) + "%";
+  document.querySelector("#lifelicense").textContent = desk.allowance || "bakılıyor";
+  document.querySelector("#allowance").textContent = desk.allowance || "";
+  document.querySelector("#licensenote").textContent = desk.licenseNote || "";
+  document.querySelector("#adminbox").hidden = !desk.admin;
+  document.querySelector("#notice").textContent = desk.notice || "";
+  document.querySelector("#door").textContent = desk.doorOk ? `kapı ${desk.doorMs} ms` : (desk.doorError || "kapı yok");
+  document.querySelector("#ask").textContent = desk.calling ? (desk.notice || "Model çağrılıyor.") : (desk.ask || "");
+  taskEl.placeholder = desk.ask ? "Cevabı yaz" : "İstem yaz. / ile bölüm aç.";
+  document.querySelector("#form button.go").disabled = desk.calling;
+  document.querySelector("#stopmodel").hidden = !(desk.calling && desk.longActive);
+  fillList("#files", desk.tree, (name) => {
+    if (name.endsWith("/")) act({ op: "enter", text: name.slice(0, -1) }).then(paint);
+    else if (name !== "ve daha" && name !== "dizinde dosya yok" && name !== "klasör açılmadı" && name !== "bu klasör taranmaz") act({ op: "read", path: name }).then(paint);
+  });
+  fillList("#hits", desk.hits, null);
+  fillList("#tracks", (desk.tracks || []).map((item) => item.state + " · " + item.title), null);
+  fillList("#notes", desk.notes, null);
+  document.querySelector("#openpath").textContent = desk.openPath || "Dosya seçilmedi.";
+  if (desk.openPath !== state.openPath) {
+    state.openPath = desk.openPath || "";
+    document.querySelector("#editor").value = desk.openText || "";
+  }
+  document.querySelector("#reviewtext").textContent = desk.review || "Henüz inceleme yok.";
+  document.querySelector("#theory").textContent = desk.theory || "";
+  document.querySelector("#tools").textContent = (desk.tools || []).join(" · ");
+  document.querySelector("#reatext").textContent = desk.rea || "Henüz tersten inceleme yok.";
+  document.querySelector("#repoline").textContent = desk.repo || "Depo bakılmadı.";
+  document.querySelector("#githonline").textContent = desk.github || "GitHub bakılmadı.";
+  document.querySelector("#visualnote").textContent = desk.visual || "";
+  fillProjects(desk.projects);
+  fillPlugins(desk.plugins);
+  fillAttached(desk.attached);
+  const picks = document.querySelector("#picks");
+  picks.innerHTML = "";
+  if (desk.picking) {
+    desk.picks.forEach((item, index) => {
+      const li = document.createElement("li");
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = item.label;
+      button.addEventListener("click", () => act({ op: "pick", n: index }).then(paint));
+      li.append(button);
+      picks.append(li);
+    });
+  }
+  const result = [...desk.steps].reverse().find((item) => item.title === "çalıştır" || item.title === "model" || item.title === "kurgu" || item.title === "eksik" || item.title === "exe");
+  const resultText = result ? result.body : "Henüz sonuç yok.";
+  document.querySelector("#result").textContent = resultText;
+  const frame = document.querySelector("#previewframe");
+  const visual = (desk.visual || "").startsWith("/view") ? desk.visual : "";
+  const local = visual || (resultText.match(/https?:\/\/(?:127\.0\.0\.1|localhost)[^\s]*/) || [])[0];
+  if (local) {
+    frame.style.display = "block";
+    if (frame.dataset.src !== local) {
+      frame.dataset.src = local;
+      frame.src = local;
+    }
+  } else {
+    frame.style.display = "none";
+    frame.removeAttribute("src");
+    delete frame.dataset.src;
+  }
+  state.last = desk.steps.length;
+  state.shown = desk.steps.length;
+  drawTalk(desk.turns);
+  fillChats(desk);
+  draw(desk.steps);
+  drawJournal(desk.journal);
+}
+function fillChats(desk) {
+  const bar = document.querySelector("#chats");
+  bar.innerHTML = "";
+  const add = document.createElement("button");
+  add.type = "button";
+  add.textContent = "Yeni sohbet";
+  add.addEventListener("click", () => act({ op: "chat-new" }).then(paint));
+  bar.append(add);
+  (desk.chats || []).forEach((item) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = item.id === desk.chatId ? "on" : "";
+    button.textContent = item.title || "Sohbet";
+    button.addEventListener("click", () => act({ op: "chat-use", text: item.id }).then(paint));
+    bar.append(button);
+  });
+  const del = document.createElement("button");
+  del.type = "button";
+  del.textContent = "Sohbeti sil";
+  del.addEventListener("click", () => act({ op: "chat-delete" }).then(paint));
+  bar.append(del);
+}
+function drawTalk(items) {
+  const list = document.querySelector("#talk");
+  list.innerHTML = "";
+  (items || []).forEach((item) => {
+    const li = document.createElement("li");
+    li.className = item.role === "model" ? "doc" : "bubble";
+    const title = document.createElement("p");
+    title.className = "kind";
+    title.textContent = item.role === "model" ? "model" : "panel";
+    const body = document.createElement("p");
+    body.textContent = item.text || "";
+    li.append(title, body);
+    if (item.role === "model") {
+      const copy = document.createElement("button");
+      copy.type = "button"; copy.className = "copy-answer"; copy.textContent = "Yanıtı kopyala";
+      copy.addEventListener("click", async () => {
+        try { await navigator.clipboard.writeText(item.text || ""); copy.textContent = "Kopyalandı"; }
+        catch (_) { copy.textContent = "Kopyalanamadı"; }
+      });
+      li.append(copy);
+    }
+    list.append(li);
+  });
+}
+function drawJournal(items) {
+  const list = document.querySelector("#journal");
+  list.innerHTML = "";
+  (items || []).forEach((item) => {
+    const li = document.createElement("li");
+    li.className = "doc";
+    const title = document.createElement("p");
+    title.className = "kind";
+    title.textContent = item.n + " · " + item.kind;
+    const body = document.createElement("p");
+    body.textContent = item.text || "";
+    li.append(title, body);
+    list.append(li);
+  });
+}
+function draw(items) {
+  const scroller = stepsEl.parentElement;
+  const follow = scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight < 100;
+  stepsEl.innerHTML = "";
+  items.slice(0, state.shown).forEach((item) => {
+    const li = document.createElement("li");
+    li.className = item.title === "görev" ? "bubble" : "doc";
+    const title = document.createElement("p");
+    title.className = item.kind || "yerel";
+    title.textContent = item.title;
+    const body = document.createElement("p");
+    body.textContent = item.body;
+    li.append(title, body);
+    stepsEl.append(li);
+  });
+  if (follow) scroller.scrollTop = scroller.scrollHeight;
+}
+function slashMatches(text) {
+  const raw = text.trim().toLowerCase();
+  if (!raw.startsWith("/")) return [];
+  return commands.filter((item) => item.cmd.startsWith(raw.split(/\s/)[0]));
+}
+function renderSlash() {
+  const found = slashMatches(taskEl.value);
+  slashEl.style.display = found.length ? "block" : "none";
+  slashEl.innerHTML = "";
+  found.forEach((item) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = item.cmd + "  " + item.hint;
+    button.addEventListener("click", () => {
+      showScreen(item.screen);
+      taskEl.value = "";
+      slashEl.style.display = "none";
+    });
+    slashEl.append(button);
+  });
+}
+setInterval(() => load().catch(() => {}), 700);
+document.querySelector("#form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const text = taskEl.value.trim();
+  if (!text) return;
+  const head = text.split(/\s/)[0].toLowerCase();
+  if (head === "/rea" || head === "rea") {
+    showScreen("skills");
+    taskEl.value = "";
+    slashEl.style.display = "none";
+    act({ op: "rea", path: state.openPath, text }).then((desk) => paint(desk)).catch(() => {
+      document.querySelector("#reatext").textContent = "REA incelemesi durdu.";
+    });
+    return;
+  }
+  const hit = commands.find((item) => item.cmd === text.split(/\s/)[0].toLowerCase());
+  if (hit) {
+    showScreen(hit.screen);
+    taskEl.value = "";
+    slashEl.style.display = "none";
+    return;
+  }
+  document.querySelector("#ask").textContent = "Model çağrılıyor.";
+  document.querySelector("#form button.go").disabled = true;
+  act({ op: "task", text }).then((desk) => { taskEl.value = ""; paint(desk); }).catch((error) => {
+    document.querySelector("#ask").textContent = error.message || "Çağrı durdu.";
+    document.querySelector("#form button.go").disabled = false;
+  });
+});
+document.querySelector("#stopmodel").addEventListener("click", () => act({ op: "model-stop" }).then(paint));
+taskEl.addEventListener("input", renderSlash);
+taskEl.addEventListener("keydown", event => {
+  if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) {
+    event.preventDefault(); document.querySelector("#form").requestSubmit();
+  }
+});
+document.querySelectorAll(".rail button").forEach((button) => {
+  button.addEventListener("click", () => showScreen(button.dataset.screen));
+});
+document.querySelector("#places").addEventListener("click", () => act({ op: "browse", text: "yerel" }).then(paint));
+document.querySelector("#placeform").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const input = document.querySelector("#place");
+  act({ op: "goto", text: input.value }).then(paint);
+});
+document.querySelector("#browse").addEventListener("click", () => {
+  const current = document.querySelector("#root").textContent || "";
+  act({ op: "browse", text: current }).then(paint);
+});
+document.querySelector("#up").addEventListener("click", () => act({ op: "up" }).then(paint));
+function fillProjects(items) {
+  const list = document.querySelector("#projects");
+  list.innerHTML = "";
+  (items || []).forEach((item, index) => {
+    const li = document.createElement("li");
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = (item.state || "açık") + " · " + item.name;
+    button.addEventListener("click", () => act({ op: "use", n: index }).then(paint));
+    li.append(button);
+    list.append(li);
+  });
+}
+function fillPlugins(items) {
+  const list = document.querySelector("#plugins");
+  list.innerHTML = "";
+  (items || []).forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item.kind + " · " + item.name + (item.text ? " · " + item.text : "");
+    list.append(li);
+  });
+}
+function fillAttached(items) {
+  const list = document.querySelector("#attached");
+  list.innerHTML = "";
+  (items || []).forEach((item) => {
+    const li = document.createElement("li");
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = item;
+    button.addEventListener("click", () => act({ op: "detach", path: item }).then(paint));
+    li.append(button);
+    list.append(li);
+  });
+}
+function fillList(selector, items, onClick) {
+  const list = document.querySelector(selector);
+  list.innerHTML = "";
+  (items || []).forEach((item) => {
+    const li = document.createElement("li");
+    if (!onClick) {
+      li.textContent = item;
+    } else {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = item;
+      button.addEventListener("click", () => onClick(item));
+      li.append(button);
+    }
+    list.append(li);
+  });
+}
+document.querySelector("#findform").addEventListener("submit", (event) => {
+  event.preventDefault();
+  act({ op: "find", text: document.querySelector("#find").value }).then(paint);
+});
+document.querySelector("#trackform").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const input = document.querySelector("#track");
+  act({ op: "track", text: input.value, n: 0 }).then((desk) => { input.value = ""; paint(desk); });
+});
+document.querySelector("#noteform").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const input = document.querySelector("#note");
+  act({ op: "note", text: input.value }).then((desk) => { input.value = ""; paint(desk); });
+});
+document.querySelector("#savefile").addEventListener("click", () => {
+  act({ op: "save", path: state.openPath, text: document.querySelector("#editor").value }).then(paint);
+});
+document.querySelector("#review").addEventListener("click", () => act({ op: "review" }).then(paint));
+document.querySelector("#runprog").addEventListener("click", () => act({ op: "run" }).then(paint));
+document.querySelector("#stopprog").addEventListener("click", () => act({ op: "stop" }).then(paint));
+document.querySelector("#runprog2").addEventListener("click", () => act({ op: "run" }).then(paint));
+document.querySelector("#stopprog2").addEventListener("click", () => act({ op: "stop" }).then(paint));
+document.querySelector("#render").addEventListener("click", () => {
+  showScreen("preview");
+  act({ op: "render", path: state.openPath }).then(paint);
+});
+document.querySelector("#rea").addEventListener("click", () => act({ op: "rea", path: state.openPath, text: "inspect-artifact" }).then(paint));
+document.querySelector("#attach").addEventListener("click", () => act({ op: "attach", path: state.openPath }).then(paint));
+document.querySelector("#repo").addEventListener("click", () => act({ op: "repo" }).then(paint));
+document.querySelector("#github").addEventListener("click", () => act({ op: "github" }).then(paint));
+document.querySelector("#tunnelretry").addEventListener("click", () => act({op:"tunnel-retry"}).then(paint).catch(e => { document.querySelector("#tunnelstatus").textContent=e.message; }));
+document.querySelector("#gatewayform").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const box = document.querySelector("#gatewaystatus");
+  const key = document.querySelector("#accesskey");
+  try {
+    let desk = await act({op:"gateway", text:document.querySelector("#gateway").value.trim(), path:document.querySelector("#modelname").value.trim()});
+    if (key.value) { desk = await act({op:"key", text:key.value}); key.value = ""; }
+    paint(desk); box.textContent = "Ayar uygulandı. Bağlantı durumu İzleme bölümünde görünür.";
+  } catch (error) { box.textContent = error.message || "Ayar uygulanamadı."; }
+});
+document.querySelector("#licenseform").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const input = document.querySelector("#license");
+  act({ op: "license", text: input.value }).then((desk) => { input.value = ""; paint(desk); });
+});
+document.querySelector("#mintsub").addEventListener("click", () => act({ op: "mint", text: "sub" }).then(paint));
+document.querySelector("#mintuse").addEventListener("click", () => act({ op: "mint", text: "use" }).then(paint));
+document.querySelector("#checklic").addEventListener("click", () => {
+  const input = document.querySelector("#license");
+  act({ op: "check", text: input.value }).then(paint);
+});
+document.querySelector("#pluginform").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const input = document.querySelector("#plugin");
+  act({ op: "plugin", text: input.value }).then((desk) => { input.value = ""; paint(desk); });
+});
+document.body.addEventListener("click", (event) => {
+  const skill = event.target.closest("[data-skill]");
+  if (skill) act({ op: "skill", text: skill.dataset.skill }).then(paint);
+  const auto = event.target.closest("[data-auto]");
+  if (auto) act({ op: "auto", text: auto.dataset.auto }).then(paint);
+});
+document.body.addEventListener("click", (event) => {
+  const worker = event.target.closest("[data-worker]");
+  if (worker) act({ op: "worker", text: worker.dataset.worker }).then(paint);
+  const mode = event.target.closest("[data-select]");
+  if (mode) act({ op: "select", n: Number(mode.dataset.select) }).then(paint);
+  const fill = event.target.closest("[data-fill]");
+  if (fill) taskEl.value = fill.dataset.fill;
+});
+const oldPaint = paint;
+paint = (desk) => { state.cache = desk.steps; oldPaint(desk); };
+load();
+</script>
+</body>
+</html>

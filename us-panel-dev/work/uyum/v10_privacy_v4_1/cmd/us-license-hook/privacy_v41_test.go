@@ -1,0 +1,106 @@
+package main
+
+import (
+	"bytes"
+	"log"
+	"net/http/httptest"
+	"os"
+	"path/filepath"
+	"strings"
+	"testing"
+
+	"kiyas/licensesrv"
+)
+
+func TestV41PrefsFailureRoutesReadinessAndLiveness(t *testing.T) {
+	dir := t.TempDir()
+	st, err := licensesrv.OpenStore(filepath.Join(dir, "ledger.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer st.Close()
+	path := filepath.Join(dir, "synthetic-sensitive-path.json")
+	if err := os.WriteFile(path, []byte(`invalid json`), 0600); err != nil {
+		t.Fatal(err)
+	}
+	t.Setenv("US_PRIVACY_PREFS_PATH", path)
+	t.Setenv("US_PRIVACY_ERASE_ENABLED", "1")
+	t.Setenv("US_SESSION_SECRET", strings.Repeat("synthetic-session-", 4))
+	var logs bytes.Buffer
+	old := log.Writer()
+	log.SetOutput(&logs)
+	defer log.SetOutput(old)
+	m := newMux(licensesrv.Config{}, st)
+	for _, path := range []string{"/account/privacy/erase/request", "/account/privacy/erase/confirm", "/account/privacy/preferences", "/account/privacy/export"} {
+		r := httptest.NewRequest("POST", path, strings.NewReader(`{}`))
+		w := httptest.NewRecorder()
+		m.ServeHTTP(w, r)
+		if w.Code != 503 || w.Header().Get("Retry-After") != "60" || w.Body.String() != "{\"error\":\"privacy unavailable\"}\n" {
+			t.Fatalf("%s: %d %q", path, w.Code, w.Body.String())
+		}
+		if w.Header().Get("Cache-Control") != "no-store" {
+			t.Fatal("failure cacheable")
+		}
+	}
+	w := httptest.NewRecorder()
+	m.ServeHTTP(w, httptest.NewRequest("GET", "/readyz", nil))
+	if w.Code != 503 || w.Body.String() != `{"status":"degraded","privacy":"unavailable"}` || w.Header().Get("Retry-After") != "60" {
+		t.Fatal("missing degraded readiness")
+	}
+	w = httptest.NewRecorder()
+	m.ServeHTTP(w, httptest.NewRequest("GET", "/healthz", nil))
+	if w.Code != 200 || w.Body.String() != "ok" || w.Header().Get("Retry-After") != "" {
+		t.Fatal("legacy liveness contract changed")
+	}
+	if strings.Contains(logs.String(), path) || strings.Contains(logs.String(), "synthetic-sensitive-path") || !strings.Contains(logs.String(), "privacy readiness degraded") {
+		t.Fatal("operator warning missing or path leaked")
+	}
+}
+
+func TestV41ReadinessAvailableOptionalAndDisabled(t *testing.T) {
+	for _, mode := range []string{"configured", "optional", "erase-disabled"} {
+		t.Run(mode, func(t *testing.T) {
+			dir := t.TempDir()
+			st, err := licensesrv.OpenStore(filepath.Join(dir, "s.json"))
+			if err != nil {
+				t.Fatal(err)
+			}
+			defer st.Close()
+			t.Setenv("US_SESSION_SECRET", strings.Repeat("synthetic-session-", 4))
+			t.Setenv("US_PRIVACY_ERASE_ENABLED", "1")
+			t.Setenv("US_PRIVACY_PREFS_PATH", "")
+			state := "not_configured"
+			if mode != "optional" {
+				path := filepath.Join(dir, "prefs.json")
+				if err := os.WriteFile(path, []byte(`{}`), 0600); err != nil {
+					t.Fatal(err)
+				}
+				t.Setenv("US_PRIVACY_PREFS_PATH", path)
+				state = "available"
+			}
+			if mode == "erase-disabled" {
+				t.Setenv("US_PRIVACY_ERASE_ENABLED", "0")
+			}
+			m := newMux(licensesrv.Config{}, st)
+			w := httptest.NewRecorder()
+			m.ServeHTTP(w, httptest.NewRequest("GET", "/readyz", nil))
+			if w.Code != 200 || !strings.Contains(w.Body.String(), `"privacy":"`+state+`"`) {
+				t.Fatalf("%s readiness %d %s", mode, w.Code, w.Body.String())
+			}
+			w = httptest.NewRecorder()
+			m.ServeHTTP(w, httptest.NewRequest("POST", "/account/privacy/export", nil))
+			if w.Code != 401 {
+				t.Fatal("healthy export should require bearer")
+			}
+			w = httptest.NewRecorder()
+			m.ServeHTTP(w, httptest.NewRequest("POST", "/account/privacy/erase/request", nil))
+			want := 401
+			if mode == "erase-disabled" {
+				want = 404
+			}
+			if w.Code != want {
+				t.Fatalf("%s erase got %d want %d", mode, w.Code, want)
+			}
+		})
+	}
+}

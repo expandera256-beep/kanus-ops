@@ -1,0 +1,8 @@
+term(.10 us-panel/work2/kiyas/term) pristine: packages FAIL kiyas + licensesrv (GPU wake regressions + TestParsePlans path)
+term patched licensesrv json: pass=64 fail=15 skip=1 (same pre-existing GPU fails; new API tests included in pass)
+r11_base(.10) patched full: ok kiyas, ok us-license-hook; licensesrv FAIL only TestParsePlansBothExportSchemas
+r11 patched licensesrv json: pass=78 fail=1 skip=1
+TestAPIRegression* -race -count=1: 6/6 PASS (term patched)
+TestAPIRegression* -race -count=3: PASS (term + r11)
+S2 regression on term patched: 36/36 PASS
+Windows vet+build (term patched): all exit 0

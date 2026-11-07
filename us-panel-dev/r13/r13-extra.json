@@ -1,0 +1,55 @@
+{"Time":"2026-11-08T01:06:30.388707137+03:00","Action":"start","Package":"kiyas"}
+{"Time":"2026-11-08T01:06:30.391618322+03:00","Action":"run","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter"}
+{"Time":"2026-11-08T01:06:30.391679852+03:00","Action":"output","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter","Output":"=== RUN   TestR13ParentSwapPathTakingWriter\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.393759101+03:00","Action":"output","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter","Output":"--- PASS: TestR13ParentSwapPathTakingWriter (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.393773347+03:00","Action":"pass","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter","Elapsed":0}
+{"Time":"2026-11-08T01:06:30.39378273+03:00","Action":"run","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile"}
+{"Time":"2026-11-08T01:06:30.393785356+03:00","Action":"output","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile","Output":"=== RUN   TestR13HistoryPrivateModesAndNestedNewFile\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.395054298+03:00","Action":"output","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile","Output":"--- PASS: TestR13HistoryPrivateModesAndNestedNewFile (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.395086407+03:00","Action":"pass","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile","Elapsed":0}
+{"Time":"2026-11-08T01:06:30.395102159+03:00","Action":"run","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap"}
+{"Time":"2026-11-08T01:06:30.395105539+03:00","Action":"output","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Output":"=== RUN   TestR13DeskHistoryParentSwap\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.424353132+03:00","Action":"output","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Output":"    file_tools_r13_linux_test.go:112: swaps=2660 reads=107 snapshots=69\n"}
+{"Time":"2026-11-08T01:06:30.425542301+03:00","Action":"output","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Output":"--- PASS: TestR13DeskHistoryParentSwap (0.03s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.425566137+03:00","Action":"pass","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Elapsed":0.03}
+{"Time":"2026-11-08T01:06:30.42558029+03:00","Action":"run","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy"}
+{"Time":"2026-11-08T01:06:30.425585999+03:00","Action":"output","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy","Output":"=== RUN   TestR13PortableAliasAndDevicePolicy\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.425590807+03:00","Action":"output","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy","Output":"--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.425597187+03:00","Action":"pass","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy","Elapsed":0}
+{"Time":"2026-11-08T01:06:30.425600567+03:00","Action":"run","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter"}
+{"Time":"2026-11-08T01:06:30.425602823+03:00","Action":"output","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter","Output":"=== RUN   TestR13ParentSwapPathTakingWriter\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.426135135+03:00","Action":"output","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter","Output":"--- PASS: TestR13ParentSwapPathTakingWriter (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.426141323+03:00","Action":"pass","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter","Elapsed":0}
+{"Time":"2026-11-08T01:06:30.426143574+03:00","Action":"run","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile"}
+{"Time":"2026-11-08T01:06:30.426145723+03:00","Action":"output","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile","Output":"=== RUN   TestR13HistoryPrivateModesAndNestedNewFile\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.427861429+03:00","Action":"output","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile","Output":"--- PASS: TestR13HistoryPrivateModesAndNestedNewFile (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.427901967+03:00","Action":"pass","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile","Elapsed":0}
+{"Time":"2026-11-08T01:06:30.427908805+03:00","Action":"run","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap"}
+{"Time":"2026-11-08T01:06:30.427911629+03:00","Action":"output","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Output":"=== RUN   TestR13DeskHistoryParentSwap\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.462213861+03:00","Action":"output","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Output":"    file_tools_r13_linux_test.go:112: swaps=2767 reads=122 snapshots=62\n"}
+{"Time":"2026-11-08T01:06:30.463526748+03:00","Action":"output","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Output":"--- PASS: TestR13DeskHistoryParentSwap (0.04s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.463554812+03:00","Action":"pass","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Elapsed":0.04}
+{"Time":"2026-11-08T01:06:30.463560209+03:00","Action":"run","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy"}
+{"Time":"2026-11-08T01:06:30.463563218+03:00","Action":"output","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy","Output":"=== RUN   TestR13PortableAliasAndDevicePolicy\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.463567082+03:00","Action":"output","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy","Output":"--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.463570211+03:00","Action":"pass","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy","Elapsed":0}
+{"Time":"2026-11-08T01:06:30.46357323+03:00","Action":"run","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter"}
+{"Time":"2026-11-08T01:06:30.463575062+03:00","Action":"output","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter","Output":"=== RUN   TestR13ParentSwapPathTakingWriter\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.464570241+03:00","Action":"output","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter","Output":"--- PASS: TestR13ParentSwapPathTakingWriter (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.464594789+03:00","Action":"pass","Package":"kiyas","Test":"TestR13ParentSwapPathTakingWriter","Elapsed":0}
+{"Time":"2026-11-08T01:06:30.464599624+03:00","Action":"run","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile"}
+{"Time":"2026-11-08T01:06:30.464601819+03:00","Action":"output","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile","Output":"=== RUN   TestR13HistoryPrivateModesAndNestedNewFile\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.465544195+03:00","Action":"output","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile","Output":"--- PASS: TestR13HistoryPrivateModesAndNestedNewFile (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.465570161+03:00","Action":"pass","Package":"kiyas","Test":"TestR13HistoryPrivateModesAndNestedNewFile","Elapsed":0}
+{"Time":"2026-11-08T01:06:30.465575886+03:00","Action":"run","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap"}
+{"Time":"2026-11-08T01:06:30.465578134+03:00","Action":"output","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Output":"=== RUN   TestR13DeskHistoryParentSwap\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.494932164+03:00","Action":"output","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Output":"    file_tools_r13_linux_test.go:112: swaps=2527 reads=133 snapshots=62\n"}
+{"Time":"2026-11-08T01:06:30.495960776+03:00","Action":"output","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Output":"--- PASS: TestR13DeskHistoryParentSwap (0.03s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.495969004+03:00","Action":"pass","Package":"kiyas","Test":"TestR13DeskHistoryParentSwap","Elapsed":0.03}
+{"Time":"2026-11-08T01:06:30.495982445+03:00","Action":"run","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy"}
+{"Time":"2026-11-08T01:06:30.49598531+03:00","Action":"output","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy","Output":"=== RUN   TestR13PortableAliasAndDevicePolicy\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.495991461+03:00","Action":"output","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy","Output":"--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.495996347+03:00","Action":"pass","Package":"kiyas","Test":"TestR13PortableAliasAndDevicePolicy","Elapsed":0}
+{"Time":"2026-11-08T01:06:30.496059879+03:00","Action":"output","Package":"kiyas","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:06:30.499347979+03:00","Action":"output","Package":"kiyas","Output":"ok  \tkiyas\t0.110s\n"}
+{"Time":"2026-11-08T01:06:30.499375144+03:00","Action":"pass","Package":"kiyas","Elapsed":0.111}

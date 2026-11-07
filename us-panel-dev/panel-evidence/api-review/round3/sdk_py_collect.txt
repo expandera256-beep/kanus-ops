@@ -1,0 +1,13 @@
+tests/test_client.py::test_error_envelope_mapping
+tests/test_client.py::test_get_429_retries_with_cap
+tests/test_client.py::test_retry_after_exceeds_cap_raises
+tests/test_client.py::test_reserve_post_not_retried_on_429_poc
+tests/test_client.py::test_api_key_header_not_logged
+tests/test_client.py::test_idempotency_key_sent_but_no_retry
+tests/test_client.py::test_https_required
+tests/test_client.py::test_sse_fragmentation
+tests/test_client.py::test_sse_buffer_limit
+tests/test_client.py::test_sse_disconnect
+tests/test_client.py::test_kanus_error_repr_masks_raw
+
+11 tests collected in 0.01s

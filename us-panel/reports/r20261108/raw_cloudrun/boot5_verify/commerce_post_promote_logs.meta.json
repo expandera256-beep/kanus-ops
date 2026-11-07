@@ -1,0 +1,15 @@
+{
+  "command": [
+    "gcloud",
+    "logging",
+    "read",
+    "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"us-commerce\" AND resource.labels.revision_name=\"us-commerce-sre-ready-r1\" AND timestamp>=\"2026-11-07T21:48:30Z\" AND timestamp<=\"2026-11-07T21:55:26.011962Z\"",
+    "--order=asc",
+    "--limit=10000",
+    "--project=project-27082a40-6083-4952-9db",
+    "--format=json"
+  ],
+  "end_istanbul": "2026-11-08T00:55:26.011962+03:00",
+  "returncode": 0,
+  "stderr": ""
+}

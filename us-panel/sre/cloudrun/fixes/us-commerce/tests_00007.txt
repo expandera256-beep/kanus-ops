@@ -1,0 +1,42 @@
+........................................................................ [ 41%]
+............................sssssssssssssssssssssssssssssssssssss....... [ 82%]
+...............................                                          [100%]
+=========================== short test summary info ============================
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_account_store.py:71: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_account_store.py:58: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_account_store.py:42: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_account_store.py:28: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_account_store.py:52: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_account_store.py:47: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_credit_packs.py:55: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_credit_packs.py:66: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_credit_packs.py:33: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_credit_packs.py:50: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:133: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:98: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:94: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:79: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:37: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:111: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:52: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:46: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:156: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:117: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:127: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_metered_reservations.py:86: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:79: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:104: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:65: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:118: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:84: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:73: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:45: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:53: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:91: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:112: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:130: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:108: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:124: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_inference_lifecycle.py:96: opt-in real PostgreSQL contract
+SKIPPED [1] us-panel/sre/cloudrun/fixes/tests/baseline/test_production_runtime.py:21: opt-in PostgreSQL and Gunicorn runtime
+138 passed, 37 skipped, 4 deselected in 9.51s

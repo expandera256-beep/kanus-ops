@@ -1,0 +1,46 @@
+[
+  {
+    "path": "reports/r20261108/QA_SECURITY_AUDIT_20261108.md",
+    "sha256": "40a066a68b9434caa801655ad474261dbbfe69aa01903c812683657471eba621"
+  },
+  {
+    "path": "reports/r20261108/QA_QUERY_LOG_REVIEW_20261108.md",
+    "sha256": "aa1e9bc67f81a807e55c3abf8c59f2f1c565991978f7d63710a331dc24774356"
+  },
+  {
+    "path": "reports/r20261108/qa-raw/FINAL_QA_AUDIT_MATRIX.json",
+    "sha256": "3b7abae9aba75ee6dda1555540f7668eeea816fb54082821d8280f5954e648d1"
+  },
+  {
+    "path": "reports/r20261108/qa-raw/patch-r11-verify/verification-results.json",
+    "sha256": "075cd85ac5da70179c72e351246ae8a7828f6abd55b8a2bcbeb15bea5156c028"
+  },
+  {
+    "path": "reports/r20261108/qa-raw/backup-v2-hash-comparison.json",
+    "sha256": "cf5377d36936035cebfadeda59438bf6f34b32a0eff771b2d66915a585b296cf"
+  },
+  {
+    "path": "reports/r20261108/qa-raw/log-leak-check-post-patch-20261108.json",
+    "sha256": "d79689941c5e3860bf8676c7d3d2fe792d2b7a671869c77da30165ad940b956f"
+  },
+  {
+    "path": "reports/r20261108/qa-findings/FINDING-02.md",
+    "sha256": "cbccac20862d0b5d93c5d4be25bbf4f1c0b3ea0e9ff0d8318956759d8fd124c2"
+  },
+  {
+    "path": "reports/r20261108/qa-findings/FINDING-03.md",
+    "sha256": "72c628d844efa329dd7c37a72d8d900bac19dbb13e78d62c7540f14c42053e1e"
+  },
+  {
+    "path": "reports/r20261108/qa-findings/FINDING-05.md",
+    "sha256": "a2ff8fe09628c6018e3b597e41c53b6f937e3f962cf00f6a708f69386ce96a12"
+  },
+  {
+    "path": "reports/r20261108/qa-findings/FINDING-01.md",
+    "sha256": "c17c1270267447c004fa96f266add6f1b85e66e9f543131cf5dc08c8976255cd"
+  },
+  {
+    "path": "reports/r20261108/qa-findings/FINDING-04.md",
+    "sha256": "1bc5aed8cc10ea9329e2746e6aec1448e984e36eee6c96eabf0a15fa8bf15345"
+  }
+]

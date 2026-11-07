@@ -1,0 +1,88 @@
+{
+  "logs_run_24h": {
+    "records": 1525,
+    "http_status": {
+      "200": 1442,
+      "None": 59,
+      "405": 11,
+      "403": 7,
+      "503": 1,
+      "404": 3,
+      "400": 2
+    },
+    "severity": {
+      "INFO": 1460,
+      "NOTICE": 4,
+      "DEFAULT": 37,
+      "WARNING": 23,
+      "ERROR": 1
+    },
+    "first_istanbul": "07.11.2026 00:28:02 TS\u0130",
+    "last_istanbul": "08.11.2026 00:27:02 TS\u0130",
+    "LifecycleError_or_refusing": 0,
+    "http_5xx": 1
+  },
+  "logs_watchdog_post_deploy": {
+    "records": 68,
+    "http_status": {
+      "200": 19,
+      "None": 39,
+      "403": 7,
+      "404": 3
+    },
+    "severity": {
+      "INFO": 31,
+      "NOTICE": 3,
+      "DEFAULT": 24,
+      "WARNING": 10
+    },
+    "first_istanbul": "08.11.2026 00:10:03 TS\u0130",
+    "last_istanbul": "08.11.2026 00:27:02 TS\u0130",
+    "LifecycleError_or_refusing": 0,
+    "http_5xx": 0
+  },
+  "watchdog_after_0026": {
+    "records": 14,
+    "http_status": {
+      "200": 2,
+      "None": 12
+    },
+    "severity": {
+      "INFO": 6,
+      "DEFAULT": 8
+    },
+    "first_istanbul": "08.11.2026 00:26:02 TS\u0130",
+    "last_istanbul": "08.11.2026 00:27:02 TS\u0130",
+    "LifecycleError_or_refusing": 0,
+    "http_5xx": 0
+  },
+  "watchdog_revision_00006": {
+    "records": 9,
+    "http_status": {
+      "None": 8,
+      "200": 1
+    },
+    "severity": {
+      "INFO": 4,
+      "DEFAULT": 5
+    },
+    "first_istanbul": "08.11.2026 00:26:06 TS\u0130",
+    "last_istanbul": "08.11.2026 00:27:02 TS\u0130",
+    "LifecycleError_or_refusing": 0,
+    "http_5xx": 0
+  },
+  "scheduler": {
+    "started": 1439,
+    "finished": 1439,
+    "success": 1439,
+    "success_percent": 100.0,
+    "after_0026_finished": 2,
+    "after_0026_http_status": {
+      "200": 2
+    },
+    "revision_00006_reconcile_count": 1,
+    "revision_00006_reconcile_http_status": {
+      "200": 1
+    }
+  }
+}

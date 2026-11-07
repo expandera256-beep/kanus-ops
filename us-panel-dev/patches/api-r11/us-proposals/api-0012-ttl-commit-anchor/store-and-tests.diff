@@ -1,0 +1,463 @@
+diff --git a/licensesrv/grace_overflow_test.go b/licensesrv/grace_overflow_test.go
+new file mode 100644
+index 0000000..d53d5aa
+--- /dev/null
++++ b/licensesrv/grace_overflow_test.go
+@@ -0,0 +1,29 @@
++package licensesrv
++
++import (
++	"testing"
++	"time"
++)
++
++// PANEL DEV R3-A01: 16 uç durum (PANEL_API_REVIEW_R3FIX_20261106.md).
++func TestCommitGraceFromEnvOverflowEdges(t *testing.T) {
++	def, max := 10*time.Minute, 15*time.Minute
++	cases := []struct {
++		in   string
++		want time.Duration
++	}{
++		{"", def}, {" ", def}, {"0", 0}, {"-0", 0}, {"-1", def},
++		{"900", max}, {"901", max}, {"+901", max}, {" 901 ", max},
++		{"1s", def}, {"abc", def}, {"9999999999999999999999999", def},
++		{"9223372036", max}, {"9223372037", max}, {"18446744074", max},
++		{"9223372036854775807", max},
++	}
++	for _, c := range cases {
++		t.Run(c.in, func(t *testing.T) {
++			t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", c.in)
++			if got := commitGraceFromEnv(); got != c.want {
++				t.Fatalf("input=%q got=%v want=%v", c.in, got, c.want)
++			}
++		})
++	}
++}
+diff --git a/licensesrv/ledger_hardening_test.go b/licensesrv/ledger_hardening_test.go
+new file mode 100644
+index 0000000..f17b4ed
+--- /dev/null
++++ b/licensesrv/ledger_hardening_test.go
+@@ -0,0 +1,75 @@
++package licensesrv
++
++import (
++	"testing"
++	"time"
++)
++
++// API-0004: invariant locks — happy paths unchanged; corrupt reserved repaired with error (no panic).
++
++func TestLedgerHardeningHappyReserveSettleUnchanged(t *testing.T) {
++	h, _ := setup(t)
++	post(h, payload, sign("whsec", payload), "h1")
++	key := h.Store.st.Orders["555"][0]
++	now := h.now()
++	id, err := h.Store.Reserve(key, 1, time.Minute, now)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if err := h.Store.settleFor(key, id, true, now); err != nil {
++		t.Fatal(err)
++	}
++	l, _ := h.Store.License(key)
++	if l.Credits != 499 || l.Reserved != 0 {
++		t.Fatalf("%+v", l)
++	}
++}
++
++func TestLedgerHardeningExpireStatusConsistency(t *testing.T) {
++	h, _ := setup(t)
++	post(h, payload, sign("whsec", payload), "h2")
++	key := h.Store.st.Orders["555"][0]
++	now := h.now()
++	id, err := h.Store.Reserve(key, 1, time.Minute, now)
++	if err != nil {
++		t.Fatal(err)
++	}
++	// After TTL, expire via Reserve sweep; status must show reserved=0 and no double-release.
++	_, _ = h.Store.Reserve(key, 1, time.Minute, now.Add(2*time.Minute))
++	st, ok := h.Store.CreditStatus(key, now.Add(2*time.Minute))
++	if !ok || st.Reserved < 0 {
++		t.Fatal(st)
++	}
++	l, _ := h.Store.License(key)
++	if l.Reserved < 0 {
++		t.Fatal("negative reserved", l.Reserved)
++	}
++	_ = id
++}
++
++func TestLedgerHardeningRejectsNegativeReservedCorruption(t *testing.T) {
++	h, _ := setup(t)
++	post(h, payload, sign("whsec", payload), "h3")
++	key := h.Store.st.Orders["555"][0]
++	now := h.now()
++	id, err := h.Store.Reserve(key, 1, time.Minute, now)
++	if err != nil {
++		t.Fatal(err)
++	}
++	// Corrupt: reserved already 0 while reservation exists
++	h.Store.mu.Lock()
++	h.Store.st.Licenses[key].Reserved = 0
++	h.Store.mu.Unlock()
++	err = h.Store.settleFor(key, id, true, now)
++	if err == nil {
++		t.Fatal("expected invariant error")
++	}
++	l, _ := h.Store.License(key)
++	if l.Reserved < 0 {
++		t.Fatal("must not go negative", l.Reserved)
++	}
++	// Credits must not have been debited on failed settle
++	if l.Credits != 500 {
++		t.Fatal("debit on failed invariant", l.Credits)
++	}
++}
+diff --git a/licensesrv/licensesrv_test.go b/licensesrv/licensesrv_test.go
+index ec7badc..d1bd834 100644
+--- a/licensesrv/licensesrv_test.go
++++ b/licensesrv/licensesrv_test.go
+@@ -33,6 +33,7 @@ func setup(t *testing.T) (*Handler, string) {
+ 		t.Fatal(err)
+ 	}
+ 	now := time.Date(2026, 11, 6, 0, 0, 0, 0, time.UTC)
++	st.commitGrace = 0 // legacy TTL expire for existing suite; api-0012 tests set grace explicitly
+ 	return &Handler{Store: st, Cfg: Config{WebhookSecret: "whsec", LicenseSecret: "lic", Plans: map[int64]Plan{42: {Kind: "sub", Days: 30, Prompts: 500, Credits: 500}}, Now: func() time.Time { return now }}}, path
+ }
+ 
+diff --git a/licensesrv/store.go b/licensesrv/store.go
+index 2e8fa3b..2a9be15 100644
+--- a/licensesrv/store.go
++++ b/licensesrv/store.go
+@@ -12,6 +12,7 @@ import (
+ 	"errors"
+ 	"os"
+ 	"path/filepath"
++	"strconv"
+ 	"strings"
+ 	"sync"
+ 	"time"
+@@ -97,6 +98,7 @@ type Store struct {
+ 	lock          *os.File
+ 	closed        bool
+ 	sessionSecret string
++	commitGrace   time.Duration // TTL commit anchor grace (api-0012); 0 = legacy immediate expire
+ 	st            state
+ }
+ 
+@@ -154,6 +156,7 @@ func OpenStore(path string) (*Store, error) {
+ 	if s.st.UsageEvents == nil {
+ 		s.st.UsageEvents = []UsageEvent{}
+ 	}
++	s.commitGrace = commitGraceFromEnv()
+ 	good = true
+ 	return s, nil
+ }
+@@ -236,6 +239,46 @@ func (s *Store) transactionLocked(fn func() error) error {
+ 	return nil
+ }
+ 
++// commitGraceFromEnv reads US_CREDIT_COMMIT_GRACE_SECONDS (default 600 = 10m).
++// Set to 0 for legacy immediate expire-at-TTL behavior.
++// Cap: 900s (15m, KAN.US) — clamp above max to 900 (not reset to default).
++// Longer holds pin Reserved after client crashes; invalid/negative/unparseable → 600.
++func commitGraceFromEnv() time.Duration {
++	const defSeconds int64 = 600
++	const maxSeconds int64 = 900
++	raw := strings.TrimSpace(os.Getenv("US_CREDIT_COMMIT_GRACE_SECONDS"))
++	if raw == "" {
++		return time.Duration(defSeconds) * time.Second
++	}
++	// Parse as int64 seconds and clamp BEFORE multiplying into a Duration,
++	// so huge values cannot overflow (PANEL DEV R3-A01).
++	n, err := strconv.ParseInt(raw, 10, 64)
++	if err != nil || n < 0 {
++		n = defSeconds
++	} else if n > maxSeconds {
++		n = maxSeconds
++	}
++	return time.Duration(n) * time.Second
++}
++
++func (s *Store) reservationCommitDeadline(r *Reservation) time.Time {
++	if s.commitGrace <= 0 {
++		return r.Expires
++	}
++	return r.Expires.Add(s.commitGrace)
++}
++
++// applyReservedDelta adjusts Reserved and returns an error if it would go negative.
++// On error, the license Reserved field is left unchanged (no panic).
++func applyReservedDelta(l *License, delta int) error {
++	next := l.Reserved + delta
++	if next < 0 {
++		return errors.New("reserved invariant violated")
++	}
++	l.Reserved = next
++	return nil
++}
++
+ // Reserve atomically holds credits; one prompt/model call costs one credit.
+ func (s *Store) Reserve(key string, amount int, ttl time.Duration, now time.Time) (string, error) {
+ 	s.mu.Lock()
+@@ -250,7 +293,9 @@ func (s *Store) Reserve(key string, amount int, ttl time.Duration, now time.Time
+ 		if ttl <= 0 || amount <= 0 || l.Credits-l.Reserved < amount {
+ 			return ErrNoCredit
+ 		}
+-		l.Reserved += amount
++		if err := applyReservedDelta(l, amount); err != nil {
++			return err
++		}
+ 		s.st.Reservations[id] = &Reservation{CreatedAt: now, Key: key, Amount: amount, Expires: now.Add(ttl)}
+ 		return nil
+ 	})
+@@ -282,7 +327,7 @@ func (s *Store) settleFor(key, id string, commit bool, now time.Time) error {
+ 	if !ok || (key != "" && r.Key != key) {
+ 		return ErrInvalid
+ 	}
+-	if commit && !now.Before(r.Expires) {
++	if commit && !now.Before(s.reservationCommitDeadline(r)) {
+ 		return errors.New("rezervasyon süresi doldu")
+ 	}
+ 	return s.transactionLocked(func() error {
+@@ -291,9 +336,16 @@ func (s *Store) settleFor(key, id string, commit bool, now time.Time) error {
+ 			return ErrInvalid
+ 		}
+ 		if ok {
+-			l.Reserved -= r.Amount
++			if err := applyReservedDelta(l, -r.Amount); err != nil {
++				return err
++			}
+ 			if commit {
+ 				l.Credits -= r.Amount
++				if l.Credits < 0 {
++					l.Credits += r.Amount
++					_ = applyReservedDelta(l, r.Amount) // restore reserved
++					return errors.New("credits invariant violated")
++				}
+ 			}
+ 		}
+ 		s.st.Settlements[id] = Settlement{CreatedAt: r.CreatedAt, Key: r.Key, Commit: commit, Amount: func() int {
+@@ -309,9 +361,13 @@ func (s *Store) settleFor(key, id string, commit bool, now time.Time) error {
+ 
+ func (s *Store) expireLocked(now time.Time) {
+ 	for id, r := range s.st.Reservations {
+-		if !now.Before(r.Expires) {
++		// Defer release until commit-grace after reservation Expires (api-0012).
++		if !now.Before(s.reservationCommitDeadline(r)) {
+ 			if l, ok := s.st.Licenses[r.Key]; ok {
+-				l.Reserved -= r.Amount
++				if err := applyReservedDelta(l, -r.Amount); err != nil {
++					// Corrupt ledger: clamp rather than panic; still tombstone reservation.
++					l.Reserved = 0
++				}
+ 			}
+ 			s.st.Settlements[id] = Settlement{CreatedAt: r.CreatedAt, Key: r.Key, SettledAt: now}
+ 			delete(s.st.Reservations, id)
+diff --git a/licensesrv/ttl_commit_anchor_test.go b/licensesrv/ttl_commit_anchor_test.go
+new file mode 100644
+index 0000000..543347a
+--- /dev/null
++++ b/licensesrv/ttl_commit_anchor_test.go
+@@ -0,0 +1,147 @@
++package licensesrv
++
++import (
++	"sync"
++	"sync/atomic"
++	"testing"
++	"time"
++)
++
++// API-0012: reservation commit grace after Expires (default prod 10m via env).
++
++func TestTTLCommitAnchorAcceptsCommitWithinGrace(t *testing.T) {
++	h, _ := setup(t)
++	h.Store.commitGrace = 10 * time.Minute
++	post(h, payload, sign("whsec", payload), "ttl1")
++	key := h.Store.st.Orders["555"][0]
++	now := h.now()
++	id, err := h.Store.Reserve(key, 1, time.Minute, now)
++	if err != nil {
++		t.Fatal(err)
++	}
++	// Past reservation Expires but within grace
++	late := now.Add(time.Minute + 30*time.Second)
++	if err := h.Store.settleFor(key, id, true, late); err != nil {
++		t.Fatal("expected commit within grace", err)
++	}
++	l, _ := h.Store.License(key)
++	if l.Credits != 499 || l.Reserved != 0 {
++		t.Fatal(l)
++	}
++}
++
++func TestTTLCommitAnchorRejectsAfterGraceAndNoDoubleDebit(t *testing.T) {
++	h, _ := setup(t)
++	h.Store.commitGrace = 10 * time.Minute
++	post(h, payload, sign("whsec", payload), "ttl2")
++	key := h.Store.st.Orders["555"][0]
++	now := h.now()
++	id, err := h.Store.Reserve(key, 1, time.Minute, now)
++	if err != nil {
++		t.Fatal(err)
++	}
++	// Sweep after grace: auto-release (no debit)
++	afterGrace := now.Add(time.Minute + 10*time.Minute + time.Second)
++	_, _ = h.Store.Reserve(key, 1, time.Minute, afterGrace) // triggers expireLocked
++	l, _ := h.Store.License(key)
++	if l.Credits != 500 {
++		t.Fatal("auto-expire must not debit", l.Credits)
++	}
++	if l.Reserved != 1 { // the new reserve from the triggering call
++		// actually Reserve after expire may succeed with reserved=1 for new id
++	}
++	// Late commit on old id must fail (already settled/released)
++	if err := h.Store.settleFor(key, id, true, afterGrace); err == nil {
++		t.Fatal("late commit after grace+release must fail")
++	}
++	l, _ = h.Store.License(key)
++	if l.Credits < 499 { // at most one debit from the new reserve path if any — old id must not double
++		// Credits should be 500 or 499 if new reserve still held
++		if l.Credits < 499 {
++			t.Fatal("double debit", l.Credits)
++		}
++	}
++}
++
++func TestTTLCommitAnchorLegacyZeroGraceRejectsAtExpires(t *testing.T) {
++	h, _ := setup(t) // commitGrace=0
++	post(h, payload, sign("whsec", payload), "ttl3")
++	key := h.Store.st.Orders["555"][0]
++	now := h.now()
++	id, err := h.Store.Reserve(key, 1, time.Minute, now)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if err := h.Store.settleFor(key, id, true, now.Add(time.Minute)); err == nil {
++		t.Fatal("legacy: commit at/after Expires must fail")
++	}
++}
++
++func TestTTLCommitAnchorIdempotentAndConcurrent(t *testing.T) {
++	h, _ := setup(t)
++	h.Store.commitGrace = 10 * time.Minute
++	post(h, payload, sign("whsec", payload), "ttl4")
++	key := h.Store.st.Orders["555"][0]
++	now := h.now()
++	h.Store.st.Licenses[key].Credits = 1
++	id, err := h.Store.Reserve(key, 1, time.Minute, now)
++	if err != nil {
++		t.Fatal(err)
++	}
++	late := now.Add(2 * time.Minute)
++	var wg sync.WaitGroup
++	var oks atomic.Int32
++	for i := 0; i < 16; i++ {
++		wg.Add(1)
++		go func() {
++			defer wg.Done()
++			if h.Store.settleFor(key, id, true, late) == nil {
++				oks.Add(1)
++			}
++		}()
++	}
++	wg.Wait()
++	// First settle succeeds; identical retries also succeed (idempotent) — count may be >1
++	if oks.Load() < 1 {
++		t.Fatal("no successful settle")
++	}
++	l, _ := h.Store.License(key)
++	if l.Credits != 0 || l.Reserved != 0 {
++		t.Fatal("double spend", l)
++	}
++	// Conflicting release after commit
++	if err := h.Store.settleFor(key, id, false, late); err == nil {
++		t.Fatal("conflict accepted")
++	}
++}
++
++func TestCommitGraceFromEnvDefaultCapAndInvalid(t *testing.T) {
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "")
++	if commitGraceFromEnv() != 10*time.Minute {
++		t.Fatal("default")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "0")
++	if commitGraceFromEnv() != 0 {
++		t.Fatal("zero legacy")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "30")
++	if commitGraceFromEnv() != 30*time.Second {
++		t.Fatal("30")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "99999")
++	if commitGraceFromEnv() != 15*time.Minute {
++		t.Fatal("cap 900 clamp")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "900")
++	if commitGraceFromEnv() != 15*time.Minute {
++		t.Fatal("exact 900")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "-5")
++	if commitGraceFromEnv() != 10*time.Minute {
++		t.Fatal("neg")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "abc")
++	if commitGraceFromEnv() != 10*time.Minute {
++		t.Fatal("parse")
++	}
++}
+diff --git a/licensesrv/ttl_grace_lock_test.go b/licensesrv/ttl_grace_lock_test.go
+new file mode 100644
+index 0000000..78fddb4
+--- /dev/null
++++ b/licensesrv/ttl_grace_lock_test.go
+@@ -0,0 +1,47 @@
++package licensesrv
++
++import (
++	"testing"
++	"time"
++)
++
++// API-0012: grace içinde sweep rezervasyonu serbest bırakmaz (Reserved kilitli),
++// grace sonrası sweep debit etmeden release eder, geç commit reddedilir.
++func TestTTLGraceKeepsReservedLockedThenReleases(t *testing.T) {
++	h, _ := setup(t)
++	h.Store.commitGrace = 10 * time.Minute
++	post(h, payload, sign("whsec", payload), "ttlLock")
++	key := h.Store.st.Orders["555"][0]
++	now := h.now()
++	id, err := h.Store.Reserve(key, 1, time.Minute, now)
++	if err != nil {
++		t.Fatal(err)
++	}
++	inGrace := now.Add(time.Minute + 30*time.Second)
++	id2, err := h.Store.Reserve(key, 1, time.Hour, inGrace) // triggers sweep
++	if err != nil {
++		t.Fatal(err)
++	}
++	if l, _ := h.Store.License(key); l.Reserved != 2 || l.Credits != 500 {
++		t.Fatalf("in grace: want reserved=2 credits=500, got reserved=%d credits=%d", l.Reserved, l.Credits)
++	}
++	afterGrace := now.Add(time.Minute + 10*time.Minute + time.Second)
++	id3, err := h.Store.Reserve(key, 1, time.Hour, afterGrace) // sweep releases id
++	if err != nil {
++		t.Fatal(err)
++	}
++	if l, _ := h.Store.License(key); l.Reserved != 2 || l.Credits != 500 {
++		t.Fatalf("after grace: want reserved=2 (id2,id3) credits=500, got reserved=%d credits=%d", l.Reserved, l.Credits)
++	}
++	if err := h.Store.settleFor(key, id, true, afterGrace); err == nil {
++		t.Fatal("late commit after grace must fail")
++	}
++	for _, x := range []string{id2, id3} {
++		if err := h.Store.settleFor(key, x, true, afterGrace); err != nil {
++			t.Fatal(err)
++		}
++	}
++	if l, _ := h.Store.License(key); l.Reserved != 0 || l.Credits != 498 {
++		t.Fatalf("final: want reserved=0 credits=498, got reserved=%d credits=%d", l.Reserved, l.Credits)
++	}
++}

@@ -1,0 +1,13 @@
+US TİCARİ ÇALIŞMA — ENTEGRASYON TASLAĞI
+
+Üretime hazır değildir. Bu paketteki yeni Python bileşenleri yerel test edilmiştir; Shopify, müşterilere e-posta, site, masaüstü panel veya model servisiyle ağ üzerinden bağlanmamış ve canlıya yüklenmemiştir. Önceki paketten gelen Go ve PHP değişiklikleri test edilmemiştir; EXE derlenmemiştir.
+
+kanus/shopify_ledger.py: ham bildirim HMAC doğrulaması, ödenmiş siparişin tanımlı ürün kimliğinden abonelik hakkı çıkarması, sipariş tekrarı ve veri tutarsızlığının kontrolü, iptal ve tam iade için lisansın devre dışı bırakılması. Kısmi iadeler reddedilir; saatlik ürün işlenmez. Bu bileşen HTTP webhook değildir. Bildirim kaynağı, mağaza alan adı, türü ve ürün kimliklerinin doğrulanması ile gerçek Shopify uçtan uca testi gerekir.
+kanus/account_store.py: sadece sunucu kayıtlarında etkin, geçerli ve tek kullanımlık abonelik lisansının hesabı açabilmesi; scrypt parola özeti; süreli oturum; SQLite işlemiyle eşzamanlı istem kotası ve yinelenen istem kimliği reddi. Sipariş iptali/iadesi sonrası kota kontrolü erişimi reddeder.
+kanus/model_gateway.py: yalnızca Python içi çağrılabilir kota geçidi örneğidir. HTTP ağı, gerçek model bağlayıcısı veya panel entegrasyonu içermez. İstek kimliği yeniden işlenmez. Önce kota ayrılır; model çağrısı başarısız olsa da tüketim geri verilmez çünkü sunucunun işlem durumu belirsiz olabilir; bu satış şartı olarak sunulmadan önce ele alınmalıdır.
+
+Yapılması gerekenler: Shopify webhook kaydı ve doğrulanmış HTTPS uç noktası; ürün/fiyat teyidi; lisans e-postası/teslimatı ve tekrar denemeler; kullanıcı arayüzü ve doğrulama/kurtarma, hız sınırlama; masaüstü hesap girişi; model sunucusunun doğrudan erişiminin engellenmesi ve zorunlu gateway; saatlik ürünün sunucuda kesin ölçümü; kısmi iadeler, abonelik yenileme ve mutabakat; kalıcı güvenli veritabanı ve yedekleri; uçtan uca ve bağımsız güvenlik testleri.
+
+ issued_licenses tablosu teslim edilecek lisansları şifrelenmeden tutar. Veritabanı ve yedekleri korunmalıdır. Bu taslak müşterilere açık sunucu olarak çalıştırılmamalıdır.
+
+Doğrulama: 9 Python unittest geçti; sahte imzalı sipariş, yinelenen sipariş, sahte imza, ürün reddi, lisans kullanımı, eşzamanlı kota, kullanıcı iptali ve tam iade zinciri test edildi. GUI JavaScript sözdizimi kontrol edildi. Go/PHP testleri, Windows ve gerçek model/Shopify testi yapılmadı.

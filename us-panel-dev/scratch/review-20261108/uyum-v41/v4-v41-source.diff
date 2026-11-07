@@ -1,0 +1,520 @@
+diff -ruN /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v4-on12/cmd/us-license-hook/main.go /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v41-on12/cmd/us-license-hook/main.go
+--- /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v4-on12/cmd/us-license-hook/main.go	2026-11-08 01:28:07.499251746 +0300
++++ /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v41-on12/cmd/us-license-hook/main.go	2026-11-08 01:28:07.627254592 +0300
+@@ -113,22 +113,41 @@
+ 	if pp := os.Getenv("US_PRIVACY_PREFS_PATH"); pp != "" {
+ 		if privacy.OpenPrefStoreFunc == nil {
+ 			prefsReady = false
+-			log.Print("privacy prefs: implementation unavailable; erase disabled")
++			log.Print("privacy prefs unavailable; privacy readiness degraded")
+ 		} else if ps, err := privacy.OpenPrefStoreFunc(pp); err != nil {
+ 			prefsReady = false
+-			log.Printf("privacy prefs unavailable; erase disabled: %v", err)
++			log.Print("privacy prefs unavailable; privacy readiness degraded")
+ 		} else {
+ 			prefStore = ps
+ 		}
+ 	}
+ 	keepDays := privacy.RetentionDaysFromEnv()
+ 	privacy.Mount(mux, st, privacy.MountOptions{
+-		Prefs:        prefStore,
+-		EraseEnabled: os.Getenv("US_PRIVACY_ERASE_ENABLED") == "1" && prefsReady,
+-		AdminToken:   os.Getenv("US_PRIVACY_ADMIN_TOKEN"),
+-		KeepDays:     keepDays,
++		Prefs:              prefStore,
++		EraseEnabled:       os.Getenv("US_PRIVACY_ERASE_ENABLED") == "1",
++		AdminToken:         os.Getenv("US_PRIVACY_ADMIN_TOKEN"),
++		KeepDays:           keepDays,
++		PrivacyUnavailable: !prefsReady,
+ 	})
++	// Preserve the exact legacy liveness contract. Readiness is a separate route.
+ 	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte("ok")) })
++	mux.HandleFunc("/readyz", func(w http.ResponseWriter, _ *http.Request) {
++		if !prefsReady {
++			w.Header().Set("Retry-After", "60")
++			w.Header().Set("Content-Type", "application/json")
++			w.Header().Set("Cache-Control", "no-store")
++			w.WriteHeader(http.StatusServiceUnavailable)
++			w.Write([]byte(`{"status":"degraded","privacy":"unavailable"}`))
++			return
++		}
++		w.Header().Set("Content-Type", "application/json")
++		w.Header().Set("Cache-Control", "no-store")
++		if prefStore == nil {
++			w.Write([]byte(`{"status":"ready","privacy":"not_configured"}`))
++		} else {
++			w.Write([]byte(`{"status":"ready","privacy":"available"}`))
++		}
++	})
+ 	return mux
+ }
+ 
+diff -ruN /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v4-on12/cmd/us-license-hook/privacy_v41_test.go /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v41-on12/cmd/us-license-hook/privacy_v41_test.go
+--- /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v4-on12/cmd/us-license-hook/privacy_v41_test.go	1970-01-01 02:00:00.000000000 +0200
++++ /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v41-on12/cmd/us-license-hook/privacy_v41_test.go	2026-11-08 01:28:07.631254680 +0300
+@@ -0,0 +1,106 @@
++package main
++
++import (
++	"bytes"
++	"log"
++	"net/http/httptest"
++	"os"
++	"path/filepath"
++	"strings"
++	"testing"
++
++	"kiyas/licensesrv"
++)
++
++func TestV41PrefsFailureRoutesReadinessAndLiveness(t *testing.T) {
++	dir := t.TempDir()
++	st, err := licensesrv.OpenStore(filepath.Join(dir, "ledger.json"))
++	if err != nil {
++		t.Fatal(err)
++	}
++	defer st.Close()
++	path := filepath.Join(dir, "synthetic-sensitive-path.json")
++	if err := os.WriteFile(path, []byte(`invalid json`), 0600); err != nil {
++		t.Fatal(err)
++	}
++	t.Setenv("US_PRIVACY_PREFS_PATH", path)
++	t.Setenv("US_PRIVACY_ERASE_ENABLED", "1")
++	t.Setenv("US_SESSION_SECRET", strings.Repeat("synthetic-session-", 4))
++	var logs bytes.Buffer
++	old := log.Writer()
++	log.SetOutput(&logs)
++	defer log.SetOutput(old)
++	m := newMux(licensesrv.Config{}, st)
++	for _, path := range []string{"/account/privacy/erase/request", "/account/privacy/erase/confirm", "/account/privacy/preferences", "/account/privacy/export"} {
++		r := httptest.NewRequest("POST", path, strings.NewReader(`{}`))
++		w := httptest.NewRecorder()
++		m.ServeHTTP(w, r)
++		if w.Code != 503 || w.Header().Get("Retry-After") != "60" || w.Body.String() != "{\"error\":\"privacy unavailable\"}\n" {
++			t.Fatalf("%s: %d %q", path, w.Code, w.Body.String())
++		}
++		if w.Header().Get("Cache-Control") != "no-store" {
++			t.Fatal("failure cacheable")
++		}
++	}
++	w := httptest.NewRecorder()
++	m.ServeHTTP(w, httptest.NewRequest("GET", "/readyz", nil))
++	if w.Code != 503 || w.Body.String() != `{"status":"degraded","privacy":"unavailable"}` || w.Header().Get("Retry-After") != "60" {
++		t.Fatal("missing degraded readiness")
++	}
++	w = httptest.NewRecorder()
++	m.ServeHTTP(w, httptest.NewRequest("GET", "/healthz", nil))
++	if w.Code != 200 || w.Body.String() != "ok" || w.Header().Get("Retry-After") != "" {
++		t.Fatal("legacy liveness contract changed")
++	}
++	if strings.Contains(logs.String(), path) || strings.Contains(logs.String(), "synthetic-sensitive-path") || !strings.Contains(logs.String(), "privacy readiness degraded") {
++		t.Fatal("operator warning missing or path leaked")
++	}
++}
++
++func TestV41ReadinessAvailableOptionalAndDisabled(t *testing.T) {
++	for _, mode := range []string{"configured", "optional", "erase-disabled"} {
++		t.Run(mode, func(t *testing.T) {
++			dir := t.TempDir()
++			st, err := licensesrv.OpenStore(filepath.Join(dir, "s.json"))
++			if err != nil {
++				t.Fatal(err)
++			}
++			defer st.Close()
++			t.Setenv("US_SESSION_SECRET", strings.Repeat("synthetic-session-", 4))
++			t.Setenv("US_PRIVACY_ERASE_ENABLED", "1")
++			t.Setenv("US_PRIVACY_PREFS_PATH", "")
++			state := "not_configured"
++			if mode != "optional" {
++				path := filepath.Join(dir, "prefs.json")
++				if err := os.WriteFile(path, []byte(`{}`), 0600); err != nil {
++					t.Fatal(err)
++				}
++				t.Setenv("US_PRIVACY_PREFS_PATH", path)
++				state = "available"
++			}
++			if mode == "erase-disabled" {
++				t.Setenv("US_PRIVACY_ERASE_ENABLED", "0")
++			}
++			m := newMux(licensesrv.Config{}, st)
++			w := httptest.NewRecorder()
++			m.ServeHTTP(w, httptest.NewRequest("GET", "/readyz", nil))
++			if w.Code != 200 || !strings.Contains(w.Body.String(), `"privacy":"`+state+`"`) {
++				t.Fatalf("%s readiness %d %s", mode, w.Code, w.Body.String())
++			}
++			w = httptest.NewRecorder()
++			m.ServeHTTP(w, httptest.NewRequest("POST", "/account/privacy/export", nil))
++			if w.Code != 401 {
++				t.Fatal("healthy export should require bearer")
++			}
++			w = httptest.NewRecorder()
++			m.ServeHTTP(w, httptest.NewRequest("POST", "/account/privacy/erase/request", nil))
++			want := 401
++			if mode == "erase-disabled" {
++				want = 404
++			}
++			if w.Code != want {
++				t.Fatalf("%s erase got %d want %d", mode, w.Code, want)
++			}
++		})
++	}
++}
+diff -ruN /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v4-on12/internal/privacy/handler.go /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v41-on12/internal/privacy/handler.go
+--- /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v4-on12/internal/privacy/handler.go	2026-11-08 01:28:07.495251657 +0300
++++ /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v41-on12/internal/privacy/handler.go	2026-11-08 01:28:07.619254413 +0300
+@@ -18,13 +18,15 @@
+ )
+ 
+ type Handler struct {
+-	Store        *licensesrv.Store
+-	Prefs        PreferenceStore // optional
+-	AdminTok     string
+-	Keep         time.Duration
+-	EraseEnabled bool
+-	mu           sync.Mutex
+-	rates        map[string]rateBucket
++	Store          *licensesrv.Store
++	Prefs          PreferenceStore // optional
++	AdminTok       string
++	Keep           time.Duration
++	EraseEnabled   bool
++	Unavailable    bool                // configured prefs failed to open; never return partial export
++	allowedOrigins map[string]struct{} // validated at construction, immutable
++	mu             sync.Mutex
++	rates          map[string]rateBucket
+ }
+ 
+ type rateBucket struct {
+@@ -33,25 +35,28 @@
+ }
+ 
+ type MountOptions struct {
+-	Prefs        PreferenceStore
+-	EraseEnabled bool
+-	AdminToken   string
+-	KeepDays     int
++	Prefs              PreferenceStore
++	EraseEnabled       bool
++	AdminToken         string
++	KeepDays           int
++	PrivacyUnavailable bool
+ }
+ 
+-// Mount registers privacy routes. Erase routes are omitted unless EraseEnabled.
++// Mount registers privacy routes. Erase is omitted when intentionally disabled,
++// but remains mounted with 503 if configured preferences are unavailable.
+ // Prefs may be nil — preferences route then returns 503; export still works.
+ func Mount(mux *http.ServeMux, st *licensesrv.Store, opt MountOptions) {
+ 	opt.KeepDays = SafeRetentionDays(opt.KeepDays)
+ 	h := &Handler{
+ 		Store: st, Prefs: opt.Prefs, AdminTok: opt.AdminToken,
+ 		Keep:         retentionDuration(opt.KeepDays),
+-		EraseEnabled: opt.EraseEnabled, rates: map[string]rateBucket{},
++		EraseEnabled: opt.EraseEnabled, Unavailable: opt.PrivacyUnavailable,
++		allowedOrigins: loadAllowedOrigins(os.Getenv("US_PRIVACY_ALLOWED_ORIGINS")), rates: map[string]rateBucket{},
+ 	}
+ 	mux.Handle("/account/privacy/export", h)
+ 	mux.Handle("/account/privacy/preferences", h)
+ 	mux.Handle("/account/privacy/retention-run", h)
+-	if opt.EraseEnabled {
++	if opt.EraseEnabled || opt.PrivacyUnavailable {
+ 		mux.Handle("/account/privacy/erase/request", h)
+ 		mux.Handle("/account/privacy/erase/confirm", h)
+ 	}
+@@ -61,9 +66,10 @@
+ 	keep := RetentionDaysFromEnv()
+ 	return &Handler{
+ 		Store: st, Prefs: prefs, AdminTok: os.Getenv("US_PRIVACY_ADMIN_TOKEN"),
+-		Keep:         retentionDuration(keep),
+-		EraseEnabled: os.Getenv("US_PRIVACY_ERASE_ENABLED") == "1",
+-		rates:        map[string]rateBucket{},
++		Keep:           retentionDuration(keep),
++		EraseEnabled:   os.Getenv("US_PRIVACY_ERASE_ENABLED") == "1",
++		allowedOrigins: loadAllowedOrigins(os.Getenv("US_PRIVACY_ALLOWED_ORIGINS")),
++		rates:          map[string]rateBucket{},
+ 	}
+ }
+ 
+@@ -72,10 +78,17 @@
+ 		writeJSON(w, http.StatusMethodNotAllowed, map[string]string{"error": "method not allowed"})
+ 		return
+ 	}
+-	if !originOK(r) {
++	if !originAllowed(r, h.allowedOrigins) {
+ 		writeJSON(w, http.StatusForbidden, map[string]string{"error": "origin rejected"})
+ 		return
+ 	}
++	if h.Unavailable {
++		switch r.URL.Path {
++		case "/account/privacy/export", "/account/privacy/preferences", "/account/privacy/erase/request", "/account/privacy/erase/confirm":
++			WriteUnavailable(w)
++			return
++		}
++	}
+ 	switch r.URL.Path {
+ 	case "/account/privacy/export":
+ 		h.export(w, r)
+@@ -92,36 +105,119 @@
+ 	}
+ }
+ 
+-// originOK: empty Origin allowed (non-browser). Non-empty Origin must be https
+-// matching Host, or an exact entry in US_PRIVACY_ALLOWED_ORIGINS (http://localhost
+-// / http://127.0.0.1 may be listed explicitly for local dev). R2-08.
+-func originOK(r *http.Request) bool {
+-	o := strings.TrimSpace(r.Header.Get("Origin"))
+-	if o == "" {
+-		return true
+-	}
+-	u, err := url.Parse(o)
+-	if err != nil || u.Host == "" || u.User != nil || u.Path != "" || u.RawQuery != "" || u.Fragment != "" || u.Opaque != "" || u.ForceQuery {
+-		return false
++// parsePrivacyOrigin validates both configuration and incoming Origin without
++// DNS resolution. Explicit port must be canonical decimal 1..65535. Hostnames
++// use ASCII DNS labels; international names must be supplied as punycode.
++func parsePrivacyOrigin(raw string) (*url.URL, error) {
++	invalid := errors.New("privacy origin: invalid") // never include raw input
++	u, err := url.Parse(raw)
++	if err != nil || u.Host == "" || u.User != nil || u.Path != "" || u.RawPath != "" || u.Opaque != "" || u.ForceQuery || strings.ContainsAny(raw, "?#") {
++		return nil, invalid
++	}
++	host := u.Hostname()
++	if host == "" {
++		return nil, invalid
++	}
++	if strings.HasPrefix(u.Host, "[") {
++		ip := net.ParseIP(host)
++		if ip == nil || !strings.Contains(host, ":") {
++			return nil, invalid
++		}
++	} else if net.ParseIP(host) == nil {
++		if len(host) > 253 {
++			return nil, invalid
++		}
++		allNumeric := true
++		for _, label := range strings.Split(host, ".") {
++			if len(label) == 0 || len(label) > 63 || label[0] == '-' || label[len(label)-1] == '-' {
++				return nil, invalid
++			}
++			for _, c := range label {
++				if !(c >= '0' && c <= '9' || c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c == '-') {
++					return nil, invalid
++				}
++				if c < '0' || c > '9' {
++					allNumeric = false
++				}
++			}
++		}
++		if allNumeric {
++			return nil, invalid
++		} // malformed IPv4/numeric host
++	}
++	// A colon after ] (IPv6), or any colon for DNS/IPv4, declares a port.
++	hasPort := strings.Contains(u.Host, ":")
++	if strings.HasPrefix(u.Host, "[") {
++		end := strings.LastIndex(u.Host, "]")
++		hasPort = end >= 0 && len(u.Host) > end+1
++	}
++	if hasPort {
++		port := u.Port()
++		if port == "" {
++			return nil, invalid
++		}
++		for _, c := range port {
++			if c < '0' || c > '9' {
++				return nil, invalid
++			}
++		}
++		n, e := strconv.Atoi(port)
++		if e != nil || n < 1 || n > 65535 || strconv.Itoa(n) != port {
++			return nil, invalid
++		}
+ 	}
+-	// Validate policy BEFORE consulting the allowlist. No DNS or substring test.
+-	local := strings.EqualFold(u.Hostname(), "localhost")
+-	if ip := net.ParseIP(u.Hostname()); ip != nil {
++	local := strings.EqualFold(host, "localhost")
++	if ip := net.ParseIP(host); ip != nil {
+ 		local = ip.IsLoopback()
+ 	}
+ 	if u.Scheme != "https" && !(u.Scheme == "http" && local) {
++		return nil, invalid
++	}
++	return u, nil
++}
++
++func loadAllowedOrigins(raw string) map[string]struct{} {
++	allowed := make(map[string]struct{})
++	for i, entry := range strings.Split(raw, ",") {
++		entry = strings.TrimSpace(entry)
++		if entry == "" {
++			continue
++		}
++		if _, err := parsePrivacyOrigin(entry); err != nil {
++			log.Printf("privacy origin allowlist: invalid entry ignored (index %d)", i)
++			continue
++		}
++		allowed[strings.ToLower(entry)] = struct{}{}
++	}
++	return allowed
++}
++
++// originOK is the standalone policy helper. HTTP handlers snapshot the validated
++// allowlist on Mount/NewHandlerFromEnv, not on each request.
++func originOK(r *http.Request) bool {
++	return originAllowed(r, loadAllowedOrigins(os.Getenv("US_PRIVACY_ALLOWED_ORIGINS")))
++}
++
++func originAllowed(r *http.Request, allowed map[string]struct{}) bool {
++	raw := strings.TrimSpace(r.Header.Get("Origin"))
++	if raw == "" {
++		return true
++	} // non-browser request; bearer remains required
++	u, err := parsePrivacyOrigin(raw)
++	if err != nil {
+ 		return false
+ 	}
+-	// HTTP localhost is explicitly opt-in, never inferred from a matching Host.
+ 	if u.Scheme == "https" && strings.EqualFold(u.Host, r.Host) {
+ 		return true
+ 	}
+-	for _, a := range strings.Split(os.Getenv("US_PRIVACY_ALLOWED_ORIGINS"), ",") {
+-		if strings.EqualFold(strings.TrimSpace(a), o) {
+-			return true
+-		}
+-	}
+-	return false
++	_, ok := allowed[strings.ToLower(raw)]
++	return ok
++}
++
++// WriteUnavailable has a fixed, non-sensitive client contract shared by routes.
++func WriteUnavailable(w http.ResponseWriter) {
++	w.Header().Set("Retry-After", "60")
++	writeJSON(w, http.StatusServiceUnavailable, map[string]string{"error": "privacy unavailable"})
+ }
+ 
+ // rate copies AccountHandler.rate (15-minute window, IP + X-Real-IP on loopback).
+@@ -284,7 +380,7 @@
+ 
+ func (h *Handler) preferences(w http.ResponseWriter, r *http.Request) {
+ 	if h.Prefs == nil {
+-		writeJSON(w, http.StatusServiceUnavailable, map[string]string{"error": "prefs unavailable"})
++		WriteUnavailable(w)
+ 		return
+ 	}
+ 	if !h.rate(r, "privacy-prefs", 20) {
+diff -ruN /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v4-on12/internal/privacy/handler_test.go /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v41-on12/internal/privacy/handler_test.go
+--- /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v4-on12/internal/privacy/handler_test.go	2026-11-08 01:28:07.495251657 +0300
++++ /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v41-on12/internal/privacy/handler_test.go	2026-11-08 01:28:07.623254502 +0300
+@@ -233,6 +233,7 @@
+ 		t.Fatalf("https origin want 200 got %d %s", w.Code, w.Body.String())
+ 	}
+ 	t.Setenv("US_PRIVACY_ALLOWED_ORIGINS", "http://localhost:3000")
++	h = NewHandlerFromEnv(st, nil) // allowlist is a startup snapshot, not request-time env
+ 	req = httptest.NewRequest("POST", "/account/privacy/export", nil)
+ 	req.Host = "public.example"
+ 	req.Header.Set("Authorization", "Bearer "+sess.Session)
+diff -ruN /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v4-on12/internal/privacy/v41_origin_test.go /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v41-on12/internal/privacy/v41_origin_test.go
+--- /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v4-on12/internal/privacy/v41_origin_test.go	1970-01-01 02:00:00.000000000 +0200
++++ /workspace/us-panel-dev/scratch/review-20261108/uyum-v41/v41-on12/internal/privacy/v41_origin_test.go	2026-11-08 01:28:07.623254502 +0300
+@@ -0,0 +1,99 @@
++package privacy
++
++import (
++	"bytes"
++	"log"
++	"net/http"
++	"net/http/httptest"
++	"strings"
++	"testing"
++)
++
++func TestV41OriginParserAndAllowlist(t *testing.T) {
++	valid := []string{"https://api.example", "https://api.example:1", "https://api.example:65535", "https://192.0.2.1:443", "https://[2001:db8::1]:443", "http://localhost:1", "http://localhost:65535", "http://127.0.0.1:3000", "http://[::1]:3000", "https://xn--bcher-kva.example"}
++	invalid := []string{"http://localhost:65536", "http://[::1]:65536", "https://api.example:65536", "http://localhost:", "https://api.example:", "https://api.example:0", "https://api.example:-1", "https://api.example:+1", "https://api.example:abc", "https://api.example:00080", "https://api.example:999999999999999999999999", "https://", "https://-bad.example", "https://bad-.example", "https://bad..example", "https://bad_name.example", "https://999.999.999.999", "https://[127.0.0.1]", "https://[fe80::1%25eth0]", "http://public.example:80", "http://localhost.evil:80", "ftp://api.example:443", "https://name@api.example", "https://api.example/path", "https://api.example/", "https://api.example?", "https://api.example#", "https://api.example?x=1", "https://api.example#fragment", "https://" + strings.Repeat("a", 64) + ".example"}
++	for _, raw := range valid {
++		t.Run("valid_"+raw, func(t *testing.T) {
++			if _, err := parsePrivacyOrigin(raw); err != nil {
++				t.Fatal("valid origin rejected")
++			}
++			allowed := loadAllowedOrigins(raw)
++			if len(allowed) != 1 {
++				t.Fatal("valid entry not loaded")
++			}
++			r := httptest.NewRequest("POST", "/missing", nil)
++			r.Host = "unrelated.example"
++			r.Header.Set("Origin", raw)
++			if !originAllowed(r, allowed) {
++				t.Fatal("valid exact match rejected")
++			}
++		})
++	}
++	for _, raw := range invalid {
++		t.Run("invalid_"+raw, func(t *testing.T) {
++			if _, err := parsePrivacyOrigin(raw); err == nil {
++				t.Fatal("invalid origin parsed")
++			}
++			allowed := loadAllowedOrigins(raw)
++			if len(allowed) != 0 {
++				t.Fatal("invalid config entry loaded")
++			}
++			// Even a matching Host and manually injected allowlist cannot bypass parser.
++			r := httptest.NewRequest("POST", "/missing", nil)
++			r.Host = strings.TrimPrefix(raw, "https://")
++			r.Header.Set("Origin", raw)
++			if originAllowed(r, map[string]struct{}{strings.ToLower(raw): {}}) {
++				t.Fatal("incoming invalid origin accepted")
++			}
++		})
++	}
++}
++
++func TestV41AllowlistLoadLogsNoRawValueAndIsSnapshot(t *testing.T) {
++	var buf bytes.Buffer
++	old := log.Writer()
++	log.SetOutput(&buf)
++	defer log.SetOutput(old)
++	const bad = "https://synthetic-private-host.example:65536"
++	t.Setenv("US_PRIVACY_ALLOWED_ORIGINS", bad+",http://localhost:3000")
++	h := NewHandlerFromEnv(nil, nil)
++	if len(h.allowedOrigins) != 1 {
++		t.Fatal("invalid entry retained")
++	}
++	if !strings.Contains(buf.String(), "invalid entry ignored") || strings.Contains(buf.String(), bad) || strings.Contains(buf.String(), "synthetic-private-host") {
++		t.Fatal("config warning missing or raw config leaked")
++	}
++	before := buf.Len()
++	// HTTP route consumes validated startup config. An env edit needs reload/restart.
++	t.Setenv("US_PRIVACY_ALLOWED_ORIGINS", "http://localhost:3001")
++	for _, tt := range []struct {
++		o    string
++		want int
++	}{{"http://localhost:3000", 404}, {"http://localhost:3001", 403}, {bad, 403}} {
++		r := httptest.NewRequest("POST", "/missing", nil)
++		r.Host = "api.example"
++		r.Header.Set("Origin", tt.o)
++		w := httptest.NewRecorder()
++		h.ServeHTTP(w, r)
++		if w.Code != tt.want {
++			t.Fatalf("got %d want %d", w.Code, tt.want)
++		}
++	}
++	if buf.Len() != before {
++		t.Fatal("request unexpectedly reloaded/logged config")
++	}
++}
++
++func TestV41UnavailableRoutesAndDisabledMount(t *testing.T) {
++	// A configured store failure takes priority over erase flag-off: capability
++	// unavailable is distinct from an intentional disabled route.
++	m := http.NewServeMux()
++	Mount(m, nil, MountOptions{PrivacyUnavailable: true, EraseEnabled: false})
++	for _, path := range []string{"/account/privacy/export", "/account/privacy/preferences", "/account/privacy/erase/request", "/account/privacy/erase/confirm"} {
++		w := httptest.NewRecorder()
++		m.ServeHTTP(w, httptest.NewRequest("POST", path, nil))
++		if w.Code != 503 || w.Header().Get("Retry-After") != "60" || w.Body.String() != "{\"error\":\"privacy unavailable\"}\n" {
++			t.Fatalf("%s unexpected unavailable response", path)
++		}
++	}
++}

@@ -1,0 +1,10 @@
+--- FAIL: TestOfficialREAInspectsOwnedFile (0.58s)
+    rea_test.go:102: npm error code ENOTCACHED
+        npm error request to https://registry.npmjs.org/rea-agents failed: cache mode is 'only-if-cached' but no cached response is available.
+        npm error A complete log of this run can be found in: /home/box/.npm/_logs/2026-11-06T01_47_40_570Z-debug-0.log
+FAIL
+FAIL	kiyas	4.743s
+ok  	kiyas/cmd/us-license-hook	0.009s
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+ok  	kiyas/licensesrv	0.024s
+FAIL

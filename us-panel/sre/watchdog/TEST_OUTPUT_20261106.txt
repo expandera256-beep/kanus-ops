@@ -1,0 +1,166 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.2.0, pluggy-1.7.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /workspace/us-panel/sre/watchdog
+collecting ... collected 93 items
+
+tests/test_billing_reconcile.py::test_query_uses_config_names_date_filter_and_partition PASSED [  1%]
+tests/test_billing_reconcile.py::test_query_rejects_unconfigured_or_bad_identifiers PASSED [  2%]
+tests/test_billing_reconcile.py::test_not_configured_returns_status_without_query PASSED [  3%]
+tests/test_billing_reconcile.py::test_dry_run_first_with_maximum_bytes_billed PASSED [  4%]
+tests/test_billing_reconcile.py::test_scan_over_limit_skips_real_query_and_alarms PASSED [  5%]
+tests/test_billing_reconcile.py::test_estimate_split_across_istanbul_midnight PASSED [  6%]
+tests/test_billing_reconcile.py::test_match_within_threshold_no_alarm_and_sku_breakdown PASSED [  7%]
+tests/test_billing_reconcile.py::test_mismatch_over_threshold_writes_outbox PASSED [  8%]
+tests/test_billing_reconcile.py::test_recent_day_is_provisional_not_alarm PASSED [  9%]
+tests/test_billing_reconcile.py::test_missing_billing_rows_after_lag_alarms_but_pending_before PASSED [ 10%]
+tests/test_billing_reconcile.py::test_query_error_counts_as_failure PASSED [ 11%]
+tests/test_billing_reconcile.py::test_ledger_writes_wall_clock PASSED    [ 12%]
+tests/test_spend.py::test_daily_monthly_and_projection PASSED            [ 13%]
+tests/test_spend.py::test_open_span_counts_running_cost PASSED           [ 15%]
+tests/test_spend.py::test_settled_billing_replaces_estimate PASSED       [ 16%]
+tests/test_spend.py::test_preserved_ssd_three_scenarios_shown_together PASSED [ 17%]
+tests/test_spend.py::test_alarm_total_uses_conservative_scenario_by_default PASSED [ 18%]
+tests/test_spend.py::test_alarm_scenario_configurable_and_validated PASSED [ 19%]
+tests/test_spend.py::test_verified_export_rate_replaces_scenarios PASSED [ 20%]
+tests/test_spend.py::test_ssd_not_charged_after_preemption_or_when_discarding PASSED [ 21%]
+tests/test_spend.py::test_ssd_rates_required_when_preserving PASSED      [ 22%]
+tests/test_spend.py::test_settled_export_day_has_no_extra_ssd PASSED     [ 23%]
+tests/test_spend.py::test_null_limits_no_alarm_and_health_says_not_defined PASSED [ 24%]
+tests/test_spend.py::test_daily_threshold_levels[4.9-None] PASSED        [ 25%]
+tests/test_spend.py::test_daily_threshold_levels[5.0-0.5] PASSED         [ 26%]
+tests/test_spend.py::test_daily_threshold_levels[8.0-0.8] PASSED         [ 27%]
+tests/test_spend.py::test_daily_threshold_levels[10.0-1.0] PASSED        [ 29%]
+tests/test_spend.py::test_daily_threshold_levels[25.0-1.0] PASSED        [ 30%]
+tests/test_spend.py::test_cooldown_suppresses_repeats_then_allows PASSED [ 31%]
+tests/test_spend.py::test_higher_threshold_fires_despite_cooldown_of_lower PASSED [ 32%]
+tests/test_spend.py::test_monthly_limit_alarm_goes_to_outbox_not_sent PASSED [ 33%]
+tests/test_spend.py::test_new_day_resets_daily_alarm_key PASSED          [ 34%]
+tests/test_spend.py::test_limit_config_validation[bad0] PASSED           [ 35%]
+tests/test_spend.py::test_limit_config_validation[bad1] PASSED           [ 36%]
+tests/test_spend.py::test_limit_config_validation[bad2] PASSED           [ 37%]
+tests/test_spend.py::test_watchdog_health_includes_spend_summary PASSED  [ 38%]
+tests/test_spend.py::test_example_config_demir_limits_and_ssd_rates PASSED [ 39%]
+tests/test_spend.py::test_example_config_limits_fire_at_10_16_20_daily PASSED [ 40%]
+tests/test_spend.py::test_example_config_monthly_200_thresholds PASSED   [ 41%]
+tests/test_watchdog.py::test_parallel_requests_share_single_start PASSED [ 43%]
+tests/test_watchdog.py::test_start_error_propagates_to_all_waiters_then_retry_possible PASSED [ 44%]
+tests/test_watchdog.py::test_start_retries_with_backoff_then_succeeds PASSED [ 45%]
+tests/test_watchdog.py::test_start_gives_up_after_max_attempts PASSED    [ 46%]
+tests/test_watchdog.py::test_readiness_timeout PASSED                    [ 47%]
+tests/test_watchdog.py::test_running_vm_no_start_call PASSED             [ 48%]
+tests/test_watchdog.py::test_stopping_vm_waits_then_starts PASSED        [ 49%]
+tests/test_watchdog.py::test_no_stop_while_request_in_flight PASSED      [ 50%]
+tests/test_watchdog.py::test_no_stop_while_queue_nonempty PASSED         [ 51%]
+tests/test_watchdog.py::test_race_request_arriving_during_stop_restarts_gpu PASSED [ 52%]
+tests/test_watchdog.py::test_decision_is_atomic_with_new_request PASSED  [ 53%]
+tests/test_watchdog.py::test_default_idle_is_15_minutes PASSED           [ 54%]
+tests/test_watchdog.py::test_idle_boundary_899_vs_900 PASSED             [ 55%]
+tests/test_watchdog.py::test_health_does_not_reset_idle PASSED           [ 56%]
+tests/test_watchdog.py::test_real_request_resets_idle PASSED             [ 58%]
+tests/test_watchdog.py::test_health_reports_live_status_without_start[TERMINATED] PASSED [ 59%]
+tests/test_watchdog.py::test_health_reports_live_status_without_start[STOPPING] PASSED [ 60%]
+tests/test_watchdog.py::test_health_reports_live_status_without_start[RUNNING] PASSED [ 61%]
+tests/test_watchdog.py::test_health_reports_live_status_without_start[STAGING] PASSED [ 62%]
+tests/test_watchdog.py::test_health_api_error_returns_unknown_not_start PASSED [ 63%]
+tests/test_watchdog.py::test_tick_reads_live_status_every_time PASSED    [ 64%]
+tests/test_watchdog.py::test_tick_status_error_never_stops PASSED        [ 65%]
+tests/test_watchdog.py::test_externally_stopped_vm_reconciles_cost PASSED [ 66%]
+tests/test_watchdog.py::test_unknown_status_rejected PASSED              [ 67%]
+tests/test_watchdog.py::test_stop_idempotent_when_already_terminated PASSED [ 68%]
+tests/test_watchdog.py::test_stop_not_confirmed_reported PASSED          [ 69%]
+tests/test_watchdog.py::test_tick_skips_while_starting PASSED            [ 70%]
+tests/test_watchdog.py::test_cost_ledger_records_interval_price_null PASSED [ 72%]
+tests/test_watchdog.py::test_cost_ledger_uses_config_price_and_appends PASSED [ 73%]
+tests/test_watchdog.py::test_config_file_rejects_unknown_keys PASSED     [ 74%]
+tests/test_watchdog.py::test_defaults_idle_900_boot_3000_client_2700 PASSED [ 75%]
+tests/test_watchdog.py::test_idle_and_boot_come_from_config PASSED       [ 76%]
+tests/test_watchdog.py::test_config_validation[bad0] PASSED              [ 77%]
+tests/test_watchdog.py::test_config_validation[bad1] PASSED              [ 78%]
+tests/test_watchdog.py::test_config_validation[bad2] PASSED              [ 79%]
+tests/test_watchdog.py::test_config_validation[bad3] PASSED              [ 80%]
+tests/test_watchdog.py::test_config_validation[bad4] PASSED              [ 81%]
+tests/test_watchdog.py::test_config_validation[bad5] PASSED              [ 82%]
+tests/test_watchdog.py::test_client_wait_timeout_2700_boot_continues PASSED [ 83%]
+tests/test_watchdog.py::test_sse_keepalive_callback_with_health PASSED   [ 84%]
+tests/test_watchdog.py::test_reconcile_error_logs_structured_error PASSED [ 86%]
+tests/test_watchdog.py::test_outbox_written_once_at_threshold_no_send PASSED [ 87%]
+tests/test_watchdog.py::test_health_degraded_after_n_and_recovers PASSED [ 88%]
+tests/test_watchdog.py::test_start_failure_counts_as_alarm PASSED        [ 89%]
+tests/test_watchdog.py::test_observe_mode_never_starts_or_stops PASSED   [ 90%]
+tests/test_watchdog.py::test_refuses_dual_control_while_legacy_idle_active PASSED [ 91%]
+tests/test_watchdog.py::test_legacy_check_error_is_treated_as_active PASSED [ 92%]
+tests/test_watchdog.py::test_adopt_running_grants_full_idle_window PASSED [ 93%]
+tests/test_watchdog.py::test_example_config_alarm_addresses_and_send_disabled PASSED [ 94%]
+tests/test_watchdog.py::test_send_flag_cannot_be_enabled_in_core PASSED  [ 95%]
+tests/test_watchdog.py::test_outbox_record_has_from_to_and_not_sent PASSED [ 96%]
+tests/test_watchdog.py::test_example_price_breakdown_from_catalog_skus PASSED [ 97%]
+tests/test_watchdog.py::test_price_requires_source_and_consistent_breakdown PASSED [ 98%]
+tests/test_watchdog.py::test_ledger_records_price_source PASSED          [100%]
+
+============================== 93 passed in 3.05s ==============================
+KAN regression (kopya dizinde, /tmp/kt): test_inference_lifecycle.py orijinal 19 passed; yamali 19 passed
+
+
+=== 08.11 güncelleme ===
+2026-11-08T00:08:56+03:00 TSİ (Europe/Istanbul)
+Komut: python3 -m pytest -q
+........................................................................ [ 74%]
+.........................                                                [100%]
+97 passed in 2.93s
+PASS — exit_code=0; preserve_local_ssd true/false; deploy yok, GCP yazma yok.
+
+
+=== 08.11 idle 600 ===
+2026-11-08T00:28:09+03:00 TSİ (Europe/Istanbul)
+
+watchdog: python3 -m pytest -q
+........................................................................ [ 72%]
+..........................F                                              [100%]
+=================================== FAILURES ===================================
+_____________________ test_idle_600_cost_uses_elapsed_time _____________________
+
+tmp_path = PosixPath('/tmp/pytest-of-box/pytest-5/test_idle_600_cost_uses_elapse0')
+
+    def test_idle_600_cost_uses_elapsed_time(tmp_path):
+        wd, g, clk = make(tmp_path, status="RUNNING", price_per_hour_usd=1.848238, price_source="test")
+        wd.tick()
+        clk.advance(599)
+        assert wd.tick() == "skip:not_idle"
+        clk.advance(1)
+        assert wd.tick() == "stopped"
+        intervals = [json.loads(line) for line in open(wd.cfg.cost_log_path) if '"interval"' in line]
+        assert len(intervals) == 1
+        assert intervals[0]["duration_seconds"] == 600
+>       assert intervals[0]["cost_usd"] == pytest.approx(1.848238 * 600 / 3600)
+E       assert 0.30804 == 0.30803966666666666 ± 3.1e-07
+E         
+E         comparison failed
+E         Obtained: 0.30804
+E         Expected: 0.30803966666666666 ± 3.1e-07
+
+tests/test_watchdog.py:402: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_watchdog.py::test_idle_600_cost_uses_elapsed_time - assert ...
+1 failed, 98 passed in 2.99s
+FAIL — exit_code=1
+
+hook_watchdog: python3 -m pytest -q
+...........................................................              [100%]
+59 passed in 0.09s
+PASS — exit_code=0
+
+=== 08.11 idle 600 — tekrar doğrulama ===
+2026-11-08T00:28:18+03:00 TSİ
+Maliyet testi ledger altı ondalık yuvarlamasına hizalandı; üretim hesabı değiştirilmedi.
+
+watchdog: python3 -m pytest -q
+........................................................................ [ 72%]
+...........................                                              [100%]
+99 passed in 2.99s
+PASS — exit_code=0
+
+hook_watchdog: python3 -m pytest -q
+...........................................................              [100%]
+59 passed in 0.08s
+PASS — exit_code=0

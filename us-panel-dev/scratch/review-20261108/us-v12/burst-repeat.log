@@ -1,0 +1,81 @@
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 01:03:41 gpu_wake scheme=http host=127.0.0.1:42317 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 01:03:41 gpu_wake scheme=http host=127.0.0.1:42317 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:03:41 gpu_wake scheme=http host=127.0.0.1:42317 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:03:41 gpu wake: failed (wake_http)
+2026/11/08 01:03:41 gpu_wake scheme=http host=127.0.0.1:42317 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=3
+    zz_panel_wake_burst_test.go:8: unexpected debounce/probe count
+--- FAIL: TestPanelConcurrentHTTPWakeDebounce (0.03s)
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 01:03:41 gpu_wake scheme=http host=127.0.0.1:43455 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=7 level=INFO method=GET err=-
+2026/11/08 01:03:41 gpu_wake scheme=http host=127.0.0.1:43455 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:03:41 gpu wake: failed (wake_http)
+2026/11/08 01:03:41 gpu_wake scheme=http host=127.0.0.1:43455 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=2
+    zz_panel_wake_burst_test.go:8: unexpected debounce/probe count
+--- FAIL: TestPanelConcurrentHTTPWakeDebounce (0.04s)
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 01:03:41 gpu_wake scheme=http host=127.0.0.1:45107 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+2026/11/08 01:03:41 gpu_wake scheme=http host=127.0.0.1:45107 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=5 level=INFO method=POST err=-
+2026/11/08 01:03:41 gpu wake: failed (wake_http)
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestPanelConcurrentHTTPWakeDebounce (0.02s)
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 01:03:41 gpu_wake scheme=http host=127.0.0.1:46431 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:46431 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:46431 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=3 level=INFO method=POST err=-
+2026/11/08 01:03:42 gpu wake: failed (wake_http)
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=2
+    zz_panel_wake_burst_test.go:8: unexpected debounce/probe count
+--- FAIL: TestPanelConcurrentHTTPWakeDebounce (0.02s)
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:44279 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:44279 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:03:42 gpu wake: failed (wake_http)
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:44279 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:44279 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=3
+    zz_panel_wake_burst_test.go:8: unexpected debounce/probe count
+--- FAIL: TestPanelConcurrentHTTPWakeDebounce (0.02s)
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:33615 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:33615 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:03:42 gpu wake: failed (wake_http)
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:33615 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=6 level=INFO method=GET err=-
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=2
+    zz_panel_wake_burst_test.go:8: unexpected debounce/probe count
+--- FAIL: TestPanelConcurrentHTTPWakeDebounce (0.04s)
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:41411 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:41411 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:03:42 gpu wake: failed (wake_http)
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestPanelConcurrentHTTPWakeDebounce (0.04s)
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:39195 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:39195 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:03:42 gpu wake: failed (wake_http)
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:39195 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:39195 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=3
+    zz_panel_wake_burst_test.go:8: unexpected debounce/probe count
+--- FAIL: TestPanelConcurrentHTTPWakeDebounce (0.01s)
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:38121 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:38121 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:03:42 gpu wake: failed (wake_http)
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestPanelConcurrentHTTPWakeDebounce (0.01s)
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:42319 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=6 level=INFO method=GET err=-
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:42319 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:42319 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 01:03:42 gpu wake: failed (wake_http)
+2026/11/08 01:03:42 gpu_wake scheme=http host=127.0.0.1:42319 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=3
+    zz_panel_wake_burst_test.go:8: unexpected debounce/probe count
+--- FAIL: TestPanelConcurrentHTTPWakeDebounce (0.01s)
+FAIL
+FAIL	kiyas/licensesrv	0.247s
+FAIL

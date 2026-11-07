@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "name": "Türkçe",
+    "dir": "ltr",
+    "bcp47": "tr-TR",
+    "currency": "TRY"
+  },
+  "brand.name": "Kanus",
+  "brand.slogan": "Fikirlerini yazılıma dönüştür.",
+  "email.license.body": "Merhaba,\n\nSiparişin ({order}) için lisans anahtarın hazır. US Panel'i açıp anahtarı girebilirsin.\n\nSoruların için: support@kanus.org",
+  "email.license.subject": "US Panel lisans anahtarın",
+  "product.name": "US Panel"
+}

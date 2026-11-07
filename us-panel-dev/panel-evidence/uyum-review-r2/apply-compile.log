@@ -1,0 +1,139 @@
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0000-iface.patch
+['git', 'apply', '-p1', '--check', '/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0000-iface.patch']
+exit=0
+
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0000-iface.patch
+['patch', '--batch', '--fuzz=0', '-p1', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0000-iface.patch']
+exit=0
+checking file internal/privacy/iface.go
+
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0000-iface.patch
+['patch', '--batch', '--fuzz=0', '-p1', '-i', '/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0000-iface.patch']
+exit=0
+patching file internal/privacy/iface.go
+
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0001-prefs-store.patch
+['git', 'apply', '-p1', '--check', '/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0001-prefs-store.patch']
+exit=0
+
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0001-prefs-store.patch
+['patch', '--batch', '--fuzz=0', '-p1', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0001-prefs-store.patch']
+exit=0
+checking file internal/privacy/prefs.go
+
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0001-prefs-store.patch
+['patch', '--batch', '--fuzz=0', '-p1', '-i', '/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0001-prefs-store.patch']
+exit=0
+patching file internal/privacy/prefs.go
+
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0002-prefs-test.patch
+['git', 'apply', '-p1', '--check', '/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0002-prefs-test.patch']
+exit=0
+
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0002-prefs-test.patch
+['patch', '--batch', '--fuzz=0', '-p1', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0002-prefs-test.patch']
+exit=0
+checking file internal/privacy/prefs_test.go
+
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0002-prefs-test.patch
+['patch', '--batch', '--fuzz=0', '-p1', '-i', '/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0002-prefs-test.patch']
+exit=0
+patching file internal/privacy/prefs_test.go
+
+cumulative 01-preferences compile exit=0
+ok  	kiyas	0.006s [no tests to run]
+ok  	kiyas/cmd/us-license-hook	0.005s [no tests to run]
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+ok  	kiyas/internal/privacy	0.002s [no tests to run]
+ok  	kiyas/licensesrv	0.007s [no tests to run]
+
+/workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch
+['git', 'apply', '-p1', '--check', '/workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch']
+exit=0
+
+/workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch
+['patch', '--batch', '--fuzz=0', '-p1', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch']
+exit=0
+checking file licensesrv/privacy_ops.go
+
+/workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch
+['patch', '--batch', '--fuzz=0', '-p1', '-i', '/workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch']
+exit=0
+patching file licensesrv/privacy_ops.go
+
+/workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch
+['git', 'apply', '-p1', '--check', '/workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch']
+exit=0
+
+/workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch
+['patch', '--batch', '--fuzz=0', '-p1', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch']
+exit=0
+checking file licensesrv/privacy_ops_test.go
+
+/workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch
+['patch', '--batch', '--fuzz=0', '-p1', '-i', '/workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch']
+exit=0
+patching file licensesrv/privacy_ops_test.go
+
+cumulative 02-ops compile exit=0
+ok  	kiyas	0.003s [no tests to run]
+ok  	kiyas/cmd/us-license-hook	0.005s [no tests to run]
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+ok  	kiyas/internal/privacy	(cached) [no tests to run]
+ok  	kiyas/licensesrv	0.006s [no tests to run]
+
+/workspace/us-panel-dev/patches/uyum-v2/03-handler/0001-handler.patch
+['git', 'apply', '-p1', '--check', '/workspace/us-panel-dev/patches/uyum-v2/03-handler/0001-handler.patch']
+exit=0
+
+/workspace/us-panel-dev/patches/uyum-v2/03-handler/0001-handler.patch
+['patch', '--batch', '--fuzz=0', '-p1', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-v2/03-handler/0001-handler.patch']
+exit=0
+checking file internal/privacy/handler.go
+
+/workspace/us-panel-dev/patches/uyum-v2/03-handler/0001-handler.patch
+['patch', '--batch', '--fuzz=0', '-p1', '-i', '/workspace/us-panel-dev/patches/uyum-v2/03-handler/0001-handler.patch']
+exit=0
+patching file internal/privacy/handler.go
+
+/workspace/us-panel-dev/patches/uyum-v2/03-handler/0002-handler-test.patch
+['git', 'apply', '-p1', '--check', '/workspace/us-panel-dev/patches/uyum-v2/03-handler/0002-handler-test.patch']
+exit=0
+
+/workspace/us-panel-dev/patches/uyum-v2/03-handler/0002-handler-test.patch
+['patch', '--batch', '--fuzz=0', '-p1', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-v2/03-handler/0002-handler-test.patch']
+exit=0
+checking file internal/privacy/handler_test.go
+
+/workspace/us-panel-dev/patches/uyum-v2/03-handler/0002-handler-test.patch
+['patch', '--batch', '--fuzz=0', '-p1', '-i', '/workspace/us-panel-dev/patches/uyum-v2/03-handler/0002-handler-test.patch']
+exit=0
+patching file internal/privacy/handler_test.go
+
+cumulative 03-handler compile exit=0
+ok  	kiyas	(cached) [no tests to run]
+ok  	kiyas/cmd/us-license-hook	(cached) [no tests to run]
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+ok  	kiyas/internal/privacy	0.003s [no tests to run]
+ok  	kiyas/licensesrv	(cached) [no tests to run]
+
+/workspace/us-panel-dev/patches/uyum-v2/04-hook-us/0001-main-privacy-mount.patch
+['git', 'apply', '-p1', '--check', '/workspace/us-panel-dev/patches/uyum-v2/04-hook-us/0001-main-privacy-mount.patch']
+exit=0
+
+/workspace/us-panel-dev/patches/uyum-v2/04-hook-us/0001-main-privacy-mount.patch
+['patch', '--batch', '--fuzz=0', '-p1', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-v2/04-hook-us/0001-main-privacy-mount.patch']
+exit=0
+checking file cmd/us-license-hook/main.go
+
+/workspace/us-panel-dev/patches/uyum-v2/04-hook-us/0001-main-privacy-mount.patch
+['patch', '--batch', '--fuzz=0', '-p1', '-i', '/workspace/us-panel-dev/patches/uyum-v2/04-hook-us/0001-main-privacy-mount.patch']
+exit=0
+patching file cmd/us-license-hook/main.go
+
+cumulative 04-hook-us compile exit=0
+ok  	kiyas	(cached) [no tests to run]
+ok  	kiyas/cmd/us-license-hook	0.008s [no tests to run]
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+ok  	kiyas/internal/privacy	(cached) [no tests to run]
+ok  	kiyas/licensesrv	(cached) [no tests to run]

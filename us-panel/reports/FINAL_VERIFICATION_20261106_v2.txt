@@ -1,0 +1,13 @@
+06.11.2026 06:21 TSİ (Europe/Istanbul)
+PASS Go top-level=282 subtests=37 skipped_rows=6 failed=0
+PASS race all-package exit0 no warnings
+PASS vet exit0
+PASS Python109 total69 passed40 skipped (unchanged passing raw output)
+PASS PE amd64 .5 version URL
+PASS tgz 9 members match folder
+PASS hook binary SHA match
+Concurrent remote E2E appendix is reported by another agent, not verified by this executor.
+1ef0f70429953a79de7ea95f21b028f9fb0ad22412e9b399d792bc388423f863  /workspace/us-panel/dist/US_Ticari_Aday_2026_11_06_5.exe
+7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/dist/us-license-hook_linux
+7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/deploy/us-license-hook/us-license-hook
+0e599d2877087eb6efaf97f34fa711ad3263a18c272897d89cc52af88a6fa39a  /workspace/us-panel/deploy/us-license-hook_hostinger.tgz

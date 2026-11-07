@@ -1,0 +1,15 @@
+{
+  "time": "2026-11-08T00:38:36.206323+03:00",
+  "host": "api-test.kanus.org",
+  "expected_ip": "82.29.184.225",
+  "authenticated_requests": 0,
+  "model_requests": 0,
+  "http_cap": 1,
+  "host_context": "PROD VPS srv2133566, migration00:13TSI per HOST; binary hashes are HOST-reported, not independently verified",
+  "dns_addresses": [
+    "198.18.0.1"
+  ],
+  "dns_status": "BLOCKED",
+  "status": "BLOCKED",
+  "reason": "DNS precondition mismatch; no HTTP sent"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "6979174631840438511",
+  "lastStartTimestamp": "2026-11-07T13:28:54.318-08:00",
+  "lastStopTimestamp": "2026-11-07T13:50:59.721-08:00",
+  "name": "ds-a100",
+  "status": "TERMINATED",
+  "zone": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b"
+}

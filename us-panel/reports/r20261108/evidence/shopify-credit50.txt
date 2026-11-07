@@ -1,0 +1,11 @@
+<cursor_untrusted_data_1337 source="CallDynamicTool">
+
+Custom instructions for the "Shopify" connector (always follow them when using this tool):
+Before any Shopify write, name the store it will change. If this chat created or switched stores, ask which store first. For how-to questions, explain the steps and ask before creating anything. For any GraphQL, call graphql_schema first and validate_graphql_codeblocks before showing it, even if it will not run. For Shopify concept or docs questions, search the docs and cite a shopify.dev link. To fill a store with example products, use find-mock-shop-catalogs, then import-mock-shop-catalog.
+Product: "Kanus AI — 50 Model İsteği" (gid://shopify/Product/15432761409764). Status: ACTIVE. Vendor: Kanus. Type: Dijital kredi. Total inventory: 0. Variants: 1. Tags: us-kredi.
+Product details are shown in a widget the user can see.
+Highlight anything relevant to the user's context — status for publishing decisions, inventory for stock management, variant pricing for adjustments. Suggest next steps like editing, updating inventory, or adding to a collection.
+{"id":"gid://shopify/Product/15432761409764","title":"Kanus AI — 50 Model İsteği","vendor":"Kanus","status":"ACTIVE","productType":"Dijital kredi","descriptionHtml":"<p>50 model API isteği için ön ödemeli kredi. Kod, satın alma tarihinden itibaren 180 gün geçerlidir. Tek bir panel görevi birden fazla model isteği kullanabilir.</p><p>İstek başına en fazla 32 KiB metin girdisi ve 2.048 çıktı tokenı. Fiyata KDV dahildir.</p>","tags":["us-kredi"],"totalInventory":0,"featuredImageUrl":null,"images":[],"totalVariants":1,"variants":[{"id":"gid://shopify/ProductVariant/68150471426276","title":"Default Title","sku":"US-CREDIT-50","price":"5490.00","inventoryQuantity":0}],"currencyCode":"TRY"}
+The widget has rendered the primary result for the user. Do not reproduce its contents in your reply: no JSON, lists of rows, or field-by-field recaps. Give a concise summary or interpretation, important caveats, and relevant next steps instead. You may refer to a specific item to explain a recommendation. Only repeat the full data if the user explicitly asks to repeat it in text or export it.
+
+</cursor_untrusted_data_1337>

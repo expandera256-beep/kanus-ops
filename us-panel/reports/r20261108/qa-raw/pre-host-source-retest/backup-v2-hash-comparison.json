@@ -1,0 +1,8 @@
+{
+  "box_source_path": "deploy/host-hardening/backup/backup-us-license-hook-hourly.v2.sh",
+  "box_sha256": "d77534e5190e74b9a596ded23038003e3ec3d8bca9b2053f28232244166ef9a0",
+  "host_reported_hash_fragment": "d77534e5…a0",
+  "fragment_matches": true,
+  "full_remote_hash_equality": "NOT independently verified: HOST supplied fragment only",
+  "source": "HOST steering relayed00:48TSI, claimed installed; no VPS call by QA"
+}

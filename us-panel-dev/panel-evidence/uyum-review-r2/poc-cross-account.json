@@ -1,0 +1,19 @@
+{"Time":"2026-11-06T10:00:55.47430012+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-06T10:00:55.483665162+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail"}
+{"Time":"2026-11-06T10:00:55.483716858+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Output":"=== RUN   TestPanelR2CrossAccountMail\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:58.130150346+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Output":"    zz_panel_r2_test.go:26: CONFIRMED anonymizing account-one rewrites unrelated user's order email To/Body/Subject and suppresses delivery; any OrderName occurring in own Body matches\n"}
+{"Time":"2026-11-06T10:00:58.131405599+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Output":"--- PASS: TestPanelR2CrossAccountMail (2.65s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:00:58.131477171+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Elapsed":2.65}
+{"Time":"2026-11-06T10:00:58.131662496+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail"}
+{"Time":"2026-11-06T10:00:58.131668106+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Output":"=== RUN   TestPanelR2CrossAccountMail\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:00.854036548+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Output":"    zz_panel_r2_test.go:26: CONFIRMED anonymizing account-one rewrites unrelated user's order email To/Body/Subject and suppresses delivery; any OrderName occurring in own Body matches\n"}
+{"Time":"2026-11-06T10:01:00.854478059+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Output":"--- PASS: TestPanelR2CrossAccountMail (2.72s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:00.854559386+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Elapsed":2.72}
+{"Time":"2026-11-06T10:01:00.854824266+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail"}
+{"Time":"2026-11-06T10:01:00.854829584+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Output":"=== RUN   TestPanelR2CrossAccountMail\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:03.59732221+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Output":"    zz_panel_r2_test.go:26: CONFIRMED anonymizing account-one rewrites unrelated user's order email To/Body/Subject and suppresses delivery; any OrderName occurring in own Body matches\n"}
+{"Time":"2026-11-06T10:01:03.597705779+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Output":"--- PASS: TestPanelR2CrossAccountMail (2.74s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:03.598620861+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelR2CrossAccountMail","Elapsed":2.74}
+{"Time":"2026-11-06T10:01:03.598688969+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:04.611224552+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"ok  \tkiyas/licensesrv\t9.137s\n"}
+{"Time":"2026-11-06T10:01:04.611284174+03:00","Action":"pass","Package":"kiyas/licensesrv","Elapsed":9.137}

@@ -1,0 +1,44 @@
+{
+  "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway:2026-11-08-discard",
+  "revision": "us-watchdog-00006-88h",
+  "time_istanbul": "2026-11-08T00:27:45.049230+03:00",
+  "manifest_sha256": "5bf7bc8e276d907f65ae0f274b6de2a9853b5b32b73ed0f59bf9cb0f66392122",
+  "files": {
+    "commerce_http.py": {
+      "tar_path": "app/commerce_http.py",
+      "layer_digest": "sha256:9b25cf9b42f2b472e416da4f0b1367f20846bfd7646512c6545fd12295d1ec52",
+      "sha256": "41a7fd7b2ab7f8461b60f16823ed04a60df85686aea120851105d3f6402d8bf8"
+    },
+    "gce_provider.py": {
+      "tar_path": "app/gce_provider.py",
+      "layer_digest": "sha256:9b25cf9b42f2b472e416da4f0b1367f20846bfd7646512c6545fd12295d1ec52",
+      "sha256": "f2de2bc53ce4e292ab71d915234941b7ceea42de645c8de8d3d838bc5ced5667"
+    },
+    "runtime.py": {
+      "tar_path": "app/runtime.py",
+      "layer_digest": "sha256:9b25cf9b42f2b472e416da4f0b1367f20846bfd7646512c6545fd12295d1ec52",
+      "sha256": "4af701741bd51ff0fc601a579f25beec01dbcb0ce9d178d087518079109b2c94"
+    }
+  },
+  "requests": [
+    {
+      "url": "https://europe-west4-docker.pkg.dev/v2/project-27082a40-6083-4952-9db/us-runtime/gateway/manifests/2026-11-08-discard",
+      "http_status": 200,
+      "bytes": 1993,
+      "sha256": "5bf7bc8e276d907f65ae0f274b6de2a9853b5b32b73ed0f59bf9cb0f66392122"
+    },
+    {
+      "url": "https://europe-west4-docker.pkg.dev/v2/project-27082a40-6083-4952-9db/us-runtime/gateway/blobs/sha256:17ac8121de0ddbca09adaff72d9b3f986069295aa5df97fe3a2c195fa03d1989",
+      "http_status": 200,
+      "bytes": 8885,
+      "sha256": "17ac8121de0ddbca09adaff72d9b3f986069295aa5df97fe3a2c195fa03d1989"
+    },
+    {
+      "url": "https://europe-west4-docker.pkg.dev/v2/project-27082a40-6083-4952-9db/us-runtime/gateway/blobs/sha256:9b25cf9b42f2b472e416da4f0b1367f20846bfd7646512c6545fd12295d1ec52",
+      "http_status": 200,
+      "bytes": 24922,
+      "sha256": "9b25cf9b42f2b472e416da4f0b1367f20846bfd7646512c6545fd12295d1ec52"
+    }
+  ],
+  "token_persisted": false
+}

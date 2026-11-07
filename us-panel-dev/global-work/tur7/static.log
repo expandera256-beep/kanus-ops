@@ -1,0 +1,9 @@
+build PASS
+vet PASS
+wvet PASS
+wbuild PASS
+gofmt: []
+check_ui PASS
+PASS network error reverts {"value":"tr","loadedEn":false,"htmlLang":"tr","statusShown":true,"statusText":"Dil tercihi kaydedilemedi; önceki dil korunuyor."}
+PASS 200 switches to en {"value":"en","loadedEn":true,"htmlLang":"en","statusShown":false,"statusText":""}
+gui lang UI test passed

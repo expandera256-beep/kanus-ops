@@ -1,0 +1,142 @@
+{
+  "US_Ticari_Aday_2026_11_05_4.exe": {
+    "bytes": 14597632,
+    "sha256": "fd16074c40bdc1ab434cb4473f6238cf233511792e1e8fdc945f2640a3493129",
+    "version": "2026.11.05.4",
+    "native_windows_run": false,
+    "default_gateway": "https://us-commerce-iqhblf63dq-ez.a.run.app",
+    "live_acceptance_passed": false
+  },
+  "US_Gorev_Kota_Test.exe": {
+    "bytes": 14597632,
+    "sha256": "db911b11597237a6202c7cfd91fd51e96d56da7214e503a26f11d51fe9803edc",
+    "version": "2026.11.05.4",
+    "native_windows_run": false,
+    "default_gateway": "https://us-commerce-iqhblf63dq-ez.a.run.app",
+    "live_acceptance_passed": false
+  },
+  "US_Ticari_Aday_2026_11_06_3.exe": {
+    "bytes": 10220544,
+    "sha256": "89279d80d74d671340ef9c8a083b93b095a2610384b755a342e95f31fcb682bf",
+    "native_windows_run": false,
+    "live_acceptance_passed": false,
+    "version": "2026.11.06.3",
+    "authority": "accounts",
+    "superseded_by": "US_Ticari_Aday_2026_11_06_4.exe"
+  },
+  "us-license-hook_linux": {
+    "bytes": 7454880,
+    "sha256": "7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0",
+    "native_windows_run": false,
+    "live_acceptance_passed": false,
+    "path": "dist/us-license-hook_linux",
+    "previous_sha256": "7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf",
+    "local_only": true
+  },
+  "us-license-hook": {
+    "bytes": 7454880,
+    "sha256": "7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0",
+    "native_windows_run": false,
+    "live_acceptance_passed": false,
+    "path": "deploy/us-license-hook/us-license-hook",
+    "previous_sha256": "7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf",
+    "local_only": true
+  },
+  "us-license-hook_hostinger.tgz": {
+    "bytes": 3162037,
+    "sha256": "1c3184f3e65980d8e3f2fb7295d8aa335586e4296dde13af9e9160ff78517f34",
+    "native_windows_run": false,
+    "live_acceptance_passed": false,
+    "path": "deploy/us-license-hook_hostinger.tgz",
+    "previous_sha256": "0e599d2877087eb6efaf97f34fa711ad3263a18c272897d89cc52af88a6fa39a",
+    "local_only": true
+  },
+  "us-panel_windows_compilecheck.exe": {
+    "bytes": 14222848,
+    "sha256": "6d4f34243fc01cc9752dc734aae03ee447da7f7f3a32ec1999ba79109558b98e",
+    "native_windows_run": false,
+    "live_acceptance_passed": false
+  },
+  "US_Ticari_Aday_2026_11_06_4.exe": {
+    "bytes": 10226176,
+    "sha256": "eb3a0066c4e20bda392b8140c71265ddda0886369bcbe00e0bad3dd44989bc10",
+    "native_windows_run": false,
+    "live_acceptance_passed": false,
+    "version": "2026.11.06.4",
+    "release_channel": "commercial",
+    "authority": "go-hook",
+    "default_license_url": "https://api-test.kanus.org",
+    "default_model_url": "http://127.0.0.1:1923",
+    "source": "work2/kiyas/term"
+  },
+  "commercial_candidate_20261106_5": {
+    "version": "2026.11.06.5",
+    "authority": "go-hook-server-proxy",
+    "artifact_sha256": {
+      "dist/US_Ticari_Aday_2026_11_06_5.exe": "1ef0f70429953a79de7ea95f21b028f9fb0ad22412e9b399d792bc388423f863",
+      "dist/us-license-hook_linux": "7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf",
+      "deploy/us-license-hook/us-license-hook": "7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf",
+      "deploy/us-license-hook_hostinger.tgz": "0e599d2877087eb6efaf97f34fa711ad3263a18c272897d89cc52af88a6fa39a"
+    },
+    "gpu_idle_seconds_policy": 900,
+    "native_windows_run": false,
+    "live_acceptance_passed": false,
+    "historical_hash_snapshot_not_current_paths": true
+  },
+  "latest_commercial_candidate": "2026.11.06.7",
+  "US_Ticari_Aday_2026_11_06_6.exe": {
+    "path": "dist/US_Ticari_Aday_2026_11_06_6.exe",
+    "bytes": 10286592,
+    "sha256": "c1417c544ad2777609c47bf738ea28897bf38fa96d3747e6003e83ab1263a327",
+    "version": "2026.11.06.6",
+    "authority": "go-hook-server-proxy",
+    "release_channel": "commercial",
+    "default_license_and_model_url": "https://api-test.kanus.org",
+    "direct_commercial_ssh": false,
+    "native_windows_run": false,
+    "live_acceptance_passed": false,
+    "headless_modes": [
+      "--version",
+      "--selftest",
+      "--check-license <file>",
+      "--check-server"
+    ],
+    "superseded_by": "US_Ticari_Aday_2026_11_06_7.exe"
+  },
+  "US_Ticari_Aday_2026_11_06_7.exe": {
+    "path": "dist/US_Ticari_Aday_2026_11_06_7.exe",
+    "bytes": 10298368,
+    "sha256": "3dc03a29a0ecb7b3ba55fe1a92e277d0ec05974617966e72c66b0834bf718cc9",
+    "version": "2026.11.06.7",
+    "authority": "accounts",
+    "issuer_and_ledger": "Go hook / locked atomic JSON",
+    "release_channel": "commercial",
+    "default_license_and_model_url": "https://api-test.kanus.org",
+    "default_model": "deepseek-v4.1-flash",
+    "production_build_gateway": "https://api.kanus.org",
+    "direct_commercial_ssh": false,
+    "native_windows_run": false,
+    "live_acceptance_passed": false,
+    "headless_modes": [
+      "--version",
+      "--selftest",
+      "--check-license <file>",
+      "--check-server",
+      "--check-account <credentials.json>"
+    ],
+    "local_only": true
+  },
+  "accounts_candidate_20261106_7": {
+    "artifact_sha256": {
+      "dist/US_Ticari_Aday_2026_11_06_7.exe": "3dc03a29a0ecb7b3ba55fe1a92e277d0ec05974617966e72c66b0834bf718cc9",
+      "dist/us-license-hook_linux": "7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0",
+      "deploy/us-license-hook/us-license-hook": "7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0",
+      "deploy/us-license-hook_hostinger.tgz": "1c3184f3e65980d8e3f2fb7295d8aa335586e4296dde13af9e9160ff78517f34"
+    },
+    "time_tsi": "06.11.2026 08:16 TSİ (Europe/Istanbul)",
+    "go_test_exit": 0,
+    "go_race_exit": 0,
+    "go_vet_exit": 0,
+    "deployed": false
+  }
+}

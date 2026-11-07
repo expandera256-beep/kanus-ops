@@ -1,0 +1,16 @@
+=== RUN   TestPanelR12SharedNegativeCacheBounds
+2026/11/08 01:04:03 gpu wake: failed (test-stable-cooldown)
+2026/11/08 01:04:03 gpu_wake scheme=http host=127.0.0.1:43493 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 01:04:05 gpu_wake scheme=http host=127.0.0.1:43493 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+    zz_panel_r12_cache_test.go:10: second funded user sees at most 2s shared not-ready snapshot; recovery after TTL PASS
+--- PASS: TestPanelR12SharedNegativeCacheBounds (2.12s)
+=== RUN   TestPanelR12GateStatusBodies
+=== RUN   TestPanelR12GateStatusBodies/zero
+    zz_panel_r12_cache_test.go:13: code=402 body="no usable credit\n"
+=== RUN   TestPanelR12GateStatusBodies/bad-plan
+    zz_panel_r12_cache_test.go:13: code=403 body="no active license\n"
+--- PASS: TestPanelR12GateStatusBodies (0.01s)
+    --- PASS: TestPanelR12GateStatusBodies/zero (0.00s)
+    --- PASS: TestPanelR12GateStatusBodies/bad-plan (0.00s)
+PASS
+ok  	kiyas/licensesrv	3.145s

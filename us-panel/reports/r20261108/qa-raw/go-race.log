@@ -1,0 +1,202 @@
+ok  	kiyas	80.190s
+ok  	kiyas/cmd/us-license-hook	14.139s
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+2026/11/08 00:22:52 account /account/register email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:22:52 account /account/register email=t***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:22:52 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:22:52 account /account/login email=t***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:22:56 account /account/register email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:22:56 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:22:56 account /account/password-reset/confirm email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:22:56 account /account/password-reset/confirm email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:22:56 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:22:56 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:03 account /account/register email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:08 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:13 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:17 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:20 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:23 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:27 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:33 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:37 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:40 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:43 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:46 account login limiter: b***@example.test locked for 15m0s after 10 failures
+2026/11/08 00:23:46 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:53 account /account/register email=r***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:53 account /account/login email=r***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:59 account /account/register email=e***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:23:59 account /account/login email=e***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:04 account /account/register email=d***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:08 account /account/register email=e***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:08 account /account/login email=e***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:10 account /account/register email=r***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:11 account /account/login email=r***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:13 account /account/register email=r***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:13 account /account/login email=r***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:16 account /account/register email=e***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:16 account /account/login email=e***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:19 account /account/register email=h***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:19 account /account/login email=h***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:21 account /account/register email=a***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:21 account /account/login email=a***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:24 account /account/register email=s***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:24 account /account/login email=s***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:28 account /account/login email=x***@example.test queue_wait_ms=1000 result=busy_timeout
+2026/11/08 00:24:28 account /account/login email=y***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:31 account /account/login email=y***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:33 account /account/login email=y***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:36 account /account/login email=y***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:39 account /account/login email=y***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:41 account /account/login email=y***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:44 account /account/login email=y***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:47 account /account/login email=y***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:50 account /account/login email=y***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:52 account /account/login email=y***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:24:55 account login limiter: y***@example.test locked for 15m0s after 10 failures
+2026/11/08 00:24:58 account /account/register email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:04 account /account/login email=k***@example.test queue_wait_ms=1000 result=busy_timeout
+2026/11/08 00:25:04 account /account/login email=k***@example.test queue_wait_ms=200 result=slot
+2026/11/08 00:25:10 account /account/register email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:15 account /account/login email=k***@example.test queue_wait_ms=150 result=client_gone
+2026/11/08 00:25:18 account /account/register email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:24 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:26 account /account/login email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:29 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:32 account /account/login email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:35 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:37 account /account/login email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:40 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:43 account /account/login email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:46 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:48 account /account/login email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:51 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:54 account /account/login email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:25:57 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:26:00 account /account/login email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:26:05 account /account/register email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:26:11 account /account/login email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:26:16 account /account/register email=k***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:26:22 account /account/login email=k***@example.test queue_wait_ms=40 result=busy_timeout
+2026/11/08 00:26:22 account /account/register email=k***@example.test queue_wait_ms=40 result=busy_timeout
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:38645 path=/a100/status status=200 pin_ok=yes duration_ms=6 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:38645 path=/a100/status status=200 pin_ok=yes duration_ms=5 level=INFO method=GET err=-
+2026/11/08 00:26:22 http: TLS handshake error from 127.0.0.1:50318: remote error: tls: bad certificate
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:38645 path=/a100/status status=0 pin_ok=no duration_ms=3 level=INFO method=GET err=unreachable
+2026/11/08 00:26:22 http: TLS handshake error from 127.0.0.1:50320: remote error: tls: bad certificate
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:38645 path=/a100/status status=0 pin_ok=no duration_ms=4 level=INFO method=GET err=unreachable
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:42479 path=/a100/start status=0 pin_ok=no duration_ms=0 level=INFO method=POST err=pin_unreadable
+2026/11/08 00:26:22 gpu wake: failed (wake_pin_unreadable)
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:40823 path=/a100/status status=200 pin_ok=yes duration_ms=4 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:40823 path=/a100/status status=200 pin_ok=yes duration_ms=5 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:40823 path=/a100/status status=200 pin_ok=yes duration_ms=4 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:40823 path=/a100/status status=200 pin_ok=yes duration_ms=4 level=INFO method=GET err=-
+2026/11/08 00:26:22 http: TLS handshake error from 127.0.0.1:37558: remote error: tls: bad certificate
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:40037 path=/a100/status status=0 pin_ok=no duration_ms=3 level=INFO method=GET err=unreachable
+2026/11/08 00:26:22 http: TLS handshake error from 127.0.0.1:37560: remote error: tls: bad certificate
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:40037 path=/a100/start status=0 pin_ok=no duration_ms=3 level=INFO method=POST err=unreachable
+2026/11/08 00:26:22 gpu wake: failed (wake_unreachable)
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:40037 path=/a100/start status=0 pin_ok=no duration_ms=0 level=INFO method=POST err=pin_unreadable
+2026/11/08 00:26:22 gpu wake: failed (wake_pin_unreadable)
+2026/11/08 00:26:22 gpu_wake scheme=https host=127.0.0.1:40037 path=/a100/status status=0 pin_ok=n/a(system-ca) duration_ms=72 level=INFO method=GET err=unreachable
+2026/11/08 00:26:22 http: TLS handshake error from 127.0.0.1:37566: remote error: tls: bad certificate
+2026/11/08 00:26:22 http: TLS handshake error from 127.0.0.1:33310: remote error: tls: bad certificate
+2026/11/08 00:26:22 gpu_wake scheme=https host=localhost:37583 path=/a100/status status=0 pin_ok=no duration_ms=4 level=INFO method=GET err=unreachable
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:34995 path=/a100/status status=302 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:34995 path=/a100/start status=302 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 00:26:22 gpu wake: failed (wake_http)
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:45063 path=/a100/status status=0 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=token_unreadable
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:45063 path=/a100/start status=0 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=token_unreadable
+2026/11/08 00:26:22 gpu wake: failed (wake_token_unreadable)
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:45063 path=/a100/status status=0 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=token_unreadable
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36841 path=/a100/start status=202 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36841 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36841 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36841 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:33313 path=/a100/start status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:33313 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:46385 path=/a100/start status=202 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:46385 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:46385 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:46385 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:46385 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/start status=202 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:36491 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:33211 path=/a100/start status=202 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:33211 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:33211 path=/a100/start status=202 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:33211 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:43813 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:43813 path=/a100/start status=202 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:43813 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:43813 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:43813 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:43813 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:43813 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:43813 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 00:26:22 gpu wake: failed (warmup_timeout)
+2026/11/08 00:26:22 gpu_wake scheme=http host=127.0.0.1:43813 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+panic: test timed out after 4m0s
+	running tests:
+		TestAccountLimiterRotatingIPs (24s)
+
+goroutine 1485 [running]:
+testing.(*M).startAlarm.func1()
+	/usr/local/go/src/testing/testing.go:2961 +0x605
+created by time.goFunc
+	/usr/local/go/src/time/sleep.go:182 +0x45
+
+goroutine 1 [chan receive]:
+testing.(*T).Run(0xc000160248, {0xb50ca1, 0x1d}, 0x1012a28)
+	/usr/local/go/src/testing/testing.go:2268 +0xb3e
+testing.runTests.func1(0xc000160248)
+	/usr/local/go/src/testing/testing.go:2744 +0x85
+testing.tRunner(0xc000160248, 0xc00017da40)
+	/usr/local/go/src/testing/testing.go:2195 +0x21d
+testing.runTests({0xb4267d, 0x5}, {0xb47b6b, 0x10}, 0xc0001203a8, {0x1077db0, 0x5a, 0x5a}, {0xc2b403c647edb27f, 0x37e12b28d5, ...})
+	/usr/local/go/src/testing/testing.go:2742 +0x9ea
+testing.(*M).Run(0xc00011ec80)
+	/usr/local/go/src/testing/testing.go:2602 +0xf45
+main.main()
+	_testmain.go:224 +0x165
+
+goroutine 1515 [runnable]:
+golang.org/x/crypto/blowfish.encryptBlock(0x28b01888, 0xadcb4719, 0xc0003cc600)
+	/home/box/go/pkg/mod/golang.org/x/crypto@v0.33.0/blowfish/block.go:115 +0x107d
+golang.org/x/crypto/blowfish.ExpandKey({0xc00038eb70, 0x13, 0x30?}, 0xc0003cc600)
+	/home/box/go/pkg/mod/golang.org/x/crypto@v0.33.0/blowfish/block.go:54 +0x249
+golang.org/x/crypto/bcrypt.expensiveBlowfishSetup({0xc0001bb394, 0x12, 0x1015cf8?}, 0xc, {0xc0001ac7c8, 0x16, 0x18})
+	/home/box/go/pkg/mod/golang.org/x/crypto@v0.33.0/bcrypt/bcrypt.go:236 +0x19a
+golang.org/x/crypto/bcrypt.bcrypt({0xc0001bb394, 0x12, 0x20}, 0xc, {0xc0001ac7c8, 0x16, 0x18})
+	/home/box/go/pkg/mod/golang.org/x/crypto@v0.33.0/bcrypt/bcrypt.go:200 +0x137
+golang.org/x/crypto/bcrypt.CompareHashAndPassword({0xc0001f6080, 0x3c, 0x3c}, {0xc0001bb394, 0x12, 0x20})
+	/home/box/go/pkg/mod/golang.org/x/crypto@v0.33.0/bcrypt/bcrypt.go:114 +0xfd
+kiyas/licensesrv.bcryptCompare({0xc0001f6080, 0x3c, 0x3c}, {0xc0001bb394, 0x12, 0x20})
+	/workspace/us-panel/work2/kiyas/term/licensesrv/accounts.go:721 +0x6e
+kiyas/licensesrv.(*AccountHandler).ServeHTTP(0xc000502f50, {0x1010ed0, 0xc00051b500}, 0xc0002a83c0)
+	/workspace/us-panel/work2/kiyas/term/licensesrv/accounts.go:466 +0x1cc5
+kiyas/licensesrv.loginFromIP(0xc000502f50, {0xc000690e46, 0xa}, {0xc0001ac708, 0x15}, {0xb49284, 0x12})
+	/workspace/us-panel/work2/kiyas/term/licensesrv/login_limiter_test.go:21 +0x4cd
+kiyas/licensesrv.TestAccountLimiterRotatingIPs(0xc0001606c8)
+	/workspace/us-panel/work2/kiyas/term/licensesrv/login_limiter_test.go:36 +0x505
+testing.tRunner(0xc0001606c8, 0x1012a28)
+	/usr/local/go/src/testing/testing.go:2195 +0x21d
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:2260 +0xb13
+FAIL	kiyas/licensesrv	240.035s
+FAIL
+
+exit_code=1

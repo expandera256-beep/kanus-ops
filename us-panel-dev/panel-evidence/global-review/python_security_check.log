@@ -1,0 +1,1 @@
+PASS: traversal languages fall back to tr; formatter expressions/Jinja syntax remain literal; no network or SMTP attempted; delivery/mail_worker/Jinja not imported. Text renderer only; not an HTML escaper.

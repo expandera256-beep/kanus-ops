@@ -1,0 +1,828 @@
+diff --git a/gui.go b/gui.go
+index 08ad169..4f6d349 100644
+--- a/gui.go
++++ b/gui.go
+@@ -10,7 +10,6 @@ import (
+ 	"kiyas/i18n"
+ 	"net"
+ 	"net/http"
+-	"net/url"
+ 	"os"
+ 	"path/filepath"
+ 	"strconv"
+@@ -149,7 +148,8 @@ func guiMux(s *session) http.Handler {
+ 		w.Header().Set("Cache-Control", "no-store")
+ 		writeJSON(w, map[string]string{"version": buildVersion})
+ 	})
+-	mux.Handle("/api/i18n", i18n.Handler(nil))
++	mux.Handle("/api/i18n", i18n.Handler(langPref.Get))
++	mux.Handle("/api/lang", i18n.PrefHandler(langPref, sameOriginRequest))
+ 	mux.HandleFunc("/api/files", g.filesPage)
+ 	mux.HandleFunc("/api/source", g.sourceRange)
+ 	mux.HandleFunc("/api/act", g.act)
+@@ -250,12 +250,9 @@ func (g *guiServer) act(w http.ResponseWriter, r *http.Request) {
+ 		http.Error(w, "yöntem yok", http.StatusMethodNotAllowed)
+ 		return
+ 	}
+-	if origin := r.Header.Get("Origin"); origin != "" {
+-		u, err := url.Parse(origin)
+-		if err != nil || u.Scheme != "http" || !strings.EqualFold(u.Host, r.Host) {
+-			http.Error(w, "Kaynak doğrulanamadı.", http.StatusForbidden)
+-			return
+-		}
++	if !sameOriginRequest(r) {
++		http.Error(w, "Kaynak doğrulanamadı.", http.StatusForbidden)
++		return
+ 	}
+ 	var body struct {
+ 		Op         string `json:"op"`
+diff --git a/gui.html b/gui.html
+index 5ab084f..1cdc42f 100644
+--- a/gui.html
++++ b/gui.html
+@@ -841,7 +841,10 @@ function loadLocale(lang) {
+   const q = lang ? "?lang=" + encodeURIComponent(lang) : "";
+   return fetch("/api/i18n" + q, { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(doc => { if (doc) applyLocale(doc); }).catch(() => {});
+ }
+-document.querySelector("#langsel").addEventListener("change", ev => loadLocale(ev.target.value));
++document.querySelector("#langsel").addEventListener("change", ev => {
++  const lang = ev.target.value;
++  fetch("/api/lang", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lang }) }).catch(() => {}).finally(() => loadLocale(lang));
++});
+ loadLocale("");
+ load();
+ </script>
+diff --git a/gui_lang.go b/gui_lang.go
+new file mode 100644
+index 0000000..3533238
+--- /dev/null
++++ b/gui_lang.go
+@@ -0,0 +1,32 @@
++package main
++
++import (
++	"net/http"
++	"net/url"
++	"path/filepath"
++	"strings"
++
++	"kiyas/i18n"
++)
++
++// langPref stores the panel language next to the existing desk.json
++// (honours US_DESK, defaults to <UserConfigDir>/us/lang.json).
++var langPref = &i18n.PrefStore{Path: func() string {
++	desk := deskPath()
++	if desk == "" {
++		return ""
++	}
++	return filepath.Join(filepath.Dir(desk), "lang.json")
++}}
++
++// sameOriginRequest is the shared Origin check for mutating panel routes
++// (/api/act, /api/lang): an Origin header, when present, must be
++// http://<same host>; requests without Origin (non-browser) are allowed.
++func sameOriginRequest(r *http.Request) bool {
++	origin := r.Header.Get("Origin")
++	if origin == "" {
++		return true
++	}
++	u, err := url.Parse(origin)
++	return err == nil && u.Scheme == "http" && strings.EqualFold(u.Host, r.Host)
++}
+diff --git a/gui_lang_security_test.go b/gui_lang_security_test.go
+new file mode 100644
+index 0000000..74fd4fd
+--- /dev/null
++++ b/gui_lang_security_test.go
+@@ -0,0 +1,68 @@
++package main
++
++import (
++	"bytes"
++	"net/http"
++	"net/http/httptest"
++	"os"
++	"strings"
++	"testing"
++)
++
++func postLang(t *testing.T, h http.Handler, origin string, body []byte) *httptest.ResponseRecorder {
++	t.Helper()
++	r := httptest.NewRequest(http.MethodPost, "http://127.0.0.1:4477/api/lang", bytes.NewReader(body))
++	r.Header.Set("Content-Type", "application/json")
++	if origin != "" {
++		r.Header.Set("Origin", origin)
++	}
++	w := httptest.NewRecorder()
++	h.ServeHTTP(w, r)
++	return w
++}
++
++func langHandler(t *testing.T) http.Handler {
++	s := newView("langsec")
++	s.root = t.TempDir()
++	_ = os.Remove(langPref.Path())
++	t.Cleanup(func() { _ = os.Remove(langPref.Path()) })
++	return guiMux(&s)
++}
++
++// G-03: foreign Origin must get 403 like /api/act; same-origin still works.
++func TestLangPostRejectsForeignOrigin(t *testing.T) {
++	h := langHandler(t)
++	if w := postLang(t, h, "https://evil.example", []byte(`{"lang":"en"}`)); w.Code != http.StatusForbidden {
++		t.Fatalf("foreign origin status %d", w.Code)
++	}
++	if langPref.Get() == "en" {
++		t.Fatal("foreign origin changed preference")
++	}
++	if w := postLang(t, h, "http://127.0.0.1:4477", []byte(`{"lang":"en"}`)); w.Code != http.StatusOK {
++		t.Fatalf("same origin status %d", w.Code)
++	}
++	if w := postLang(t, h, "", []byte(`{"lang":"tr"}`)); w.Code != http.StatusOK {
++		t.Fatalf("no origin status %d", w.Code)
++	}
++}
++
++// G-04: trailing data / second document / oversized body are rejected.
++func TestLangPostRejectsTrailingAndOversized(t *testing.T) {
++	h := langHandler(t)
++	for name, body := range map[string][]byte{
++		"trailing garbage": []byte(`{"lang":"en"} xxx`),
++		"second object":    []byte(`{"lang":"en"}{"lang":"tr"}`),
++		"2MB body":         append([]byte(`{"lang":"en"}`), bytes.Repeat([]byte(" "), 2<<20)...),
++	} {
++		w := postLang(t, h, "", body)
++		if w.Code != http.StatusBadRequest && w.Code != http.StatusRequestEntityTooLarge {
++			t.Errorf("%s: status %d", name, w.Code)
++		}
++	}
++	if langPref.Get() == "en" {
++		t.Fatal("rejected body changed preference")
++	}
++	if w := postLang(t, h, "", []byte(`{"lang":"en"}`+"\n")); w.Code != http.StatusOK || !strings.Contains(w.Body.String(), "en") {
++		t.Fatalf("valid body with newline: %d", w.Code)
++	}
++}
+diff --git a/gui_lang_test.go b/gui_lang_test.go
+new file mode 100644
+index 0000000..7143776
+--- /dev/null
++++ b/gui_lang_test.go
+@@ -0,0 +1,38 @@
++package main
++
++import (
++	"net/http"
++	"net/http/httptest"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++func TestGUILangPreferencePersistsNextToDesk(t *testing.T) {
++	dir := t.TempDir()
++	t.Setenv("US_DESK", filepath.Join(dir, "desk.json"))
++	s := newView("lang")
++	s.root = t.TempDir()
++	h := guiMux(&s)
++	get := func() string {
++		w := httptest.NewRecorder()
++		h.ServeHTTP(w, httptest.NewRequest("GET", "http://127.0.0.1/api/i18n", nil))
++		return w.Body.String()
++	}
++	if !strings.Contains(get(), `"lang":"tr"`) {
++		t.Fatal("default must stay tr")
++	}
++	r := httptest.NewRequest("POST", "http://127.0.0.1/api/lang", strings.NewReader(`{"lang":"en"}`))
++	r.Header.Set("Content-Type", "application/json")
++	w := httptest.NewRecorder()
++	h.ServeHTTP(w, r)
++	if w.Code != http.StatusOK {
++		t.Fatal(w.Code, w.Body.String())
++	}
++	if langPref.Path() != filepath.Join(filepath.Dir(deskPath()), "lang.json") || langPref.Get() != "en" {
++		t.Fatal("pref not stored next to desk")
++	}
++	if !strings.Contains(get(), `"lang":"en"`) {
++		t.Fatal("pref not applied")
++	}
++}
+diff --git a/i18n/pref.go b/i18n/pref.go
+new file mode 100644
+index 0000000..51f3783
+--- /dev/null
++++ b/i18n/pref.go
+@@ -0,0 +1,152 @@
++package i18n
++
++import (
++	"encoding/json"
++	"errors"
++	"io"
++	"mime"
++	"net/http"
++	"sync"
++)
++
++// PrefStore persists the user's language choice as a small JSON file
++// ({"lang":"en"}) next to the panel's existing desk config.
++type PrefStore struct {
++	mu   sync.Mutex
++	Path func() string
++}
++
++type prefDoc struct {
++	Lang string `json:"lang"`
++}
++
++// maxPrefSize bounds the preference file; larger files are ignored.
++const maxPrefSize = 4096
++
++// errUnsafePath is returned when a path component is a symlink or not a
++// regular file/directory.
++var errUnsafePath = errors.New("i18n: unsafe preference path")
++
++// Get returns the stored, supported language or "" (caller uses TR).
++// It never holds the mutex while touching the file system, refuses
++// symlinks/FIFOs/devices (O_NOFOLLOW|O_NONBLOCK + fstat) and reads at most
++// maxPrefSize bytes.
++func (p *PrefStore) Get() string {
++	if p == nil || p.Path == nil {
++		return ""
++	}
++	path := p.Path()
++	if path == "" {
++		return ""
++	}
++	raw, err := readPrefFile(path)
++	if err != nil {
++		return ""
++	}
++	var d prefDoc
++	if json.Unmarshal(raw, &d) != nil {
++		return ""
++	}
++	b, err := Load()
++	if err != nil || !b.has(normalize(d.Lang)) {
++		return ""
++	}
++	return normalize(d.Lang)
++}
++
++// ErrUnsupported is returned for languages without a locale file.
++var ErrUnsupported = errors.New("i18n: unsupported language")
++
++// Set validates and atomically stores lang. The parent directory is
++// resolved without following symlinks and the file is written relative to
++// that directory handle (temp file + rename).
++func (p *PrefStore) Set(lang string) error {
++	b, err := Load()
++	if err != nil {
++		return err
++	}
++	lang = normalize(lang)
++	if !b.has(lang) {
++		return ErrUnsupported
++	}
++	if p == nil || p.Path == nil || p.Path() == "" {
++		return errors.New("i18n: no preference path")
++	}
++	path := p.Path()
++	raw, _ := json.Marshal(prefDoc{Lang: lang})
++	p.mu.Lock()
++	defer p.mu.Unlock()
++	return writePrefFile(path, raw)
++}
++
++func readLimited(r io.Reader) ([]byte, error) {
++	raw, err := io.ReadAll(io.LimitReader(r, maxPrefSize+1))
++	if err != nil {
++		return nil, err
++	}
++	if len(raw) > maxPrefSize {
++		return nil, errUnsafePath
++	}
++	return raw, nil
++}
++
++// PrefHandler serves GET/POST /api/lang. POST requires a single JSON
++// document ({"lang":"en"}) of at most maxBodySize bytes; allow (if set)
++// must accept the request (same Origin check as /api/act).
++func PrefHandler(p *PrefStore, allow func(*http.Request) bool) http.Handler {
++	const maxBodySize = 4096
++	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		w.Header().Set("Cache-Control", "no-store")
++		switch r.Method {
++		case http.MethodGet:
++			lang := p.Get()
++			if lang == "" {
++				lang = Default
++			}
++			w.Header().Set("Content-Type", "application/json; charset=utf-8")
++			_ = json.NewEncoder(w).Encode(prefDoc{Lang: lang})
++		case http.MethodPost:
++			if allow != nil && !allow(r) {
++				http.Error(w, "forbidden origin", http.StatusForbidden)
++				return
++			}
++			if mt, _, _ := mime.ParseMediaType(r.Header.Get("Content-Type")); mt != "application/json" {
++				http.Error(w, "json required", http.StatusUnsupportedMediaType)
++				return
++			}
++			dec := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxBodySize))
++			var d prefDoc
++			err := dec.Decode(&d)
++			if err == nil {
++				if extra := dec.Decode(&struct{}{}); extra != io.EOF {
++					err = errors.New("trailing data")
++					if extra != nil {
++						err = extra
++					}
++				}
++			}
++			if err != nil {
++				var tooBig *http.MaxBytesError
++				if errors.As(err, &tooBig) {
++					http.Error(w, "request too large", http.StatusRequestEntityTooLarge)
++					return
++				}
++				http.Error(w, "bad request", http.StatusBadRequest)
++				return
++			}
++			if err := p.Set(d.Lang); err != nil {
++				if errors.Is(err, ErrUnsupported) {
++					http.Error(w, "unsupported language", http.StatusBadRequest)
++					return
++				}
++				http.Error(w, "could not save", http.StatusInternalServerError)
++				return
++			}
++			w.Header().Set("Content-Type", "application/json; charset=utf-8")
++			_ = json.NewEncoder(w).Encode(prefDoc{Lang: normalize(d.Lang)})
++		default:
++			w.Header().Set("Allow", "GET, POST")
++			http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
++		}
++	})
++}
+diff --git a/i18n/pref_security_unix_test.go b/i18n/pref_security_unix_test.go
+new file mode 100644
+index 0000000..97ad9a0
+--- /dev/null
++++ b/i18n/pref_security_unix_test.go
+@@ -0,0 +1,134 @@
++//go:build !windows
++
++package i18n
++
++import (
++	"os"
++	"path/filepath"
++	"syscall"
++	"testing"
++	"time"
++)
++
++func store(path string) *PrefStore { return &PrefStore{Path: func() string { return path }} }
++
++// G-01: a FIFO must not block Get (nor leave the mutex held for Set).
++func TestPrefGetFIFODoesNotBlock(t *testing.T) {
++	dir := t.TempDir()
++	path := filepath.Join(dir, "lang.json")
++	if err := syscall.Mkfifo(path, 0o600); err != nil {
++		t.Skip("mkfifo:", err)
++	}
++	t.Cleanup(func() { // unblock a stuck reader of the old implementation
++		if f, err := os.OpenFile(path, os.O_WRONLY|syscall.O_NONBLOCK, 0); err == nil {
++			f.Close()
++		}
++	})
++	p := store(path)
++	done := make(chan string, 1)
++	go func() { done <- p.Get() }()
++	select {
++	case got := <-done:
++		if got != "" {
++			t.Fatalf("FIFO must yield default, got %q", got)
++		}
++	case <-time.After(500 * time.Millisecond):
++		t.Fatal("Get blocked on FIFO")
++	}
++	setDone := make(chan error, 1)
++	go func() { setDone <- store(filepath.Join(t.TempDir(), "lang.json")).Set("en") }()
++	select {
++	case <-setDone:
++	case <-time.After(500 * time.Millisecond):
++		t.Fatal("Set blocked")
++	}
++}
++
++// G-01: a symlinked preference file must be ignored.
++func TestPrefGetRejectsSymlinkFile(t *testing.T) {
++	dir, out := t.TempDir(), t.TempDir()
++	target := filepath.Join(out, "target.json")
++	os.WriteFile(target, []byte(`{"lang":"en"}`), 0o600)
++	path := filepath.Join(dir, "lang.json")
++	if err := os.Symlink(target, path); err != nil {
++		t.Fatal(err)
++	}
++	if got := store(path).Get(); got != "" {
++		t.Fatalf("symlink followed: %q", got)
++	}
++}
++
++// G-01: huge (sparse) file must be rejected without reading it all.
++func TestPrefGetRejectsLargeFileQuickly(t *testing.T) {
++	path := filepath.Join(t.TempDir(), "lang.json")
++	f, err := os.Create(path)
++	if err != nil {
++		t.Fatal(err)
++	}
++	f.WriteString(`{"lang":"en"}`)
++	f.Truncate(1 << 30) // 1 GiB sparse
++	f.Close()
++	start := time.Now()
++	got := store(path).Get()
++	if got != "" {
++		t.Fatalf("large file accepted: %q", got)
++	}
++	if d := time.Since(start); d > 150*time.Millisecond {
++		t.Fatalf("large file read took %v (unbounded read)", d)
++	}
++}
++
++// G-02: a symlinked parent directory must not redirect the write.
++func TestPrefSetRejectsSymlinkParent(t *testing.T) {
++	root, outside := t.TempDir(), t.TempDir()
++	if err := os.Symlink(outside, filepath.Join(root, "parent")); err != nil {
++		t.Fatal(err)
++	}
++	p := store(filepath.Join(root, "parent", "lang.json"))
++	if err := p.Set("en"); err == nil {
++		t.Error("Set through symlinked parent succeeded")
++	}
++	if _, err := os.Lstat(filepath.Join(outside, "lang.json")); err == nil {
++		t.Fatal("write escaped to symlink target directory")
++	}
++	ents, _ := os.ReadDir(outside)
++	if len(ents) != 0 {
++		t.Fatalf("files created outside root: %v", ents)
++	}
++}
++
++// G-02: a symlinked final component must be rejected, target untouched.
++func TestPrefSetRejectsSymlinkFile(t *testing.T) {
++	dir, out := t.TempDir(), t.TempDir()
++	victim := filepath.Join(out, "victim")
++	os.WriteFile(victim, []byte("keep"), 0o600)
++	path := filepath.Join(dir, "lang.json")
++	os.Symlink(victim, path)
++	if err := store(path).Set("en"); err == nil {
++		t.Error("Set over symlink succeeded")
++	}
++	if b, _ := os.ReadFile(victim); string(b) != "keep" {
++		t.Fatal("victim modified")
++	}
++}
++
++// Regression: normal write stays inside its directory, 0600, round-trips.
++func TestPrefSetStaysInsideRoot(t *testing.T) {
++	root := t.TempDir()
++	path := filepath.Join(root, "us", "lang.json")
++	p := store(path)
++	if err := p.Set("en"); err != nil {
++		t.Fatal(err)
++	}
++	if p.Get() != "en" {
++		t.Fatal("roundtrip")
++	}
++	fi, err := os.Lstat(path)
++	if err != nil || !fi.Mode().IsRegular() || fi.Mode().Perm() != 0o600 {
++		t.Fatalf("bad file %v %v", fi, err)
++	}
++	ents, _ := os.ReadDir(filepath.Dir(path))
++	if len(ents) != 1 {
++		t.Fatalf("temp files left: %v", ents)
++	}
++}
+diff --git a/i18n/pref_test.go b/i18n/pref_test.go
+new file mode 100644
+index 0000000..2c5e172
+--- /dev/null
++++ b/i18n/pref_test.go
+@@ -0,0 +1,89 @@
++package i18n
++
++import (
++	"net/http"
++	"net/http/httptest"
++	"os"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++func TestPrefStoreRoundTrip(t *testing.T) {
++	dir := t.TempDir()
++	path := filepath.Join(dir, "sub", "lang.json")
++	p := &PrefStore{Path: func() string { return path }}
++	if p.Get() != "" {
++		t.Fatal("empty store should return empty")
++	}
++	if err := p.Set("EN-gb"); err != nil {
++		t.Fatal(err)
++	}
++	if p.Get() != "en" {
++		t.Fatal("got", p.Get())
++	}
++	if fi, _ := os.Stat(path); fi.Mode().Perm() != 0o600 {
++		t.Errorf("perm %v", fi.Mode().Perm())
++	}
++	if err := p.Set("xx"); err != ErrUnsupported {
++		t.Fatal("unsupported accepted", err)
++	}
++	if p.Get() != "en" {
++		t.Fatal("bad set changed value")
++	}
++	os.WriteFile(path, []byte(`{"lang":"zz"}`), 0o600)
++	if p.Get() != "" {
++		t.Fatal("unknown stored lang must be ignored")
++	}
++	os.WriteFile(path, []byte(`garbage`), 0o600)
++	if p.Get() != "" {
++		t.Fatal("corrupt file must be ignored")
++	}
++	var nilStore *PrefStore
++	if nilStore.Get() != "" {
++		t.Fatal("nil store")
++	}
++}
++
++func TestPrefHandler(t *testing.T) {
++	path := filepath.Join(t.TempDir(), "lang.json")
++	p := &PrefStore{Path: func() string { return path }}
++	h := PrefHandler(p, nil)
++	do := func(method, ct, body string) *httptest.ResponseRecorder {
++		r := httptest.NewRequest(method, "/api/lang", strings.NewReader(body))
++		if ct != "" {
++			r.Header.Set("Content-Type", ct)
++		}
++		w := httptest.NewRecorder()
++		h.ServeHTTP(w, r)
++		return w
++	}
++	if w := do("GET", "", ""); !strings.Contains(w.Body.String(), `"tr"`) {
++		t.Fatal("default must be tr:", w.Body.String())
++	}
++	if w := do("POST", "application/x-www-form-urlencoded", "lang=en"); w.Code != http.StatusUnsupportedMediaType {
++		t.Fatal("form post accepted", w.Code)
++	}
++	if w := do("POST", "application/json", `{"lang":"de"}`); w.Code != http.StatusBadRequest {
++		t.Fatal("unsupported lang accepted", w.Code)
++	}
++	if w := do("POST", "application/json", `{`); w.Code != http.StatusBadRequest {
++		t.Fatal("bad json", w.Code)
++	}
++	if w := do("POST", "application/json; charset=utf-8", `{"lang":"en"}`); w.Code != 200 {
++		t.Fatal("valid post", w.Code)
++	}
++	if w := do("GET", "", ""); !strings.Contains(w.Body.String(), `"en"`) {
++		t.Fatal("persisted value", w.Body.String())
++	}
++	if w := do("DELETE", "", ""); w.Code != http.StatusMethodNotAllowed {
++		t.Fatal(w.Code)
++	}
++	// Handler honours stored preference when no lang query is given.
++	r := httptest.NewRequest("GET", "/api/i18n", nil)
++	w := httptest.NewRecorder()
++	Handler(p.Get).ServeHTTP(w, r)
++	if !strings.Contains(w.Body.String(), `"lang":"en"`) {
++		t.Fatal("handler ignored preference")
++	}
++}
+diff --git a/i18n/pref_unix.go b/i18n/pref_unix.go
+new file mode 100644
+index 0000000..de4c9e7
+--- /dev/null
++++ b/i18n/pref_unix.go
+@@ -0,0 +1,115 @@
++//go:build !windows
++
++package i18n
++
++import (
++	"crypto/rand"
++	"encoding/hex"
++	"errors"
++	"os"
++	"path/filepath"
++	"strings"
++
++	"golang.org/x/sys/unix"
++)
++
++// openDirNoFollow opens dir by walking every component from "/" with
++// openat(O_NOFOLLOW|O_DIRECTORY); a symlink anywhere fails. With create,
++// missing components are made with mode 0700 via mkdirat.
++func openDirNoFollow(dir string, create bool) (int, error) {
++	abs, err := filepath.Abs(dir)
++	if err != nil {
++		return -1, err
++	}
++	fd, err := unix.Open("/", unix.O_RDONLY|unix.O_DIRECTORY|unix.O_CLOEXEC, 0)
++	if err != nil {
++		return -1, err
++	}
++	for _, part := range strings.Split(strings.TrimPrefix(filepath.Clean(abs), "/"), "/") {
++		if part == "" {
++			continue
++		}
++		if part == "." || part == ".." {
++			unix.Close(fd)
++			return -1, errUnsafePath
++		}
++		next, err := unix.Openat(fd, part, unix.O_RDONLY|unix.O_DIRECTORY|unix.O_NOFOLLOW|unix.O_CLOEXEC, 0)
++		if errors.Is(err, unix.ENOENT) && create {
++			if merr := unix.Mkdirat(fd, part, 0o700); merr != nil && !errors.Is(merr, unix.EEXIST) {
++				unix.Close(fd)
++				return -1, merr
++			}
++			next, err = unix.Openat(fd, part, unix.O_RDONLY|unix.O_DIRECTORY|unix.O_NOFOLLOW|unix.O_CLOEXEC, 0)
++		}
++		unix.Close(fd)
++		if err != nil {
++			if errors.Is(err, unix.ELOOP) || errors.Is(err, unix.ENOTDIR) {
++				return -1, errUnsafePath
++			}
++			return -1, err
++		}
++		fd = next
++	}
++	return fd, nil
++}
++
++func readPrefFile(path string) ([]byte, error) {
++	dirfd, err := openDirNoFollow(filepath.Dir(path), false)
++	if err != nil {
++		return nil, err
++	}
++	defer unix.Close(dirfd)
++	fd, err := unix.Openat(dirfd, filepath.Base(path), unix.O_RDONLY|unix.O_NOFOLLOW|unix.O_NONBLOCK|unix.O_CLOEXEC, 0)
++	if err != nil {
++		return nil, err
++	}
++	f := os.NewFile(uintptr(fd), path)
++	defer f.Close()
++	var st unix.Stat_t
++	if err := unix.Fstat(fd, &st); err != nil {
++		return nil, err
++	}
++	if st.Mode&unix.S_IFMT != unix.S_IFREG || st.Size > maxPrefSize {
++		return nil, errUnsafePath
++	}
++	return readLimited(f)
++}
++
++func writePrefFile(path string, raw []byte) error {
++	dirfd, err := openDirNoFollow(filepath.Dir(path), true)
++	if err != nil {
++		return err
++	}
++	defer unix.Close(dirfd)
++	base := filepath.Base(path)
++	var st unix.Stat_t
++	if err := unix.Fstatat(dirfd, base, &st, unix.AT_SYMLINK_NOFOLLOW); err == nil && st.Mode&unix.S_IFMT != unix.S_IFREG {
++		return errUnsafePath
++	}
++	var rnd [8]byte
++	if _, err := rand.Read(rnd[:]); err != nil {
++		return err
++	}
++	tmp := ".lang-" + hex.EncodeToString(rnd[:]) + ".tmp"
++	fd, err := unix.Openat(dirfd, tmp, unix.O_WRONLY|unix.O_CREAT|unix.O_EXCL|unix.O_NOFOLLOW|unix.O_CLOEXEC, 0o600)
++	if err != nil {
++		return err
++	}
++	f := os.NewFile(uintptr(fd), tmp)
++	_, err = f.Write(raw)
++	if err == nil {
++		err = f.Sync()
++	}
++	if cerr := f.Close(); err == nil {
++		err = cerr
++	}
++	if err == nil {
++		err = unix.Renameat(dirfd, tmp, dirfd, base)
++	}
++	if err != nil {
++		_ = unix.Unlinkat(dirfd, tmp, 0)
++		return err
++	}
++	_ = unix.Fsync(dirfd)
++	return nil
++}
+diff --git a/i18n/pref_windows.go b/i18n/pref_windows.go
+new file mode 100644
+index 0000000..9391b2c
+--- /dev/null
++++ b/i18n/pref_windows.go
+@@ -0,0 +1,98 @@
++//go:build windows
++
++package i18n
++
++import (
++	"errors"
++	"io/fs"
++	"os"
++	"path/filepath"
++	"strings"
++)
++
++// checkDirNoLink walks dir from its volume root rejecting symlinks and
++// reparse points (Lstat), creating missing components when create is set.
++// Windows lacks openat; this Lstat-based check is the documented fallback.
++func checkDirNoLink(dir string, create bool) error {
++	abs, err := filepath.Abs(dir)
++	if err != nil {
++		return err
++	}
++	vol := filepath.VolumeName(abs)
++	cur := vol + string(filepath.Separator)
++	for _, part := range strings.Split(strings.TrimPrefix(abs[len(vol):], string(filepath.Separator)), string(filepath.Separator)) {
++		if part == "" {
++			continue
++		}
++		cur = filepath.Join(cur, part)
++		fi, err := os.Lstat(cur)
++		if errors.Is(err, fs.ErrNotExist) && create {
++			if err := os.Mkdir(cur, 0o700); err != nil && !errors.Is(err, fs.ErrExist) {
++				return err
++			}
++			fi, err = os.Lstat(cur)
++		}
++		if err != nil {
++			return err
++		}
++		if fi.Mode()&(fs.ModeSymlink|fs.ModeIrregular) != 0 || !fi.IsDir() {
++			return errUnsafePath
++		}
++	}
++	return nil
++}
++
++func readPrefFile(path string) ([]byte, error) {
++	if err := checkDirNoLink(filepath.Dir(path), false); err != nil {
++		return nil, err
++	}
++	before, err := os.Lstat(path)
++	if err != nil {
++		return nil, err
++	}
++	if !before.Mode().IsRegular() || before.Size() > maxPrefSize {
++		return nil, errUnsafePath
++	}
++	f, err := os.Open(path)
++	if err != nil {
++		return nil, err
++	}
++	defer f.Close()
++	after, err := f.Stat()
++	if err != nil || !after.Mode().IsRegular() || !os.SameFile(before, after) {
++		return nil, errUnsafePath
++	}
++	return readLimited(f)
++}
++
++func writePrefFile(path string, raw []byte) error {
++	dir := filepath.Dir(path)
++	if err := checkDirNoLink(dir, true); err != nil {
++		return err
++	}
++	if fi, err := os.Lstat(path); err == nil && !fi.Mode().IsRegular() {
++		return errUnsafePath
++	}
++	tmp, err := os.CreateTemp(dir, ".lang-*.tmp")
++	if err != nil {
++		return err
++	}
++	name := tmp.Name()
++	_, err = tmp.Write(raw)
++	if err == nil {
++		err = tmp.Sync()
++	}
++	if cerr := tmp.Close(); err == nil {
++		err = cerr
++	}
++	if err == nil {
++		err = checkDirNoLink(dir, false)
++	}
++	if err == nil {
++		err = os.Rename(name, path)
++	}
++	if err != nil {
++		_ = os.Remove(name)
++	}
++	return err
++}

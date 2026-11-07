@@ -1,0 +1,243 @@
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:38915 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=58 level=INFO method=GET err=-
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:38915 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=6 level=INFO method=POST err=-
+2026/11/08 01:23:26 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.09s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:39179 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=6 level=INFO method=GET err=-
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:39179 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:26 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.02s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:44889 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=29 level=INFO method=GET err=-
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:44889 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:26 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.04s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:33109 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:33109 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:26 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.01s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:45355 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=27 level=INFO method=GET err=-
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:45355 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 01:23:26 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.04s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:42765 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:23:26 gpu_wake scheme=http host=127.0.0.1:42765 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:26 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.01s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:34441 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=23 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:34441 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=2 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.04s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:33127 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:33127 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.01s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:43919 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=30 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:43919 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.04s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:35945 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=8 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:35945 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.03s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:34055 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=21 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:34055 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.03s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:41895 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=4 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:41895 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=2 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.01s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:43071 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=21 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:43071 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.05s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:44819 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=13 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:44819 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=2 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.02s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:46373 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=21 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:46373 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.04s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:40779 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=9 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:40779 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.02s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:37519 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=28 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:37519 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.04s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:42131 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=15 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:42131 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=2 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.03s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:45527 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=27 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:45527 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.04s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:44297 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=4 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:44297 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.01s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:37659 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=24 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:37659 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=2 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.03s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:40929 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=9 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:40929 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.02s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:42661 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=39 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:42661 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.05s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:40647 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=20 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:40647 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=2 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.03s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:44427 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=22 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:44427 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.03s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:33229 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=3 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:33229 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=7 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.03s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:39603 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=22 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:39603 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.03s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:42497 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=11 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:42497 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=2 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.04s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:43295 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=24 level=INFO method=GET err=-
+2026/11/08 01:23:27 gpu_wake scheme=http host=127.0.0.1:43295 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:27 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.07s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:39791 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=16 level=INFO method=GET err=-
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:39791 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=2 level=INFO method=POST err=-
+2026/11/08 01:23:28 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.04s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:38141 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=25 level=INFO method=GET err=-
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:38141 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=11 level=INFO method=POST err=-
+2026/11/08 01:23:28 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.04s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:44125 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=3 level=INFO method=GET err=-
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:44125 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=2 level=INFO method=POST err=-
+2026/11/08 01:23:28 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.02s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:45559 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=38 level=INFO method=GET err=-
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:45559 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:28 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.05s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:42203 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:42203 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:28 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.01s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:42147 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=28 level=INFO method=GET err=-
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:42147 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 01:23:28 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.04s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:35245 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=4 level=INFO method=GET err=-
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:35245 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=2 level=INFO method=POST err=-
+2026/11/08 01:23:28 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.02s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:39811 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=27 level=INFO method=GET err=-
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:39811 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 01:23:28 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.05s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:45391 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=8 level=INFO method=GET err=-
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:45391 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:28 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.01s)
+=== RUN   TestR12ConcurrentWakeCoalescesStatus
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:42009 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=27 level=INFO method=GET err=-
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:42009 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 01:23:28 gpu wake: failed (wake_http)
+    r12_review_test.go:229: 50 concurrent: starts=1 status=1
+--- PASS: TestR12ConcurrentWakeCoalescesStatus (0.04s)
+=== RUN   TestR13BurstExactlyOneStartOneStatus
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:34511 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=5 level=INFO method=GET err=-
+2026/11/08 01:23:28 gpu_wake scheme=http host=127.0.0.1:34511 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:23:28 gpu wake: failed (wake_http)
+    r13_wake_races_test.go:325: 50 concurrent HTTP requests: starts=1 status=1
+--- PASS: TestR13BurstExactlyOneStartOneStatus (0.01s)
+PASS
+ok  	kiyas/licensesrv	2.762s
+0

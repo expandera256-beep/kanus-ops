@@ -1,0 +1,9 @@
+START kiyas 2026-11-08T01:28:52+03:00
+END kiyas exit=0 2026-11-08T01:30:01+03:00
+START kiyas/cmd/us-license-hook 2026-11-08T01:30:01+03:00
+END kiyas/cmd/us-license-hook exit=0 2026-11-08T01:30:21+03:00
+START kiyas/cmd/us-pricing-gen 2026-11-08T01:30:21+03:00
+END kiyas/cmd/us-pricing-gen exit=0 2026-11-08T01:30:22+03:00
+START kiyas/internal/privacy 2026-11-08T01:30:22+03:00
+END kiyas/internal/privacy exit=0 2026-11-08T01:31:28+03:00
+START kiyas/licensesrv 2026-11-08T01:31:28+03:00

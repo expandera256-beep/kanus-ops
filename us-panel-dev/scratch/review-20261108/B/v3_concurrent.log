@@ -1,0 +1,4 @@
+=== RUN   TestReviewSameAccountConcurrentFields
+--- PASS: TestReviewSameAccountConcurrentFields (0.11s)
+PASS
+ok  	kiyas/internal/privacy	1.123s

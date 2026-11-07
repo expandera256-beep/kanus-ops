@@ -1,0 +1,37 @@
+[
+  {
+    "repo": "black-forest-labs/flux",
+    "revision": "802fb4713906133fcbd0d8dc5351620ca4773036",
+    "path": "model_licenses/LICENSE-FLUX1-schnell",
+    "url": "https://raw.githubusercontent.com/black-forest-labs/flux/802fb4713906133fcbd0d8dc5351620ca4773036/model_licenses/LICENSE-FLUX1-schnell",
+    "sha256": "15ec800f93139ec3f09a72d6afafca51496ad40cb3adf5112fd80c28e69d5140"
+  },
+  {
+    "repo": "black-forest-labs/flux",
+    "revision": "802fb4713906133fcbd0d8dc5351620ca4773036",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/black-forest-labs/flux/802fb4713906133fcbd0d8dc5351620ca4773036/README.md",
+    "sha256": "d87b208a6a7b4669f08fa1882025c6fe825ee29605b0250d0b9f56b36ce27078"
+  },
+  {
+    "repo": "black-forest-labs/flux2",
+    "revision": "50fe5162777813d869182b139e83b10743caef15",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/black-forest-labs/flux2/50fe5162777813d869182b139e83b10743caef15/README.md",
+    "sha256": "435753749320bbb395c15983e63e3dc73936c03f0f1870c628e7bf922c55eef7"
+  },
+  {
+    "repo": "openai/CLIP",
+    "revision": "d05afc436d78f1c48dc0dbf8e5980a9d471f35f6",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/LICENSE",
+    "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db"
+  },
+  {
+    "repo": "google-research/text-to-text-transfer-transformer",
+    "revision": "42909aa15d1fbd16c69333aa474a00ae8ed9fde4",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/google-research/text-to-text-transfer-transformer/42909aa15d1fbd16c69333aa474a00ae8ed9fde4/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  }
+]

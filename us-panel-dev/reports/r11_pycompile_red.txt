@@ -1,0 +1,2 @@
+    py_isolated_test.go:32: -I yok: ["python3" "-m" "py_compile" "a.py"]
+--- FAIL: TestPyCompileRunsIsolated (0.00s)

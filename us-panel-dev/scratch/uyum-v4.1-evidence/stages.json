@@ -1,0 +1,18 @@
+[
+  {
+    "stage": "01-preferences",
+    "compile_exit": 0
+  },
+  {
+    "stage": "02-ops",
+    "compile_exit": 0
+  },
+  {
+    "stage": "03-handler",
+    "compile_exit": 0
+  },
+  {
+    "stage": "04-hook-us",
+    "compile_exit": 0
+  }
+]

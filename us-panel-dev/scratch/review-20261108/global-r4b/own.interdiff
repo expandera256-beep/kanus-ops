@@ -1,0 +1,284 @@
+diff -ru a/i18n/pref.go b/i18n/pref.go
+--- a/i18n/pref.go
++++ b/i18n/pref.go
+@@ -11,6 +11,7 @@
+ 	"path/filepath"
+ 	"strings"
+ 	"sync"
++	"sync/atomic"
+ )
+ 
+ // PrefStore persists the user's language choice as a small JSON file
+@@ -47,6 +48,15 @@
+ // Windows), keeping the descriptor count constant.
+ const maxRoots = 1
+ 
++// Root handle accounting (process-wide). Tests use these to measure leaks
++// directly instead of OS-wide handle counts, which include Go runtime and
++// AV/EDR handles on Windows.
++var rootOpened, rootClosed atomic.Int64
++
++// rootCloseHook is nil in production; tests set it to verify that a closed
++// handle is really invalid.
++var rootCloseHook func(rootHandle)
++
+ type prefDoc struct {
+ 	Lang string `json:"lang"`
+ }
+@@ -114,6 +124,9 @@
+ 	resolved, err := resolveRoot(key)
+ 	if err == nil {
+ 		r.h, err = openRoot(resolved)
++		if err == nil {
++			rootOpened.Add(1)
++		}
+ 	}
+ 	r.err = err
+ 	r.refs = 1
+@@ -137,6 +150,10 @@
+ 	if r.evicted && r.refs <= 0 && r.err == nil && !r.closed {
+ 		r.closed = true
+ 		closeRoot(r.h)
++		rootClosed.Add(1)
++		if rootCloseHook != nil {
++			rootCloseHook(r.h)
++		}
+ 	}
+ }
+ 
+diff -ru a/i18n/pref_handles_other_test.go b/i18n/pref_handles_other_test.go
+--- a/i18n/pref_handles_other_test.go
++++ b/i18n/pref_handles_other_test.go
+@@ -2,10 +2,19 @@
+ 
+ package i18n
+ 
+-import "testing"
++import (
++	"testing"
++
++	"golang.org/x/sys/unix"
++)
+ 
+ func openHandleCount(t *testing.T) int {
+ 	t.Helper()
+ 	t.Skip("handle count not implemented on this OS")
+ 	return 0
+ }
++
++func handleValid(h rootHandle) bool {
++	_, err := unix.FcntlInt(uintptr(h), unix.F_GETFD, 0)
++	return err == nil
++}
+diff -ru a/i18n/pref_handles_unix_test.go b/i18n/pref_handles_unix_test.go
+--- a/i18n/pref_handles_unix_test.go
++++ b/i18n/pref_handles_unix_test.go
+@@ -5,6 +5,8 @@
+ import (
+ 	"os"
+ 	"testing"
++
++	"golang.org/x/sys/unix"
+ )
+ 
+ func openHandleCount(t *testing.T) int {
+@@ -15,3 +17,8 @@
+ 	}
+ 	return len(ents)
+ }
++
++func handleValid(h rootHandle) bool {
++	_, err := unix.FcntlInt(uintptr(h), unix.F_GETFD, 0)
++	return err == nil
++}
+diff -ru a/i18n/pref_handles_windows_test.go b/i18n/pref_handles_windows_test.go
+--- a/i18n/pref_handles_windows_test.go
++++ b/i18n/pref_handles_windows_test.go
+@@ -9,7 +9,11 @@
+ 	"golang.org/x/sys/windows"
+ )
+ 
+-var procGetProcessHandleCount = windows.NewLazySystemDLL("kernel32.dll").NewProc("GetProcessHandleCount")
++var (
++	kernel32                  = windows.NewLazySystemDLL("kernel32.dll")
++	procGetProcessHandleCount = kernel32.NewProc("GetProcessHandleCount")
++	procGetHandleInformation  = kernel32.NewProc("GetHandleInformation")
++)
+ 
+ func openHandleCount(t *testing.T) int {
+ 	t.Helper()
+@@ -20,3 +24,11 @@
+ 	}
+ 	return int(n)
+ }
++
++// handleValid: GetHandleInformation fails with ERROR_INVALID_HANDLE once
++// the handle is closed.
++func handleValid(h rootHandle) bool {
++	var flags uint32
++	r, _, _ := procGetHandleInformation.Call(uintptr(h), uintptr(unsafe.Pointer(&flags)))
++	return r != 0
++}
+diff -ru a/i18n/pref_rootcache_test.go b/i18n/pref_rootcache_test.go
+--- a/i18n/pref_rootcache_test.go
++++ b/i18n/pref_rootcache_test.go
+@@ -8,26 +8,13 @@
+ 	"testing"
+ )
+ 
+-// TestPrefRootCacheBounded reproduces PANEL DEV R3-01: 64 distinct roots
+-// on one store must not grow the open handle count (was 7 -> 71).
+-func TestPrefRootCacheBounded(t *testing.T) {
+-	base := t.TempDir()
+-	cur := ""
+-	var mu sync.Mutex
+-	p := &PrefStore{Root: func() string { mu.Lock(); defer mu.Unlock(); return cur }}
+-	set := func(i int) {
+-		mu.Lock()
+-		cur = filepath.Join(base, "r"+strconv.Itoa(i))
+-		mu.Unlock()
+-	}
+-	set(0)
+-	if err := p.Set("en"); err != nil {
+-		t.Fatal(err)
+-	}
+-	runtime.GC()
+-	before := openHandleCount(t)
+-	for i := 1; i <= 64; i++ {
+-		set(i)
++func liveRoots() int64 { return rootOpened.Load() - rootClosed.Load() }
++
++// cycleRoots runs Set+Get on n distinct roots below base with one store.
++func cycleRoots(t *testing.T, p *PrefStore, set func(string), base string, from, n int) {
++	t.Helper()
++	for i := from; i < from+n; i++ {
++		set(filepath.Join(base, "r"+strconv.Itoa(i)))
+ 		if err := p.Set("en"); err != nil {
+ 			t.Fatal(err)
+ 		}
+@@ -35,10 +22,25 @@
+ 			t.Fatal("round trip", i)
+ 		}
+ 	}
+-	runtime.GC()
+-	after := openHandleCount(t)
+-	if after-before > 16 { // leak would add ~64; slack for runtime threads
+-		t.Fatalf("handle growth %d -> %d after 64 roots", before, after)
++}
++
++func newSwitchStore() (*PrefStore, func(string)) {
++	var mu sync.Mutex
++	cur := ""
++	p := &PrefStore{Root: func() string { mu.Lock(); defer mu.Unlock(); return cur }}
++	return p, func(s string) { mu.Lock(); cur = s; mu.Unlock() }
++}
++
++// TestPrefRootCacheBounded reproduces PANEL DEV R3-01 (64 roots: 7 -> 71
++// fds). Direct measurement: the internal open/close counters must show at
++// most maxRoots live root handles, and zero after Close.
++func TestPrefRootCacheBounded(t *testing.T) {
++	base := t.TempDir()
++	p, set := newSwitchStore()
++	live0 := liveRoots()
++	cycleRoots(t, p, set, base, 0, 64)
++	if d := liveRoots() - live0; d > maxRoots {
++		t.Fatalf("live root handles after 64 roots: %d (> %d)", d, maxRoots)
+ 	}
+ 	p.mu.Lock()
+ 	n := len(p.roots)
+@@ -47,8 +49,58 @@
+ 		t.Fatalf("cache size %d > %d", n, maxRoots)
+ 	}
+ 	p.Close()
+-	if c := openHandleCount(t); c > before {
+-		t.Fatalf("Close left handles: %d > %d", c, before)
++	if d := liveRoots() - live0; d != 0 {
++		t.Fatalf("Close left %d root handles open", d)
++	}
++}
++
++// TestPrefRootHandleScaling: OS handle growth must not scale with the
++// number of roots. Absolute counts are noisy (runtime threads, IOCP,
++// timers, AV/EDR); a leak of one handle per root would add >= 448 between
++// the 64- and 512-root runs, so a 32-handle slack cleanly separates them.
++func TestPrefRootHandleScaling(t *testing.T) {
++	runtime.LockOSThread()
++	defer runtime.UnlockOSThread()
++	base := t.TempDir()
++	p, set := newSwitchStore()
++	defer p.Close()
++	cycleRoots(t, p, set, base, 0, 32) // warm-up: lazy runtime/OS handles
++	measure := func(from, n int) int {
++		runtime.GC()
++		b := openHandleCount(t)
++		cycleRoots(t, p, set, base, from, n)
++		runtime.GC()
++		return openHandleCount(t) - b
++	}
++	d64 := measure(1000, 64)
++	d512 := measure(2000, 512)
++	t.Logf("handle delta: 64 roots %+d, 512 roots %+d", d64, d512)
++	if d512-d64 > 32 {
++		t.Fatalf("handle growth scales with roots: 64 -> %+d, 512 -> %+d", d64, d512)
++	}
++}
++
++// TestPrefRootClosedHandleInvalid: every evicted root handle is really
++// closed at the OS level right after close (fcntl/GetHandleInformation).
++func TestPrefRootClosedHandleInvalid(t *testing.T) {
++	var closed []rootHandle
++	var bad []string
++	rootCloseHook = func(h rootHandle) {
++		closed = append(closed, h)
++		if handleValid(h) {
++			bad = append(bad, "still valid after close")
++		}
++	}
++	defer func() { rootCloseHook = nil }()
++	base := t.TempDir()
++	p, set := newSwitchStore()
++	cycleRoots(t, p, set, base, 0, 16)
++	p.Close()
++	if len(closed) != 16 {
++		t.Fatalf("closed %d root handles, want 16", len(closed))
++	}
++	if len(bad) > 0 {
++		t.Fatal(bad)
+ 	}
+ }
+ 
+@@ -68,8 +120,8 @@
+ 	if !ra.evicted || ra.closed {
+ 		t.Fatal("in-use root closed early")
+ 	}
+-	if _, err := readPrefFile(ra.h, []string{"lang.json"}); err == nil {
+-		// file absent: an error is expected, but the handle must be valid
++	if !handleValid(ra.h) {
++		t.Fatal("in-use root handle invalid")
+ 	}
+ 	p.release(ra)
+ 	if !ra.closed {
+@@ -79,6 +131,7 @@
+ 	if err := p.Set("en"); err != nil || p.Get() != "en" {
+ 		t.Fatal("re-open after eviction failed", err)
+ 	}
++	p.Close()
+ }
+ 
+ // TestPrefRootConcurrentSwitch: concurrent Get/Set while Root flips.
+@@ -95,6 +148,7 @@
+ 		}
+ 		return b
+ 	}}
++	live0 := liveRoots()
+ 	var wg sync.WaitGroup
+ 	for g := 0; g < 8; g++ {
+ 		wg.Add(1)
+@@ -108,4 +162,7 @@
+ 	}
+ 	wg.Wait()
+ 	p.Close()
++	if d := liveRoots() - live0; d != 0 {
++		t.Fatalf("concurrent switching left %d root handles open", d)
++	}
+ }

@@ -1,0 +1,30 @@
+=== r11_base ===
+0001-API-0001-regression-tests-locking-accounts-credit-le.patch check:0
+0001-API-0001-regression-tests-locking-accounts-credit-le.patch apply:0
+0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch check:0
+0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch apply:0
+0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch check:0
+0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch apply:0
+0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch check:0
+0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch apply:0
+0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch check:0
+0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch apply:0
+0001-API-0008-daily-quota-429-Retry-After-regression-test.patch check:0
+0001-API-0008-daily-quota-429-Retry-After-regression-test.patch apply:0
+0001-API-0004-0012-reserved-invariant-guards-TTL-commit-g.patch check:0
+0001-API-0004-0012-reserved-invariant-guards-TTL-commit-g.patch apply:0
+=== v10 ===
+0001-API-0001-regression-tests-locking-accounts-credit-le.patch check:0
+0001-API-0001-regression-tests-locking-accounts-credit-le.patch apply:0
+0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch check:0
+0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch apply:0
+0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch check:0
+0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch apply:0
+0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch check:0
+0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch apply:0
+0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch check:0
+0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch apply:0
+0001-API-0008-daily-quota-429-Retry-After-regression-test.patch check:0
+0001-API-0008-daily-quota-429-Retry-After-regression-test.patch apply:0
+0001-API-0004-0012-reserved-invariant-guards-TTL-commit-g.patch check:0
+0001-API-0004-0012-reserved-invariant-guards-TTL-commit-g.patch apply:0

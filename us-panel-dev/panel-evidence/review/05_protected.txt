@@ -1,0 +1,6 @@
+DEGISTI: /workspace/us-panel/work2/kiyas/term/US_DERLE.bat
+DEGISTI: /workspace/us-panel/work2/kiyas/term/gateway.go
+DEGISTI: /workspace/us-panel/work2/kiyas/term/release.go
+Files base/licensesrv/accounts.go and /workspace/us-panel/work2/kiyas/term/licensesrv/accounts.go differ
+Files base/licensesrv/accounts_test.go and /workspace/us-panel/work2/kiyas/term/licensesrv/accounts_test.go differ
+Files base/licensesrv/model_proxy.go and /workspace/us-panel/work2/kiyas/term/licensesrv/model_proxy.go differ

@@ -1,0 +1,191 @@
+package privacy
+
+import (
+	"encoding/json"
+	"errors"
+	"io"
+	"os"
+	"sync"
+	"time"
+)
+
+const prefsMaxBytes = 1 << 20 // 1 MiB
+
+// A rename succeeded but directory fsync failed: persisted bytes may already be
+// visible. Keep memory consistent with the visible file, report durability error,
+// and permit idempotent retry rather than pretending to roll the commit back.
+type prefsCommittedError struct{ err error }
+
+func (e *prefsCommittedError) Error() string {
+	return "privacy prefs: commit durability uncertain: " + e.err.Error()
+}
+func (e *prefsCommittedError) Unwrap() error { return e.err }
+
+// Preferences holds optional consent flags. Defaults are false until set.
+type Preferences struct {
+	AccountID        string    `json:"accountId"`
+	MarketingConsent bool      `json:"marketingConsent"`
+	ProductUpdates   bool      `json:"productUpdates"`
+	CookieAnalytics  bool      `json:"cookieAnalytics"`
+	UpdatedAt        time.Time `json:"updatedAt"`
+	Source           string    `json:"source,omitempty"`
+}
+
+// PrefStore persists preferences beside the license store (sidecar JSON).
+type PrefStore struct {
+	mu         sync.Mutex
+	path       string
+	byID       map[string]Preferences
+	writeFault func(string) error // test-only fault injection; nil in production
+}
+
+func OpenPrefStore(path string) (*PrefStore, error) {
+	ps := &PrefStore{path: path, byID: map[string]Preferences{}}
+	if path == "" {
+		return ps, nil
+	}
+	f, err := openPrefsNoFollow(path)
+	if errors.Is(err, os.ErrNotExist) {
+		return ps, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	raw, err := io.ReadAll(io.LimitReader(f, prefsMaxBytes+1))
+	if err != nil {
+		return nil, err
+	}
+	if len(raw) > prefsMaxBytes {
+		return nil, errors.New("privacy prefs: file too large")
+	}
+	if len(raw) == 0 {
+		return ps, nil
+	}
+	if err := json.Unmarshal(raw, &ps.byID); err != nil {
+		return nil, err
+	}
+	if ps.byID == nil {
+		ps.byID = map[string]Preferences{}
+	}
+	return ps, nil
+}
+
+func (p *PrefStore) Get(accountID string) Preferences {
+	p.mu.Lock()
+	defer p.mu.Unlock()
+	if v, ok := p.byID[accountID]; ok {
+		return v
+	}
+	return Preferences{AccountID: accountID}
+}
+
+func (p *PrefStore) Put(pref Preferences, now time.Time) error {
+	p.mu.Lock()
+	defer p.mu.Unlock()
+	prev, had := p.byID[pref.AccountID]
+	pref.UpdatedAt = now.UTC()
+	p.byID[pref.AccountID] = pref
+	if err := p.saveLocked(); err != nil {
+		var committed *prefsCommittedError
+		if errors.As(err, &committed) {
+			return err
+		}
+		if had {
+			p.byID[pref.AccountID] = prev
+		} else {
+			delete(p.byID, pref.AccountID)
+		}
+		return err
+	}
+	return nil
+}
+
+func (p *PrefStore) Delete(accountID string) error {
+	p.mu.Lock()
+	defer p.mu.Unlock()
+	prev, had := p.byID[accountID]
+	delete(p.byID, accountID)
+	if err := p.saveLocked(); err != nil {
+		var committed *prefsCommittedError
+		if errors.As(err, &committed) {
+			return err
+		}
+		if had {
+			p.byID[accountID] = prev
+		}
+		return err
+	}
+	return nil
+}
+
+func (p *PrefStore) AsMap(accountID string) map[string]any {
+	v := p.Get(accountID)
+	return map[string]any{
+		"accountId":        v.AccountID,
+		"marketingConsent": v.MarketingConsent,
+		"productUpdates":   v.ProductUpdates,
+		"cookieAnalytics":  v.CookieAnalytics,
+		"updatedAt":        v.UpdatedAt,
+		"source":           v.Source,
+	}
+}
+
+func (p *PrefStore) saveLocked() error {
+	if p.path == "" {
+		return errors.New("privacy prefs path empty")
+	}
+	raw, err := json.MarshalIndent(p.byID, "", "  ")
+	if err != nil {
+		return err
+	}
+	if len(raw) > prefsMaxBytes {
+		return errors.New("privacy prefs: file too large")
+	}
+	return writePrefsAtomic(p.path, raw, p.writeFault)
+}
+
+// Update applies field patches under a single lock (R2-05) then saves with rollback on disk error.
+func (p *PrefStore) Update(accountID string, marketing, product, cookie *bool, source string, now time.Time) error {
+	p.mu.Lock()
+	defer p.mu.Unlock()
+	cur, had := p.byID[accountID]
+	if !had {
+		cur = Preferences{AccountID: accountID}
+	}
+	prev := cur
+	cur.AccountID = accountID
+	if marketing != nil {
+		cur.MarketingConsent = *marketing
+	}
+	if product != nil {
+		cur.ProductUpdates = *product
+	}
+	if cookie != nil {
+		cur.CookieAnalytics = *cookie
+	}
+	if source != "" {
+		cur.Source = source
+	}
+	cur.UpdatedAt = now.UTC()
+	p.byID[accountID] = cur
+	if err := p.saveLocked(); err != nil {
+		var committed *prefsCommittedError
+		if errors.As(err, &committed) {
+			return err
+		}
+		if had {
+			p.byID[accountID] = prev
+		} else {
+			delete(p.byID, accountID)
+		}
+		return err
+	}
+	return nil
+}
+
+func init() {
+	OpenPrefStoreFunc = func(path string) (PreferenceStore, error) {
+		return OpenPrefStore(path)
+	}
+}

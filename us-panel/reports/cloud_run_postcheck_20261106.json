@@ -1,0 +1,28 @@
+{
+  "usModelStart": {
+    "etag": "BwZfjVciueE=",
+    "includedPermissions": [
+      "compute.instances.get",
+      "compute.instances.start"
+    ],
+    "name": "projects/project-27082a40-6083-4952-9db/roles/usModelStart",
+    "stage": "GA",
+    "title": "US model get and start"
+  },
+  "usModelStop": {
+    "etag": "BwZfjVdCnns=",
+    "includedPermissions": [
+      "compute.instances.get",
+      "compute.instances.stop"
+    ],
+    "name": "projects/project-27082a40-6083-4952-9db/roles/usModelStop",
+    "stage": "GA",
+    "title": "US model get and stop"
+  },
+  "ds_a100_after_http": {
+    "lastStartTimestamp": "2026-11-05T16:26:54.759-08:00",
+    "lastStopTimestamp": "2026-11-05T17:23:03.794-08:00",
+    "status": "TERMINATED"
+  },
+  "checked_at_istanbul": "2026-11-06T05:53:06.212493+03:00"
+}

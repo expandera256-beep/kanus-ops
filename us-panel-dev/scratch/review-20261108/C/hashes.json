@@ -1,0 +1,9 @@
+{
+  "/workspace/us-panel-dev/patches/api-0001-regression/0001-API-0001-regression-tests-locking-accounts-credit-le.patch": "f6adb8da070ce4d472ba4b06a49a71c96d03736407296a186dd25d6705d39767",
+  "/workspace/us-panel-dev/patches/api-0003-error-envelope/0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch": "89ea7bb67023665ed170bab3d57d83494c5dead35d74db616ba89b13ea711205",
+  "/workspace/us-panel-dev/patches/api-0005-v1-versioning/0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch": "1be4417f9e1fbcd2ae64deb8ef16aa24120901acd17b925c8928b7cdcb71f63d",
+  "/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch": "19b3cbd93ef5196d05f1be9540a0fa67e73ad72bf34e425d48ed10500ac2ed76",
+  "/workspace/us-panel-dev/patches/api-0008-rate-quota-usage/0001-API-0008-daily-quota-429-Retry-After-regression-test.patch": "496f390718b691fa245d0675cb0580c078997a56adba736add131406db08433d",
+  "/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch": "8a3018be5101f324dd9e9da969831d82583c5428ed3d94786f92e62f1ab6414c",
+  "/workspace/us-panel-dev/patches/api-r11/us-proposals/api-0012-ttl-commit-anchor/store-and-tests.diff": "a21a62511236d35d7e6a408605106224a7827f034b70e2372e2b29cf5a5f1db4"
+}

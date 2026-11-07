@@ -1,0 +1,28 @@
+=== RUN   TestPanelIndependentPEMOnlyPins
+=== RUN   TestPanelIndependentPEMOnlyPins/good-PEM
+2026/11/08 01:03:40 gpu_wake scheme=https host=127.0.0.1:40671 path=/a100/status status=200 pin_ok=yes duration_ms=6 level=INFO method=GET err=-
+=== RUN   TestPanelIndependentPEMOnlyPins/wrong-PEM
+2026/11/08 01:03:40 http: TLS handshake error from 127.0.0.1:53642: remote error: tls: bad certificate
+2026/11/08 01:03:40 gpu_wake scheme=https host=127.0.0.1:40671 path=/a100/status status=0 pin_ok=no duration_ms=4 level=INFO method=GET err=unreachable
+=== RUN   TestPanelIndependentPEMOnlyPins/SPKI-correct-key
+2026/11/08 01:03:40 gpu_wake scheme=https host=127.0.0.1:40671 path=/a100/status status=0 pin_ok=no duration_ms=0 level=INFO method=GET err=pin_spki_unsupported
+=== RUN   TestPanelIndependentPEMOnlyPins/invalid
+2026/11/08 01:03:40 gpu_wake scheme=https host=127.0.0.1:40671 path=/a100/status status=0 pin_ok=no duration_ms=0 level=INFO method=GET err=pin_invalid
+=== RUN   TestPanelIndependentPEMOnlyPins/empty
+2026/11/08 01:03:40 gpu_wake scheme=https host=127.0.0.1:40671 path=/a100/status status=0 pin_ok=no duration_ms=0 level=INFO method=GET err=pin_invalid
+=== RUN   TestPanelIndependentPEMOnlyPins/missing-file
+2026/11/08 01:03:40 gpu_wake scheme=https host=127.0.0.1:40671 path=/a100/status status=0 pin_ok=no duration_ms=0 level=INFO method=GET err=pin_unreadable
+=== RUN   TestPanelIndependentPEMOnlyPins/hostname-and-empty-peer
+2026/11/08 01:03:40 http: TLS handshake error from 127.0.0.1:53652: remote error: tls: bad certificate
+--- PASS: TestPanelIndependentPEMOnlyPins (0.02s)
+    --- PASS: TestPanelIndependentPEMOnlyPins/good-PEM (0.01s)
+    --- PASS: TestPanelIndependentPEMOnlyPins/wrong-PEM (0.01s)
+    --- PASS: TestPanelIndependentPEMOnlyPins/SPKI-correct-key (0.00s)
+    --- PASS: TestPanelIndependentPEMOnlyPins/invalid (0.00s)
+    --- PASS: TestPanelIndependentPEMOnlyPins/empty (0.00s)
+    --- PASS: TestPanelIndependentPEMOnlyPins/missing-file (0.00s)
+    --- PASS: TestPanelIndependentPEMOnlyPins/hostname-and-empty-peer (0.00s)
+=== RUN   TestPanelIndependentMixedOriginPins
+--- PASS: TestPanelIndependentMixedOriginPins (0.00s)
+PASS
+ok  	kiyas/licensesrv	1.035s

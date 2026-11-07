@@ -1,0 +1,41 @@
+=== RUN   TestS2Reg_H1_RUN_VenvEnvLeak
+    s2reg_helpers_test.go:92: S2REG|H1-RUN|PASS|op=run; proje venv betiği ortamında sır görüldü=false
+--- PASS: TestS2Reg_H1_RUN_VenvEnvLeak (0.05s)
+=== RUN   TestS2Reg_H1_TEST_VenvEnvLeak
+    s2reg_helpers_test.go:92: S2REG|H1-TEST|PASS|op=project-tests; proje venv betiği ortamında sır görüldü=false
+--- PASS: TestS2Reg_H1_TEST_VenvEnvLeak (0.07s)
+=== RUN   TestS2Reg_H3_RUN_ProjectBinaryExecuted
+    s2reg_helpers_test.go:92: S2REG|H3-RUN|PASS|op=run; proje kontrolündeki 'python' adlı betik onaysız çalıştı=false
+--- PASS: TestS2Reg_H3_RUN_ProjectBinaryExecuted (0.04s)
+=== RUN   TestS2Reg_H2_TOOLEXEC
+    s2reg_helpers_test.go:92: S2REG|H2-TOOLEXEC|PASS|kabul=false durum=idle yan_etki_dosyası=false notice="Go argümanında boşluk yasak."
+--- PASS: TestS2Reg_H2_TOOLEXEC (0.01s)
+=== RUN   TestS2Reg_N_EXEC
+    s2reg_helpers_test.go:92: S2REG|N-EXEC|PASS|kabul=false durum=idle yan_etki_dosyası=false notice="Go argümanında boşluk yasak."
+--- PASS: TestS2Reg_N_EXEC (0.01s)
+=== RUN   TestS2Reg_N_TOOLEXEC_SPLIT
+    s2reg_helpers_test.go:92: S2REG|N-TOOLEXEC-SPLIT|PASS|kabul=false durum=idle yan_etki_dosyası=false notice="Go bayrağı izinli değil: -toolexec"
+--- PASS: TestS2Reg_N_TOOLEXEC_SPLIT (0.01s)
+=== RUN   TestS2Reg_N_OVERLAY
+    s2reg_helpers_test.go:92: S2REG|N-OVERLAY|PASS|kabul=false durum=idle kök_dışı_kod_çalıştı=false
+--- PASS: TestS2Reg_N_OVERLAY (0.01s)
+=== RUN   TestS2Reg_N_Policy
+    s2reg_helpers_test.go:92: S2REG|N-LDFLAGS|PASS|argv=["go" "build" "-ldflags=-linkmode=external -extld=sh"] kabul=false durum=idle notice="Go argümanında boşluk yasak."
+    s2reg_helpers_test.go:92: S2REG|N-GCFLAGS|PASS|argv=["go" "build" "-gcflags=all=-trimpath=x" "-asmflags=-trimpath=x"] kabul=false durum=idle notice="Go bayrağı izinli değil: -gcflags"
+    s2reg_helpers_test.go:92: S2REG|N-MODFILE|PASS|argv=["go" "build" "-modfile=other.mod"] kabul=false durum=idle notice="Go bayrağı izinli değil: -modfile"
+    s2reg_helpers_test.go:92: S2REG|N-PY-C|PASS|argv=["python3" "-c" "print(1)"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+    s2reg_helpers_test.go:92: S2REG|N-PY-C-AFTER|PASS|argv=["python3" "a.py" "-c" "x"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+    s2reg_helpers_test.go:92: S2REG|N-PY-M-OTHER|PASS|argv=["python3" "-m" "http.server"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+    s2reg_helpers_test.go:92: S2REG|N-NODE-E|PASS|argv=["node" "-e" "1"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+    s2reg_helpers_test.go:92: S2REG|N-NODE-EVAL|PASS|argv=["node" "--eval=1"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+    s2reg_helpers_test.go:92: S2REG|N-NODE-P|PASS|argv=["node" "--test" "-p" "1"] kabul=false durum=idle notice="Node seçeneği izinli değil: -p"
+    s2reg_helpers_test.go:92: S2REG|N-NODE-IMPORT|PASS|argv=["node" "--test" "--import=./a.js"] kabul=false durum=idle notice="Node seçeneği izinli değil: --import=./a.js"
+    s2reg_helpers_test.go:92: S2REG|N-NPM|PASS|argv=["npm" "run" "x"] kabul=false durum=idle notice="Komut izinli değil. Go test/build/run/vet/version; Python dosyası/unittest/py_compile; Node dosyası/test/check desteklenir. Bağımlılıklar otomatik kurulmaz."
+--- PASS: TestS2Reg_N_Policy (0.10s)
+=== RUN   TestS2Reg_N_GOFLAGS_Env
+    s2reg_helpers_test.go:92: S2REG|N-GOFLAGS-ENV|PASS|panel ortamındaki GOFLAGS alt sürece geçti=false kabul=true durum=success
+--- PASS: TestS2Reg_N_GOFLAGS_Env (3.03s)
+=== RUN   TestS2Reg_N_CC_Env
+    s2reg_helpers_test.go:92: S2REG|N-CC-ENV|PASS|panel ortamındaki CC alt sürece geçti=false kabul=true durum=success
+--- PASS: TestS2Reg_N_CC_Env (2.34s)
+=== RUN   TestS2Reg_M1_SETSID_TIMEOUT

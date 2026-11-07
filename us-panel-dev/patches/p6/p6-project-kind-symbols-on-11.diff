@@ -1,0 +1,307 @@
+diff -ruN '--exclude=panel-evidence' r12_prev/term_11/p6_project_kind_test.go p6/term/p6_project_kind_test.go
+--- a/p6_project_kind_test.go	1970-01-01 02:00:00.000000000 +0200
++++ b/p6_project_kind_test.go	2026-11-08 00:43:07.403235453 +0300
+@@ -0,0 +1,69 @@
++package main
++
++import (
++	"os"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++func p6write(t *testing.T, root, rel, body string) {
++	t.Helper()
++	full := filepath.Join(root, filepath.FromSlash(rel))
++	if err := os.MkdirAll(filepath.Dir(full), 0o700); err != nil {
++		t.Fatal(err)
++	}
++	if err := os.WriteFile(full, []byte(body), 0o600); err != nil {
++		t.Fatal(err)
++	}
++}
++
++func TestP6DetectProjectKind(t *testing.T) {
++	cases := []struct {
++		files map[string]string
++		want  string
++	}{
++		{map[string]string{"go.mod": "module x\n", "main.go": "package main\n"}, "go"},
++		{map[string]string{"package.json": "{}"}, "node"},
++		{map[string]string{"pyproject.toml": "", "a.py": ""}, "python"},
++		{map[string]string{"app.py": "print(1)\n"}, "python"},
++		{map[string]string{"main.go": "package main\n"}, "go-nomod"},
++		{map[string]string{"index.js": "1\n"}, "node-nopkg"},
++		{map[string]string{"README.md": "x"}, "unknown"},
++	}
++	for i, c := range cases {
++		root := t.TempDir()
++		for k, v := range c.files {
++			p6write(t, root, k, v)
++		}
++		if got, _ := detectProjectKind(root); got != c.want {
++			t.Fatalf("case %d: got %q want %q", i, got, c.want)
++		}
++	}
++}
++
++// Kök neden: go.mod olmayan Go projesinde çalıştırıcı Python unittest'e düşüyordu
++// (yanlış test aracı). Artık açık bir "go.mod yok" mesajı verilmeli.
++func TestP6RunnerDoesNotPickPythonForGoWithoutMod(t *testing.T) {
++	root := t.TempDir()
++	p6write(t, root, "main.go", "package main\nfunc main(){}\n")
++	out := runProjectTests(root)
++	if strings.Contains(out, "unittest") || strings.Contains(out, "Python") {
++		t.Fatalf("wrong tool chosen: %s", out)
++	}
++	if !strings.Contains(out, "go.mod") {
++		t.Fatalf("expected go.mod notice: %s", out)
++	}
++}
++
++func TestP6RunnerDoesNotPickPythonForJSWithoutPackage(t *testing.T) {
++	root := t.TempDir()
++	p6write(t, root, "index.js", "console.log(1)\n")
++	out := runProjectTests(root)
++	if strings.Contains(out, "unittest") || strings.Contains(out, "Python") {
++		t.Fatalf("wrong tool chosen: %s", out)
++	}
++	if !strings.Contains(out, "package.json") {
++		t.Fatalf("expected package.json notice: %s", out)
++	}
++}
+diff -ruN '--exclude=panel-evidence' r12_prev/term_11/p6_symbols_test.go p6/term/p6_symbols_test.go
+--- a/p6_symbols_test.go	1970-01-01 02:00:00.000000000 +0200
++++ b/p6_symbols_test.go	2026-11-08 00:43:07.407235542 +0300
+@@ -0,0 +1,47 @@
++package main
++
++import (
++	"os"
++	"path/filepath"
++	"testing"
++)
++
++func TestP6FindSymbolDefinitions(t *testing.T) {
++	root := t.TempDir()
++	p6write(t, root, "a/calc.go", "package a\n\nfunc Total(x int) int { return x }\ntype Cart struct{}\nfunc (c *Cart) Total() int { return 0 }\n")
++	p6write(t, root, "b/util.py", "class Cart:\n    def total(self):\n        return 0\n\ndef Total():\n    pass\n")
++	p6write(t, root, "c/app.js", "export function Total(a) { return a }\nconst Cart = () => 1\nclass Cart2 {}\n")
++	p6write(t, root, "secret/.env", "func Total() {}\n")
++	p6write(t, root, "node_modules/x/i.js", "function Total(){}\n")
++	got := findSymbols(root, "Total", 50)
++	want := map[string]bool{"a/calc.go:3": true, "a/calc.go:5": true, "b/util.py:5": true, "c/app.js:1": true}
++	if len(got) != len(want) {
++		t.Fatalf("got %v", got)
++	}
++	for _, h := range got {
++		if !want[h.Loc()] {
++			t.Fatalf("unexpected hit %v", h)
++		}
++	}
++	if h := findSymbols(root, "Cart", 50); len(h) != 3 { // go type, py class, js const
++		t.Fatalf("Cart hits %v", h)
++	}
++	if h := findSymbols(root, "Total", 1); len(h) != 1 {
++		t.Fatalf("limit not applied %v", h)
++	}
++	if h := findSymbols(root, "", 10); len(h) != 0 {
++		t.Fatalf("empty name must return nothing")
++	}
++}
++
++func TestP6FindSymbolsSkipsSymlinks(t *testing.T) {
++	root := t.TempDir()
++	out := t.TempDir()
++	p6write(t, out, "x.go", "package x\nfunc Leak(){}\n")
++	if err := os.Symlink(filepath.Join(out, "x.go"), filepath.Join(root, "x.go")); err != nil {
++		t.Skip("symlink unsupported")
++	}
++	if h := findSymbols(root, "Leak", 10); len(h) != 0 {
++		t.Fatalf("followed symlink: %v", h)
++	}
++}
+diff -ruN '--exclude=panel-evidence' r12_prev/term_11/project_kind.go p6/term/project_kind.go
+--- a/project_kind.go	1970-01-01 02:00:00.000000000 +0200
++++ b/project_kind.go	2026-11-08 00:43:16.619440306 +0300
+@@ -0,0 +1,70 @@
++package main
++
++import (
++	"os"
++	"path/filepath"
++	"strings"
++)
++
++// detectProjectKind reports the project's build/test toolchain from manifest
++// files first, then from source extensions (bounded, no symlinks). The
++// "-nomod"/"-nopkg" kinds mean sources exist without the manifest the
++// toolchain needs, so no other language's runner must be chosen instead.
++func detectProjectKind(root string) (string, string) {
++	has := func(name string) bool {
++		st, err := os.Lstat(filepath.Join(root, name))
++		return err == nil && st.Mode().IsRegular()
++	}
++	switch {
++	case has("go.mod"):
++		return "go", "go.mod"
++	case has("package.json"):
++		return "node", "package.json"
++	case has("pyproject.toml"), has("setup.py"), has("requirements.txt"):
++		return "python", "python manifest"
++	}
++	counts := map[string]int{}
++	scanned := 0
++	_ = filepath.WalkDir(root, func(path string, e os.DirEntry, err error) error {
++		if err != nil || path == root {
++			return nil
++		}
++		if e.Type()&os.ModeSymlink != 0 {
++			return nil
++		}
++		if e.IsDir() {
++			if skipTreeDir(e.Name()) || depth(root, path) > workspaceDepth {
++				return filepath.SkipDir
++			}
++			return nil
++		}
++		scanned++
++		if scanned > 5000 {
++			return filepath.SkipAll
++		}
++		switch strings.ToLower(filepath.Ext(path)) {
++		case ".go":
++			counts["go"]++
++		case ".py":
++			counts["python"]++
++		case ".js", ".mjs", ".cjs", ".ts":
++			counts["node"]++
++		}
++		return nil
++	})
++	best, n := "", 0
++	for _, k := range []string{"go", "python", "node"} {
++		if counts[k] > n {
++			best, n = k, counts[k]
++		}
++	}
++	switch best {
++	case "go":
++		return "go-nomod", "*.go"
++	case "node":
++		return "node-nopkg", "*.js"
++	case "python":
++		return "python", "*.py"
++	}
++	return "unknown", ""
++}
+diff -ruN '--exclude=panel-evidence' r12_prev/term_11/project_test_runner.go p6/term/project_test_runner.go
+--- a/project_test_runner.go	2026-11-06 13:38:28.412142010 +0300
++++ b/project_test_runner.go	2026-11-08 00:43:40.699975556 +0300
+@@ -37,6 +37,10 @@
+ 		if reason != "" {
+ 			return reason
+ 		}
++	} else if kind, _ := detectProjectKind(root); kind == "go-nomod" {
++		return "Test çalıştırılamadı: Go kaynakları var ama go.mod yok; başka dilin test aracı seçilmedi."
++	} else if kind == "node-nopkg" {
++		return "Test çalıştırılamadı: JavaScript kaynakları var ama package.json yok; başka dilin test aracı seçilmedi."
+ 	} else {
+ 		var prefix []string
+ 		var found bool
+diff -ruN '--exclude=panel-evidence' r12_prev/term_11/symbol_search.go p6/term/symbol_search.go
+--- a/symbol_search.go	1970-01-01 02:00:00.000000000 +0200
++++ b/symbol_search.go	2026-11-08 00:43:34.887846367 +0300
+@@ -0,0 +1,91 @@
++package main
++
++import (
++	"bufio"
++	"os"
++	"path/filepath"
++	"regexp"
++	"strconv"
++	"strings"
++)
++
++type symbolHit struct {
++	Rel  string
++	Line int
++	Text string
++}
++
++func (h symbolHit) Loc() string { return h.Rel + ":" + strconv.Itoa(h.Line) }
++
++var symbolExts = map[string]bool{".go": true, ".py": true, ".js": true, ".mjs": true, ".cjs": true, ".ts": true, ".php": true}
++
++// findSymbols returns definition sites (not call sites) of name in Go, Python,
++// JS/TS and PHP sources. Bounded walk; skips symlinks, ignored trees, files
++// whose path looks secret, and files over 1 MiB.
++func findSymbols(root, name string, limit int) []symbolHit {
++	if name == "" || limit <= 0 || !regexp.MustCompile(`^[A-Za-z_$][A-Za-z0-9_$]*$`).MatchString(name) {
++		return nil
++	}
++	q := regexp.QuoteMeta(name)
++	defRE := regexp.MustCompile(`^\s*(?:` +
++		`func\s+(?:\([^)]*\)\s*)?` + q + `\s*[\[(]` + // Go func/method
++		`|type\s+` + q + `\b` + // Go type
++		`|(?:async\s+)?def\s+` + q + `\s*\(` + // Python def
++		`|class\s+` + q + `\b` + // Python/JS/PHP class
++		`|(?:export\s+)?(?:default\s+)?(?:async\s+)?function\s*\*?\s*` + q + `\s*\(` + // JS function
++		`|(?:export\s+)?(?:const|let|var)\s+` + q + `\s*=` + // JS binding
++		`|(?:(?:public|private|protected|static)\s+)*function\s+` + q + `\s*\(` + // PHP
++		`)`)
++	var out []symbolHit
++	scanned := 0
++	_ = filepath.WalkDir(root, func(path string, e os.DirEntry, err error) error {
++		if err != nil || path == root {
++			return nil
++		}
++		if len(out) >= limit {
++			return filepath.SkipAll
++		}
++		if e.Type()&os.ModeSymlink != 0 {
++			return nil
++		}
++		if e.IsDir() {
++			if skipTreeDir(e.Name()) || depth(root, path) > workspaceDepth {
++				return filepath.SkipDir
++			}
++			return nil
++		}
++		if scanned++; scanned > 5000 {
++			return filepath.SkipAll
++		}
++		if !symbolExts[strings.ToLower(filepath.Ext(path))] {
++			return nil
++		}
++		rel := relPath(root, path)
++		low := strings.ToLower(rel)
++		for _, s := range []string{"gizli", "secret", "credential", ".env", ".pem", ".key"} {
++			if strings.Contains(low, s) {
++				return nil
++			}
++		}
++		if info, err := e.Info(); err != nil || !info.Mode().IsRegular() || info.Size() > 1<<20 {
++			return nil
++		}
++		f, err := os.Open(path)
++		if err != nil {
++			return nil
++		}
++		defer f.Close()
++		sc := bufio.NewScanner(f)
++		sc.Buffer(make([]byte, 64<<10), 1<<20)
++		for n := 1; sc.Scan(); n++ {
++			if line := sc.Text(); defRE.MatchString(line) {
++				out = append(out, symbolHit{Rel: rel, Line: n, Text: redactLine(strings.TrimSpace(line))})
++				if len(out) >= limit {
++					break
++				}
++			}
++		}
++		return nil
++	})
++	return out
++}

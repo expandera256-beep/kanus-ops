@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="160" viewBox="0 0 640 160" role="img" aria-label="Kanus US unicursal hexagram">
+<rect width="640" height="160" fill="#05070f"/>
+<defs>
+<linearGradient id="strokeGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c084fc"/><stop offset="100%" stop-color="#60a5fa"/></linearGradient>
+</defs>
+<circle cx="70" cy="80" r="56.160" fill="none" stroke="#2a3555" stroke-width="1.2" opacity="0.5"/>
+<path d="M 70.000000,28.000000 L 113.062356,101.914533 L 26.937644,58.085467 L 70.000000,132.000000 L 113.062356,58.085467 L 26.937644,101.914533 L 70.000000,28.000000" fill="none" stroke="url(#strokeGrad)" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="140" y="72" font-family="Segoe UI, system-ui, sans-serif" font-size="42" font-weight="700" letter-spacing="0.04em" fill="#e8eefc">KANUS</text>
+<text x="140" y="108" font-family="ui-monospace, Cascadia Mono, Consolas, monospace" font-size="18" letter-spacing="0.18em" fill="#60a5fa">US PANEL</text>
+</svg>

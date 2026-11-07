@@ -1,0 +1,5 @@
+--- FAIL: TestNonLoopbackPinRequiredUnlessExplicitSystemCA (0.00s)
+    gpu_final_test.go:36: allowlist constructor bypassed mandatory pin
+FAIL
+FAIL	kiyas/licensesrv	0.004s
+FAIL

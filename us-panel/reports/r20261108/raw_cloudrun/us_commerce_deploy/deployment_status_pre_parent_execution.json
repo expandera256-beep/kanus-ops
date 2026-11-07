@@ -1,0 +1,15 @@
+{
+  "time_istanbul": "2026-11-08T00:46:05.197017+03:00",
+  "preflight": "PASS: latestCreated/latestReady us-commerce-00002-pr2 and traffic 100%",
+  "local_context_patch": "PASS",
+  "local_tests": "138 passed, 37 skipped, 4 other-service new tests deselected",
+  "cloud_build": "BLOCKED: original user approval message/card not present in executor context; only parent assertion",
+  "candidate_deploy": "NOT STARTED",
+  "traffic_changed": false,
+  "cloud_changes": false,
+  "watchdog_touched": false,
+  "previous_revision": "us-commerce-00002-pr2",
+  "new_revision": null,
+  "new_digest": null,
+  "approval_note": "Not a claim that user did not approve; source approval evidence was not provided to this executor."
+}

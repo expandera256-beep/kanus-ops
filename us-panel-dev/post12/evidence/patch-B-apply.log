@@ -1,0 +1,6 @@
+patching file POST12_B_FX_BLOCKER_TR.md
+patching file cmd/us-pricing-gen/main.go
+patching file license.go
+patching file licensesrv/pricing.go
+patching file post12_fx_fallback_test.go
+patching file pricing.go

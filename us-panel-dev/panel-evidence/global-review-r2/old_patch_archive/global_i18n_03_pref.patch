@@ -1,0 +1,333 @@
+diff --git a/gui.go b/gui.go
+index 08ad169..9b18d4a 100644
+--- a/gui.go
++++ b/gui.go
+@@ -149,7 +149,8 @@ func guiMux(s *session) http.Handler {
+ 		w.Header().Set("Cache-Control", "no-store")
+ 		writeJSON(w, map[string]string{"version": buildVersion})
+ 	})
+-	mux.Handle("/api/i18n", i18n.Handler(nil))
++	mux.Handle("/api/i18n", i18n.Handler(langPref.Get))
++	mux.Handle("/api/lang", i18n.PrefHandler(langPref))
+ 	mux.HandleFunc("/api/files", g.filesPage)
+ 	mux.HandleFunc("/api/source", g.sourceRange)
+ 	mux.HandleFunc("/api/act", g.act)
+diff --git a/gui.html b/gui.html
+index 5ab084f..1cdc42f 100644
+--- a/gui.html
++++ b/gui.html
+@@ -841,7 +841,10 @@ function loadLocale(lang) {
+   const q = lang ? "?lang=" + encodeURIComponent(lang) : "";
+   return fetch("/api/i18n" + q, { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(doc => { if (doc) applyLocale(doc); }).catch(() => {});
+ }
+-document.querySelector("#langsel").addEventListener("change", ev => loadLocale(ev.target.value));
++document.querySelector("#langsel").addEventListener("change", ev => {
++  const lang = ev.target.value;
++  fetch("/api/lang", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lang }) }).catch(() => {}).finally(() => loadLocale(lang));
++});
+ loadLocale("");
+ load();
+ </script>
+diff --git a/gui_lang.go b/gui_lang.go
+new file mode 100644
+index 0000000..d27413c
+--- /dev/null
++++ b/gui_lang.go
+@@ -0,0 +1,17 @@
++package main
++
++import (
++	"path/filepath"
++
++	"kiyas/i18n"
++)
++
++// langPref stores the panel language next to the existing desk.json
++// (honours US_DESK, defaults to <UserConfigDir>/us/lang.json).
++var langPref = &i18n.PrefStore{Path: func() string {
++	desk := deskPath()
++	if desk == "" {
++		return ""
++	}
++	return filepath.Join(filepath.Dir(desk), "lang.json")
++}}
+diff --git a/gui_lang_test.go b/gui_lang_test.go
+new file mode 100644
+index 0000000..7143776
+--- /dev/null
++++ b/gui_lang_test.go
+@@ -0,0 +1,38 @@
++package main
++
++import (
++	"net/http"
++	"net/http/httptest"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++func TestGUILangPreferencePersistsNextToDesk(t *testing.T) {
++	dir := t.TempDir()
++	t.Setenv("US_DESK", filepath.Join(dir, "desk.json"))
++	s := newView("lang")
++	s.root = t.TempDir()
++	h := guiMux(&s)
++	get := func() string {
++		w := httptest.NewRecorder()
++		h.ServeHTTP(w, httptest.NewRequest("GET", "http://127.0.0.1/api/i18n", nil))
++		return w.Body.String()
++	}
++	if !strings.Contains(get(), `"lang":"tr"`) {
++		t.Fatal("default must stay tr")
++	}
++	r := httptest.NewRequest("POST", "http://127.0.0.1/api/lang", strings.NewReader(`{"lang":"en"}`))
++	r.Header.Set("Content-Type", "application/json")
++	w := httptest.NewRecorder()
++	h.ServeHTTP(w, r)
++	if w.Code != http.StatusOK {
++		t.Fatal(w.Code, w.Body.String())
++	}
++	if langPref.Path() != filepath.Join(filepath.Dir(deskPath()), "lang.json") || langPref.Get() != "en" {
++		t.Fatal("pref not stored next to desk")
++	}
++	if !strings.Contains(get(), `"lang":"en"`) {
++		t.Fatal("pref not applied")
++	}
++}
+diff --git a/i18n/pref.go b/i18n/pref.go
+new file mode 100644
+index 0000000..486cd41
+--- /dev/null
++++ b/i18n/pref.go
+@@ -0,0 +1,135 @@
++package i18n
++
++import (
++	"encoding/json"
++	"errors"
++	"io"
++	"mime"
++	"net/http"
++	"os"
++	"path/filepath"
++	"sync"
++)
++
++// PrefStore persists the user's language choice as a small JSON file
++// ({"lang":"en"}) next to the panel's existing desk config.
++type PrefStore struct {
++	mu   sync.Mutex
++	Path func() string
++}
++
++type prefDoc struct {
++	Lang string `json:"lang"`
++}
++
++// Get returns the stored, supported language or "" if none.
++func (p *PrefStore) Get() string {
++	if p == nil || p.Path == nil {
++		return ""
++	}
++	path := p.Path()
++	if path == "" {
++		return ""
++	}
++	p.mu.Lock()
++	defer p.mu.Unlock()
++	raw, err := os.ReadFile(path)
++	if err != nil || len(raw) > 4096 {
++		return ""
++	}
++	var d prefDoc
++	if json.Unmarshal(raw, &d) != nil {
++		return ""
++	}
++	b, err := Load()
++	if err != nil || !b.has(normalize(d.Lang)) {
++		return ""
++	}
++	return normalize(d.Lang)
++}
++
++// ErrUnsupported is returned for languages without a locale file.
++var ErrUnsupported = errors.New("i18n: unsupported language")
++
++// Set validates and atomically stores lang.
++func (p *PrefStore) Set(lang string) error {
++	b, err := Load()
++	if err != nil {
++		return err
++	}
++	lang = normalize(lang)
++	if !b.has(lang) {
++		return ErrUnsupported
++	}
++	if p == nil || p.Path == nil || p.Path() == "" {
++		return errors.New("i18n: no preference path")
++	}
++	path := p.Path()
++	p.mu.Lock()
++	defer p.mu.Unlock()
++	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
++		return err
++	}
++	raw, _ := json.Marshal(prefDoc{Lang: lang})
++	tmp, err := os.CreateTemp(filepath.Dir(path), ".lang-*.tmp")
++	if err != nil {
++		return err
++	}
++	name := tmp.Name()
++	if _, err = tmp.Write(raw); err == nil {
++		err = tmp.Sync()
++	}
++	if cerr := tmp.Close(); err == nil {
++		err = cerr
++	}
++	if err == nil {
++		err = os.Chmod(name, 0o600)
++	}
++	if err == nil {
++		err = os.Rename(name, path)
++	}
++	if err != nil {
++		_ = os.Remove(name)
++	}
++	return err
++}
++
++// PrefHandler serves GET/POST /api/lang. POST requires a JSON body
++// ({"lang":"en"}) so cross-site simple form posts cannot change it.
++func PrefHandler(p *PrefStore) http.Handler {
++	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		w.Header().Set("Cache-Control", "no-store")
++		switch r.Method {
++		case http.MethodGet:
++			lang := p.Get()
++			if lang == "" {
++				lang = Default
++			}
++			w.Header().Set("Content-Type", "application/json; charset=utf-8")
++			_ = json.NewEncoder(w).Encode(prefDoc{Lang: lang})
++		case http.MethodPost:
++			if mt, _, _ := mime.ParseMediaType(r.Header.Get("Content-Type")); mt != "application/json" {
++				http.Error(w, "json required", http.StatusUnsupportedMediaType)
++				return
++			}
++			var d prefDoc
++			if err := json.NewDecoder(io.LimitReader(r.Body, 1024)).Decode(&d); err != nil {
++				http.Error(w, "bad request", http.StatusBadRequest)
++				return
++			}
++			if err := p.Set(d.Lang); err != nil {
++				if errors.Is(err, ErrUnsupported) {
++					http.Error(w, "unsupported language", http.StatusBadRequest)
++					return
++				}
++				http.Error(w, "could not save", http.StatusInternalServerError)
++				return
++			}
++			w.Header().Set("Content-Type", "application/json; charset=utf-8")
++			_ = json.NewEncoder(w).Encode(prefDoc{Lang: normalize(d.Lang)})
++		default:
++			w.Header().Set("Allow", "GET, POST")
++			http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
++		}
++	})
++}
+diff --git a/i18n/pref_test.go b/i18n/pref_test.go
+new file mode 100644
+index 0000000..fec0518
+--- /dev/null
++++ b/i18n/pref_test.go
+@@ -0,0 +1,89 @@
++package i18n
++
++import (
++	"net/http"
++	"net/http/httptest"
++	"os"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++func TestPrefStoreRoundTrip(t *testing.T) {
++	dir := t.TempDir()
++	path := filepath.Join(dir, "sub", "lang.json")
++	p := &PrefStore{Path: func() string { return path }}
++	if p.Get() != "" {
++		t.Fatal("empty store should return empty")
++	}
++	if err := p.Set("EN-gb"); err != nil {
++		t.Fatal(err)
++	}
++	if p.Get() != "en" {
++		t.Fatal("got", p.Get())
++	}
++	if fi, _ := os.Stat(path); fi.Mode().Perm() != 0o600 {
++		t.Errorf("perm %v", fi.Mode().Perm())
++	}
++	if err := p.Set("xx"); err != ErrUnsupported {
++		t.Fatal("unsupported accepted", err)
++	}
++	if p.Get() != "en" {
++		t.Fatal("bad set changed value")
++	}
++	os.WriteFile(path, []byte(`{"lang":"zz"}`), 0o600)
++	if p.Get() != "" {
++		t.Fatal("unknown stored lang must be ignored")
++	}
++	os.WriteFile(path, []byte(`garbage`), 0o600)
++	if p.Get() != "" {
++		t.Fatal("corrupt file must be ignored")
++	}
++	var nilStore *PrefStore
++	if nilStore.Get() != "" {
++		t.Fatal("nil store")
++	}
++}
++
++func TestPrefHandler(t *testing.T) {
++	path := filepath.Join(t.TempDir(), "lang.json")
++	p := &PrefStore{Path: func() string { return path }}
++	h := PrefHandler(p)
++	do := func(method, ct, body string) *httptest.ResponseRecorder {
++		r := httptest.NewRequest(method, "/api/lang", strings.NewReader(body))
++		if ct != "" {
++			r.Header.Set("Content-Type", ct)
++		}
++		w := httptest.NewRecorder()
++		h.ServeHTTP(w, r)
++		return w
++	}
++	if w := do("GET", "", ""); !strings.Contains(w.Body.String(), `"tr"`) {
++		t.Fatal("default must be tr:", w.Body.String())
++	}
++	if w := do("POST", "application/x-www-form-urlencoded", "lang=en"); w.Code != http.StatusUnsupportedMediaType {
++		t.Fatal("form post accepted", w.Code)
++	}
++	if w := do("POST", "application/json", `{"lang":"de"}`); w.Code != http.StatusBadRequest {
++		t.Fatal("unsupported lang accepted", w.Code)
++	}
++	if w := do("POST", "application/json", `{`); w.Code != http.StatusBadRequest {
++		t.Fatal("bad json", w.Code)
++	}
++	if w := do("POST", "application/json; charset=utf-8", `{"lang":"en"}`); w.Code != 200 {
++		t.Fatal("valid post", w.Code)
++	}
++	if w := do("GET", "", ""); !strings.Contains(w.Body.String(), `"en"`) {
++		t.Fatal("persisted value", w.Body.String())
++	}
++	if w := do("DELETE", "", ""); w.Code != http.StatusMethodNotAllowed {
++		t.Fatal(w.Code)
++	}
++	// Handler honours stored preference when no lang query is given.
++	r := httptest.NewRequest("GET", "/api/i18n", nil)
++	w := httptest.NewRecorder()
++	Handler(p.Get).ServeHTTP(w, r)
++	if !strings.Contains(w.Body.String(), `"lang":"en"`) {
++		t.Fatal("handler ignored preference")
++	}
++}

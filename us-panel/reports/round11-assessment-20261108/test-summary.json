@@ -1,0 +1,128 @@
+{
+  "test": {
+    "test_counts": {
+      "pass": 426,
+      "skip": 7
+    },
+    "packages": [
+      {
+        "Time": "2026-11-08T00:06:38.078950401+03:00",
+        "Action": "skip",
+        "Package": "kiyas/cmd/us-pricing-gen",
+        "Elapsed": 0
+      },
+      {
+        "Time": "2026-11-08T00:06:39.079470205+03:00",
+        "Action": "pass",
+        "Package": "kiyas/cmd/us-license-hook",
+        "Elapsed": 1.001
+      },
+      {
+        "Time": "2026-11-08T00:07:03.319248627+03:00",
+        "Action": "pass",
+        "Package": "kiyas/licensesrv",
+        "Elapsed": 25.24
+      },
+      {
+        "Time": "2026-11-08T00:07:12.747572959+03:00",
+        "Action": "pass",
+        "Package": "kiyas",
+        "Elapsed": 34.669
+      }
+    ],
+    "skipped_tests": [
+      [
+        "kiyas",
+        "TestPHPLicenseMatchesThePanel"
+      ],
+      [
+        "kiyas",
+        "TestLiveDoorAnswers"
+      ],
+      [
+        "kiyas",
+        "TestOfficialREAInspectsOwnedFile"
+      ],
+      [
+        "kiyas",
+        "TestRealModelPanelMultiFileRepair"
+      ],
+      [
+        "kiyas",
+        "TestRealModelPanelBuildRentalProject"
+      ],
+      [
+        "kiyas/licensesrv",
+        "TestStoreWriterProcess"
+      ],
+      [
+        "kiyas",
+        "TestTaskStateCrashChild"
+      ]
+    ],
+    "failed_tests": []
+  },
+  "race": {
+    "test_counts": {
+      "pass": 426,
+      "skip": 7
+    },
+    "packages": [
+      {
+        "Time": "2026-11-08T00:06:46.379534275+03:00",
+        "Action": "skip",
+        "Package": "kiyas/cmd/us-pricing-gen",
+        "Elapsed": 0
+      },
+      {
+        "Time": "2026-11-08T00:06:55.537364152+03:00",
+        "Action": "pass",
+        "Package": "kiyas/cmd/us-license-hook",
+        "Elapsed": 9.158
+      },
+      {
+        "Time": "2026-11-08T00:07:45.105242425+03:00",
+        "Action": "pass",
+        "Package": "kiyas",
+        "Elapsed": 58.726
+      },
+      {
+        "Time": "2026-11-08T00:10:49.848194046+03:00",
+        "Action": "pass",
+        "Package": "kiyas/licensesrv",
+        "Elapsed": 243.469
+      }
+    ],
+    "skipped_tests": [
+      [
+        "kiyas",
+        "TestPHPLicenseMatchesThePanel"
+      ],
+      [
+        "kiyas",
+        "TestLiveDoorAnswers"
+      ],
+      [
+        "kiyas",
+        "TestOfficialREAInspectsOwnedFile"
+      ],
+      [
+        "kiyas",
+        "TestRealModelPanelMultiFileRepair"
+      ],
+      [
+        "kiyas",
+        "TestRealModelPanelBuildRentalProject"
+      ],
+      [
+        "kiyas",
+        "TestTaskStateCrashChild"
+      ],
+      [
+        "kiyas/licensesrv",
+        "TestStoreWriterProcess"
+      ]
+    ],
+    "failed_tests": []
+  }
+}

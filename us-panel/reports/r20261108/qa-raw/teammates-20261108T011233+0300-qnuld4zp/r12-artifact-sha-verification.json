@@ -1,0 +1,31 @@
+{
+  "artifact_files": [
+    {
+      "file": "US_Ticari_Aday_2026_11_06_12.exe",
+      "matches": true,
+      "sha256": "f951229be8aae931a0db48c102fb80f2f3af58ebdf9ba6ebe09eb412b763d590"
+    },
+    {
+      "file": "us-license-hook_linux",
+      "matches": true,
+      "sha256": "b2d7ab28f65dc98b6b75373f867575b73c030547b7745e8cf71a527dd1ec2c72"
+    },
+    {
+      "file": "us-license-hook_hostinger.tgz",
+      "matches": true,
+      "sha256": "b5489468efddfde838f940e64b40c2e512788d64acd880a860ea85a1822f539d"
+    },
+    {
+      "file": "TREE_MANIFEST.sha256",
+      "matches": true,
+      "sha256": "915cea46addb8680f7ad7907480d482e8145dfcf5200dd92e9da09640cf2bf38"
+    },
+    {
+      "file": "TESLIM_RAPORU_TR.md",
+      "matches": true,
+      "sha256": "9f127301e9b06fbbb79780ff4c86f77236265acd0245d43751f5f846833cb37f"
+    }
+  ],
+  "binary_executed": false,
+  "source_files_verified": 209
+}

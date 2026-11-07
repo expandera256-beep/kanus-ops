@@ -1,0 +1,5 @@
+{
+  "runtime_spec_identical_except_image": true,
+  "comparison": "revision vs revision; not service template vs materialized revision",
+  "service_template_extra_container_name": "gateway-1 default materialized field, not an actual changed runtime setting"
+}

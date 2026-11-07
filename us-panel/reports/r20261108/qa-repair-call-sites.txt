@@ -1,0 +1,13 @@
+work2/kiyas/term/review_regression_test.go:22:	l := &repairLoop{Root: root, Endpoint: "http://127.0.0.1:1", Approve: func(int, []repairEdit) bool { return false }}
+work2/kiyas/term/review_regression_test.go:34:	l2 := &repairLoop{Root: root, Endpoint: "http://127.0.0.1:1", Approve: func(int, []repairEdit) bool { asked = true; return false }}
+work2/kiyas/term/task_state_test.go:26:	return &repairLoop{Root: root, Endpoint: url, Key: "test-key", Model: "mock",
+work2/kiyas/term/repair_loop.go:87:func (l *repairLoop) runChecks(ctx context.Context, iteration int) (repairStep, bool) {
+work2/kiyas/term/repair_loop.go:111:func (l *repairLoop) Run(parent context.Context) (*repairResult, error) {
+work2/kiyas/term/repair_loop.go:229:func (l *repairLoop) askFix(ctx context.Context, ft *fileTools, step repairStep) ([]repairEdit, error) {
+work2/kiyas/term/repair_loop.go:87:func (l *repairLoop) runChecks(ctx context.Context, iteration int) (repairStep, bool) {
+work2/kiyas/term/repair_loop.go:111:func (l *repairLoop) Run(parent context.Context) (*repairResult, error) {
+work2/kiyas/term/repair_loop.go:229:func (l *repairLoop) askFix(ctx context.Context, ft *fileTools, step repairStep) ([]repairEdit, error) {
+work2/kiyas/term/repair_loop_test.go:70:	loop := &repairLoop{Root: root, Endpoint: srv.URL, Key: "test-key", Model: "mock", Budget: repairBudget{MaxIterations: 3, MaxModelCalls: 3, MaxDuration: 3 * time.Minute, StepTimeout: 2 * time.Minute, MaxEditBytes: 1 << 16},
+work2/kiyas/term/repair_loop_test.go:100:	loop := &repairLoop{Root: root, Endpoint: srv.URL, Key: "test-key", Budget: repairBudget{MaxIterations: 2, MaxModelCalls: 2, MaxDuration: 3 * time.Minute, StepTimeout: time.Minute, MaxEditBytes: 1 << 16},
+work2/kiyas/term/repair_loop_test.go:125:		loop := &repairLoop{Root: root, Endpoint: srv.URL, Key: "test-key", Budget: repairBudget{MaxIterations: 2, MaxModelCalls: 2, MaxDuration: time.Minute, StepTimeout: time.Minute, MaxEditBytes: 1 << 16},
+work2/kiyas/term/repair_loop_test.go:152:	loop := &repairLoop{Root: root, Endpoint: srv.URL, Budget: repairBudget{MaxIterations: 2, MaxModelCalls: 2, MaxDuration: time.Minute, StepTimeout: time.Minute, MaxEditBytes: 1 << 16}, Approve: func(int, []repairEdit) bool { return true }}

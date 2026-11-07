@@ -1,0 +1,33 @@
+=== RUN   TestPanelAPIGraceHeldCreditMustNotWake
+=== RUN   TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/license
+2026/11/08 01:13:13 gpu_wake scheme=http host=127.0.0.1:40099 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:13:13 gpu_wake scheme=http host=127.0.0.1:40099 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:13:13 gpu wake: failed (wake_http)
+    zz_panel_grace_wake_test.go:16: gateErr=<nil> reserveErr=yetersiz kredi held_before=500 held_after=500 credits=500 code=503 wake=1 status=1 upstream=0
+    zz_panel_grace_wake_test.go:17: credit still locked through grace must reject before readiness/wake
+=== RUN   TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/session
+2026/11/08 01:13:13 gpu_wake scheme=http host=127.0.0.1:33017 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:13:13 gpu_wake scheme=http host=127.0.0.1:33017 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:13:13 gpu wake: failed (wake_http)
+    zz_panel_grace_wake_test.go:16: gateErr=<nil> reserveErr=yetersiz kredi held_before=500 held_after=500 credits=500 code=503 wake=1 status=1 upstream=0
+    zz_panel_grace_wake_test.go:17: credit still locked through grace must reject before readiness/wake
+=== RUN   TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/completions/license
+2026/11/08 01:13:13 gpu_wake scheme=http host=127.0.0.1:45475 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:13:13 gpu_wake scheme=http host=127.0.0.1:45475 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:13:13 gpu wake: failed (wake_http)
+    zz_panel_grace_wake_test.go:16: gateErr=<nil> reserveErr=yetersiz kredi held_before=500 held_after=500 credits=500 code=503 wake=1 status=1 upstream=0
+    zz_panel_grace_wake_test.go:17: credit still locked through grace must reject before readiness/wake
+=== RUN   TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/completions/session
+2026/11/08 01:13:13 gpu_wake scheme=http host=127.0.0.1:39197 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:13:13 gpu_wake scheme=http host=127.0.0.1:39197 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:13:13 gpu wake: failed (wake_http)
+    zz_panel_grace_wake_test.go:16: gateErr=<nil> reserveErr=yetersiz kredi held_before=500 held_after=500 credits=500 code=503 wake=1 status=1 upstream=0
+    zz_panel_grace_wake_test.go:17: credit still locked through grace must reject before readiness/wake
+--- FAIL: TestPanelAPIGraceHeldCreditMustNotWake (0.03s)
+    --- FAIL: TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/license (0.01s)
+    --- FAIL: TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/session (0.01s)
+    --- FAIL: TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/completions/license (0.01s)
+    --- FAIL: TestPanelAPIGraceHeldCreditMustNotWake//v1/chat/completions/session (0.01s)
+FAIL
+FAIL	kiyas/licensesrv	0.039s
+FAIL

@@ -1,0 +1,1 @@
+Historical assessment only. NOT a release. Binaries renamed SUPERSEDED_ASSESSMENT_DO_NOT_DEPLOY_. Use dist/2026.11.06.11/ only after final report gate. Earlier hashes/logs refer to old assessment names.

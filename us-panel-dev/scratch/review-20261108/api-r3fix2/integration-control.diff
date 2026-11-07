@@ -1,0 +1,11 @@
+--- /workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/probe-stack12/licensesrv/accounts.go	2026-11-08 00:49:53.200255292 +0300
++++ /workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/probe-stack12-control/licensesrv/accounts.go	2026-11-08 01:14:47.637472845 +0300
+@@ -766,7 +766,7 @@
+ 	}
+ 	reserved := l.Reserved
+ 	for _, r := range s.st.Reservations {
+-		if r != nil && r.Key == key && !now.Before(r.Expires) {
++		if r != nil && r.Key == key && !now.Before(s.reservationCommitDeadline(r)) {
+ 			reserved -= r.Amount // expired, released on the next reserve
+ 		}
+ 	}

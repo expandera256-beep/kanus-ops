@@ -1,0 +1,116 @@
+[
+  {
+    "file": "windows-results.log",
+    "sha256": "2247a0ad473f1022b8c7d8c8c6cf264e835c2470ed7065fb1621f64696324861",
+    "counts_all": {
+      "PASS": 75
+    },
+    "counts_top": {
+      "PASS": 30
+    },
+    "top_names": {
+      "TestR13PortableAliasAndDevicePolicy": 3,
+      "TestR13WindowsRelativeLifecycle": 3,
+      "TestR13WindowsUnsafeNames": 3,
+      "TestR13WindowsHardLink": 3,
+      "TestR13WindowsJunctionRejected": 3,
+      "TestR13WindowsRootSwapPinned": 3,
+      "TestR13WindowsRootSwapStress": 3,
+      "TestR13WindowsParentSwapAtomicHelper": 3,
+      "TestR13WindowsShortAlias": 3,
+      "TestR13WindowsDeskAndHistory": 3
+    },
+    "stress": [
+      "swaps=24 successful_operations=135",
+      "swaps=16 successful_operations=58",
+      "swaps=29 successful_operations=144",
+      "swaps=16 successful_operations=60",
+      "swaps=12 successful_operations=62",
+      "swaps=5 successful_operations=42"
+    ],
+    "metadata": [
+      "=== RUN   TestR13WindowsHardLink",
+      "--- PASS: TestR13WindowsHardLink (0.02s)",
+      "=== RUN   TestR13WindowsHardLink",
+      "--- PASS: TestR13WindowsHardLink (0.01s)",
+      "=== RUN   TestR13WindowsHardLink",
+      "--- PASS: TestR13WindowsHardLink (0.00s)"
+    ]
+  },
+  {
+    "file": "windows-results-386.log",
+    "sha256": "d7276a43bfc9e75216cfe31b7748c3a584e91fd3e0d5809f6c12feac4aa47404",
+    "counts_all": {
+      "PASS": 75
+    },
+    "counts_top": {
+      "PASS": 30
+    },
+    "top_names": {
+      "TestR13PortableAliasAndDevicePolicy": 3,
+      "TestR13WindowsRelativeLifecycle": 3,
+      "TestR13WindowsUnsafeNames": 3,
+      "TestR13WindowsHardLink": 3,
+      "TestR13WindowsJunctionRejected": 3,
+      "TestR13WindowsRootSwapPinned": 3,
+      "TestR13WindowsRootSwapStress": 3,
+      "TestR13WindowsParentSwapAtomicHelper": 3,
+      "TestR13WindowsShortAlias": 3,
+      "TestR13WindowsDeskAndHistory": 3
+    },
+    "stress": [
+      "swaps=31 successful_operations=154",
+      "swaps=18 successful_operations=89",
+      "swaps=20 successful_operations=121",
+      "swaps=19 successful_operations=51",
+      "swaps=28 successful_operations=134",
+      "swaps=9 successful_operations=36"
+    ],
+    "metadata": [
+      "=== RUN   TestR13WindowsHardLink",
+      "--- PASS: TestR13WindowsHardLink (0.01s)",
+      "=== RUN   TestR13WindowsHardLink",
+      "--- PASS: TestR13WindowsHardLink (0.01s)",
+      "=== RUN   TestR13WindowsHardLink",
+      "--- PASS: TestR13WindowsHardLink (0.01s)"
+    ]
+  },
+  {
+    "file": "run-output.txt",
+    "sha256": "facd135619281b0c69fde6ca1f87b8bac638817c23f454a645287477f8cce4d5",
+    "counts_all": {
+      "PASS": 75
+    },
+    "counts_top": {
+      "PASS": 30
+    },
+    "top_names": {
+      "TestR13PortableAliasAndDevicePolicy": 3,
+      "TestR13WindowsRelativeLifecycle": 3,
+      "TestR13WindowsUnsafeNames": 3,
+      "TestR13WindowsHardLink": 3,
+      "TestR13WindowsJunctionRejected": 3,
+      "TestR13WindowsRootSwapPinned": 3,
+      "TestR13WindowsRootSwapStress": 3,
+      "TestR13WindowsParentSwapAtomicHelper": 3,
+      "TestR13WindowsShortAlias": 3,
+      "TestR13WindowsDeskAndHistory": 3
+    },
+    "stress": [
+      "swaps=24 successful_operations=135",
+      "swaps=16 successful_operations=58",
+      "swaps=29 successful_operations=144",
+      "swaps=16 successful_operations=60",
+      "swaps=12 successful_operations=62",
+      "swaps=5 successful_operations=42"
+    ],
+    "metadata": [
+      "=== RUN   TestR13WindowsHardLink",
+      "--- PASS: TestR13WindowsHardLink (0.02s)",
+      "=== RUN   TestR13WindowsHardLink",
+      "--- PASS: TestR13WindowsHardLink (0.01s)",
+      "=== RUN   TestR13WindowsHardLink",
+      "--- PASS: TestR13WindowsHardLink (0.00s)"
+    ]
+  }
+]

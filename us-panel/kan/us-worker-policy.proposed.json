@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "workers": [
+    {
+      "key": "ds-a100",
+      "model": "deepseek-v4.1-flash",
+      "project": "project-27082a40-6083-4952-9db",
+      "zone": "europe-west4-b",
+      "instance": "ds-a100",
+      "instance_id": "6979174631840438511",
+      "upstream": "https://10.164.0.6:8443",
+      "idle_seconds": 900,
+      "boot_seconds": 3000,
+      "request_seconds": 600,
+      "lease_seconds": 60,
+      "capacity": 10,
+      "max_uptime_seconds": 1800,
+      "daily_runtime_seconds": 3600,
+      "daily_starts": 6,
+      "preserve_local_ssd": true,
+      "adopt_running": false,
+      "require_watchdog": true
+    }
+  ]
+}

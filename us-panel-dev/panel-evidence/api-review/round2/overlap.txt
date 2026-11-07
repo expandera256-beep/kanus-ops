@@ -1,0 +1,16 @@
+=== API vs UYUM/GLOBAL overlapping paths ===
+API paths:
+cmd/us-license-hook/accounts_routes_test.go
+cmd/us-license-hook/main.go
+licensesrv/accounts.go
+licensesrv/api_error.go
+licensesrv/api_error_test.go
+licensesrv/api_keys.go
+licensesrv/api_keys_test.go
+licensesrv/api_version.go
+licensesrv/api_version_test.go
+licensesrv/credits.go
+licensesrv/model_proxy.go
+licensesrv/store.go
+--- overlap UYUM ---
+--- overlap GLOBAL ---

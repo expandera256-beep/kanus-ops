@@ -1,0 +1,1 @@
+QA DEMO REST service. Python standard library only. Run: python3 server.py; tests: python3 -m unittest discover -v. Fixed alice/bob tokens and memory-only storage are DEMO fixtures, not production auth.

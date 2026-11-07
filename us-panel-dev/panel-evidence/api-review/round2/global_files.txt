@@ -1,0 +1,31 @@
+=== GLOBAL touched ===
+-- global_i18n_02_gui_strings.patch --
+diff --git a/gui.go b/gui.go
+diff --git a/gui.html b/gui.html
+diff --git a/gui_i18n_test.go b/gui_i18n_test.go
+diff --git a/i18n/http.go b/i18n/http.go
+diff --git a/i18n/locales/en.json b/i18n/locales/en.json
+diff --git a/i18n/locales/tr.json b/i18n/locales/tr.json
+-- global_i18n_03_pref.patch --
+diff --git a/gui.go b/gui.go
+diff --git a/gui.html b/gui.html
+diff --git a/gui_lang.go b/gui_lang.go
+diff --git a/gui_lang_test.go b/gui_lang_test.go
+diff --git a/i18n/pref.go b/i18n/pref.go
+diff --git a/i18n/pref_test.go b/i18n/pref_test.go
+-- global_i18n_04_errors.patch --
+diff --git a/gui.go b/gui.go
+diff --git a/gui_errors_i18n_test.go b/gui_errors_i18n_test.go
+diff --git a/gui_lang.go b/gui_lang.go
+diff --git a/i18n/locales/en.json b/i18n/locales/en.json
+diff --git a/i18n/locales/tr.json b/i18n/locales/tr.json
+-- global_i18n_05_email_loader.patch --
+diff --git a/kanus/i18n_mail.py b/kanus/i18n_mail.py
+diff --git a/kanus/locales/en.json b/kanus/locales/en.json
+diff --git a/kanus/locales/tr.json b/kanus/locales/tr.json
+diff --git a/kanus/test_i18n_mail.py b/kanus/test_i18n_mail.py
+-- global_i18n_panel_core.patch --
+diff --git a/i18n/i18n.go b/i18n/i18n.go
+diff --git a/i18n/i18n_test.go b/i18n/i18n_test.go
+diff --git a/i18n/locales/en.json b/i18n/locales/en.json
+diff --git a/i18n/locales/tr.json b/i18n/locales/tr.json

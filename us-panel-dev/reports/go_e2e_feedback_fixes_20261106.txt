@@ -1,0 +1,34 @@
+=== RUN   TestPartialOrRedactedEditorCannotOverwriteFile
+--- PASS: TestPartialOrRedactedEditorCannotOverwriteFile (0.00s)
+=== RUN   TestHookReleaseDefaultsNeverSelectPythonOrCloudRun
+--- PASS: TestHookReleaseDefaultsNeverSelectPythonOrCloudRun (0.00s)
+=== RUN   TestHookReleaseUsesRemoteLedgerWithoutDesktopSigningSecret
+--- PASS: TestHookReleaseUsesRemoteLedgerWithoutDesktopSigningSecret (0.01s)
+=== RUN   TestHookReleaseDisablesPythonAccountOperationsAndForm
+--- PASS: TestHookReleaseDisablesPythonAccountOperationsAndForm (0.00s)
+=== RUN   TestHookReleaseLicenseURLOverrideDoesNotChangeModelEndpoint
+--- PASS: TestHookReleaseLicenseURLOverrideDoesNotChangeModelEndpoint (0.00s)
+=== RUN   TestHookReleaseColdStartIsNotSuccessAndWaits45Minutes
+--- PASS: TestHookReleaseColdStartIsNotSuccessAndWaits45Minutes (0.00s)
+=== RUN   TestPartialReadDoesNotAuthorizeOverwrite
+--- PASS: TestPartialReadDoesNotAuthorizeOverwrite (0.00s)
+PASS
+ok  	kiyas	0.018s
+testing: warning: no tests to run
+PASS
+ok  	kiyas/cmd/us-license-hook	0.003s [no tests to run]
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+=== RUN   TestCreditStatusReadOnlyScopedAndPrivate
+--- PASS: TestCreditStatusReadOnlyScopedAndPrivate (0.01s)
+=== RUN   TestCreditStatusIsGETAndRequiresLicense
+--- PASS: TestCreditStatusIsGETAndRequiresLicense (0.00s)
+=== RUN   TestLicenseMailUsesOrderNameAndKeepsIDIdempotency
+--- PASS: TestLicenseMailUsesOrderNameAndKeepsIDIdempotency (0.00s)
+=== RUN   TestPartialRefundIdempotentAndOutOfOrder
+=== RUN   TestPartialRefundIdempotentAndOutOfOrder/true
+=== RUN   TestPartialRefundIdempotentAndOutOfOrder/false
+--- PASS: TestPartialRefundIdempotentAndOutOfOrder (0.01s)
+    --- PASS: TestPartialRefundIdempotentAndOutOfOrder/true (0.00s)
+    --- PASS: TestPartialRefundIdempotentAndOutOfOrder/false (0.00s)
+PASS
+ok  	kiyas/licensesrv	0.020s

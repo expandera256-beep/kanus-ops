@@ -1,0 +1,17 @@
+{
+  "end_istanbul": "2026-11-08T00:39:33.686672+03:00",
+  "revision_image_matches_registry_manifest": true,
+  "source_matches_release": {
+    "commerce_http.py": true,
+    "gce_provider.py": true,
+    "inference_lifecycle.py": true,
+    "managed_inference.py": true,
+    "runtime.py": true
+  },
+  "records": 9,
+  "http_5xx": 0,
+  "LifecycleError_or_refusing": 0,
+  "revision_00007_reconcile_http_status": {
+    "200": 6
+  }
+}

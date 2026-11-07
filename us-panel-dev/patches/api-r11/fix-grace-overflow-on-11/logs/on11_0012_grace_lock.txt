@@ -1,0 +1,13 @@
+=== RUN   TestTTLCommitAnchorAcceptsCommitWithinGrace
+--- PASS: TestTTLCommitAnchorAcceptsCommitWithinGrace (0.00s)
+=== RUN   TestTTLCommitAnchorRejectsAfterGraceAndNoDoubleDebit
+--- PASS: TestTTLCommitAnchorRejectsAfterGraceAndNoDoubleDebit (0.00s)
+=== RUN   TestTTLCommitAnchorLegacyZeroGraceRejectsAtExpires
+--- PASS: TestTTLCommitAnchorLegacyZeroGraceRejectsAtExpires (0.00s)
+=== RUN   TestTTLCommitAnchorIdempotentAndConcurrent
+--- PASS: TestTTLCommitAnchorIdempotentAndConcurrent (0.00s)
+=== RUN   TestTTLGraceKeepsReservedLockedThenReleases
+--- PASS: TestTTLGraceKeepsReservedLockedThenReleases (0.00s)
+PASS
+ok  	kiyas/licensesrv	1.032s
+EXIT=0

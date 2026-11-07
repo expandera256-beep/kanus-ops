@@ -1,0 +1,16 @@
+2026/11/08 00:49:47 dinleniyor 127.0.0.1:53805
+2026/11/08 00:49:47 account /account/register email=u***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:47 account /account/login email=u***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:47 account /account/register email=u***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:47 account /account/login email=u***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:47 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:48 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:48 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:48 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:48 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:49 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:49 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:49 account /account/login email=n***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:49:49 gpu_wake scheme=https host=34.41.186.170:8443 path=/a100/status status=0 pin_ok=no duration_ms=0 level=INFO method=GET err=token_unreadable
+2026/11/08 00:49:49 gpu_wake scheme=https host=34.41.186.170:8443 path=/a100/start status=0 pin_ok=no duration_ms=0 level=INFO method=POST err=token_unreadable
+2026/11/08 00:49:49 gpu wake: failed (wake_token_unreadable)

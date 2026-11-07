@@ -1,0 +1,7 @@
+=== windows vet ===
+WVET_EXIT=0
+=== windows build ===
+WBUILD_EXIT=0
+=== windows test -c i18n ===
+WTESTC_EXIT=0
+-rwxr-xr-x 1 box box 9163264 Nov  6 10:16 /tmp/global-r3-i18n.test.exe

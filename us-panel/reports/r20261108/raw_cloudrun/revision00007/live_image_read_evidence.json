@@ -1,0 +1,54 @@
+{
+  "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway:2026-11-08-readywindow",
+  "revision": "us-watchdog-00007-fnc",
+  "time_istanbul": "2026-11-08T00:39:19.411054+03:00",
+  "manifest_sha256": "f8a85dbcdee57c0d21639feed0b722beac1ab4b9d94781a06a9d1fb85011e1a6",
+  "files": {
+    "commerce_http.py": {
+      "tar_path": "app/commerce_http.py",
+      "layer_digest": "sha256:511f79fa50f0d26757d04c62a71e7338f231c94ddc134027b9440842b54e683b",
+      "sha256": "31cde44e63574c0f78dd88b8b4ddac957f4c79c5adbac70ab23530b3e4476499"
+    },
+    "gce_provider.py": {
+      "tar_path": "app/gce_provider.py",
+      "layer_digest": "sha256:511f79fa50f0d26757d04c62a71e7338f231c94ddc134027b9440842b54e683b",
+      "sha256": "f2de2bc53ce4e292ab71d915234941b7ceea42de645c8de8d3d838bc5ced5667"
+    },
+    "inference_lifecycle.py": {
+      "tar_path": "app/inference_lifecycle.py",
+      "layer_digest": "sha256:511f79fa50f0d26757d04c62a71e7338f231c94ddc134027b9440842b54e683b",
+      "sha256": "9e141f0a7caa98ad0730c43c9f9ab4e1c6b9263a101b1a42b69f289032b7f693"
+    },
+    "managed_inference.py": {
+      "tar_path": "app/managed_inference.py",
+      "layer_digest": "sha256:511f79fa50f0d26757d04c62a71e7338f231c94ddc134027b9440842b54e683b",
+      "sha256": "0ae01708ff62776b1ca1452526c2bd8afb5c9a882c123f96378d0748f67c63b4"
+    },
+    "runtime.py": {
+      "tar_path": "app/runtime.py",
+      "layer_digest": "sha256:511f79fa50f0d26757d04c62a71e7338f231c94ddc134027b9440842b54e683b",
+      "sha256": "4af701741bd51ff0fc601a579f25beec01dbcb0ce9d178d087518079109b2c94"
+    }
+  },
+  "requests": [
+    {
+      "url": "https://europe-west4-docker.pkg.dev/v2/project-27082a40-6083-4952-9db/us-runtime/gateway/manifests/2026-11-08-readywindow",
+      "http_status": 200,
+      "bytes": 1993,
+      "sha256": "f8a85dbcdee57c0d21639feed0b722beac1ab4b9d94781a06a9d1fb85011e1a6"
+    },
+    {
+      "url": "https://europe-west4-docker.pkg.dev/v2/project-27082a40-6083-4952-9db/us-runtime/gateway/blobs/sha256:a3f1205789de3ab7a68478981bd036dedbf4709350bc1231821b4c9f6f64137b",
+      "http_status": 200,
+      "bytes": 8885,
+      "sha256": "a3f1205789de3ab7a68478981bd036dedbf4709350bc1231821b4c9f6f64137b"
+    },
+    {
+      "url": "https://europe-west4-docker.pkg.dev/v2/project-27082a40-6083-4952-9db/us-runtime/gateway/blobs/sha256:511f79fa50f0d26757d04c62a71e7338f231c94ddc134027b9440842b54e683b",
+      "http_status": 200,
+      "bytes": 25407,
+      "sha256": "511f79fa50f0d26757d04c62a71e7338f231c94ddc134027b9440842b54e683b"
+    }
+  ],
+  "token_persisted": false
+}

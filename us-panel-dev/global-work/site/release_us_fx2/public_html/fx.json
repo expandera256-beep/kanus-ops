@@ -1,0 +1,14 @@
+{
+ "schema": "kanus.fx/1",
+ "source": "TCMB today.xml ForexSelling (döviz satış)",
+ "source_url": "https://www.tcmb.gov.tr/kurlar/today.xml",
+ "tcmb_tarih": "06.11.2026",
+ "bulten_no": "2026/209",
+ "date": "2026-11-06",
+ "base": "TRY",
+ "rates": {
+  "USD": 50.0724,
+  "EUR": 55.9609
+ },
+ "generated_at": "2026-11-07T21:39:17+00:00"
+}

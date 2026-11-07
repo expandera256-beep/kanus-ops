@@ -1,0 +1,284 @@
+/workspace/us-panel-dev/pinned/v10/US_DERLE.bat:17:set "GOOS=windows"
+/workspace/us-panel-dev/pinned/v10/OKU.txt:20:  CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-H windowsgui -s -w" -o US.exe .
+/workspace/us-panel/docs/DESTEK_RUNBOOK_ACCOUNTS_TR.md:26:| Geçit | Go **us-license-hook** — test `api-test.kanus.org`, üretim hedefi `api.kanus.org` |
+/workspace/us-panel/deploy/proposed/03-RESTORE_TEST_STEPS.md:5:1. Günlük yedek scriptini bir kez elle çalıştır; `/var/backups/us-license-hook/licenses.json.<stamp>` oluşsun.
+/workspace/us-panel/deploy/proposed/03-RESTORE_TEST_STEPS.md:8:   - `systemctl stop us-license-hook` (kısa kesinti — bu adım operatör onayı ister)
+/workspace/us-panel/deploy/proposed/03-RESTORE_TEST_STEPS.md:11:   - `systemctl start us-license-hook`
+/workspace/us-panel/deploy/proposed/03-backup-us-license-hook-store.sh:3:# Hedef: /usr/local/sbin/backup-us-license-hook-store.sh
+/workspace/us-panel/deploy/proposed/03-backup-us-license-hook-store.sh:4:# Cron:  /etc/cron.d/us-license-hook-store  →  15 3 * * * root /usr/local/sbin/backup-us-license-hook-store.sh
+/workspace/us-panel/deploy/proposed/03-backup-us-license-hook-store.sh:8:SRC="${US_STORE_PATH:-/opt/us-license-hook/licenses.json}"
+/workspace/us-panel/deploy/proposed/03-backup-us-license-hook-store.sh:9:DEST_DIR=/var/backups/us-license-hook
+/workspace/us-panel/reports/KANUS_PRICING_GLOBAL.md:221:- **Olgu:** Temsil etmiyor: `product_id → {kind, days, prompts, seconds, credits}` (`licensesrv/plans.go:11-60`, `licensesrv/store.go:21-27`); `US_PLANS_FILE` öncelikli (`cmd/us-license-hook/main.go:37-47`); boşsa `LivePlansJSON()` (`licensesrv/pricing.go:55-65`). Recurring/interval **yok**.
+/workspace/us-panel/reports/KANUS_PRICING_GLOBAL.md:230:- **Olgu:** JSON store (flock + atomik rename) (`licensesrv/store.go:101-186`), `US_STORE_PATH` (`cmd/us-license-hook/main.go:50`). Go’da PostgreSQL kodu **yok**.
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:34:| Unit | `/etc/systemd/system/us-license-hook.service` |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:35:| User | `uslic` (uid 992, gid 982, home `/opt/us-license-hook`, nologin) |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:36:| WorkingDirectory | `/opt/us-license-hook` |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:37:| EnvironmentFile | `/etc/us-license-hook.env` (mode 600, root:root, 901 bayt, mtime 06.11 05:30 UTC) |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:38:| ExecStart | `/opt/us-license-hook/us-license-hook-wrap.sh` |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:46:Bilinen (önceki raporlar + bağlam; bu oturumda değer okunmadı): shop ≈ `kanus-test.myshopify.com`; `US_STORE_PATH` → `/opt/us-license-hook/licenses.json`; `US_LISTEN` → `127.0.0.1:8787`; `US_PLANS_FILE` → `/opt/us-license-hook/plans.json`.
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:50:`/opt/us-license-hook/us-license-hook-wrap.sh` (sha256 `fa3c843d82f475d89c7b6f92854b10c974882ea9c1b1321c8658f5920974c1c2`):
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:54:- `exec us-license-hook.real`
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:60:| `us-license-hook.real` | 7454880 | 05:33:50 | `7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0` | 755 uslic:uslic |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:61:| `us-license-hook-wrap.sh` | 512 | 02:49:22 | `fa3c843d…` | 755 root:uslic |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:63:| `us-license-hook` (eski stub) | 127 | 02:39:39 | — | 755 uslic:uslic |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:73:| `/opt/us-license-hook/licenses.json` | **30328** | 06:46:45 | 600 uslic:uslic | Canlı store (accounts dahil Round7) |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:75:| `/var/backups/us-license-hook/` | 2× licenses + 2× plans snapshot | 03:04 / 03:15 | 640 | cron `15 3 * * *` → `backup-us-license-hook-store.sh` |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:86:- `:443` → `ssl_certificate` / `ssl_certificate_key` Let’s Encrypt; `include snippets/us-license-hook-locations.conf`; diğer `/` → 404
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:88:**Snippet** `/etc/nginx/snippets/us-license-hook-locations.conf` (3926 bayt, mtime 05:45 UTC) — `proxy_pass http://127.0.0.1:8787`:
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:98:**Rate zone** `/etc/nginx/conf.d/us-license-hook-ratelimit.conf`:
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:131:- Yol: `/opt/us-license-hook/`
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:132:- Unit: `us-license-hook`
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:141:| Dizin | `/opt/us-license-hook-test/` | `/opt/us-license-hook/` |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:142:| Binary | `…/us-license-hook.real` + `…-wrap.sh` | olduğu gibi (dokunma) |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:143:| Unit | `us-license-hook-test.service` | `us-license-hook.service` (disabled/stopped) |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:146:| Env | `/etc/us-license-hook-test.env` (600 root:uslic-test) | `/etc/us-license-hook.env` |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:147:| Store | `/opt/us-license-hook-test/licenses.json` | boş/ayrı (dokunma) |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:148:| Plans | `/opt/us-license-hook-test/plans.json` | dokunma |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:171:1. Binary `us-license-hook.real` (sha doğrulamalı) + wrapper (+ gerekirse stub)
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:174:4. Env içeriği → **yeni** `/etc/us-license-hook-test.env` (HMAC = test shop; `US_LISTEN=127.0.0.1:8788`; path’ler `-test` dizinine)
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:181:- Prod `/opt/us-license-hook` + `us-license-hook.service` + `api.kanus.org` site
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:192:2. `useradd -r -d /opt/us-license-hook-test -s /usr/sbin/nologin uslic-test`
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:193:3. Dizinler: `/opt/us-license-hook-test` (uslic-test), backup hedefi
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:196:6. Unit `us-license-hook-test.service` (enable etme veya enable+start yalnız local smoke için)
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:197:7. nginx: `sites-available/api-test.kanus.org` (prod’da yeni), snippet `us-license-hook-test-locations.conf` → `127.0.0.1:8788`, `conf.d/us-license-hook-test-ratelimit.conf` zone `uslic_test_*`
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:222:1. **Yazmayı dondur:** test VPS’te `systemctl stop us-license-hook` (Shopify bundan sonra 5xx görür → retry’ler birikir; URL aynı).
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:223:2. **Final sync:** `licenses.json` (+ plans, binary sha teyit) → prod `/opt/us-license-hook-test/` — `rsync -ac --checksum` veya `sha256sum` eşleşene kadar. Kaynak dosyalar **silinmez**.
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:224:3. **Yeni hook start:** prod’da `systemctl enable --now us-license-hook-test` → local `8788/healthz` = 200.
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:270:2. Eski VPS: `systemctl start us-license-hook` (store kaynakta duruyor; kesimde silinmedi).
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:271:3. Prod test instance: `systemctl stop us-license-hook-test` (silme yok).
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:281:Kesimden sonra `.11` hedefi **yeni sunucu** (`us-license-hook-test` path/unit).  
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:323:**Kapsam:** Yalnız prod `srv2133566` üzerinde ayrı instance. Test VPS’te stop/değişiklik **yok**. DNS/TTL **yok**. Durmuş `api.kanus.org` / `/opt/us-license-hook` / `:8787` **dokunulmadı**.
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:329:| Dizin | `/opt/us-license-hook-test/` |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:331:| Unit | `us-license-hook-test.service` (`Restart=no`) |
+/workspace/us-panel/reports/HOOK_MOVE_PROD_VPS_20261106.md:333:| Env | `/etc/us-license-hook-test.env` **640 root:uslic-test** (test shop secret’ları; listen/path ayarlı) |
+/workspace/us-panel/deploy/host-hardening/backup/backup-us-license-hook-hourly.sh:2:# DRAFT — install as /usr/local/sbin/backup-us-license-hook-hourly.sh (mode 755).
+/workspace/us-panel/deploy/host-hardening/backup/backup-us-license-hook-hourly.sh:7:DEST_DIR=${DEST_DIR:-/var/backups/us-license-hook}
+/workspace/us-panel/deploy/host-hardening/backup/backup-us-license-hook-hourly.sh:10:LOCK=/run/us-license-hook-backup.lock
+/workspace/us-panel/deploy/host-hardening/backup/backup-us-license-hook-hourly.sh:11:STORE=${US_STORE_PATH:-/opt/us-license-hook/licenses.json}
+/workspace/us-panel/deploy/host-hardening/backup/backup-us-license-hook-hourly.sh:12:ENVF=/etc/us-license-hook.env
+/workspace/us-panel/deploy/host-hardening/backup/backup-us-license-hook-hourly.sh:13:PLANS=/opt/us-license-hook/plans.json
+/workspace/us-panel/deploy/host-hardening/backup/backup-us-license-hook-hourly.sh:46:  -name 'licenses.json.*' -o -name 'plans.json.*' -o -name 'us-license-hook.env.*' \
+/workspace/us-panel/docs/legal/uyum-drafts/M9_YURTDISI_AKTARIM_TASLAK.md:6:**Kaynak:** `KANUS_PRIVACY_REPORT.md` §4, `SRE_AUDIT_20261106.md`, `SMTP_HOSTINGER_20261106.md`, `LIVE_STORE_AUDIT_20261106.md`, us-license-hook kaynakları.
+/workspace/us-panel/deploy/host-hardening/backup/restore-us-license-hook-store.sh:2:# DRAFT — restore store (and optionally env) from /var/backups/us-license-hook.
+/workspace/us-panel/deploy/host-hardening/backup/restore-us-license-hook-store.sh:3:# REQUIRES maintenance window: stop us-license-hook briefly. Not for unattended use.
+/workspace/us-panel/deploy/host-hardening/backup/restore-us-license-hook-store.sh:5:#   restore-us-license-hook-store.sh licenses.json.YYYYMMDDThhmmssZ
+/workspace/us-panel/deploy/host-hardening/backup/restore-us-license-hook-store.sh:6:#   restore-us-license-hook-store.sh --env us-license-hook.env.YYYYMMDDThhmmssZ
+/workspace/us-panel/deploy/host-hardening/backup/restore-us-license-hook-store.sh:9:DEST_DIR=/var/backups/us-license-hook
+/workspace/us-panel/deploy/host-hardening/backup/restore-us-license-hook-store.sh:10:STORE=/opt/us-license-hook/licenses.json
+/workspace/us-panel/deploy/host-hardening/backup/restore-us-license-hook-store.sh:11:ENVF=/etc/us-license-hook.env
+/workspace/us-panel/deploy/host-hardening/backup/restore-us-license-hook-store.sh:17:  echo "STOP: run manually after systemctl stop us-license-hook"
+/workspace/us-panel/deploy/host-hardening/backup/restore-us-license-hook-store.sh:27:echo "  1) systemctl stop us-license-hook"
+/workspace/us-panel/deploy/host-hardening/backup/restore-us-license-hook-store.sh:30:echo "  4) systemctl start us-license-hook"
+/workspace/us-panel/docs/legal/uyum-drafts/CEREZ_POLITIKASI_TASLAK.md:59:## 5. US Panel / api.kanus.org (us-license-hook)
+/workspace/us-panel/deploy/host-hardening/backup/README.md:5:install -m 755 backup-us-license-hook-hourly.sh /usr/local/sbin/
+/workspace/us-panel/deploy/host-hardening/backup/README.md:6:install -m 644 us-license-hook-hourly.cron /etc/cron.d/us-license-hook-hourly
+/workspace/us-panel/deploy/host-hardening/backup/README.md:8:install -m 755 restore-us-license-hook-store.sh /usr/local/sbin/
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:28:| `deploy/us-license-hook_hostinger.tgz` | `1c3184f3e65980d8e3f2fb7295d8aa335586e4296dde13af9e9160ff78517f34` | PASS |
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:29:| `dist/us-license-hook_linux` → VPS `.real` | `7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0` | PASS |
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:31:Kurulum yolu: `/opt/us-license-hook/us-license-hook.real` (wrapper/systemd aynı: `us-license-hook-wrap.sh`).
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:37:`/opt/us-license-hook/backup-r7-accounts-20261106-053004`
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:39:İçerik: `us-license-hook.real`, `us-license-hook.env`, `licenses.json` (outbox dahil), `us-license-hook-locations.conf`, `us-license-hook-ratelimit.conf`, site symlink kopyası, `RESTORE.md`.
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:46:BK=/opt/us-license-hook/backup-r7-accounts-20261106-053004
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:47:systemctl stop us-license-hook
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:48:install -o uslic -g uslic -m 755 "$BK/us-license-hook.real" /opt/us-license-hook/us-license-hook.real
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:49:install -o root -g root -m 600 "$BK/us-license-hook.env" /etc/us-license-hook.env
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:50:install -o uslic -g uslic -m 600 "$BK/licenses.json" /opt/us-license-hook/licenses.json
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:51:cp -a "$BK/us-license-hook-locations.conf" /etc/nginx/snippets/us-license-hook-locations.conf
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:52:cp -a "$BK/us-license-hook-ratelimit.conf" /etc/nginx/conf.d/us-license-hook-ratelimit.conf
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:54:systemctl start us-license-hook
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:63:2. **Env** (`/etc/us-license-hook.env`): mevcut tüm değerler korundu (`US_SMTP_ENABLE=1` ve Hostinger SMTP dahil).
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:69:   - `location = /account/login` ve `= /account/register`: `limit_req zone=uslic_account burst=2 nodelay` (zone: `5r/m` in `/etc/nginx/conf.d/us-license-hook-ratelimit.conf`), Authorization korunur, `X-Real-IP=$remote_addr`, `X-Forwarded-For`, Host, Proto; `proxy_read_timeout 90s`.
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:73:4. **Servis:** `systemctl restart us-license-hook` → active; `dinleniyor 127.0.0.1:8787` (~05:30 UTC / 08:30 TSİ).
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:80:| Backup 053004 | PASS | `/opt/us-license-hook/backup-r7-accounts-20261106-053004` |
+/workspace/us-panel/reports/ACCOUNTS_DEPLOY_TEST_20261106.md:99:| Linux `--check-account` | NOT TESTED | dist'te Linux panel yok; yalnız `us-license-hook_linux` |
+/workspace/us-panel/deploy/host-hardening/backup/RESTORE.md:6:| `/opt/us-license-hook/licenses.json` | `licenses.json.<UTC>` | 640 |
+/workspace/us-panel/deploy/host-hardening/backup/RESTORE.md:7:| `/opt/us-license-hook/plans.json` | `plans.json.<UTC>` | 640 |
+/workspace/us-panel/deploy/host-hardening/backup/RESTORE.md:8:| `/etc/us-license-hook.env` | `us-license-hook.env.<UTC>` | **600 root-only** |
+/workspace/us-panel/deploy/host-hardening/backup/RESTORE.md:13:- LIVE already has daily cron `15 3 * * *` → `backup-us-license-hook-store.sh` (plans + licenses, 14d).
+/workspace/us-panel/deploy/host-hardening/backup/RESTORE.md:19:newest=$(ls -1t /var/backups/us-license-hook/licenses.json.* | head -1)
+/workspace/us-panel/deploy/host-hardening/backup/RESTORE.md:22:sha256sum /opt/us-license-hook/licenses.json "$tmpdir/licenses.json.restored"
+/workspace/us-panel/deploy/host-hardening/backup/RESTORE.md:28:2. `systemctl stop us-license-hook`
+/workspace/us-panel/deploy/host-hardening/backup/RESTORE.md:30:4. `install -m 640 -o uslic -g uslic <backup> /opt/us-license-hook/licenses.json`
+/workspace/us-panel/deploy/host-hardening/backup/RESTORE.md:31:5. `systemctl start us-license-hook` → `curl -s http://127.0.0.1:8787/healthz`
+/workspace/us-panel/docs/legal/uyum-drafts/SHOP_KARSILASTIRMA.md:37:| 3 | Varsayılan model adı **deepseek-v4.1-flash** / `US_MODEL_UPSTREAM` | `cmd/us-license-hook/main.go` | «Model altyapısı» `<DOLDUR>` — **DeepSeek adı yok** |
+/workspace/us-panel/deploy/host-hardening/nginx/README.md:22:cp -a /etc/nginx/conf.d/us-license-hook-ratelimit.conf /root/nginx-bak-$ts-ratelimit.conf
+/workspace/us-panel/deploy/host-hardening/nginx/README.md:23:cp -a /etc/nginx/snippets/us-license-hook-locations.conf /root/nginx-bak-$ts-snippet.conf
+/workspace/us-panel/deploy/host-hardening/nginx/README.md:27:cp us-license-hook-ratelimit.conf /etc/nginx/conf.d/us-license-hook-ratelimit.conf
+/workspace/us-panel/deploy/host-hardening/nginx/README.md:28:cp us-license-hook-locations.conf /etc/nginx/snippets/us-license-hook-locations.conf
+/workspace/us-panel/deploy/host-hardening/nginx/README.md:34:# (does NOT restart us-license-hook)
+/workspace/us-panel/deploy/host-hardening/nginx/README.md:46:cp -a /root/nginx-bak-$ts-ratelimit.conf /etc/nginx/conf.d/us-license-hook-ratelimit.conf
+/workspace/us-panel/deploy/host-hardening/nginx/README.md:47:cp -a /root/nginx-bak-$ts-snippet.conf /etc/nginx/snippets/us-license-hook-locations.conf
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:29:| (a) HTTPS + SPKI/PEM pinleme, dönüşümlü pinler | **NOT DONE (kısmi)** | HTTPS, hex/base64 SPKI, PEM, çoklu SPKI satırları, yanlış/eksik yapılandırılmış pinle fail-closed, SAN ve tarih kontrolü, redirectsiz taşıma mevcut ve testleri PASS. Ancak URL'ler env verilmezse wake kapalı (`cmd/us-license-hook/main.go:147-149`); istenen URL varsayılanları yalnız env örneğinde var. Pin varsayılanı dosya yoksa sessizce CA moduna düşüyor (`gpu_pin.go:146-153`); istenen varsayılan pin yolu kayıtsız şartsız kullanılmıyor. `gpu_pin.go:84` hâlâ `InsecureSkipVerify:true` + özel VerifyConnection kullanıyor (önceki bağlamın “kullanılmasın” koşuluna aykırı; pin/SAN/tarih kontrolünün olmadığı anlamına gelmez). Düz HTTP loopback için allowlist olmadan kabul ediliyor (`gpu_wake.go:63`); istenen her HTTP adresinin exact host:port allowlist kontrolü eksik. |
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:59:| GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go vet ./... | exit 0, log boş | — |
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:77:GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -buildvcs=false -trimpath \
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:81:  -o <rapor-dizini>/UNRELEASED_us-license-hook_linux ./cmd/us-license-hook
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:88:- `UNRELEASED_us-license-hook_linux`: `836ea237da69f77c9da6ebd41b9bf81d1a80a1a112a507200db4b07cba61052d`
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:90:- Yeni `.11 us-license-hook_hostinger.tgz`: **ÜRETİLMEDİ**.
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:97:- **UYUM v3: 12/12 patch check PASS, çakışan dosya/hunk yok.** `04-hook-us/0001-main-privacy-mount.patch` ikinci hunk'u `cmd/us-license-hook/main.go` satır 107'de +6 offset ile uyuyor; bu bir çatışma değil. Ekleme yamalarının bağımlılıklarının birlikte derlenebildiği bu salt check ile kanıtlanmış değildir.
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:108:  - `/workspace/us-panel-dev/r11_prev/us-license-hook_linux`: `1d4bdc9392da19ae8625cc754d714cafab0e241d7eead8128dd6fb02607c0ce2`
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:109:  - `/workspace/us-panel-dev/r11_prev/us-license-hook_hostinger.tgz`: `cf1363348604d072fd8866878c0b535e52ff420924fa3d5b1753a636d8446b7c`
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:110:  - `/workspace/us-panel/deploy/us-license-hook_hostinger.tgz`: aynı `cf1363…` hash.
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:111:  - `/workspace/us-panel-dev/r10_prev/us-license-hook_linux`: `7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0`
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:112:  - `/workspace/us-panel-dev/r10_prev/us-license-hook_hostinger.tgz`: `1c3184f3e65980d8e3f2fb7295d8aa335586e4296dde13af9e9160ff78517f34`
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:137:journalctl -u us-license-hook | grep gpu_wake
+/workspace/us-panel/reports/round11-assessment-20261108/TESLIM_RAPORU_TR.md:138:journalctl -u us-license-hook | grep gpu_wake | grep 'scheme=https host=34.41.186.170:8443'
+/workspace/us-panel/docs/legal/uyum-drafts/COOKIE_POLICY_DRAFT.en.md:37:**us-license-hook:** no `Set-Cookie` in code; Bearer sessions.
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:5:Same VPS already runs: nginx multi-site, us-license-hook (8787), tradebot×N, turkdini node, growth-os, swap ~1.7–2.7G historically, load often **25–40**, OOM kills on tradebot workers. Docker empty.
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:15:| Env | `/etc/us-license-hook.env` | `/etc/us-license-hook-prod.env` (own secrets) |
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:16:| Store | `/opt/us-license-hook/licenses.json` | `/opt/us-license-hook-prod/licenses.json` |
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:17:| Unit | `us-license-hook.service` | `us-license-hook-prod.service` |
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:23:2. `useradd` uslicprod; install binary under `/opt/us-license-hook-prod/`; wrapper+plans pattern as staging.
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:27:6. Hourly backup path under `/var/backups/us-license-hook-prod/`.
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:91:| Binary dir | `/opt/us-license-hook/` |
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:93:| Env | `/etc/us-license-hook.env` — **yeni** `SHOPIFY_WEBHOOK_SECRET`, canlı shop domain, `US_LICENSE_SECRET`, plans |
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:94:| Store | `/opt/us-license-hook/licenses.json` (boş/`{}` ile başla; test deposundan ayrı) |
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:95:| Plans | `US_PLANS_FILE=/opt/us-license-hook/plans.json` (cutover planındaki canlı product_id JSON) |
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:96:| Unit | `us-license-hook.service` + wrapper (EnvironmentFile’da ham JSON kırma) |
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:104:5. `systemctl enable --now us-license-hook` → `curl -s http://127.0.0.1:8787/healthz` → `ok`.  
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:122:1. `deploy/host-hardening/backup/backup-us-license-hook-hourly.sh` + cron (flock; 7 gün).  
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:123:2. Hedef: `/var/backups/us-license-hook/` — `licenses.json`, `plans.json`, **env 600 root-only**.  
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:169:**Paket:** `/workspace/us-panel/deploy/us-license-hook_hostinger.tgz`  
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:172:- Wrapper: `/opt/us-license-hook/us-license-hook` → `.real` + `US_PLANS_FILE` / `plans.json`
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:189:| Saatlik backup + restore testi | **PASS** | flock backup alındı; temp-dir sha256 eşleşti (`RESTORE_TEST=PASS`); cron `/etc/cron.d/us-license-hook-hourly` |
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:209:5. `systemctl start us-license-hook` → local healthz 200; imzasız webhook 401.  
+/workspace/us-panel/deploy/host-hardening/PROD_PLAN.md:267:2. `systemctl start us-license-hook` (Restart=on-failure tercih) → healthz 200  
+/workspace/us-panel/deploy/hook-move/rollback.sh:28:run "ssh_retry \"$TEST_KEY\" \"$TEST_HOST\" 'systemctl start us-license-hook; curl -sf http://127.0.0.1:8787/healthz'"
+/workspace/us-panel/deploy/hook-move/rollback.sh:30:run "ssh_retry \"$PROD_KEY\" \"$PROD_HOST\" 'systemctl stop us-license-hook-test; systemctl disable us-license-hook-test'"
+/workspace/us-panel/deploy/hook-move/cutover.sh:2:# HOOK MOVE cutover — api-test.kanus.org → srv2133566 (us-license-hook-test :8788)
+/workspace/us-panel/deploy/hook-move/cutover.sh:42:ssh_retry "$PROD_KEY" "$PROD_HOST" 'systemctl is-active us-license-hook-test || true; test -x /opt/us-license-hook-test/us-license-hook.real; nginx -t'
+/workspace/us-panel/deploy/hook-move/cutover.sh:43:ssh_retry "$TEST_KEY" "$TEST_HOST" 'systemctl is-active us-license-hook; sha256sum /opt/us-license-hook/licenses.json'
+/workspace/us-panel/deploy/hook-move/cutover.sh:46:run "ssh_retry \"$TEST_KEY\" \"$TEST_HOST\" 'systemctl stop us-license-hook'"
+/workspace/us-panel/deploy/hook-move/cutover.sh:50:run "tmpdir=\$(mktemp -d /tmp/hook-cutover-XXXX); chmod 700 \"\$tmpdir\"; scp -i \"$TEST_KEY\" \"\${SSH_BASE[*]}\" root@$TEST_HOST:/opt/us-license-hook/licenses.json \"\$tmpdir/licenses.json\"; scp -i \"$PROD_KEY\" \"\${SSH_BASE[*]}\" \"\$tmpdir/licenses.json\" root@$PROD_HOST:/opt/us-license-hook-test/licenses.json; ssh -i \"$PROD_KEY\" \"\${SSH_BASE[*]}\" root@$PROD_HOST 'chown uslic-test:uslic-test /opt/us-license-hook-test/licenses.json; chmod 600 /opt/us-license-hook-test/licenses.json'; rm -rf \"\$tmpdir\""
+/workspace/us-panel/deploy/hook-move/cutover.sh:53:run "ssh_retry \"$PROD_KEY\" \"$PROD_HOST\" 'systemctl enable --now us-license-hook-test; curl -sf http://127.0.0.1:8788/healthz'"
+/workspace/us-panel/docs/KULLANICI_REHBERI_ACCOUNTS_TR.md:12:US Panel’in **hesap modu** (accounts) ile çalışan Windows sürümünü anlatır. Panel bir Windows EXE’dir; model ve kredi işlemleri VPS üzerindeki Go **us-license-hook** geçidinden geçer.
+/workspace/us-panel/deploy/hook-move/us-license-hook-wrap.sh:4:if [ -f /opt/us-license-hook-test/plans.json ]; then
+/workspace/us-panel/deploy/hook-move/us-license-hook-wrap.sh:5:  export US_PLANS_JSON="$(cat /opt/us-license-hook-test/plans.json)"
+/workspace/us-panel/deploy/hook-move/us-license-hook-wrap.sh:6:  export US_PLANS_FILE=/opt/us-license-hook-test/plans.json
+/workspace/us-panel/deploy/hook-move/us-license-hook-wrap.sh:9:STORE="${US_STORE_PATH:-/opt/us-license-hook-test/licenses.json}"
+/workspace/us-panel/deploy/hook-move/us-license-hook-wrap.sh:13:exec /opt/us-license-hook-test/us-license-hook.real
+/workspace/us-panel/reports/QA_TEST_RAPORU_20261106.md:63:| §12 Derleme testleri | PASS | L/build.log:3/5 Linux hook ve Windows amd64 cross-build exit0; yeni fixture hook buildleri ayrıca L/hook-build.log ve L/e2e9-local-hook/hook-build.log |
+/workspace/us-panel/reports/QA_TEST_RAPORU_20261106.md:164:env GOPROXY=off GOSUMDB=off go build -o /workspace/us-panel/qa/hook ./cmd/us-license-hook
+/workspace/us-panel/reports/QA_TEST_RAPORU_20261106.md:165:env GOPROXY=off GOSUMDB=off GOOS=windows GOARCH=amd64 go build -o /workspace/us-panel/qa/US-QA.exe .
+/workspace/us-panel/deploy/us-license-hook/README_TR.md:10:- Diğer gerçek adlar: SHOPIFY_SHOP_DOMAIN, SHOPIFY_WEBHOOK_SECRET, US_LICENSE_SECRET, US_STORE_PATH, US_LISTEN. US_PLANS_FILE=/opt/us-license-hook/plans.json JSON environment'dan önce gelir; unreadable file fallback yapmaz. Python SHOPIFY_SHOP/US_CREDIT_PRODUCTS kullanılmaz.
+/workspace/us-panel/deploy/us-license-hook/README_TR.md:65:  `journalctl -u us-license-hook --since "1 hour ago" | grep 'gpu_wake ' | grep -v 'host=34.41.186.170:8443'` → çıktı **boş** olmalı;
+/workspace/us-panel/deploy/us-license-hook/README_TR.md:66:  `journalctl -u us-license-hook --since "1 hour ago" | grep 'gpu_wake ' | grep 'scheme=https host=34.41.186.170:8443' | grep 'pin_ok=yes'` → satır görülmeli.
+/workspace/us-panel/deploy/us-license-hook/README_TR.md:90:- Operatör log kontrolü: `journalctl -u us-license-hook | grep gpu_wake`; gerçek hedef için `scheme=https host=34.41.186.170:8443` ve `pin_ok=yes` görülmeli. Bu komut burada çalıştırılmadı; token kapatma/değiştirme yapılmadı.
+/workspace/us-panel/reports/FIYATLANDIRMA_TR.md:44:- `cmd/us-license-hook/main.go`: `US_PLANS_JSON` boşsa varsayılan `licensesrv.LivePlansJSON()`.
+/workspace/us-panel/reports/SHOP_LIVE_WEBHOOK_CUTOVER_PLAN.md:10:1. Production VPS’te Go `us-license-hook` `api.kanus.org` arkasında ayakta (`/healthz` → ok). **Durum (p12):** production `api.kanus.org` henüz yok — HOST hazırlıkta.  
+/workspace/us-panel/reports/SHOP_LIVE_WEBHOOK_CUTOVER_PLAN.md:11:2. Nginx/Caddy location’ları (örnek: `deploy/us-license-hook/nginx-location.example.conf`):
+/workspace/us-panel/reports/SHOP_LIVE_WEBHOOK_CUTOVER_PLAN.md:26:Kod bağları: `work/kiyas/term/cmd/us-license-hook/main.go` (path→topic).  
+/workspace/us-panel/reports/ROUND8_S2_RAPOR_TR.md:15:- go vet ./...: PASS · GOOS=windows go vet: PASS · GOOS=windows go build: PASS
+/workspace/us-panel/reports/ROUND8_S2_RAPOR_TR.md:22:- .7 ile aynı yöntem: CGO_ENABLED=0 GOOS=windows GOARCH=amd64, -trimpath -H=windowsgui, releaseChannel=commercial, releaseAuthority=accounts, gateway/license URL https://api-test.kanus.org, embeddedKey/embeddedLicenseSecret boş.
+/workspace/us-panel/reports/S12_TEST_MATRIX_20261106.md:13:| Derleme testleri | PASS | L/build.log:3 `linux_build_exit=0`; :5 `windows_cross_build_exit=0`; L/e2e9-panel-driver.log:3 `BUILD py_compile PASS` | Linux hook,Windows amd64 cross-build ve model-fixture üretimi Python proje; native Windows değil |
+/workspace/us-panel/reports/PRODUCTION_CHECKLIST.md:63:| G7 | Hook start (`systemctl start us-license-hook`) + /healthz | HOST | **Demir** | **BLOCKED** | Secret yok → start reddedildi; local healthz down (`PROD_PLAN.md`). |
+/workspace/us-panel/reports/WINDOWS_SMOKE_COMMANDS_20261106_TR.md:3:BLOCKED — Bu komutlar native Windows'ta burada çalıştırılmadı. PASS — Linux gerçek --version/--selftest ve yerel CLI contract testleri. GUI subsystem stdout garantili değildir: parent console attach denenir, US_SMOKE_LOG her durumda log-first; Start-Process -Wait ile exit alın. Aşağıdaki health/license/account komutları PC'den Go'ya gider; model/GPU başlatmaz. HOST yetkili yeni hook + /account/ kurulumundan sonra Demir çalıştırmalı; bu box'ta çalıştırılmadı.
+/workspace/us-panel/reports/KANUS_PRODUCTION_CHECKLIST.md:63:| G7 | Hook start (`systemctl start us-license-hook`) + /healthz | HOST | **Demir** | **BLOCKED** | Secret yok → start reddedildi; local healthz down (`PROD_PLAN.md`). |
+/workspace/us-panel/reports/KANUS_FINAL_STATUS.md:17:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/dist/us-license-hook_linux
+/workspace/us-panel/reports/KANUS_FINAL_STATUS.md:18:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/deploy/us-license-hook/us-license-hook
+/workspace/us-panel/reports/KANUS_FINAL_STATUS.md:19:0e599d2877087eb6efaf97f34fa711ad3263a18c272897d89cc52af88a6fa39a  /workspace/us-panel/deploy/us-license-hook_hostinger.tgz
+/workspace/us-panel/reports/EXE_SMOKE_CHECKLIST_TR.md:5:- BLOCKED — Native Windows burada yok. Güncel tam PowerShell, maskeli account/credits çıktıları ve exit kodları WINDOWS_SMOKE_COMMANDS_20261106_TR.md; önce HOST yeni account hook route/env kurulumu gerekir. Eski .6go-hook ekranı değil, .7accounts ekranı beklenir.
+/workspace/us-panel/reports/EXE_SMOKE_CHECKLIST_TR.md:36:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/dist/us-license-hook_linux
+/workspace/us-panel/reports/EXE_SMOKE_CHECKLIST_TR.md:37:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/deploy/us-license-hook/us-license-hook
+/workspace/us-panel/reports/EXE_SMOKE_CHECKLIST_TR.md:38:0e599d2877087eb6efaf97f34fa711ad3263a18c272897d89cc52af88a6fa39a  /workspace/us-panel/deploy/us-license-hook_hostinger.tgz
+/workspace/us-panel/reports/EXE_SMOKE_CHECKLIST_TR.md:57:- BLOCKED — Windows yeni status özeti: GET /v1/credits/status kind/remaining/expiry TSİ gösterimi; önce yeni Go hook route'u yetkili deploy edilmiş olmalı. Native test bu box'ta yapılmadı.
+/workspace/us-panel/reports/ACCOUNTS_MODE_GAP_20261106.md:70:2. **PASS karar / BLOCKED implementasyon öncesi: accounts + Go gateway.** Mevcut webhook/model/hourly/refund tek ledger korunur. A tablosu endpoint işleri ortak temel dahil toplam **56–88 mühendis-saat**; yeni confirm/reset/outbox/allowlist10–16h, migration/security/Windows/E2E8–16h ile **74–120h** planlama bandı (paralelleştirme/toplamlar birebir toplama değildir). Risk: hesap sahipliği, mixed seconds/prompts, reset/session invalidate, brute-force, mevcut JSON boyutu ve tek writer. Çift lisans guard: Shopify üçtopic yalnız Go; Python issuer kapalı; account redeem yalnız ownership link yazar, yeni license/credit üretmez. Aynı us1 farklıhesaba409; aynıhesaba200 idempotent. Raw key ve session aynı kaynaktan reserve eder. Refund/cancel mevcut license satırını değiştirir; account balance anında türetilir.
+/workspace/us-panel/reports/ACCOUNTS_MODE_GAP_20261106.md:113:- BLOCKED — HOST /account/ nginx prefix/env + hook yetkili deploy, native Windows, upstream tunnel/GPU controller. Mail delivery/posta sahipliği ve bağımsız security acceptance NOT TESTED. Reset/verify GUI, persistent rate-limit/logout/refresh, tek çağrıda multi-pack hourly pooling yok. Ayrıntılı sınırlar ROUND7_RAPOR_TR.md.
+/workspace/us-panel/reports/KANUS_PRIVACY_REPORT.md:13:US Panel / us-license-hook kod tabanında hesap, lisans, outbox ve model proxy için **kişisel veri işleniyor**; ancak KVKK m.11 / GDPR erişim-silme-taşınabilirlik-rıza için **üretimde hazır uç noktalar yoktu**. SHOP `docs/legal/final/` taslakları bulundu; çoğu alan `<DOLDUR>`; canlı mağazada KVKK/iade/şartlar sayfaları eksik (`LIVE_STORE_AUDIT_20261106.md`).
+/workspace/us-panel/reports/KANUS_PRIVACY_REPORT.md:38:| Oturum JWT-benzeri (`usa1.…`) | İstemci + sunucu doğrulama; sunucuda kalıcı değil | `US_SESSION_TTL_SECONDS` varsayılan 86400s | `cmd/us-license-hook/main.go:94-98`, `accounts.go:78-88` |
+/workspace/us-panel/reports/KANUS_PRIVACY_REPORT.md:46:| SMTP kimlik bilgileri | `/etc/us-license-hook.env` (VPS); yedek 600 | Yedek KEEP_DAYS | `mail.go:16-18`, `PROD_PLAN.md` B5, `backup-*.sh` |
+/workspace/us-panel/reports/KANUS_PRIVACY_REPORT.md:171:cmd/us-license-hook/main.go # mux wiring only
+/workspace/us-panel/reports/KANUS_PRIVACY_REPORT.md:194:go test ./cmd/us-license-hook/ -count=1       → ok
+/workspace/us-panel/reports/SRE_USTA_WAKE_HTTP_RISK_20261106.md:96:- `deploy/us-license-hook/us-license-hook.env.example`:
+/workspace/us-panel/reports/STATUS_TR.md:16:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/dist/us-license-hook_linux
+/workspace/us-panel/reports/STATUS_TR.md:17:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/deploy/us-license-hook/us-license-hook
+/workspace/us-panel/reports/STATUS_TR.md:18:0e599d2877087eb6efaf97f34fa711ad3263a18c272897d89cc52af88a6fa39a  /workspace/us-panel/deploy/us-license-hook_hostinger.tgz
+/workspace/us-panel/reports/E2E_HOOK_KANUS_TEST_20261106.md:6:Yedek: `/opt/us-license-hook/backup-e2e-20261106030421.json`.
+/workspace/us-panel/reports/ROUND7_RAPOR_TR.md:64:7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0  /workspace/us-panel/dist/us-license-hook_linux
+/workspace/us-panel/reports/ROUND7_RAPOR_TR.md:65:7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0  /workspace/us-panel/deploy/us-license-hook/us-license-hook
+/workspace/us-panel/reports/ROUND7_RAPOR_TR.md:66:1c3184f3e65980d8e3f2fb7295d8aa335586e4296dde13af9e9160ff78517f34  /workspace/us-panel/deploy/us-license-hook_hostinger.tgz
+/workspace/us-panel/reports/ROUND7_RAPOR_TR.md:68:PASS — WindowsPE amd64/GUI subsystem;9archivefile kaynakla byte-eşit; hook iki kopya eşit; webhooksecret placeholder. Manifests .7latest yapıldı, eskiartifact kayıtları tutuldu. PowerShell: WINDOWS_SMOKE_COMMANDS_20261106_TR.md.
+/workspace/us-panel/reports/ROUND7_RAPOR_TR.md:71:accounts.go/accounts_test.go/account_workers.go; store.go,model_meter.go,model_proxy.go,credits.go,mail.go;cmd/us-license-hook/main.go+accounts_routes_test.go; account_client.go,gateway.go,gui.go,model.go,context_limits.go,pricing.go,smoke_cli.go,release.go,US_DERLE.bat,accounts_mode_round7_test.go;go.mod/go.sum. Deploy README/env/nginx/Caddy,binary/tgz,manifest ve bu raporlar güncel.
+/workspace/us-panel/reports/KANUS_SECURITY_REPORT.md:17:Demir onayıyla `/workspace/us-panel/deploy/proposed/` taslakları **uygulandı**. `us-license-hook` stop/restart **yapılmadı**; binary/wrapper/env/plans/unit **dokunulmadı**. Diğer nginx siteleri edit edilmedi. Değişen dosyalar `/root/sec-apply-bak.*` altında yedeklendi.
+/workspace/us-panel/reports/KANUS_SECURITY_REPORT.md:20:- `/etc/nginx/conf.d/us-license-hook-ratelimit.conf`: zones `uslic_webhooks` 10r/s, `uslic_credits` 5r/s, `limit_req_status 429`
+/workspace/us-panel/reports/KANUS_SECURITY_REPORT.md:28:- Script: `/usr/local/sbin/backup-us-license-hook-store.sh`
+/workspace/us-panel/reports/KANUS_SECURITY_REPORT.md:29:- Cron: `/etc/cron.d/us-license-hook-store` (03:15 UTC)
+/workspace/us-panel/reports/KANUS_SECURITY_REPORT.md:30:- Hedef: `/var/backups/us-license-hook/`, 14 gün saklama
+/workspace/us-panel/reports/KANUS_SECURITY_REPORT.md:59:| us-license-hook | **hiçbir şey** |
+/workspace/us-panel/reports/TEST_VPS_SSH_TIMEOUT_20261106.md:66:- **Top CPU/RSS:** tradebot live-24h (~46% CPU / 818 MiB), tradebot3 (~18% / **~2.0 GiB**), turkdini node (~16% / **~1.8 GiB**), tradebot-okx, growth-os operator/publisher, unattended-upgrade, Hostinger usage-telemetry, multiple gunicorn :8090–8095, us-license-hook.
+/workspace/us-panel/reports/PLANS_LIVE_DIFF_20261106.md:4:**Kaynak test dosyası:** `/workspace/us-panel/deploy/us-license-hook/plans.json` (host-hardening altında `plans.json` yoktu)
+/workspace/us-panel/reports/PLANS_LIVE_DIFF_20261106.md:55:- `deploy/host-hardening/plans.json` mevcut değildi; karşılaştırma `deploy/us-license-hook/plans.json` ile yapıldı.
+/workspace/us-panel/reports/E2E_HAZIRLIK_TR.md:30:- BLOCKED — Canlı dry-run önkoşulları: HOST yetkili .7 hook + /account/ + sessionsecret kurulumu; Demir Windows .7; VPS18000 private upstream. Bu tur bunlar yapılmadı.
+/workspace/us-panel/reports/SRE_VPS_CAPACITY_20261106.md:36:| Top CPU süreçler | PASS | tradebot python %45.9 RSS 773 MiB; growthos python %22/%21; tradebot python %18.9/%18.1; turkdini node %16.2; **us-license-hook %9.5** |
+/workspace/us-panel/reports/SRE_VPS_CAPACITY_20261106.md:39:| us-license-hook CPUWeight/Nice/MemoryMax | **NOT TESTED** | `systemctl show` satırı capture'da yok |
+/workspace/us-panel/reports/SRE_VPS_CAPACITY_20261106.md:52:5. **us-license-hook** — yalnızca ~%9.5 CPU; yükün ana kaynağı değil, kurbanı.
+/workspace/us-panel/reports/SHOP_LICENSE_LINK_COPY_TR.md:5:**Kaynak akışlar:** `POST /account/redeem` (lisans → hesap sahipliği; kredi kopyalanmaz), `POST /account/register|login`, panel hesap modu (`deploy/us-license-hook/README_TR.md`, `ACCOUNTS_MODE_GAP_20261106.md`). Hook e-posta konusu örneği: «KAN.US US lisans anahtarınız».
+/workspace/us-panel/reports/LISANS_URETICI_PLAN_TR.md:7:- PASS — Go us-license-hook VPS 127.0.0.1:8787; nginx/Caddy HTTPS api-test.kanus.org:443 -> Go. Python/Cloud Run issuer yok, Python webhook almaz. JSON US_STORE_PATH tek writer flock ile korunur; PostgreSQL/SQLite aktif dağıtım değildir.
+/workspace/us-panel/reports/LISANS_URETICI_PLAN_TR.md:26:- NOT TESTED — PASS burada route dosyası/unit kanıtıdır; canlı nginx/Caddy/TLS uygulanmadı. Ham HMAC gövdesi ve auth/Shopify başlıkları korunmalı, token loglanmamalı. Exact location örneği deploy/us-license-hook/ içinde.
+/workspace/us-panel/reports/LISANS_URETICI_PLAN_TR.md:34:- PASS — HOST yeni nginx location ^~ /account/ →127.0.0.1:8787; Authorization korunur, X-Real-IP overwrite,16kbody. Yeni env US_SESSION_SECRET (özel≥32random byte),US_SESSION_TTL_SECONDS=86400,US_SMTP_ALLOWLIST= (set-empty denyall); SMTP0. Hazır örnek deploy/us-license-hook/nginx-location.example.conf.
+/workspace/us-panel/reports/ROUND9_RAPOR_TR.md:46:- `go vet ./...` PASS, `GOOS=windows go vet .` PASS, `GOOS=windows go build` PASS.
+/workspace/us-panel/reports/KANUS_RELEASE_NOTES.md:17:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/dist/us-license-hook_linux
+/workspace/us-panel/reports/KANUS_RELEASE_NOTES.md:18:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/deploy/us-license-hook/us-license-hook
+/workspace/us-panel/reports/KANUS_RELEASE_NOTES.md:19:0e599d2877087eb6efaf97f34fa711ad3263a18c272897d89cc52af88a6fa39a  /workspace/us-panel/deploy/us-license-hook_hostinger.tgz
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:1:# us-license-hook VPS status (2026-11-06)
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:7:- Crash root cause: empty `/opt/us-license-hook/licenses.json` (0 bytes). `OpenStore` unmarshals existing files; empty fails. Missing file is fine.
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:13:- Action: replace `/opt/us-license-hook/us-license-hook.real` only (wrapper / plans.json / env / nginx untouched).
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:14:- Package: `/workspace/us-panel/deploy/us-license-hook_hostinger.tgz`
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:18:- Backup: `/opt/us-license-hook/backup-20261106-025443/` (contains old `.real`; no `licenses.json` present to back up)
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:20:- `systemctl restart us-license-hook` → `active` (running) since 2026-11-06 02:56:12 UTC / 05:56 Europe/Istanbul; Main PID 1094961; log: `dinleniyor 127.0.0.1:8787`
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:25:- Store: `US_STORE_PATH=/opt/us-license-hook/licenses.json` — file **ABSENT** (correct; not created empty)
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:28:  - `journalctl -u us-license-hook -f --no-pager`
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:29:  - store path after first paid webhook: `/opt/us-license-hook/licenses.json`
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:39:- `ExecStart=`: `/opt/us-license-hook/us-license-hook-wrap.sh` (çalışan süreç: `us-license-hook.real`)
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:43:Snippet include: var (`/etc/nginx/snippets/us-license-hook-locations.conf`).
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:65:- `/opt/us-license-hook/licenses.json`: **yok** (eksik dosya OpenStore için kabul edilebilir; 0-byte değil)
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:66:- `/opt/us-license-hook/plans.json`: size=**571**, mode=640, owner=root:uslic
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:84:- Backup: `/opt/us-license-hook/backup-r5-20261106-032839/` (`.real`, env, nginx snippet, `licenses.json`)
+/workspace/us-panel/reports/HOOK_VPS_STATUS_20261106.md:88:- `systemctl restart us-license-hook` → **active** since 2026-11-06 03:28:51 UTC / 06:28 Europe/Istanbul; journal: `dinleniyor 127.0.0.1:8787`
+/workspace/us-panel/reports/PANEL_S2_GAP_20261106.md:20:- Paketler: `kiyas`, `kiyas/cmd/us-license-hook`, `kiyas/cmd/us-pricing-gen`, `kiyas/licensesrv`. Son paketler hook/ticari alanla ilişkilidir.
+/workspace/us-panel/reports/PANEL_S2_GAP_20261106.md:41:ok  	kiyas/cmd/us-license-hook	9.074s
+/workspace/us-panel/reports/PANEL_S2_GAP_20261106.md:135:- `cmd/us-license-hook/**` (özellikle `main.go`, `main_test.go`, `accounts_routes_test.go`).
+/workspace/us-panel/reports/RELEASE_NOTES.md:17:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/dist/us-license-hook_linux
+/workspace/us-panel/reports/RELEASE_NOTES.md:18:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/deploy/us-license-hook/us-license-hook
+/workspace/us-panel/reports/RELEASE_NOTES.md:19:0e599d2877087eb6efaf97f34fa711ad3263a18c272897d89cc52af88a6fa39a  /workspace/us-panel/deploy/us-license-hook_hostinger.tgz
+/workspace/us-panel/reports/KANUS_GLOBAL_READINESS.md:29:| go build / go vet ./... / GOOS=windows vet+build / gofmt -l | — | | PASS |
+/workspace/us-panel/reports/MERGE_20261106_TR.md:12:- PASS — `licensesrv/`, `cmd/us-license-hook`, `cmd/us-pricing-gen`, ortak `pricing.go`, 8 canlı product_id ve testleri taşındı. Tam dosya listesi: `MERGE_CHANGED_FILES_20261106.txt`.
+/workspace/us-panel/reports/LIVE_STORE_AUDIT_20261106.md:125:### `deploy/us-license-hook/plans.json` uyarısı
+/workspace/us-panel/reports/PADDLE_ONBOARDING.md:47:| Lisans teslimi | Mevcut: Shopify webhook → `us-license-hook` | **Öneri:** Paddle notification → aynı hook’ta yeni provider adaptörü → `credit_grant` / redeem; Shopify `orders/paid` yolundan ayrı `payment_ref` |
+/workspace/us-panel/reports/TEST_MAGAZA_WEBHOOK_HAZIRLIK_TR.md:22:- HTTPS URL: örn. https://api-test.kanus.org/webhooks/shopify/orders-paid (ters vekil -> 127.0.0.1:8787, us-license-hook) veya geçici tünel.
+/workspace/us-panel/reports/KANUS_PERF_REPORT.md:20:- İncelenen kaynak: work2/kiyas/term/cmd/us-license-hook/main.go, licensesrv/model_proxy.go/model_meter.go; kurulum sözleşmesi deploy/us-license-hook/README_TR.md. GET /healthz hazır model kanıtı değildir; GET /v1/credits/status ve POST /account/balance kredi görünümüdür. Bearer lisans veya hesap oturumu gerekir.
+/workspace/us-panel/reports/SMTP_HOSTINGER_20261106.md:14:| healthz | **PASS** | 200; `us-license-hook` active |
+/workspace/us-panel/reports/SMTP_HOSTINGER_20261106.md:25:## Env (VPS `/etc/us-license-hook.env`)
+/workspace/us-panel/reports/SMTP_HOSTINGER_20261106.md:36:Backup: `/opt/us-license-hook/backup-smtp-preenable-20261106-074711/` (licenses.json + env).
+/workspace/us-panel/reports/r20261108/test-snapshots/pinned-v10/US_DERLE.bat:17:set "GOOS=windows"
+/workspace/us-panel/reports/KANUS_TEST_RESULTS.md:29:- NOT TESTED — Diğer ajan PASS bildirdi; bu yürütücü doğrulamadı: kanus-test Bogus/#1001+#1002 E2E A–F bu turda çalıştırıldı (ayrıntı E2E Bogus/Hook bölümü). Hâlâ NOT TESTED: model/45 dk soğuk başlangıç, TLS, backup/restore, SMTP, güvenlik taraması, native Windows.
+/workspace/us-panel/reports/KANUS_TEST_RESULTS.md:80:Yedek: `/opt/us-license-hook/backup-e2e-20261106030421.json`.
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/SMTP_HOSTINGER_20261106.md:14:| healthz | **PASS** | 200; `us-license-hook` active |
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/SMTP_HOSTINGER_20261106.md:25:## Env (VPS `/etc/us-license-hook.env`)
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/SMTP_HOSTINGER_20261106.md:36:Backup: `/opt/us-license-hook/backup-smtp-preenable-20261106-074711/` (licenses.json + env).
+/workspace/us-panel/reports/WEBHOOK_KREDI_TASARIM_TR.md:4:Shopify `orders/paid` → HTTPS (ör. `https://api.kanus.org/webhooks/shopify/orders-paid`, ters vekil → `us-license-hook` 127.0.0.1:8787)
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/GLOBAL_I18N_REPORT.md:60:Çalışma kopyaları: `global-work/r10dev` (Go, git aşamalı), `global-work/kanusdev` (Python). r10_base ve US ağaçlarına yazılmadı; hook dosyalarına (cmd/us-license-hook, licensesrv) dokunulmadı. Ledger/ödeme kodu değişmedi; TRY dışı para birimleri ödeme tarafında kapalı.
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/GLOBAL_I18N_REPORT.md:159:- `i18n/pref_windows.go`: openat yok → Lstat ile bileşen yürüyüşü (symlink/reparse=ModeIrregular ret), Lstat+Open+SameFile, rename öncesi dizin yeniden kontrol. GOOS=windows vet/build PASS; gerçek Windows'ta NOT TESTED.
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/GLOBAL_I18N_REPORT.md:173:| GOOS=windows go vet ./... / go build ./... | PASS / PASS |
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/GLOBAL_I18N_REPORT.md:207:| GOOS=windows go vet ./... / go build -o /dev/null ./... | PASS / PASS |
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/GLOBAL_I18N_REPORT.md:208:| GOOS=windows go test -c ./i18n | PASS (non-race exe); Windows runtime NOT TESTED |
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/GLOBAL_I18N_REPORT.md:270:| GOOS=windows go vet ./... / go build ./... | PASS / PASS |
+/workspace/us-panel/reports/ROUND5_TESLIM_OZETI_TR.md:41:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/dist/us-license-hook_linux
+/workspace/us-panel/reports/ROUND5_TESLIM_OZETI_TR.md:42:7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/deploy/us-license-hook/us-license-hook
+/workspace/us-panel/reports/ROUND5_TESLIM_OZETI_TR.md:43:0e599d2877087eb6efaf97f34fa711ad3263a18c272897d89cc52af88a6fa39a  /workspace/us-panel/deploy/us-license-hook_hostinger.tgz
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/KANUS_PERF_REPORT.md:20:- İncelenen kaynak: work2/kiyas/term/cmd/us-license-hook/main.go, licensesrv/model_proxy.go/model_meter.go; kurulum sözleşmesi deploy/us-license-hook/README_TR.md. GET /healthz hazır model kanıtı değildir; GET /v1/credits/status ve POST /account/balance kredi görünümüdür. Bearer lisans veya hesap oturumu gerekir.
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/KANUS_SECURITY_REPORT.md:17:Demir onayıyla `/workspace/us-panel/deploy/proposed/` taslakları **uygulandı**. `us-license-hook` stop/restart **yapılmadı**; binary/wrapper/env/plans/unit **dokunulmadı**. Diğer nginx siteleri edit edilmedi. Değişen dosyalar `/root/sec-apply-bak.*` altında yedeklendi.
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/KANUS_SECURITY_REPORT.md:20:- `/etc/nginx/conf.d/us-license-hook-ratelimit.conf`: zones `uslic_webhooks` 10r/s, `uslic_credits` 5r/s, `limit_req_status 429`
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/KANUS_SECURITY_REPORT.md:28:- Script: `/usr/local/sbin/backup-us-license-hook-store.sh`
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/KANUS_SECURITY_REPORT.md:29:- Cron: `/etc/cron.d/us-license-hook-store` (03:15 UTC)
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/KANUS_SECURITY_REPORT.md:30:- Hedef: `/var/backups/us-license-hook/`, 14 gün saklama
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/KANUS_SECURITY_REPORT.md:59:| us-license-hook | **hiçbir şey** |
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/E2E_HOOK_KANUS_TEST_20261106.md:6:Yedek: `/opt/us-license-hook/backup-e2e-20261106030421.json`.
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/QA_TEST_RAPORU_20261106.md:63:| §12 Derleme testleri | PASS | L/build.log:3/5 Linux hook ve Windows amd64 cross-build exit0; yeni fixture hook buildleri ayrıca L/hook-build.log ve L/e2e9-local-hook/hook-build.log |
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/QA_TEST_RAPORU_20261106.md:164:env GOPROXY=off GOSUMDB=off go build -o /workspace/us-panel/qa/hook ./cmd/us-license-hook
+/workspace/us-panel/reports/r20261108/evidence/referenced-report-snapshots/QA_TEST_RAPORU_20261106.md:165:env GOPROXY=off GOSUMDB=off GOOS=windows GOARCH=amd64 go build -o /workspace/us-panel/qa/US-QA.exe .
+/workspace/us-panel/reports/r20261108/test-snapshots/work2-v11/US_DERLE.bat:17:set "GOOS=windows"
+/workspace/us-panel/reports/r20261108/KANUS_SECURITY_REPORT.md:17:Salt GET koruma kontrolleri; Go suite/vet/race; QA güvenlik ve Windows log incelemesi. SQL injection için gerçek DB/DAST koşulmadı. /workspace/us-panel/reports/r20261108/evidence/hook-credit-no-auth.meta; /workspace/us-panel/reports/QA_TEST_RAPORU_20261106.md
+/workspace/us-panel/reports/qa-20261106/QA_INITIAL_REPORT_0808.md:45:| §12 Derleme | PASS | L/build.log:3/5 linux_build_exit=0 windows_cross_build_exit=0; artifactlar qa/hook ve qa/US-QA.exe; native Windows değil |
+/workspace/us-panel/reports/qa-20261106/QA_INITIAL_REPORT_0808.md:65:env GOPROXY=off GOSUMDB=off go build -o /workspace/us-panel/qa/hook ./cmd/us-license-hook
+/workspace/us-panel/reports/qa-20261106/QA_INITIAL_REPORT_0808.md:66:env GOPROXY=off GOSUMDB=off GOOS=windows GOARCH=amd64 go build -o /workspace/us-panel/qa/US-QA.exe .
+/workspace/us-panel/reports/r20261108/test-snapshots/pinned-v10-layout/work2/kiyas/term/US_DERLE.bat:17:set "GOOS=windows"

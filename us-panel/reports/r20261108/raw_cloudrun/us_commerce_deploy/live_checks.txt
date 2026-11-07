@@ -1,0 +1,1 @@
+live health: {"ok": true, "shopify_webhooks": false} 200 ready: {"ready": true, "checks": {"config": true, "store": true}} 200

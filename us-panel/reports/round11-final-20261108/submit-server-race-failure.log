@@ -1,0 +1,3 @@
+=== RUN   TestSubmitLeavesTheServerRunning
+    run_test.go:93: server body "" Get "http://127.0.0.1:39194/": dial tcp 127.0.0.1:39194: connect: connection refused
+--- FAIL: TestSubmitLeavesTheServerRunning (2.16s)

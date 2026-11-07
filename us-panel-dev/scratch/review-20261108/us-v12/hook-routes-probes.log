@@ -1,0 +1,15 @@
+=== RUN   TestPanelR12HookReadOnlyUnauthenticatedNeverWake
+    zz_panel_routes_test.go:10: GET /healthz status=200
+    zz_panel_routes_test.go:10: OPTIONS /healthz status=200
+    zz_panel_routes_test.go:10: GET /readyz status=404
+    zz_panel_routes_test.go:10: OPTIONS /v1/chat status=405
+    zz_panel_routes_test.go:10: OPTIONS /v1/chat/completions status=405
+    zz_panel_routes_test.go:10: GET /v1/models status=401
+    zz_panel_routes_test.go:10: OPTIONS /v1/models status=405
+    zz_panel_routes_test.go:10: POST /v1/chat status=401
+    zz_panel_routes_test.go:10: POST /v1/chat/completions status=401
+    zz_panel_routes_test.go:10: POST /v1/models status=405
+    zz_panel_routes_test.go:11: all 10 requests wake=0 status=0 upstream=0; disable Waker=nil
+--- PASS: TestPanelR12HookReadOnlyUnauthenticatedNeverWake (0.00s)
+PASS
+ok  	kiyas/cmd/us-license-hook	1.014s

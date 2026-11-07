@@ -1,0 +1,15 @@
+api-test.kanus.org {
+ @hook path /webhooks/shopify/orders-paid /webhooks/shopify/orders-cancelled /webhooks/shopify/refunds-create /v1/credits/reserve /v1/credits/settle /v1/credits/status /v1/chat /v1/chat/completions /v1/models /healthz /account/*
+ handle @hook {
+  reverse_proxy 127.0.0.1:8787 {
+   header_up X-Real-IP {remote_host}
+   flush_interval -1
+   transport http {
+    response_header_timeout 50m
+   }
+  }
+ }
+ handle {
+  respond 404
+ }
+}

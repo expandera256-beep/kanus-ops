@@ -1,0 +1,1 @@
+DEPRECATED (08.11.2026 ~01:20 TSİ): eski tabana (5a375f29) dayanır; yüklenirse SHOP onaylı TR TL fiyat dizelerini geri alır. Yerine release_us_fx3 kullanın.

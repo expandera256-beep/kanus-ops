@@ -1,0 +1,4 @@
+=== RUN   TestTTLCommitAnchorLegacyZeroGraceRejectsAtExpires
+--- PASS: TestTTLCommitAnchorLegacyZeroGraceRejectsAtExpires (0.01s)
+PASS
+ok  	kiyas/licensesrv	0.011s

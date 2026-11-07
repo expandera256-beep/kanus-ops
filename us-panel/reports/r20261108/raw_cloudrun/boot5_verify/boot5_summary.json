@@ -1,0 +1,106 @@
+{
+  "window_end_istanbul": "2026-11-08T00:55:02.334751+03:00",
+  "stop_istanbul": "08.11.2026 00:49:48.559246 TSİ",
+  "caller": "247516932580-compute@developer.gserviceaccount.com",
+  "caller_ip": "34.178.14.38",
+  "user_agent": "Python-urllib/3.10,gzip(gfe)",
+  "discardLocalSsd": true,
+  "last_request_end_source": "KAN report; not reread from VM",
+  "last_request_end_istanbul": "08.11.2026 00:38:48.730000 TSİ",
+  "idle_seconds_from_last_request_end": 659.829246,
+  "stop_to_terminated_seconds": 71.161754,
+  "terminated_istanbul": "08.11.2026 00:50:59.721000 TSİ",
+  "audit_last_record_istanbul": "08.11.2026 00:51:02.623274 TSİ",
+  "audit_last_is_new_stop_call": false,
+  "distinct_stop_operation_ids": [
+    "operation-1794088188584-65fb6b52d2419-9b0266cc-c2399d50"
+  ],
+  "operation_first_records": 1,
+  "operation_last_records": 1,
+  "caller_matches_vm_service_account": true,
+  "vm_state": "TERMINATED",
+  "local_idle_files": [
+    {
+      "path": "/workspace/us-panel/sre/watchdog/idle.py.current",
+      "sha256": "d52ff329d4812b99903ace85e831ed467956f1d7d2261aa8c5b4ec1d91fcb089",
+      "idle_assignment": "IDLE = 10 * 60  # Demir 2026-11-08 00:20: 10 min",
+      "idle_seconds": 600
+    },
+    {
+      "path": "/workspace/us-panel/sre/watchdog/idle.py.fixed",
+      "sha256": "d52ff329d4812b99903ace85e831ed467956f1d7d2261aa8c5b4ec1d91fcb089",
+      "idle_assignment": "IDLE = 10 * 60  # Demir 2026-11-08 00:20: 10 min",
+      "idle_seconds": 600
+    }
+  ],
+  "scratch_disks": [
+    {
+      "deviceName": "local-ssd-0",
+      "type": "SCRATCH",
+      "savedState": "DISK_SAVED_STATE_UNSPECIFIED",
+      "diskSizeGb": "375",
+      "boot": false
+    },
+    {
+      "deviceName": "local-ssd-1",
+      "type": "SCRATCH",
+      "savedState": "DISK_SAVED_STATE_UNSPECIFIED",
+      "diskSizeGb": "375",
+      "boot": false
+    },
+    {
+      "deviceName": "local-ssd-2",
+      "type": "SCRATCH",
+      "savedState": "DISK_SAVED_STATE_UNSPECIFIED",
+      "diskSizeGb": "375",
+      "boot": false
+    },
+    {
+      "deviceName": "local-ssd-3",
+      "type": "SCRATCH",
+      "savedState": "DISK_SAVED_STATE_UNSPECIFIED",
+      "diskSizeGb": "375",
+      "boot": false
+    }
+  ],
+  "watchdog_all_reconcile_count": 27,
+  "watchdog_00007_reconcile_statuses": {
+    "200": 21
+  },
+  "watchdog_00007_5xx": 0,
+  "watchdog_00007_error_severity": 0,
+  "watchdog_lifecycle_or_refusing": 0,
+  "scheduler_finished_statuses": {
+    "200": 27
+  },
+  "negative_403": [
+    {
+      "time_istanbul": "08.11.2026 00:28:05.507731 TSİ",
+      "path": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "ua": "KANUS-SRE-readonly-acceptance/20261108",
+      "revision": "us-watchdog-00006-88h",
+      "status": 403
+    },
+    {
+      "time_istanbul": "08.11.2026 00:34:04.590119 TSİ",
+      "path": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "ua": "curl/8.14.1",
+      "revision": "us-watchdog-00007-fnc",
+      "status": 403
+    },
+    {
+      "time_istanbul": "08.11.2026 00:34:04.831577 TSİ",
+      "path": "https://us-watchdog-iqhblf63dq-ez.a.run.app/",
+      "ua": "curl/8.14.1",
+      "revision": "us-watchdog-00007-fnc",
+      "status": 403
+    },
+    {
+      "time_istanbul": "08.11.2026 00:34:05.041474 TSİ",
+      "path": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "ua": "curl/8.14.1",
+      "revision": "us-watchdog-00007-fnc",
+      "status": 403
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "düşünce",
+      "text": "İstek modele gidiyor."
+    },
+    {
+      "n": 2,
+      "kind": "istem",
+      "text": "İş modele gitti: Yeni proje için new.py dosyasını oluştur. Klasörde 0 ad."
+    },
+    {
+      "n": 3,
+      "kind": "işlem",
+      "text": "İstek modele gitti."
+    },
+    {
+      "n": 4,
+      "kind": "işlem",
+      "text": "Model işlem şeması geçmedi; bir ek model çağrısıyla düzeltme isteniyor."
+    },
+    {
+      "n": 5,
+      "kind": "işlem",
+      "text": "değişiklikler inceleme bekliyor"
+    },
+    {
+      "n": 6,
+      "kind": "özet",
+      "text": "Özet. İstem: Yeni proje için new.py dosyasını oluştur. Okunan: yok. Yazılan: yok. Sonuç: değişiklikler inceleme bekliyor."
+    }
+  ],
+  "chat": [
+    {
+      "role": "panel",
+      "text": "kullanıcı: Yeni proje için new.py dosyasını oluştur\nKlasörde 0 ad var."
+    },
+    {
+      "role": "model",
+      "text": "create_file new.py"
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "Yeni proje için new.py dosyasını oluştur",
+      "turns": [
+        {
+          "role": "panel",
+          "text": "kullanıcı: Yeni proje için new.py dosyasını oluştur\nKlasörde 0 ad var."
+        },
+        {
+          "role": "model",
+          "text": "create_file new.py"
+        }
+      ]
+    }
+  ],
+  "chatId": "s1"
+}

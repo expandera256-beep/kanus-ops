@@ -1,0 +1,1080 @@
+--- a/i18n/fx.go
++++ b/i18n/fx.go
+@@ -0,0 +1,148 @@
++package i18n
++
++// Approximate foreign-currency display next to TRY prices (display only).
++// Payments and the ledger stay TRY; nothing here feeds a charge or credit.
++// Input is a kanus.fx/1 snapshot built from TCMB today.xml ForexSelling.
++
++import (
++	"encoding/json"
++	"errors"
++	"math"
++	"math/big"
++	"regexp"
++	"strconv"
++	"strings"
++	"time"
++)
++
++// Freshness policy (identical on site, cron and panel): the TCMB bulletin
++// date is a calendar day in Türkiye time (Europe/Istanbul, fixed UTC+3
++// since 2016; a fixed zone avoids tzdata on Windows). With today = now in
++// that zone, a snapshot is valid for today-5 .. today inclusive; any future
++// date or today-6 and older is rejected.
++const FXMaxAgeDays = 5
++
++// FXZone is Türkiye time used to interpret the bulletin date and "today".
++var FXZone = time.FixedZone("TRT", 3*3600)
++
++// FXFresh reports whether bulletin date d (any zone; only its Y-M-D in
++// FXZone counts) is within the policy for the injected clock now.
++func FXFresh(d, now time.Time) bool {
++	dy, dm, dd := d.In(FXZone).Date()
++	ny, nm, nd := now.In(FXZone).Date()
++	days := int(time.Date(ny, nm, nd, 0, 0, 0, 0, time.UTC).Sub(time.Date(dy, dm, dd, 0, 0, 0, 0, time.UTC)).Hours() / 24)
++	return days >= 0 && days <= FXMaxAgeDays
++}
++
++// FXSnapshot holds TRY per 1 EUR / 1 USD on the TCMB bulletin date
++// (Date is midnight of that day in FXZone).
++type FXSnapshot struct {
++	Date     time.Time
++	EUR, USD float64
++}
++
++var fxDateRe = regexp.MustCompile(`^\d{4}-\d\d-\d\d$`)
++
++// fxRateOK: finite and within [1, 1000] TRY per unit.
++func fxRateOK(v float64) bool { return !math.IsNaN(v) && !math.IsInf(v, 0) && v >= 1 && v <= 1000 }
++
++// ParseFX validates a kanus.fx/1 document against the injected clock now.
++// Any problem returns an error and callers must then show TRY only.
++func ParseFX(raw []byte, now time.Time) (FXSnapshot, error) {
++	var z FXSnapshot
++	if len(raw) == 0 || len(raw) > 4096 {
++		return z, errors.New("fx: size")
++	}
++	var d struct {
++		Schema string                     `json:"schema"`
++		Base   string                     `json:"base"`
++		Date   string                     `json:"date"`
++		Rates  map[string]json.RawMessage `json:"rates"`
++	}
++	if err := json.Unmarshal(raw, &d); err != nil {
++		return z, errors.New("fx: json")
++	}
++	if d.Schema != "kanus.fx/1" || d.Base != "TRY" || !fxDateRe.MatchString(d.Date) || len(d.Rates) != 2 {
++		return z, errors.New("fx: schema")
++	}
++	t, err := time.ParseInLocation("2006-01-02", d.Date, FXZone)
++	if err != nil {
++		return z, errors.New("fx: date")
++	}
++	if !FXFresh(t, now) {
++		return z, errors.New("fx: stale or future")
++	}
++	rate := func(k string) (float64, error) {
++		var v float64
++		r, ok := d.Rates[k]
++		if !ok || len(r) == 0 || r[0] == '"' || json.Unmarshal(r, &v) != nil || !fxRateOK(v) {
++			return 0, errors.New("fx: rate " + k)
++		}
++		return v, nil
++	}
++	eur, err := rate("EUR")
++	if err != nil {
++		return z, err
++	}
++	usd, err := rate("USD")
++	if err != nil {
++		return z, err
++	}
++	if x := eur / usd; x < 0.8 || x > 1.6 {
++		return z, errors.New("fx: cross")
++	}
++	return FXSnapshot{Date: t, EUR: eur, USD: usd}, nil
++}
++
++// FXMaxTRYMinor bounds the converted amount (10^15 kuruş = 10 trillion TL);
++// larger inputs hide FX instead of overflowing.
++const FXMaxTRYMinor = int64(1e15)
++
++// fxConvert returns round-half-away-from-zero(tryMinor / rate) in foreign
++// minor units using exact rational arithmetic on the rate's shortest
++// decimal form (e.g. 55.9609). ok=false for invalid input or overflow.
++func fxConvert(tryMinor int64, rate float64) (int64, bool) {
++	if tryMinor < 0 || tryMinor > FXMaxTRYMinor || !fxRateOK(rate) {
++		return 0, false
++	}
++	r, ok := new(big.Rat).SetString(strconv.FormatFloat(rate, 'g', -1, 64))
++	if !ok || r.Sign() <= 0 {
++		return 0, false
++	}
++	q := new(big.Rat).Quo(new(big.Rat).SetInt64(tryMinor), r)
++	num, den := q.Num(), q.Denom() // q >= 0
++	n := new(big.Int).Add(new(big.Int).Mul(num, big.NewInt(2)), den)
++	n.Quo(n, new(big.Int).Mul(den, big.NewInt(2)))
++	if !n.IsInt64() {
++		return 0, false
++	}
++	return n.Int64(), true
++}
++
++var fxNotes = map[string]string{
++	"tr": "Yaklaşık tutar; ödeme TL ile alınır. Kur: TCMB döviz satış, %s.",
++	"en": "Approximate amount; payment is charged in Turkish lira. Rate: CBRT forex selling, %s.",
++	"de": "Ungefährer Betrag; bezahlt wird in türkischen Lira. Kurs: TCMB-Devisenverkaufskurs vom %s.",
++	"ru": "Сумма приблизительная; оплата производится в турецких лирах. Курс: ЦБ Турции, продажа валюты, %s.",
++}
++
++// ApproxFX returns "≈ 337,74 € · ≈ 377,45 $" style text and the localized
++// note for a TRY amount in kuruş. Invalid snapshot (zero, non-finite,
++// out of range) or amount (negative, > FXMaxTRYMinor) -> "", "".
++// Rounding: half away from zero to the cent, exact decimal arithmetic.
++func (l *Localizer) ApproxFX(tryMinor int64, s FXSnapshot) (approx, note string) {
++	if s.Date.IsZero() {
++		return "", ""
++	}
++	eur, ok1 := fxConvert(tryMinor, s.EUR)
++	usd, ok2 := fxConvert(tryMinor, s.USD)
++	if !ok1 || !ok2 {
++		return "", ""
++	}
++	approx = "≈ " + l.Money(eur, "EUR") + " · ≈ " + l.Money(usd, "USD")
++	n, ok := fxNotes[l.lang]
++	if !ok {
++		n = fxNotes["en"]
++	}
++	return approx, strings.Replace(n, "%s", l.Date(s.Date, FXZone), 1)
++}
+--- a/i18n/fx_test.go
++++ b/i18n/fx_test.go
+@@ -0,0 +1,64 @@
++package i18n
++
++import (
++	"strings"
++	"testing"
++	"time"
++)
++
++const fxGood = `{"schema":"kanus.fx/1","source":"TCMB today.xml ForexSelling (döviz satış)","tcmb_tarih":"06.11.2026","date":"2026-11-06","base":"TRY","rates":{"USD":50.0724,"EUR":55.9609}}`
++
++var fxNow = time.Date(2026, 11, 8, 0, 37, 0, 0, time.UTC)
++
++func TestFXParseGood(t *testing.T) {
++	s, err := ParseFX([]byte(fxGood), fxNow)
++	if err != nil || s.EUR != 55.9609 || s.USD != 50.0724 || s.Date.Format("2006-01-02") != "2026-11-06" {
++		t.Fatalf("%v %+v", err, s)
++	}
++}
++
++func TestFXParseRejects(t *testing.T) {
++	for name, raw := range map[string]string{
++		"empty": ``, "json": `{`, "schema": strings.Replace(fxGood, "kanus.fx/1", "x", 1),
++		"base": strings.Replace(fxGood, `"TRY"`, `"USD"`, 1), "date": strings.Replace(fxGood, "2026-11-06", "06.11.2026", 2),
++		"string rate": strings.Replace(fxGood, `50.0724`, `"50.0724"`, 1), "zero": strings.Replace(fxGood, `50.0724`, `0`, 1),
++		"missing": strings.Replace(fxGood, `,"EUR":55.9609`, ``, 1), "extra": strings.Replace(fxGood, `}}`, `,"GBP":60}}`, 1),
++		"cross": strings.Replace(fxGood, `55.9609`, `155.9609`, 1), "huge": strings.Repeat(" ", 5000) + fxGood,
++	} {
++		if _, err := ParseFX([]byte(raw), fxNow); err == nil {
++			t.Errorf("%s accepted", name)
++		}
++	}
++	if _, err := ParseFX([]byte(fxGood), fxNow.Add(10*24*time.Hour)); err == nil {
++		t.Error("stale accepted")
++	}
++	if _, err := ParseFX([]byte(fxGood), fxNow.Add(-5*24*time.Hour)); err == nil {
++		t.Error("future accepted")
++	}
++}
++
++func TestFXApprox4Langs(t *testing.T) {
++	b, err := Load()
++	if err != nil {
++		t.Fatal(err)
++	}
++	s, _ := ParseFX([]byte(fxGood), fxNow)
++	want := map[string][2]string{
++		"tr": {"≈ 337,74 € · ≈ 377,45 $", "ödeme TL ile alınır"},
++		"en": {"≈ 337.74 € · ≈ $377.45", "charged in Turkish lira"},
++		"de": {"≈ 337,74 € · ≈ 377,45 $", "türkischen Lira"},
++		"ru": {"≈ 337,74 € · ≈ 377,45 $", "турецких лирах"},
++	}
++	for lang, w := range want {
++		a, n := b.For(lang).ApproxFX(1890000, s)
++		if a != w[0] || !strings.Contains(n, w[1]) || !strings.Contains(n, "2026") {
++			t.Errorf("%s: %q %q", lang, a, n)
++		}
++	}
++	if _, n := b.For("tr").ApproxFX(1890000, s); !strings.Contains(n, "06.11.2026") {
++		t.Errorf("TR note must show the TCMB day in Türkiye time: %q", n)
++	}
++	if a, n := b.For("tr").ApproxFX(1890000, FXSnapshot{}); a != "" || n != "" {
++		t.Error("zero snapshot must hide FX")
++	}
++}
+--- a/i18n/fx_review_r4b_test.go
++++ b/i18n/fx_review_r4b_test.go
+@@ -0,0 +1,117 @@
++// PANEL DEV R4B probe (scratch/review-20261108/global-r4b/fx-probe), kept verbatim as a regression suite: 39 leaf cases.
++package i18n
++
++import (
++	"fmt"
++	"math"
++	"strings"
++	"testing"
++	"time"
++)
++
++func reviewFXDoc(date, eur, usd string) string {
++	return fmt.Sprintf(`{"schema":"kanus.fx/1","base":"TRY","date":%q,"rates":{"EUR":%s,"USD":%s}}`, date, eur, usd)
++}
++func TestReviewFXPolicy(t *testing.T) {
++	utc := time.UTC
++	tsi := time.FixedZone("TSİ", 3*3600)
++	now := time.Date(2026, 11, 8, 12, 0, 0, 0, utc)
++	good := reviewFXDoc("2026-11-08", "55", "50")
++	cs := []struct {
++		name, raw string
++		now       time.Time
++		bad       bool
++	}{
++		{"today", good, now, false},
++		{"fifth_day_exact", reviewFXDoc("2026-11-03", "55", "50"), time.Date(2026, 11, 8, 0, 0, 0, 0, utc), false},
++		{"fifth_calendar_day_tsi_end", reviewFXDoc("2026-11-03", "55", "50"), time.Date(2026, 11, 8, 23, 59, 59, 0, tsi), false},
++		{"same_local_day_before_utc", good, time.Date(2026, 11, 8, 0, 1, 0, 0, tsi), false},
++		{"sixth_day_utc", reviewFXDoc("2026-11-02", "55", "50"), time.Date(2026, 11, 8, 0, 0, 0, 0, utc), true},
++		{"sixth_day_tsi", reviewFXDoc("2026-11-02", "55", "50"), time.Date(2026, 11, 8, 0, 0, 0, 0, tsi), true},
++		{"sixth_day_plus_second", reviewFXDoc("2026-11-02", "55", "50"), time.Date(2026, 11, 8, 0, 0, 1, 0, utc), true},
++		{"tomorrow", reviewFXDoc("2026-11-09", "55", "50"), now, true},
++		{"future_36h", reviewFXDoc("2026-11-10", "55", "50"), now, true},
++		{"future_over_36h", reviewFXDoc("2026-11-10", "55", "50"), now.Add(-time.Second), true},
++		{"injected_clock_2030", reviewFXDoc("2030-01-01", "55", "50"), time.Date(2030, 1, 1, 12, 0, 0, 0, utc), false},
++		{"missing_eur", `{"schema":"kanus.fx/1","base":"TRY","date":"2026-11-08","rates":{"USD":50}}`, now, true},
++		{"wrong_second_key", `{"schema":"kanus.fx/1","base":"TRY","date":"2026-11-08","rates":{"USD":50,"GBP":55}}`, now, true},
++		{"wrong_schema", strings.Replace(good, "kanus.fx/1", "kanus.fx/2", 1), now, true},
++		{"wrong_base", strings.Replace(good, `"TRY"`, `"EUR"`, 1), now, true},
++		{"bad_calendar", reviewFXDoc("2026-02-29", "55", "50"), now, true},
++		{"trailing_json", good + `{}`, now, true},
++		{"trailing_space", good + " \n", now, false},
++		{"size_4096", good + strings.Repeat(" ", 4096-len(good)), now, false},
++		{"size_4097", good + strings.Repeat(" ", 4097-len(good)), now, true},
++		{"cross_min", reviewFXDoc("2026-11-08", "80", "100"), now, false},
++		{"cross_max", reviewFXDoc("2026-11-08", "160", "100"), now, false},
++		{"cross_below", reviewFXDoc("2026-11-08", "79.999", "100"), now, true},
++		{"cross_above", reviewFXDoc("2026-11-08", "160.001", "100"), now, true},
++	}
++	for _, v := range []string{"0", "-0", "-1", "null", "NaN", "Inf", "-Inf", "1e309", `"NaN"`, `"55"`} {
++		cs = append(cs, struct {
++			name, raw string
++			now       time.Time
++			bad       bool
++		}{"invalid_rate_" + v, reviewFXDoc("2026-11-08", v, "50"), now, true})
++	}
++	for _, c := range cs {
++		t.Run(c.name, func(t *testing.T) {
++			s, e := ParseFX([]byte(c.raw), c.now)
++			t.Logf("now=%s date=%s parsed=%+v err=%v", c.now.Format(time.RFC3339), c.raw, s, e)
++			if (e != nil) != c.bad {
++				t.Fatalf("reject=%v want=%v", e != nil, c.bad)
++			}
++		})
++	}
++}
++func TestReviewFXRounding(t *testing.T) {
++	b, e := Load()
++	if e != nil {
++		t.Fatal(e)
++	}
++	for _, c := range []struct {
++		name       string
++		minor      int64
++		rate, want string
++	}{{"half_cent_29_rate2", 29, "2", "≈ 0.15 € · ≈ $0.15"}, {"half_cent_21_rate6", 21, "6", "≈ 0.04 € · ≈ $0.04"}} {
++		t.Run(c.name, func(t *testing.T) {
++			now := time.Date(2026, 11, 8, 12, 0, 0, 0, time.UTC)
++			s, e := ParseFX([]byte(reviewFXDoc("2026-11-08", c.rate, c.rate)), now)
++			if e != nil {
++				t.Fatal(e)
++			}
++			a, _ := b.For("en").ApproxFX(c.minor, s)
++			t.Logf("minor=%d rate=%s got=%q want=%q", c.minor, c.rate, a, c.want)
++			if a != c.want {
++				t.Fatal("decimal half-cent rounding")
++			}
++		})
++	}
++}
++func TestReviewFXApproxRobustness(t *testing.T) {
++	b, e := Load()
++	if e != nil {
++		t.Fatal(e)
++	}
++	d := time.Date(2026, 11, 8, 0, 0, 0, 0, time.UTC)
++	for name, s := range map[string]FXSnapshot{"nan": {Date: d, EUR: math.NaN(), USD: math.NaN()}, "inf": {Date: d, EUR: math.Inf(1), USD: math.Inf(1)}} {
++		t.Run(name, func(t *testing.T) {
++			a, n := b.For("en").ApproxFX(100, s)
++			t.Logf("approx=%q note=%q", a, n)
++			if a != "" || n != "" {
++				t.Fatal("invalid nonfinite snapshot must hide FX")
++			}
++		})
++	}
++	t.Run("max_int64", func(t *testing.T) {
++		s, e := ParseFX([]byte(reviewFXDoc("2026-11-08", "1", "1")), d)
++		if e != nil {
++			t.Fatal(e)
++		}
++		a, _ := b.For("en").ApproxFX(math.MaxInt64, s)
++		t.Logf("approx=%q", a)
++		if strings.Contains(a, "-") {
++			t.Fatal("nonnegative TRY amount rendered negative after float-to-int64 overflow")
++		}
++	})
++}
+--- a/i18n/fx_cache.go
++++ b/i18n/fx_cache.go
+@@ -0,0 +1,46 @@
++package i18n
++
++import "errors"
++
++// ReadRaw / WriteRaw give other small panel files (the FX cache) the same
++// rules as the language preference: pinned root handle, no symlink or
++// reparse-point traversal, regular file only, at most maxPrefSize bytes,
++// temp file + atomic rename. A memory-only root (unavailable config dir)
++// returns ErrNotPersisted; callers then simply do not cache.
++func (p *PrefStore) ReadRaw() ([]byte, error) {
++	_, r := p.root()
++	if r == nil {
++		return nil, ErrNotPersisted
++	}
++	defer p.release(r)
++	if r.err != nil {
++		return nil, ErrNotPersisted
++	}
++	parts, err := p.name()
++	if err != nil {
++		return nil, err
++	}
++	return readPrefFile(r.h, parts)
++}
++
++// WriteRaw atomically replaces the file with raw (<= maxPrefSize bytes).
++func (p *PrefStore) WriteRaw(raw []byte) error {
++	if len(raw) == 0 || len(raw) > maxPrefSize {
++		return errors.New("i18n: raw size")
++	}
++	_, r := p.root()
++	if r == nil {
++		return ErrNotPersisted
++	}
++	defer p.release(r)
++	if r.err != nil {
++		return ErrNotPersisted
++	}
++	parts, err := p.name()
++	if err != nil {
++		return err
++	}
++	p.mu.Lock()
++	defer p.mu.Unlock()
++	return writePrefFile(r.h, parts, raw)
++}
+--- a/fx_panel.go
++++ b/fx_panel.go
+@@ -0,0 +1,209 @@
++package main
++
++// Approximate EUR/USD next to TRY prices (display only). Source: the
++// license server's GET /v1/fx (FX_CONTRACT_FOR_US_API.md, GLOBAL proposal).
++// Demir 08.11.2026 01:13 TSİ: unsigned, HTTPS only, no new key. Trust rests
++// on TLS certificate verification (system roots, never InsecureSkipVerify),
++// the activeGateway host, no redirects, 5 s timeout, 4 KB limit and the
++// schema/freshness/range checks in i18n.ParseFX. Anything else => TRY only;
++// there is no fixed-rate fallback. Payments and the ledger stay TRY.
++
++import (
++	"crypto/sha256"
++	"crypto/tls"
++	"crypto/x509"
++	"encoding/base64"
++	"errors"
++	"io"
++	"net/http"
++	"path/filepath"
++	"strconv"
++	"strings"
++	"sync"
++	"time"
++
++	"kiyas/i18n"
++)
++
++const (
++	fxPath   = "/v1/fx"
++	fxMinTTL = 5 * time.Minute
++	fxMaxTTL = 6 * time.Hour
++)
++
++// fxCache: last verified response next to lang.json (same safe-write rules).
++var fxCache = &i18n.PrefStore{Name: "fx.json", Root: func() string {
++	desk := deskPath()
++	if desk == "" {
++		return ""
++	}
++	return filepath.Dir(desk)
++}}
++
++// fxPinsSPKI: comma-separated "sha256/<base64 SHA-256 of SubjectPublicKeyInfo>"
++// pins for the license server (any certificate in the verified chain may
++// match). pinned/v10 has NO certificate/SPKI pin mechanism; the value is
++// provided by US at build time (-ldflags "-X main.fxPinsSPKI=..."). Empty =>
++// FX is never fetched (TRY only). No pin is invented here.
++var fxPinsSPKI = ""
++
++func fxPins() map[string]bool {
++	out := map[string]bool{}
++	for _, p := range strings.Split(fxPinsSPKI, ",") {
++		if v, ok := strings.CutPrefix(strings.TrimSpace(p), "sha256/"); ok && len(v) == 44 {
++			out[v] = true
++		}
++	}
++	return out
++}
++
++func spkiPin(c *x509.Certificate) string {
++	h := sha256.Sum256(c.RawSubjectPublicKeyInfo)
++	return base64.StdEncoding.EncodeToString(h[:])
++}
++
++// fxVerifyPin runs after normal chain + hostname verification.
++func fxVerifyPin(cs tls.ConnectionState) error {
++	pins := fxPins()
++	if len(pins) == 0 {
++		return errors.New("fx: no SPKI pin configured")
++	}
++	for _, chain := range cs.VerifiedChains {
++		for _, c := range chain {
++			if pins[spkiPin(c)] {
++				return nil
++			}
++		}
++	}
++	return errors.New("fx: SPKI pin mismatch")
++}
++
++// fxTransport verifies certificates against the system roots (never
++// InsecureSkipVerify), TLS >= 1.2, then the SPKI pin.
++func fxTransport() *http.Transport {
++	t := http.DefaultTransport.(*http.Transport).Clone()
++	t.TLSClientConfig = &tls.Config{MinVersion: tls.VersionTLS12, VerifyConnection: fxVerifyPin}
++	return t
++}
++
++var fxHTTP = &http.Client{Timeout: 5 * time.Second, Transport: fxTransport(), CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}
++
++// fxNow is replaced in tests.
++var fxNow = time.Now
++
++type fxState struct {
++	mu       sync.Mutex
++	snap     i18n.FXSnapshot
++	ok       bool
++	next     time.Time // next allowed network attempt
++	inflight bool
++	loaded   bool // disk cache read once
++}
++
++var fx fxState
++
++// fxHTTPS: only an https:// gateway may be used for FX.
++func fxHTTPS(base string) bool { return strings.HasPrefix(strings.ToLower(base), "https://") }
++
++func fxTTL(cc string) time.Duration {
++	ttl := time.Hour
++	for _, part := range strings.Split(cc, ",") {
++		if v, ok := strings.CutPrefix(strings.TrimSpace(strings.ToLower(part)), "max-age="); ok {
++			if n, err := strconv.Atoi(v); err == nil {
++				ttl = time.Duration(n) * time.Second
++			}
++		}
++	}
++	return min(max(ttl, fxMinTTL), fxMaxTTL)
++}
++
++// fetchFX performs one verified GET base/v1/fx.
++func fetchFX(base string) (i18n.FXSnapshot, []byte, time.Duration, error) {
++	var z i18n.FXSnapshot
++	base = strings.TrimRight(base, "/")
++	if !fxHTTPS(base) {
++		return z, nil, 0, errors.New("fx: https required")
++	}
++	if len(fxPins()) == 0 {
++		return z, nil, 0, errors.New("fx: no SPKI pin configured")
++	}
++	req, err := http.NewRequest(http.MethodGet, base+fxPath, nil)
++	if err != nil {
++		return z, nil, 0, err
++	}
++	req.Header.Set("Accept", "application/json")
++	resp, err := fxHTTP.Do(req)
++	if err != nil {
++		return z, nil, 0, err
++	}
++	defer resp.Body.Close()
++	if resp.TLS == nil || fxVerifyPin(*resp.TLS) != nil { // per response, also on reused connections
++		return z, nil, 0, errors.New("fx: TLS pin")
++	}
++	if resp.StatusCode != http.StatusOK {
++		return z, nil, 0, errors.New("fx: status " + strconv.Itoa(resp.StatusCode))
++	}
++	body, err := io.ReadAll(io.LimitReader(resp.Body, 4097))
++	if err != nil || len(body) > 4096 {
++		return z, nil, 0, errors.New("fx: body")
++	}
++	s, err := i18n.ParseFX(body, fxNow())
++	if err != nil {
++		return z, nil, 0, err
++	}
++	return s, body, fxTTL(resp.Header.Get("Cache-Control")), nil
++}
++
++// fxFromCache re-validates the cached body (schema, ranges, freshness).
++func fxFromCache() (i18n.FXSnapshot, bool) {
++	raw, err := fxCache.ReadRaw()
++	if err != nil {
++		return i18n.FXSnapshot{}, false
++	}
++	s, err := i18n.ParseFX(raw, fxNow())
++	return s, err == nil
++}
++
++// refreshFX fetches synchronously; on success updates memory and disk.
++func refreshFX(base string) {
++	s, body, ttl, err := fetchFX(base)
++	fx.mu.Lock()
++	fx.inflight = false
++	if err != nil {
++		fx.next = fxNow().Add(fxMinTTL)
++		fx.mu.Unlock()
++		return
++	}
++	fx.snap, fx.ok, fx.next = s, true, fxNow().Add(ttl)
++	fx.mu.Unlock()
++	_ = fxCache.WriteRaw(body)
++}
++
++// currentFX never blocks on the network: it returns the last verified,
++// still-fresh snapshot (memory, then disk) and starts a background refresh
++// when due. ok=false => show TRY only.
++func currentFX() (i18n.FXSnapshot, bool) {
++	fx.mu.Lock()
++	if !fx.loaded {
++		fx.loaded = true
++		fx.mu.Unlock()
++		s, ok := fxFromCache()
++		fx.mu.Lock()
++		if ok && !fx.ok {
++			fx.snap, fx.ok = s, true
++		}
++	}
++	now := fxNow()
++	if fx.ok && fxStale(fx.snap, now) {
++		fx.ok = false
++	}
++	if !fx.inflight && !now.Before(fx.next) && fxHTTPS(activeGateway()) && len(fxPins()) > 0 {
++		fx.inflight = true
++		go refreshFX(activeGateway())
++	}
++	s, ok := fx.snap, fx.ok
++	fx.mu.Unlock()
++	return s, ok
++}
++
++func fxStale(s i18n.FXSnapshot, now time.Time) bool { return !i18n.FXFresh(s.Date, now) }
+--- a/fx_panel_test.go
++++ b/fx_panel_test.go
+@@ -0,0 +1,297 @@
++package main
++
++import (
++	"crypto/tls"
++	"encoding/base64"
++	"encoding/json"
++	"errors"
++	"kiyas/i18n"
++	"net/http"
++	"net/http/httptest"
++	"os"
++	"path/filepath"
++	"strings"
++	"sync/atomic"
++	"testing"
++	"time"
++)
++
++// Test binaries never reach a real host: only loopback is allowed.
++type fxLoopbackOnly struct{ base http.RoundTripper }
++
++func (t fxLoopbackOnly) RoundTrip(r *http.Request) (*http.Response, error) {
++	if h := r.URL.Hostname(); h != "127.0.0.1" && h != "::1" && h != "localhost" {
++		return nil, errors.New("test: non-loopback fx request blocked: " + h)
++	}
++	return t.base.RoundTrip(r)
++}
++
++func init() { fxHTTP.Transport = fxLoopbackOnly{fxHTTP.Transport} } // production TLS config, loopback only
++
++var fxSnapZero i18n.FXSnapshot
++
++const fxBody = `{"schema":"kanus.fx/1","source":"TCMB today.xml ForexSelling (döviz satış)","tcmb_tarih":"06.11.2026","date":"2026-11-06","base":"TRY","rates":{"USD":50.0724,"EUR":55.9609}}`
++
++type fxSrv struct {
++	*httptest.Server
++	hits atomic.Int64
++}
++
++func newFXServer(t *testing.T, h func(w http.ResponseWriter, r *http.Request)) *fxSrv {
++	s := &fxSrv{}
++	s.Server = httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { s.hits.Add(1); h(w, r) }))
++	old, oldPins := fxHTTP, fxPinsSPKI
++	tr := s.Server.Client().Transport.(*http.Transport).Clone()
++	tr.TLSClientConfig.VerifyConnection = fxVerifyPin // trust test CA, keep production pin check
++	fxHTTP = &http.Client{Timeout: 2 * time.Second, Transport: fxLoopbackOnly{tr}, CheckRedirect: old.CheckRedirect}
++	fxPinsSPKI = "sha256/" + spkiPin(s.Server.Certificate())
++	t.Cleanup(func() { s.Close(); fxHTTP = old; fxPinsSPKI = oldPins })
++	return s
++}
++
++func serve(body string) func(w http.ResponseWriter, r *http.Request) {
++	return func(w http.ResponseWriter, r *http.Request) {
++		if r.Method != http.MethodGet || r.URL.Path != fxPath {
++			http.NotFound(w, r)
++			return
++		}
++		w.Header().Set("Content-Type", "application/json")
++		w.Header().Set("Cache-Control", "public, max-age=3600")
++		_, _ = w.Write([]byte(body))
++	}
++}
++
++func fxReset(t *testing.T) {
++	t.Helper()
++	dir := t.TempDir()
++	t.Setenv("US_DESK", filepath.Join(dir, "desk.json"))
++	fxSetState(false, time.Date(2100, 1, 1, 0, 0, 0, 0, time.UTC)) // no background refresh unless a test asks
++	oldNow := fxNow
++	fxNow = func() time.Time { return time.Date(2026, 11, 8, 0, 37, 0, 0, time.UTC) }
++	t.Cleanup(func() { fxWaitIdle(t); fxNow = oldNow; fxSetState(false, time.Time{}); _ = fxCache.Close() })
++}
++
++func fxSetState(loaded bool, next time.Time) {
++	fx.mu.Lock()
++	fx.snap, fx.ok, fx.inflight, fx.loaded, fx.next = fxSnapZero, false, false, loaded, next
++	fx.mu.Unlock()
++}
++
++func fxWaitIdle(t *testing.T) {
++	for i := 0; i < 500; i++ {
++		fx.mu.Lock()
++		busy := fx.inflight
++		fx.mu.Unlock()
++		if !busy {
++			return
++		}
++		time.Sleep(10 * time.Millisecond)
++	}
++	t.Fatal("fx refresh did not finish")
++}
++
++func TestFXFetchVerifiedAndCached(t *testing.T) {
++	fxReset(t)
++	s := newFXServer(t, serve(fxBody))
++	snap, _, ttl, err := fetchFX(s.URL)
++	if err != nil || snap.EUR != 55.9609 || ttl != time.Hour {
++		t.Fatal(err, snap, ttl)
++	}
++	refreshFX(s.URL)
++	raw, err := os.ReadFile(filepath.Join(filepath.Dir(os.Getenv("US_DESK")), "fx.json"))
++	if err != nil {
++		t.Fatal(err)
++	}
++	if string(raw) != fxBody {
++		t.Fatal("cache must hold the validated body", string(raw))
++	}
++	fxSetState(false, time.Date(2100, 1, 1, 0, 0, 0, 0, time.UTC))
++	if got, ok := fxFromCache(); !ok || got.USD != 50.0724 {
++		t.Fatal("cache not reusable", got, ok)
++	}
++}
++
++func TestFXRejects(t *testing.T) {
++	fxReset(t)
++	cases := map[string]func(w http.ResponseWriter, r *http.Request){
++		"stale":  serve(strings.Replace(fxBody, "2026-11-06", "2026-11-02", 1)),
++		"future": serve(strings.Replace(fxBody, "2026-11-06", "2026-11-09", 1)),
++		"schema": serve(strings.Replace(fxBody, "kanus.fx/1", "x", 1)),
++		"range":  serve(strings.Replace(fxBody, "55.9609", "5000", 1)),
++		"500":    func(w http.ResponseWriter, r *http.Request) { http.Error(w, "x", 500) },
++		"huge":   func(w http.ResponseWriter, r *http.Request) { serve(strings.Repeat(" ", 5000)+fxBody)(w, r) },
++		"slow": func(w http.ResponseWriter, r *http.Request) {
++			time.Sleep(3 * time.Second)
++			serve(fxBody)(w, r)
++		},
++	}
++	for name, h := range cases {
++		s := newFXServer(t, h)
++		if _, _, _, err := fetchFX(s.URL); err == nil {
++			t.Errorf("%s accepted", name)
++		}
++	}
++}
++
++func TestFXTLSAndTransportPolicy(t *testing.T) {
++	fxReset(t)
++	if c := fxTransport().TLSClientConfig; c == nil || c.InsecureSkipVerify || c.MinVersion < tls.VersionTLS12 || c.VerifyConnection == nil {
++		t.Fatal("TLS config must verify certificates", c)
++	}
++	// Self-signed test certificate with the production client: rejected
++	// even when its SPKI is pinned (chain verification comes first).
++	srv := httptest.NewTLSServer(http.HandlerFunc(serve(fxBody)))
++	defer srv.Close()
++	oldPins := fxPinsSPKI
++	fxPinsSPKI = "sha256/" + spkiPin(srv.Certificate())
++	defer func() { fxPinsSPKI = oldPins }()
++	if _, _, _, err := fetchFX(srv.URL); err == nil || !strings.Contains(err.Error(), "certificate") {
++		t.Fatal("untrusted certificate accepted", err)
++	}
++	// Plain HTTP gateway: refused before any request.
++	var hits atomic.Int64
++	plain := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { hits.Add(1); serve(fxBody)(w, r) }))
++	defer plain.Close()
++	if _, _, _, err := fetchFX(plain.URL); err == nil || hits.Load() != 0 {
++		t.Fatal("http accepted", err, hits.Load())
++	}
++	// Redirect is not followed (target never contacted).
++	target := newFXServer(t, serve(fxBody))
++	redir := newFXServer(t, func(w http.ResponseWriter, r *http.Request) { http.Redirect(w, r, target.URL+fxPath, http.StatusFound) })
++	if _, _, _, err := fetchFX(redir.URL); err == nil || target.hits.Load() != 0 {
++		t.Fatal("redirect followed", err, target.hits.Load())
++	}
++}
++
++func TestFXHTTPGatewayShowsTRYOnly(t *testing.T) {
++	fxReset(t)
++	var hits atomic.Int64
++	plain := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { hits.Add(1); serve(fxBody)(w, r) }))
++	defer plain.Close()
++	t.Setenv("US_GATEWAY_URL", plain.URL)
++	fxSetState(true, time.Time{})
++	if _, ok := currentFX(); ok {
++		t.Fatal("fx from http gateway")
++	}
++	fxWaitIdle(t)
++	if txt := pricingSummaryFor("tr"); strings.Contains(txt, "≈") || hits.Load() != 0 {
++		t.Fatal("http gateway contacted or FX shown", txt, hits.Load())
++	}
++}
++
++func TestFXCacheRevalidated(t *testing.T) {
++	fxReset(t)
++	dir := filepath.Dir(os.Getenv("US_DESK"))
++	for name, body := range map[string]string{
++		"range": strings.Replace(fxBody, "55.9609", "5000", 1),
++		"stale": strings.Replace(fxBody, "2026-11-06", "2026-11-01", 1),
++		"junk":  "not json",
++	} {
++		if err := os.WriteFile(filepath.Join(dir, "fx.json"), []byte(body), 0o600); err != nil {
++			t.Fatal(err)
++		}
++		if _, ok := fxFromCache(); ok {
++			t.Errorf("%s cache accepted", name)
++		}
++	}
++}
++
++func TestPricingSummaryFXAndFallback(t *testing.T) {
++	fxReset(t)
++	t.Setenv("US_GATEWAY_URL", "https://127.0.0.1:1") // background refresh must fail fast, never reach a real host
++	// No verified data: TRY only, no fixed 50,05 fallback, no USD.
++	for _, lang := range []string{"tr", "en", "de", "ru"} {
++		txt := pricingSummaryFor(lang)
++		if strings.Contains(txt, "≈") || strings.Contains(txt, "USD") || strings.Contains(txt, "50,05") || strings.Contains(txt, "50.05") || strings.Contains(txt, "price.") {
++			t.Fatalf("%s: %s", lang, txt)
++		}
++	}
++	if txt := pricingSummaryFor("tr"); !strings.Contains(txt, "18.900 TL") || !strings.Contains(txt, "100 istem 9.900 TL") {
++		t.Fatal(txt)
++	}
++	s := newFXServer(t, serve(fxBody))
++	refreshFX(s.URL)
++	want := map[string][]string{
++		"tr": {"Aylık abonelik 18.900 TL (≈ 337,74 € · ≈ 377,45 $)", "ödeme TL ile alınır"},
++		"en": {"Monthly subscription 18,900 TRY (≈ 337.74 € · ≈ $377.45)", "charged in Turkish lira"},
++		"de": {"Monatsabo 18.900 TL (≈ 337,74 € · ≈ 377,45 $)", "türkischen Lira"},
++		"ru": {"Месячная подписка 18\u00a0900 TL", "турецких лирах"},
++	}
++	for lang, w := range want {
++		txt := pricingSummaryFor(lang)
++		for _, s := range w {
++			if !strings.Contains(txt, s) {
++				t.Errorf("%s: missing %q in %q", lang, s, txt)
++			}
++		}
++	}
++	// Snapshot goes stale -> FX disappears again (no network retry in this test).
++	fx.mu.Lock()
++	fx.next = time.Date(2100, 1, 1, 0, 0, 0, 0, time.UTC)
++	fx.mu.Unlock()
++	fxNow = func() time.Time { return time.Date(2026, 11, 20, 0, 0, 0, 0, time.UTC) }
++	if txt := pricingSummaryFor("tr"); strings.Contains(txt, "≈") {
++		t.Fatal("stale FX shown", txt)
++	}
++}
++
++func TestPricingHandler(t *testing.T) {
++	fxReset(t)
++	t.Setenv("US_GATEWAY_URL", "https://127.0.0.1:1")
++	w := httptest.NewRecorder()
++	pricingHandler(w, httptest.NewRequest("GET", "/api/pricing?lang=de", nil))
++	var d map[string]string
++	if w.Code != 200 || json.Unmarshal(w.Body.Bytes(), &d) != nil || !strings.HasPrefix(d["text"], "Monatsabo") {
++		t.Fatal(w.Code, w.Body.String())
++	}
++	w = httptest.NewRecorder()
++	pricingHandler(w, httptest.NewRequest("POST", "/api/pricing", nil))
++	if w.Code != http.StatusMethodNotAllowed {
++		t.Fatal(w.Code)
++	}
++}
++
++func TestFXBackgroundRefreshAndDiskReload(t *testing.T) {
++	fxReset(t)
++	s := newFXServer(t, serve(fxBody))
++	t.Setenv("US_GATEWAY_URL", s.URL)
++	fxSetState(true, time.Time{})
++	if _, ok := currentFX(); ok {
++		t.Fatal("first call must not block on network")
++	}
++	fxWaitIdle(t)
++	if snap, ok := currentFX(); !ok || snap.EUR != 55.9609 || s.hits.Load() != 1 {
++		t.Fatal(ok, snap, s.hits.Load())
++	}
++	// fresh process: memory empty, disk cache verified again
++	fxSetState(false, time.Date(2100, 1, 1, 0, 0, 0, 0, time.UTC))
++	if snap, ok := currentFX(); !ok || snap.USD != 50.0724 {
++		t.Fatal("disk cache not used", ok)
++	}
++}
++
++func TestFXPinRequiredAndEnforced(t *testing.T) {
++	fxReset(t)
++	s := newFXServer(t, serve(fxBody))
++	if _, _, _, err := fetchFX(s.URL); err != nil {
++		t.Fatal("matching pin rejected", err)
++	}
++	fxPinsSPKI = "sha256/" + base64.StdEncoding.EncodeToString(make([]byte, 32))
++	if _, _, _, err := fetchFX(s.URL); err == nil || !strings.Contains(err.Error(), "pin") {
++		t.Fatal("wrong pin accepted", err)
++	}
++	fxPinsSPKI = ""
++	before := s.hits.Load()
++	if _, _, _, err := fetchFX(s.URL); err == nil || s.hits.Load() != before {
++		t.Fatal("fetched without a pin", err)
++	}
++	t.Setenv("US_GATEWAY_URL", s.URL)
++	fxSetState(true, time.Time{})
++	if _, ok := currentFX(); ok {
++		t.Fatal("fx without pin")
++	}
++	fxWaitIdle(t)
++	if s.hits.Load() != before {
++		t.Fatal("background fetch without pin")
++	}
++}
+--- a/pricing.go
++++ b/pricing.go
+@@ -2,9 +2,11 @@
+ 
+ import (
+ 	"bytes"
+-	"fmt"
++	"html"
++	"net/http"
+ 	"strings"
+ 
++	"kiyas/i18n"
+ 	"kiyas/licensesrv"
+ )
+ 
+@@ -31,23 +33,61 @@
+ 	return ""
+ }
+ 
+-// pricingSummary: paneldeki fiyat paragrafı.
+-func pricingSummary() string {
++// pricingSummary: paneldeki fiyat paragrafı. TL tutarları
++// licensesrv.Catalog'dan; yaklaşık EUR/USD yalnız doğrulanmış /v1/fx ile.
++// The server-rendered page keeps the TR markup default (like every other
++// data-i18n text); the GUI switches it via /api/pricing after applyLocale.
++func pricingSummary() string { return pricingSummaryFor("tr") }
++
++func pricingSummaryFor(lang string) string {
++	b, err := i18n.Load()
++	if err != nil {
++		return ""
++	}
++	l := b.For(lang)
++	snap, fxOK := currentFX()
++	tl := func(v int) string { return l.T("price.try", "amount", l.Number(float64(v), 0)) }
++	withFX := func(v int) string {
++		if !fxOK {
++			return tl(v)
++		}
++		a, _ := l.ApproxFX(int64(v)*100, snap)
++		return tl(v) + " (" + a + ")"
++	}
+ 	m, h := monthlyOffer(), hourlyOffer()
+ 	var packs []string
+ 	for _, o := range licensesrv.Catalog {
+ 		if strings.HasPrefix(o.SKU, "US-CREDIT-") {
+-			packs = append(packs, fmt.Sprintf("%d istem %s", o.Plan.Prompts, licensesrv.TRYText(o.PriceTRY)))
++			packs = append(packs, l.T("price.pack", "prompts", o.Plan.Prompts, "price", tl(o.PriceTRY)))
+ 		}
+ 	}
+-	return fmt.Sprintf("Aylık abonelik %s, %d istem / %d gün. Saatlik kullanım %s, 1 saat işlem veya açık panel. İstem paketleri: %s. Fiyatlar KDV dahil TL; USD karşılığı ≈%.2f TL/USD ile bilgi amaçlıdır.",
+-		m.PriceText(), m.Plan.Prompts, m.Plan.Days, h.PriceText(), strings.Join(packs, ", "), licensesrv.USDTRYRef)
++	out := l.T("price.summary", "monthly", withFX(m.PriceTRY), "prompts", m.Plan.Prompts, "days", m.Plan.Days, "hourly", withFX(h.PriceTRY), "packs", strings.Join(packs, ", "))
++	if fxOK {
++		_, note := l.ApproxFX(int64(m.PriceTRY)*100, snap)
++		out += " " + note
++	}
++	return out
++}
++
++// pricingHandler: GET /api/pricing?lang=xx -> {"text": ...} for live
++// language switching (public catalog text only; no state change).
++func pricingHandler(w http.ResponseWriter, r *http.Request) {
++	if r.Method != http.MethodGet {
++		guiError(w, "err.gui.method", http.StatusMethodNotAllowed)
++		return
++	}
++	lang := r.URL.Query().Get("lang")
++	if lang == "" {
++		lang = langPref.Get()
++	}
++	w.Header().Set("Cache-Control", "no-store")
++	writeJSON(w, map[string]string{"text": pricingSummaryFor(lang)})
+ }
+ 
+ const pricingMarker = "{{US_FIYAT}}"
+ 
+ func renderGUIPage(page []byte) []byte {
+-	out := bytes.ReplaceAll(page, []byte(pricingMarker), []byte(pricingSummary()))
++	out := bytes.ReplaceAll(page, []byte(pricingMarker), []byte(html.EscapeString(pricingSummary())))
+ 	if commercialRequired() && !hookLicenseMode() {
+ 		out = bytes.ReplaceAll(out, []byte(`<form id="licenseform" class="row">`), []byte(`<form id="licenseform" class="row" hidden>`))
+ 	}
+--- a/gui.go
++++ b/gui.go
+@@ -150,6 +150,7 @@
+ 	})
+ 	mux.Handle("/api/i18n", i18n.Handler(langPref.Get))
+ 	mux.Handle("/api/lang", i18n.PrefHandler(langPref, sameOriginRequest))
++	mux.HandleFunc("/api/pricing", pricingHandler)
+ 	mux.HandleFunc("/api/files", g.filesPage)
+ 	mux.HandleFunc("/api/source", g.sourceRange)
+ 	mux.HandleFunc("/api/act", g.act)
+--- a/gui.html
++++ b/gui.html
+@@ -221,7 +221,7 @@
+       <div class="row" id="workers"></div>
+       <div class="cards" id="modes"></div>
+       <h2>Lisans</h2>
+-      <p class="muted">{{US_FIYAT}} Bir kullanıcı görevi birden fazla ücretli model çağrısı yapabilir. <a href="https://shop.kanus.org" target="_blank" rel="noopener noreferrer">Mağaza</a></p>
++      <p class="muted"><span id="usprice">{{US_FIYAT}}</span> <span data-i18n="price.multi_call">Bir kullanıcı görevi birden fazla ücretli model çağrısı yapabilir.</span> <a href="https://shop.kanus.org" target="_blank" rel="noopener noreferrer" data-i18n="price.store">Mağaza</a></p>
+       <p id="allowance"></p>
+       <form id="licenseform" class="row">
+         <input id="license" type="text" placeholder="Lisans">
+@@ -829,6 +829,12 @@
+ // Locale-aware date/number display (Intl); payments and ledger stay TRY-only.
+ function i18nDate(ms) { try { return new Intl.DateTimeFormat(i18nState.bcp47, { dateStyle: "medium", timeStyle: "short" }).format(new Date(ms)); } catch (e) { return new Date(ms).toLocaleString(); } }
+ function i18nNumber(n) { try { return new Intl.NumberFormat(i18nState.bcp47).format(n); } catch (e) { return String(n); } }
++// Price paragraph: server text in the active language (TRY from the catalog, approximate EUR/USD only when verified).
++function refreshPricing(lang) {
++  const el = document.querySelector("#usprice");
++  if (!el) return;
++  fetch("/api/pricing?lang=" + encodeURIComponent(lang), { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(d => { if (d && typeof d.text === "string" && d.text) el.textContent = d.text; }).catch(() => {});
++}
+ function applyLocale(doc) {
+   const msgs = doc.messages || {};
+   i18nState.msgs = msgs;
+@@ -836,6 +842,7 @@
+   document.querySelectorAll("[data-i18n]").forEach(el => { const v = msgs[el.dataset.i18n]; if (typeof v === "string") el.textContent = v; });
+   document.querySelectorAll("[data-i18n-ph]").forEach(el => { const v = msgs[el.dataset.i18nPh]; if (typeof v === "string") el.placeholder = v; });
+   document.documentElement.lang = doc.lang || "tr";
++  refreshPricing(doc.lang || "tr");
+   document.documentElement.dir = doc.dir === "rtl" ? "rtl" : "ltr";
+   i18nState.lang = doc.lang || "tr";
+   const sel = document.querySelector("#langsel");
+--- a/i18n/locales/tr.json
++++ b/i18n/locales/tr.json
+@@ -96,5 +96,10 @@
+   "ui.language": "Dil",
+   "ui.login": "Giriş yap",
+   "ui.logout": "Çıkış yap",
+-  "ui.open_panel": "US Panel'i aç"
++  "ui.open_panel": "US Panel'i aç",
++  "price.try": "{amount} TL",
++  "price.pack": "{prompts} istem {price}",
++  "price.summary": "Aylık abonelik {monthly}, {prompts} istem / {days} gün. Saatlik kullanım {hourly}, 1 saat işlem veya açık panel. İstem paketleri: {packs}. Fiyatlar KDV dahil TL.",
++  "price.multi_call": "Bir kullanıcı görevi birden fazla ücretli model çağrısı yapabilir.",
++  "price.store": "Mağaza"
+ }
+--- a/i18n/locales/en.json
++++ b/i18n/locales/en.json
+@@ -96,5 +96,10 @@
+   "ui.language": "Language",
+   "ui.login": "Sign in",
+   "ui.logout": "Sign out",
+-  "ui.open_panel": "Open US Panel"
++  "ui.open_panel": "Open US Panel",
++  "price.try": "{amount} TRY",
++  "price.pack": "{prompts} prompts {price}",
++  "price.summary": "Monthly subscription {monthly}, {prompts} prompts / {days} days. Hourly use {hourly}, 1 hour of processing or open panel. Prompt packs: {packs}. Prices in Turkish lira, VAT included.",
++  "price.multi_call": "One user task can make several paid model calls.",
++  "price.store": "Store"
+ }
+--- a/i18n/locales/de.json
++++ b/i18n/locales/de.json
+@@ -96,5 +96,10 @@
+   "ui.language": "Sprache",
+   "ui.login": "Anmelden",
+   "ui.logout": "Abmelden",
+-  "ui.open_panel": "US Panel öffnen"
++  "ui.open_panel": "US Panel öffnen",
++  "price.try": "{amount} TL",
++  "price.pack": "{prompts} Prompts {price}",
++  "price.summary": "Monatsabo {monthly}, {prompts} Prompts / {days} Tage. Stundennutzung {hourly}, 1 Stunde Verarbeitung oder geöffnetes Panel. Prompt-Pakete: {packs}. Preise in türkischen Lira inkl. MwSt.",
++  "price.multi_call": "Eine Nutzeraufgabe kann mehrere kostenpflichtige Modellaufrufe auslösen.",
++  "price.store": "Shop"
+ }
+--- a/i18n/locales/ru.json
++++ b/i18n/locales/ru.json
+@@ -96,5 +96,10 @@
+   "ui.language": "Язык",
+   "ui.login": "Войти",
+   "ui.logout": "Выйти",
+-  "ui.open_panel": "Открыть US Panel"
++  "ui.open_panel": "Открыть US Panel",
++  "price.try": "{amount} TL",
++  "price.pack": "{prompts} промптов {price}",
++  "price.summary": "Месячная подписка {monthly}, {prompts} промптов / {days} дн. Почасовое использование {hourly}, 1 час обработки или открытой панели. Пакеты промптов: {packs}. Цены в турецких лирах с НДС.",
++  "price.multi_call": "Одна задача пользователя может вызвать несколько платных обращений к модели.",
++  "price.store": "Магазин"
+ }

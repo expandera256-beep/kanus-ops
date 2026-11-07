@@ -1,0 +1,8 @@
+    r13_grace_wake_test.go:138: within-grace err=lisans geçersiz credits 500->500 reserved=1
+    r13_grace_wake_test.go:140: err=lisans geçersiz credit delta=0
+    r13_grace_wake_test.go:138: after-grace err=lisans geçersiz credits 500->500 reserved=1
+--- FAIL: TestR13ModelSettleHonoursGraceDeadline (0.00s)
+    --- FAIL: TestR13ModelSettleHonoursGraceDeadline/within-grace (0.00s)
+FAIL
+FAIL	kiyas/licensesrv	0.007s
+FAIL

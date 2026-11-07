@@ -1,0 +1,18 @@
+{
+  "box_HOME": "/home/box",
+  "components_checked": [
+    {
+      "path": "/",
+      "symlink": false
+    },
+    {
+      "path": "/home",
+      "symlink": false
+    },
+    {
+      "path": "/home/box",
+      "symlink": false
+    }
+  ],
+  "registered_user_computer_HOME": "NOT TESTED"
+}

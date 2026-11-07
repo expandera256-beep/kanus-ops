@@ -1,0 +1,46 @@
+{"Time":"2026-11-08T01:05:25.688945052+03:00","Action":"start","Package":"kiyas"}
+{"Time":"2026-11-08T01:05:25.692849118+03:00","Action":"run","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete"}
+{"Time":"2026-11-08T01:05:25.692920642+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete","Output":"=== RUN   TestPanelRootSwapWriteDelete\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:25.692950245+03:00","Action":"run","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write"}
+{"Time":"2026-11-08T01:05:25.692953143+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Output":"=== RUN   TestPanelRootSwapWriteDelete/write\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:29.69455137+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Output":"    review_root_swap_linux_test.go:74: attempts=6447 success=6447 swaps=369680\n"}
+{"Time":"2026-11-08T01:05:29.6948203+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Output":"--- PASS: TestPanelRootSwapWriteDelete/write (4.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:29.694830069+03:00","Action":"pass","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Elapsed":4}
+{"Time":"2026-11-08T01:05:29.694850611+03:00","Action":"run","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete"}
+{"Time":"2026-11-08T01:05:29.694853121+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Output":"=== RUN   TestPanelRootSwapWriteDelete/delete\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:33.697030314+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Output":"    review_root_swap_linux_test.go:74: attempts=35227 success=1 swaps=300793\n"}
+{"Time":"2026-11-08T01:05:33.697206546+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Output":"--- PASS: TestPanelRootSwapWriteDelete/delete (4.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:33.697234781+03:00","Action":"pass","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Elapsed":4}
+{"Time":"2026-11-08T01:05:33.69728169+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete","Output":"--- PASS: TestPanelRootSwapWriteDelete (8.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:33.697314126+03:00","Action":"pass","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete","Elapsed":8}
+{"Time":"2026-11-08T01:05:33.697328433+03:00","Action":"run","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete"}
+{"Time":"2026-11-08T01:05:33.697341324+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete","Output":"=== RUN   TestPanelRootSwapWriteDelete\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:33.697358294+03:00","Action":"run","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write"}
+{"Time":"2026-11-08T01:05:33.69737002+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Output":"=== RUN   TestPanelRootSwapWriteDelete/write\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:37.69792762+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Output":"    review_root_swap_linux_test.go:74: attempts=5565 success=5565 swaps=329423\n"}
+{"Time":"2026-11-08T01:05:37.698239795+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Output":"--- PASS: TestPanelRootSwapWriteDelete/write (4.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:37.698248054+03:00","Action":"pass","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Elapsed":4}
+{"Time":"2026-11-08T01:05:37.698296321+03:00","Action":"run","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete"}
+{"Time":"2026-11-08T01:05:37.698301325+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Output":"=== RUN   TestPanelRootSwapWriteDelete/delete\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:41.698614739+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Output":"    review_root_swap_linux_test.go:74: attempts=47101 success=1 swaps=394413\n"}
+{"Time":"2026-11-08T01:05:41.698925817+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Output":"--- PASS: TestPanelRootSwapWriteDelete/delete (4.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:41.698933878+03:00","Action":"pass","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Elapsed":4}
+{"Time":"2026-11-08T01:05:41.698940553+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete","Output":"--- PASS: TestPanelRootSwapWriteDelete (8.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:41.698944621+03:00","Action":"pass","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete","Elapsed":8}
+{"Time":"2026-11-08T01:05:41.699007636+03:00","Action":"run","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete"}
+{"Time":"2026-11-08T01:05:41.699037391+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete","Output":"=== RUN   TestPanelRootSwapWriteDelete\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:41.699048238+03:00","Action":"run","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write"}
+{"Time":"2026-11-08T01:05:41.699624485+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Output":"=== RUN   TestPanelRootSwapWriteDelete/write\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:45.701871204+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Output":"    review_root_swap_linux_test.go:74: attempts=4582 success=4582 swaps=277470\n"}
+{"Time":"2026-11-08T01:05:45.702221804+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Output":"--- PASS: TestPanelRootSwapWriteDelete/write (4.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:45.702229074+03:00","Action":"pass","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/write","Elapsed":4}
+{"Time":"2026-11-08T01:05:45.702236974+03:00","Action":"run","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete"}
+{"Time":"2026-11-08T01:05:45.702239878+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Output":"=== RUN   TestPanelRootSwapWriteDelete/delete\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:49.702904522+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Output":"    review_root_swap_linux_test.go:74: attempts=51774 success=1 swaps=420785\n"}
+{"Time":"2026-11-08T01:05:49.702967805+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Output":"--- PASS: TestPanelRootSwapWriteDelete/delete (4.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:49.70297329+03:00","Action":"pass","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete/delete","Elapsed":4}
+{"Time":"2026-11-08T01:05:49.702981134+03:00","Action":"output","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete","Output":"--- PASS: TestPanelRootSwapWriteDelete (8.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:49.702984345+03:00","Action":"pass","Package":"kiyas","Test":"TestPanelRootSwapWriteDelete","Elapsed":8}
+{"Time":"2026-11-08T01:05:49.702986992+03:00","Action":"output","Package":"kiyas","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:05:49.70651274+03:00","Action":"output","Package":"kiyas","Output":"ok  \tkiyas\t24.017s\n"}
+{"Time":"2026-11-08T01:05:49.706556296+03:00","Action":"pass","Package":"kiyas","Elapsed":24.018}

@@ -1,0 +1,9 @@
+=== RUN   TestQAAuditExecSiblingIsolation
+    zz_qa_audit12_test.go:48: synthetic_sibling_read=true state=success
+    zz_qa_audit12_test.go:49: untrusted project can read sibling workspace: cwd/resource limits are not filesystem sandbox
+--- FAIL: TestQAAuditExecSiblingIsolation (0.02s)
+FAIL
+FAIL	kiyas	0.025s
+FAIL
+
+exit_code=1

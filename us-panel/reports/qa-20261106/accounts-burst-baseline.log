@@ -1,0 +1,8 @@
+{"index": 4, "start_offset_ms": 3.37, "http": 400, "ms": 903.824, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648", "content_type": "application/json"}
+{"index": 3, "start_offset_ms": 2.906, "http": 400, "ms": 907.492, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648", "content_type": "application/json"}
+{"index": 2, "start_offset_ms": 4.529, "http": 400, "ms": 1013.696, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648", "content_type": "application/json"}
+{"index": 0, "start_offset_ms": 3.154, "http": 400, "ms": 1117.057, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648", "content_type": "application/json"}
+{"index": 1, "start_offset_ms": 2.459, "http": 400, "ms": 1204.62, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648", "content_type": "application/json"}
+{"name": "baseline_no_wrong_password_session", "status": "PASS", "detail": {"http": [400, 400, 400, 400, 400]}}
+{"name": "targeted_burst_limiter", "status": "NOT TESTED", "detail": {"http429": 0, "http400": 5, "expected": "At least2 overflow429 for5 clients with burst2; no conclusion if source-IP buckets vary"}}
+SUMMARY {"PASS": 1, "FAIL": 0, "BLOCKED": 0, "NOT TESTED": 1}

@@ -1,0 +1,5 @@
+=== RUN   TestPanelFailBeforeGrace_CommitPastExpiresRejected
+    panel_fail_before_grace_test.go:24: rejected as expected: rezervasyon süresi doldu
+--- PASS: TestPanelFailBeforeGrace_CommitPastExpiresRejected (0.00s)
+PASS
+ok  	kiyas/licensesrv	0.007s

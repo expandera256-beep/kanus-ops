@@ -1,0 +1,91 @@
+{
+  "mode": "baseline-repeat",
+  "started_tsi": "2026-11-06T09:29:08.292032+03:00",
+  "finished_tsi": "2026-11-06T09:29:10.896287+03:00",
+  "finished_monotonic": 17351.437225628,
+  "cooldown_before_seconds": 81.5,
+  "requests": [
+    {
+      "index": 0,
+      "start_offset_ms": 1.985,
+      "http": 400,
+      "ms": 2098.638,
+      "body_bytes": 37,
+      "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648",
+      "content_type": "application/json"
+    },
+    {
+      "index": 1,
+      "start_offset_ms": 2.906,
+      "http": 400,
+      "ms": 2098.696,
+      "body_bytes": 37,
+      "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648",
+      "content_type": "application/json"
+    },
+    {
+      "index": 2,
+      "start_offset_ms": 2.364,
+      "http": 400,
+      "ms": 2195.241,
+      "body_bytes": 37,
+      "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648",
+      "content_type": "application/json"
+    },
+    {
+      "index": 3,
+      "start_offset_ms": 2.742,
+      "http": 400,
+      "ms": 2107.098,
+      "body_bytes": 37,
+      "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648",
+      "content_type": "application/json"
+    },
+    {
+      "index": 4,
+      "start_offset_ms": 2.608,
+      "http": 400,
+      "ms": 2601.146,
+      "body_bytes": 37,
+      "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648",
+      "content_type": "application/json"
+    }
+  ],
+  "concurrency": 5,
+  "count": 5,
+  "password_kind": "invalid-length fixture, not actual credential; allowed400 avoids bcrypt",
+  "safety_stop": false,
+  "http429": 0,
+  "http400": 5,
+  "start_spread_ms": 0.921,
+  "results": [
+    {
+      "name": "baseline-repeat_no_wrong_password_session",
+      "status": "PASS",
+      "detail": {
+        "http": [
+          400,
+          400,
+          400,
+          400,
+          400
+        ]
+      }
+    },
+    {
+      "name": "targeted_burst_limiter",
+      "status": "NOT TESTED",
+      "detail": {
+        "http429": 0,
+        "http400": 5,
+        "expected": "At least2 overflow429 for5 clients with burst2; no conclusion if source-IP buckets vary"
+      }
+    }
+  ],
+  "counts": {
+    "PASS": 1,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT TESTED": 1
+  }
+}

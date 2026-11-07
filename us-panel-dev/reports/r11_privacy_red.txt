@@ -1,0 +1,6 @@
+--- FAIL: TestPrivacyOutboxNoRawKeyLogsNoEmail (0.00s)
+    privacy_outbox_test.go:57: outbox (bekleyen) içinde ham lisans anahtarı
+--- FAIL: TestPrivacyRevokedMailMaskedKey (0.00s)
+    privacy_outbox_test.go:97: iptal/iade sonrası outbox/yedekte ham anahtar
+--- FAIL: TestPrivacyMaskHelpers (0.00s)
+    privacy_outbox_test.go:113: demir@gmail.com

@@ -1,0 +1,23 @@
+{
+  "poll_seconds": 30,
+  "health_timeout_seconds": 2,
+  "consecutive_violations": 3,
+  "recovery_successes": 3,
+  "cooldown_seconds": 900,
+  "stale_seconds": 90,
+  "login_window_seconds": 300,
+  "login_min_samples": 20,
+  "login_warning_seconds": 2,
+  "login_critical_seconds": 5,
+  "load_warning_per_cpu": 2,
+  "load_critical_per_cpu": 4,
+  "cpu_psi_warning_percent": 20,
+  "cpu_psi_critical_percent": 50,
+  "memory_psi_warning_percent": 1,
+  "io_psi_warning_percent": 10,
+  "pressure_hold_seconds": 300,
+  "alarm_outbox_path": "hook_alarm_outbox.jsonl",
+  "alarm_email_from": "support@kanus.org",
+  "alarm_email_to": "demirtumen08@gmail.com",
+  "alarm_send_enabled": false
+}

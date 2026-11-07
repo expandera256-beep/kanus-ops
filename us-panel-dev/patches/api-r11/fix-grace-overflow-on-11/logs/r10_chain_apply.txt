@@ -1,0 +1,9 @@
+0001-API-0001-regression-tests-locking-accounts-credit-le.patch EXIT=0
+0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch EXIT=0
+0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch EXIT=0
+0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch EXIT=0
+0001-API-0008-daily-quota-429-Retry-After-regression-test.patch EXIT=0
+0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch EXIT=0
+0001-US-proposal-store-0004-0012.diff EXIT=0
+GOFMT licensesrv: []
+TREE_EQUALS_r10_base_HEAD

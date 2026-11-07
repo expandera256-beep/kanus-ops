@@ -1,0 +1,12 @@
+US 1453 — E-POSTA KODUYLA HESAP VE TİCARİ HAKLAR
+
+Mevcut durum: Uygulama seçilen e-posta kodu ile müşteri girişini, ödeme-hesap eşleştirmesini ve sunucu tarafında kota denetimini henüz içermiyor. Önceki Shopify kodu imzalı lisans anahtarları oluşturuyor; bu, anahtarsız hesap girişine eşdeğer değildir. İstemcide saklanan sayaç veya istemciye gömülü imzalama sırrı güvenilir ticari koruma sağlamaz.
+
+Tamamlamak için gereken bileşenler:
+1. Doğrulanmış alan adında işlemsel e-posta servisi: kısa ömürlü, tek kullanımlık kod; tekrar deneme ve gönderim sınırları; hesabın varlığını ele vermeyen hata mesajları.
+2. Müşteri hesabı ve sunucu tarafı güvenli oturum: TLS, kısa ömürlü erişim oturumu, yenileme/iptal, güvenli cihaz oturumu yönetimi.
+3. Shopify ödeme bildirimleri için doğrulanmış webhook ve idempotent kayıt: ödeme, tekrar, iptal, iade ve plan yenilemesi hesap haklarına bağlanmalı. Ürün kimlikleri doğrulanmalı; yalnızca fiyat veya başlığa göre plan belirlenmemeli.
+4. Sunucuda atomik hak denetimi ve kullanım muhasebesi: mevcut abonelikte 30 gün/500 istem ve kullanım paketinde 30 gün/3600 saniye kuralları, satın alınan plana göre uygulanmalı. Yeniden deneme, eşzamanlı istek, kota sınırı, iptal, saat kayması, süreç kesilmesi ve kullanımın ne zaman ücretlendirileceği test edilmeli.
+5. Model kapısı yalnız doğrulanmış hesap oturumlarıyla erişilebilir olmalı; istemciye Google Cloud SSH hesabı, hizmet hesabı anahtarı veya model sunucusu kimlik bilgisi verilmemeli. Kotalar istek kabul edilirken sunucuda uygulanmalı.
+6. Gerçek SMTP sağlayıcısı, gönderen adresi, hesap veritabanı, halka açık HTTPS alan adı, Shopify webhook ve kimlik doğrulama yapılandırması; bunlara ait sırlar güvenli sunucu yapılandırmasında saklanmalı.
+7. Gerçek Windows cihazda, gerçek ödeme yapılmadan sağlayıcıların test ortamlarında, teslimat ve yetkilendirme testleri yapılmalı. Üretime taşıma ayrı bir yayın adımıdır.

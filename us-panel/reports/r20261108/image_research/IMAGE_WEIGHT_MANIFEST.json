@@ -1,0 +1,256 @@
+{
+  "status": "PLAN ONLY; NO WEIGHTS DOWNLOADED; NO GCS UPLOAD",
+  "created_date": "2026-11-08 TS\u0130",
+  "original_media_plan_sha256": "d587eeabf145e7ddee6060ad04caa5e0f48017e923b41358b829ddb9bd392c1b",
+  "models": [
+    {
+      "repo": "black-forest-labs/FLUX.2-klein-4B",
+      "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+      "weights": [
+        {
+          "path": "text_encoder/model-00001-of-00002.safetensors",
+          "bytes": 4967215360,
+          "sha256": "8c0506e7f4936fa7e26183a4fd8da4e2bdbc5990ba64ae441f965d51228f36ea",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B/resolve/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder/model-00001-of-00002.safetensors"
+        },
+        {
+          "path": "text_encoder/model-00002-of-00002.safetensors",
+          "bytes": 3077766632,
+          "sha256": "82f2bd839378541b0557bfabaf37c7d3d637071fdcb73302dedd7cf61162ce07",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B/resolve/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder/model-00002-of-00002.safetensors"
+        },
+        {
+          "path": "transformer/diffusion_pytorch_model.safetensors",
+          "bytes": 7751109744,
+          "sha256": "9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B/resolve/e7b7dc27f91deacad38e78976d1f2b499d76a294/transformer/diffusion_pytorch_model.safetensors"
+        },
+        {
+          "path": "vae/diffusion_pytorch_model.safetensors",
+          "bytes": 168120878,
+          "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B/resolve/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors"
+        }
+      ],
+      "total_weight_bytes": 15964212614,
+      "support_files": [
+        {
+          "path": "LICENSE.md",
+          "bytes": 9584,
+          "git_blob": "0afa7632c1a195ea6627a3c53e6ebf18d1be3aa5"
+        },
+        {
+          "path": "README.md",
+          "bytes": 9991,
+          "git_blob": "7b3cca65056e19a6ef27bdd0be671a030f067942"
+        },
+        {
+          "path": "model_index.json",
+          "bytes": 446,
+          "git_blob": "554a39bf1019138dd0b28809b745df8ef33657c8"
+        },
+        {
+          "path": "scheduler/scheduler_config.json",
+          "bytes": 486,
+          "git_blob": "7e53605e2643440b310fa554f087641893883c5f"
+        },
+        {
+          "path": "text_encoder/config.json",
+          "bytes": 1536,
+          "git_blob": "86f951d170cfd1fdc1c8a57a041e05c27b7b789b"
+        },
+        {
+          "path": "text_encoder/generation_config.json",
+          "bytes": 214,
+          "git_blob": "f5af93d0c7764fa38e3b1cd3aaba1b6307246d3b"
+        },
+        {
+          "path": "text_encoder/model.safetensors.index.json",
+          "bytes": 32855,
+          "git_blob": "b65d8063815c8679d85bb919337b36fae8de75cf"
+        },
+        {
+          "path": "tokenizer/added_tokens.json",
+          "bytes": 707,
+          "git_blob": "b54f9135e44c1e81047e8d05cb027af8bc039eed"
+        },
+        {
+          "path": "tokenizer/chat_template.jinja",
+          "bytes": 4168,
+          "git_blob": "01be9b307daa2d425f7c168c9fb145a286e0afb4"
+        },
+        {
+          "path": "tokenizer/merges.txt",
+          "bytes": 1671853,
+          "git_blob": "31349551d90c7606f325fe0f11bbb8bd5fa0d7c7"
+        },
+        {
+          "path": "tokenizer/special_tokens_map.json",
+          "bytes": 613,
+          "git_blob": "ac23c0aaa2434523c494330aeb79c58395378103"
+        },
+        {
+          "path": "tokenizer/tokenizer.json",
+          "bytes": 11422654,
+          "git_blob": "cd71f61a15a522601badb3dc960d800d9cb3766c"
+        },
+        {
+          "path": "tokenizer/tokenizer_config.json",
+          "bytes": 5404,
+          "git_blob": "ddaf69808214a44fdd26d3785b66c1367c78277a"
+        },
+        {
+          "path": "tokenizer/vocab.json",
+          "bytes": 2776833,
+          "git_blob": "4783fe10ac3adce15ac8f358ef5462739852c569"
+        },
+        {
+          "path": "transformer/config.json",
+          "bytes": 541,
+          "git_blob": "f21592ae2bc9f43052e78785bde7414f219ae369"
+        },
+        {
+          "path": "vae/config.json",
+          "bytes": 821,
+          "git_blob": "c3f38eb4c188a96a462519159356bd0fcc28cd14"
+        }
+      ]
+    },
+    {
+      "repo": "black-forest-labs/FLUX.1-schnell",
+      "revision": "741f7c3ce8b383c54771c7003378a50191e9efe9",
+      "weights": [
+        {
+          "path": "text_encoder/model.safetensors",
+          "bytes": 246144352,
+          "sha256": "893d67a23f4693ed42cdab4cbad7fe3e727cf59609c40da28a46b5470f9ed082",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/741f7c3ce8b383c54771c7003378a50191e9efe9/text_encoder/model.safetensors"
+        },
+        {
+          "path": "text_encoder_2/model-00001-of-00002.safetensors",
+          "bytes": 4994582224,
+          "sha256": "ec87bffd1923e8b2774a6d240c922a41f6143081d52cf83b8fe39e9d838c893e",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/741f7c3ce8b383c54771c7003378a50191e9efe9/text_encoder_2/model-00001-of-00002.safetensors"
+        },
+        {
+          "path": "text_encoder_2/model-00002-of-00002.safetensors",
+          "bytes": 4530066360,
+          "sha256": "a5640855b301fcdbceddfa90ae8066cd9414aff020552a201a255ecf2059da00",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/741f7c3ce8b383c54771c7003378a50191e9efe9/text_encoder_2/model-00002-of-00002.safetensors"
+        },
+        {
+          "path": "transformer/diffusion_pytorch_model-00001-of-00003.safetensors",
+          "bytes": 9962580296,
+          "sha256": "9b633dbe87316385c5b1c262bd4b5a01e3d955170661d63dcec8a01e89c0d820",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/741f7c3ce8b383c54771c7003378a50191e9efe9/transformer/diffusion_pytorch_model-00001-of-00003.safetensors"
+        },
+        {
+          "path": "transformer/diffusion_pytorch_model-00002-of-00003.safetensors",
+          "bytes": 9949328904,
+          "sha256": "58b4434078f0c2567ddc54e3b5cbf39626ab55fbd9d5c22956e183668f535dec",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/741f7c3ce8b383c54771c7003378a50191e9efe9/transformer/diffusion_pytorch_model-00002-of-00003.safetensors"
+        },
+        {
+          "path": "transformer/diffusion_pytorch_model-00003-of-00003.safetensors",
+          "bytes": 3870584832,
+          "sha256": "e2cbc25471ed5186e69a9b51098300cb2f612556453e38a372c851a220ed238d",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/741f7c3ce8b383c54771c7003378a50191e9efe9/transformer/diffusion_pytorch_model-00003-of-00003.safetensors"
+        },
+        {
+          "path": "vae/diffusion_pytorch_model.safetensors",
+          "bytes": 167666902,
+          "sha256": "f5b59a26851551b67ae1fe58d32e76486e1e812def4696a4bea97f16604d40a3",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/741f7c3ce8b383c54771c7003378a50191e9efe9/vae/diffusion_pytorch_model.safetensors"
+        }
+      ],
+      "total_weight_bytes": 33720953870,
+      "support_files": [
+        {
+          "path": "README.md",
+          "bytes": 3681,
+          "git_blob": "d02a8ab09a5e82933d8d59e499169c8ae26f128e"
+        },
+        {
+          "path": "model_index.json",
+          "bytes": 536,
+          "git_blob": "f2dcd899e03be059304cc980a87bb9389008ba2f"
+        },
+        {
+          "path": "scheduler/scheduler_config.json",
+          "bytes": 274,
+          "git_blob": "0bdb1b0ee10b0b31745d2654369613d432dc297a"
+        },
+        {
+          "path": "text_encoder/config.json",
+          "bytes": 613,
+          "git_blob": "5ebd923ce51522c605f64ab3d26ea024672777b6"
+        },
+        {
+          "path": "text_encoder_2/config.json",
+          "bytes": 782,
+          "git_blob": "b00a8a6908682a2091f1194b81f220fd2b67c41c"
+        },
+        {
+          "path": "text_encoder_2/model.safetensors.index.json",
+          "bytes": 19885,
+          "git_blob": "c8728bc3dca59d2616a2a594cbac3ddb9eb77d5b"
+        },
+        {
+          "path": "tokenizer/merges.txt",
+          "bytes": 524619,
+          "git_blob": "76e821f1b6f0a9709293c3b6b51ed90980b3166b"
+        },
+        {
+          "path": "tokenizer/special_tokens_map.json",
+          "bytes": 588,
+          "git_blob": "cf0682d6de72c1547f41b4f6d7c59f62deffef94"
+        },
+        {
+          "path": "tokenizer/tokenizer_config.json",
+          "bytes": 705,
+          "git_blob": "180a4e1be2a7d0b38a44108d6f24f585f35147b1"
+        },
+        {
+          "path": "tokenizer/vocab.json",
+          "bytes": 1059962,
+          "git_blob": "469be27c5c010538f845f518c4f5e8574c78f7c8"
+        },
+        {
+          "path": "tokenizer_2/special_tokens_map.json",
+          "bytes": 2543,
+          "git_blob": "17ade346a1042cbe0c1436f5bedcbd85c099d582"
+        },
+        {
+          "path": "tokenizer_2/spiece.model",
+          "bytes": 791656,
+          "git_blob": "317a5ccbde45300f5d1d970d4d449af2108b147e"
+        },
+        {
+          "path": "tokenizer_2/tokenizer.json",
+          "bytes": 2424235,
+          "git_blob": "21ed409afa3df5a822caa0fd5da30d13941f90b5"
+        },
+        {
+          "path": "tokenizer_2/tokenizer_config.json",
+          "bytes": 20817,
+          "git_blob": "b336fa236135e6c87e246485e4d69e415cc57da0"
+        },
+        {
+          "path": "transformer/config.json",
+          "bytes": 321,
+          "git_blob": "67e7b3526946734ed5f9014dc8fc2557714cce3e"
+        },
+        {
+          "path": "transformer/diffusion_pytorch_model.safetensors.index.json",
+          "bytes": 120822,
+          "git_blob": "bf1b236a5e90a3e5ffc62c916914d3696ad276e7"
+        },
+        {
+          "path": "vae/config.json",
+          "bytes": 774,
+          "git_blob": "b43183d0f5f0274bccd8054cd0069fc1d5f64586"
+        }
+      ]
+    }
+  ]
+}

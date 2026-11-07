@@ -1,0 +1,19 @@
+{"Time":"2026-11-06T10:01:45.749898534+03:00","Action":"start","Package":"kiyas/internal/privacy"}
+{"Time":"2026-11-06T10:01:45.759848501+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized"}
+{"Time":"2026-11-06T10:01:45.759907898+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Output":"=== RUN   TestPanelR2HTTPConfirmOversized\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:48.665298346+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Output":"    zz_panel_r2_test.go:29: PASS syntactically valid oversized confirm payload400\n"}
+{"Time":"2026-11-06T10:01:48.665781621+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Output":"--- PASS: TestPanelR2HTTPConfirmOversized (2.90s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:48.667104901+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Elapsed":2.9}
+{"Time":"2026-11-06T10:01:48.667138288+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized"}
+{"Time":"2026-11-06T10:01:48.66714232+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Output":"=== RUN   TestPanelR2HTTPConfirmOversized\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:51.523489245+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Output":"    zz_panel_r2_test.go:29: PASS syntactically valid oversized confirm payload400\n"}
+{"Time":"2026-11-06T10:01:51.523699004+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Output":"--- PASS: TestPanelR2HTTPConfirmOversized (2.86s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:51.523729918+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Elapsed":2.86}
+{"Time":"2026-11-06T10:01:51.523803188+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized"}
+{"Time":"2026-11-06T10:01:51.523807002+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Output":"=== RUN   TestPanelR2HTTPConfirmOversized\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:54.179273887+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Output":"    zz_panel_r2_test.go:29: PASS syntactically valid oversized confirm payload400\n"}
+{"Time":"2026-11-06T10:01:54.179452691+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Output":"--- PASS: TestPanelR2HTTPConfirmOversized (2.66s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:54.179467603+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPConfirmOversized","Elapsed":2.66}
+{"Time":"2026-11-06T10:01:54.179512503+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:55.181735545+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"ok  \tkiyas/internal/privacy\t9.431s\n"}
+{"Time":"2026-11-06T10:01:55.181790786+03:00","Action":"pass","Package":"kiyas/internal/privacy","Elapsed":9.432}

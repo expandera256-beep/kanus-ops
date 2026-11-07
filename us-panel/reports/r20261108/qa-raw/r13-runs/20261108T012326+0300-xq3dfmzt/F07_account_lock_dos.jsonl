@@ -1,0 +1,24 @@
+{"Time":"2026-11-08T01:23:34.237036141+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-08T01:23:34.239692469+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS"}
+{"Time":"2026-11-08T01:23:34.239743008+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"=== RUN   TestQAAuditLimiterAccountLockDoS\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:23:34.473943114+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account /account/register email=q***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:23:34.481062554+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account /account/login email=q***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:23:34.482944915+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account /account/login email=q***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:23:34.485044146+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account /account/login email=q***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:23:34.486058542+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account /account/login email=q***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:23:34.489025587+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account /account/login email=q***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:23:34.489034081+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account /account/login email=q***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:23:34.492899034+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account /account/login email=q***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:23:34.492913265+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account /account/login email=q***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:23:34.492916653+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account /account/login email=q***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:23:34.49291964+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account /account/login email=q***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:23:34.494088857+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"2026/11/08 01:23:34 account login limiter: q***@example.test locked for 15m0s after 10 failures\n"}
+{"Time":"2026-11-08T01:23:34.494184959+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"    zz_qa_r13_F07_account_lock_dos_test.go:14: failed_attempts=10 correct_password_http=429 retry_after_present=true\n"}
+{"Time":"2026-11-08T01:23:34.494219621+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"    zz_qa_r13_F07_account_lock_dos_test.go:15: unauthenticated failures locked the legitimate correct password: account-lock DoS remains OPEN\n","OutputType":"error"}
+{"Time":"2026-11-08T01:23:34.496063561+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Output":"--- FAIL: TestQAAuditLimiterAccountLockDoS (0.26s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:23:34.496238042+03:00","Action":"fail","Package":"kiyas/licensesrv","Test":"TestQAAuditLimiterAccountLockDoS","Elapsed":0.26}
+{"Time":"2026-11-08T01:23:34.496267811+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:23:34.503180951+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"FAIL\tkiyas/licensesrv\t0.266s\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:23:34.503248518+03:00","Action":"fail","Package":"kiyas/licensesrv","Elapsed":0.266}
+
+exit_code=1

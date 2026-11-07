@@ -1,0 +1,14 @@
+{"Time":"2026-11-08T01:33:50.643634685+03:00","Action":"start","Package":"kiyas/internal/privacy"}
+{"Time":"2026-11-08T01:33:50.657110171+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewSameAccountConcurrentFields"}
+{"Time":"2026-11-08T01:33:50.657173029+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewSameAccountConcurrentFields","Output":"=== RUN   TestReviewSameAccountConcurrentFields\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:50.856761111+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewSameAccountConcurrentFields","Output":"--- PASS: TestReviewSameAccountConcurrentFields (0.20s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:50.856852447+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewSameAccountConcurrentFields","Elapsed":0.2}
+{"Time":"2026-11-08T01:33:50.856972754+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewPreferencesTrailingJunkRejected"}
+{"Time":"2026-11-08T01:33:50.85697696+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewPreferencesTrailingJunkRejected","Output":"=== RUN   TestReviewPreferencesTrailingJunkRejected\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:53.7899555+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewPreferencesTrailingJunkRejected","Output":"2026/11/08 01:33:53 account /account/register email=j***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:33:56.476331782+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewPreferencesTrailingJunkRejected","Output":"2026/11/08 01:33:56 account /account/login email=j***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:33:59.579706989+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewPreferencesTrailingJunkRejected","Output":"--- PASS: TestReviewPreferencesTrailingJunkRejected (8.72s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:59.579811964+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewPreferencesTrailingJunkRejected","Elapsed":8.72}
+{"Time":"2026-11-08T01:33:59.579832437+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:34:00.58182207+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"ok  \tkiyas/internal/privacy\t9.938s\n"}
+{"Time":"2026-11-08T01:34:00.58190108+03:00","Action":"pass","Package":"kiyas/internal/privacy","Elapsed":9.938}

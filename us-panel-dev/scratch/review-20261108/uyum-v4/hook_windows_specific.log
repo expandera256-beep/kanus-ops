@@ -1,0 +1,1 @@
+/workspace/us-panel/docs/KULLANICI_REHBERI_ACCOUNTS_TR.md:12:US Panel’in **hesap modu** (accounts) ile çalışan Windows sürümünü anlatır. Panel bir Windows EXE’dir; model ve kredi işlemleri VPS üzerindeki Go **us-license-hook** geçidinden geçer.

@@ -1,0 +1,180 @@
+=== patched licensesrv full -race ===
+--- FAIL: TestAccountNoCreditAndInvalidSessionNeverCallsModel (2.72s)
+    accounts_test.go:378: unfunded request reached upstream
+    accounts_test.go:382: 503
+--- FAIL: TestParsePlansBothExportSchemas (0.00s)
+    credits_test.go:19: open ../../../../reports/US_PLANS_JSON_TEST.json: no such file or directory
+--- FAIL: TestGPUWakeProxyWarmingNoChargeThenSSE (0.05s)
+    gpu_wake_test.go:246: hazır sonrası tünel gecikmesinde start tekrarlandı: 2
+--- FAIL: TestRound6SSE50LicensesQueue32 (5.33s)
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":0,"http":503,"ms":5005.997,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":1,"http":503,"ms":5003.661,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":2,"http":503,"ms":5005.05,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":3,"http":503,"ms":5003.348,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":4,"http":503,"ms":5005.608,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":5,"http":503,"ms":5007.862,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":6,"http":503,"ms":5008.714,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":7,"http":503,"ms":5005.474,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":8,"http":503,"ms":5006.842,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":9,"http":503,"ms":5008.506,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":10,"http":503,"ms":5008,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":11,"http":503,"ms":5005.404,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":12,"http":503,"ms":5007.383,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":13,"http":503,"ms":5004.617,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":14,"http":503,"ms":5008.673,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":15,"http":503,"ms":5006.18,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":16,"http":503,"ms":5004.582,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":17,"http":503,"ms":5004.739,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":18,"http":503,"ms":5006.246,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":19,"http":503,"ms":5005.524,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":20,"http":503,"ms":5002.144,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":21,"http":503,"ms":5007.902,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":22,"http":503,"ms":5004.295,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":23,"http":503,"ms":5004.849,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":24,"http":503,"ms":5005.598,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":25,"http":503,"ms":5007.266,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":26,"http":503,"ms":5008.303,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":27,"http":503,"ms":4999.995,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":28,"http":503,"ms":5002.818,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":29,"http":503,"ms":5006.074,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":30,"http":503,"ms":5003.57,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":31,"http":503,"ms":5003.208,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":32,"http":503,"ms":5003.163,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":33,"http":503,"ms":5005.042,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":34,"http":503,"ms":5007.051,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":35,"http":503,"ms":5004.375,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":36,"http":503,"ms":5005.753,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":37,"http":503,"ms":5007.215,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":38,"http":503,"ms":5000.88,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":39,"http":503,"ms":5005.213,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":40,"http":503,"ms":5006.409,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":41,"http":503,"ms":5008.26,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":42,"http":503,"ms":5004.439,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":43,"http":503,"ms":5003.309,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":44,"http":503,"ms":5006.012,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":45,"http":503,"ms":5008.157,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":46,"http":503,"ms":5008.157,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":47,"http":503,"ms":5003.009,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":48,"http":503,"ms":5005.259,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":49,"http":503,"ms":5006.623,"sse_done":false}
+    load_round6_test.go:108: METRIC 50licenses_queue32 n=50 p50_ms=5005.524 p95_ms=5008.506 http=map[503:50]
+    load_round6_test.go:110: admission=0 rejection=0 want33/17
+--- FAIL: TestRound6ExpiredRevokedHourlySSE (1.11s)
+    load_round6_test.go:224: hourly expected ceil1.1=2 actual=0 elapsed=1.026521ms code=503
+--- FAIL: TestModelProxySSEChargeAndNoLicenseLeak (0.00s)
+    model_proxy_test.go:43: not reserved {us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6ImY2NDE5NGQ4NDM5ZDcyMjQ4YzY1NjVjMSIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.JVsRPxjUID9Q30adSWJM5y11MIx_gyt2QDc8kByrBw4 555 1 a@example.com 42 {sub 30 500 0 500} 2026-11-06 00:00:00 +0000 UTC 2026-12-06 00:00:00 +0000 UTC false 500 credits 0}
+    model_proxy_test.go:54: {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+--- FAIL: TestModelProxyHourlySecondsAndLegacyUpgrade (0.01s)
+    --- FAIL: TestModelProxyHourlySecondsAndLegacyUpgrade/false (0.00s)
+        model_proxy_test.go:124: {us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6ImE5YmExOTYyOTZmODE3N2NiZTYyMWFiMCIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.UpSkI9ob00KeH4W3Eo7WVr3NSG5qPYINvT0ZqBcmTvE 555 1 a@example.com 42 {use 30 0 3600 0} 2026-11-06 00:00:00 +0000 UTC 2026-12-06 00:00:00 +0000 UTC false 3600 seconds 0}
+    --- FAIL: TestModelProxyHourlySecondsAndLegacyUpgrade/true (0.00s)
+        model_proxy_test.go:124: {us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6IjQ2NTBhYmVmOTY5ZmVhMDQzYzVmNjg2ZSIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.YY5oIe5y1AIhEgatqMO230g00q6mADc_hI_4A1TqXwA 555 1 a@example.com 42 {use 30 0 3600 0} 2026-11-06 00:00:00 +0000 UTC 2026-12-06 00:00:00 +0000 UTC false 0  0}
+--- FAIL: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency (0.03s)
+    --- FAIL: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/1 (0.00s)
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:216: 1 {us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6IjQwZDE2MjMyNzY3YjRiNTQ2Y2QxZWNhMyIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.b_XW_-4pCYNZcqupWi0mUp32199UOCHx4Ehf3Z9FBRQ 555 1 a@example.com 42 {sub 30 500 0 500} 2026-11-06 00:00:00 +0000 UTC 2026-12-06 00:00:00 +0000 UTC false 500 credits 0} 0 0
+    --- FAIL: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/5 (0.00s)
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:216: 5 {us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6IjcxMjQ1YTJjYTU2MmIzNzcyYWZiZjQ3MCIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.RGSaH1PE3H0XeNWeAA3vHCiJLEdqh5GXNynQp3wUK8I 555 1 a@example.com 42 {sub 30 500 0 500} 2026-11-06 00:00:00 +0000 UTC 2026-12-06 00:00:00 +0000 UTC false 500 credits 0} 0 0
+    --- FAIL: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/10 (0.01s)
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:216: 10 {us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6Ijg2ZDlmYTdjYjc1MzBjYjk1NWMzMjZiOCIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.cNySodO3Thce0FcFMtwy0jSNyCc5HELehdDndbDHQjM 555 1 a@example.com 42 {sub 30 500 0 500} 2026-11-06 00:00:00 +0000 UTC 2026-12-06 00:00:00 +0000 UTC false 500 credits 0} 0 0
+    --- FAIL: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/25 (0.01s)
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:216: 25 {us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6ImEwNDQ1OTI0N2M2MjliMGVmNTEzMzZlMSIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.Ujsw90VMaCg8T19kz11sbH9DUaqyAdmOBtfh37SlSV0 555 1 a@example.com 42 {sub 30 500 0 500} 2026-11-06 00:00:00 +0000 UTC 2026-12-06 00:00:00 +0000 UTC false 500 credits 0} 0 0
+    --- FAIL: TestModelProxyLocalMultiuserAdmissionAndCreditConsistency/50 (0.01s)
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:209: unexpected HTTP 503 {"message":"GPU ısınıyor; model hazırlanıyor. Kredi ayrılmadı veya düşülmedi. Lütfen yeniden deneyin.","reason":"model_not_ready","retry_after":30,"state":"warming","status":"warming"}
+        model_proxy_test.go:216: 26 {us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6IjljYjc1NmY5OGMyNTJhNjc2ZjU1NGE1ZSIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.1fetAFNDLID3UeULPootwWLYZw1UmpoQWtC7a9mw7GI 555 1 a@example.com 42 {sub 30 500 0 500} 2026-11-06 00:00:00 +0000 UTC 2026-12-06 00:00:00 +0000 UTC false 500 credits 0} 0 0
+2026/11/06 09:35:55 webhook orders/paid: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsorderspaid2191457286/002/file: not a directory
+2026/11/06 09:35:55 webhook orders/cancelled: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsorderscancelled1714365925/002/file: not a directory
+2026/11/06 09:35:55 webhook refunds/create: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsrefundscreate767309299/002/file: not a directory
+FAIL
+FAIL	kiyas/licensesrv	81.006s
+FAIL
+LIC_EXIT:1

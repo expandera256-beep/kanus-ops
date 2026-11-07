@@ -1,0 +1,35 @@
+/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch: exit=0
+
+/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch: exit=0
+
+/workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-0004-0012-combined-on-11.diff: exit=0
+
+/workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-r11-additive-on-11+api+uyum-v4.diff: exit=0

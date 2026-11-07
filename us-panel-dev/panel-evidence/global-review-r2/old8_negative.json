@@ -1,0 +1,51 @@
+{"Time":"2026-11-06T09:58:04.761059524+03:00","Action":"start","Package":"kiyas"}
+{"Time":"2026-11-06T09:58:04.761203045+03:00","Action":"start","Package":"kiyas/i18n"}
+{"Time":"2026-11-06T09:58:04.765016805+03:00","Action":"run","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin"}
+{"Time":"2026-11-06T09:58:04.765067266+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Output":"=== RUN   TestLangPostRejectsForeignOrigin\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:04.766929484+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock"}
+{"Time":"2026-11-06T09:58:04.766973153+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Output":"=== RUN   TestPrefGetFIFODoesNotBlock\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:04.767346376+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Output":"    gui_lang_security_test.go:36: foreign origin status 200\n","OutputType":"error"}
+{"Time":"2026-11-06T09:58:04.767514592+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Output":"--- FAIL: TestLangPostRejectsForeignOrigin (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:04.767536178+03:00","Action":"fail","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Elapsed":0}
+{"Time":"2026-11-06T09:58:04.767580682+03:00","Action":"run","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized"}
+{"Time":"2026-11-06T09:58:04.767585198+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"=== RUN   TestLangPostRejectsTrailingAndOversized\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:04.773316201+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"    gui_lang_security_test.go:59: trailing garbage: status 200\n","OutputType":"error"}
+{"Time":"2026-11-06T09:58:04.774053107+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"    gui_lang_security_test.go:59: second object: status 200\n","OutputType":"error"}
+{"Time":"2026-11-06T09:58:04.774866541+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"    gui_lang_security_test.go:59: 2MB body: status 200\n","OutputType":"error"}
+{"Time":"2026-11-06T09:58:04.774898594+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"    gui_lang_security_test.go:63: rejected body changed preference\n","OutputType":"error"}
+{"Time":"2026-11-06T09:58:04.774997385+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"--- FAIL: TestLangPostRejectsTrailingAndOversized (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:04.775098599+03:00","Action":"fail","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Elapsed":0.01}
+{"Time":"2026-11-06T09:58:04.77510944+03:00","Action":"output","Package":"kiyas","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:04.775755343+03:00","Action":"output","Package":"kiyas","Output":"FAIL\tkiyas\t0.014s\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:04.775790116+03:00","Action":"fail","Package":"kiyas","Elapsed":0.015}
+{"Time":"2026-11-06T09:58:05.268169283+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Output":"    pref_security_unix_test.go:36: Get blocked on FIFO\n","OutputType":"error"}
+{"Time":"2026-11-06T09:58:05.268256694+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Output":"--- FAIL: TestPrefGetFIFODoesNotBlock (0.50s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:05.268263712+03:00","Action":"fail","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Elapsed":0.5}
+{"Time":"2026-11-06T09:58:05.268275542+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile"}
+{"Time":"2026-11-06T09:58:05.268277765+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Output":"=== RUN   TestPrefGetRejectsSymlinkFile\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:05.2687851+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Output":"    pref_security_unix_test.go:57: symlink followed: \"en\"\n","OutputType":"error"}
+{"Time":"2026-11-06T09:58:05.268812926+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Output":"--- FAIL: TestPrefGetRejectsSymlinkFile (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:05.268821456+03:00","Action":"fail","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Elapsed":0}
+{"Time":"2026-11-06T09:58:05.268825787+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly"}
+{"Time":"2026-11-06T09:58:05.268828196+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Output":"=== RUN   TestPrefGetRejectsLargeFileQuickly\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:06.61246032+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Output":"    pref_security_unix_test.go:77: large file read took 1.343515634s (unbounded read)\n","OutputType":"error"}
+{"Time":"2026-11-06T09:58:06.633506136+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Output":"--- FAIL: TestPrefGetRejectsLargeFileQuickly (1.36s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:06.63353875+03:00","Action":"fail","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Elapsed":1.36}
+{"Time":"2026-11-06T09:58:06.633549671+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent"}
+{"Time":"2026-11-06T09:58:06.633552614+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Output":"=== RUN   TestPrefSetRejectsSymlinkParent\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:06.635841857+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Output":"    pref_security_unix_test.go:89: Set through symlinked parent succeeded\n","OutputType":"error"}
+{"Time":"2026-11-06T09:58:06.635878462+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Output":"    pref_security_unix_test.go:92: write escaped to symlink target directory\n","OutputType":"error"}
+{"Time":"2026-11-06T09:58:06.635892286+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Output":"--- FAIL: TestPrefSetRejectsSymlinkParent (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:06.635896936+03:00","Action":"fail","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Elapsed":0}
+{"Time":"2026-11-06T09:58:06.635903072+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile"}
+{"Time":"2026-11-06T09:58:06.635906347+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Output":"=== RUN   TestPrefSetRejectsSymlinkFile\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:06.636945838+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Output":"    pref_security_unix_test.go:108: Set over symlink succeeded\n","OutputType":"error"}
+{"Time":"2026-11-06T09:58:06.637051251+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Output":"--- FAIL: TestPrefSetRejectsSymlinkFile (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:06.637060016+03:00","Action":"fail","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Elapsed":0}
+{"Time":"2026-11-06T09:58:06.63706395+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot"}
+{"Time":"2026-11-06T09:58:06.63706744+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Output":"=== RUN   TestPrefSetStaysInsideRoot\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:06.638099082+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Output":"--- PASS: TestPrefSetStaysInsideRoot (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:06.63811191+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Elapsed":0}
+{"Time":"2026-11-06T09:58:06.638114898+03:00","Action":"output","Package":"kiyas/i18n","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:06.682850701+03:00","Action":"output","Package":"kiyas/i18n","Output":"FAIL\tkiyas/i18n\t1.921s\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:06.682886203+03:00","Action":"fail","Package":"kiyas/i18n","Elapsed":1.9220000000000002}

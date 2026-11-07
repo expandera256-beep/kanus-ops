@@ -1,0 +1,3 @@
+ok  	kiyas/licensesrv	89.898s
+ok  	kiyas/cmd/us-license-hook	16.812s
+RACE:0

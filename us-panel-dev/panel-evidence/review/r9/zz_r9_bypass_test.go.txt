@@ -1,0 +1,233 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	"path/filepath"
+	"strings"
+	"sync/atomic"
+	"syscall"
+	"testing"
+	"time"
+)
+
+func r9log(t *testing.T, id string, pass bool, d string) {
+	r := "FAIL"
+	if pass {
+		r = "PASS"
+	}
+	t.Logf("R9|%s|%s|%s", id, r, d)
+}
+
+type swapper struct{ stop atomic.Bool; done chan struct{} }
+
+// d flips: real dir -> symlink to outside
+func startSwap(root, outside string) *swapper {
+	real := filepath.Join(root, "realdir")
+	d := filepath.Join(root, "d")
+	s := &swapper{done: make(chan struct{})}
+	go func() {
+		defer close(s.done)
+		for !s.stop.Load() {
+			os.Remove(d)
+			os.Rename(real, d)
+			os.Rename(d, real)
+			os.Symlink(outside, d)
+		}
+	}()
+	return s
+}
+func (s *swapper) Stop() { s.stop.Store(true); <-s.done }
+
+func TestR9_ReadRaceHighIter(t *testing.T) {
+	root, outside := t.TempDir(), t.TempDir()
+	os.WriteFile(filepath.Join(outside, "f.txt"), []byte("OUTSIDE"), 0o600)
+	os.MkdirAll(filepath.Join(root, "realdir"), 0o755)
+	os.WriteFile(filepath.Join(root, "realdir", "f.txt"), []byte("inside"), 0o644)
+	ft, _ := newFileTools(root)
+	sw := startSwap(root, outside)
+	ok, leak := 0, 0
+	end := time.Now().Add(20 * time.Second)
+	for time.Now().Before(end) {
+		if b, err := ft.Read("d/f.txt"); err == nil {
+			ok++
+			if strings.Contains(string(b), "OUTSIDE") {
+				leak++
+			}
+		}
+	}
+	sw.Stop()
+	r9log(t, "B1-READ-RACE-20s", leak == 0, fmt.Sprintf("başarılı okuma=%d kök dışı=%d", ok, leak))
+}
+
+func TestR9_WriteRace(t *testing.T) {
+	root, outside := t.TempDir(), t.TempDir()
+	os.MkdirAll(filepath.Join(root, "realdir"), 0o755)
+	ft, _ := newFileTools(root)
+	sw := startSwap(root, outside)
+	ok := 0
+	end := time.Now().Add(10 * time.Second)
+	for time.Now().Before(end) {
+		if ft.Write("d/w.txt", []byte("WRITTEN")) == nil {
+			ok++
+		}
+		if _, err := os.Stat(filepath.Join(outside, "w.txt")); err == nil {
+			break
+		}
+	}
+	sw.Stop()
+	_, err := os.Stat(filepath.Join(outside, "w.txt"))
+	ents, _ := os.ReadDir(outside)
+	var names []string
+	for _, e := range ents {
+		names = append(names, e.Name())
+	}
+	r9log(t, "B2-WRITE-RACE", err != nil, fmt.Sprintf("başarılı yazım=%d kök dışına yazıldı=%v dış_klasör=%v", ok, err == nil, names))
+}
+
+func TestR9_DeleteRace(t *testing.T) {
+	root, outside := t.TempDir(), t.TempDir()
+	os.MkdirAll(filepath.Join(root, "realdir"), 0o755)
+	ft, _ := newFileTools(root)
+	sw := startSwap(root, outside)
+	deleted := false
+	end := time.Now().Add(10 * time.Second)
+	for time.Now().Before(end) && !deleted {
+		os.WriteFile(filepath.Join(outside, "v.txt"), []byte("victim"), 0o600)
+		os.WriteFile(filepath.Join(root, "realdir", "v.txt"), []byte("x"), 0o644)
+		_ = ft.Delete("d/v.txt")
+		if _, err := os.Stat(filepath.Join(outside, "v.txt")); err != nil {
+			deleted = true
+		}
+	}
+	sw.Stop()
+	r9log(t, "B3-DELETE-RACE", !deleted, fmt.Sprintf("kök dışı dosya silindi=%v", deleted))
+}
+
+func TestR9_OpenBeneath(t *testing.T) {
+	root, outside := t.TempDir(), t.TempDir()
+	os.WriteFile(filepath.Join(outside, "s.txt"), []byte("OUTSIDE"), 0o600)
+	os.MkdirAll(filepath.Join(root, "a", "b"), 0o755)
+	os.WriteFile(filepath.Join(root, "a", "ok.txt"), []byte("in"), 0o644)
+	os.Symlink(outside, filepath.Join(root, "a", "lnk"))
+	os.Symlink("/proc/self/fd", filepath.Join(root, "fdl"))
+	os.Symlink(filepath.Join(outside, "s.txt"), filepath.Join(root, ".us-write-123456"))
+	syscall.Mkfifo(filepath.Join(root, "fifo"), 0o644)
+	cases := []string{"a/lnk/s.txt", "a/b/../../../" + filepath.Base(outside) + "/s.txt", "../x", "a/../../x", "/proc/self/fd/0", "fdl/0", ".us-write-123456", "fifo", "a/./ok.txt"}
+	for _, c := range cases {
+		done := make(chan string, 1)
+		go func() {
+			f, err := openBeneath(root, c)
+			if err == nil {
+				b := make([]byte, 16)
+				n, _ := f.Read(b)
+				f.Close()
+				done <- "AÇILDI:" + string(b[:n])
+				return
+			}
+			done <- "ret:" + err.Error()
+		}()
+		var r string
+		select {
+		case r = <-done:
+		case <-time.After(3 * time.Second):
+			r = "ASILI_KALDI"
+		}
+		pass := !strings.Contains(r, "OUTSIDE") && r != "ASILI_KALDI"
+		r9log(t, "B4-OPENBENEATH "+c, pass, r)
+	}
+	// root swap after newFileTools
+	r2 := filepath.Join(t.TempDir(), "proj")
+	os.MkdirAll(r2, 0o755)
+	ft, _ := newFileTools(r2)
+	os.Rename(r2, r2+".old")
+	os.Symlink(outside, r2)
+	b, err := ft.Read("s.txt")
+	r9log(t, "B4-ROOT-SWAP", !strings.Contains(string(b), "OUTSIDE"), fmt.Sprintf("kök sonradan symlink'e çevrilince okuma err=%v içerik=%q", err, b))
+}
+
+func TestR9_TerminalArgv(t *testing.T) {
+	root := t.TempDir()
+	os.WriteFile(filepath.Join(root, "a.js"), []byte("1"), 0o644)
+	os.WriteFile(filepath.Join(root, "a.py"), []byte("1"), 0o644)
+	os.WriteFile(filepath.Join(root, "go.mod"), []byte("module p\n"), 0o644)
+	cases := [][]string{
+		{"node", "--require=./a.js", "a.js"}, {"node", "-r", "./a.js", "a.js"}, {"node", "--experimental-loader=./a.js", "a.js"}, {"node", "--loader", "./a.js", "a.js"},
+		{"node", "--env-file=.env", "a.js"}, {"node", "--inspect", "a.js"}, {"node", "--inspect-brk=0.0.0.0:9229", "a.js"}, {"node", "--", "a.js"}, {"node", "--test", "--", "-e"},
+		{"node", "--test", "--import=./a.js"}, {"node", "--print", "1"}, {"node", "--check", "a.js", "-e"},
+		{"go", "build", "-toolexec=sh"}, {"go", "test", "-exec=sh", "."}, {"go", "run", "-overlay=ov.json", "."}, {"go", "build", "-ldflags=-X", "main.v=1"},
+		{"go", "build", "--toolexec=sh"}, {"go", "test", ".", "-toolexec=sh"}, {"go", "generate", "./..."}, {"go", "test", "-o", "-toolexec"}, {"go", "build", "-o", "x", "-tags", "a"},
+		{"go", "test", "-run", "X", ".", "-args", "-x"}, {"go", "env", "-w", "GOFLAGS=-toolexec=sh"}, {"go", "tool", "x"},
+		{"python3", "-X", "dev", "a.py"}, {"python3", "-W", "error", "a.py"}, {"python3", "-I", "a.py"}, {"python3", "-m", "pip", "install", "x"},
+		{"npm", "--script-shell=sh", "test"}, {"npx", "cowsay"}, {"git", "status"}, {"pyinstaller", "a.py"},
+	}
+	for _, c := range cases {
+		raw := `["` + strings.Join(c, `","`) + `"]`
+		_, err := terminalArgv(raw, root)
+		r9log(t, "B5-ARGV "+strings.Join(c, " "), err != nil, fmt.Sprintf("err=%v", err))
+	}
+}
+
+func r9Marker(t *testing.T, id string, env map[string]string, argv []string, files map[string]string, marker string) {
+	for k, v := range env {
+		t.Setenv(k, v)
+	}
+	root := t.TempDir()
+	for n, b := range files {
+		os.WriteFile(filepath.Join(root, n), []byte(b), 0o644)
+	}
+	out, state, _, err := safeRun(context.Background(), root, root, argv, 60*time.Second, nil)
+	_, e := os.Stat(marker)
+	r9log(t, id, e != nil, fmt.Sprintf("state=%s err=%v marker=%v out=%q", state, err, e == nil, strings.TrimSpace(out)))
+}
+
+func TestR9_EnvInjection(t *testing.T) {
+	d := t.TempDir()
+	m1 := filepath.Join(d, "NODEOPT")
+	os.WriteFile(filepath.Join(d, "pre.js"), []byte("require('fs').writeFileSync("+fmt.Sprintf("%q", m1)+",'x')"), 0o644)
+	r9Marker(t, "B6-NODE_OPTIONS-ENV", map[string]string{"NODE_OPTIONS": "--require=" + filepath.Join(d, "pre.js")}, []string{"node", "a.js"}, map[string]string{"a.js": "1"}, m1)
+	m2 := filepath.Join(d, "PYPATH")
+	os.MkdirAll(filepath.Join(d, "pp"), 0o755)
+	os.WriteFile(filepath.Join(d, "pp", "sitecustomize.py"), []byte("open("+fmt.Sprintf("%q", m2)+",'w').write('x')\n"), 0o644)
+	r9Marker(t, "B6-PYTHONPATH-ENV", map[string]string{"PYTHONPATH": filepath.Join(d, "pp")}, []string{"python3", "a.py"}, map[string]string{"a.py": "print(1)"}, m2)
+	m3 := filepath.Join(d, "PYSTART")
+	os.WriteFile(filepath.Join(d, "st.py"), []byte("open("+fmt.Sprintf("%q", m3)+",'w').write('x')\n"), 0o644)
+	r9Marker(t, "B6-PYTHONSTARTUP-ENV", map[string]string{"PYTHONSTARTUP": filepath.Join(d, "st.py"), "PYTHONINSPECT": "1"}, []string{"python3", "a.py"}, map[string]string{"a.py": "print(1)"}, m3)
+	// project-local module shadowing for "-m py_compile" (allowed in Terminal)
+	m4 := filepath.Join(d, "SHADOW")
+	r9Marker(t, "B6-PY-M-SHADOW", nil, []string{"python3", "-m", "py_compile", "a.py"}, map[string]string{"a.py": "print(1)", "py_compile.py": "open(" + fmt.Sprintf("%q", m4) + ",'w').write('x')\n"}, m4)
+}
+
+func TestR9_VenvPath(t *testing.T) {
+	t.Setenv("R9_SECRET", "r9-secret-xyz")
+	root := t.TempDir()
+	os.WriteFile(filepath.Join(root, "main.py"), []byte("print(1)\n"), 0o644)
+	os.MkdirAll(filepath.Join(root, ".venv", "bin"), 0o755)
+	dump := filepath.Join(t.TempDir(), "d")
+	os.WriteFile(filepath.Join(root, ".venv", "bin", "python"), []byte("#!/bin/sh\nenv > "+dump+"\necho Python 3.12.0\n"), 0o755)
+	found, ok := detectLaunch(root)
+	_, e := os.Stat(dump)
+	_, terr := trustedBin(filepath.Join(root, ".venv", "bin", "python"), root)
+	r9log(t, "B7-VENV", e != nil && terr != nil, fmt.Sprintf("detectLaunch ok=%v argv=%q venv_çalıştı=%v trustedBin(venv)_err=%v", ok, found.Argv, e == nil, terr))
+}
+
+func TestR9_TaskStateForgedWithKey(t *testing.T) {
+	root := t.TempDir()
+	os.WriteFile(filepath.Join(root, "go.mod"), []byte("module p\n\ngo 1.21\n"), 0o644)
+	os.WriteFile(filepath.Join(root, "main.go"), []byte("package main\nfunc main(){}\n"), 0o644)
+	evil := "package main\n\nfunc main() {}\n// FORGED\n"
+	// attacker with user rights can read the key: emulate by using saveTaskState (valid MAC)
+	st := &taskState{ID: "f1", Root: root, Phase: "applying", PendingEdits: []pendingEdit{{Path: "main.go", Content: evil, Hash: hashContent([]byte(evil))}}}
+	saveTaskState(st)
+	asked := false
+	l := &repairLoop{Root: root, Endpoint: "http://127.0.0.1:1", Approve: func(int, []repairEdit) bool { asked = true; return false }}
+	runPersistentRepair(context.Background(), l, "f1", false)
+	b, _ := os.ReadFile(filepath.Join(root, "main.go"))
+	r9log(t, "B8-TASKSTATE-VALIDMAC", asked && !strings.Contains(string(b), "FORGED"), fmt.Sprintf("geçerli MAC'li sahte kayıt: onay_soruldu=%v yazıldı=%v", asked, strings.Contains(string(b), "FORGED")))
+	// unsigned tamper
+	os.WriteFile(filepath.Join(root, ".us-tasks", "agent", "f2.json"), []byte(`{"version":1,"id":"f2","root":"`+root+`","phase":"applying","pendingEdits":[{"path":"main.go","content":"X","hash":"`+hashContent([]byte("X"))+`"}]}`), 0o600)
+	_, err := runPersistentRepair(context.Background(), &repairLoop{Root: root, Endpoint: "http://127.0.0.1:1", Approve: func(int, []repairEdit) bool { return true }}, "f2", false)
+	b, _ = os.ReadFile(filepath.Join(root, "main.go"))
+	r9log(t, "B8-TASKSTATE-NOMAC", string(b) != "X", fmt.Sprintf("MAC'siz kayıt (onay=true olsa bile) err=%v yazıldı=%v", err, string(b) == "X"))
+}

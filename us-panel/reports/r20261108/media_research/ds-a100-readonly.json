@@ -1,0 +1,11 @@
+{
+  "guestAccelerators": [
+    {
+      "acceleratorCount": 1,
+      "acceleratorType": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/acceleratorTypes/nvidia-tesla-a100"
+    }
+  ],
+  "machineType": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b/machineTypes/a2-highgpu-1g",
+  "name": "ds-a100",
+  "status": "TERMINATED"
+}

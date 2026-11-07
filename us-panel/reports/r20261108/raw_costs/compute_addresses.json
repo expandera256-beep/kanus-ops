@@ -1,0 +1,37 @@
+[
+  {
+    "address": "34.41.186.170",
+    "addressType": "EXTERNAL",
+    "creationTimestamp": "2026-10-30T17:41:19.791-07:00",
+    "description": "",
+    "id": "5144099745241270208",
+    "kind": "compute#address",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "name": "usta-ip",
+    "networkTier": "PREMIUM",
+    "region": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1/addresses/usta-ip",
+    "status": "IN_USE",
+    "users": [
+      "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/instances/usta-wake"
+    ]
+  },
+  {
+    "address": "10.164.0.16",
+    "addressType": "INTERNAL",
+    "creationTimestamp": "2026-11-05T12:44:30.090-08:00",
+    "description": "",
+    "id": "6728224868170552385",
+    "ipVersion": "IPV4",
+    "kind": "compute#address",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "name": "serverless-ipv4-cloudrun-1793911467892935660",
+    "networkTier": "PREMIUM",
+    "prefixLength": 28,
+    "purpose": "SERVERLESS",
+    "region": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/europe-west4",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/europe-west4/addresses/serverless-ipv4-cloudrun-1793911467892935660",
+    "status": "RESERVED",
+    "subnetwork": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/europe-west4/subnetworks/default"
+  }
+]

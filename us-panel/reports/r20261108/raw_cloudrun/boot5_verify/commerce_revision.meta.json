@@ -1,0 +1,15 @@
+{
+  "command": [
+    "gcloud",
+    "run",
+    "revisions",
+    "describe",
+    "us-commerce-sre-ready-r1",
+    "--region=europe-west4",
+    "--project=project-27082a40-6083-4952-9db",
+    "--format=json"
+  ],
+  "end_istanbul": "2026-11-08T00:55:26.011962+03:00",
+  "returncode": 0,
+  "stderr": ""
+}

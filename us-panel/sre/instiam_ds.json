@@ -1,0 +1,18 @@
+{
+  "bindings": [
+    {
+      "members": [
+        "serviceAccount:us-gateway@project-27082a40-6083-4952-9db.iam.gserviceaccount.com"
+      ],
+      "role": "projects/project-27082a40-6083-4952-9db/roles/usModelStart"
+    },
+    {
+      "members": [
+        "serviceAccount:us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com"
+      ],
+      "role": "projects/project-27082a40-6083-4952-9db/roles/usModelStop"
+    }
+  ],
+  "etag": "BwZfjVoIPvw=",
+  "version": 1
+}

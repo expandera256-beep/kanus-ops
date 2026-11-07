@@ -1,0 +1,28 @@
+{
+  "leaf_counts": {
+    "pass": 30,
+    "fail": 9
+  },
+  "failed": [
+    "TestReviewFXPolicy/sixth_day_utc",
+    "TestReviewFXPolicy/sixth_day_tsi",
+    "TestReviewFXPolicy/tomorrow",
+    "TestReviewFXPolicy/future_36h",
+    "TestReviewFXRounding/half_cent_29_rate2",
+    "TestReviewFXRounding/half_cent_21_rate6",
+    "TestReviewFXApproxRobustness/nan",
+    "TestReviewFXApproxRobustness/inf",
+    "TestReviewFXApproxRobustness/max_int64"
+  ],
+  "diagnostics": [
+    "    review_fx_test.go:31: reject=false want=true\n",
+    "    review_fx_test.go:31: reject=false want=true\n",
+    "    review_fx_test.go:31: reject=false want=true\n",
+    "    review_fx_test.go:31: reject=false want=true\n",
+    "    review_fx_test.go:32: minor=29 rate=2 got=\"≈ 0.14 € · ≈ $0.14\" want=\"≈ 0.15 € · ≈ $0.15\"\n",
+    "    review_fx_test.go:32: minor=21 rate=6 got=\"≈ 0.03 € · ≈ $0.03\" want=\"≈ 0.04 € · ≈ $0.04\"\n",
+    "    review_fx_test.go:33: approx=\"≈ -92,233,720,368,547,760.00 € · ≈ $-92,233,720,368,547,760.00\" note=\"Approximate amount; payment is charged in Turkish lira. Rate: CBRT forex selling, Nov 8, 2026.\"\n",
+    "    review_fx_test.go:33: approx=\"≈ 0.00 € · ≈ $0.00\" note=\"Approximate amount; payment is charged in Turkish lira. Rate: CBRT forex selling, Nov 8, 2026.\"\n",
+    "    review_fx_test.go:33: approx=\"≈ -92,233,720,368,547,760.00 € · ≈ $-92,233,720,368,547,760.00\"\n"
+  ]
+}

@@ -1,0 +1,4 @@
+PANEL R2 PoC (pre-fix): Idempotency-Key olmadan credits_reserve 429 → SDK 3 POST.
+Kaynak: panel-evidence/api-review/round2/sdk_py_retry_idempotency_poc.txt
+result {'id': 'res_x'} server_posts 3 idempotency_absent_retries True
+STATUS: FAIL (çift harcama riski)

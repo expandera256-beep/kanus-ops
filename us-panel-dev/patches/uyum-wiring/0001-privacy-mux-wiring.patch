@@ -1,0 +1,29 @@
+--- /workspace/us-panel-dev/work/api/r10_base/cmd/us-license-hook/main.go	2026-11-06 07:51:32.253778517 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/cmd/us-license-hook/main.go	2026-11-06 09:30:47.337611849 +0300
+@@ -12,7 +12,9 @@
+ 	"strconv"
+ 	"time"
+ 
++	"kiyas/internal/privacy"
+ 	"kiyas/licensesrv"
++	"path/filepath"
+ )
+ 
+ func env(k, d string) string {
+@@ -100,6 +102,16 @@
+ 		accounts.Workers = proxy.AccountWorkers
+ 	}
+ 	mux.Handle("/account/", accounts)
++	prefsPath := env("US_PRIVACY_PREFS_PATH", filepath.Join(filepath.Dir(env("US_STORE_PATH", "us-license-store.json")), "privacy-prefs.json"))
++	prefs, perr := privacy.OpenPrefStore(prefsPath)
++	if perr != nil {
++		log.Printf("privacy prefs: %v", perr)
++		prefs = nil
++	}
++	ph := privacy.NewHandler(st, prefs)
++	for _, route := range []string{"/account/privacy/export", "/account/privacy/erase", "/account/privacy/preferences", "/account/privacy/retention-run"} {
++		mux.Handle(route, ph)
++	}
+ 	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte("ok")) })
+ 	return mux
+ }

@@ -1,0 +1,63 @@
+moving-r11 /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0000-iface.patch
+exit=0
+
+r11-tmp-cumulative /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0000-iface.patch
+exit=0
+
+tmp apply exit=0
+
+moving-r11 /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0001-prefs-store.patch
+exit=0
+
+r11-tmp-cumulative /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0001-prefs-store.patch
+exit=0
+
+tmp apply exit=0
+
+moving-r11 /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0002-prefs-test.patch
+exit=0
+
+r11-tmp-cumulative /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0002-prefs-test.patch
+exit=0
+
+tmp apply exit=0
+
+moving-r11 /workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch
+exit=0
+
+r11-tmp-cumulative /workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch
+exit=0
+
+tmp apply exit=0
+
+moving-r11 /workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch
+exit=0
+
+r11-tmp-cumulative /workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch
+exit=0
+
+tmp apply exit=0
+
+moving-r11 /workspace/us-panel-dev/patches/uyum-v2/03-handler/0001-handler.patch
+exit=0
+
+r11-tmp-cumulative /workspace/us-panel-dev/patches/uyum-v2/03-handler/0001-handler.patch
+exit=0
+
+tmp apply exit=0
+
+moving-r11 /workspace/us-panel-dev/patches/uyum-v2/03-handler/0002-handler-test.patch
+exit=0
+
+r11-tmp-cumulative /workspace/us-panel-dev/patches/uyum-v2/03-handler/0002-handler-test.patch
+exit=0
+
+tmp apply exit=0
+
+moving-r11 /workspace/us-panel-dev/patches/uyum-v2/04-hook-us/0001-main-privacy-mount.patch
+exit=0
+
+r11-tmp-cumulative /workspace/us-panel-dev/patches/uyum-v2/04-hook-us/0001-main-privacy-mount.patch
+exit=0
+
+tmp apply exit=0

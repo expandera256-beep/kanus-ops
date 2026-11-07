@@ -1,0 +1,7 @@
+Hostinger Mail API için deneysel gönderim adaptörü eklendi. US_MAIL_PROVIDER=hostinger_api,
+US_HOSTINGER_MAIL_TOKEN ve US_HOSTINGER_MAILBOX_ID ortam değişkenleri gereklidir.
+Anahtar bu arşive yazılmamıştır. Posta kutusu kimliği Hostinger /api/v1/me yanıtından
+veya yetkili yönetim ekranından doğrulanmalıdır. Gerçek hesaba bağlanılmadı ve gerçek
+e-posta gönderilmedi. Zaman aşımı ve sunucu hatası halinde iş incelemeye alınır;
+i̇şçinin gönderim esnasında sonlanması gibi durumlarda yinelenme riski sürer.
+Mağaza webhook'u, kullanıcı istemi başına kota ve saatlik paket henüz canlıya hazır değildir.

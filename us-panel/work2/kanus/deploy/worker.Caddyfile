@@ -1,0 +1,15 @@
+{
+    auto_https disable_redirects
+    admin off
+}
+https://{$US_MODEL_TLS_HOST}:8443 {
+    bind {$US_MODEL_PRIVATE_IP}
+    tls /etc/us/model.crt /etc/us/model.key
+    @authorized header Authorization "Bearer {$US_MODEL_API_TOKEN}"
+    handle @authorized {
+        reverse_proxy 127.0.0.1:8080
+    }
+    handle {
+        respond "Unauthorized" 401
+    }
+}

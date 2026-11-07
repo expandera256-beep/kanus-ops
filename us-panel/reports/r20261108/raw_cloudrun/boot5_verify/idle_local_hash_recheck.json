@@ -1,0 +1,10 @@
+{
+  "/workspace/us-panel/sre/watchdog/idle.py.current": {
+    "sha256": "d52ff329d4812b99903ace85e831ed467956f1d7d2261aa8c5b4ec1d91fcb089",
+    "idle_10_times_60": false
+  },
+  "/workspace/us-panel/sre/watchdog/idle.py.fixed": {
+    "sha256": "d52ff329d4812b99903ace85e831ed467956f1d7d2261aa8c5b4ec1d91fcb089",
+    "idle_10_times_60": false
+  }
+}

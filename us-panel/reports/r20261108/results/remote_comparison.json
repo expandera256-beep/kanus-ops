@@ -1,0 +1,150 @@
+{
+  "data_source": "REAL_REMOTE_VS_REAL_LOCAL_SYNTHETIC",
+  "comparability_warning": "Different CPU hardware, network/proxy and rate-limiter admission; not a direct regression verdict.",
+  "levels": [
+    {
+      "scenario": "credit_status",
+      "concurrency": 1,
+      "remote_success_latency_ms": {
+        "p50": 437.754,
+        "p95": 488.575,
+        "p99": 509.286
+      },
+      "remote_success_rate": 1.0,
+      "remote_429_rate": 0.0,
+      "local_ms": {
+        "p50": 0.241,
+        "p95": 0.427,
+        "p99": 0.596
+      },
+      "old_test_VPS": null,
+      "old_test_VPS_note": "No comparable prior login/status load dataset."
+    },
+    {
+      "scenario": "credit_status",
+      "concurrency": 5,
+      "remote_success_latency_ms": {
+        "p50": 443.053,
+        "p95": 464.048,
+        "p99": 499.239
+      },
+      "remote_success_rate": 1.0,
+      "remote_429_rate": 0.0,
+      "local_ms": {
+        "p50": 0.58,
+        "p95": 2.189,
+        "p99": 2.199
+      },
+      "old_test_VPS": null,
+      "old_test_VPS_note": "No comparable prior login/status load dataset."
+    },
+    {
+      "scenario": "credit_status",
+      "concurrency": 10,
+      "remote_success_latency_ms": {
+        "p50": 441.42,
+        "p95": 447.621,
+        "p99": 448.032
+      },
+      "remote_success_rate": 1.0,
+      "remote_429_rate": 0.0,
+      "local_ms": {
+        "p50": 1.111,
+        "p95": 1.605,
+        "p99": 1.664
+      },
+      "old_test_VPS": null,
+      "old_test_VPS_note": "No comparable prior login/status load dataset."
+    },
+    {
+      "scenario": "credit_status",
+      "concurrency": 20,
+      "remote_success_latency_ms": {
+        "p50": 466.848,
+        "p95": 488.474,
+        "p99": 488.494
+      },
+      "remote_success_rate": 1.0,
+      "remote_429_rate": 0.0,
+      "local_ms": {
+        "p50": 1.738,
+        "p95": 2.471,
+        "p99": 2.486
+      },
+      "old_test_VPS": null,
+      "old_test_VPS_note": "No comparable prior login/status load dataset."
+    },
+    {
+      "scenario": "login",
+      "concurrency": 1,
+      "remote_success_latency_ms": {
+        "p50": 695.783,
+        "p95": 720.947,
+        "p99": 723.542
+      },
+      "remote_success_rate": 1.0,
+      "remote_429_rate": 0.0,
+      "local_ms": {
+        "p50": 226.671,
+        "p95": 280.938,
+        "p99": 292.766
+      },
+      "old_test_VPS": null,
+      "old_test_VPS_note": "No comparable prior login/status load dataset."
+    },
+    {
+      "scenario": "login",
+      "concurrency": 5,
+      "remote_success_latency_ms": {
+        "p50": 904.467,
+        "p95": 911.285,
+        "p99": 911.799
+      },
+      "remote_success_rate": 0.8,
+      "remote_429_rate": 0.2,
+      "local_ms": {
+        "p50": 612.044,
+        "p95": 1195.376,
+        "p99": 1358.811
+      },
+      "old_test_VPS": null,
+      "old_test_VPS_note": "No comparable prior login/status load dataset."
+    },
+    {
+      "scenario": "login",
+      "concurrency": 10,
+      "remote_success_latency_ms": {
+        "p50": 898.912,
+        "p95": 906.934,
+        "p99": 907.186
+      },
+      "remote_success_rate": 0.4,
+      "remote_429_rate": 0.6,
+      "local_ms": {
+        "p50": 658.54,
+        "p95": 1103.099,
+        "p99": 1208.577
+      },
+      "old_test_VPS": null,
+      "old_test_VPS_note": "No comparable prior login/status load dataset."
+    },
+    {
+      "scenario": "login",
+      "concurrency": 20,
+      "remote_success_latency_ms": {
+        "p50": 944.785,
+        "p95": 948.311,
+        "p99": 948.446
+      },
+      "remote_success_rate": 0.2,
+      "remote_429_rate": 0.8,
+      "local_ms": {
+        "p50": 1266.715,
+        "p95": 2188.818,
+        "p99": 2398.955
+      },
+      "old_test_VPS": null,
+      "old_test_VPS_note": "No comparable prior login/status load dataset."
+    }
+  ]
+}

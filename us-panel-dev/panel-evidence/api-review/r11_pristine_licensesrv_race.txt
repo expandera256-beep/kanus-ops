@@ -1,0 +1,10 @@
+--- FAIL: TestParsePlansBothExportSchemas (0.00s)
+    credits_test.go:19: open ../../../../reports/US_PLANS_JSON_TEST.json: no such file or directory
+2026/11/06 09:35:20 webhook orders/paid: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsorderspaid4194323480/002/file: not a directory
+2026/11/06 09:35:20 webhook orders/cancelled: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsorderscancelled328788830/002/file: not a directory
+2026/11/06 09:35:20 webhook refunds/create: mkdir /tmp/TestFailedWriteRollsBackAndRetrySucceedsrefundscreate140594001/002/file: not a directory
+FAIL
+FAIL	kiyas/licensesrv	72.284s
+ok  	kiyas/cmd/us-license-hook	9.260s
+FAIL
+PRISTINE_LIC_EXIT:1

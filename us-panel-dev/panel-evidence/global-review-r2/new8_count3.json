@@ -1,0 +1,104 @@
+{"Time":"2026-11-06T09:58:01.589720717+03:00","Action":"start","Package":"kiyas"}
+{"Time":"2026-11-06T09:58:01.589974053+03:00","Action":"start","Package":"kiyas/i18n"}
+{"Time":"2026-11-06T09:58:01.598800145+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock"}
+{"Time":"2026-11-06T09:58:01.598848558+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Output":"=== RUN   TestPrefGetFIFODoesNotBlock\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.601040184+03:00","Action":"run","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin"}
+{"Time":"2026-11-06T09:58:01.601080073+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Output":"=== RUN   TestLangPostRejectsForeignOrigin\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.606232776+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Output":"--- PASS: TestPrefGetFIFODoesNotBlock (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.606262441+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Elapsed":0.01}
+{"Time":"2026-11-06T09:58:01.606280593+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile"}
+{"Time":"2026-11-06T09:58:01.606283379+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Output":"=== RUN   TestPrefGetRejectsSymlinkFile\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.606916808+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Output":"--- PASS: TestPrefGetRejectsSymlinkFile (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.606944801+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.606951631+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly"}
+{"Time":"2026-11-06T09:58:01.606954613+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Output":"=== RUN   TestPrefGetRejectsLargeFileQuickly\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.606956365+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Output":"--- PASS: TestLangPostRejectsForeignOrigin (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.606990471+03:00","Action":"pass","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Elapsed":0.01}
+{"Time":"2026-11-06T09:58:01.606998565+03:00","Action":"run","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized"}
+{"Time":"2026-11-06T09:58:01.607001268+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"=== RUN   TestLangPostRejectsTrailingAndOversized\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.607209362+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Output":"--- PASS: TestPrefGetRejectsLargeFileQuickly (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.607240716+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.607251145+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent"}
+{"Time":"2026-11-06T09:58:01.607256579+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Output":"=== RUN   TestPrefSetRejectsSymlinkParent\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.607699641+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Output":"--- PASS: TestPrefSetRejectsSymlinkParent (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.607722151+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.607726302+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile"}
+{"Time":"2026-11-06T09:58:01.60772898+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Output":"=== RUN   TestPrefSetRejectsSymlinkFile\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.607811579+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Output":"--- PASS: TestPrefSetRejectsSymlinkFile (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.607820782+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.607826037+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot"}
+{"Time":"2026-11-06T09:58:01.607829978+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Output":"=== RUN   TestPrefSetStaysInsideRoot\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.60857363+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Output":"--- PASS: TestPrefSetStaysInsideRoot (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.608583622+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.608648128+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock"}
+{"Time":"2026-11-06T09:58:01.608673792+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Output":"=== RUN   TestPrefGetFIFODoesNotBlock\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.609375764+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Output":"--- PASS: TestPrefGetFIFODoesNotBlock (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.60938405+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.609414358+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile"}
+{"Time":"2026-11-06T09:58:01.609417287+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Output":"=== RUN   TestPrefGetRejectsSymlinkFile\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.609663705+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Output":"--- PASS: TestPrefGetRejectsSymlinkFile (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.609688348+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.60969141+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly"}
+{"Time":"2026-11-06T09:58:01.60969337+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Output":"=== RUN   TestPrefGetRejectsLargeFileQuickly\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.609927787+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Output":"--- PASS: TestPrefGetRejectsLargeFileQuickly (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.609940083+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.609960387+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent"}
+{"Time":"2026-11-06T09:58:01.609963881+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Output":"=== RUN   TestPrefSetRejectsSymlinkParent\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.610215907+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Output":"--- PASS: TestPrefSetRejectsSymlinkParent (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.610236914+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.610242577+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile"}
+{"Time":"2026-11-06T09:58:01.610244516+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Output":"=== RUN   TestPrefSetRejectsSymlinkFile\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.610549406+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Output":"--- PASS: TestPrefSetRejectsSymlinkFile (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.610572321+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.610576081+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot"}
+{"Time":"2026-11-06T09:58:01.610577853+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Output":"=== RUN   TestPrefSetStaysInsideRoot\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.611702067+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Output":"--- PASS: TestPrefSetStaysInsideRoot (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.611724319+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.611728552+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock"}
+{"Time":"2026-11-06T09:58:01.611731449+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Output":"=== RUN   TestPrefGetFIFODoesNotBlock\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.613833699+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Output":"--- PASS: TestPrefGetFIFODoesNotBlock (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.613845603+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefGetFIFODoesNotBlock","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.614004702+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile"}
+{"Time":"2026-11-06T09:58:01.614009192+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Output":"=== RUN   TestPrefGetRejectsSymlinkFile\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.61437245+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Output":"--- PASS: TestPrefGetRejectsSymlinkFile (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.61438338+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefGetRejectsSymlinkFile","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.614401955+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly"}
+{"Time":"2026-11-06T09:58:01.614404559+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Output":"=== RUN   TestPrefGetRejectsLargeFileQuickly\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.61515013+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Output":"--- PASS: TestPrefGetRejectsLargeFileQuickly (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.615171671+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefGetRejectsLargeFileQuickly","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.615176199+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent"}
+{"Time":"2026-11-06T09:58:01.615178372+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Output":"=== RUN   TestPrefSetRejectsSymlinkParent\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.615181403+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Output":"--- PASS: TestPrefSetRejectsSymlinkParent (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.615183805+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkParent","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.615185992+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile"}
+{"Time":"2026-11-06T09:58:01.615187928+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Output":"=== RUN   TestPrefSetRejectsSymlinkFile\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.615340135+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Output":"--- PASS: TestPrefSetRejectsSymlinkFile (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.615572762+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefSetRejectsSymlinkFile","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.615592294+03:00","Action":"run","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot"}
+{"Time":"2026-11-06T09:58:01.615595277+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Output":"=== RUN   TestPrefSetStaysInsideRoot\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.616652147+03:00","Action":"output","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Output":"--- PASS: TestPrefSetStaysInsideRoot (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.616842422+03:00","Action":"pass","Package":"kiyas/i18n","Test":"TestPrefSetStaysInsideRoot","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.616860711+03:00","Action":"output","Package":"kiyas/i18n","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.618626517+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"--- PASS: TestLangPostRejectsTrailingAndOversized (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.61863607+03:00","Action":"pass","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Elapsed":0.01}
+{"Time":"2026-11-06T09:58:01.619323182+03:00","Action":"run","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin"}
+{"Time":"2026-11-06T09:58:01.61933073+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Output":"=== RUN   TestLangPostRejectsForeignOrigin\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.622893729+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Output":"--- PASS: TestLangPostRejectsForeignOrigin (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.622904098+03:00","Action":"pass","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.622927726+03:00","Action":"run","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized"}
+{"Time":"2026-11-06T09:58:01.622933383+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"=== RUN   TestLangPostRejectsTrailingAndOversized\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.633540359+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"--- PASS: TestLangPostRejectsTrailingAndOversized (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.633565957+03:00","Action":"pass","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Elapsed":0.01}
+{"Time":"2026-11-06T09:58:01.634261539+03:00","Action":"run","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin"}
+{"Time":"2026-11-06T09:58:01.634267065+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Output":"=== RUN   TestLangPostRejectsForeignOrigin\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.636372479+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Output":"--- PASS: TestLangPostRejectsForeignOrigin (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.636406139+03:00","Action":"pass","Package":"kiyas","Test":"TestLangPostRejectsForeignOrigin","Elapsed":0}
+{"Time":"2026-11-06T09:58:01.636415307+03:00","Action":"run","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized"}
+{"Time":"2026-11-06T09:58:01.636418862+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"=== RUN   TestLangPostRejectsTrailingAndOversized\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.650065613+03:00","Action":"output","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Output":"--- PASS: TestLangPostRejectsTrailingAndOversized (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:01.650100815+03:00","Action":"pass","Package":"kiyas","Test":"TestLangPostRejectsTrailingAndOversized","Elapsed":0.01}
+{"Time":"2026-11-06T09:58:01.650461044+03:00","Action":"output","Package":"kiyas","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:58:02.618723435+03:00","Action":"output","Package":"kiyas/i18n","Output":"ok  \tkiyas/i18n\t1.029s\n"}
+{"Time":"2026-11-06T09:58:02.618794697+03:00","Action":"pass","Package":"kiyas/i18n","Elapsed":1.029}
+{"Time":"2026-11-06T09:58:02.654107869+03:00","Action":"output","Package":"kiyas","Output":"ok  \tkiyas\t1.064s\n"}
+{"Time":"2026-11-06T09:58:02.654152211+03:00","Action":"pass","Package":"kiyas","Elapsed":1.064}

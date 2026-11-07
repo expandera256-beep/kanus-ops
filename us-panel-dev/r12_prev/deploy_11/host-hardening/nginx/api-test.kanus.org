@@ -1,0 +1,41 @@
+# DRAFT — /etc/nginx/sites-available/api-test.kanus.org
+# Diff vs LIVE: adds security headers on HTTPS server; ACME + TLS paths unchanged.
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name api-test.kanus.org;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/html;
+        default_type text/plain;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name api-test.kanus.org;
+
+    ssl_certificate /etc/letsencrypt/live/api-test.kanus.org/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/api-test.kanus.org/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+    # Security headers (NEW vs LIVE)
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header Content-Security-Policy "frame-ancestors 'none'" always;
+    add_header Referrer-Policy "no-referrer" always;
+
+    include /etc/nginx/snippets/us-license-hook-locations.conf;
+
+    location / {
+        return 404;
+    }
+}

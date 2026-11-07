@@ -1,0 +1,7 @@
+CMD: go test -overlay <qa/build overlay.json> . -run ^TestQAScratchPanel -count=1 -v; mode=MOCK
+{"name": "actual_panel_agent_generate_build_repair_tests", "status": "PASS", "detail": {"exit_code": 0, "log": "e2e9-panel-driver.log", "artifact_dir": "/workspace/us-panel/qa/build/e2e9-mock-a8yjvg9s/generated", "mode": "MOCK"}}
+{"name": "mock_openai_protocol_and_feedback", "status": "PASS", "detail": {"events": ["generate-three-files", "read-server-before-patch", "patch-failing-health"], "upstream_calls": 3}}
+{"name": "independent_generated_service_http_acceptance", "status": "PASS", "detail": {"exit_code": 0, "log": "e2e9-independent-acceptance.log"}}
+{"name": "full_section9_platform", "status": "NOT TESTED", "detail": "Small stdlib REST fixture only; no frontend/PostgreSQL/Docker/CI production acceptance."}
+{"name": "real_model_generation", "status": "NOT TESTED", "detail": "Opt-in not run; requires model tunnel/readiness and explicit cost budget. Mock success is not real model success."}
+SUMMARY {"PASS": 3, "FAIL": 0, "BLOCKED": 0, "NOT TESTED": 2}

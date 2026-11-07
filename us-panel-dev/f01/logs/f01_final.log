@@ -1,0 +1,30 @@
+=== RUN   TestSafeExecEnvDoesNotLeakSecrets
+--- PASS: TestSafeExecEnvDoesNotLeakSecrets (0.01s)
+=== RUN   TestSafeExecStartFailureIsReported
+--- PASS: TestSafeExecStartFailureIsReported (0.02s)
+=== RUN   TestF01LandlockSiblingHomeAndWrite
+    sandbox_linux_test.go:59: sibling=EACCES home=EACCES outside_write=EACCES inside_write=OK
+--- PASS: TestF01LandlockSiblingHomeAndWrite (0.01s)
+=== RUN   TestF01LandlockGoTest
+    sandbox_linux_test.go:73: ok  	f01fixture	0.001s
+        
+--- PASS: TestF01LandlockGoTest (4.60s)
+=== RUN   TestF01LandlockABIAndUnavailableVisible
+    sandbox_linux_test.go:81: kernel Landlock ABI=6
+2026/11/08 01:27:12 UYARI: Landlock dosya izolasyonu uygulanamadı; güvenlik için komut çalıştırılmadı (sessiz geri dönüş yok): function not implemented
+2026/11/08 01:27:12 UYARI: Landlock dosya izolasyonu uygulanamadı; güvenlik için komut çalıştırılmadı (sessiz geri dönüş yok): operation not supported
+2026/11/08 01:27:12 UYARI: Landlock dosya izolasyonu uygulanamadı; güvenlik için komut çalıştırılmadı (sessiz geri dönüş yok): Landlock ABI 0: TRUNCATE koruması için ABI >= 3 gerekli
+--- PASS: TestF01LandlockABIAndUnavailableVisible (0.00s)
+=== RUN   TestF01PackUsesSandbox
+--- PASS: TestF01PackUsesSandbox (0.01s)
+=== RUN   TestF01ToolDirectoryNotGranted
+--- PASS: TestF01ToolDirectoryNotGranted (0.00s)
+=== RUN   TestF01UnsupportedWarningReachesTerminal
+2026/11/08 01:27:12 UYARI: Landlock dosya izolasyonu uygulanamadı; güvenlik için komut çalıştırılmadı (sessiz geri dönüş yok): function not implemented
+2026/11/08 01:27:12 UYARI: Landlock dosya izolasyonu uygulanamadı; güvenlik için komut çalıştırılmadı (sessiz geri dönüş yok): function not implemented
+2026/11/08 01:27:12 UYARI: Landlock dosya izolasyonu uygulanamadı; güvenlik için komut çalıştırılmadı (sessiz geri dönüş yok): function not implemented
+--- PASS: TestF01UnsupportedWarningReachesTerminal (0.00s)
+=== RUN   TestSafeExecEnvDoesNotExposeWorkspaceRoots
+--- PASS: TestSafeExecEnvDoesNotExposeWorkspaceRoots (0.00s)
+PASS
+ok  	kiyas	4.661s

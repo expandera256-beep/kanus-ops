@@ -1,0 +1,4 @@
+kaynak=/workspace/us-panel-dev/scratch/review-20261108/us-v11/tree kopya=/tmp/s2reg.hNck2n/term tarih=2026-11-08 00:40:43 +03 go=go version go1.27.3 linux/amd64
+const buildVersion = "2026.11.06.11"
+	return json.NewDecoder(io.LimitReader(resp.Body, 1024)).Decode(&value) == nil && value.Version == buildVersion
+go_test_exit=0

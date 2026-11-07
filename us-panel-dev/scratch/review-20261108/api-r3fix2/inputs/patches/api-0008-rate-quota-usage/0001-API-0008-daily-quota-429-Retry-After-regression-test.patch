@@ -1,0 +1,59 @@
+From 561467ba7ebf7eb5821ebb633137f0c8458972a5 Mon Sep 17 00:00:00 2001
+From: bot <bot@local>
+Date: Fri, 6 Nov 2026 09:41:27 +0300
+Subject: [PATCH] API-0008: daily quota 429+Retry-After regression test
+ (rate/usage from 0006)
+
+---
+ licensesrv/api_keys_test.go | 38 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
+
+diff --git a/licensesrv/api_keys_test.go b/licensesrv/api_keys_test.go
+index 96cad0f..4bf1cf3 100644
+--- a/licensesrv/api_keys_test.go
++++ b/licensesrv/api_keys_test.go
+@@ -177,3 +177,41 @@ func TestAPIKeyMuxRoutes(t *testing.T) {
+ 	_ = http.MethodGet
+ 	_ = time.Second
+ }
++
++func TestAPIKeyDailyQuotaRetryAfter(t *testing.T) {
++	h, _ := setup(t)
++	a := accountTestHandler(t, h.Store)
++	accountRegister(t, a, "quota@example.test", "")
++	session := accountLogin(t, a, "quota@example.test")
++	keys := &APIKeyHandler{Store: h.Store, Now: h.now}
++	cw := httptest.NewRecorder()
++	cr := httptest.NewRequest("POST", "/v1/api-keys", strings.NewReader(`{"name":"q"}`))
++	cr.Header.Set("Authorization", "Bearer "+session)
++	keys.ServeHTTP(cw, cr)
++	var created struct {
++		Key    string       `json:"key"`
++		APIKey apiKeyPublic `json:"api_key"`
++	}
++	if json.Unmarshal(cw.Body.Bytes(), &created) != nil {
++		t.Fatal(cw.Body.String())
++	}
++	h.Store.mu.Lock()
++	k := h.Store.st.APIKeys[created.APIKey.ID]
++	k.DailyQuota = 1
++	k.RatePerMin = 100
++	k.DayStamp = h.now().UTC().Format("2006-01-02")
++	k.DayCount = 1
++	h.Store.mu.Unlock()
++	r := httptest.NewRequest("GET", "/v1/credits/status", nil)
++	r.Header.Set("Authorization", "Bearer "+created.Key)
++	r.Header.Set("Accept", "application/json")
++	w := httptest.NewRecorder()
++	(&CreditHandler{Store: h.Store, Now: h.now}).ServeHTTP(w, r)
++	if w.Code != 429 || w.Header().Get("Retry-After") == "" {
++		t.Fatal(w.Code, w.Header().Get("Retry-After"), w.Body.String())
++	}
++	var body ErrorBody
++	if json.Unmarshal(w.Body.Bytes(), &body) != nil || body.Code != "quota_exceeded" {
++		t.Fatal(w.Body.String())
++	}
++}
+-- 
+2.47.3
+

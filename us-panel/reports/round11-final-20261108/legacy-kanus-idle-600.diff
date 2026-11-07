@@ -1,0 +1,81 @@
+--- a/inference_lifecycle.py
++++ b/inference_lifecycle.py
+@@ -27,7 +27,7 @@
+     instance: str
+     instance_id: str
+     upstream: str
+-    idle_seconds: int = 900
++    idle_seconds: int = 600
+     boot_seconds: int = 600
+     request_seconds: int = 600
+     lease_seconds: int = 60
+--- a/test_inference_lifecycle.py
++++ b/test_inference_lifecycle.py
+@@ -166,23 +166,23 @@
+         self.assertEqual(len(self.provider.starts),1)
+ 
+ 
+-class FifteenMinutePolicyTest(unittest.TestCase):
++class TenMinutePolicyTest(unittest.TestCase):
+     setUp=LifecycleTest.setUp
+     admit=LifecycleTest.admit
+     # Reuse the existing fake-provider contract with the decision's defaults.
+-    def test_default_idle_exactly_900_and_boot_600(self):
++    def test_default_idle_exactly_600_and_boot_600(self):
+         p=WorkerPolicy('gpu','actual-model','project-one','europe-west4-b','worker','123','http://127.0.0.1:8080',require_watchdog=False)
+-        self.assertEqual(p.idle_seconds,900);self.assertEqual(p.boot_seconds,600)
++        self.assertEqual(p.idle_seconds,600);self.assertEqual(p.boot_seconds,600)
+         self.policy=p
+         self.controller=LifecycleController(self.store,self.provider,[p],lambda r:r in self.allowed,self.clock,lambda _:None)
+         self.admit();self.controller.ensure_ready(p,'request-1');self.controller.release(p,'request-1')
+         before=self.store.view('gpu')['last_activity']
+-        self.clock.advance(899);self.controller.snapshot(live=True);self.controller.reconcile()
++        self.clock.advance(599);self.controller.snapshot(live=True);self.controller.reconcile()
+         self.assertEqual(self.store.view('gpu')['last_activity'],before);self.assertEqual(self.provider.stops,[])
+         self.clock.advance(1);self.controller.reconcile();self.assertEqual(len(self.provider.stops),1)
+ 
+     def test_queued_admitted_request_blocks_idle_stop(self):
+-        p=dataclasses.replace(self.policy,idle_seconds=900)
++        p=dataclasses.replace(self.policy,idle_seconds=600)
+         self.policy=p;self.controller=LifecycleController(self.store,self.provider,[p],lambda r:r in self.allowed,self.clock,lambda _:None)
+         self.admit('one');self.controller.ensure_ready(p,'one')
+         self.clock.advance(500);self.admit('queued');self.controller.release(p,'one')
+@@ -190,7 +190,7 @@
+             self.clock.advance(30);self.controller.heartbeat(p,'queued')
+         self.clock.advance(10);self.controller.heartbeat(p,'queued');self.controller.reconcile()
+         self.assertEqual(self.provider.stops,[])
+-        self.controller.release(p,'queued');self.clock.advance(899);self.controller.reconcile();self.assertEqual(self.provider.stops,[])
++        self.controller.release(p,'queued');self.clock.advance(599);self.controller.reconcile();self.assertEqual(self.provider.stops,[])
+         self.clock.advance(1);self.controller.reconcile();self.assertEqual(len(self.provider.stops),1)
+ 
+ 
+--- a/deploy/workers.example.json
++++ b/deploy/workers.example.json
+@@ -9,7 +9,7 @@
+       "instance": "ds-a100",
+       "instance_id": "6979174631840438511",
+       "upstream": "https://REPLACE_WITH_PRIVATE_MODEL_TLS_HOST:8443",
+-      "idle_seconds": 900,
++      "idle_seconds": 600,
+       "boot_seconds": 600,
+       "request_seconds": 600,
+       "lease_seconds": 60,
+--- a/deploy/README.md
++++ b/deploy/README.md
+@@ -16,7 +16,7 @@
+ 
+ Public `us-commerce` Cloud Run hizmeti ve yalnız Cloud Scheduler kimliğinin çağırabildiği `us-watchdog` Cloud Run hizmeti minimum sıfır örnekle yapılandırıldı. PostgreSQL ortak, kalıcı rezervasyon/kredi/işçi durumunu tutar. SQLite geçici Cloud Run diski üzerinde üretim için reddedilir. Onaylanan Cloud SQL tek bölgeli 1 vCPU / 3.75 GiB Enterprise, 20 GB SSD, 60 GB büyüme üst sınırı, silme koruması, günlük yedek ve 7 günlük PITR ile kuruldu; HA değildir. Her altyapı bileşeninin her durumda sıfır maliyetli olduğu iddia edilmez.
+ 
+-Yalnız kredi rezervasyonu bulunan `/v1/chat/completions` çağrısı `instances.start` yapabilir. Sağlık, hesap, model listesi ve panel açılışı işçi açmaz ve boşta kalma süresini yenilemez. Aynı anda en fazla 10 rezervasyon; 8 dakika açılış, toplam 10 dakika istek süresi; 60 saniye yenilenmeyen kullanım kaydı düşer. Son etkin istek bitince 120 saniye boşta kalma eşiği vardır. Dakikalık bağımsız denetleyici nedeniyle kapanışın başlatılması buna yaklaşık bir denetim aralığı ve bulut işlem süresi ekleyebilir.
++Yalnız kredi rezervasyonu bulunan `/v1/chat/completions` çağrısı `instances.start` yapabilir. Sağlık, hesap, model listesi ve panel açılışı işçi açmaz ve boşta kalma süresini yenilemez. Aynı anda en fazla 10 rezervasyon; 8 dakika açılış, toplam 10 dakika istek süresi; 60 saniye yenilenmeyen kullanım kaydı düşer. Son etkin istek bitince 600 saniye (10 dakika) boşta kalma eşiği vardır. Dakikalık bağımsız denetleyici nedeniyle kapanışın başlatılması buna yaklaşık bir denetim aralığı ve bulut işlem süresi ekleyebilir.
+ 
+ 30 dakika çalışma sınırı için yeni işler önceden reddedilir; etkin kullanım yoksa denetleyici süre sınırında da kapatır. Günlük 1 saat tahmini çalışma ve 6 açılış koruması varsayılandır; bunlar fatura tutarı veya kesin maliyet tavanı değildir. Denetleyici iki dakika doğrulanamazsa yeni model istekleri engellenir. IAM veya sağlayıcı arızası sırasında kapanış garanti edilemez; 503 ve `inference_events` için operatör alarmı gerekir. Çalışırken kontrol dışı açılmış VM otomatik sahiplenilmez veya kapatılmaz.
+ 
+@@ -75,3 +75,7 @@
+ Üretim factory'si `US_ENV=production`, PostgreSQL, özel TLS modeli, yetkili policy, katalog ve en az 32 karakter lisans/model tokenı yoksa açılmaz. Shopify varsayılan olarak gerçek imza anahtarı zorunlu olacak şekilde açıktır. Mevcut dağıtımda gerçek Shopify imza anahtarı bağlı olmadığı için **açıkça** `US_SHOPIFY_ENABLED=false` ayarlandı: webhook 503 verir; `/healthz` kapalı durumu bildirir ve hiçbir model veya kredi işlemi başlatmaz. Gerçek anahtar bağlanıp canlı teslim doğrulanmadan açılmamalı. E-posta gönderimi için denetleyici ortamına mevcut `US_MAIL_PROVIDER` ve ilgili sırlar eklenebilir. Sonucu belirsiz e-posta gönderimi `review` durumunda kalır. Ani süreç ölümüyle sonucu belirsiz kredi rezervasyonları otomatik tekrar edilmez; `metering_admin.py` ile kontrollü uzlaşma sürer.
+ 
+ Kaynakların kurulması Windows veya canlı ticari kabulün geçtiği anlamına gelmez. Kullanıcının onayı mevcut; eksik gerçek sırların bağlanması, erişimin geri gelmesi ve yukarıdaki canlı kabul sonuçları gereklidir.
++
++## Yerel .11 idle politikası güncellemesi (08.11.2026 Europe/Istanbul)
++
++GPU idle-stop hedefi **10 dakika / 600 saniye**. WorkerPolicy varsayılanı ve workers.example.json bu değere güncellendi; testler 599 saniyede kapanmadığını, 600 saniyede kapandığını doğrular. Bu eski Python/Cloud Run ağacı Go .11 hook paketine dahil değildir ve bu değişiklikler burada deploy edilmedi. Gerçek GPU/KAN tarafındaki etkin watchdog ayarı operatörce ayrıca uygulanıp doğrulanmalıdır. 15 dakikalık US_GPU_WARMUP_TIMEOUT veya kullanıcının 10 dakikaya kadar ısınma bekleme metni değiştirilmedi.

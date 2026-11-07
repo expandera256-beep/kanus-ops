@@ -1,0 +1,414 @@
+diff --git a/gui.html b/gui.html
+index 8863942..007127d 100644
+--- a/gui.html
++++ b/gui.html
+@@ -419,7 +419,7 @@ function paint(desk) {
+   fillList("#tracks", (desk.tracks || []).map((item) => item.state + " · " + item.title), null);
+   fillList("#taskhistory", (desk.taskHistory || []).map((item) => item.id + " · " + item.status + " · " + (item.summary || "")), null);
+   fillQueue(desk.queue || []);
+-  document.querySelector('#accounthistory').textContent=(desk.accountRequests||[]).map(item=>`${item.request_id} · ${item.state==='completed'?'1 kredi kullanıldı':item.state==='refunded'?'Kredi iade edildi':'İşleniyor (rezervasyon)'} · ${new Date(item.created*1000).toLocaleString()}`).join('\n') || 'Hesap geçmişi henüz alınmadı veya kayıt yok.';
++  document.querySelector('#accounthistory').textContent=(desk.accountRequests||[]).map(item=>`${item.request_id} · ${item.state==='completed'?i18nT('gui.history.used','1 kredi kullanıldı'):item.state==='refunded'?i18nT('gui.history.refunded','Kredi iade edildi'):i18nT('gui.history.pending','İşleniyor (rezervasyon)')} · ${i18nDate(item.created*1000)}`).join('\n') || i18nT('gui.history.empty','Hesap geçmişi henüz alınmadı veya kayıt yok.');
+   fillList("#notes", desk.notes, null);
+   document.querySelector("#openpath").textContent = desk.openPath || "Dosya seçilmedi.";
+   if (desk.openPath !== state.openPath || desk.openRevision !== state.openRevision) {
+@@ -823,9 +823,16 @@ document.body.addEventListener("click", (event) => {
+ const oldPaint = paint;
+ paint = (desk) => { state.cache = desk.steps; oldPaint(desk); };
+ // i18n: dynamic language switching; TR markup is the default and stays untouched until another language is chosen.
+-const i18nState = { lang: "tr" };
++const i18nState = { lang: "tr", bcp47: "tr-TR", msgs: {} };
++// i18nT returns the active-language text or the TR markup default.
++function i18nT(key, fallback) { const v = i18nState.msgs[key]; return typeof v === "string" ? v : fallback; }
++// Locale-aware date/number display (Intl); payments and ledger stay TRY-only.
++function i18nDate(ms) { try { return new Intl.DateTimeFormat(i18nState.bcp47, { dateStyle: "medium", timeStyle: "short" }).format(new Date(ms)); } catch (e) { return new Date(ms).toLocaleString(); } }
++function i18nNumber(n) { try { return new Intl.NumberFormat(i18nState.bcp47).format(n); } catch (e) { return String(n); } }
+ function applyLocale(doc) {
+   const msgs = doc.messages || {};
++  i18nState.msgs = msgs;
++  i18nState.bcp47 = doc.bcp47 || doc.lang || "tr-TR";
+   document.querySelectorAll("[data-i18n]").forEach(el => { const v = msgs[el.dataset.i18n]; if (typeof v === "string") el.textContent = v; });
+   document.querySelectorAll("[data-i18n-ph]").forEach(el => { const v = msgs[el.dataset.i18nPh]; if (typeof v === "string") el.placeholder = v; });
+   document.documentElement.lang = doc.lang || "tr";
+diff --git a/i18n/i18n.go b/i18n/i18n.go
+index 9a625bf..45d2ef8 100644
+--- a/i18n/i18n.go
++++ b/i18n/i18n.go
+@@ -250,6 +250,7 @@ type numFmt struct{ group, decimal string }
+ var numFormats = map[string]numFmt{
+ 	"tr": {".", ","}, "de": {".", ","}, "es": {".", ","},
+ 	"fr": {"\u202f", ","}, "en": {",", "."}, "ar": {",", "."},
++	"ru": {"\u00a0", ","},
+ }
+ 
+ type curFmt struct {
+@@ -261,7 +262,7 @@ type curFmt struct {
+ var currencies = map[string]curFmt{
+ 	"TRY": {"₺", true, false}, "USD": {"$", true, false}, "EUR": {"€", false, true},
+ 	"GBP": {"£", true, false}, "AED": {"AED", true, true}, "SAR": {"SAR", true, true},
+-	"INR": {"₹", true, false},
++	"INR": {"₹", true, false}, "RUB": {"₽", false, true},
+ }
+ 
+ func (l *Localizer) nf() numFmt {
+@@ -306,7 +307,7 @@ func (l *Localizer) Money(minor int64, currency string) string {
+ 	if !ok {
+ 		return n + " " + currency
+ 	}
+-	if l.lang == "tr" || l.lang == "de" || l.lang == "fr" || l.lang == "es" {
++	if l.lang == "tr" || l.lang == "de" || l.lang == "fr" || l.lang == "es" || l.lang == "ru" {
+ 		// Continental style: amount then symbol, e.g. 1.234,50 ₺ / 1.234,50 €
+ 		return n + " " + c.symbol
+ 	}
+@@ -322,6 +323,7 @@ func (l *Localizer) Money(minor int64, currency string) string {
+ var dateLayouts = map[string][2]string{
+ 	"tr": {"02.01.2006", "02.01.2006 15:04"},
+ 	"de": {"02.01.2006", "02.01.2006 15:04"},
++	"ru": {"02.01.2006", "02.01.2006 15:04"},
+ 	"fr": {"02/01/2006", "02/01/2006 15:04"},
+ 	"es": {"02/01/2006", "02/01/2006 15:04"},
+ 	"en": {"Jan 2, 2006", "Jan 2, 2006 3:04 PM"},
+diff --git a/i18n/i18n_de_ru_test.go b/i18n/i18n_de_ru_test.go
+new file mode 100644
+index 0000000..6d438d3
+--- /dev/null
++++ b/i18n/i18n_de_ru_test.go
+@@ -0,0 +1,69 @@
++package i18n
++
++import (
++	"strings"
++	"testing"
++	"time"
++)
++
++// TestFourLocaleParity: TR/EN/DE/RU are shipped and have identical keys.
++func TestFourLocaleParity(t *testing.T) {
++	b := mustLoad(t)
++	have := strings.Join(b.Languages(), ",")
++	for _, c := range []string{"de", "en", "ru", "tr"} {
++		if !strings.Contains(","+have+",", ","+c+",") {
++			t.Fatalf("locale %s missing (have %s)", c, have)
++		}
++	}
++	for _, c := range []string{"de", "ru"} {
++		for _, ref := range []string{"tr", "en"} {
++			if m := b.MissingKeys(ref, c); len(m) > 0 {
++				t.Errorf("%s missing %v (ref %s)", c, m, ref)
++			}
++			if m := b.MissingKeys(c, ref); len(m) > 0 {
++				t.Errorf("%s has extra %v (ref %s)", c, m, ref)
++			}
++		}
++		// every value is localized (not an empty or English copy), except
++		// brand/product names and a few technical words.
++		same := map[string]bool{"brand.name": true, "product.name": true, "gui.nav.terminal": true,
++			"gui.terminal.title": true, "gui.nav.monitor": true, "gui.nav.studio": true}
++		for k, v := range b.cats[c].msgs {
++			if v == "" {
++				t.Errorf("%s/%s empty", c, k)
++			}
++			if !same[k] && v == b.cats["en"].msgs[k] {
++				t.Errorf("%s/%s is an English copy: %q", c, k, v)
++			}
++		}
++	}
++}
++
++func TestFormattingDeRu(t *testing.T) {
++	b := mustLoad(t)
++	de, ru := b.For("de"), b.For("ru")
++	cases := map[string]string{
++		de.Money(123450, "TRY"):                         "1.234,50 ₺",
++		ru.Money(123450, "TRY"):                         "1\u00a0234,50 ₺",
++		de.Number(1234567.891, 2):                       "1.234.567,89",
++		ru.Number(1234567.891, 2):                       "1\u00a0234\u00a0567,89",
++		de.T("err.network"):                             "Der Server ist nicht erreichbar. Prüfe deine Verbindung und versuche es erneut.",
++		ru.T("ui.credits", "count", ru.Number(1500, 0)): "Осталось кредитов: 1\u00a0500",
++	}
++	for got, want := range cases {
++		if got != want {
++			t.Errorf("got %q want %q", got, want)
++		}
++	}
++	ist := time.FixedZone("+03", 3*3600)
++	ts := time.Date(2026, 11, 6, 6, 5, 0, 0, time.UTC)
++	if g := de.DateTime(ts, ist); g != "06.11.2026 09:05 +03" {
++		t.Error(g)
++	}
++	if g := ru.Date(ts, ist); g != "06.11.2026" {
++		t.Error(g)
++	}
++	if ru.Dir() != "ltr" || de.Dir() != "ltr" {
++		t.Error("dir")
++	}
++}
+diff --git a/i18n/i18n_test.go b/i18n/i18n_test.go
+index 6cb373e..842d7ab 100644
+--- a/i18n/i18n_test.go
++++ b/i18n/i18n_test.go
+@@ -74,7 +74,9 @@ func TestNegotiate(t *testing.T) {
+ 		{"en", "tr-TR", "en"},
+ 		{"EN_us", "", "en"},
+ 		{"xx", "en-GB,en;q=0.8", "en"},
+-		{"", "de-DE,de;q=0.9,en;q=0.5", "en"},
++		{"", "de-DE,de;q=0.9,en;q=0.5", "de"},
++		{"", "ru-RU,ru;q=0.9", "ru"},
++		{"", "ja-JP,ja;q=0.9,en;q=0.5", "en"},
+ 		{"", "fr;q=0.9, tr;q=0.95, en;q=0.1", "tr"},
+ 		{"", "en;q=0", "tr"},
+ 		{"", "*", "tr"},
+diff --git a/i18n/locales/de.json b/i18n/locales/de.json
+new file mode 100644
+index 0000000..9bf4370
+--- /dev/null
++++ b/i18n/locales/de.json
+@@ -0,0 +1,100 @@
++{
++  "_meta": {
++    "name": "Deutsch",
++    "dir": "ltr",
++    "bcp47": "de-DE",
++    "currency": "TRY"
++  },
++  "brand.name": "Kanus",
++  "brand.slogan": "Verwandle deine Ideen in Software.",
++  "email.license.body": "Hallo,\n\ndein Lizenzschlüssel für die Bestellung {order} ist bereit. Öffne US Panel und gib den Schlüssel ein.\n\nFragen: support@kanus.org",
++  "email.license.subject": "Dein US Panel Lizenzschlüssel",
++  "err.gui.bad_host": "ungültige lokale Adresse",
++  "err.gui.bad_page": "ungültige Seite",
++  "err.gui.bad_range": "ungültiger Bereich",
++  "err.gui.cancel_save": "Der Abbruch konnte nicht gespeichert werden.",
++  "err.gui.conn_busy": "Die Verbindung kann nicht geändert werden, während eine Anfrage läuft.",
++  "err.gui.conn_set": "Die Verbindung konnte nicht eingerichtet werden.",
++  "err.gui.direct_model": "Das kommerzielle Modell wird nur über den Go-Lizenzproxy aufgerufen; direkte Modelladressen sind deaktiviert.",
++  "err.gui.list_files": "Dateien konnten nicht aufgelistet werden",
++  "err.gui.method": "Methode nicht erlaubt",
++  "err.gui.model_busy": "Es läuft bereits eine Modellanfrage.",
++  "err.gui.model_name": "Ungültiger Modellname.",
++  "err.gui.model_set": "Der Modellname konnte nicht gesetzt werden.",
++  "err.gui.no_op": "unbekannte Operation",
++  "err.gui.not_image": "kein Bild",
++  "err.gui.pending_change": "Übernimm oder verwirf zuerst die ausstehende Änderung.",
++  "err.gui.prompt_too_big": "Der Prompt überschreitet das Limit von 8 MiB; teile ihn in kleinere Teile auf.",
++  "err.gui.python_gateway": "Das Python-Konto-Gateway ist in diesem Go-Lizenz-Build deaktiviert.",
++  "err.gui.queue_id": "Es konnte keine Warteschlangen-ID erstellt werden.",
++  "err.gui.request_bad": "Die Anfrage konnte nicht gelesen werden oder ist zu groß.",
++  "err.gui.source_verify": "Die Quelle konnte nicht überprüft werden.",
++  "err.gui.ssh_dev": "Die SSH-Verbindung ist nur im ausdrücklich aktivierten Entwicklermodus verfügbar.",
++  "err.gui.task_cancel": "Diese Aufgabe kann nicht abgebrochen werden.",
++  "err.gui.task_done": "Eine abgeschlossene Aufgabe kann nicht erneut ausgeführt werden; sende eine neue Aufgabe.",
++  "err.gui.task_read": "Der Aufgabeneintrag konnte nicht gelesen werden.",
++  "err.gui.task_resume": "Diese Aufgabe kann nicht fortgesetzt werden.",
++  "err.gui.task_running": "Arbeitsbereich, Modell oder Dateien können nicht geändert werden, während eine Aufgabe läuft.",
++  "err.gui.task_save": "Die Aufgabe konnte nicht gespeichert werden.",
++  "err.gui.tunnel_windows": "Der automatische Tunnel ist nur im Windows-Build verfügbar.",
++  "err.insufficient_credit": "Nicht genug Guthaben. Guthaben erhältst du unter shop.kanus.org.",
++  "err.license_invalid": "Die Lizenz ist ungültig oder abgelaufen.",
++  "err.model_unavailable": "Das Modell ist noch nicht bereit; bitte versuche es gleich noch einmal.",
++  "err.network": "Der Server ist nicht erreichbar. Prüfe deine Verbindung und versuche es erneut.",
++  "err.unknown": "Ein unerwarteter Fehler ist aufgetreten.",
++  "gui.account.balance": "Guthaben anzeigen",
++  "gui.account.email": "E-Mail",
++  "gui.account.license": "Lizenz- oder Guthabenschlüssel",
++  "gui.account.login": "Anmelden",
++  "gui.account.password": "Passwort",
++  "gui.account.redeem": "Guthaben hinzufügen",
++  "gui.account.register": "Konto mit Lizenz erstellen",
++  "gui.execute": "Ausführen",
++  "gui.files.browse": "Ordner wählen",
++  "gui.files.refresh": "Liste aktualisieren",
++  "gui.files.save": "Speichern",
++  "gui.files.title": "Dateien",
++  "gui.files.up": "Nach oben",
++  "gui.history.empty": "Noch kein Kontoverlauf vorhanden.",
++  "gui.history.pending": "In Bearbeitung (reserviert)",
++  "gui.history.refunded": "Guthaben erstattet",
++  "gui.history.used": "1 Guthaben verbraucht",
++  "gui.intro": "Arbeite mit dem Modell, verwalte deine Projekte und verfolge die Ergebnisse.",
++  "gui.lang.label": "Sprache",
++  "gui.lang.save_failed": "Die Spracheinstellung konnte nicht gespeichert werden; die bisherige Sprache bleibt aktiv.",
++  "gui.log": "Protokoll",
++  "gui.models.title": "Modelle",
++  "gui.nav.files": "Dateien",
++  "gui.nav.models": "Modelle",
++  "gui.nav.monitor": "Monitor",
++  "gui.nav.preview": "Vorschau",
++  "gui.nav.serve": "Bereitstellen",
++  "gui.nav.skills": "Werkzeuge",
++  "gui.nav.studio": "Studio",
++  "gui.nav.tasks": "Aufgaben",
++  "gui.nav.terminal": "Terminal",
++  "gui.ph.editor": "Öffne eine Datei aus der Liste. Speichern schreibt sie in den Ordner.",
++  "gui.ph.find": "in Datei suchen",
++  "gui.ph.task": "Schreib deine Nachricht. Mit Strg+Enter senden.",
++  "gui.preview.apply": "Änderungen übernehmen",
++  "gui.preview.discard": "Verwerfen",
++  "gui.preview.tests": "Tests ausführen",
++  "gui.preview.title": "Vorschau",
++  "gui.review.title": "Prüfung",
++  "gui.run": "Starten",
++  "gui.stop": "Stopp",
++  "gui.terminal.start": "Befehl ausführen",
++  "gui.terminal.stop": "Abbrechen",
++  "gui.terminal.title": "Terminal",
++  "gui.workspace": "/ Arbeitsbereich",
++  "help.intro": "Fragen zu US Panel oder deiner Bestellung? Schreib uns an support@kanus.org.",
++  "help.title": "Hilfe",
++  "product.name": "US Panel",
++  "ui.credits": "Verbleibendes Guthaben: {count}",
++  "ui.download": "US Panel herunterladen",
++  "ui.help_center": "Hilfe",
++  "ui.language": "Sprache",
++  "ui.login": "Anmelden",
++  "ui.logout": "Abmelden",
++  "ui.open_panel": "US Panel öffnen"
++}
+diff --git a/i18n/locales/en.json b/i18n/locales/en.json
+index d6b5e5a..4c337c6 100644
+--- a/i18n/locales/en.json
++++ b/i18n/locales/en.json
+@@ -55,6 +55,10 @@
+   "gui.files.save": "Save",
+   "gui.files.title": "Files",
+   "gui.files.up": "Up",
++  "gui.history.empty": "No account history yet.",
++  "gui.history.pending": "Processing (reserved)",
++  "gui.history.refunded": "Credit refunded",
++  "gui.history.used": "1 credit used",
+   "gui.intro": "Work with the model, manage your projects and follow the results.",
+   "gui.lang.label": "Language",
+   "gui.lang.save_failed": "Could not save the language preference; keeping the previous language.",
+diff --git a/i18n/locales/ru.json b/i18n/locales/ru.json
+new file mode 100644
+index 0000000..23876ef
+--- /dev/null
++++ b/i18n/locales/ru.json
+@@ -0,0 +1,100 @@
++{
++  "_meta": {
++    "name": "Русский",
++    "dir": "ltr",
++    "bcp47": "ru-RU",
++    "currency": "TRY"
++  },
++  "brand.name": "Kanus",
++  "brand.slogan": "Превращайте идеи в программы.",
++  "email.license.body": "Здравствуйте!\n\nЛицензионный ключ для заказа {order} готов. Откройте US Panel и введите ключ.\n\nВопросы: support@kanus.org",
++  "email.license.subject": "Ваш лицензионный ключ US Panel",
++  "err.gui.bad_host": "недопустимый локальный адрес",
++  "err.gui.bad_page": "недопустимая страница",
++  "err.gui.bad_range": "недопустимый диапазон",
++  "err.gui.cancel_save": "Не удалось сохранить отмену.",
++  "err.gui.conn_busy": "Нельзя изменить подключение, пока выполняется запрос.",
++  "err.gui.conn_set": "Не удалось настроить подключение.",
++  "err.gui.direct_model": "Коммерческая модель вызывается только через лицензионный прокси Go; прямые адреса моделей отключены.",
++  "err.gui.list_files": "не удалось получить список файлов",
++  "err.gui.method": "метод не разрешён",
++  "err.gui.model_busy": "Запрос к модели уже выполняется.",
++  "err.gui.model_name": "Недопустимое имя модели.",
++  "err.gui.model_set": "Не удалось задать имя модели.",
++  "err.gui.no_op": "нет такой операции",
++  "err.gui.not_image": "это не изображение",
++  "err.gui.pending_change": "Сначала примените или отмените ожидающее изменение.",
++  "err.gui.prompt_too_big": "Запрос превышает лимит 8 МиБ; разделите его на части.",
++  "err.gui.python_gateway": "Шлюз учётных записей Python отключён в этой сборке с лицензией Go.",
++  "err.gui.queue_id": "Не удалось создать идентификатор очереди.",
++  "err.gui.request_bad": "Не удалось прочитать запрос, или он слишком большой.",
++  "err.gui.source_verify": "Не удалось проверить источник.",
++  "err.gui.ssh_dev": "SSH-подключение доступно только в явно включённом режиме разработчика.",
++  "err.gui.task_cancel": "Эту задачу нельзя отменить.",
++  "err.gui.task_done": "Завершённую задачу нельзя запустить повторно; отправьте новую задачу.",
++  "err.gui.task_read": "Не удалось прочитать запись задачи.",
++  "err.gui.task_resume": "Эту задачу нельзя возобновить.",
++  "err.gui.task_running": "Нельзя менять рабочую область, модель или файлы, пока выполняется задача.",
++  "err.gui.task_save": "Не удалось сохранить задачу.",
++  "err.gui.tunnel_windows": "Автоматический туннель доступен только в сборке для Windows.",
++  "err.insufficient_credit": "Недостаточно кредитов. Кредиты можно получить на shop.kanus.org.",
++  "err.license_invalid": "Лицензия недействительна или истекла.",
++  "err.model_unavailable": "Модель ещё не готова; повторите попытку чуть позже.",
++  "err.network": "Не удалось связаться с сервером. Проверьте подключение и повторите попытку.",
++  "err.unknown": "Произошла непредвиденная ошибка.",
++  "gui.account.balance": "Показать баланс",
++  "gui.account.email": "Эл. почта",
++  "gui.account.license": "Ключ лицензии или пакета кредитов",
++  "gui.account.login": "Войти",
++  "gui.account.password": "Пароль",
++  "gui.account.redeem": "Добавить кредиты",
++  "gui.account.register": "Создать аккаунт по лицензии",
++  "gui.execute": "Выполнить",
++  "gui.files.browse": "Выбрать папку",
++  "gui.files.refresh": "Обновить список",
++  "gui.files.save": "Сохранить",
++  "gui.files.title": "Файлы",
++  "gui.files.up": "Вверх",
++  "gui.history.empty": "История аккаунта пока пуста.",
++  "gui.history.pending": "Обработка (зарезервировано)",
++  "gui.history.refunded": "Кредит возвращён",
++  "gui.history.used": "Списан 1 кредит",
++  "gui.intro": "Работайте с моделью, управляйте проектами и следите за результатами.",
++  "gui.lang.label": "Язык",
++  "gui.lang.save_failed": "Не удалось сохранить выбор языка; остаётся прежний язык.",
++  "gui.log": "Журнал",
++  "gui.models.title": "Модели",
++  "gui.nav.files": "Файлы",
++  "gui.nav.models": "Модели",
++  "gui.nav.monitor": "Мониторинг",
++  "gui.nav.preview": "Предпросмотр",
++  "gui.nav.serve": "Сервер",
++  "gui.nav.skills": "Инструменты",
++  "gui.nav.studio": "Студия",
++  "gui.nav.tasks": "Задачи",
++  "gui.nav.terminal": "Терминал",
++  "gui.ph.editor": "Откройте файл из списка. «Сохранить» записывает его в папку.",
++  "gui.ph.find": "поиск в файле",
++  "gui.ph.task": "Введите сообщение. Ctrl+Enter — отправить.",
++  "gui.preview.apply": "Применить изменения",
++  "gui.preview.discard": "Отменить",
++  "gui.preview.tests": "Запустить тесты",
++  "gui.preview.title": "Предпросмотр",
++  "gui.review.title": "Проверка",
++  "gui.run": "Запустить",
++  "gui.stop": "Остановить",
++  "gui.terminal.start": "Выполнить команду",
++  "gui.terminal.stop": "Отмена",
++  "gui.terminal.title": "Терминал",
++  "gui.workspace": "/ рабочая область",
++  "help.intro": "Вопросы о US Panel или заказе? Напишите на support@kanus.org.",
++  "help.title": "Справка",
++  "product.name": "US Panel",
++  "ui.credits": "Осталось кредитов: {count}",
++  "ui.download": "Скачать US Panel",
++  "ui.help_center": "Справка",
++  "ui.language": "Язык",
++  "ui.login": "Войти",
++  "ui.logout": "Выйти",
++  "ui.open_panel": "Открыть US Panel"
++}
+diff --git a/i18n/locales/tr.json b/i18n/locales/tr.json
+index e14fbd8..d824017 100644
+--- a/i18n/locales/tr.json
++++ b/i18n/locales/tr.json
+@@ -55,6 +55,10 @@
+   "gui.files.save": "Kaydet",
+   "gui.files.title": "Dosyalar",
+   "gui.files.up": "Üst",
++  "gui.history.empty": "Hesap geçmişi henüz alınmadı veya kayıt yok.",
++  "gui.history.pending": "İşleniyor (rezervasyon)",
++  "gui.history.refunded": "Kredi iade edildi",
++  "gui.history.used": "1 kredi kullanıldı",
+   "gui.intro": "Modelle çalışın, projelerinizi yönetin ve sonuçları izleyin.",
+   "gui.lang.label": "Dil",
+   "gui.lang.save_failed": "Dil tercihi kaydedilemedi; önceki dil korunuyor.",
+diff --git a/i18n/pref_test.go b/i18n/pref_test.go
+index 1bc64a7..bdf0d39 100644
+--- a/i18n/pref_test.go
++++ b/i18n/pref_test.go
+@@ -62,7 +62,7 @@ func TestPrefHandler(t *testing.T) {
+ 	if w := do("POST", "application/x-www-form-urlencoded", "lang=en"); w.Code != http.StatusUnsupportedMediaType {
+ 		t.Fatal("form post accepted", w.Code)
+ 	}
+-	if w := do("POST", "application/json", `{"lang":"de"}`); w.Code != http.StatusBadRequest {
++	if w := do("POST", "application/json", `{"lang":"ja"}`); w.Code != http.StatusBadRequest {
+ 		t.Fatal("unsupported lang accepted", w.Code)
+ 	}
+ 	if w := do("POST", "application/json", `{`); w.Code != http.StatusBadRequest {

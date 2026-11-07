@@ -1,0 +1,11 @@
+reserve_err 429 rate_limited
+reserve_server_posts 1 PASS_IF_1 True
+cap_err 429 retry_after_capped retry_after 999999
+sleeps [] capped_no_sleep True
+https_enforced True base_url must use https (or localhost http / allow_insecure=
+localhost_http_ok True
+allow_insecure_ok True
+str KanusError(status=401, code='')
+repr KanusError(status=401, code='', request_id='', raw='<redacted len=19>')
+raw_in_repr False
+raw_field_repr_false True

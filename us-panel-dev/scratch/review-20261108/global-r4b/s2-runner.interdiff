@@ -1,0 +1,25 @@
+--- /workspace/us-panel-dev/panel-evidence/review/regression/run_s2_regression.sh	2026-11-06 13:38:34.415568769 +0300
++++ /workspace/us-panel-dev/scratch/review-20261108/run_s2_persistent.sh	2026-11-08 00:06:52.854900753 +0300
+@@ -4,12 +4,12 @@
+ #   term_ağacı varsayılan: /workspace/us-panel-dev/work2/kiyas/term
+ # Çıkış kodu: 0 = tüm senaryolar PASS, 1 = en az bir FAIL/BLOCKED, 2 = kurulum hatası.
+ set -uo pipefail
+-HERE="$(cd "$(dirname "$0")" && pwd)"
++HERE="/workspace/us-panel-dev/panel-evidence/review/regression"
+ SRC="$(cd "${1:-/workspace/us-panel-dev/work2/kiyas/term}" && pwd)" || { echo "ağaç yok"; exit 2; }
+ STAMP="$(date +%Y%m%d_%H%M%S)"
+ OUT="${2:-$HERE/results/$STAMP}"
+ mkdir -p "$OUT"
+-WORK="$(mktemp -d /tmp/s2reg.XXXXXX)"
++WORK="$(mktemp -d /workspace/us-panel-dev/scratch/review-20261108/s2reg.XXXXXX)"
+ DST="$WORK/term"
+ export GOPROXY=off GOSUMDB=off US_REAL_MODEL_TEST=0 US_REAL_MODEL_E2E=0 US_DOOR_PROBE=0 US_REA_NETWORK_TEST=0
+ 
+@@ -80,6 +80,6 @@
+ cat "$OUT/table.md"
+ # Geçici kopyayı temizle; olası yetim sleep 47/48 süreçlerini öldür.
+ pkill -f '^sleep 4[78]$' 2>/dev/null || true
+-rm -rf "$WORK"
++echo "Kalıcı kopya: $WORK"
+ echo "Sonuçlar: $OUT"
+ [ "$fails" -eq 0 ]

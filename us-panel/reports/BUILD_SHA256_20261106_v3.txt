@@ -1,0 +1,4 @@
+c1417c544ad2777609c47bf738ea28897bf38fa96d3747e6003e83ab1263a327  /workspace/us-panel/dist/US_Ticari_Aday_2026_11_06_6.exe
+# Round5 unchanged; NOT rebuilt in Round6
+7061b4d831e8e370a3303c89427e9049bc236c38b416ada857d588fa5cd2ccaf  /workspace/us-panel/dist/us-license-hook_linux
+0e599d2877087eb6efaf97f34fa711ad3263a18c272897d89cc52af88a6fa39a  /workspace/us-panel/deploy/us-license-hook_hostinger.tgz

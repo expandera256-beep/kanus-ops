@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "checks": {
+    "293 detail groups exported to CSV": true,
+    "gross+credits=net arithmetic": true,
+    "three successful dry-runs": true,
+    "mandatory statuses present": true,
+    "all connector stderr files empty": true,
+    "parent concurrent report preserved": true
+  },
+  "report_sha256": "68b14170cdc8284ba502caff11b73ae893590a8f9e2feb421513751e960c439b",
+  "detailed_sha256": "7441e6c508a714dc1fcb23ac371c33584ae71c6d61a4a792f043810e8c743313",
+  "validated_at": "2026-11-08T00:26:51.409813+03:00"
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Kanus US unicursal hexagram">
+<rect width="512" height="512" fill="#05070f"/>
+<defs>
+<linearGradient id="strokeGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c084fc"/><stop offset="50%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#a855f7"/></linearGradient>
+<radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#7c3aed" stop-opacity="0.35"/><stop offset="70%" stop-color="#1d4ed8" stop-opacity="0.10"/><stop offset="100%" stop-color="#05070f" stop-opacity="0"/></radialGradient>
+<linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
+</defs>
+<circle cx="256.0" cy="256.0" r="237.3632" fill="url(#glow)"/>
+<circle cx="256.0" cy="256.0" r="210.1248" fill="none" stroke="#2a3555" stroke-width="3.072" opacity="0.55"/>
+<path d="M 256.000000,61.440000 L 417.119460,337.994069 L 94.880540,174.005931 L 256.000000,450.560000 L 417.119460,174.005931 L 94.880540,337.994069 L 256.000000,61.440000" fill="none" stroke="url(#strokeGrad)" stroke-width="15.360" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "gcloud",
+    "compute",
+    "instances",
+    "describe",
+    "ds-a100",
+    "--zone=europe-west4-b",
+    "--format=json(name,id,status,zone,lastStartTimestamp,lastStopTimestamp,serviceAccounts.email,disks.type,disks.savedState,networkInterfaces.accessConfigs.natIP)",
+    "--project=project-27082a40-6083-4952-9db"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "end_istanbul": "2026-11-08T00:55:02.334751+03:00"
+}

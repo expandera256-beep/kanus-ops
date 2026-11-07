@@ -1,0 +1,16 @@
+[
+  {
+    "file": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/inputs/patches/api-0012-ttl-commit-anchor/0001-API-0012-clamp-grace-seconds-as-int64-before-Duratio.patch",
+    "check": 0,
+    "log": "",
+    "apply": 0,
+    "apply_log": ""
+  },
+  {
+    "file": "/workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/inputs/patches/api-0012-ttl-commit-anchor/0002-API-0012-test-reserved-stays-locked-during-grace-rel.patch",
+    "check": 0,
+    "log": "",
+    "apply": 0,
+    "apply_log": ""
+  }
+]

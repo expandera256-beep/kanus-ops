@@ -1,0 +1,16 @@
+{"Time":"2026-11-06T09:40:19.94337583+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-06T09:40:19.951960152+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention"}
+{"Time":"2026-11-06T09:40:19.95202254+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention","Output":"=== RUN   TestPrivacyExportAnonymizeRetention\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:25.071153709+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention","Output":"--- PASS: TestPrivacyExportAnonymizeRetention (5.12s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:25.071210412+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention","Elapsed":5.12}
+{"Time":"2026-11-06T09:40:25.071577286+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention"}
+{"Time":"2026-11-06T09:40:25.071599121+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention","Output":"=== RUN   TestPrivacyExportAnonymizeRetention\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:30.192071172+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention","Output":"--- PASS: TestPrivacyExportAnonymizeRetention (5.12s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:30.192117856+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention","Elapsed":5.12}
+{"Time":"2026-11-06T09:40:30.192351329+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention"}
+{"Time":"2026-11-06T09:40:30.192378536+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention","Output":"=== RUN   TestPrivacyExportAnonymizeRetention\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:35.319430273+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention","Output":"--- PASS: TestPrivacyExportAnonymizeRetention (5.13s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:35.319495566+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPrivacyExportAnonymizeRetention","Elapsed":5.13}
+{"Time":"2026-11-06T09:40:35.319502896+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:36.320930049+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"ok  \tkiyas/licensesrv\t16.377s\n"}
+{"Time":"2026-11-06T09:40:36.320982858+03:00","Action":"pass","Package":"kiyas/licensesrv","Elapsed":16.378}

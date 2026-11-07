@@ -1,0 +1,16 @@
+{"Time":"2026-11-06T09:34:40.495964799+03:00","Action":"start","Package":"kiyas"}
+{"Time":"2026-11-06T09:34:40.505981502+03:00","Action":"run","Package":"kiyas","Test":"TestGPUWarmingMessageShown"}
+{"Time":"2026-11-06T09:34:40.506033393+03:00","Action":"output","Package":"kiyas","Test":"TestGPUWarmingMessageShown","Output":"=== RUN   TestGPUWarmingMessageShown\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:40.50625101+03:00","Action":"output","Package":"kiyas","Test":"TestGPUWarmingMessageShown","Output":"--- PASS: TestGPUWarmingMessageShown (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:40.506260212+03:00","Action":"pass","Package":"kiyas","Test":"TestGPUWarmingMessageShown","Elapsed":0}
+{"Time":"2026-11-06T09:34:40.506691486+03:00","Action":"run","Package":"kiyas","Test":"TestGPUWarmingMessageShown"}
+{"Time":"2026-11-06T09:34:40.50669505+03:00","Action":"output","Package":"kiyas","Test":"TestGPUWarmingMessageShown","Output":"=== RUN   TestGPUWarmingMessageShown\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:40.506766282+03:00","Action":"output","Package":"kiyas","Test":"TestGPUWarmingMessageShown","Output":"--- PASS: TestGPUWarmingMessageShown (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:40.506772803+03:00","Action":"pass","Package":"kiyas","Test":"TestGPUWarmingMessageShown","Elapsed":0}
+{"Time":"2026-11-06T09:34:40.508270553+03:00","Action":"run","Package":"kiyas","Test":"TestGPUWarmingMessageShown"}
+{"Time":"2026-11-06T09:34:40.508276803+03:00","Action":"output","Package":"kiyas","Test":"TestGPUWarmingMessageShown","Output":"=== RUN   TestGPUWarmingMessageShown\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:40.508365674+03:00","Action":"output","Package":"kiyas","Test":"TestGPUWarmingMessageShown","Output":"--- PASS: TestGPUWarmingMessageShown (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:40.508381997+03:00","Action":"pass","Package":"kiyas","Test":"TestGPUWarmingMessageShown","Elapsed":0}
+{"Time":"2026-11-06T09:34:40.508667303+03:00","Action":"output","Package":"kiyas","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:41.510772419+03:00","Action":"output","Package":"kiyas","Output":"ok  \tkiyas\t1.015s\n"}
+{"Time":"2026-11-06T09:34:41.510825068+03:00","Action":"pass","Package":"kiyas","Elapsed":1.015}

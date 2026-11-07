@@ -1,0 +1,16 @@
+PASS / references index-uscommerce-i18n-75f56119.js
+PASS /us references index-uscommerce-i18n-75f56119.js
+PASS /contact references index-uscommerce-i18n-75f56119.js
+PASS /news references index-uscommerce-i18n-75f56119.js
+PASS asset sha256
+PASS asset content-type application/javascript
+PASS old asset still served (rollback safe)
+curl: (23) Failure writing output to destination, passed 16384 returned 154
+PASS i18n helpers present
+PASS no 'Yerli Teknoloji'
+PASS no 'Küresel Vizyon'
+PASS no 'Built in Türkiye'
+PASS no 'Designed for the World'
+Manual: open http://127.0.0.1:41039/us, switch TR/EN/DE/RU; /news dates localized; failed form submit shows a localized notice.
+Rollback: upload rollback/index.html over public_html/index.html (old asset untouched).
+ALL PASS

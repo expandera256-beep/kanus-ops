@@ -1,0 +1,306 @@
+== item1_safe_exec
+checking file go.mod
+checking file gui.go
+checking file main.go
+checking file project_test_runner.go
+checking file run.go
+checking file safe_exec.go
+checking file safe_exec_test.go
+checking file safe_exec_unix_test.go
+checking file safe_limits_linux.go
+checking file safe_limits_linux_test.go
+checking file safe_limits_other.go
+checking file safe_limits_windows.go
+checking file terminal.go
+APPLIED
+== item2_file_tools
+checking file change_history.go
+checking file desk.go
+checking file file_tools.go
+checking file file_tools_test.go
+APPLIED
+== item3_repair_loop
+checking file repair_loop.go
+checking file repair_loop_test.go
+APPLIED
+== item4_task_state
+checking file repair_loop.go
+checking file task_state.go
+checking file task_state_test.go
+APPLIED
+== combined (p4)
+can't find file to patch at input line 4
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/change_history.go work2/kiyas/term/change_history.go
+|--- baseline_tree/change_history.go	2026-11-05 02:33:56.000000000 +0300
+|+++ work2/kiyas/term/change_history.go	2026-11-06 08:33:15.438829331 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 24
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/desk.go work2/kiyas/term/desk.go
+|--- baseline_tree/desk.go	2026-11-05 14:22:32.000000000 +0300
+|+++ work2/kiyas/term/desk.go	2026-11-06 08:33:15.438829331 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 61
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/file_tools.go work2/kiyas/term/file_tools.go
+|--- baseline_tree/file_tools.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/file_tools.go	2026-11-06 08:33:45.386168577 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 266
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/file_tools_test.go work2/kiyas/term/file_tools_test.go
+|--- baseline_tree/file_tools_test.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/file_tools_test.go	2026-11-06 08:33:35.938369433 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 399
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/go.mod work2/kiyas/term/go.mod
+|--- baseline_tree/go.mod	2026-11-06 07:51:39.517474000 +0300
+|+++ work2/kiyas/term/go.mod	2026-11-06 08:28:52.855493870 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 409
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/gui.go work2/kiyas/term/gui.go
+|--- baseline_tree/gui.go	2026-11-06 07:53:15.232974191 +0300
+|+++ work2/kiyas/term/gui.go	2026-11-06 08:29:34.916009612 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 425
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/main.go work2/kiyas/term/main.go
+|--- baseline_tree/main.go	2026-11-06 07:15:30.620053293 +0300
+|+++ work2/kiyas/term/main.go	2026-11-06 08:29:34.916009612 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 436
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/project_test_runner.go work2/kiyas/term/project_test_runner.go
+|--- baseline_tree/project_test_runner.go	2026-11-06 06:11:41.722802179 +0300
+|+++ work2/kiyas/term/project_test_runner.go	2026-11-06 08:29:16.623775745 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 458
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/repair_loop.go work2/kiyas/term/repair_loop.go
+|--- baseline_tree/repair_loop.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/repair_loop.go	2026-11-06 08:44:51.967730456 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 786
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/repair_loop_test.go work2/kiyas/term/repair_loop_test.go
+|--- baseline_tree/repair_loop_test.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/repair_loop_test.go	2026-11-06 08:42:20.030845871 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 951
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/run.go work2/kiyas/term/run.go
+|--- baseline_tree/run.go	2026-11-06 05:53:52.906176174 +0300
+|+++ work2/kiyas/term/run.go	2026-11-06 08:29:57.880322382 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+5 out of 5 hunks ignored
+can't find file to patch at input line 1072
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_exec.go work2/kiyas/term/safe_exec.go
+|--- baseline_tree/safe_exec.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/safe_exec.go	2026-11-06 08:30:59.289250582 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 1266
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_exec_test.go work2/kiyas/term/safe_exec_test.go
+|--- baseline_tree/safe_exec_test.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/safe_exec_test.go	2026-11-06 08:31:10.213428061 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 1441
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_exec_unix_test.go work2/kiyas/term/safe_exec_unix_test.go
+|--- baseline_tree/safe_exec_unix_test.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/safe_exec_unix_test.go	2026-11-06 08:30:59.293250646 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 1517
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_linux.go work2/kiyas/term/safe_limits_linux.go
+|--- baseline_tree/safe_limits_linux.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/safe_limits_linux.go	2026-11-06 08:31:10.213428061 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 1564
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_linux_test.go work2/kiyas/term/safe_limits_linux_test.go
+|--- baseline_tree/safe_limits_linux_test.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/safe_limits_linux_test.go	2026-11-06 08:30:34.752864901 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 1592
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_other.go work2/kiyas/term/safe_limits_other.go
+|--- baseline_tree/safe_limits_other.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/safe_limits_other.go	2026-11-06 08:28:52.831493598 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 1604
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/safe_limits_windows.go work2/kiyas/term/safe_limits_windows.go
+|--- baseline_tree/safe_limits_windows.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/safe_limits_windows.go	2026-11-06 08:28:52.831493598 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 1660
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/task_state.go work2/kiyas/term/task_state.go
+|--- baseline_tree/task_state.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/task_state.go	2026-11-06 08:44:19.607496680 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 1867
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/task_state_test.go work2/kiyas/term/task_state_test.go
+|--- baseline_tree/task_state_test.go	1970-01-01 02:00:00.000000000 +0200
+|+++ work2/kiyas/term/task_state_test.go	2026-11-06 08:44:51.971730487 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 2016
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff -ruN -x kiyas -x '*.exe' baseline_tree/terminal.go work2/kiyas/term/terminal.go
+|--- baseline_tree/terminal.go	2026-11-06 05:53:52.906176174 +0300
+|+++ work2/kiyas/term/terminal.go	2026-11-06 08:29:16.623775745 +0300
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+3 out of 3 hunks ignored
+== combined -p3
+checking file change_history.go
+checking file desk.go
+checking file file_tools.go
+checking file file_tools_test.go
+checking file go.mod
+checking file gui.go
+checking file main.go
+checking file project_test_runner.go
+checking file repair_loop.go
+checking file repair_loop_test.go
+checking file run.go
+checking file safe_exec.go
+checking file safe_exec_test.go
+checking file safe_exec_unix_test.go
+checking file safe_limits_linux.go
+checking file safe_limits_linux_test.go
+checking file safe_limits_other.go
+checking file safe_limits_windows.go
+checking file task_state.go
+checking file task_state_test.go
+checking file terminal.go
+APPLIED

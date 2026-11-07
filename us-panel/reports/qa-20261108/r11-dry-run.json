@@ -1,0 +1,66 @@
+{
+  "mode": "DRY-RUN",
+  "network_calls": 0,
+  "dns_calls": 0,
+  "credentials_read": false,
+  "subprocesses": 0,
+  "release": "2026.11.06.11",
+  "target": "api-test.kanus.org",
+  "expected_ip": "82.29.184.225",
+  "max_parallel": 2,
+  "request_cap": 75,
+  "stages": [
+    {
+      "name": "deployment_gate",
+      "status": "PLANNED",
+      "acceptance": "HOST attestation: release/IP/hash, migration complete, QA-only, account limit10/window900"
+    },
+    {
+      "name": "dns_ip_tls_health",
+      "status": "PLANNED",
+      "acceptance": "All DNS addresses must equal82.29.184.225; verified TLS SNI/hostname, actual peer IP checked per request; /healthz200"
+    },
+    {
+      "name": "negative_auth_hmac",
+      "status": "PLANNED",
+      "acceptance": "Invalid license/session401; missing/wrong webhook HMAC401; never read a webhook secret"
+    },
+    {
+      "name": "accounts_isolation",
+      "status": "PLANNED",
+      "acceptance": "Two QA logins; balances; tampered signature401; bearer authority cannot switch with other email"
+    },
+    {
+      "name": "license_credit_regression",
+      "status": "PLANNED",
+      "acceptance": "Two valid QA licenses; owner redeem idempotent; cross-owner409; reserve/cross-settle/release/idempotent release; no commit"
+    },
+    {
+      "name": "fresh_claim",
+      "status": "PLANNED",
+      "acceptance": "Separate never-redeemed fixture; single2-parallel first-claim200/409; exactly one credit delta, then stable winner/loser repeats"
+    },
+    {
+      "name": "revoked_license",
+      "status": "PLANNED",
+      "acceptance": "Provided revoked QA key: status200 valid=false/revoked=true; models/reserve reject; no credit movement; no chat/GPU"
+    },
+    {
+      "name": "account_limit",
+      "status": "PLANNED",
+      "acceptance": "Optional explicit lockout gate: same QA account,10 valid-length wrong passwords401,11th429+Retry-After; normalized variants; IP diversity needs HOST evidence"
+    },
+    {
+      "name": "deferred",
+      "status": "PLANNED",
+      "acceptance": "GPU/real model/SSE generation and native Windows .11 acceptance are NOT TESTED by this runner"
+    }
+  ],
+  "required_inputs": [
+    "HOST .11 migration/binary-hash attestation",
+    "Two QA credentials; valid owned A/B keys; new unbound key; revoked key",
+    "Permission for QA ownership/temporary holds; optional QA1 lockout",
+    "Actual source-IP diversity evidence from HOST; not spoof headers"
+  ],
+  "real_model_gpu": "DEFERRED"
+}

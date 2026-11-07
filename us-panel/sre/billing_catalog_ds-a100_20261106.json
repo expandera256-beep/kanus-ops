@@ -1,0 +1,127 @@
+{
+ "retrieved_at": "2026-11-06T08:20:00+03:00",
+ "service": "services/6F81-5844-456A (Compute Engine)",
+ "total_skus_paged": 33567,
+ "skus": [
+  {
+   "skuId": "E540-EA28-2318",
+   "description": "Spot Preemptible A2 Instance Core running in Netherlands",
+   "usageType": "Preemptible",
+   "resourceGroup": "CPU",
+   "serviceRegions": [
+    "europe-west4"
+   ],
+   "unit_price_usd": 0.01616,
+   "usageUnit": "h",
+   "usageUnitDescription": "hour",
+   "effectiveTime": "2026-11-05T08:00:00Z",
+   "tieredRates": [
+    {
+     "startUsageAmount": 0,
+     "unitPrice": {
+      "currencyCode": "USD",
+      "units": "0",
+      "nanos": 16160000
+     }
+    }
+   ],
+   "qty": 12
+  },
+  {
+   "skuId": "D847-3FF3-B717",
+   "description": "Spot Preemptible A2 Instance Ram running in Netherlands",
+   "usageType": "Preemptible",
+   "resourceGroup": "RAM",
+   "serviceRegions": [
+    "europe-west4"
+   ],
+   "unit_price_usd": 0.002165,
+   "usageUnit": "GiBy.h",
+   "usageUnitDescription": "gibibyte hour",
+   "effectiveTime": "2026-11-05T08:00:00Z",
+   "tieredRates": [
+    {
+     "startUsageAmount": 0,
+     "unitPrice": {
+      "currencyCode": "USD",
+      "units": "0",
+      "nanos": 2165000
+     }
+    }
+   ],
+   "qty": 85
+  },
+  {
+   "skuId": "9BBC-6855-1C9A",
+   "description": "Nvidia Tesla A100 GPU attached to Spot Preemptible VMs running in Netherlands",
+   "usageType": "Preemptible",
+   "resourceGroup": "GPU",
+   "serviceRegions": [
+    "europe-west4"
+   ],
+   "unit_price_usd": 1.3618000000000001,
+   "usageUnit": "h",
+   "usageUnitDescription": "hour",
+   "effectiveTime": "2026-11-05T08:00:00Z",
+   "tieredRates": [
+    {
+     "startUsageAmount": 0,
+     "unitPrice": {
+      "currencyCode": "USD",
+      "units": "1",
+      "nanos": 361800000
+     }
+    }
+   ],
+   "qty": 1
+  },
+  {
+   "skuId": "8D0B-EA58-9E35",
+   "description": "SSD backed Local Storage attached to Spot Preemptible VMs in Netherlands",
+   "usageType": "Preemptible",
+   "resourceGroup": "LocalSSD",
+   "serviceRegions": [
+    "europe-west4"
+   ],
+   "unit_price_usd": 0.0528,
+   "usageUnit": "GiBy.mo",
+   "usageUnitDescription": "gibibyte month",
+   "effectiveTime": "2026-11-05T08:00:00Z",
+   "tieredRates": [
+    {
+     "startUsageAmount": 0,
+     "unitPrice": {
+      "currencyCode": "USD",
+      "units": "0",
+      "nanos": 52800000
+     }
+    }
+   ],
+   "qty": 1500
+  },
+  {
+   "skuId": "EFD6-4D88-8C94",
+   "description": "SSD backed Local Storage in Netherlands",
+   "usageType": "OnDemand",
+   "resourceGroup": "LocalSSD",
+   "serviceRegions": [
+    "europe-west4"
+   ],
+   "unit_price_usd": 0.088,
+   "usageUnit": "GiBy.mo",
+   "usageUnitDescription": "gibibyte month",
+   "effectiveTime": "2026-11-05T08:00:00Z",
+   "tieredRates": [
+    {
+     "startUsageAmount": 0,
+     "unitPrice": {
+      "currencyCode": "USD",
+      "units": "0",
+      "nanos": 88000000
+     }
+    }
+   ],
+   "qty": 0
+  }
+ ]
+}

@@ -1,0 +1,108 @@
+{
+  "race": {
+    "test_events_including_subtests": {
+      "pass": 401,
+      "skip": 7,
+      "fail": 1
+    },
+    "failed": [
+      "TestParsePlansBothExportSchemas"
+    ],
+    "packages": [
+      [
+        "kiyas/cmd/us-pricing-gen",
+        "skip"
+      ],
+      [
+        "kiyas/i18n",
+        "pass"
+      ],
+      [
+        "kiyas/cmd/us-license-hook",
+        "pass"
+      ],
+      [
+        "kiyas",
+        "pass"
+      ],
+      [
+        "kiyas/licensesrv",
+        "fail"
+      ]
+    ],
+    "exit": 1
+  },
+  "race_with_fixture": {
+    "test_events_including_subtests": {
+      "pass": 402,
+      "skip": 7
+    },
+    "failed": [],
+    "packages": [
+      [
+        "kiyas/cmd/us-pricing-gen",
+        "skip"
+      ],
+      [
+        "kiyas/i18n",
+        "pass"
+      ],
+      [
+        "kiyas/cmd/us-license-hook",
+        "pass"
+      ],
+      [
+        "kiyas",
+        "pass"
+      ],
+      [
+        "kiyas/licensesrv",
+        "pass"
+      ]
+    ],
+    "exit": 0
+  },
+  "baseline_race": {
+    "test_events_including_subtests": {
+      "pass": 386,
+      "skip": 7
+    },
+    "failed": [],
+    "packages": [
+      [
+        "kiyas/cmd/us-pricing-gen",
+        "skip"
+      ],
+      [
+        "kiyas/cmd/us-license-hook",
+        "pass"
+      ],
+      [
+        "kiyas",
+        "pass"
+      ],
+      [
+        "kiyas/licensesrv",
+        "pass"
+      ]
+    ],
+    "exit": 0
+  },
+  "new_count3": {
+    "test_events_including_subtests": {
+      "pass": 48
+    },
+    "failed": [],
+    "packages": [
+      [
+        "kiyas/i18n",
+        "pass"
+      ],
+      [
+        "kiyas",
+        "pass"
+      ]
+    ],
+    "exit": 0
+  }
+}

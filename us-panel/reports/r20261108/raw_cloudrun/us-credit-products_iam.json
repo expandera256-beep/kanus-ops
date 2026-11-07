@@ -1,0 +1,12 @@
+{
+  "bindings": [
+    {
+      "members": [
+        "serviceAccount:us-gateway@project-27082a40-6083-4952-9db.iam.gserviceaccount.com"
+      ],
+      "role": "roles/secretmanager.secretAccessor"
+    }
+  ],
+  "etag": "BwZfjXVP3fI=",
+  "version": 1
+}

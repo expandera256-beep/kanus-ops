@@ -1,0 +1,6 @@
+test_sensitive_query_never_reaches_network (__main__.QueryGuard.test_sensitive_query_never_reaches_network) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK

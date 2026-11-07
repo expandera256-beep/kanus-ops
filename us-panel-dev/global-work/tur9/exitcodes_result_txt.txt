@@ -1,0 +1,4 @@
+pass: -File=0 [RESULT exit=0] -Command=0 [RESULT exit=0]
+fail: -File=1 [RESULT exit=1] -Command=1 [RESULT exit=1]
+skip: -File=2 [RESULT exit=2] -Command=2 [RESULT exit=2]
+bad: -File=3 [RESULT exit=3] -Command=3 [RESULT exit=3]

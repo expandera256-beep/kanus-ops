@@ -1,0 +1,368 @@
+{
+ "tr/": {
+  "lang": "tr",
+  "title": "KAN.US) — Keşfet",
+  "len": 813,
+  "text": "İçeriğe geç\nKAN.US)\n®\n\nÇALIŞMA ALANIN\n\nKeşfet\nUygulamalar\nGünlük\nGaleri\nForum\nİletişim\n\nKAN.US)\nBiraz merak uzun bir yol alır.\n\nUS uygulamasını aç\nKAN.US) / Keşfet\nÇalışma alanı hazır\nTürkçe\nDeutsch\nРусский\nEnglish\n\nSIRADAKİ ŞEY BURADA BAŞLAR\n\nSıradaki büyük fikrin için\nbir alan.\n\nYapay zeka uygulamalarını keşfet. Bir düşünceyi yokla. Sıradaki adımını, her seferinde bir istemle at.\n\nÇalışma alanı\n01 — Keşif\nDOĞRUDAN HATTIN\nDaha az sürtünme. Daha çok olasılık.\n\nBoş bir tuval. Senin sözlerin. Bir konuşma başlat.\n\nUS uygulamasını aç\nPazaryerini keşfet\n\nSıradaki uygulamanı bul.\n\nTümünü gör\nUS\nUS\n\nTicari erişim. support@kanus.org adresine yazın. 200 USD ile 500 istem, ya da 10 USD ile 1 saat.\n\nGÜNLÜK\nSıradaki şeye daha yakından bak.\nGünlüğü keşfet\nKAN.US) © 2026\nBiraz merak uzun bir yol alır.\nÇerez ayarları",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [
+   "LOG Failed to load resource: the server responded with a status of 403 () https://kanus.org/",
+   "LOG Failed to load resource: the server responded with a status of 405 () https://kanus.org/hcdn-cgi/jschallenge-validate",
+   "LOG Failed to load resource: the server responded with a status of 403 () https://kanus.org/"
+  ],
+  "bad": [
+   "403 https://kanus.org/",
+   "405 https://kanus.org/hcdn-cgi/jschallenge-validate",
+   "403 https://kanus.org/"
+  ],
+  "form": null,
+  "stored": "tr"
+ },
+ "tr/us": {
+  "lang": "tr",
+  "title": "KAN.US) — US",
+  "len": 538,
+  "text": "İçeriğe geç\nKAN.US)\n®\n\nÇALIŞMA ALANIN\n\nKeşfet\nUygulamalar\nGünlük\nGaleri\nForum\nİletişim\n\nKAN.US)\nBiraz merak uzun bir yol alır.\n\nUS uygulamasını aç\nKAN.US) / US\nÇalışma alanı hazır\nTürkçe\nDeutsch\nРусский\nEnglish\n\nUS\n\nUS\n\nUS için Shopify üzerinden lisans ve hesap erişimi hazırlanıyor.\n\nOtomatik hesap açılışı ve lisans teslimi henüz etkin değil. Satın alma öncesinde destek ekibiyle iletişime geçin.\n\nDestek ile iletişim\n\nShopify ürünlerini görüntüle\n\nBulut denemesi · 20 istem\n\nKAN.US) © 2026\nBiraz merak uzun bir yol alır.\nÇerez ayarları",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [],
+  "bad": [],
+  "form": null,
+  "stored": "tr"
+ },
+ "tr/contact": {
+  "lang": "tr",
+  "title": "KAN.US) — İletişim",
+  "len": 450,
+  "text": "İçeriğe geç\nKAN.US)\n®\n\nÇALIŞMA ALANIN\n\nKeşfet\nUygulamalar\nGünlük\nGaleri\nForum\nİletişim\n\nKAN.US)\nBiraz merak uzun bir yol alır.\n\nUS uygulamasını aç\nKAN.US) / İletişim\nÇalışma alanı hazır\nTürkçe\nDeutsch\nРусский\nEnglish\n\nHABERDAR KAL\n\nKonuşalım.\n\nPazaryeri veya çalışma alanın hakkında bir sorun mu var? support@kanus.org için bir not bırak. support@kanus.org\n\nAd\nE-posta\nİleti\nİletiyi gönder\nKAN.US) © 2026\nBiraz merak uzun bir yol alır.\nÇerez ayarları",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [
+   "LOG Failed to load resource: net::ERR_FAILED https://kanus.org/api/store.php?resource=contact"
+  ],
+  "bad": [],
+  "form": {
+   "form": true,
+   "notice": "Sunucuya ulaşılamadı. Bağlantını kontrol edip tekrar dene.",
+   "body": "",
+   "blocked": [
+    "POST https://kanus.org/api/store.php?resource=contact"
+   ]
+  },
+  "stored": "tr"
+ },
+ "tr/news": {
+  "lang": "tr",
+  "title": "KAN.US) — Günlük",
+  "len": 399,
+  "text": "İçeriğe geç\nKAN.US)\n®\n\nÇALIŞMA ALANIN\n\nKeşfet\nUygulamalar\nGünlük\nGaleri\nForum\nİletişim\n\nKAN.US)\nBiraz merak uzun bir yol alır.\n\nUS uygulamasını aç\nKAN.US) / Günlük\nÇalışma alanı hazır\nTürkçe\nDeutsch\nРусский\nEnglish\n\nGÜNLÜK\n\nGünlük.\n\nÇalışma alanından haberler ve notlar.\n\nYeni yazı\nMetin\nDosya\nKaydet\n\nBurada henüz bir şey yok.\n\nKeşfe dön\nKAN.US) © 2026\nBiraz merak uzun bir yol alır.\nÇerez ayarları",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [],
+  "bad": [],
+  "form": null,
+  "stored": "tr"
+ },
+ "en/": {
+  "lang": "en",
+  "title": "KAN.US) — Discover",
+  "len": 796,
+  "text": "Skip to content\nKAN.US)\n®\n\nYOUR WORKSPACE\n\nDiscover\nApplications\nJournal\nGallery\nForum\nContact\n\nKAN.US)\nA little curiosity goes a long way.\n\nOpen US\nKAN.US) / Discover\nWorkspace ready\nTürkçe\nDeutsch\nРусский\nEnglish\n\nTHE NEXT THING STARTS HERE\n\nSpace for your\nnext big idea.\n\nDiscover AI applications. Explore a thought. Make your next move, one prompt at a time.\n\nThe workspace\n01 — Discovery\nYOUR DIRECT LINE\nLess friction. More possibility.\n\nA blank canvas. Your words. Start a conversation.\n\nOpen US\nExplore the marketplace\n\nFind your next application.\n\nView all\nUS\nUS\n\nCommercial access. Write to support@kanus.org. 200 USD for 500 prompts, or 10 USD for 1 hour.\n\nJOURNAL\nA closer look at what comes next.\nExplore the journal\nKAN.US) © 2026\nA little curiosity goes a long way.\nCookie settings",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [],
+  "bad": [],
+  "form": null,
+  "stored": "en"
+ },
+ "en/us": {
+  "lang": "en",
+  "title": "KAN.US) — US",
+  "len": 517,
+  "text": "Skip to content\nKAN.US)\n®\n\nYOUR WORKSPACE\n\nDiscover\nApplications\nJournal\nGallery\nForum\nContact\n\nKAN.US)\nA little curiosity goes a long way.\n\nOpen US\nKAN.US) / US\nWorkspace ready\nTürkçe\nDeutsch\nРусский\nEnglish\n\nUS\n\nUS\n\nUS license and account access via Shopify are being prepared.\n\nAutomatic account creation and license delivery are not yet active. Contact support before purchasing.\n\nContact support\n\nView Shopify products\n\nCloud trial · 20 prompts\n\nKAN.US) © 2026\nA little curiosity goes a long way.\nCookie settings",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [],
+  "bad": [],
+  "form": null,
+  "stored": "en"
+ },
+ "en/contact": {
+  "lang": "en",
+  "title": "KAN.US) — Contact",
+  "len": 450,
+  "text": "Skip to content\nKAN.US)\n®\n\nYOUR WORKSPACE\n\nDiscover\nApplications\nJournal\nGallery\nForum\nContact\n\nKAN.US)\nA little curiosity goes a long way.\n\nOpen US\nKAN.US) / Contact\nWorkspace ready\nTürkçe\nDeutsch\nРусский\nEnglish\n\nSTAY IN THE LOOP\n\nLet’s talk.\n\nQuestions about the marketplace or your workspace? Leave a note for support@kanus.org. support@kanus.org\n\nName\nEmail\nMessage\nSend message\nKAN.US) © 2026\nA little curiosity goes a long way.\nCookie settings",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [
+   "LOG Failed to load resource: net::ERR_FAILED https://kanus.org/api/store.php?resource=contact"
+  ],
+  "bad": [],
+  "form": {
+   "form": true,
+   "notice": "Could not reach the server. Check your connection and try again.",
+   "body": "",
+   "blocked": [
+    "POST https://kanus.org/api/store.php?resource=contact"
+   ]
+  },
+  "stored": "en"
+ },
+ "en/news": {
+  "lang": "en",
+  "title": "KAN.US) — Journal",
+  "len": 408,
+  "text": "Skip to content\nKAN.US)\n®\n\nYOUR WORKSPACE\n\nDiscover\nApplications\nJournal\nGallery\nForum\nContact\n\nKAN.US)\nA little curiosity goes a long way.\n\nOpen US\nKAN.US) / Journal\nWorkspace ready\nTürkçe\nDeutsch\nРусский\nEnglish\n\nJOURNAL\n\nThe journal.\n\nNews and notes from the workspace.\n\nNew entry\nBody\nFile\nSave\n\nNothing here just yet.\n\nBack to discovery\nKAN.US) © 2026\nA little curiosity goes a long way.\nCookie settings",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [],
+  "bad": [],
+  "form": null,
+  "stored": "en"
+ },
+ "de/": {
+  "lang": "de",
+  "title": "KAN.US) — Entdecken",
+  "len": 854,
+  "text": "Zum Inhalt\nKAN.US)\n®\n\nDEIN ARBEITSBEREICH\n\nEntdecken\nAnwendungen\nJournal\nGalerie\nForum\nKontakt\n\nKAN.US)\nEin wenig Neugier trägt weit.\n\nUS öffnen\nKAN.US) / Entdecken\nArbeitsbereich bereit\nTürkçe\nDeutsch\nРусский\nEnglish\n\nDAS NÄCHSTE BEGINNT HIER\n\nRaum für deine\nnächste große Idee.\n\nEntdecke KI-Anwendungen. Erkunde einen Gedanken. Mach den nächsten Schritt, ein Prompt nach dem anderen.\n\nDer Arbeitsbereich\n01 — Entdecken\nDEINE DIREKTE LINIE\nWeniger Reibung. Mehr Möglichkeit.\n\nEine leere Fläche. Deine Worte. Fang ein Gespräch an.\n\nUS öffnen\nDen Marktplatz erkunden\n\nFinde deine nächste Anwendung.\n\nAlle anzeigen\nUS\nUS\n\nKommerzieller Zugang. Schreiben Sie an support@kanus.org. 200 USD für 500 Prompts oder 10 USD für 1 Stunde.\n\nJOURNAL\nEin näherer Blick auf das, was kommt.\nJournal lesen\nKAN.US) © 2026\nEin wenig Neugier trägt weit.\nCookie-Einstellungen",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [],
+  "bad": [],
+  "form": null,
+  "stored": "de"
+ },
+ "de/us": {
+  "lang": "de",
+  "title": "KAN.US) — US",
+  "len": 545,
+  "text": "Zum Inhalt\nKAN.US)\n®\n\nDEIN ARBEITSBEREICH\n\nEntdecken\nAnwendungen\nJournal\nGalerie\nForum\nKontakt\n\nKAN.US)\nEin wenig Neugier trägt weit.\n\nUS öffnen\nKAN.US) / US\nArbeitsbereich bereit\nTürkçe\nDeutsch\nРусский\nEnglish\n\nUS\n\nUS\n\nUS-Lizenzen und Kontozugriff über Shopify werden vorbereitet.\n\nAutomatische Kontoerstellung und Lizenzzustellung sind noch nicht aktiv. Bitte kontaktieren Sie vor dem Kauf den Support.\n\nSupport kontaktieren\n\nShopify-Produkte ansehen\n\nCloud-Test · 20 Anfragen\n\nKAN.US) © 2026\nEin wenig Neugier trägt weit.\nCookie-Einstellungen",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [],
+  "bad": [],
+  "form": null,
+  "stored": "de"
+ },
+ "de/contact": {
+  "lang": "de",
+  "title": "KAN.US) — Kontakt",
+  "len": 477,
+  "text": "Zum Inhalt\nKAN.US)\n®\n\nDEIN ARBEITSBEREICH\n\nEntdecken\nAnwendungen\nJournal\nGalerie\nForum\nKontakt\n\nKAN.US)\nEin wenig Neugier trägt weit.\n\nUS öffnen\nKAN.US) / Kontakt\nArbeitsbereich bereit\nTürkçe\nDeutsch\nРусский\nEnglish\n\nAUF DEM LAUFENDEN BLEIBEN\n\nLass uns reden.\n\nFragen zum Marktplatz oder zum Arbeitsbereich? Hinterlasse eine Notiz für support@kanus.org. support@kanus.org\n\nName\nE-Mail\nNachricht\nNachricht senden\nKAN.US) © 2026\nEin wenig Neugier trägt weit.\nCookie-Einstellungen",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [
+   "LOG Failed to load resource: net::ERR_FAILED https://kanus.org/api/store.php?resource=contact"
+  ],
+  "bad": [],
+  "form": {
+   "form": true,
+   "notice": "Der Server ist nicht erreichbar. Prüfe deine Verbindung und versuche es erneut.",
+   "body": "",
+   "blocked": [
+    "POST https://kanus.org/api/store.php?resource=contact"
+   ]
+  },
+  "stored": "de"
+ },
+ "de/news": {
+  "lang": "de",
+  "title": "KAN.US) — Journal",
+  "len": 435,
+  "text": "Zum Inhalt\nKAN.US)\n®\n\nDEIN ARBEITSBEREICH\n\nEntdecken\nAnwendungen\nJournal\nGalerie\nForum\nKontakt\n\nKAN.US)\nEin wenig Neugier trägt weit.\n\nUS öffnen\nKAN.US) / Journal\nArbeitsbereich bereit\nTürkçe\nDeutsch\nРусский\nEnglish\n\nJOURNAL\n\nDas Journal.\n\nNachrichten und Notizen aus dem Arbeitsbereich.\n\nNeuer Eintrag\nText\nDatei\nSpeichern\n\nHier ist noch nichts.\n\nZurück zur Entdeckung\nKAN.US) © 2026\nEin wenig Neugier trägt weit.\nCookie-Einstellungen",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [],
+  "bad": [],
+  "form": null,
+  "stored": "de"
+ },
+ "ru/": {
+  "lang": "ru",
+  "title": "KAN.US) — Обзор",
+  "len": 775,
+  "text": "К содержанию\nKAN.US)\n®\n\nВАШЕ ПРОСТРАНСТВО\n\nОбзор\nПриложения\nЖурнал\nГалерея\nФорум\nКонтакты\n\nKAN.US)\nНемного любопытства ведет далеко.\n\nОткрыть US\nKAN.US) / Обзор\nПространство готово\nTürkçe\nDeutsch\nРусский\nEnglish\n\nСЛЕДУЮЩЕЕ НАЧИНАЕТСЯ ЗДЕСЬ\n\nМесто для\nследующей большой идеи.\n\nОткройте приложения ИИ. Исследуйте мысль. Сделайте следующий шаг, по одному запросу за раз.\n\nПространство\n01 — Обзор\nПРЯМАЯ СВЯЗЬ\nМеньше трения. Больше возможностей.\n\nПустой холст. Ваши слова. Начните разговор.\n\nОткрыть US\nОткрыть каталог\n\nНайдите следующее приложение.\n\nВсе\nUS\nUS\n\nКоммерческий доступ. Напишите на support@kanus.org. 200 USD за 500 запросов или 10 USD за 1 час.\n\nЖУРНАЛ\nБлиже к тому, что будет дальше.\nОткрыть журнал\nKAN.US) © 2026\nНемного любопытства ведет далеко.\nНастройки cookie",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [],
+  "bad": [],
+  "form": null,
+  "stored": "ru"
+ },
+ "ru/us": {
+  "lang": "ru",
+  "title": "KAN.US) — US",
+  "len": 558,
+  "text": "К содержанию\nKAN.US)\n®\n\nВАШЕ ПРОСТРАНСТВО\n\nОбзор\nПриложения\nЖурнал\nГалерея\nФорум\nКонтакты\n\nKAN.US)\nНемного любопытства ведет далеко.\n\nОткрыть US\nKAN.US) / US\nПространство готово\nTürkçe\nDeutsch\nРусский\nEnglish\n\nUS\n\nUS\n\nЛицензирование US и доступ к учетной записи через Shopify готовятся к запуску.\n\nАвтоматическое создание учетной записи и выдача лицензии пока недоступны. Перед покупкой обратитесь в поддержку.\n\nСвязаться с поддержкой\n\nПосмотреть товары Shopify\n\nОблачная проба · 20 запросов\n\nKAN.US) © 2026\nНемного любопытства ведет далеко.\nНастройки cookie",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [],
+  "bad": [],
+  "form": null,
+  "stored": "ru"
+ },
+ "ru/contact": {
+  "lang": "ru",
+  "title": "KAN.US) — Контакты",
+  "len": 447,
+  "text": "К содержанию\nKAN.US)\n®\n\nВАШЕ ПРОСТРАНСТВО\n\nОбзор\nПриложения\nЖурнал\nГалерея\nФорум\nКонтакты\n\nKAN.US)\nНемного любопытства ведет далеко.\n\nОткрыть US\nKAN.US) / Контакты\nПространство готово\nTürkçe\nDeutsch\nРусский\nEnglish\n\nОСТАВАТЬСЯ НА СВЯЗИ\n\nДавайте поговорим.\n\nВопрос о каталоге или пространстве? Оставьте заметку для support@kanus.org. support@kanus.org\n\nИмя\nПочта\nСообщение\nОтправить\nKAN.US) © 2026\nНемного любопытства ведет далеко.\nНастройки cookie",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [
+   "LOG Failed to load resource: net::ERR_FAILED https://kanus.org/api/store.php?resource=contact"
+  ],
+  "bad": [],
+  "form": {
+   "form": true,
+   "notice": "Не удалось связаться с сервером. Проверьте подключение и повторите попытку.",
+   "body": "",
+   "blocked": [
+    "POST https://kanus.org/api/store.php?resource=contact"
+   ]
+  },
+  "stored": "ru"
+ },
+ "ru/news": {
+  "lang": "ru",
+  "title": "KAN.US) — Журнал",
+  "len": 392,
+  "text": "К содержанию\nKAN.US)\n®\n\nВАШЕ ПРОСТРАНСТВО\n\nОбзор\nПриложения\nЖурнал\nГалерея\nФорум\nКонтакты\n\nKAN.US)\nНемного любопытства ведет далеко.\n\nОткрыть US\nKAN.US) / Журнал\nПространство готово\nTürkçe\nDeutsch\nРусский\nEnglish\n\nЖУРНАЛ\n\nЖурнал.\n\nНовости и заметки пространства.\n\nНовая запись\nТекст\nФайл\nСохранить\n\nЗдесь пока пусто.\n\nК обзору\nKAN.US) © 2026\nНемного любопытства ведет далеко.\nНастройки cookie",
+  "iso": [],
+  "slogan": false,
+  "switcher": [
+   "BUTTON:Türkçe",
+   "BUTTON:Deutsch",
+   "BUTTON:Русский",
+   "BUTTON:English"
+  ],
+  "cons": [],
+  "bad": [],
+  "form": null,
+  "stored": "ru"
+ },
+ "click": {
+  "en": {
+   "how": "BUTTON",
+   "lang": "en",
+   "ls": "en",
+   "t": "Skip to content\nKAN.US)\n®\n\nYOUR WORKSPACE\n\nDiscover\nApplications\nJournal\nGallery\nForum\nContact\n\nKAN.US)\nA little curiosity goes a long way.\n\nOpen US\nKAN.US) / US\nWorkspace ready\nTürkçe\nDeutsch\nРусский\nEnglish\n\nUS\n\nUS\n\nUS license and account access via Shopify are being prepared.\n\nAutomatic account c"
+  },
+  "de": {
+   "how": "BUTTON",
+   "lang": "de",
+   "ls": "de",
+   "t": "Zum Inhalt\nKAN.US)\n®\n\nDEIN ARBEITSBEREICH\n\nEntdecken\nAnwendungen\nJournal\nGalerie\nForum\nKontakt\n\nKAN.US)\nEin wenig Neugier trägt weit.\n\nUS öffnen\nKAN.US) / US\nArbeitsbereich bereit\nTürkçe\nDeutsch\nРусский\nEnglish\n\nUS\n\nUS\n\nUS-Lizenzen und Kontozugriff über Shopify werden vorbereitet.\n\nAutomatische Kont"
+  },
+  "ru": {
+   "how": "BUTTON",
+   "lang": "ru",
+   "ls": "ru",
+   "t": "К содержанию\nKAN.US)\n®\n\nВАШЕ ПРОСТРАНСТВО\n\nОбзор\nПриложения\nЖурнал\nГалерея\nФорум\nКонтакты\n\nKAN.US)\nНемного любопытства ведет далеко.\n\nОткрыть US\nKAN.US) / US\nПространство готово\nTürkçe\nDeutsch\nРусский\nEnglish\n\nUS\n\nUS\n\nЛицензирование US и доступ к учетной записи через Shopify готовятся к запуску.\n\nАв"
+  },
+  "tr": {
+   "how": "BUTTON",
+   "lang": "tr",
+   "ls": "tr",
+   "t": "İçeriğe geç\nKAN.US)\n®\n\nÇALIŞMA ALANIN\n\nKeşfet\nUygulamalar\nGünlük\nGaleri\nForum\nİletişim\n\nKAN.US)\nBiraz merak uzun bir yol alır.\n\nUS uygulamasını aç\nKAN.US) / US\nÇalışma alanı hazır\nTürkçe\nDeutsch\nРусский\nEnglish\n\nUS\n\nUS\n\nUS için Shopify üzerinden lisans ve hesap erişimi hazırlanıyor.\n\nOtomatik hesap "
+  }
+ },
+ "allpost": [
+  "POST https://kanus.org/hcdn-cgi/jschallenge-validate",
+  "POST https://kanus.org/hcdn-cgi/jschallenge-validate",
+  "POST https://kanus.org/api/store.php?resource=contact",
+  "POST https://kanus.org/api/store.php?resource=contact",
+  "POST https://kanus.org/api/store.php?resource=contact",
+  "POST https://kanus.org/api/store.php?resource=contact"
+ ]
+}

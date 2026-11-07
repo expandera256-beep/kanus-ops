@@ -1,0 +1,12 @@
+US — GÜVENLİ DEĞİŞİKLİK SÜRÜMÜ
+
+Önceki günlük ve dinamik bağlam düzeltmelerinin üzerine eklenmiştir.
+- Modelin dosya yazmasından önce eski içerik ve yeni içeriğin özetiyle bir geri alma kaydı hazırlanır; kayıt oluşturulamıyorsa dosya yazılmaz. Dosya geçici dosyaya yazılıp taşınır.
+- Dosya panelindeki "Son model değişikliğini geri al" düğmesi, son model değişikliğini dosya başına geri alır. Sonraki değişiklikler tespit edilirse o dosya değiştirilmez. Elle Kaydet işlemleri için geçmiş oluşturmaz.
+- Modelin tamamen okuduğu dosya kullanıcı tarafından yanıt gelmeden değiştirilirse modelin üzerine yazması engellenir.
+- Sembolik bağlantı içeren yollardan modelin okuma ve yazması reddedilir; geçmiş klasörü modelin yazmasına kapalıdır.
+- Önceki içerik çalışma klasöründeki .us-history klasöründe şifrelenmeden tutulur. Bu nedenle hassas dosyaların eski içerikleri de burada bulunabilir; yedeklerinizi ve klasör izinlerini buna göre yönetin.
+
+Doğrulama: Linux ortamında tüm Go testleri geçti; geri alma, sonradan yapılan kullanıcı değişikliği, yeni dosyayı geri alma, sembolik bağlantı ve model okuma/yazma çakışması sınandı. JavaScript sözdizimi kontrolü geçti. Windows x64 EXE derlendi; gerçek Windows ve canlı model üzerinde uçtan uca sınanmadı.
+
+Kapsam: Değişiklikler dosya başına uygulanır; tüm proje için toplu işlem/geri alma değildir. Önerilen değişiklikler henüz uygulama öncesinde gözden geçirme ekranına alınmaz. Proje haritalama, otomatik test-onarım döngüsü, uzun görevleri sürdürme ve ticari hesap/ödeme/kota sistemi henüz tamamlanmadı. Yol kontrolleri ve dosya özetleri eşzamanlı değişikliklere karşı tam işletim sistemi düzeyinde kilitleme sağlamaz.

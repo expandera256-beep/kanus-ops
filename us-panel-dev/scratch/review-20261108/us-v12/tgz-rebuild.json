@@ -1,0 +1,12 @@
+{
+  "US_PLANS_JSON_TEST.json": true,
+  "us-license-hook.service": true,
+  "us-license-hook": true,
+  "plans.json": true,
+  "us-license-hook.env.example": true,
+  "Caddyfile": true,
+  "nginx-location.example.conf": true,
+  "README_TR.md": true,
+  "python-disabled.env.example": true,
+  "rebuilt_tgz_bit_equal": true
+}

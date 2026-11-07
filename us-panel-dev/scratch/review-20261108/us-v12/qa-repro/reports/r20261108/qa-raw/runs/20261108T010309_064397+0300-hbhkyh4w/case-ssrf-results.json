@@ -1,0 +1,18 @@
+{
+  "results": [
+    {
+      "item": "ssrf",
+      "status": "PASS",
+      "log": "reports/r20261108/qa-raw/runs/20261108T010309_064397+0300-hbhkyh4w/ssrf.log",
+      "exit_code": 0,
+      "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"
+    }
+  ],
+  "counts": {
+    "PASS": 1,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT TESTED": 0
+  },
+  "scope": "Local automated case outcomes; production backup/restore and cloud IAM require separate read-only evidence"
+}

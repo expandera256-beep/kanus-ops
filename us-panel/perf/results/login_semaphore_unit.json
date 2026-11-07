@@ -1,0 +1,16 @@
+{
+  "source": "LOCAL_UNIT_TEST_NOT_GPU",
+  "test": "TestBcryptThirdLoginWaitsThen503",
+  "configured_test_wait_seconds": 1,
+  "not_default_10_second_timeout_test": true,
+  "cpus": [
+    0,
+    1
+  ],
+  "GOMAXPROCS": 2,
+  "exit_code": 0,
+  "duration_seconds": 2.88810577500044,
+  "source_sha256_before": "d8c461eb91aa15d4eff9f72d9bb828f52122f800c536b341f8ee168140cd867d",
+  "source_sha256_after": "d8c461eb91aa15d4eff9f72d9bb828f52122f800c536b341f8ee168140cd867d",
+  "raw_runtime_output_persisted": false
+}

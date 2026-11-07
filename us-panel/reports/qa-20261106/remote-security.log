@@ -1,0 +1,110 @@
+2026-11-06 08:06:44 TSİ
+
+CMD: GET /healthz
+HTTP/2 200 
+server: nginx/1.24.0 (Ubuntu)
+date: Fri, 06 Nov 2026 05:06:46 GMT
+content-type: text/plain; charset=utf-8
+content-length: 2
+
+ok
+CMD: GET credits/status missing bearer
+HTTP/2 401 
+server: nginx/1.24.0 (Ubuntu)
+date: Fri, 06 Nov 2026 05:06:47 GMT
+content-type: text/plain; charset=utf-8
+content-length: 8
+cache-control: no-store
+x-content-type-options: nosniff
+
+license
+
+CMD: GET credits/status forged bearer (literal qa-invalid-token)
+HTTP/2 401 
+server: nginx/1.24.0 (Ubuntu)
+date: Fri, 06 Nov 2026 05:06:48 GMT
+content-type: text/plain; charset=utf-8
+content-length: 8
+cache-control: no-store
+x-content-type-options: nosniff
+
+license
+
+CMD: GET models forged license (literal us1.qa.invalid)
+HTTP/2 401 
+server: nginx/1.24.0 (Ubuntu)
+date: Fri, 06 Nov 2026 05:06:48 GMT
+content-type: text/plain; charset=utf-8
+content-length: 8
+cache-control: no-store
+x-content-type-options: nosniff
+
+license
+
+CMD: traversal query sentinel (no sensitive path)
+HTTP/2 401 
+server: nginx/1.24.0 (Ubuntu)
+date: Fri, 06 Nov 2026 05:06:49 GMT
+content-type: text/plain; charset=utf-8
+content-length: 8
+cache-control: no-store
+x-content-type-options: nosniff
+
+license
+
+CMD: encoded traversal URL sentinel
+HTTP/2 400 
+server: nginx/1.24.0 (Ubuntu)
+date: Fri, 06 Nov 2026 05:06:50 GMT
+content-type: text/html
+content-length: 166
+
+<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>nginx/1.24.0 (Ubuntu)</center>
+</body>
+</html>
+
+CMD: injection query harmless echo sentinel
+HTTP/2 401 
+server: nginx/1.24.0 (Ubuntu)
+date: Fri, 06 Nov 2026 05:06:50 GMT
+content-type: text/plain; charset=utf-8
+content-length: 8
+cache-control: no-store
+x-content-type-options: nosniff
+
+license
+
+CMD: HMAC missing POST orders-paid body {}
+HTTP/2 401 
+server: nginx/1.24.0 (Ubuntu)
+date: Fri, 06 Nov 2026 05:06:52 GMT
+content-type: text/plain; charset=utf-8
+content-length: 13
+x-content-type-options: nosniff
+
+unauthorized
+
+CMD: HMAC wrong POST orders-paid body {}
+HTTP/2 401 
+server: nginx/1.24.0 (Ubuntu)
+date: Fri, 06 Nov 2026 05:06:53 GMT
+content-type: text/plain; charset=utf-8
+content-length: 13
+x-content-type-options: nosniff
+
+unauthorized
+
+CMD: GET models missing bearer
+HTTP/2 401 
+server: nginx/1.24.0 (Ubuntu)
+date: Fri, 06 Nov 2026 05:06:54 GMT
+content-type: text/plain; charset=utf-8
+content-length: 8
+cache-control: no-store
+x-content-type-options: nosniff
+
+license

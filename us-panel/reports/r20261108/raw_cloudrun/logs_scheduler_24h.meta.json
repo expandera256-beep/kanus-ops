@@ -1,0 +1,17 @@
+{
+  "command": [
+    "gcloud",
+    "logging",
+    "read",
+    "resource.type=\"cloud_scheduler_job\" AND resource.labels.job_id=\"us-idle-watchdog\" AND timestamp<=\"2026-11-07T21:27:56.393580Z\" AND timestamp>=\"2026-11-06T21:27:56.393580Z\"",
+    "--freshness=24h",
+    "--limit=10000",
+    "--order=asc",
+    "--project=project-27082a40-6083-4952-9db",
+    "--format=json",
+    "--quiet"
+  ],
+  "started_istanbul": "2026-11-08T00:27:56.395225+03:00",
+  "returncode": 0,
+  "stderr": ""
+}

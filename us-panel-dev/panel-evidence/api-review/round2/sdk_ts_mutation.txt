@@ -1,0 +1,42 @@
+▶ kanus-sdk-ts
+  ✖ maps error envelope (27.938209ms)
+  ✔ retries on 429 Retry-After (9.621161ms)
+  ✔ sends api key header without leaking secret in toString (2.712697ms)
+  ✔ forwards Idempotency-Key (5.083207ms)
+  ✔ parses fragmented SSE (3.30534ms)
+  ✔ handles SSE disconnect without hang (2.882113ms)
+✖ kanus-sdk-ts (52.67513ms)
+ℹ tests 6
+ℹ suites 1
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 207.143348
+
+✖ failing tests:
+
+test at tests/client.test.ts:1:373
+✖ maps error envelope (27.938209ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  401 !== 999
+  
+      at Object.<anonymous> (/tmp/api-review-r2/sdk-ts/tests/client.test.ts:20:16)
+      at expectedException (node:assert:578:17)
+      at expectsError (node:assert:703:21)
+      at strict.rejects (node:assert:769:3)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/tmp/api-review-r2/sdk-ts/tests/client.test.ts:18:7)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 401,
+    expected: 999,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,16 @@
+test_bad_locale_rejected (test_i18n_mail.MailI18nTest.test_bad_locale_rejected) ... ok
+test_default_is_turkish (test_i18n_mail.MailI18nTest.test_default_is_turkish) ... ok
+test_delivery_not_wired (test_i18n_mail.MailI18nTest.test_delivery_not_wired) ... ok
+test_english_and_placeholder (test_i18n_mail.MailI18nTest.test_english_and_placeholder) ... ok
+test_fallback_and_rtl (test_i18n_mail.MailI18nTest.test_fallback_and_rtl) ... ok
+test_forbidden_slogans_absent (test_i18n_mail.MailI18nTest.test_forbidden_slogans_absent) ... ok
+test_four_languages_parity (test_i18n_mail.MailI18nTest.test_four_languages_parity) ... ok
+test_in_sync_with_go_locales (test_i18n_mail.MailI18nTest.test_in_sync_with_go_locales) ... ok
+test_keys_and_placeholders_equal (test_i18n_mail.MailI18nTest.test_keys_and_placeholders_equal) ... ok
+test_subject_decision_brand_a (test_i18n_mail.MailI18nTest.test_subject_decision_brand_a) ... ok
+test_unknown_lang_and_missing_param (test_i18n_mail.MailI18nTest.test_unknown_lang_and_missing_param) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.002s
+
+OK

@@ -1,0 +1,19 @@
+    review_regression_linux_test.go:37: sahte mutlak 'go' kabul edildi; stdout="PWNED_NOT_GO\n"
+--- FAIL: TestReviewH3AbsoluteFakeBinaryRejected (0.00s)
+    review_regression_linux_test.go:67: tehlikeli bayrak kabul edildi: ["go" "build" "-toolexec=sh -c 'touch PWNED_SHELL'"]
+--- FAIL: TestReviewH2TerminalRejectsExecFlags (0.00s)
+    review_regression_linux_test.go:106: proje .venv yorumlayıcısı panel sırlarını gördü (6 kez)
+--- FAIL: TestReviewH1VenvProbeDoesNotLeak (0.01s)
+    review_regression_linux_test.go:153: timeout: setsid torunu hayatta kaldı
+--- FAIL: TestReviewM1SetsidGrandchildKilled (6.52s)
+    review_regression_linux_test.go:168: hard link ile kök dışı okundu: "OUTSIDE-SECRET"
+--- FAIL: TestReviewM4HardlinkReadRejected (0.00s)
+    review_regression_linux_test.go:189: Testler yolu kaynak sınırı uygulamadı: "UNLIMITED"
+--- FAIL: TestReviewTestsPathHasLimits (0.16s)
+    review_regression_test.go:26: kurcalanmış görev durumu onaysız düzeltme uyguladı
+--- FAIL: TestReviewM5TamperedTaskStateNeedsApproval (0.21s)
+    review_regression_test.go:47: Windows yol biçimi kabul edildi: "a.txt:stream"
+--- FAIL: TestReviewWindowsPathFormsRejected (0.00s)
+FAIL
+FAIL	kiyas	6.903s
+FAIL

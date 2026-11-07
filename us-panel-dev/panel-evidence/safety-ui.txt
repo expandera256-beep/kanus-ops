@@ -1,0 +1,20 @@
+./desk.go:24:func (s *session) readFile(rel string) {
+./desk.go:339:func (s *session) safePath(rel string) (string, error) {
+./life.go:30:		s.modelStage = "GPU ısınıyor / sunucu kuyruğu · hazır durumu henüz doğrulanmadı"
+./life.go:126:			load = "GPU ısınıyor / sunucu kuyruğu · bekleniyor"
+./order.go:463:func writePlan(root, task string, run projectRun) string {
+./gui.go:297:	case "terminal-start":
+./gui.go:1189:func writeJSON(w http.ResponseWriter, body any) {
+./worker_client.go:22:	ModelReady     bool   `json:"model_ready"`
+./worker_client.go:116:			snap.Workers = append(snap.Workers, workerStatus{ID: string(worker), Name: item.Worker, Awake: item.ModelReady})
+./proposal_batch.go:50:func applyProposalBatch(root string, files []proposedFile, write func(string, string, []byte) error) (string, error) {
+./model_admission.go:11:// Per-desktop admission control, NOT a cross-client GPU scheduler. A trusted
+./licensesrv/model_proxy.go:178:		if !proxyWrite(w, ": GPU isiniyor; model hazirligi dogrulanmadi\n\n") {
+./licensesrv/model_proxy.go:192:				if !proxyWrite(w, ": GPU isiniyor / kuyruk bekleniyor\n\n") {
+./change_history.go:71:func writeModelFile(root, full string, data []byte) error {
+./licensesrv/account_workers.go:57:		workers = append(workers, map[string]any{"worker": "model-upstream", "model": m.ID, "phase": phase, "provider_status": "unknown", "active": len(p.slots), "idle_seconds": 900, "idle_remaining": nil, "observed_at": time.Now().Unix(), "live": false, "model_ready": ready})
+./project.go:628:func writePricing(root string, files []indexedFile, task string) (string, string) {
+./project.go:655:func writeKdv(root, rel string) (bool, bool, error) {
+./model.go:781:		resolved, err := filepath.EvalSymlinks(full)
+./model.go:935:	case ".py", ".md", ".html", ".css", ".json", ".txt", ".js", ".ts", ".tsx":
+./model.go:1999:	if hookLicenseMode() && strings.HasPrefix(s.modelStage, "GPU ısınıyor") {

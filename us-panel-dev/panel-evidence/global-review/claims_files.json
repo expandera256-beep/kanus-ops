@@ -1,0 +1,334 @@
+{
+  "global_i18n_02_gui_strings.patch": {
+    "files": [
+      "gui.go",
+      "gui.html",
+      "gui_i18n_test.go",
+      "i18n/http.go",
+      "i18n/locales/en.json",
+      "i18n/locales/tr.json"
+    ],
+    "new_files": [
+      "gui_i18n_test.go",
+      "i18n/http.go"
+    ],
+    "gui_go_add_remove": [
+      2,
+      0
+    ]
+  },
+  "global_i18n_03_pref.patch": {
+    "files": [
+      "gui.go",
+      "gui.html",
+      "gui_lang.go",
+      "gui_lang_test.go",
+      "i18n/pref.go",
+      "i18n/pref_test.go"
+    ],
+    "new_files": [
+      "gui_lang.go",
+      "gui_lang_test.go",
+      "i18n/pref.go",
+      "i18n/pref_test.go"
+    ],
+    "gui_go_add_remove": [
+      2,
+      1
+    ]
+  },
+  "global_i18n_04_errors.patch": {
+    "files": [
+      "gui.go",
+      "gui_errors_i18n_test.go",
+      "gui_lang.go",
+      "i18n/locales/en.json",
+      "i18n/locales/tr.json"
+    ],
+    "new_files": [
+      "gui_errors_i18n_test.go"
+    ],
+    "gui_go_add_remove": [
+      34,
+      34
+    ]
+  },
+  "global_i18n_05_email_loader.patch": {
+    "files": [
+      "kanus/i18n_mail.py",
+      "kanus/locales/en.json",
+      "kanus/locales/tr.json",
+      "kanus/test_i18n_mail.py"
+    ],
+    "new_files": [
+      "kanus/i18n_mail.py",
+      "kanus/locales/en.json",
+      "kanus/locales/tr.json",
+      "kanus/test_i18n_mail.py"
+    ]
+  },
+  "global_i18n_panel_core.patch": {
+    "files": [
+      "i18n/i18n.go",
+      "i18n/i18n_test.go",
+      "i18n/locales/en.json",
+      "i18n/locales/tr.json"
+    ],
+    "new_files": [
+      "i18n/i18n.go",
+      "i18n/i18n_test.go",
+      "i18n/locales/en.json",
+      "i18n/locales/tr.json"
+    ]
+  },
+  "error_comparison": {
+    "old_calls": 34,
+    "new_calls": 34,
+    "unique_old": 28,
+    "pairs": [
+      {
+        "old": "yöntem yok",
+        "key": "err.gui.method",
+        "translation": "yöntem yok",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "geçersiz yerel adres",
+        "key": "err.gui.bad_host",
+        "translation": "geçersiz yerel adres",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "yöntem yok",
+        "key": "err.gui.method",
+        "translation": "yöntem yok",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "geçersiz aralık",
+        "key": "err.gui.bad_range",
+        "translation": "geçersiz aralık",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "yöntem yok",
+        "key": "err.gui.method",
+        "translation": "yöntem yok",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "geçersiz sayfa",
+        "key": "err.gui.bad_page",
+        "translation": "geçersiz sayfa",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "dosyalar listelenemedi",
+        "key": "err.gui.list_files",
+        "translation": "dosyalar listelenemedi",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "yöntem yok",
+        "key": "err.gui.method",
+        "translation": "yöntem yok",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "yöntem yok",
+        "key": "err.gui.method",
+        "translation": "yöntem yok",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Kaynak doğrulanamadı.",
+        "key": "err.gui.source_verify",
+        "translation": "Kaynak doğrulanamadı.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "İstek okunamadı veya çok büyük.",
+        "key": "err.gui.request_bad",
+        "translation": "İstek okunamadı veya çok büyük.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Python hesap geçidi bu Go lisans sürümünde kapalıdır.",
+        "key": "err.gui.python_gateway",
+        "translation": "Python hesap geçidi bu Go lisans sürümünde kapalıdır.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "İstem 8 MiB sınırını aşıyor; daha küçük bölümlere ayırın.",
+        "key": "err.gui.prompt_too_big",
+        "translation": "İstem 8 MiB sınırını aşıyor; daha küçük bölümlere ayırın.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Görev sürerken çalışma alanı, model veya dosyalar değiştirilemez.",
+        "key": "err.gui.task_running",
+        "translation": "Görev sürerken çalışma alanı, model veya dosyalar değiştirilemez.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Kuyruk kimliği oluşturulamadı.",
+        "key": "err.gui.queue_id",
+        "translation": "Kuyruk kimliği oluşturulamadı.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Görev kaydı okunamadı.",
+        "key": "err.gui.task_read",
+        "translation": "Görev kaydı okunamadı.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Tamamlanan görev yeniden yürütülemez; yeni bir görev gönderin.",
+        "key": "err.gui.task_done",
+        "translation": "Tamamlanan görev yeniden yürütülemez; yeni bir görev gönderin.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Bu görev sürdürülemez.",
+        "key": "err.gui.task_resume",
+        "translation": "Bu görev sürdürülemez.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Görev kaydedilemedi.",
+        "key": "err.gui.task_save",
+        "translation": "Görev kaydedilemedi.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Görev kaydı okunamadı.",
+        "key": "err.gui.task_read",
+        "translation": "Görev kaydı okunamadı.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "İptal kaydedilemedi.",
+        "key": "err.gui.cancel_save",
+        "translation": "İptal kaydedilemedi.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Bu görev iptal edilemez.",
+        "key": "err.gui.task_cancel",
+        "translation": "Bu görev iptal edilemez.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Önce bekleyen değişikliği uygulayın veya reddedin.",
+        "key": "err.gui.pending_change",
+        "translation": "Önce bekleyen değişikliği uygulayın veya reddedin.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Model isteği zaten sürüyor.",
+        "key": "err.gui.model_busy",
+        "translation": "Model isteği zaten sürüyor.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "SSH bağlantısı yalnızca açıkça etkinleştirilmiş geliştirici modunda kullanılabilir.",
+        "key": "err.gui.ssh_dev",
+        "translation": "SSH bağlantısı yalnızca açıkça etkinleştirilmiş geliştirici modunda kullanılabilir.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Otomatik tünel yalnızca Windows sürümünde kullanılabilir.",
+        "key": "err.gui.tunnel_windows",
+        "translation": "Otomatik tünel yalnızca Windows sürümünde kullanılabilir.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Ticari model yalnız Go lisans proxy üzerinden çağrılır; doğrudan model adresi kapalı.",
+        "key": "err.gui.direct_model",
+        "translation": "Ticari model yalnız Go lisans proxy üzerinden çağrılır; doğrudan model adresi kapalı.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "İstek devam ederken bağlantı değiştirilemez.",
+        "key": "err.gui.conn_busy",
+        "translation": "İstek devam ederken bağlantı değiştirilemez.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Bağlantı ayarlanamadı.",
+        "key": "err.gui.conn_set",
+        "translation": "Bağlantı ayarlanamadı.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Model adı geçersiz.",
+        "key": "err.gui.model_name",
+        "translation": "Model adı geçersiz.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "Model adı ayarlanamadı.",
+        "key": "err.gui.model_set",
+        "translation": "Model adı ayarlanamadı.",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "işlem yok",
+        "key": "err.gui.no_op",
+        "translation": "işlem yok",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "yöntem yok",
+        "key": "err.gui.method",
+        "translation": "yöntem yok",
+        "byte_equal": true,
+        "status_equal": true
+      },
+      {
+        "old": "görsel değil",
+        "key": "err.gui.not_image",
+        "translation": "görsel değil",
+        "byte_equal": true,
+        "status_equal": true
+      }
+    ]
+  },
+  "ui_counts": {
+    "text": 37,
+    "placeholder": 3
+  },
+  "protected_touched": []
+}

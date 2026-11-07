@@ -1,0 +1,3 @@
+2026-11-08T00:20:57.550739+03:00
+gcloud run services list --platform=managed --format=json
+exit=0

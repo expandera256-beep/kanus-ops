@@ -1,0 +1,2 @@
+Redocly lint: NOT TESTED — yerel node_modules/@redocly yok; npx --offline ENOTCACHED (2026-11-08 01:16 TSİ). Ağdan kurulum yapılmadı.
+openapi.yaml = api-0009 openapi.yaml + openapi-fx.yaml (paths./v1/fx, schemas.FxSnapshot, tag fx, version 2026.11.08.16).

@@ -1,0 +1,4 @@
+=== RUN   TestPanelCompatGenerate
+--- PASS: TestPanelCompatGenerate (0.00s)
+PASS
+ok  	kiyas/licensesrv	0.006s

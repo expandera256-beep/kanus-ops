@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-11-08T00:36:59.343712+03:00",
+  "target": "https://api-test.kanus.org",
+  "status": "STOPPED",
+  "identity_evidence": "HOST declaration7d72f449…56f0; HOOK_MOVE_PROD_VPS_20261106.md §15",
+  "idle_seconds": 600,
+  "idle_policy": "v5",
+  "phases": {
+    "phase1": {
+      "status": "STOPPED",
+      "levels": [],
+      "elapsed_seconds": 0.00216228899989801,
+      "service_health": "NOT TESTED"
+    },
+    "phase2": {
+      "status": "BLOCKED_PHASE1_NOT_CLEAN",
+      "levels": []
+    }
+  },
+  "balance_before": null,
+  "balance_after": null,
+  "https_requests_sent": 0,
+  "login_account_file_used": false,
+  "dns": {
+    "addresses": [
+      "198.18.0.1"
+    ],
+    "expected": "82.29.184.225",
+    "elapsed_ms": 2.134217999810062,
+    "pass": false
+  },
+  "stop_reason": "DNS_MISMATCH: expected only82.29.184.225",
+  "remote_elapsed_seconds": 0.002177548999497958,
+  "remaining_total_seconds": 599.9978224510005,
+  "dns_lookups": 1,
+  "dns_answers": [
+    "198.18.0.1"
+  ]
+}

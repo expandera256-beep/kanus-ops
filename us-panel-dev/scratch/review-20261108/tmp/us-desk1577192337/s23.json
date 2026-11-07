@@ -1,0 +1,11 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "test",
+      "text": "Test komutu başarılı (çıkış kodu 0; süre 36ms).\nKomut: /usr/bin/python3 -m unittest discover\n/workspace/us-panel-dev/scratch/review-20261108/tmp/TestS2Reg_L2_TESTS_RLIMIT1877680902/001/test_lim.py:4: ResourceWarning: unclosed file \u003c_io.TextIOWrapper name='/workspace/us-panel-dev/scratch/review-20261108/tmp/TestS2Reg_L2_TESTS_RLIMIT1877680902/002/limits.txt' mode='w' encoding='UTF-8'\u003e\n  open(\"/workspace/us-panel-dev/scratch/review-20261108/tmp/TestS2Reg_L2_TESTS_RLIMIT1877680902/002/limits.txt\",'w').write('%s %s %s'%(resource.getrlimit(resource.RLIMIT_CPU)[0],resource.getrlimit(resource.RLIMIT_DATA)[0],resource.getrlimit(resource.RLIMIT_NPROC)[0]))\nResourceWarning: Enable tracemalloc to get the object allocation traceback\n.\n----------------------------------------------------------------------\nRan 1 test in 0.002s\n\nOK"
+    }
+  ]
+}

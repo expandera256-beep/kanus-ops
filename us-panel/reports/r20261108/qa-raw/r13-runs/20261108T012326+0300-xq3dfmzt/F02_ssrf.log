@@ -1,0 +1,5 @@
+RUN_DIR /workspace/us-panel/reports/r20261108/qa-raw/runs/20261108T012326_854948+0300-atpt56jr
+{"item": "ssrf", "status": "PASS", "log": "reports/r20261108/qa-raw/runs/20261108T012326_854948+0300-atpt56jr/ssrf.log", "exit_code": 0, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+SUMMARY {"PASS": 1, "FAIL": 0, "BLOCKED": 0, "NOT TESTED": 0}
+
+exit_code=0

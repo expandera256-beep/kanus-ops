@@ -1,0 +1,37 @@
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0000-iface.patch ===
+check PASS
+apply PASS
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0001-prefs-store.patch ===
+check PASS
+apply PASS
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0001b-prefs-open-unix.patch ===
+check PASS
+apply PASS
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0001c-prefs-open-windows.patch ===
+check PASS
+apply PASS
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0002-prefs-test.patch ===
+check PASS
+apply PASS
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0002b-prefs-fifo-unix-test.patch ===
+check PASS
+apply PASS
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/02-ops/0001-privacy-ops.patch ===
+check PASS
+apply PASS
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/02-ops/0002-privacy-ops-test.patch ===
+check PASS
+apply PASS
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/03-handler/0001-handler.patch ===
+check PASS
+apply PASS
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/03-handler/0002-handler-test.patch ===
+check PASS
+apply PASS
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/04-hook-us/0001-main-privacy-mount.patch ===
+check PASS
+apply PASS
+=== CHECK /workspace/us-panel-dev/patches/uyum-v3/04-hook-us/0002-main-test-retention.patch ===
+check PASS
+apply PASS
+APPLY_SUMMARY pass=12 fail=0

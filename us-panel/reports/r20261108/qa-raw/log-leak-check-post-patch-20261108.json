@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "checked_files": 87,
+  "hits_paths_only": [],
+  "scope": "Pattern scan plus known runtime synthetic canaries; real credentials were never loaded; not proof arbitrary unknown secrets absent"
+}

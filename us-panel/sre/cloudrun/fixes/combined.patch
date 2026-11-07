@@ -1,0 +1,238 @@
+--- a/commerce_http.py
++++ b/commerce_http.py
+@@ -14,6 +14,7 @@
+ import urllib.parse
+ import urllib.request
+ from account_store import AccountStore
++from readiness_checks import readiness
+ from metering_stream import CompletionReceipt, ClosingBody
+ from shopify_ledger import receive_paid_order, receive_cancelled_order, receive_full_refund, validate_credit_products
+ 
+@@ -80,6 +81,9 @@
+                 # Read-only: does not contact the model, create a reservation,
+                 # or refresh the independent watchdog heartbeat.
+                 return respond('200 OK',{'ok':True,'shopify_webhooks':webhooks_enabled})
++            if env.get('REQUEST_METHOD')=='GET' and env.get('PATH_INFO')=='/ready':
++                ok, checks = readiness(store, configured=upstream is not None)
++                return respond('200 OK' if ok else '503 Service Unavailable', {'ready':ok,'checks':checks})
+             if env.get('PATH_INFO')=='/webhooks/shopify' and not webhooks_enabled:
+                 return respond('503 Service Unavailable',{'error':'shopify integration not configured'})
+             if env.get('REQUEST_METHOD')=='GET' and env.get('PATH_INFO')=='/v1/models':
+--- a/rate_limit.py
++++ b/rate_limit.py
+@@ -0,0 +1,53 @@
++"""Bounded, thread-safe instance-local token buckets (not a global quota)."""
++import json
++import math
++import threading
++import time
++
++DEFAULT_LIMITS = {'health': (2.0, 10), 'read': (5.0, 30), 'api': (10.0, 60)}
++HEALTH_PATHS = frozenset(('/health', '/healthz', '/ready', '/readyz'))
++READ_PATHS = frozenset(('/v1/models', '/account/balance', '/account/requests', '/account/workers'))
++
++class TokenBuckets:
++    def __init__(self, limits=None, clock=time.monotonic):
++        self.clock = clock
++        self.lock = threading.Lock()
++        self.limits = dict(DEFAULT_LIMITS if limits is None else limits)
++        if set(self.limits) != {'health', 'read', 'api'}:
++            raise ValueError('three bucket groups required')
++        for rate, capacity in self.limits.values():
++            if not math.isfinite(rate) or rate <= 0 or not math.isfinite(capacity) or capacity < 1:
++                raise ValueError('positive finite rate/capacity required')
++        now = clock()
++        self.state = {k: [float(capacity), now] for k, (_, capacity) in self.limits.items()}
++
++    def take(self, group):
++        with self.lock:
++            rate, capacity = self.limits[group]
++            tokens, stamp = self.state[group]
++            now = max(stamp, self.clock())  # Clock rollback cannot mint tokens.
++            tokens = min(float(capacity), tokens + (now - stamp) * rate)
++            if tokens >= 1:
++                self.state[group] = [tokens - 1, now]
++                return True, 0
++            self.state[group] = [tokens, now]
++            return False, max(1, math.ceil((1 - tokens) / rate))
++
++def rate_limit_app(app, *, service, buckets=None):
++    buckets = TokenBuckets() if buckets is None else buckets
++    def limited(env, start):
++        method, path = env.get('REQUEST_METHOD', ''), env.get('PATH_INFO', '')
++        # Cloud Run IAM, not a caller-controlled header, authenticates this service.
++        # Only the IAM-private watchdog's scheduler POST bypasses the limiter.
++        if service == 'watchdog' and method == 'POST' and path == '/internal/reconcile':
++            return app(env, start)
++        group = 'health' if path in HEALTH_PATHS else 'read' if path in READ_PATHS else 'api'
++        ok, retry = buckets.take(group)
++        if ok:
++            return app(env, start)
++        data = json.dumps({'error': 'rate limit exceeded'}).encode()
++        start('429 Too Many Requests', [('Content-Type', 'application/json'),
++              ('Cache-Control', 'no-store'), ('Retry-After', str(retry)),
++              ('Content-Length', str(len(data)))])
++        return [data]
++    return limited
+--- a/readiness_checks.py
++++ b/readiness_checks.py
+@@ -0,0 +1,13 @@
++"""Read-only readiness: never contacts a GPU/provider or touches activity."""
++def readiness(store, configured=True):
++    checks = {'config': bool(configured), 'store': False}
++    try:
++        factory = getattr(store, '_db', None) or getattr(store, 'db', None)
++        if not callable(factory):
++            raise RuntimeError('store unavailable')
++        with factory() as db:
++            db.execute('SELECT 1')
++        checks['store'] = True
++    except Exception:
++        pass  # Never expose driver errors or a DSN to HTTP/log consumers.
++    return all(checks.values()), checks
+--- a/runtime.py
++++ b/runtime.py
+@@ -10,6 +10,9 @@
+ from commerce_http import make_app
+ from commercial_server import require
+ from lifecycle_config import configure_managed
++from readiness_checks import readiness
++from rate_limit import rate_limit_app
++from structured_logging import logging_app
+ 
+ 
+ def configured_store():
+@@ -21,7 +24,7 @@
+ 
+ def gateway_app():
+     store=configured_store()
+-    upstream,_=configure_managed(store,require('US_WORKERS_CONFIG'),True)
++    upstream,controller=configure_managed(store,require('US_WORKERS_CONFIG'),True)
+     enabled=os.environ.get('US_SHOPIFY_ENABLED','true')
+     if enabled not in ('true','false'):raise RuntimeError('invalid Shopify integration state')
+     webhook=require('SHOPIFY_WEBHOOK_SECRET') if enabled=='true' else ''
+@@ -29,7 +32,14 @@
+     if len(license_secret)<32 or (enabled=='true' and len(webhook)<32):raise RuntimeError('production signing keys must be at least 32 characters')
+     products=json.loads(require('US_CREDIT_PRODUCTS'))
+     if not products:raise RuntimeError('verified credit catalog required')
+-    return make_app(store,webhook.encode(),license_secret.encode(),require('SHOPIFY_SHOP'),upstream,products,webhooks_enabled=enabled=='true')
++    app=make_app(store,webhook.encode(),license_secret.encode(),require('SHOPIFY_SHOP'),upstream,products,webhooks_enabled=enabled=='true')
++    return instrument(app, controller, service='commerce')
++
++
++def instrument(app, controller, *, service):
++    policies=getattr(controller, 'policies', {})
++    project=next((getattr(p, 'project', None) for p in policies.values()), None)
++    return logging_app(rate_limit_app(app, service=service), project=project)
+ 
+ 
+ def make_watchdog_app(controller,store=None,send=None):
+@@ -37,6 +47,9 @@
+         status='404 Not Found';doc={'error':'route'}
+         if env.get('REQUEST_METHOD')=='GET' and env.get('PATH_INFO') in ('/health','/healthz'):
+             status='200 OK';doc={'ok':True} # Probe cannot wake or extend leases.
++        elif env.get('REQUEST_METHOD')=='GET' and env.get('PATH_INFO')=='/ready':
++            ok,checks=readiness(getattr(controller,'store',None), configured=bool(getattr(controller,'policies',None)))
++            status='200 OK' if ok else '503 Service Unavailable';doc={'ready':ok,'checks':checks}
+         elif env.get('REQUEST_METHOD')=='POST' and env.get('PATH_INFO')=='/internal/reconcile':
+             try:
+                 if int(env.get('CONTENT_LENGTH') or 0)>1024:raise ValueError('size')
+@@ -55,7 +68,7 @@
+             except Exception:status='503 Service Unavailable';doc={'error':'reconciliation unavailable'}
+         raw=json.dumps(doc).encode();start(status,[('Content-Type','application/json'),('Cache-Control','no-store'),('Content-Length',str(len(raw)))])
+         return [raw]
+-    return app
++    return instrument(app, controller, service='watchdog')
+ 
+ 
+ def watchdog_app():
+--- a/structured_logging.py
++++ b/structured_logging.py
+@@ -0,0 +1,87 @@
++"""Cloud Logging JSON request records; inputs are allowlisted, never dumped."""
++import ipaddress
++import json
++import os
++import re
++import sys
++import time
++import uuid
++
++KNOWN_PATHS = frozenset(('/health', '/healthz', '/ready', '/readyz', '/v1/models',
++    '/v1/chat/completions', '/account/register', '/account/login', '/account/redeem',
++    '/account/balance', '/account/requests', '/account/workers', '/webhooks/shopify',
++    '/internal/reconcile', '/'))
++
++def _stdout(record):
++    sys.stdout.write(json.dumps(record, separators=(',', ':')) + '\n')
++    sys.stdout.flush()
++
++def logging_app(app, *, project=None, emit=None, clock=time.monotonic):
++    emit = _stdout if emit is None else emit
++    project = project or os.environ.get('GOOGLE_CLOUD_PROJECT') or os.environ.get('GCP_PROJECT')
++    project = project if isinstance(project, str) and re.fullmatch(r'[a-z][a-z0-9-]{4,62}', project) else None
++    def logged(env, start):
++        begin = clock()
++        state = {'status': 500, 'bytes': 0, 'started': False, 'failed': False}
++        request_id = uuid.uuid4().hex  # Never log caller-controlled request IDs.
++        method = env.get('REQUEST_METHOD', '')
++        method = method if method in ('GET','POST','PUT','PATCH','DELETE','HEAD','OPTIONS') else 'UNKNOWN'
++        path = env.get('PATH_INFO', '')
++        path = path if path in KNOWN_PATHS else '[unmatched]'
++        trace = env.get('HTTP_X_CLOUD_TRACE_CONTEXT', '')
++        valid_trace = re.fullmatch(r'([0-9a-fA-F]{32})(?:/[0-9]{1,20})?(?:;o=[01])?', trace)
++        trace_id = valid_trace.group(1).lower() if valid_trace else uuid.uuid4().hex
++        def response(status, headers, exc_info=None):
++            state['status'] = int(status.split(' ',1)[0])
++            state['started'] = True
++            # Preserve existing headers; add a server-generated correlation ID.
++            outgoing = list(headers) + [('X-Request-ID', request_id)]
++            return start(status, outgoing, exc_info) if exc_info is not None else start(status, outgoing)
++        def failure():
++            if not state['started']:
++                data = b'{"error":"service unavailable"}'
++                response('500 Internal Server Error', [('Content-Type','application/json'),
++                         ('Content-Length', str(len(data))), ('Cache-Control','no-store')])
++                return [data]
++            return []
++        def stream():
++            body = None
++            try:
++                try:
++                    body = app(env, response)
++                except Exception:
++                    state['failed'] = True
++                    body = failure()
++                try:
++                    for part in body:
++                        state['bytes'] += len(part)
++                        yield part
++                except Exception:
++                    state['failed'] = True
++                    for part in failure():
++                        state['bytes'] += len(part)
++                        yield part
++            finally:
++                if body is not None and callable(getattr(body, 'close', None)):
++                    try:
++                        body.close()
++                    except Exception:
++                        state['failed'] = True
++                status = state['status']
++                http = {'requestMethod': method, 'requestUrl': path, 'status': status,
++                        'responseSize': str(state['bytes']), 'latency': format(max(0, clock()-begin), '.6f')+'s'}
++                try:
++                    http['remoteIp'] = str(ipaddress.ip_address(env.get('REMOTE_ADDR', '')))
++                except ValueError:
++                    pass
++                record = {'severity': 'ERROR' if state['failed'] or status >= 500 else 'WARNING' if status >= 400 else 'INFO',
++                          'message': 'HTTP request failed' if state['failed'] else 'HTTP request completed',
++                          'httpRequest': http, 'request_id': request_id}
++                if project:
++                    record['logging.googleapis.com/trace'] = 'projects/'+project+'/traces/'+trace_id
++                try:
++                    emit(record)
++                except Exception:
++                    pass  # Logging failures cannot fail an otherwise valid request.
++        return stream()
++    return logged

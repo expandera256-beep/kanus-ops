@@ -1,0 +1,115 @@
+--- /workspace/us-panel/kan/usta-wake/usta-wake.py.current	2026-11-06 09:45:31.830701708 +0300
++++ /workspace/us-panel/kan/usta-wake/usta-wake.py.new	2026-11-06 09:48:12.258774853 +0300
+@@ -8,12 +8,16 @@
+ import time
+ import urllib.error
+ import urllib.request
++import ssl
+ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+ from urllib.parse import parse_qs, urlparse
+ 
+ PROJECT = "project-27082a40-6083-4952-9db"
+ PORT = 80
+ WORKER_PORT = 8788
++A100_TLS_PORT = 8443
++A100_TLS_CERT = "/etc/usta-wake/cert.pem"
++A100_TLS_KEY = "/etc/usta-wake/key.pem"
+ WAKE_LIMIT = 20 * 60
+ 
+ WORKERS = {
+@@ -210,7 +214,7 @@
+ 
+ 
+ A100_TOKEN_FILE = "/etc/usta-wake/a100.token"
+-A100_ALLOWED_IPS = {"31.220.63.191"}
++A100_ALLOWED_IPS = {"31.220.63.191", "82.29.184.225"}
+ 
+ 
+ def a100_token_ok(header: str) -> bool:
+@@ -266,9 +270,19 @@
+         return WORKERS[worker_id(self.path, self.headers.get("X-Usta-Worker", ""))]
+ 
+     def a100_control(self) -> bool:
++        """HTTP :80 — /a100/* closed (use TLS :8443)."""
++        bare = self.path.split("?", 1)[0]
++        if bare not in ("/a100/start", "/a100/status") and not bare.startswith("/a100/"):
++            return False
++        self.send_error(404, "yok")
++        return True
++
++    def a100_control_tls(self) -> bool:
++        """TLS :8443 — only /a100/start and /a100/status."""
+         bare = self.path.split("?", 1)[0]
+         if bare not in ("/a100/start", "/a100/status"):
+             return False
++
+         def reply(code: int, doc: dict) -> None:
+             body = json.dumps(doc).encode() + b"\n"
+             self.send_response(code)
+@@ -278,7 +292,10 @@
+             self.end_headers()
+             if self.command != "HEAD":
+                 self.wfile.write(body)
+-        if self.client_address[0] not in A100_ALLOWED_IPS or not a100_token_ok(self.headers.get("Authorization", "")):
++
++        if self.client_address[0] not in A100_ALLOWED_IPS or not a100_token_ok(
++            self.headers.get("Authorization", "")
++        ):
+             reply(403, {"ok": False})
+             return True
+         worker = WORKERS["a100"]
+@@ -287,7 +304,14 @@
+                 status = instance_status(worker)
+             except Exception:  # noqa: BLE001
+                 status = "UNKNOWN"
+-            reply(200, {"ok": True, "instance": status, "model_ready": status == "RUNNING" and worker_awake(worker)})
++            reply(
++                200,
++                {
++                    "ok": True,
++                    "instance": status,
++                    "model_ready": status == "RUNNING" and worker_awake(worker),
++                },
++            )
+             return True
+         if bare == "/a100/start" and self.command == "POST":
+             length = int(self.headers.get("Content-Length", "0") or "0")
+@@ -306,6 +330,7 @@
+         reply(405, {"ok": False})
+         return True
+ 
++
+     def forward(self) -> None:
+         if self.a100_control():
+             return
+@@ -399,11 +424,30 @@
+         self.proxy(picked)
+ 
+ 
++class A100TlsDoor(Door):
++    """TLS :8443 — only /a100/start and /a100/status; everything else 404."""
++
++    def forward(self) -> None:
++        if self.a100_control_tls():
++            return
++        self.send_error(404, "yok")
++
++
+ def main() -> None:
+     threading.Thread(
+         target=lambda: ThreadingHTTPServer(("0.0.0.0", WORKER_PORT), WorkerDoor).serve_forever(),
+         daemon=True,
+     ).start()
++
++    def serve_a100_tls() -> None:
++        httpd = ThreadingHTTPServer(("0.0.0.0", A100_TLS_PORT), A100TlsDoor)
++        ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
++        ctx.minimum_version = ssl.TLSVersion.TLSv1_2
++        ctx.load_cert_chain(A100_TLS_CERT, A100_TLS_KEY)
++        httpd.socket = ctx.wrap_socket(httpd.socket, server_side=True)
++        httpd.serve_forever()
++
++    threading.Thread(target=serve_a100_tls, daemon=True).start()
+     ThreadingHTTPServer(("0.0.0.0", PORT), Door).serve_forever()
+ 
+ 

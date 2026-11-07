@@ -1,0 +1,12 @@
+=== RUN   TestAccountSignedSessionExpiryResetAndVerification
+2026/11/08 00:54:38 account /account/register email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:54:38 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:54:38 account /account/password-reset/confirm email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:54:38 account /account/password-reset/confirm email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:54:38 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 00:54:38 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+--- PASS: TestAccountSignedSessionExpiryResetAndVerification (0.23s)
+PASS
+ok  	kiyas/licensesrv	0.234s
+
+exit_code=0

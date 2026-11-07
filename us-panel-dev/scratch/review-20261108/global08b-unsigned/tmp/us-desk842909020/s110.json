@@ -1,0 +1,16 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "işlem",
+      "text": "tek exe"
+    },
+    {
+      "n": 2,
+      "kind": "düşünce",
+      "text": "Model çağrılmadı. Tek exe yazıldı. garanti-bbva-api/dist/Garanti.exe\n--noconfirm\n--clean\n/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tmp/TestSingleExeUsesTheSpecAndSkipsTheModel2265693072/002/garanti-bbva-api/GarantiBBVA_API.spec"
+    }
+  ]
+}

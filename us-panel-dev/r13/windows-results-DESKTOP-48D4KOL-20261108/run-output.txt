@@ -1,0 +1,161 @@
+=== RUN   TestR13PortableAliasAndDevicePolicy
+--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)
+=== RUN   TestR13WindowsRelativeLifecycle
+--- PASS: TestR13WindowsRelativeLifecycle (0.03s)
+=== RUN   TestR13WindowsUnsafeNames
+=== RUN   TestR13WindowsUnsafeNames/x:stream
+=== RUN   TestR13WindowsUnsafeNames/CON.txt
+=== RUN   TestR13WindowsUnsafeNames/nul
+=== RUN   TestR13WindowsUnsafeNames/com1.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT9
+=== RUN   TestR13WindowsUnsafeNames/COM¹.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT²
+=== RUN   TestR13WindowsUnsafeNames/dir/PRN
+=== RUN   TestR13WindowsUnsafeNames/a.
+=== RUN   TestR13WindowsUnsafeNames/a_
+=== RUN   TestR13WindowsUnsafeNames/LONGFI~1.TXT
+=== RUN   TestR13WindowsUnsafeNames/../outside
+=== RUN   TestR13WindowsUnsafeNames/\\?\C:\x
+--- PASS: TestR13WindowsUnsafeNames (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/x:stream (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/CON.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/nul (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/com1.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT9 (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/COM¹.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT² (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/dir/PRN (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a. (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a_ (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LONGFI~1.TXT (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/../outside (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/\\?\C:\x (0.00s)
+=== RUN   TestR13WindowsHardLink
+--- PASS: TestR13WindowsHardLink (0.02s)
+=== RUN   TestR13WindowsJunctionRejected
+--- PASS: TestR13WindowsJunctionRejected (0.06s)
+=== RUN   TestR13WindowsRootSwapPinned
+--- PASS: TestR13WindowsRootSwapPinned (0.09s)
+=== RUN   TestR13WindowsRootSwapStress
+=== RUN   TestR13WindowsRootSwapStress/write
+    file_tools_windows_test.go:223: swaps=24 successful_operations=135
+=== RUN   TestR13WindowsRootSwapStress/delete
+    file_tools_windows_test.go:223: swaps=16 successful_operations=58
+--- PASS: TestR13WindowsRootSwapStress (6.17s)
+    --- PASS: TestR13WindowsRootSwapStress/write (3.12s)
+    --- PASS: TestR13WindowsRootSwapStress/delete (3.05s)
+=== RUN   TestR13WindowsParentSwapAtomicHelper
+    file_tools_windows_test.go:247: helper result: rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1192961882\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1192961882\001\old: Erişim engellendi.
+--- PASS: TestR13WindowsParentSwapAtomicHelper (0.02s)
+=== RUN   TestR13WindowsShortAlias
+--- PASS: TestR13WindowsShortAlias (0.00s)
+=== RUN   TestR13WindowsDeskAndHistory
+--- PASS: TestR13WindowsDeskAndHistory (0.02s)
+=== RUN   TestR13PortableAliasAndDevicePolicy
+--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)
+=== RUN   TestR13WindowsRelativeLifecycle
+--- PASS: TestR13WindowsRelativeLifecycle (0.02s)
+=== RUN   TestR13WindowsUnsafeNames
+=== RUN   TestR13WindowsUnsafeNames/x:stream
+=== RUN   TestR13WindowsUnsafeNames/CON.txt
+=== RUN   TestR13WindowsUnsafeNames/nul
+=== RUN   TestR13WindowsUnsafeNames/com1.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT9
+=== RUN   TestR13WindowsUnsafeNames/COM¹.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT²
+=== RUN   TestR13WindowsUnsafeNames/dir/PRN
+=== RUN   TestR13WindowsUnsafeNames/a.
+=== RUN   TestR13WindowsUnsafeNames/a_
+=== RUN   TestR13WindowsUnsafeNames/LONGFI~1.TXT
+=== RUN   TestR13WindowsUnsafeNames/../outside
+=== RUN   TestR13WindowsUnsafeNames/\\?\C:\x
+--- PASS: TestR13WindowsUnsafeNames (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/x:stream (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/CON.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/nul (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/com1.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT9 (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/COM¹.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT² (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/dir/PRN (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a. (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a_ (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LONGFI~1.TXT (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/../outside (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/\\?\C:\x (0.00s)
+=== RUN   TestR13WindowsHardLink
+--- PASS: TestR13WindowsHardLink (0.01s)
+=== RUN   TestR13WindowsJunctionRejected
+--- PASS: TestR13WindowsJunctionRejected (0.05s)
+=== RUN   TestR13WindowsRootSwapPinned
+--- PASS: TestR13WindowsRootSwapPinned (0.14s)
+=== RUN   TestR13WindowsRootSwapStress
+=== RUN   TestR13WindowsRootSwapStress/write
+    file_tools_windows_test.go:223: swaps=29 successful_operations=144
+=== RUN   TestR13WindowsRootSwapStress/delete
+    file_tools_windows_test.go:223: swaps=16 successful_operations=60
+--- PASS: TestR13WindowsRootSwapStress (6.13s)
+    --- PASS: TestR13WindowsRootSwapStress/write (3.09s)
+    --- PASS: TestR13WindowsRootSwapStress/delete (3.04s)
+=== RUN   TestR13WindowsParentSwapAtomicHelper
+    file_tools_windows_test.go:247: helper result: rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper3991426634\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper3991426634\001\old: Erişim engellendi.
+--- PASS: TestR13WindowsParentSwapAtomicHelper (0.01s)
+=== RUN   TestR13WindowsShortAlias
+--- PASS: TestR13WindowsShortAlias (0.00s)
+=== RUN   TestR13WindowsDeskAndHistory
+--- PASS: TestR13WindowsDeskAndHistory (0.01s)
+=== RUN   TestR13PortableAliasAndDevicePolicy
+--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)
+=== RUN   TestR13WindowsRelativeLifecycle
+--- PASS: TestR13WindowsRelativeLifecycle (0.03s)
+=== RUN   TestR13WindowsUnsafeNames
+=== RUN   TestR13WindowsUnsafeNames/x:stream
+=== RUN   TestR13WindowsUnsafeNames/CON.txt
+=== RUN   TestR13WindowsUnsafeNames/nul
+=== RUN   TestR13WindowsUnsafeNames/com1.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT9
+=== RUN   TestR13WindowsUnsafeNames/COM¹.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT²
+=== RUN   TestR13WindowsUnsafeNames/dir/PRN
+=== RUN   TestR13WindowsUnsafeNames/a.
+=== RUN   TestR13WindowsUnsafeNames/a_
+=== RUN   TestR13WindowsUnsafeNames/LONGFI~1.TXT
+=== RUN   TestR13WindowsUnsafeNames/../outside
+=== RUN   TestR13WindowsUnsafeNames/\\?\C:\x
+--- PASS: TestR13WindowsUnsafeNames (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/x:stream (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/CON.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/nul (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/com1.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT9 (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/COM¹.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT² (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/dir/PRN (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a. (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a_ (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LONGFI~1.TXT (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/../outside (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/\\?\C:\x (0.00s)
+=== RUN   TestR13WindowsHardLink
+--- PASS: TestR13WindowsHardLink (0.00s)
+=== RUN   TestR13WindowsJunctionRejected
+--- PASS: TestR13WindowsJunctionRejected (0.04s)
+=== RUN   TestR13WindowsRootSwapPinned
+--- PASS: TestR13WindowsRootSwapPinned (0.05s)
+=== RUN   TestR13WindowsRootSwapStress
+=== RUN   TestR13WindowsRootSwapStress/write
+    file_tools_windows_test.go:223: swaps=12 successful_operations=62
+=== RUN   TestR13WindowsRootSwapStress/delete
+    file_tools_windows_test.go:223: swaps=5 successful_operations=42
+--- PASS: TestR13WindowsRootSwapStress (6.11s)
+    --- PASS: TestR13WindowsRootSwapStress/write (3.05s)
+    --- PASS: TestR13WindowsRootSwapStress/delete (3.06s)
+=== RUN   TestR13WindowsParentSwapAtomicHelper
+    file_tools_windows_test.go:247: helper result: rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1641285211\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1641285211\001\old: Erişim engellendi.
+--- PASS: TestR13WindowsParentSwapAtomicHelper (0.03s)
+=== RUN   TestR13WindowsShortAlias
+--- PASS: TestR13WindowsShortAlias (0.00s)
+=== RUN   TestR13WindowsDeskAndHistory
+--- PASS: TestR13WindowsDeskAndHistory (0.02s)
+PASS
+PASS - Windows dosya katmani testleri tamamlandi. SKIP satirlarini da inceleyin.

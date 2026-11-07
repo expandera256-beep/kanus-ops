@@ -1,0 +1,6 @@
+=== RUN   TestPanelTLS13Resumption
+2026/11/08 00:37:57 http: TLS handshake error from 127.0.0.1:48614: remote error: tls: bad certificate
+    zz_panel_tls13_test.go:11: TLS1.3 callback=3 resumed=true rotated-pin-rejected=true
+--- PASS: TestPanelTLS13Resumption (0.01s)
+PASS
+ok  	kiyas/licensesrv	1.025s

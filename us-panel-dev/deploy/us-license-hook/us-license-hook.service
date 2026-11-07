@@ -1,0 +1,11 @@
+[Unit]
+Description=US license hook (Shopify paid/cancelled/refunds + credits)
+After=network-online.target
+[Service]
+User=uslic
+WorkingDirectory=/opt/us-license-hook
+EnvironmentFile=/etc/us-license-hook.env
+ExecStart=/opt/us-license-hook/us-license-hook
+Restart=always
+[Install]
+WantedBy=multi-user.target

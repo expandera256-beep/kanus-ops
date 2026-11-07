@@ -1,0 +1,18 @@
+{"Time":"2026-11-08T01:33:27.564713533+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-08T01:33:27.576634209+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger"}
+{"Time":"2026-11-08T01:33:27.576699541+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Output":"=== RUN   TestPanelV41AuthWrongCodeLedger\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:30.701412252+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Output":"    zz_panel_erase_test.go:6: bad auth/code no mutation; valid erase preserves prior ledger, revokes license and releases hold without refund\n"}
+{"Time":"2026-11-08T01:33:30.701822451+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Output":"--- PASS: TestPanelV41AuthWrongCodeLedger (3.13s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:30.701835932+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Elapsed":3.13}
+{"Time":"2026-11-08T01:33:30.701849728+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:31.709219862+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"ok  \tkiyas/licensesrv\t4.144s\n"}
+{"Time":"2026-11-08T01:33:31.709308399+03:00","Action":"pass","Package":"kiyas/licensesrv","Elapsed":4.145}
+{"Time":"2026-11-08T01:33:32.38090778+03:00","Action":"start","Package":"kiyas/internal/privacy"}
+{"Time":"2026-11-08T01:33:32.390047065+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth"}
+{"Time":"2026-11-08T01:33:32.390091657+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Output":"=== RUN   TestPanelV41HealthyHTTPAuth\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:32.39158781+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Output":"    zz_panel_auth_test.go:3: erase/confirm unauthorized got 503\n","OutputType":"error"}
+{"Time":"2026-11-08T01:33:32.391705174+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Output":"--- FAIL: TestPanelV41HealthyHTTPAuth (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:32.391764269+03:00","Action":"fail","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Elapsed":0}
+{"Time":"2026-11-08T01:33:32.391871446+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:32.392965305+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"FAIL\tkiyas/internal/privacy\t0.012s\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:33:32.393035174+03:00","Action":"fail","Package":"kiyas/internal/privacy","Elapsed":0.012}

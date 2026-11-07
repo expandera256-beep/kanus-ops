@@ -1,0 +1,8 @@
+patching file change_history.go
+patching file desk.go
+patching file file_open_unix.go
+patching file file_open_windows.go
+patching file file_tools.go
+patching file file_tools_r13_linux_test.go
+patching file file_tools_r13_test.go
+patching file file_tools_windows_test.go

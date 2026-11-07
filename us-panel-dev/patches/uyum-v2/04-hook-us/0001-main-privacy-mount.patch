@@ -1,0 +1,31 @@
+--- a/cmd/us-license-hook/main.go
++++ b/cmd/us-license-hook/main.go
+@@ -12,6 +12,7 @@
+ 	"strconv"
+ 	"time"
+ 
++	"kiyas/internal/privacy"
+ 	"kiyas/licensesrv"
+ )
+ 
+@@ -100,6 +101,20 @@
+ 		accounts.Workers = proxy.AccountWorkers
+ 	}
+ 	mux.Handle("/account/", accounts)
++	// UYUM privacy: thin mount. Prefs only if US_PRIVACY_PREFS_PATH set (optional). Erase off by default.
++	var prefStore privacy.PreferenceStore
++	if pp := os.Getenv("US_PRIVACY_PREFS_PATH"); pp != "" && privacy.OpenPrefStoreFunc != nil {
++		if ps, err := privacy.OpenPrefStoreFunc(pp); err != nil {
++			log.Printf("privacy prefs: %v", err)
++		} else {
++			prefStore = ps
++		}
++	}
++	privacy.Mount(mux, st, privacy.MountOptions{
++		Prefs:        prefStore,
++		EraseEnabled: os.Getenv("US_PRIVACY_ERASE_ENABLED") == "1",
++		AdminToken:   os.Getenv("US_PRIVACY_ADMIN_TOKEN"),
++	})
+ 	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte("ok")) })
+ 	return mux
+ }

@@ -1,0 +1,31 @@
+# API ↔ US idempotency protokolü uyum notu (kod değiştirilmedi)
+
+US protokolü (kaynak: `patches/post12/A_retry_idempotency.diff:8-18` = `post12/term/POST12_A_PROTOCOL_PROPOSAL_TR.md`):
+- `X-US-Request-ID` (chat'te zaten gönderiliyor, hook okumuyor).
+- `/v1/credits/reserve` için aynı kimlik (body `request_id` alternatif). Kimlik principal (hesap/lisans) + kanonik gövde hash'ine bağlı, farklı gövde → 409.
+- request→reservation kalıcı replay kaydı (pending/committed/released). EXE aynı kimlikle 3 deneme.
+- Repro testleri: `A_retry_idempotency.diff:113-170` (`post12_retry_repro_test.go`).
+Durum: öneri. `/reserve` alanı Demir/US onayını bekliyor (`POST12_RETRY_FX_RAPORU_TR.md` "Devam için gerekenler" 1).
+
+## Bulgular
+
+| # | Konu | Kanıt (dosya:satır) | Bulgu | Öneri |
+|---|---|---|---|---|
+| I1 | OpenAPI'de `Idempotency-Key` | `api-0002-openapi/openapi.yaml:69,185,203`; `api-0009-openapi-update/openapi.yaml:76,193,211` | **Başlık tanımlı değil.** Yalnız "aynı commit ile tekrar idempotent" metni var (settle). Yani OpenAPI tarafında isim çakışması yok, belirsizlik var | `components.parameters.USRequestID` (`X-US-Request-ID`, header, 1–128 `[A-Za-z0-9._:-]`) tanımla. `/v1/credits/reserve` ve `/v1/chat*`'a ekle. 409 `idempotency_conflict` ve replay yanıtını belgelendir |
+| I2 | SDK başlık adı | Python `api-0010-sdk-python/src/kanus_sdk/client.py:102-110` (`Idempotency-Key`); TS `api-0011-sdk-typescript/src/client.ts:64-71` | SDK `Idempotency-Key` gönderiyor, US `X-US-Request-ID` okuyacak. **Doğrudan çakışma**: SDK'nın anahtarı sunucuda yok sayılır | Tek ad: **`X-US-Request-ID`** (EXE zaten gönderiyor). SDK'lar bu adı göndersin. Sunucu `Idempotency-Key`'i **alias** olarak kabul edebilir. İkisi birlikte gelip farklıysa 400 `idempotency_header_mismatch` |
+| I3 | SDK POST yeniden denememe kuralı | Python `client.py:126-135` (`_should_retry` POST → False), `:176`; `:186-188` "server ignores it"; TS `client.ts:13`, `:94-97`, `:119` | Replay desteklenene kadar doğru (PANEL DEV R2 YÜKSEK bulgusu). Replay geldikten sonra EXE (3 deneme) ile SDK (0 deneme) davranışı ayrışır | Sunucu replay'i desteklediğinde (sürüm/özellik bayrağıyla, örn. `API-Version` ≥ belirlenen) **yalnız istemcinin sabit kimlik verdiği** reserve/chat POST'larında aynı kimlikle en fazla 2 ek deneme. Yalnız 429/502/503/504/ağ hatasında, `Retry-After` ≤60 sn sınırı korunur. 4xx (409 dahil) asla. Settle zaten idempotent (`openapi:193`), aynı id+commit ile yeniden denenebilir |
+| I4 | Otomatik anahtar üretimi | SDK'larda `uuid`/`randomUUID`/`token_hex` yok (grep 0) | **SDK kendiliğinden anahtar üretmiyor.** Yanlış varsayım düzeltmesi | SDK, replay modunda kimlik verilmezse **bir kez** üretip (UUIDv4) tüm denemelerde aynısını kullanabilir. Ama kalıcı görev kimliği için çağırana dönmeli (`request_id` alanı) ki süreç yeniden başlayınca aynı kimlikle sorgulayabilsin (US madde 2) |
+| I5 | Hata zarfı `request_id` ad çakışması | `api-0003…patch:47-52` (`ErrorBody.RequestID` json `request_id`), `:86-92,106-108` her hatada **sunucu üretimi** `newRequestID()` + `X-Request-Id` | US body alanı `request_id` = **istemci idempotency kimliği**. Zarftaki `request_id` = **sunucu iz kimliği**. Aynı ad, farklı anlam | Body alanı açılacaksa adı `request_id` DEĞİL, `idempotency_id` olsun. Tercihen yalnız başlık (`X-US-Request-ID`), US de "iki ayrı alan açma" diyor. Zarf `request_id` sunucu iz kimliği olarak kalır |
+| I6 | Replay'de hata zarfının korunması | `api-0003…patch:79-92` | Replay kaydı yalnız başarı/ reservation_id saklarsa, ilk denemesi 402/409 olan isteğin tekrarında farklı kod dönebilir. Ayrıca zarftaki `request_id` her yanıtta yeniden üretilir | Kalıcı kayıt terminal durumla birlikte `status`+`code` saklasın (gövde değil). Replay aynı `status`+`code`+`message` döner, yeni sunucu `request_id` üretilir (iz kimliği). `X-US-Replayed: true` başlığı eklensin. Ödeme kararı içeren 2xx gövde (reservation id) saklanmalı |
+| I7 | api-0006 rate/kota replay'de çift sayım | `api-0006…patch:251-272` (`consumeAPIKeyQuotaLocked` `MinCount++`/`DayCount++`), çağrıldığı yer `:537` (`GateAPIKey`), `:555` (`AuthorizeBearer`): **kimlik doğrulama anında**, replay kontrolünden önce | Replay de kota tüketir. 3 deneme = 3 sayım. Kota dolarsa replay 429 alır, istemci sonucu hiç göremeyebilir | Öneri: replay kaydı bulunan (aynı principal+kimlik+hash) istekte `consumeAPIKeyQuotaLocked` atlansın ya da sayılan birim geri alınsın. Dakikalık **rate** (kötüye kullanım koruması) replay'de de sayılabilir, **günlük kota** (ücretli birim) sayılmamalı. `licensesrv` US-korumalı, US'e öneri |
+| I8 | 0012 grace × replay | `api-0012…/0001-US-proposal-store-0004-0012.diff:145,161-187` (`commitGrace`, `Expires+grace`), `:215-247` (`settleFor`, `expireLocked`), testler `:273-340` | Replay kaydı, rezervasyon serbest bırakıldıktan (Expires+grace) sonra gelen reserve tekrarını **yeni hold** açmadan aynı (released) sonuçla döndürmeli. Aksi halde geç tekrar yeni kredi kilitler. Commit replay'i grace içinde ilk commit'le aynı sonucu (tek düşüm) vermeli; grace sonrası commit zaten reddediliyor (`:318`) | Replay kaydı TTL'i ≥ rezervasyon TTL + grace (45 dk + ≤15 dk) + EXE deneme penceresi olsun, öneri ≥24 saat. Terminal `released` kayıt replay'de 409 `reservation_released` dönsün, yeni hold açılmasın. Test: grace içinde 3× reserve → 1 hold. Grace sonrası replay → yeni hold yok |
+
+## Önerilen tek protokol (özet)
+1. Başlık: `X-US-Request-ID` (zorunlu ad). `Idempotency-Key` yalnız alias, farklı değerse 400.
+2. Kapsam: principal (hesap/lisans; session değil) + yöntem + yol + kanonik gövde SHA-256. Aynı kimlik farklı hash → 409 `idempotency_conflict`.
+3. Kalıcı kayıt: kimlik → {hash, reservation_id, terminal durum, status, code}, TTL ≥24 sa. Eşzamanlı aynı kimlik → singleflight.
+4. Replay yanıtı: aynı status/code (+2xx'te aynı reservation_id), yeni iz `request_id`, `X-US-Replayed: true`. Günlük kota tüketmez.
+5. SDK: replay destekleniyorsa sabit kimlikle ≤2 ek POST denemesi (yalnız 429/5xx/ağ). Değilse mevcut "POST yeniden deneme yok" kuralı sürer.
+6. OpenAPI (api-0009 sonrası): parametre + 409 + `X-US-Replayed` belgesi. US kodu gelince API yaması olarak hazırlanır.
+
+Kod değiştirilmedi. `licensesrv/**` US-korumalı, I6-I8 US'e öneridir.

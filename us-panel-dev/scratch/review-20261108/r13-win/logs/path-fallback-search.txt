@@ -1,0 +1,12 @@
+desk.go:72:		current, e := os.ReadFile(path)
+desk.go:87:		_ = os.Remove(record)
+desk.go:91:	if written, e := os.ReadFile(path); e != nil || hashContent(written) != hashContent([]byte(text)) {
+desk.go:117:	prev, err := os.ReadFile(path)
+desk.go:133:		_ = os.Remove(record)
+desk.go:177:		body, readErr := os.ReadFile(path)
+file_open_windows.go:190:	return os.NewFile(uintptr(fd), filepath.Join(root, rel)), nil
+file_open_windows.go:276:		err = atomicWriteTestHook(filepath.Join(root, filepath.Dir(rel), tmp))
+change_history.go:114:	return filepath.Join(root, name), nil
+file_open_unix.go:110:	return os.NewFile(uintptr(fd), filepath.Join(root, rel)), nil
+file_open_unix.go:228:		err = atomicWriteTestHook(filepath.Join(root, dir, tmp))
+file_tools.go:184:	if d, err := os.Open(dir); err == nil {

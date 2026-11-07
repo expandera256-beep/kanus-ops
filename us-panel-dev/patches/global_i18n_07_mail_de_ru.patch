@@ -1,0 +1,75 @@
+diff --git a/kanus/locales/de.json b/kanus/locales/de.json
+new file mode 100644
+index 0000000..acd32a5
+--- /dev/null
++++ b/kanus/locales/de.json
+@@ -0,0 +1,13 @@
++{
++  "_meta": {
++    "name": "Deutsch",
++    "dir": "ltr",
++    "bcp47": "de-DE",
++    "currency": "TRY"
++  },
++  "brand.name": "Kanus",
++  "brand.slogan": "Verwandle deine Ideen in Software.",
++  "email.license.body": "Hallo,\n\ndein Lizenzschlüssel für die Bestellung {order} ist bereit. Öffne US Panel und gib den Schlüssel ein.\n\nFragen: support@kanus.org",
++  "email.license.subject": "Dein US Panel Lizenzschlüssel",
++  "product.name": "US Panel"
++}
+diff --git a/kanus/locales/ru.json b/kanus/locales/ru.json
+new file mode 100644
+index 0000000..da84b99
+--- /dev/null
++++ b/kanus/locales/ru.json
+@@ -0,0 +1,13 @@
++{
++  "_meta": {
++    "name": "Русский",
++    "dir": "ltr",
++    "bcp47": "ru-RU",
++    "currency": "TRY"
++  },
++  "brand.name": "Kanus",
++  "brand.slogan": "Превращайте идеи в программы.",
++  "email.license.body": "Здравствуйте!\n\nЛицензионный ключ для заказа {order} готов. Откройте US Panel и введите ключ.\n\nВопросы: support@kanus.org",
++  "email.license.subject": "Ваш лицензионный ключ US Panel",
++  "product.name": "US Panel"
++}
+diff --git a/kanus/test_i18n_mail.py b/kanus/test_i18n_mail.py
+index f30c42f..58d9b47 100644
+--- a/kanus/test_i18n_mail.py
++++ b/kanus/test_i18n_mail.py
+@@ -32,7 +32,8 @@ class MailI18nTest(unittest.TestCase):
+ 
+     def test_unknown_lang_and_missing_param(self):
+         self.assertEqual(m.resolve_lang('xx'), 'tr')
+-        self.assertEqual(m.resolve_lang('', 'de;q=0.9,en;q=0.5'), 'en')
++        self.assertEqual(m.resolve_lang('', 'de;q=0.9,en;q=0.5'), 'de')
++        self.assertEqual(m.resolve_lang('', 'ja;q=0.9,en;q=0.5'), 'en')
+         self.assertEqual(m.resolve_lang('', 'en;q=0'), 'tr')
+         self.assertIn('{order}', m.t('email.license.body', 'en'))
+         self.assertEqual(m.t('no.such.key', 'en'), 'no.such.key')
+@@ -64,6 +65,22 @@ class MailI18nTest(unittest.TestCase):
+         for k in tr:
+             self.assertEqual(sorted(ph.findall(tr[k])), sorted(ph.findall(en[k])), k)
+ 
++    def test_four_languages_parity(self):
++        cats = m.load()
++        self.assertTrue({'tr', 'en', 'de', 'ru'} <= set(cats))
++        ref = cats['tr']['msgs']
++        ph = re.compile(r'\{[a-z_]+\}')
++        for code in ('en', 'de', 'ru'):
++            self.assertEqual(set(cats[code]['msgs']), set(ref), code)
++            for k in ref:
++                self.assertEqual(sorted(ph.findall(cats[code]['msgs'][k])), sorted(ph.findall(ref[k])), (code, k))
++        de = m.render_license_email('de', order='#1001')
++        ru = m.render_license_email('ru-RU', order='#1001')
++        self.assertIn('#1001', str(de))
++        self.assertIn('#1001', str(ru))
++        self.assertIn('Lizenzschlüssel', str(de))
++        self.assertIn('лицензионный ключ', str(ru).lower())
++
+     def test_forbidden_slogans_absent(self):
+         bad = ['yerli teknoloji', 'küresel vizyon', 'built in türkiye', 'designed for the world', 'homegrown', 'türkiye merkezli', 'yerli ve milli']
+         for code, c in m.load().items():

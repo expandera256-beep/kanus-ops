@@ -1,0 +1,8 @@
+US FAZ GELİŞTİRME DURUMU — TEST EDİLMEMİŞ TASLAK
+
+Önceki güvenli sürüm üzerine eklenen kod:
+- GUI model değişikliklerini doğrudan yazmak yerine önce/sonra içeriğiyle Önizleme alanında bekletir; uygulama ve reddetme düğmeleri vardır. Başka bir işlemle değişmiş veya okunmamış mevcut dosyalar için öneri uygulanmaz. Öneri proje klasöründe .us-pending altında kaydedilir ve aynı çalışma klasörüyle yeniden açılırsa yüklenir. İçerik şifrelenmez. Birden fazla dosyanın uygulaması işlem bütünlüğü garantisi vermez.
+- Sınırlı proje taraması dosya adlarını isteğe göre sıralar; gizli ve hassas adlı dosyaları, bağlantıları ve belirli klasörleri dışlar. Bu kapsamlı semantik indeks değildir.
+- Önizleme bölümünde kullanıcı tarafından başlatılan Go ve Python test komutu ve başarısız testten onarım istemi hazırlama düğmesi bulunur. Onarım kendiliğinden gönderilmez. Testler proje kodu çalıştırabilir. Node test komutu otomatik seçilmez.
+
+SINIRLAR: Bu yeni Go kodu test edilmedi ve EXE derlenmedi. JavaScript sözdizimi kontrolü geçti. Gerçek Windows ve canlı modelle kontrol edilmedi. Çalışan uzun model işleminin ara özetlerinden yeniden başlaması eklenmedi; sadece bekleyen dosya önerisi kaydedilir. Ticari Shopify, hesap, yetki ve sunucu kotası tamamlanmamıştır; ticari sürüm olarak kullanılmamalıdır. Çok dosyalı uygulama atomik değildir. Otomatik test ve onarım döngüsü tam otomatik değildir.

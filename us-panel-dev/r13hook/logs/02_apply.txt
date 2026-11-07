@@ -1,0 +1,49 @@
+== /workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-0004-0012-combined-on-11.diff
+patching file licensesrv/ledger_hardening_test.go
+patching file licensesrv/licensesrv_test.go
+patching file licensesrv/store.go
+patching file licensesrv/ttl_commit_anchor_test.go
+== /workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/fix-grace-overflow-on-11.diff
+patching file licensesrv/grace_overflow_test.go
+patching file licensesrv/store.go
+patching file licensesrv/ttl_grace_lock_test.go
+== /workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch
+patching file internal/privacy/iface.go
+== /workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch
+patching file internal/privacy/prefs.go
+== /workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch
+patching file internal/privacy/prefs_open_unix.go
+== /workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch
+patching file internal/privacy/prefs_open_other.go
+== /workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch
+patching file internal/privacy/prefs_test.go
+== /workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch
+patching file internal/privacy/prefs_fifo_unix_test.go
+== /workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch
+patching file internal/privacy/v4_security_linux_test.go
+== /workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch
+patching file licensesrv/privacy_ops.go
+== /workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch
+patching file licensesrv/store.go
+Hunk #1 succeeded at 411 (offset 56 lines).
+== /workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch
+patching file licensesrv/privacy_ops_test.go
+== /workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch
+patching file licensesrv/privacy_v4_test.go
+== /workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch
+patching file internal/privacy/handler.go
+== /workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch
+patching file internal/privacy/handler_test.go
+== /workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch
+patching file internal/privacy/v4_handler_test.go
+== /workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch
+patching file cmd/us-license-hook/main.go
+Hunk #2 succeeded at 107 (offset 6 lines).
+== /workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch
+patching file cmd/us-license-hook/main_test.go
+== /workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-r11-additive-on-11+api+uyum-v4.diff
+patching file apiv1/README.md
+patching file apiv1/errors.go
+patching file apiv1/version.go
+patching file apiv1/version_test.go
+patching file cmd/us-license-hook/main.go

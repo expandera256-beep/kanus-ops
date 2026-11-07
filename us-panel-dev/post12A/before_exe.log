@@ -1,0 +1,16 @@
+--- FAIL: TestPost12SettleLostAcknowledgementRetriesSameID (0.01s)
+    post12_settle_retry_test.go:42: ok=false model=1 settle=1 credit=1 reserved=0 commits=1
+--- FAIL: TestPost12ReleaseTransientFailureRetries (0.00s)
+    post12_settle_retry_test.go:62: settle=1 reserved=1 credits=2 released=0
+--- FAIL: TestPost12AModelRetrySameIDOnTransient (0.00s)
+    post12a_retry_test.go:47: ok=false attempts=1 body="temporary"
+--- FAIL: TestPost12AModelRetryBoundedAndNot4xxOrWarming (0.00s)
+    --- FAIL: TestPost12AModelRetryBoundedAndNot4xxOrWarming/5xx-max-3 (0.00s)
+        post12a_retry_test.go:80: ok=false attempts=1 want=3
+--- FAIL: TestPost12AGateReserveLostAckSameID (0.00s)
+    post12a_retry_test.go:122: ok=false body="kredi servisine ulaşılamadı. Model çağrılmadı." model=0 reserves=1 reserved=1 credits=2 commits=0
+--- FAIL: TestPost12AGateReserveSendsBodyRequestID (0.00s)
+    post12a_retry_test.go:146: header="" body=""
+FAIL
+FAIL	kiyas	0.016s
+FAIL

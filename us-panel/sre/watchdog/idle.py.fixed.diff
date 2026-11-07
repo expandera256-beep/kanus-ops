@@ -1,0 +1,66 @@
+--- idle.py.600	2026-11-08 00:22:16.159423473 +0300
++++ idle.py.fixed	2026-11-08 00:31:03.519145344 +0300
+@@ -15,6 +15,8 @@
+ FAIL_STOP = 70 * 60
+ READY = "/run/ds-a100-ready"
+ ACTIVITY = "/run/ds-a100-activity"
++SS_ERRORS = "/run/ds-a100-ss-errors"
++SS_MAX_ERRORS = 5  # after this many consecutive ss failures, use nginx log activity only
+ 
+ 
+ def uptime() -> float:
+@@ -29,13 +31,34 @@
+         return False
+ 
+ 
++def _ss_errors() -> int:
++    try:
++        return int(open(SS_ERRORS, encoding="utf-8").read().strip() or 0)
++    except (OSError, ValueError):
++        return 0
++
++
++def _set_ss_errors(n: int) -> None:
++    try:
++        with open(SS_ERRORS, "w", encoding="utf-8") as fh:
++            fh.write(str(n))
++    except OSError:
++        pass
++
++
+ def clients() -> int:
+     """Established TCP connections whose LOCAL port is 80 or 8080 (model traffic).
+-    Outbound connections such as the metadata server (peer :80) are not counted."""
++    Outbound connections such as the metadata server (peer :80) are not counted.
++    An ss error is "unknown": it counts as busy for at most SS_MAX_ERRORS
++    consecutive checks, then 0 (nginx-log activity only) so idle stop is not blocked forever."""
+     try:
+-        out = subprocess.check_output(["ss", "-Htan", "state", "established"], text=True)
+-    except (OSError, subprocess.CalledProcessError):
+-        return 1
++        out = subprocess.check_output(["ss", "-Htan", "state", "established"], text=True, timeout=10)
++    except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired):
++        n = _ss_errors() + 1
++        _set_ss_errors(n)
++        return 1 if n <= SS_MAX_ERRORS else 0
++    if _ss_errors():
++        _set_ss_errors(0)
+     count = 0
+     for line in out.splitlines():
+         parts = line.split()
+@@ -117,9 +140,12 @@
+         touch(READY)
+         touch(ACTIVITY)
+     if not ok:
+-        if uptime() > FAIL_STOP:
+-            stop(discard=True)
+-        return
++        # FAIL_STOP grace only covers the initial boot/load (never READY yet).
++        # After READY, a health failure falls through to the normal idle rule.
++        if not os.path.exists(READY):
++            if uptime() > FAIL_STOP:
++                stop(discard=True)
++            return
+     if os.path.exists(READY) and age() > IDLE:
+         stop(discard=True)
+ 

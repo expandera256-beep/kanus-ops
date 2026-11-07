@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "host": "api-test.kanus.org",
+      "status": "OK",
+      "days_remaining": 88.10036,
+      "notAfter": "2027-02-04T00:48:11+00:00",
+      "reasons": [],
+      "renewal_history": "not_available"
+    },
+    {
+      "host": "api.kanus.org",
+      "status": "OK",
+      "days_remaining": 88.28449,
+      "notAfter": "2027-02-04T05:13:20+00:00",
+      "reasons": [],
+      "renewal_history": "not_available"
+    },
+    {
+      "host": "kanus.org",
+      "status": "OK",
+      "days_remaining": 84.7115,
+      "notAfter": "2027-01-31T15:28:13+00:00",
+      "reasons": [],
+      "renewal_history": "not_available"
+    }
+  ]
+}

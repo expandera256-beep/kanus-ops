@@ -1,0 +1,7 @@
+ok  	kiyas	58.257s
+ok  	kiyas/apiv1	1.011s
+ok  	kiyas/cmd/us-license-hook	9.183s
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+ok  	kiyas/internal/privacy	70.130s
+ok  	kiyas/licensesrv	315.629s
+RACE_EXIT=0

@@ -1,0 +1,57 @@
+=== RUN   TestPanelConcurrentHTTPWakeDebounce
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=3 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=3 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=3 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=3 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=3 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=4 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=8 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=9 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=7 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=7 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=7 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=9 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=7 level=INFO method=POST err=-
+2026/11/08 00:39:35 gpu wake: failed (wake_http)
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=8 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=10 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=9 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=8 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=6 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=8 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=11 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=8 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=9 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=11 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=11 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=11 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=10 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=10 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=10 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=5 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=7 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=6 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=9 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=9 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=8 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=10 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=6 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=11 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=9 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=10 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=9 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=5 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=5 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=6 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=3 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=6 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=3 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=2 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=13 level=INFO method=GET err=-
+2026/11/08 00:39:35 gpu_wake scheme=http host=127.0.0.1:44691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=11 level=INFO method=GET err=-
+    zz_panel_wake_burst_test.go:8: 50 concurrent HTTP requests: starts=1 status=50
+--- PASS: TestPanelConcurrentHTTPWakeDebounce (0.04s)
+PASS
+ok  	kiyas/licensesrv	1.051s

@@ -1,0 +1,3 @@
+2026-11-08T00:20:57.513177+03:00
+gcloud sql instances list --format=json
+exit=0

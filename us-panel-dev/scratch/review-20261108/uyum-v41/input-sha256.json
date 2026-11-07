@@ -1,0 +1,297 @@
+[
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/01-preferences/0001-iface.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/01-preferences/0001-iface.patch",
+    "sha256": "f6d660142e23f9121e6f621037b9aeaf901155f8be875ac31513152859fee3be"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/01-preferences/0002-prefs.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/01-preferences/0002-prefs.patch",
+    "sha256": "6f3cf673a93cfd0e1372ce85b4edef90a339f228f02b0f1ad67b14b9227d23a3"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/01-preferences/0003-prefs_open_unix.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/01-preferences/0003-prefs_open_unix.patch",
+    "sha256": "04a272e8b7e6f2d35feb96d231b244b485be54ae602a4732c9ca10f8a783d177"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/01-preferences/0004-prefs_open_other.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/01-preferences/0004-prefs_open_other.patch",
+    "sha256": "48529e9d44881f891d7de65d2a2b6787eff44d314c5393e2a6351840308604a1"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/01-preferences/0005-prefs_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/01-preferences/0005-prefs_test.patch",
+    "sha256": "26d47990502fb49fe9a9461e76a1c17e3fd62a543e038037cce0f6d4fe670592"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/01-preferences/0006-prefs_fifo_unix_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/01-preferences/0006-prefs_fifo_unix_test.patch",
+    "sha256": "1f4e0b90b13380a2feb431eb817b4ca0586f78d98c853518605ebddbb42e0fcf"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/01-preferences/0007-v4_security_linux_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/01-preferences/0007-v4_security_linux_test.patch",
+    "sha256": "bfed494d32ebf15d0324db0985305e722e5913aa075a72ab3a188474851a4893"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/01-preferences/README.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/01-preferences/README.md",
+    "sha256": "5a5f5e2f8e2f6bcf2da14c064061f553ed2a6c1f39c1f2e968071e6f04550aeb"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/02-ops/0001-privacy_ops.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/02-ops/0001-privacy_ops.patch",
+    "sha256": "ee133c8facd3d0397c5529085fc1a1857f8b2ac2e492ad075df2805180aa9e33"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/02-ops/0002-store.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/02-ops/0002-store.patch",
+    "sha256": "4f291280b0c6c02bdaa2899ef3d6acc193ac14a56e366d7b84d77bfe72b4cf8d"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/02-ops/0003-privacy_ops_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/02-ops/0003-privacy_ops_test.patch",
+    "sha256": "e697d07cf2cd3e93b29c19ff543ad9efbb24f6f0ca6744bd94fe89d827cf2b7d"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/02-ops/0004-privacy_v4_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/02-ops/0004-privacy_v4_test.patch",
+    "sha256": "7453211f1c51bc0fb8b64fc97e5abd5ba3c587a2a1020139b8681f43375f1b34"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/02-ops/README.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/02-ops/README.md",
+    "sha256": "6884f905e735552405697f5e9b541c425f108efc22bc2994cf3790bdf9bada15"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/03-handler/0001-handler.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/03-handler/0001-handler.patch",
+    "sha256": "11aa302f0aed10ff3180efe2036d156c59230133feb40e1732d440108cc5d4c9"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/03-handler/0002-handler_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/03-handler/0002-handler_test.patch",
+    "sha256": "c9c5dded00b3dee25bc237642860338437ccfbeaba180158c63e4437815c32c9"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/03-handler/0003-v4_handler_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/03-handler/0003-v4_handler_test.patch",
+    "sha256": "a617e950feaa95dbaa147f1788e68f79f1e93fd9b80ca6b9deb8e8f0bea3aae3"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/03-handler/0004-v41_origin_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/03-handler/0004-v41_origin_test.patch",
+    "sha256": "6adf1766817089c308d1e304e1777f65ef6d53070ea9f75d86bd4b9e3330c002"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/03-handler/README.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/03-handler/README.md",
+    "sha256": "3c5165167cddbf93785a34872e73af096bb3301a0d4ea5661bbb9eeff90821a9"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/04-hook-us/0001-main.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/04-hook-us/0001-main.patch",
+    "sha256": "edd831ae3df0c1bfd00a3f0edb256473f18ba5ee871897bcf4c1fdce1244b448"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/04-hook-us/0002-main_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/04-hook-us/0002-main_test.patch",
+    "sha256": "0a06b78f48944529ee19b822ee05d9c49b3b2fee4eec842177cfd20f56cac903"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/04-hook-us/0003-privacy_v41_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/04-hook-us/0003-privacy_v41_test.patch",
+    "sha256": "ff6ffb77a22d400f7e492f56dd5bfd324787d7d3d7c62f91ec728af85271d7ac"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/04-hook-us/README.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/04-hook-us/README.md",
+    "sha256": "8f54c738ac3e316c0b4a3bc138304dd9f8ebb13a01d939d71234015ca82a5aaf"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4.1/README.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4.1/README.md",
+    "sha256": "189513d0ada7400d9cb3263cbded39f6af3625211cc0931b454a1faf2ebd89db"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/01-preferences/0001-iface.patch",
+    "sha256": "f6d660142e23f9121e6f621037b9aeaf901155f8be875ac31513152859fee3be"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/01-preferences/0002-prefs.patch",
+    "sha256": "6f3cf673a93cfd0e1372ce85b4edef90a339f228f02b0f1ad67b14b9227d23a3"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch",
+    "sha256": "04a272e8b7e6f2d35feb96d231b244b485be54ae602a4732c9ca10f8a783d177"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch",
+    "sha256": "48529e9d44881f891d7de65d2a2b6787eff44d314c5393e2a6351840308604a1"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/01-preferences/0005-prefs_test.patch",
+    "sha256": "26d47990502fb49fe9a9461e76a1c17e3fd62a543e038037cce0f6d4fe670592"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch",
+    "sha256": "1f4e0b90b13380a2feb431eb817b4ca0586f78d98c853518605ebddbb42e0fcf"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch",
+    "sha256": "bfed494d32ebf15d0324db0985305e722e5913aa075a72ab3a188474851a4893"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/README.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/01-preferences/README.md",
+    "sha256": "20efd644a6825754172de6e4fabcd53ff02996d67a6012b6fe3938d95532a3c2"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/02-ops/0001-privacy_ops.patch",
+    "sha256": "ee133c8facd3d0397c5529085fc1a1857f8b2ac2e492ad075df2805180aa9e33"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/02-ops/0002-store.patch",
+    "sha256": "4f291280b0c6c02bdaa2899ef3d6acc193ac14a56e366d7b84d77bfe72b4cf8d"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch",
+    "sha256": "e697d07cf2cd3e93b29c19ff543ad9efbb24f6f0ca6744bd94fe89d827cf2b7d"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch",
+    "sha256": "7453211f1c51bc0fb8b64fc97e5abd5ba3c587a2a1020139b8681f43375f1b34"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/README.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/02-ops/README.md",
+    "sha256": "1b3405acacb05f0b8551a95ecba4cd89d612c5ad398bef30327b1dfdb7977cc6"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/03-handler/0001-handler.patch",
+    "sha256": "dc9ef3b99b1c64aa225c74031248bc7287e72496cbae90fa783c9d5da36185ae"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/03-handler/0002-handler_test.patch",
+    "sha256": "d8b2d8d6ef229c7cefb94272280b99c2a945f7f8b7c0f474e7cef09e616021cd"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/03-handler/0003-v4_handler_test.patch",
+    "sha256": "a617e950feaa95dbaa147f1788e68f79f1e93fd9b80ca6b9deb8e8f0bea3aae3"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/README.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/03-handler/README.md",
+    "sha256": "4fe4df076ae951f7bf19e5b8957dac687b9652c26412caab354b065d7c9d9b53"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/04-hook-us/0001-main.patch",
+    "sha256": "801da3cedaa56eba6522a31ff0d424e464e7fdb759e07351510c0eb1738fbea4"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/04-hook-us/0002-main_test.patch",
+    "sha256": "0a06b78f48944529ee19b822ee05d9c49b3b2fee4eec842177cfd20f56cac903"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/README.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/04-hook-us/README.md",
+    "sha256": "33aeaeaf7920241dab0766186d9a6c6f6813acfbe8de18893ef3f36ae39da9db"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/README.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/uyum-v4/README.md",
+    "sha256": "729d61b12af813129addcab3426a67a2df33a52aae5ce2619b87a02885300c09"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-0004-0012-combined-on-11.diff",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/api-r11/rebased-on-11/api-0004-0012-combined-on-11.diff",
+    "sha256": "9c8a4c45553d64ee60f2562aeac2f2020fb70ad90e5c4e49d0812415d10751a4"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-r11-additive-on-11+api+uyum-v4.diff",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/api-r11/rebased-on-11/api-r11-additive-on-11+api+uyum-v4.diff",
+    "sha256": "4a052e5bc7821aca5f5b749b816e05b4a155bf5dd773198b2f0b5120f9697f79"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/FULL_STACK_11+api+uyum-v4+additive.diff",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/api-r11/rebased-on-11/FULL_STACK_11+api+uyum-v4+additive.diff",
+    "sha256": "c602879b7a0949b7bed38b47ac50219bcb65939aeba38dd770fde4aab6054d78"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/REBASE_NOTU_TR.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/api-r11/rebased-on-11/REBASE_NOTU_TR.md",
+    "sha256": "7c84c1c2ba4ac4a9362724662c2ef9ff5961e3e609d3036218e5b11731e61441"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/r10-grace-overflow-fix.diff",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/api-r11/fix-grace-overflow-on-11/r10-grace-overflow-fix.diff",
+    "sha256": "84a42e17b55f94f76dbf25122d62a13d307e93bea495f5ad1145a4ec04b951d3"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/README.md",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/api-r11/fix-grace-overflow-on-11/README.md",
+    "sha256": "70eaf7e8b3df621e984aa4e1cb795cdc16807523f5cd831f18d0bf15932df962"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/fix-grace-overflow-on-11.diff",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/api-r11/fix-grace-overflow-on-11/fix-grace-overflow-on-11.diff",
+    "sha256": "df1ae528483634405cb6b21f3c3a0dd3481db9d2f808b2e10f7991d994c07c28"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_06_de_ru.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/global_i18n_06_de_ru.patch",
+    "sha256": "83aaca5d4a3aeb8cf7d4ed0e3854d0c3408d1553bb139ddb2eee22f8b5d013c6"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_04_errors.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/global_i18n_04_errors.patch",
+    "sha256": "1c937497ee30ef7de86245b2fa4e2b6668b8660e2db62017bd7a7c2db5864991"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_08b_fx_unsigned.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/global_i18n_08b_fx_unsigned.patch",
+    "sha256": "e9cdd2e1206f085c7117688f84f755b5c9543fd37f25046304b58a6b506a3a2a"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_03_pref.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/global_i18n_03_pref.patch",
+    "sha256": "ba8845c5f34855d8f2f2fa49a055c4e9d20698c9fbd7572462531c2746f6b58e"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_panel_core.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/global_i18n_panel_core.patch",
+    "sha256": "e4f10a339c78818ceddbc49e2f687b4ee80afa86a7fce9d407c22bd8536892c7"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/global_i18n_02_gui_strings.patch",
+    "sha256": "314fab48b009f06e221ce140758724105b9f5b972c69d0c15c7ad2c9db8d3669"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_05_email_loader.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/global_i18n_05_email_loader.patch",
+    "sha256": "7c917564df055f151f8bd0a0b334a09e248db1481723123196fbfb0377093f3d"
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_07_mail_de_ru.patch",
+    "copy": "/workspace/us-panel-dev/scratch/review-20261108/uyum-v41/inputs/patches/global_i18n_07_mail_de_ru.patch",
+    "sha256": "70acc9b0789a982c2abfe3b0e6f3febbf62db16cf3957343e7fc916f50efae18"
+  }
+]

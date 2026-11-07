@@ -1,0 +1,242 @@
+{
+  "results": [
+    {
+      "name": "local_user_0_register",
+      "status": "PASS",
+      "detail": {
+        "http": 201,
+        "fixture": "local-only; SMTP disabled"
+      }
+    },
+    {
+      "name": "local_user_0_login",
+      "status": "PASS",
+      "detail": {
+        "http": 200
+      }
+    },
+    {
+      "name": "local_user_1_register",
+      "status": "PASS",
+      "detail": {
+        "http": 201,
+        "fixture": "local-only; SMTP disabled"
+      }
+    },
+    {
+      "name": "local_user_1_login",
+      "status": "PASS",
+      "detail": {
+        "http": 200
+      }
+    },
+    {
+      "name": "local_two_distinct_balances",
+      "status": "PASS",
+      "detail": {
+        "remaining": [
+          10,
+          20
+        ]
+      }
+    },
+    {
+      "name": "local_cross_user_redeem_denied",
+      "status": "PASS",
+      "detail": {
+        "http": 409,
+        "operation": "A tries to attach B-owned license"
+      }
+    },
+    {
+      "name": "local_cross_user_settle_denied",
+      "status": "PASS",
+      "detail": {
+        "http": 409
+      }
+    },
+    {
+      "name": "local_owner_release",
+      "status": "PASS",
+      "detail": {
+        "http": 200
+      }
+    },
+    {
+      "name": "local_history_isolation",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "B_reservation_visible_to_A": false
+      }
+    },
+    {
+      "name": "local_body_cannot_switch_user",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "remaining": 10
+      }
+    },
+    {
+      "name": "local_authenticated_traversal_query",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "scope": "authenticated account balance ignores unsupported path/command query; no model dispatch",
+        "not_covered": "hook has no file or terminal endpoint; panel tests separate"
+      }
+    },
+    {
+      "name": "local_authenticated_injection_query",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "scope": "authenticated account balance ignores unsupported path/command query; no model dispatch",
+        "not_covered": "hook has no file or terminal endpoint; panel tests separate"
+      }
+    },
+    {
+      "name": "local_hook_filesystem_terminal_resources",
+      "status": "NOT TESTED",
+      "detail": "Standalone hook exposes credits/accounts/model routes, not files/terminal. Query probes cannot establish workspace OS isolation."
+    },
+    {
+      "name": "local_session_signature_forgery",
+      "status": "PASS",
+      "detail": {
+        "http": 401
+      }
+    },
+    {
+      "name": "local_login_rate_limit",
+      "status": "PASS",
+      "detail": {
+        "http_codes": [
+          401,
+          401,
+          401,
+          401,
+          401,
+          401,
+          401,
+          401,
+          429,
+          429,
+          429
+        ],
+        "max_requests": 11,
+        "scope": "real hook account IP limiter; not nginx model-path limiter"
+      }
+    },
+    {
+      "name": "local_balances_preserved",
+      "status": "PASS",
+      "detail": {
+        "before": [
+          10,
+          20
+        ],
+        "after": [
+          10,
+          20
+        ]
+      }
+    },
+    {
+      "name": "local_load_1",
+      "status": "FAIL",
+      "detail": {
+        "n": 1,
+        "http": {
+          "503": 1
+        },
+        "p50_ms": 1.017,
+        "p95_ms": 1.017,
+        "credit_consistency": true,
+        "unexpected_error_rate": 1.0,
+        "ttft_p50_ms": null,
+        "scope": "mock SSE total and first content-token latency; queue wait not separately instrumented; not real GPU"
+      }
+    },
+    {
+      "name": "local_load_5",
+      "status": "FAIL",
+      "detail": {
+        "n": 5,
+        "http": {
+          "503": 5
+        },
+        "p50_ms": 1.252,
+        "p95_ms": 1.398,
+        "credit_consistency": true,
+        "unexpected_error_rate": 1.0,
+        "ttft_p50_ms": null,
+        "scope": "mock SSE total and first content-token latency; queue wait not separately instrumented; not real GPU"
+      }
+    },
+    {
+      "name": "local_load_10",
+      "status": "FAIL",
+      "detail": {
+        "n": 10,
+        "http": {
+          "503": 10
+        },
+        "p50_ms": 1.692,
+        "p95_ms": 3.551,
+        "credit_consistency": true,
+        "unexpected_error_rate": 1.0,
+        "ttft_p50_ms": null,
+        "scope": "mock SSE total and first content-token latency; queue wait not separately instrumented; not real GPU"
+      }
+    },
+    {
+      "name": "local_load_25",
+      "status": "FAIL",
+      "detail": {
+        "n": 25,
+        "http": {
+          "503": 25
+        },
+        "p50_ms": 1.951,
+        "p95_ms": 3.101,
+        "credit_consistency": true,
+        "unexpected_error_rate": 1.0,
+        "ttft_p50_ms": null,
+        "scope": "mock SSE total and first content-token latency; queue wait not separately instrumented; not real GPU"
+      }
+    },
+    {
+      "name": "local_load_50",
+      "status": "FAIL",
+      "detail": {
+        "n": 50,
+        "http": {
+          "503": 50
+        },
+        "p50_ms": 3.124,
+        "p95_ms": 5.064,
+        "credit_consistency": true,
+        "unexpected_error_rate": 1.0,
+        "ttft_p50_ms": null,
+        "scope": "mock SSE total and first content-token latency; queue wait not separately instrumented; not real GPU"
+      }
+    },
+    {
+      "name": "local_actual_panel_file_terminal_boundaries",
+      "status": "PASS",
+      "detail": {
+        "exit_code": 0,
+        "log": "sec8-panel-boundaries.log",
+        "scope": "actual panel functions via overlay; no product source writes; not OS sandbox proof"
+      }
+    }
+  ],
+  "counts": {
+    "PASS": 16,
+    "FAIL": 5,
+    "BLOCKED": 0,
+    "NOT TESTED": 1
+  }
+}

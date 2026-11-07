@@ -1,0 +1,37 @@
+API_R11_PATHS:
+diff --git a/apiv1/README.md b/apiv1/README.md
+diff --git a/apiv1/errors.go b/apiv1/errors.go
+diff --git a/apiv1/version.go b/apiv1/version.go
+diff --git a/apiv1/version_test.go b/apiv1/version_test.go
+diff --git a/cmd/us-license-hook/main.go b/cmd/us-license-hook/main.go
+GLOBAL:
+diff --git a/gui.go b/gui.go
+diff --git a/gui.html b/gui.html
+diff --git a/gui_i18n_test.go b/gui_i18n_test.go
+diff --git a/i18n/http.go b/i18n/http.go
+diff --git a/i18n/locales/en.json b/i18n/locales/en.json
+diff --git a/i18n/locales/tr.json b/i18n/locales/tr.json
+diff --git a/gui.go b/gui.go
+diff --git a/gui.html b/gui.html
+diff --git a/gui_lang.go b/gui_lang.go
+diff --git a/gui_lang_security_test.go b/gui_lang_security_test.go
+diff --git a/gui_lang_test.go b/gui_lang_test.go
+diff --git a/i18n/pref.go b/i18n/pref.go
+diff --git a/i18n/pref_security_unix_test.go b/i18n/pref_security_unix_test.go
+diff --git a/i18n/pref_test.go b/i18n/pref_test.go
+diff --git a/i18n/pref_unix.go b/i18n/pref_unix.go
+diff --git a/i18n/pref_windows.go b/i18n/pref_windows.go
+diff --git a/gui.go b/gui.go
+diff --git a/gui_errors_i18n_test.go b/gui_errors_i18n_test.go
+diff --git a/gui_lang.go b/gui_lang.go
+diff --git a/i18n/locales/en.json b/i18n/locales/en.json
+diff --git a/i18n/locales/tr.json b/i18n/locales/tr.json
+diff --git a/kanus/i18n_mail.py b/kanus/i18n_mail.py
+diff --git a/kanus/locales/en.json b/kanus/locales/en.json
+diff --git a/kanus/locales/tr.json b/kanus/locales/tr.json
+diff --git a/kanus/test_i18n_mail.py b/kanus/test_i18n_mail.py
+diff --git a/i18n/i18n.go b/i18n/i18n.go
+diff --git a/i18n/i18n_test.go b/i18n/i18n_test.go
+diff --git a/i18n/locales/en.json b/i18n/locales/en.json
+diff --git a/i18n/locales/tr.json b/i18n/locales/tr.json
+overlap:

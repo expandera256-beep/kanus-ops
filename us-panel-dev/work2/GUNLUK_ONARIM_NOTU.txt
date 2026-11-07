@@ -1,0 +1,10 @@
+US — SON GÜNLÜK ONARIMI
+
+DURUM: Tüm Go testleri geçti; Windows x64 EXE derlendi. Gerçek Windows paneli ve canlı model üzerinde bu düzeltme henüz sınanmadı.
+
+Gözlenen sorunlar ve değişiklikler:
+1. Kısa kullanıcı istemi, otomatik eklenen uzun dosya listesi yüzünden uzun istem sayılıyordu. Sınıflandırma artık kullanıcı metnine dayanır. Dosya seçimi için dizin listesi sınırlandırılır; sonraki çağrıda liste yerine seçilen dosya içeriğine yer bırakılır. Tam okunmayan dosya üzerine yazma yasağı korunur.
+2. "çalıştırma komutunu düzelt" ifadesi, kelime parçası eşleşmesiyle programı başlatabiliyordu. Çalıştırma algısı belirli emir sözcüklerini esas alır.
+3. Çöken programın sadece ilk üç çıktısı gösterildiği için hata sonu kayboluyordu. Artık son hata satırları gösterilir ve çıktı tamponu son bölümü tutar.
+
+Mevcut Uvicorn kaydı istisnanın sonunu içermediğinden gerçek uygulama hatasının nedeni bu kayıttan doğrulanamadı. Gerçek panel ve model üzerinde ayrıca sınanmalıdır.

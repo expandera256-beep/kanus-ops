@@ -1,0 +1,44 @@
+{
+  "collected_at": "2026-11-08T00:26:46.591323+03:00",
+  "tcmb_date": "06.11.2026",
+  "usdtry_selling": 50.0724,
+  "daily_gross_06_try": 1042.204191,
+  "daily_gross_07_partial_try": 88.22017700000002,
+  "daily_net_06_try": -6.9999999909839415e-06,
+  "daily_net_07_try": 5.999999998965868e-06,
+  "monthly_mtd_gross_try": 11180.25375,
+  "monthly_mtd_net_try": -5.20000000326574e-05,
+  "monthly_06_runrate_try": 31266.12573,
+  "month_forecast_actual_to06_plus24days_try": 36104.934157,
+  "monthly_complete01to06_runrate_try": 55460.167865,
+  "fixed_daily_try": 123.39638400000004,
+  "fixed_monthly_try": 3701.891520000001,
+  "a100_observed_hourly_try": 92.18514914283618,
+  "top5": [
+    {
+      "service": "Compute Engine",
+      "sku": "Nvidia Tesla A100 GPU attached to Spot Preemptible VMs running in Netherlands",
+      "gross_try": 363.075079
+    },
+    {
+      "service": "Compute Engine",
+      "sku": "C4N Instance Core running in Iowa",
+      "gross_try": 183.337192
+    },
+    {
+      "service": "Compute Engine",
+      "sku": "C4N Instance Ram running in Iowa",
+      "gross_try": 161.48733900000005
+    },
+    {
+      "service": "Cloud SQL",
+      "sku": "Cloud SQL for PostgreSQL: Zonal - vCPU in Netherlands",
+      "gross_try": 90.50396000000003
+    },
+    {
+      "service": "Cloud SQL",
+      "sku": "Cloud SQL for PostgreSQL: Zonal - RAM in Netherlands",
+      "gross_try": 57.56172000000002
+    }
+  ]
+}

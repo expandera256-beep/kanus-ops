@@ -1,0 +1,405 @@
+{
+  "results": [
+    {
+      "name": "local_user_0_register",
+      "status": "PASS",
+      "detail": {
+        "http": 201,
+        "fixture": "local-only; SMTP disabled"
+      }
+    },
+    {
+      "name": "local_user_0_login",
+      "status": "PASS",
+      "detail": {
+        "http": 200
+      }
+    },
+    {
+      "name": "local_user_1_register",
+      "status": "PASS",
+      "detail": {
+        "http": 201,
+        "fixture": "local-only; SMTP disabled"
+      }
+    },
+    {
+      "name": "local_user_1_login",
+      "status": "PASS",
+      "detail": {
+        "http": 200
+      }
+    },
+    {
+      "name": "local_two_distinct_balances",
+      "status": "PASS",
+      "detail": {
+        "remaining": [
+          10,
+          20
+        ]
+      }
+    },
+    {
+      "name": "local_cross_user_redeem_denied",
+      "status": "PASS",
+      "detail": {
+        "http": 409,
+        "operation": "A tries to attach B-owned license"
+      }
+    },
+    {
+      "name": "local_cross_user_settle_denied",
+      "status": "PASS",
+      "detail": {
+        "http": 409
+      }
+    },
+    {
+      "name": "local_owner_release",
+      "status": "PASS",
+      "detail": {
+        "http": 200
+      }
+    },
+    {
+      "name": "local_history_isolation",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "B_reservation_visible_to_A": false
+      }
+    },
+    {
+      "name": "local_query_cannot_switch_user",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "remaining": 10
+      }
+    },
+    {
+      "name": "local_authenticated_traversal_query",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "scope": "authenticated account balance ignores unsupported path/command query; no model dispatch",
+        "not_covered": "hook has no file or terminal endpoint; panel tests separate"
+      }
+    },
+    {
+      "name": "local_authenticated_injection_query",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "scope": "authenticated account balance ignores unsupported path/command query; no model dispatch",
+        "not_covered": "hook has no file or terminal endpoint; panel tests separate"
+      }
+    },
+    {
+      "name": "local_hook_filesystem_terminal_resources",
+      "status": "NOT TESTED",
+      "detail": "Standalone hook exposes credits/accounts/model routes, not files/terminal. Query probes cannot establish workspace OS isolation."
+    },
+    {
+      "name": "local_session_signature_forgery",
+      "status": "PASS",
+      "detail": {
+        "http": 401
+      }
+    },
+    {
+      "name": "local_login_rate_limit",
+      "status": "PASS",
+      "detail": {
+        "http_codes": [
+          401,
+          401,
+          401,
+          401,
+          401,
+          401,
+          401,
+          401,
+          429,
+          429,
+          429
+        ],
+        "max_requests": 11,
+        "scope": "real hook account IP limiter; not nginx model-path limiter"
+      }
+    },
+    {
+      "name": "local_balances_preserved",
+      "status": "PASS",
+      "detail": {
+        "before": [
+          10,
+          20
+        ],
+        "after": [
+          10,
+          20
+        ]
+      }
+    },
+    {
+      "name": "local_load_1",
+      "status": "FAIL",
+      "detail": {
+        "n": 1,
+        "http": {
+          "400": 1
+        },
+        "p50_ms": 0.536,
+        "p95_ms": 0.536,
+        "credit_consistency": true,
+        "unexpected_error_rate": 1.0,
+        "scope": "mock SSE total latency; not real GPU, TTFT or queue wait"
+      }
+    },
+    {
+      "name": "local_load_5",
+      "status": "FAIL",
+      "detail": {
+        "n": 5,
+        "http": {
+          "400": 5
+        },
+        "p50_ms": 1.18,
+        "p95_ms": 1.202,
+        "credit_consistency": true,
+        "unexpected_error_rate": 1.0,
+        "scope": "mock SSE total latency; not real GPU, TTFT or queue wait"
+      }
+    },
+    {
+      "name": "local_load_10",
+      "status": "FAIL",
+      "detail": {
+        "n": 10,
+        "http": {
+          "400": 10
+        },
+        "p50_ms": 2.368,
+        "p95_ms": 4.484,
+        "credit_consistency": true,
+        "unexpected_error_rate": 1.0,
+        "scope": "mock SSE total latency; not real GPU, TTFT or queue wait"
+      }
+    },
+    {
+      "name": "local_load_25",
+      "status": "FAIL",
+      "detail": {
+        "n": 25,
+        "http": {
+          "400": 25
+        },
+        "p50_ms": 1.918,
+        "p95_ms": 4.146,
+        "credit_consistency": true,
+        "unexpected_error_rate": 1.0,
+        "scope": "mock SSE total latency; not real GPU, TTFT or queue wait"
+      }
+    },
+    {
+      "name": "local_load_50",
+      "status": "FAIL",
+      "detail": {
+        "n": 50,
+        "http": {
+          "400": 50
+        },
+        "p50_ms": 3.289,
+        "p95_ms": 4.877,
+        "credit_consistency": true,
+        "unexpected_error_rate": 1.0,
+        "scope": "mock SSE total latency; not real GPU, TTFT or queue wait"
+      }
+    },
+    {
+      "name": "remote_health",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "expected": [
+          200
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_license_forgery",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_token_forgery",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_missing_auth",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_hmac_missing",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_hmac_wrong",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_traversal_auth_gate",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_traversal_encoded_route",
+      "status": "PASS",
+      "detail": {
+        "http": 400,
+        "expected": [
+          400,
+          401,
+          404
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_injection_auth_gate",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_rate_limit",
+      "status": "NOT TESTED",
+      "detail": {
+        "cap": 12,
+        "concurrency": 2,
+        "requests": [
+          {
+            "index": 0,
+            "http": 401,
+            "total_ms": 1302.481
+          },
+          {
+            "index": 1,
+            "http": 401,
+            "total_ms": 1299.751
+          },
+          {
+            "index": 2,
+            "http": 401,
+            "total_ms": 1385.371
+          },
+          {
+            "index": 3,
+            "http": 401,
+            "total_ms": 1398.46
+          },
+          {
+            "index": 4,
+            "http": 401,
+            "total_ms": 801.232
+          },
+          {
+            "index": 5,
+            "http": 401,
+            "total_ms": 1997.958
+          },
+          {
+            "index": 6,
+            "http": 401,
+            "total_ms": 1400.247
+          },
+          {
+            "index": 7,
+            "http": 401,
+            "total_ms": 588.412
+          },
+          {
+            "index": 8,
+            "http": 401,
+            "total_ms": 1816.531
+          },
+          {
+            "index": 9,
+            "http": 401,
+            "total_ms": 1399.55
+          },
+          {
+            "index": 10,
+            "http": 401,
+            "total_ms": 2815.453
+          },
+          {
+            "index": 11,
+            "http": 401,
+            "total_ms": 2783.123
+          }
+        ],
+        "reason": "429 görülmezse düşük hacimle enforcement kanıtlanamaz; trafik artırılmaz"
+      }
+    },
+    {
+      "name": "remote_cross_license_status",
+      "status": "BLOCKED",
+      "detail": "İki private QA lisans dosyası yok; dosyalar bir kez daha çalışma sonunda kontrol edilebilir."
+    }
+  ],
+  "counts": {
+    "PASS": 24,
+    "FAIL": 5,
+    "BLOCKED": 1,
+    "NOT TESTED": 2
+  }
+}

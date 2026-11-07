@@ -1,0 +1,11 @@
+Creating temporary archive of 39 file(s) totalling 143.4 KiB before compression.
+Uploading tarball of [.] to [gs://us-build-247516932580-euw4/source/1794088921.012929-007801b654f348fe8b4b20f8b6a15058.tgz]
+Created [https://cloudbuild.googleapis.com/v1/projects/project-27082a40-6083-4952-9db/locations/europe-west4/builds/1a5bfe03-50f1-417e-8422-4eb1b5803d5c].
+Logs are available at [ https://console.cloud.google.com/cloud-build/builds;region=europe-west4/1a5bfe03-50f1-417e-8422-4eb1b5803d5c?project=247516932580 ].
+
+gcloud builds submit only displays logs from Cloud Storage. To view logs from Cloud Logging, run:
+gcloud beta builds submit
+
+Waiting for build to complete. Polling interval: 1 second(s).
+ID                                    CREATE_TIME                DURATION  SOURCE                                                                                         IMAGES                                                                                                       STATUS
+1a5bfe03-50f1-417e-8422-4eb1b5803d5c  2026-11-07T22:02:03+00:00  22S       gs://us-build-247516932580-euw4/source/1794088921.012929-007801b654f348fe8b4b20f8b6a15058.tgz  europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway:2026-11-08-sre-watchdog-ready  SUCCESS

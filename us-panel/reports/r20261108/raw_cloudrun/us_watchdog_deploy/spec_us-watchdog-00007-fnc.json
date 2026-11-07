@@ -1,0 +1,75 @@
+{
+  "sa": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+  "env": [
+    {
+      "name": "US_ENV",
+      "value": "production"
+    },
+    {
+      "name": "US_APP_FACTORY",
+      "value": "runtime:watchdog_app()"
+    },
+    {
+      "name": "US_WORKERS_CONFIG",
+      "value": "/secrets/policy/workers.json"
+    },
+    {
+      "name": "US_MODEL_CA_FILE",
+      "value": "/secrets/ca/ca.pem"
+    },
+    {
+      "name": "US_COMMERCE_DB",
+      "valueFrom": {
+        "secretKeyRef": {
+          "key": "latest",
+          "name": "us-postgres-dsn"
+        }
+      }
+    },
+    {
+      "name": "US_MODEL_API_TOKEN",
+      "valueFrom": {
+        "secretKeyRef": {
+          "key": "latest",
+          "name": "us-model-token"
+        }
+      }
+    },
+    {
+      "name": "US_ALLOW_DISCARD_LOCAL_SSD",
+      "value": "1"
+    }
+  ],
+  "vol": [
+    {
+      "name": "policy",
+      "secret": {
+        "items": [
+          {
+            "key": "latest",
+            "path": "workers.json"
+          }
+        ],
+        "secretName": "us-worker-policy"
+      }
+    },
+    {
+      "name": "ca",
+      "secret": {
+        "items": [
+          {
+            "key": "latest",
+            "path": "ca.pem"
+          }
+        ],
+        "secretName": "us-model-ca"
+      }
+    }
+  ],
+  "ann": {
+    "autoscaling.knative.dev/maxScale": "1",
+    "autoscaling.knative.dev/minScale": "0",
+    "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+    "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+  }
+}

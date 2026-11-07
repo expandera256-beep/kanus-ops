@@ -1,0 +1,41 @@
+=== RUN   TestCommitGraceFromEnvOverflowEdges
+=== RUN   TestCommitGraceFromEnvOverflowEdges/#00
+=== RUN   TestCommitGraceFromEnvOverflowEdges/_
+=== RUN   TestCommitGraceFromEnvOverflowEdges/0
+=== RUN   TestCommitGraceFromEnvOverflowEdges/-0
+=== RUN   TestCommitGraceFromEnvOverflowEdges/-1
+=== RUN   TestCommitGraceFromEnvOverflowEdges/900
+=== RUN   TestCommitGraceFromEnvOverflowEdges/901
+=== RUN   TestCommitGraceFromEnvOverflowEdges/+901
+=== RUN   TestCommitGraceFromEnvOverflowEdges/_901_
+=== RUN   TestCommitGraceFromEnvOverflowEdges/1s
+=== RUN   TestCommitGraceFromEnvOverflowEdges/abc
+=== RUN   TestCommitGraceFromEnvOverflowEdges/9999999999999999999999999
+=== RUN   TestCommitGraceFromEnvOverflowEdges/9223372036
+=== RUN   TestCommitGraceFromEnvOverflowEdges/9223372037
+    grace_overflow_test.go:25: input="9223372037" got=-2562047h47m16.709551616s want=15m0s
+=== RUN   TestCommitGraceFromEnvOverflowEdges/18446744074
+    grace_overflow_test.go:25: input="18446744074" got=290.448384ms want=15m0s
+=== RUN   TestCommitGraceFromEnvOverflowEdges/9223372036854775807
+    grace_overflow_test.go:25: input="9223372036854775807" got=-1s want=15m0s
+--- FAIL: TestCommitGraceFromEnvOverflowEdges (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/#00 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/_ (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/0 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/-0 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/-1 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/900 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/901 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/+901 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/_901_ (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/1s (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/abc (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/9999999999999999999999999 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/9223372036 (0.00s)
+    --- FAIL: TestCommitGraceFromEnvOverflowEdges/9223372037 (0.00s)
+    --- FAIL: TestCommitGraceFromEnvOverflowEdges/18446744074 (0.00s)
+    --- FAIL: TestCommitGraceFromEnvOverflowEdges/9223372036854775807 (0.00s)
+FAIL
+FAIL	kiyas/licensesrv	0.003s
+FAIL
+EXIT=1

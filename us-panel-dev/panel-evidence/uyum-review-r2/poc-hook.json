@@ -1,0 +1,22 @@
+{"Time":"2026-11-06T10:01:28.659258353+03:00","Action":"start","Package":"kiyas/cmd/us-license-hook"}
+{"Time":"2026-11-06T10:01:28.669609656+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention"}
+{"Time":"2026-11-06T10:01:28.669674798+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"=== RUN   TestPanelR2ProductionMuxDisabledAndRetention\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:31.549473951+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"    zz_panel_r2_test.go:4: PASS production mux disabled erase routes404\n"}
+{"Time":"2026-11-06T10:01:31.549667938+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"    zz_panel_r2_test.go:5: CONFIRMED production mount ignores US_PRIVACY_RETENTION_DAYS=1 and uses90 days\n"}
+{"Time":"2026-11-06T10:01:31.549994851+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"--- PASS: TestPanelR2ProductionMuxDisabledAndRetention (2.88s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:31.55009832+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Elapsed":2.88}
+{"Time":"2026-11-06T10:01:31.5515454+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention"}
+{"Time":"2026-11-06T10:01:31.551560754+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"=== RUN   TestPanelR2ProductionMuxDisabledAndRetention\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:34.736593002+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"    zz_panel_r2_test.go:4: PASS production mux disabled erase routes404\n"}
+{"Time":"2026-11-06T10:01:34.736644311+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"    zz_panel_r2_test.go:5: CONFIRMED production mount ignores US_PRIVACY_RETENTION_DAYS=1 and uses90 days\n"}
+{"Time":"2026-11-06T10:01:34.736655707+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"--- PASS: TestPanelR2ProductionMuxDisabledAndRetention (3.18s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:34.736658682+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Elapsed":3.18}
+{"Time":"2026-11-06T10:01:34.736665424+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention"}
+{"Time":"2026-11-06T10:01:34.736668386+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"=== RUN   TestPanelR2ProductionMuxDisabledAndRetention\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:37.986966429+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"    zz_panel_r2_test.go:4: PASS production mux disabled erase routes404\n"}
+{"Time":"2026-11-06T10:01:37.987009833+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"    zz_panel_r2_test.go:5: CONFIRMED production mount ignores US_PRIVACY_RETENTION_DAYS=1 and uses90 days\n"}
+{"Time":"2026-11-06T10:01:37.987288293+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Output":"--- PASS: TestPanelR2ProductionMuxDisabledAndRetention (3.25s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:37.987301478+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Test":"TestPanelR2ProductionMuxDisabledAndRetention","Elapsed":3.25}
+{"Time":"2026-11-06T10:01:37.987506108+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:01:38.992570122+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Output":"ok  \tkiyas/cmd/us-license-hook\t10.333s\n"}
+{"Time":"2026-11-06T10:01:38.992696916+03:00","Action":"pass","Package":"kiyas/cmd/us-license-hook","Elapsed":10.333}

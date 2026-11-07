@@ -1,0 +1,16 @@
+▶ kanus-sdk-ts
+  ✔ maps error envelope (27.140646ms)
+  ✔ retries on 429 Retry-After (9.050273ms)
+  ✔ sends api key header without leaking secret in toString (2.468162ms)
+  ✔ forwards Idempotency-Key (5.2316ms)
+  ✔ parses fragmented SSE (3.390912ms)
+  ✔ handles SSE disconnect without hang (2.709756ms)
+✔ kanus-sdk-ts (51.144682ms)
+ℹ tests 6
+ℹ suites 1
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 250.00867

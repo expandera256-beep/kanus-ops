@@ -1,0 +1,8 @@
+    zz_qa_audit12_test.go:48: synthetic_sibling_read=true state=success
+--- FAIL: TestQAAuditExecSiblingIsolation (0.02s)
+FAIL
+FAIL	kiyas	0.021s
+FAIL
+rc=1
+
+exit_code=0

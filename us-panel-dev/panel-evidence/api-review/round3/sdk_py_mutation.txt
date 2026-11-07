@@ -1,0 +1,20 @@
+F..........                                                              [100%]
+=================================== FAILURES ===================================
+_________________________ test_error_envelope_mapping __________________________
+
+mock_api = ('http://127.0.0.1:40749', <conftest.MockState object at 0x7f05f4ff52b0>)
+
+    def test_error_envelope_mapping(mock_api):
+        base, state = mock_api
+        c = KanusClient(base, Auth.session("usa1.fake.session"), max_retries=0, sleep=lambda _s: None)
+        with pytest.raises(KanusError) as ei:
+            c.credits_reserve()
+        err = ei.value
+>       assert err.status == 999
+E       AssertionError: assert 401 == 999
+E        +  where 401 = KanusError(status=401, code='unauthorized', request_id='req_test_1', raw='<redacted len=94>').status
+
+tests/test_client.py:17: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_client.py::test_error_envelope_mapping - AssertionError: as...
+1 failed, 10 passed in 4.10s

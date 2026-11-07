@@ -1,0 +1,10 @@
+=== RUN   TestHeadlessModesNoGUI
+--- PASS: TestHeadlessModesNoGUI (0.00s)
+=== RUN   TestHeadlessLicensedStatusAndHealth
+--- PASS: TestHeadlessLicensedStatusAndHealth (0.00s)
+=== RUN   TestHeadlessRejectsRedirectAndInvalidLicense
+--- PASS: TestHeadlessRejectsRedirectAndInvalidLicense (0.00s)
+=== RUN   TestHeadlessLogSurvivesMissingConsole
+--- PASS: TestHeadlessLogSurvivesMissingConsole (0.00s)
+PASS
+ok  	kiyas	0.009s

@@ -1,0 +1,1112 @@
+{
+  "data_source": "REAL_LOCAL_HOOK_SYNTHETIC_LICENSE",
+  "workload": "read-only GET /v1/credits/status, comparable future remote credit_status",
+  "levels": [
+    {
+      "concurrency": 1,
+      "n": 50,
+      "p50_ms": 0.241,
+      "p95_ms": 0.427,
+      "p99_ms": 0.596,
+      "throughput_rps": 3391.7390803348394,
+      "success_rate": 1.0,
+      "expected_debit": 0,
+      "actual_debit": 0,
+      "hold_after": 0,
+      "samples": [
+        {
+          "status": 200,
+          "elapsed_ms": 0.35568000021157786,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.2936290002253372,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.2416340003037476,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.3185900004609721,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.4055009994772263,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.37018500006524846,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.27883500024472596,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.24013399979594396,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.24895699971239083,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.21410799945442704,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.2091509995807428,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.24842699986038497,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.28329200085863704,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.22918699960428057,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.19352399976924062,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.19547200008673826,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.22772700049245032,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.2723440002228017,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.22926599922357127,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.3098329998465488,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.7019680006123963,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.48600599984638393,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.445271999524266,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.2782700003081118,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.21728299998358125,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.24414000017713988,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.31260200012184214,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.3122529997199308,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.28328400003374554,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.31197199950838694,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.24112800019793212,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.20857700019405456,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.20604200017260155,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.20404499991855118,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.250817000051029,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.20401799974933965,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.19823599996016128,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.1794479994714493,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.17302800006291363,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.1849609998316737,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.2296719994774321,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.23619500007043825,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.3935229997296119,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.3173400000378024,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.22335300036502304,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.2845700000762008,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.22166000053402968,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.22215199987840606,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.21170499985601055,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.20515200048976112,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "concurrency": 5,
+      "n": 50,
+      "p50_ms": 0.58,
+      "p95_ms": 2.189,
+      "p99_ms": 2.199,
+      "throughput_rps": 4976.644111503626,
+      "success_rate": 1.0,
+      "expected_debit": 0,
+      "actual_debit": 0,
+      "hold_after": 0,
+      "samples": [
+        {
+          "status": 200,
+          "elapsed_ms": 0.513120000505296,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.6602949997613905,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5732800000259886,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.4677120004998869,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5423900001915172,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.6488269991677953,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.6376139999701991,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.46567800018237904,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5800580001960043,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.488052000036987,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.49755100008042064,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5719539994970546,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.42999600009352434,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5615680001938017,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5162719999134424,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.4638479995264788,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.47367100069095613,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5339039998943917,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5511239996849326,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.4580120003083721,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.534105000042473,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5663330002789735,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5822930006615934,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.574036000216438,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.45372600015980424,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5026899998483714,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.4702930000348715,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5776649995823391,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.5803909998576273,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.4977729995516711,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.8571050002501579,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.774959999944258,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.7677189996684319,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.7442220003213151,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.7230330002130358,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.7566450003650971,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.651572000606393,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.6239620006454061,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.9150240002782084,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.9259569997084327,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.0639499996614177,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.9780230002434109,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.9540410001136479,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.9436020000066492,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.8464049997201073,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.20004200036783,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.181222999752208,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.1971870000925264,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.194984000198019,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.9599070001277141,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "concurrency": 10,
+      "n": 50,
+      "p50_ms": 1.111,
+      "p95_ms": 1.605,
+      "p99_ms": 1.664,
+      "throughput_rps": 6511.10084127099,
+      "success_rate": 1.0,
+      "expected_debit": 0,
+      "actual_debit": 0,
+      "hold_after": 0,
+      "samples": [
+        {
+          "status": 200,
+          "elapsed_ms": 1.6050140002334956,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.5392459999929997,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.418458000443934,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.4103470002737595,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.310388999627321,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.3331850004760781,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.210096000249905,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.211640000292391,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.1091400001532747,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.1493170004541753,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.6957220004769624,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.6306640000038897,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.6055780006354325,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.5833879997444456,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.5137689997573034,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.4965659993322333,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.4537339993694331,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.4070890001676162,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.3369939997573965,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.3510159997167648,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.2983119995624293,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.2230509992150473,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.1987529996986268,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.1437059993113508,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.1023380002370686,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.1298440003884025,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.0688760003176867,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.0649979994923342,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.1116329997093999,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.110039000195684,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.9096730000237585,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.0572450000836398,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.0248420003335923,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.8617039993623621,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.0541780002313317,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.7027210003798245,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.0063250001621782,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.9581320000506821,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.8586940002714982,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.954447999902186,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.7570409998152172,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.9811460004129913,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.0501280003154534,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.0064560001410428,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.9631659995648079,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.8371419999093632,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.688996999997471,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.645693999103969,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.913640999897325,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 0.8608910002294579,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "concurrency": 20,
+      "n": 60,
+      "p50_ms": 1.738,
+      "p95_ms": 2.471,
+      "p99_ms": 2.486,
+      "throughput_rps": 8210.442395994127,
+      "success_rate": 1.0,
+      "expected_debit": 0,
+      "actual_debit": 0,
+      "hold_after": 0,
+      "samples": [
+        {
+          "status": 200,
+          "elapsed_ms": 1.737009999487782,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.6489649997311062,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.636406000216084,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.588502999766206,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.7545520004205173,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.9135000002279412,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.5249959997163387,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.485517999753938,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.4209250002750196,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.8242790001750109,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.7838359999586828,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.8435179999869433,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.740401999995811,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.7704789997878834,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.722525000332098,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.581516999976884,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.5699909999966621,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.5025109996713581,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.3189900000725174,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.2997269996049,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.6055539999797475,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.4828829998805304,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.8584700001156307,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.9294200001240824,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.3888019993828493,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.7398660002072575,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.8141769996873336,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.3280640005177702,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.2987010004508193,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.2477849995775614,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.7287430000578752,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.6679840000506374,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.682332999735081,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.6225549998125643,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.4598320003642584,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.464271000259032,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.2132419997215038,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.398385999891616,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.1717269999280688,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.309736000621342,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.4236590004657046,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.476772000591154,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.485101000274881,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.4871320001693675,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.470642999469419,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.387761000136379,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.4410349997197045,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.3243969999384717,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.3326669997913996,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.237542000329995,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.2004120000929106,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.2703220001858426,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.1840839999640593,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.094542000122601,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.2426380000979407,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.0521870001175557,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 2.1651130000464036,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.9723860004887683,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.9082349999735015,
+          "valid": true
+        },
+        {
+          "status": 200,
+          "elapsed_ms": 1.9060149998040288,
+          "valid": true
+        }
+      ]
+    }
+  ]
+}

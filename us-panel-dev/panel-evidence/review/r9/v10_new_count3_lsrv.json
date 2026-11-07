@@ -1,0 +1,112 @@
+{"Time":"2026-11-06T09:34:41.888973086+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-06T09:34:41.897395376+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor"}
+{"Time":"2026-11-06T09:34:41.897441786+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor","Output":"=== RUN   TestGPUWakeHealthGuardAndWarmupFloor\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:41.897717712+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor","Output":"--- PASS: TestGPUWakeHealthGuardAndWarmupFloor (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:41.897755281+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor","Elapsed":0}
+{"Time":"2026-11-06T09:34:41.897801217+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences"}
+{"Time":"2026-11-06T09:34:41.897804702+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences","Output":"=== RUN   TestGPUWakeSequences\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:41.897945914+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd"}
+{"Time":"2026-11-06T09:34:41.897972989+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd","Output":"=== RUN   TestGPUWakeSequences/202_then_ready_on_3rd\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:41.921442391+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd","Output":"--- PASS: TestGPUWakeSequences/202_then_ready_on_3rd (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:41.921481293+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd","Elapsed":0.02}
+{"Time":"2026-11-06T09:34:41.921494025+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up"}
+{"Time":"2026-11-06T09:34:41.921497071+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up","Output":"=== RUN   TestGPUWakeSequences/200_already_up\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:41.927276071+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up","Output":"--- PASS: TestGPUWakeSequences/200_already_up (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:41.927326428+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up","Elapsed":0.01}
+{"Time":"2026-11-06T09:34:41.927339304+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences","Output":"--- PASS: TestGPUWakeSequences (0.03s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:41.927353051+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences","Elapsed":0.03}
+{"Time":"2026-11-06T09:34:41.927358667+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction"}
+{"Time":"2026-11-06T09:34:41.927364626+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction","Output":"=== RUN   TestGPUWakeAuthErrorAndTimeoutAndRedaction\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.085032261+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction","Output":"--- PASS: TestGPUWakeAuthErrorAndTimeoutAndRedaction (0.16s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.085061598+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction","Elapsed":0.16}
+{"Time":"2026-11-06T09:34:42.08506911+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight"}
+{"Time":"2026-11-06T09:34:42.08507175+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight","Output":"=== RUN   TestGPUWakeSingleflight\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.127861414+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight","Output":"--- PASS: TestGPUWakeSingleflight (0.04s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.127899047+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight","Elapsed":0.04}
+{"Time":"2026-11-06T09:34:42.12791567+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE"}
+{"Time":"2026-11-06T09:34:42.127918403+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE","Output":"=== RUN   TestGPUWakeProxyWarmingNoChargeThenSSE\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.194038032+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE","Output":"--- PASS: TestGPUWakeProxyWarmingNoChargeThenSSE (0.07s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.194067948+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE","Elapsed":0.07}
+{"Time":"2026-11-06T09:34:42.194085694+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop"}
+{"Time":"2026-11-06T09:34:42.194089063+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop","Output":"=== RUN   TestGPUWakeRestartAfterIdleStop\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.205551092+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop","Output":"--- PASS: TestGPUWakeRestartAfterIdleStop (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.205578933+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop","Elapsed":0.01}
+{"Time":"2026-11-06T09:34:42.205586227+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing"}
+{"Time":"2026-11-06T09:34:42.205588745+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing","Output":"=== RUN   TestGPUWakeFailedWarmupChargesNothing\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.311295971+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing","Output":"--- PASS: TestGPUWakeFailedWarmupChargesNothing (0.11s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.31133312+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing","Elapsed":0.11}
+{"Time":"2026-11-06T09:34:42.311458009+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor"}
+{"Time":"2026-11-06T09:34:42.311462359+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor","Output":"=== RUN   TestGPUWakeHealthGuardAndWarmupFloor\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.311532757+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor","Output":"--- PASS: TestGPUWakeHealthGuardAndWarmupFloor (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.311567473+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor","Elapsed":0}
+{"Time":"2026-11-06T09:34:42.311572824+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences"}
+{"Time":"2026-11-06T09:34:42.311575182+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences","Output":"=== RUN   TestGPUWakeSequences\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.311623764+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd"}
+{"Time":"2026-11-06T09:34:42.311629851+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd","Output":"=== RUN   TestGPUWakeSequences/202_then_ready_on_3rd\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.334727751+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd","Output":"--- PASS: TestGPUWakeSequences/202_then_ready_on_3rd (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.335332921+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd","Elapsed":0.02}
+{"Time":"2026-11-06T09:34:42.335353123+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up"}
+{"Time":"2026-11-06T09:34:42.335356396+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up","Output":"=== RUN   TestGPUWakeSequences/200_already_up\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.341230634+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up","Output":"--- PASS: TestGPUWakeSequences/200_already_up (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.341260864+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up","Elapsed":0.01}
+{"Time":"2026-11-06T09:34:42.341266629+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences","Output":"--- PASS: TestGPUWakeSequences (0.03s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.341272934+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences","Elapsed":0.03}
+{"Time":"2026-11-06T09:34:42.341275727+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction"}
+{"Time":"2026-11-06T09:34:42.341279138+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction","Output":"=== RUN   TestGPUWakeAuthErrorAndTimeoutAndRedaction\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.503590267+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction","Output":"--- PASS: TestGPUWakeAuthErrorAndTimeoutAndRedaction (0.16s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.503622668+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction","Elapsed":0.16}
+{"Time":"2026-11-06T09:34:42.503630729+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight"}
+{"Time":"2026-11-06T09:34:42.503632983+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight","Output":"=== RUN   TestGPUWakeSingleflight\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.547136863+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight","Output":"--- PASS: TestGPUWakeSingleflight (0.04s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.547165682+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight","Elapsed":0.04}
+{"Time":"2026-11-06T09:34:42.547171697+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE"}
+{"Time":"2026-11-06T09:34:42.547174125+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE","Output":"=== RUN   TestGPUWakeProxyWarmingNoChargeThenSSE\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.610707585+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE","Output":"--- PASS: TestGPUWakeProxyWarmingNoChargeThenSSE (0.06s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.61074973+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE","Elapsed":0.06}
+{"Time":"2026-11-06T09:34:42.610758809+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop"}
+{"Time":"2026-11-06T09:34:42.610763397+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop","Output":"=== RUN   TestGPUWakeRestartAfterIdleStop\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.621599369+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop","Output":"--- PASS: TestGPUWakeRestartAfterIdleStop (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.621631085+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop","Elapsed":0.01}
+{"Time":"2026-11-06T09:34:42.62164365+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing"}
+{"Time":"2026-11-06T09:34:42.621646675+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing","Output":"=== RUN   TestGPUWakeFailedWarmupChargesNothing\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.727082229+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing","Output":"--- PASS: TestGPUWakeFailedWarmupChargesNothing (0.11s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.727128863+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing","Elapsed":0.11}
+{"Time":"2026-11-06T09:34:42.727750095+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor"}
+{"Time":"2026-11-06T09:34:42.727769039+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor","Output":"=== RUN   TestGPUWakeHealthGuardAndWarmupFloor\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.727777068+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor","Output":"--- PASS: TestGPUWakeHealthGuardAndWarmupFloor (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.727780842+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeHealthGuardAndWarmupFloor","Elapsed":0}
+{"Time":"2026-11-06T09:34:42.727785998+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences"}
+{"Time":"2026-11-06T09:34:42.727789218+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences","Output":"=== RUN   TestGPUWakeSequences\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.727794766+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd"}
+{"Time":"2026-11-06T09:34:42.727797234+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd","Output":"=== RUN   TestGPUWakeSequences/202_then_ready_on_3rd\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.751762535+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd","Output":"--- PASS: TestGPUWakeSequences/202_then_ready_on_3rd (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.751797544+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/202_then_ready_on_3rd","Elapsed":0.02}
+{"Time":"2026-11-06T09:34:42.751821341+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up"}
+{"Time":"2026-11-06T09:34:42.751827111+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up","Output":"=== RUN   TestGPUWakeSequences/200_already_up\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.758875798+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up","Output":"--- PASS: TestGPUWakeSequences/200_already_up (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.758905104+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences/200_already_up","Elapsed":0.01}
+{"Time":"2026-11-06T09:34:42.758911027+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences","Output":"--- PASS: TestGPUWakeSequences (0.03s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.758918386+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSequences","Elapsed":0.03}
+{"Time":"2026-11-06T09:34:42.758921494+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction"}
+{"Time":"2026-11-06T09:34:42.758923822+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction","Output":"=== RUN   TestGPUWakeAuthErrorAndTimeoutAndRedaction\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.91716335+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction","Output":"--- PASS: TestGPUWakeAuthErrorAndTimeoutAndRedaction (0.16s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.917186321+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeAuthErrorAndTimeoutAndRedaction","Elapsed":0.16}
+{"Time":"2026-11-06T09:34:42.917191661+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight"}
+{"Time":"2026-11-06T09:34:42.917194619+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight","Output":"=== RUN   TestGPUWakeSingleflight\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.960045285+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight","Output":"--- PASS: TestGPUWakeSingleflight (0.04s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:42.960106205+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeSingleflight","Elapsed":0.04}
+{"Time":"2026-11-06T09:34:42.96012353+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE"}
+{"Time":"2026-11-06T09:34:42.960136107+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE","Output":"=== RUN   TestGPUWakeProxyWarmingNoChargeThenSSE\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:43.031240031+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE","Output":"--- PASS: TestGPUWakeProxyWarmingNoChargeThenSSE (0.07s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:43.031266995+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeProxyWarmingNoChargeThenSSE","Elapsed":0.07}
+{"Time":"2026-11-06T09:34:43.031277435+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop"}
+{"Time":"2026-11-06T09:34:43.031280772+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop","Output":"=== RUN   TestGPUWakeRestartAfterIdleStop\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:43.043223064+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop","Output":"--- PASS: TestGPUWakeRestartAfterIdleStop (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:43.043448329+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeRestartAfterIdleStop","Elapsed":0.01}
+{"Time":"2026-11-06T09:34:43.043474939+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing"}
+{"Time":"2026-11-06T09:34:43.043483412+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing","Output":"=== RUN   TestGPUWakeFailedWarmupChargesNothing\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:43.152900865+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing","Output":"--- PASS: TestGPUWakeFailedWarmupChargesNothing (0.11s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:43.152992943+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestGPUWakeFailedWarmupChargesNothing","Elapsed":0.11}
+{"Time":"2026-11-06T09:34:43.153106287+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:34:44.164433028+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"ok  \tkiyas/licensesrv\t2.275s\n"}
+{"Time":"2026-11-06T09:34:44.16448267+03:00","Action":"pass","Package":"kiyas/licensesrv","Elapsed":2.276}

@@ -1,0 +1,1002 @@
+[
+  {
+    "path": "deploy/host-hardening/backup/README.md",
+    "sha256": "dee3c0929221058967df5185f1a879056bddcbc27208934c57371738fe23435a"
+  },
+  {
+    "path": "deploy/host-hardening/backup/RESTORE.md",
+    "sha256": "8f241b30b22044248aa50a755d07a629f12fc0e46b88b8932d91481cf269731c"
+  },
+  {
+    "path": "deploy/host-hardening/backup/backup-us-license-hook-hourly.sh",
+    "sha256": "a47c11428072751c39a41248d7db1dd6a10065b48abf64657aa0b1b2608812b2"
+  },
+  {
+    "path": "deploy/host-hardening/backup/restore-us-license-hook-store.sh",
+    "sha256": "a918a6976a264f7173f70579bdb0dd58eeb2657ffcaae213977d8910668c412e"
+  },
+  {
+    "path": "prompt/KANUS_PROMPT_20261107.txt",
+    "sha256": "3c71bea9f9bc9325d370bd667cc2706e0aec0ecfadae74c8d51db0f2e0963663"
+  },
+  {
+    "path": "qa/audit12/README.md",
+    "sha256": "3cf75fdda7970de2a0dac57e9ca32aa6bf27a69ab9ae060f1bd20abf91575687"
+  },
+  {
+    "path": "qa/audit12/check_logs.py",
+    "sha256": "a0e7c59c18b875ca51ac142433e0cbf92646f5e5a1cf2c1a3d1d0e8df03bdee0"
+  },
+  {
+    "path": "qa/audit12/panel_audit_test.go",
+    "sha256": "1d4be65451d32d321ce9972d4fe0a4652b5f54e1cf7837590c48967c7668ed40"
+  },
+  {
+    "path": "qa/audit12/precheck.py",
+    "sha256": "b12544ca05c35263de75da26c5cb934c2528c0019d764c6c1737dad5d7c1a01a"
+  },
+  {
+    "path": "qa/audit12/run.py",
+    "sha256": "d79031caaf52a2c7e84ab4ea5fe41d7f95a48c612941c10fcfae8d78aeab1510"
+  },
+  {
+    "path": "qa/audit12/scan_secrets.py",
+    "sha256": "47788192224dca3b381eeb20585aae06ea3f6435af870e4a62071b768420c5bd"
+  },
+  {
+    "path": "qa/audit12/store_backup_test.go",
+    "sha256": "865e274d6b131c60f593f8cf147539114314fca97336655604c157c61818a940"
+  },
+  {
+    "path": "qa/audit12/test_data_security.py",
+    "sha256": "409df060c3fb0d2f9649ae354a5516be72f8ed70120c13d3188a9cd20adeac92"
+  },
+  {
+    "path": "reports/r20261108/QA_SECURITY_AUDIT_20261108.md",
+    "sha256": "81486cf5a1bd0887da9febcbf9b16be05ffa81859f8b42212705dba69adab8f5"
+  },
+  {
+    "path": "reports/r20261108/qa-findings/FINDING-01.md",
+    "sha256": "159b41652b7943067732913582c2b93587dfd50eef9cec8b989cbb9ba24426bb"
+  },
+  {
+    "path": "reports/r20261108/qa-findings/FINDING-02.md",
+    "sha256": "756fc09bee7c90e43d7e1290db973a6d6c9264f186305a9b7de7331b6d75aef3"
+  },
+  {
+    "path": "reports/r20261108/qa-findings/FINDING-03.md",
+    "sha256": "d6c87bf56a0607a7ea34dfac14b09f9a683c78d9712e045cb9191413b241cefc"
+  },
+  {
+    "path": "reports/r20261108/qa-findings/FINDING-04.md",
+    "sha256": "04f7a48e813b08205f22fae62967a53cb95ca886aeebe163d33c00d884e5cab6"
+  },
+  {
+    "path": "work2/kanus/README.md",
+    "sha256": "292529f889beb5bf4f49d7851be436413dbb20dc57529aeb0ac35f16b431eba6"
+  },
+  {
+    "path": "work2/kanus/account_store.py",
+    "sha256": "1f18cae688fe33d49642c0856011d0c73556446050b87b28038702165f011170"
+  },
+  {
+    "path": "work2/kanus/commerce_http.py",
+    "sha256": "1efe2e97f75a3556bb558b03b67bf7e64fe976c3f1483e1687f390bff91c185d"
+  },
+  {
+    "path": "work2/kanus/commercial_server.py",
+    "sha256": "07f690f348b1a8f10d047ce12144bc41e204c097892c4e98c588fda62a288da2"
+  },
+  {
+    "path": "work2/kanus/delivery.py",
+    "sha256": "1619e7f6b802cc5f16beee7b52ff77e1df6ee5377cbcbb8ca26e63b18a8558f0"
+  },
+  {
+    "path": "work2/kanus/deploy/README.md",
+    "sha256": "9705c63b95db7dd6bd2b3691baf1340862c7a4ed1c2e511d1853da606bd2c1aa"
+  },
+  {
+    "path": "work2/kanus/deploy/cloudbuild.yaml",
+    "sha256": "6bf72eded39efa9f3314719c0ee3d47f6121567179e1adc4d58ccb40818adfc9"
+  },
+  {
+    "path": "work2/kanus/deploy/gateway.service.yaml",
+    "sha256": "a7b2b9c1edd3c2f934bb115309af3932a7e006e82a9e9d15eccc39a2af55c2b1"
+  },
+  {
+    "path": "work2/kanus/deploy/gcp_apply.py",
+    "sha256": "675b098a1e97d4a2a57e1fee4a87db661385c9ded1b2563eacf69f44a96255a8"
+  },
+  {
+    "path": "work2/kanus/deploy/watchdog.service.yaml",
+    "sha256": "46f4b918fbd557bb2e868a29f4081d984f10951e9157656717fb87c83641aa64"
+  },
+  {
+    "path": "work2/kanus/deploy/worker_boot_guard.py",
+    "sha256": "7101ddef1430b3b9d7799d464072da42758a035d1b5d54ee873f9a2635a939e2"
+  },
+  {
+    "path": "work2/kanus/deploy/worker_preservation_probe.py",
+    "sha256": "39ca43bcaae30dc6c44a96dd3e5412920b25f0a5a277ba7243ba32f97f192d3d"
+  },
+  {
+    "path": "work2/kanus/deploy/worker_tls_setup.py",
+    "sha256": "b8eb817e307dcd319b94afc77f59644e519061f0d90221bfdaa14fb99167018d"
+  },
+  {
+    "path": "work2/kanus/gce_provider.py",
+    "sha256": "73a938e5ecb7a4333e2714adc7946f26865fb57d5936828b6541969a6e4535e3"
+  },
+  {
+    "path": "work2/kanus/inference_lifecycle.py",
+    "sha256": "61a8e0c99e48650f8106483dea167b606f95eda1991cb3730b9d56db6febde69"
+  },
+  {
+    "path": "work2/kanus/legacy_wake_migration.py",
+    "sha256": "45a0bb09071a5499533f3857b276e854e702f269e9eec88d250de3c72dfda80a"
+  },
+  {
+    "path": "work2/kanus/lifecycle_config.py",
+    "sha256": "1baf64185fee9284bbfc2d6cde40eb9cb1abae741a58569be3b87402b2a3f3d5"
+  },
+  {
+    "path": "work2/kanus/mail_worker.py",
+    "sha256": "6e138c54834f1198bf8f6bff90ad88b66a47d86665ef5c44561ebf9ab609defd"
+  },
+  {
+    "path": "work2/kanus/managed_inference.py",
+    "sha256": "2916e7bff753e9bd9a0bcd22adbcb2569143029cbb92a9e8fc392ddb4136418f"
+  },
+  {
+    "path": "work2/kanus/metering_admin.py",
+    "sha256": "191f2ecdb52b2a98066758df8f21bdf24828680acd1a842e7e208b4ec1923d70"
+  },
+  {
+    "path": "work2/kanus/metering_stream.py",
+    "sha256": "ba5d663cef6c8f3ea67e044d313a34d72ddb9249d500ef693f1cd1719c9ac3cb"
+  },
+  {
+    "path": "work2/kanus/model_gateway.py",
+    "sha256": "383421f69deea1d45bfb287afd4a5a930bc9de53b51818ffb3dddb6d45cac2db"
+  },
+  {
+    "path": "work2/kanus/runtime.py",
+    "sha256": "55a451eb7e5de76903d4d9a9b98624346ee60e3114973d22c355b74e6ca407ef"
+  },
+  {
+    "path": "work2/kanus/shopify_ledger.py",
+    "sha256": "ccaec5650ae68a5009272b8dd3fd289f21172e86c2d2542f23032c2469560249"
+  },
+  {
+    "path": "work2/kanus/smoke_real_model.py",
+    "sha256": "a6c7fc6b1054022bb8e9b4d693a85468cc5f754ea89e4c1cea4f19dfb0549810"
+  },
+  {
+    "path": "work2/kanus/storage.py",
+    "sha256": "7a1bc696cf742dd44b7f37b3131ac595eff52a3510e09396ac898090761fe9d2"
+  },
+  {
+    "path": "work2/kanus/test_account_store.py",
+    "sha256": "4838d6a4919268dca9ee5f2f7f1329c4b379f584ac49bd4b7e3d9940a64abdba"
+  },
+  {
+    "path": "work2/kanus/test_commerce_http.py",
+    "sha256": "068339e63d8c27f72b0e689299df9691006493e8cb4fccfb11f3cfd2ce1bc5ab"
+  },
+  {
+    "path": "work2/kanus/test_credit_packs.py",
+    "sha256": "815758a306f78bf92a0fa427743de6f1edb1db6511ea589de3c006a2e7b310ab"
+  },
+  {
+    "path": "work2/kanus/test_go_issuer_policy.py",
+    "sha256": "f8e3f3de9325c33e73e43414207d2a1456332682e88fb4017aa17dafbbe84792"
+  },
+  {
+    "path": "work2/kanus/test_hostinger_delivery.py",
+    "sha256": "630b50e87a4d0176a54639cd5a3d57ff111246669f0a8fad4e908be7b8dc18eb"
+  },
+  {
+    "path": "work2/kanus/test_inference_lifecycle.py",
+    "sha256": "6b3ff32e10b06616ff5f308802b7aaee4156de4b6c0ca4952869fef1379d9200"
+  },
+  {
+    "path": "work2/kanus/test_legacy_wake_migration.py",
+    "sha256": "4d251e9d4eb4da5f037cdbd6cfbcd8100856280635a0e06e410cba8bc7c2921b"
+  },
+  {
+    "path": "work2/kanus/test_managed_http.py",
+    "sha256": "ecf634d4dbed291b166d120c09f561180fb7e9a566d9bd33ba28521f0010a288"
+  },
+  {
+    "path": "work2/kanus/test_metered_reservations.py",
+    "sha256": "f610ff03a5788db1d1ed961ad9fff30d0aa8d62b003e0e685c41f629d3b4663e"
+  },
+  {
+    "path": "work2/kanus/test_postgres_contract.py",
+    "sha256": "104af964f7f2a1bcc889f86f080339c5869d316de17105c301b1376096ecb1dc"
+  },
+  {
+    "path": "work2/kanus/test_production_runtime.py",
+    "sha256": "5040d31fda792abe424e48139ef0925e7ea67d77e8840e063d86aafd55150951"
+  },
+  {
+    "path": "work2/kanus/test_shopify_ledger.py",
+    "sha256": "c1a45dcf1def0595e8f76ab7a9eeb2a3640628a4d3cf0a94e99199a9ce3b5a35"
+  },
+  {
+    "path": "work2/kiyas/term/account_auth_timeout_test.go",
+    "sha256": "4bfffaae78076723cbed6f9048cc3dfe5422ddfdd3abece90fc459df914b90dc"
+  },
+  {
+    "path": "work2/kiyas/term/account_client.go",
+    "sha256": "30af6d5fe6a597772c16e729d7e0a5a7fb6819e1e2fc2a9999ed4d76f92947e7"
+  },
+  {
+    "path": "work2/kiyas/term/account_client_test.go",
+    "sha256": "961671cd5822ec34ee5a05faac0e5f1abdc5abc3fd8ac2514b9127a2f3f1d859"
+  },
+  {
+    "path": "work2/kiyas/term/accounts_mode_round7_test.go",
+    "sha256": "ba830fcf75e41bbbe37dd7e97bece104daa845dca5e5360ab339a142d1e16b21"
+  },
+  {
+    "path": "work2/kiyas/term/agent.go",
+    "sha256": "e589ffa393686c0bb8b9d7e360e3510981f7f97a821cce5277d81e75747aa24f"
+  },
+  {
+    "path": "work2/kiyas/term/agent_test.go",
+    "sha256": "e5f082c1d66c19c54f62d662a8fb585a50e47c777adba7c94a5cbf2a9508bdc3"
+  },
+  {
+    "path": "work2/kiyas/term/cancellation_test.go",
+    "sha256": "5fff89c2ac4b237fc6336bf7d6d7c08e950eb638abc3af940f56c1a72b94f68e"
+  },
+  {
+    "path": "work2/kiyas/term/change_history.go",
+    "sha256": "59892b77b2287cb413003b8eac7900396a944974fa72981c16e449fc8f7dffdf"
+  },
+  {
+    "path": "work2/kiyas/term/change_history_test.go",
+    "sha256": "4d461f8ea023f0d86e147f50942d994bd0af6ff1c99671ccfc2eaa4fa9613d5c"
+  },
+  {
+    "path": "work2/kiyas/term/chat_quality_test.go",
+    "sha256": "6d8c7a0e31639f225e6cf98cf11295b3ca1dee34bb0107569bcb560d351ce3ba"
+  },
+  {
+    "path": "work2/kiyas/term/chat_test.go",
+    "sha256": "3ebe110fa02bb392a123aed516a3539c4b36b8c18f8c8ea3f5a54f699f26b521"
+  },
+  {
+    "path": "work2/kiyas/term/cloud_install.go",
+    "sha256": "0b773af5c2eea0efa1ab223e9b0c3bbe89da862510f1eb21c32305461e86312c"
+  },
+  {
+    "path": "work2/kiyas/term/cloud_install_test.go",
+    "sha256": "24f12326c28f3a65521ac39d3a774df230bceb3127ae20025e463bd80acc3cd5"
+  },
+  {
+    "path": "work2/kiyas/term/cloud_space.go",
+    "sha256": "9285b4f36d5945c2723c697538d5adf3eb87c91f5685746a39ed22e34a423c7c"
+  },
+  {
+    "path": "work2/kiyas/term/cloud_space_test.go",
+    "sha256": "4686ab12952d3fa2360bdabcd443c21c10f39625b04b56c7b6dfa8c05eeea7a7"
+  },
+  {
+    "path": "work2/kiyas/term/cmd/us-license-hook/accounts_routes_test.go",
+    "sha256": "08dd52b4c571c39c7f614e30dfae61a7232569d0aa7df100e3a9533705281f0f"
+  },
+  {
+    "path": "work2/kiyas/term/cmd/us-license-hook/main.go",
+    "sha256": "35b1cab2403f5231dac75f0957ab2f139d4be5458c9f0d208116e5bfeab07dbb"
+  },
+  {
+    "path": "work2/kiyas/term/cmd/us-license-hook/main_test.go",
+    "sha256": "26e0a889bcfb3731868d57c7e99c69ab9324fda69040b33b0fa6c35e94a15ba9"
+  },
+  {
+    "path": "work2/kiyas/term/cmd/us-license-hook/wake_defaults_test.go",
+    "sha256": "6b2e3b3d2f789e8085428cf2cbb912624fe388e9f699e8411d1f1d8cb4463c5f"
+  },
+  {
+    "path": "work2/kiyas/term/cmd/us-pricing-gen/main.go",
+    "sha256": "4ef4c014402d895d17eee8d9782e15de0043ab73fd61f19564a2fa553fa8f4c0"
+  },
+  {
+    "path": "work2/kiyas/term/commercial_policy.go",
+    "sha256": "7cd523087f2c5235b19593ecbaeb4882224b670ed8c26cc31ac1985ed12ef4f6"
+  },
+  {
+    "path": "work2/kiyas/term/commercial_policy_test.go",
+    "sha256": "5054c25df21914fc12fc593561c6cbb1522dd4a18bb3d5692da29db3220f7100"
+  },
+  {
+    "path": "work2/kiyas/term/context_budget_test.go",
+    "sha256": "caddfd4860ed3c22e93bc342cef0fe83b0d8167503c975c7c1e2bcb405eed9c6"
+  },
+  {
+    "path": "work2/kiyas/term/context_limits.go",
+    "sha256": "0746211785347a265157ba9f717b0dbd0feed530222c399376a0448d1838d8e8"
+  },
+  {
+    "path": "work2/kiyas/term/context_limits_test.go",
+    "sha256": "e94db9ba046d309bc2cfa03d58f3995cf11eab6c8cb32660154df3e6f3f6cccd"
+  },
+  {
+    "path": "work2/kiyas/term/continuation.go",
+    "sha256": "23dcfcfd7c842ee1a008358e60eefba646bcd2a9a1d14edd29c959493ea4bb8a"
+  },
+  {
+    "path": "work2/kiyas/term/continuation_test.go",
+    "sha256": "f7ffc7e7cc4746c49c21736bd2fe8f781457b48feac4bcb13463aa45a2e1eb9c"
+  },
+  {
+    "path": "work2/kiyas/term/core_safety_regression_test.go",
+    "sha256": "b8c0202c6167c923dd9435698164d643bf6ccdf4d2d96eefa8dc38939dc39160"
+  },
+  {
+    "path": "work2/kiyas/term/desk.go",
+    "sha256": "07e8417fe74e189b7897928e5046dc3e99ad5fe666261c2e238a6f55f0dd4fad"
+  },
+  {
+    "path": "work2/kiyas/term/editor_safety_test.go",
+    "sha256": "c8466632fdef14f04b955eec1b46b9724470348e6275f03b39e91379d838f2ee"
+  },
+  {
+    "path": "work2/kiyas/term/embedded_key.go",
+    "sha256": "b38c3c1c0a33eb34c38693c349e1be1ae9cc7f02fa239767c33a6a3037dce703"
+  },
+  {
+    "path": "work2/kiyas/term/embedded_license.go",
+    "sha256": "7d852156be572a217ea8f0b8c9a4e33eea6a92da8fa59ec5595e536a157c994b"
+  },
+  {
+    "path": "work2/kiyas/term/engine.go",
+    "sha256": "13b900a6e491ad51e69f8730147fceafa970c4d5ea3fc987fdbb9787d2eea322"
+  },
+  {
+    "path": "work2/kiyas/term/engine_test.go",
+    "sha256": "4dce40fbbca593500a7cd82b38f2640ec1258b134186646fdb5150a24b086335"
+  },
+  {
+    "path": "work2/kiyas/term/file_link_unix.go",
+    "sha256": "cda28ed6554e706d4db1b74f5f63485a2401594e3c1098fd8c444ce2cd2aedab"
+  },
+  {
+    "path": "work2/kiyas/term/file_link_windows.go",
+    "sha256": "77b4a3f43c20473bc80876ef6b73f1d656daf5e26617f75a993caa619cdde983"
+  },
+  {
+    "path": "work2/kiyas/term/file_open_unix.go",
+    "sha256": "8449314d28f90bb755d49209c44d048d8397462fe0a2e0abea2a9dc05442492a"
+  },
+  {
+    "path": "work2/kiyas/term/file_open_windows.go",
+    "sha256": "d230f22b3aac9d93b970c7993001916cb826cca7218a2936ddccd3da4537d7ba"
+  },
+  {
+    "path": "work2/kiyas/term/file_tools.go",
+    "sha256": "9bc2694fb98d7d185f6759d624a9589640b0838cea6bf3547167e4af40e73cfb"
+  },
+  {
+    "path": "work2/kiyas/term/file_tools_test.go",
+    "sha256": "ed15340729d1cde01cd01276f96d9a90865914610694111a438710b60e25efcf"
+  },
+  {
+    "path": "work2/kiyas/term/gateway.go",
+    "sha256": "461d90b89077d67f6530252be63df5221f47623520f3dcbd671a15c85ecee12d"
+  },
+  {
+    "path": "work2/kiyas/term/gateway_credit_test.go",
+    "sha256": "271db49f9e4f53f946796514fd20d935d890c03d29fba767524e4d9918230b5b"
+  },
+  {
+    "path": "work2/kiyas/term/gateway_test.go",
+    "sha256": "cb28becea0d10663ca2da6c7476256fa64549dfcc4e46bdd7b8179fa013833d4"
+  },
+  {
+    "path": "work2/kiyas/term/gpu_warming.go",
+    "sha256": "aa9b1e4ba1944d98e4d168c9a5a3ad011e877c39a19b51d2df30d1c528605ac0"
+  },
+  {
+    "path": "work2/kiyas/term/gpu_warming_test.go",
+    "sha256": "e2999f74082963dd9a4df8bf9b822eb9d205fe920f3d844346a565ba04380c9d"
+  },
+  {
+    "path": "work2/kiyas/term/gui.go",
+    "sha256": "04736ec480652c784519c15b01f99fe127914abf306696df24560a844118d2c6"
+  },
+  {
+    "path": "work2/kiyas/term/gui_test.go",
+    "sha256": "89d765938684db3dd0eaf65196cf9da0bf3b78e6035c58b995b2854c13fc06ba"
+  },
+  {
+    "path": "work2/kiyas/term/hook_release_test.go",
+    "sha256": "73036e09c3f842c50f6cafe24e691eef42937aa500bc367ace424b3bba7afeb5"
+  },
+  {
+    "path": "work2/kiyas/term/input.go",
+    "sha256": "7a8f00b7dbc4c59752164532a2d139791dfd7a4578551759e4325ed05214d203"
+  },
+  {
+    "path": "work2/kiyas/term/journal.go",
+    "sha256": "defdc4649effbc3f743ce27cae447dfb807e496e382b59c4cef7e3e6ab2ab98c"
+  },
+  {
+    "path": "work2/kiyas/term/journal_test.go",
+    "sha256": "bd1f285a5a007d4aa1bb979d3c3da6f6e7cde5efc919ecf37330e14f314bc0a0"
+  },
+  {
+    "path": "work2/kiyas/term/license.go",
+    "sha256": "7864894cc013b569b207cb5cc81dee815f5ef77ea58dc4443f223c1919f0893e"
+  },
+  {
+    "path": "work2/kiyas/term/license_test.go",
+    "sha256": "77a6d7d9f3a06f9d413328296a3cdab7ac6259bb22ada97914e2079016ba4efc"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/account_workers.go",
+    "sha256": "7d475996b4bbcd1b6f561c430e4e72c869454ff06a76c74e3a31dd2d9e37ecee"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/accounts.go",
+    "sha256": "e4df723471cf208cee1ff6acca3eaa2d23045765699c1aa153bfe22c9c8ec9c3"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/accounts_test.go",
+    "sha256": "2dba85fb45d39a13f70116828eda17e4933918b8eb0b0b44a74e08067e808fb6"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/api_regression_baseline_test.go",
+    "sha256": "87f6d2a1b21ebaf235e977cb551e2d83b0e5195d5379087c38a422d0027b0b96"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/b64.go",
+    "sha256": "8d0e19977b73e3bba195d14f736bb0fb231c705937fed98941e3acefcb6a6cb1"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/backpressure.go",
+    "sha256": "f629ad8b0472d127d84f29b7307411d952245483ab2caa08b15371833033930e"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/backpressure_test.go",
+    "sha256": "2639655a5a007f886315880a76fe43ed3c78221b82f0e2e8a658cae1eaa84bc3"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/bcrypt_limit_test.go",
+    "sha256": "f53134097200ca2c68904a382f327557d94179af178652f848a3a799bfc1140e"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/credit_status_test.go",
+    "sha256": "e18c05af4ebd5820f52856038ccaa0226a676fce4ec9a29a09b3fdb8fb05f9a7"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/credits.go",
+    "sha256": "ebaf335558061a28cb1ebd7880ad1404e8f0117a6bad51af421aacb085ecc275"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/credits_test.go",
+    "sha256": "fccd447295a9017964c78cbc1e8d3d54d02250ba50a928861c213c3a476fcf44"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/gpu_final_test.go",
+    "sha256": "b2f0dc990c476c08b73935e8d41b6a450f86511b07fc0f55acfb3b120ab1dc84"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/gpu_pin.go",
+    "sha256": "ed3c48f5f955d7d32bd81fe9771b86d7bbe0d8453518217ca21e2fb6b8fa40d0"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/gpu_pin_test.go",
+    "sha256": "6b737d19db917d01473777f178a234788f506c863649dd506e438905fe77ca80"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/gpu_transport_test.go",
+    "sha256": "03d1f46368c97deda0131c40ddff29292eb035c93783799b14c1b896da3cecc4"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/gpu_wake.go",
+    "sha256": "870ca39671b69b24fe5b57a58f421c4ddacc915c7fcbc124ad4a8c3b18125431"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/gpu_wake_test.go",
+    "sha256": "e00258292c27b921452a9bd87c259499f8b13be9fe4cf38cd9b59ccfc5e41a1e"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/idle_policy_test.go",
+    "sha256": "503699f59564fda759ad712160b14338eddc90aea15b5260239019fc8f9f5d86"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/licensesrv_test.go",
+    "sha256": "78b44de81c3b48326d0b32719ac608b629b7a314863570907a6500746c7f16b2"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/load_round6_test.go",
+    "sha256": "31637db9ecb141c18f7874d2c2adbbb134a1533538c8d4b1e8fbfbe82a6c7bc3"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/lock_unix.go",
+    "sha256": "7fb5addb8ac4897bfa71ad8b45de64d5ee47289fe9f734631eaf97082e915fef"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/lock_windows.go",
+    "sha256": "5fc04757193f2c39ada18ab02a4f2dbd2f52f0fd34936ecf030d621dde98da07"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/login_limiter.go",
+    "sha256": "eddf2605bc394f2707b10c6e30283e8d367fe425cbfee2b7e33c3e802b4c7a15"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/login_limiter_test.go",
+    "sha256": "3c57ca1847d3a22e0fe2178f56c070928fe737275113eff6855b1ee0488f1750"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/mail.go",
+    "sha256": "94f1e1ef0d512178b8c3616c87435ed2e0e6c96d16e5a4d75741aec42d363a5f"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/model_meter.go",
+    "sha256": "5eccff6844639deb38acb9c5b3587bd70927fdbbed3dead3eb0e3a2cbedf679a"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/model_proxy.go",
+    "sha256": "867171f6ff3e22583763e05726ebae5f8a0fe13dd238854d16b855736826c08d"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/model_proxy_deadline_test.go",
+    "sha256": "7ad19f93d351317b10d1abb667f9bfe42e321dc6e6fbf3fdaa951097ababfdd3"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/model_proxy_test.go",
+    "sha256": "d6295ea8ffacd7fbcd4e0be75439fbd9f29fb283ef4f6078235aa388dc3f32bb"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/order_name_test.go",
+    "sha256": "620274834fb1912c7bd233f25f5c822b677a0fa87dc2a00e5ba1f5875ffbef9c"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/plans.go",
+    "sha256": "0e9d561349e7552fc8cde855b1d404e3e36dc6f254363b84970633b1ea5f1d9d"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/pricing.go",
+    "sha256": "8e315a0a0dd8947290bddaf9a2eeaf2acdc6754022fd2471d8e64546cb77604b"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/pricing_test.go",
+    "sha256": "ecfce1c49ccdead994f67a3bde41ab53f60ef30152a3e0a36a3e47744591969d"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/privacy_mask.go",
+    "sha256": "e40cf5eab62ff1e9e7369ee0c536a294aa99afe4dc9c65adb399dc4579d88be1"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/privacy_outbox_test.go",
+    "sha256": "a3fcd27939c555060a74910f018598ff8fb749597ac27f3b1404b6e146163531"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/readiness_failure_test.go",
+    "sha256": "8321815624fa282cc93708a67f940ee0c3820cf89180d0d4bc3de6c5c73dd77a"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/ready_check_test.go",
+    "sha256": "19b2eb0ce1274782d8cb082b0a6bf43869b7a4bcb284f6f31e7d54defdf4ec0d"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/ready_helpers_test.go",
+    "sha256": "ee05f0138803a4a8648492e6e6f93d269c45ce528cad7a33e5bdb519f449599d"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/reversals.go",
+    "sha256": "f7105b3a1974965e78fd4314a313504ed72f3c35068f0943ef5d513c3b82ab90"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/reversals_test.go",
+    "sha256": "e1877f510f2a91178e883bd0857b98a0673997f81c5f4377bdbbc0f09475f1d3"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/store.go",
+    "sha256": "72c42f7a867ddbe599afe9f6985f564e9c5bc9a886821b357de34eca51f1db24"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/store_empty_test.go",
+    "sha256": "952468fbd34edb7263f29e0f36120d4ab6aed97a63de9675b6fcf58a8ed70d7a"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/store_lock_test.go",
+    "sha256": "10939d68f746f955812779756f51d2bc1de238909fec8da571bdd899e952a67e"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/strict_done_test.go",
+    "sha256": "34f32602d0eb2aff5889eec141f846a6dc6cf6dc7137701625b0a2286e5ba8bd"
+  },
+  {
+    "path": "work2/kiyas/term/licensesrv/webhook.go",
+    "sha256": "72e5778a5915c7117400bed1839423ffc0574bd590e7560e1541a65e16540559"
+  },
+  {
+    "path": "work2/kiyas/term/life.go",
+    "sha256": "6f5613816983fb88d0ea69dd4dbb5aa2e0941c1363c5d43d035b866cc22178f9"
+  },
+  {
+    "path": "work2/kiyas/term/life_test.go",
+    "sha256": "cda3e001fc3bbbd8753d16317ca395684432e9fa56b496f428693f1f15c9c6f2"
+  },
+  {
+    "path": "work2/kiyas/term/log_regression_test.go",
+    "sha256": "1b78ec7857e0f55eb682ae202ebb7d437ab0929071885b30a4fc52294e91386a"
+  },
+  {
+    "path": "work2/kiyas/term/long_checkpoint.go",
+    "sha256": "f0c4e78a24b667ce1e4e50bfab8927e3475884c1fc0ffc71049a73a57de4373b"
+  },
+  {
+    "path": "work2/kiyas/term/long_checkpoint_test.go",
+    "sha256": "385027c3f1c92805ea3e9be0bbd5cd25fe9d6b217c7afc54d246085c9ada4fec"
+  },
+  {
+    "path": "work2/kiyas/term/long_context.go",
+    "sha256": "71d6c6fcdd1836b9c352098d84c6082e534685ef9fd33d6eeec8749718d7fea5"
+  },
+  {
+    "path": "work2/kiyas/term/long_context_test.go",
+    "sha256": "ae7776db54e381ab9137997df56ac563e607965ac3e4fbd53698712efba4bf55"
+  },
+  {
+    "path": "work2/kiyas/term/main.go",
+    "sha256": "5bfca7e9e5b6b3ca79fe5b73c7f79b7ae5210ed5edefe96c526a72079d4b5cc5"
+  },
+  {
+    "path": "work2/kiyas/term/model.go",
+    "sha256": "729998848bc3c42d3b58a6cdc2f1e1fb412112a2c281fc2a8eb4763b0e1d07ba"
+  },
+  {
+    "path": "work2/kiyas/term/model_actions.go",
+    "sha256": "a3cdc26f0fd3ac7b353b0be9576767b483f4b32f8db0ef49b78e5a50dbbf97c2"
+  },
+  {
+    "path": "work2/kiyas/term/model_actions_test.go",
+    "sha256": "7f9a3af1550996c8404cb3fc51112e1e889ab7bdf09aa449a198b61496be52fd"
+  },
+  {
+    "path": "work2/kiyas/term/model_admission.go",
+    "sha256": "38a3e97899302d8567744fda46a12fd8bdeae5aeae6662a4b5cf624921594f0f"
+  },
+  {
+    "path": "work2/kiyas/term/model_admission_test.go",
+    "sha256": "02d488e3cb95123e9b1ac1d65723678f7283c1e3d6d2463dca490707b109f507"
+  },
+  {
+    "path": "work2/kiyas/term/model_test.go",
+    "sha256": "69d707ed1c4e2eeb4ebab90965f4910e49a165a1e93b927a22dc2ec0b8533c17"
+  },
+  {
+    "path": "work2/kiyas/term/offline_test_main_test.go",
+    "sha256": "a06393042815f942b1dcc4972d77eaa13257d5ea05d4d7659c0b3060f73c8828"
+  },
+  {
+    "path": "work2/kiyas/term/open_other.go",
+    "sha256": "f73857e38ff74ff0c8943983c38837e92487d61e49094d3fafdc7ebe39f5fa2d"
+  },
+  {
+    "path": "work2/kiyas/term/open_windows.go",
+    "sha256": "4d5e76d0df506f1bc37e876cfb867dc8d40f2235d4775a059414f3c3cb9fd4f0"
+  },
+  {
+    "path": "work2/kiyas/term/order.go",
+    "sha256": "b7e73867b5745467c09894675247e87bf886e9a7c81784c140d5698944ff5dad"
+  },
+  {
+    "path": "work2/kiyas/term/order_test.go",
+    "sha256": "6238e83a61e63e9e411dcf2efabe2463b72483476f891b0c32ef6d091a39958c"
+  },
+  {
+    "path": "work2/kiyas/term/pack.go",
+    "sha256": "e9688666074db1d3c81043793d886c3d74843a9ed382e0e4aac96970aef9253d"
+  },
+  {
+    "path": "work2/kiyas/term/pack_test.go",
+    "sha256": "9befa4e4f75db84ee16358faf680f89e504e2e708c9749ea0b24e941c8137083"
+  },
+  {
+    "path": "work2/kiyas/term/pricing.go",
+    "sha256": "23fab887e32240e948512ab7003a2b21dbc339a128319b9232126c60e9b64e19"
+  },
+  {
+    "path": "work2/kiyas/term/process_tree_linux.go",
+    "sha256": "a50f5c71e5c35362cc293476ebfb2304354f3dfc49b1c7933f2200f7d200d5b8"
+  },
+  {
+    "path": "work2/kiyas/term/process_tree_other.go",
+    "sha256": "d08fb2f8f2bb488149ae87e6f7cc198f62e5230c4b657e920490c5ba14235937"
+  },
+  {
+    "path": "work2/kiyas/term/process_tree_unix.go",
+    "sha256": "fce25531dd7217a6151af391dfba19736e52c87e66083771a9d35973aa5755a0"
+  },
+  {
+    "path": "work2/kiyas/term/process_tree_windows.go",
+    "sha256": "82ce65ad684165134f4ff2e5cfd2e4ddcdd1b5dd6609845decab2e3095f5b080"
+  },
+  {
+    "path": "work2/kiyas/term/project.go",
+    "sha256": "25ae618dca8a1a772fad3f5fa48df92c9d5211ea94984243eca3d564deb1cce8"
+  },
+  {
+    "path": "work2/kiyas/term/project_inspection_regression_test.go",
+    "sha256": "fbd545e423bddf3068838ce9f8e9e1a2f7ef8d5703a0cfd63a6962f8f23943a9"
+  },
+  {
+    "path": "work2/kiyas/term/project_map.go",
+    "sha256": "2ab081de070512793ddb830b41952c80a793f1088baf7107be216255a79fed6a"
+  },
+  {
+    "path": "work2/kiyas/term/project_test_runner.go",
+    "sha256": "9a0483e1c6f2f22cc8e72a7892d33ffe346e3aadd46364aade383100fa3827d6"
+  },
+  {
+    "path": "work2/kiyas/term/project_test_runner_test.go",
+    "sha256": "601d78df55da01176d70b71e8d098e8421617bc2720d7ae33f0267fe713f2624"
+  },
+  {
+    "path": "work2/kiyas/term/proposal.go",
+    "sha256": "29a4e7acf3974d0489f673d0e39b35f03fecb25b41e3e01853a5cbd27e552c53"
+  },
+  {
+    "path": "work2/kiyas/term/proposal_batch.go",
+    "sha256": "3d049026bf689362b45f3701a3b110b983234bdcced92a766361ef4a7b6ae204"
+  },
+  {
+    "path": "work2/kiyas/term/proposal_batch_test.go",
+    "sha256": "f3909c4a5069a4d079ad55aaa89f513bbbb230b5fd8137922bd2328c6ce29d32"
+  },
+  {
+    "path": "work2/kiyas/term/proposal_syntax.go",
+    "sha256": "601bece43e8125db00be1e38670460022e0557429c3782660287f6827b4682f5"
+  },
+  {
+    "path": "work2/kiyas/term/proposal_syntax_test.go",
+    "sha256": "51d5bb604a5728a6bd5cb774e2a380d649ccb9040ad88827189c5af5d4c7a101"
+  },
+  {
+    "path": "work2/kiyas/term/proposal_test.go",
+    "sha256": "9afba5926b8ae5d1c9fb47d54f3ae8164e68212f893be77ec07f0e18c370bb9e"
+  },
+  {
+    "path": "work2/kiyas/term/py_isolated_test.go",
+    "sha256": "5b08b7ade3e69275c473a89d90a375218243d4677e4667793b502d4b467ba949"
+  },
+  {
+    "path": "work2/kiyas/term/rea.go",
+    "sha256": "7d6aaab0147a0083f742cefda5e8f069cdc085d43ce1663fd3709bda0a3c18c7"
+  },
+  {
+    "path": "work2/kiyas/term/rea_safe_test.go",
+    "sha256": "306fe62c6db8616b60a8865c2ce10cce3df40a0e502fa49ea02adee3ada80b77"
+  },
+  {
+    "path": "work2/kiyas/term/rea_test.go",
+    "sha256": "b2364b96004a9a62a205b7fa3d7dc923ceb21b61c409f0a2e0264a06f7548410"
+  },
+  {
+    "path": "work2/kiyas/term/real_model_e2e_test.go",
+    "sha256": "e3a2d49708b522eefbac33bbcb58691f80de23384a5335fc685f55abe9662fe4"
+  },
+  {
+    "path": "work2/kiyas/term/real_project_build_test.go",
+    "sha256": "840aba3307b4ed486ae3122f9d34b55d0c0e28d3e95d9242b257c6edb51dd0cd"
+  },
+  {
+    "path": "work2/kiyas/term/release.go",
+    "sha256": "03bf9f1edf54f33274305a46d8bd5e9213d4ae775401122366db8f7799de9aed"
+  },
+  {
+    "path": "work2/kiyas/term/repair_flow_test.go",
+    "sha256": "d325c64c5f9821f6a6f821db368b3e1e49344f51bb3addc96bd806ee35fae9a5"
+  },
+  {
+    "path": "work2/kiyas/term/repair_intent_regression_test.go",
+    "sha256": "a166e7ade7c4de858c693a57658b89593c2e9768ddd172ecfa4c8414cb8e690f"
+  },
+  {
+    "path": "work2/kiyas/term/repair_loop.go",
+    "sha256": "55ebda30b1e6a34e1b052d58aa1ac3986d09959fcf98e2d7f91911706ae54ab3"
+  },
+  {
+    "path": "work2/kiyas/term/repair_loop_test.go",
+    "sha256": "6d0cf62c0caac690bb97155df2b9b50e03b4b7a4e78e9bc0f88b87fd51ccc435"
+  },
+  {
+    "path": "work2/kiyas/term/review_regression_linux_test.go",
+    "sha256": "f643c3790d7e6fc83db0b2f288c07fb5ee1286b824e6f24fbb443bdc0446951c"
+  },
+  {
+    "path": "work2/kiyas/term/review_regression_test.go",
+    "sha256": "b2afc78da892bb0fe6bf6fb4369bdfe9b1dac15bb3bd0437d1690380529f74f2"
+  },
+  {
+    "path": "work2/kiyas/term/review_write_race_linux_test.go",
+    "sha256": "4b096150d705014ec56f00787cd9c21ef1dc4477d3d71dd3c24a2a0493b40556"
+  },
+  {
+    "path": "work2/kiyas/term/run.go",
+    "sha256": "c68ca24f91e72901da134bf133691388bca8d79c3ef1aac3a46c74d8bd8a3938"
+  },
+  {
+    "path": "work2/kiyas/term/run_test.go",
+    "sha256": "0a81b97bae48ff49eb108d75b07ce76929f306fef76db0e9d066996b03cf19c5"
+  },
+  {
+    "path": "work2/kiyas/term/safe_exec.go",
+    "sha256": "26f5529c48f5f5b55f5c7b9afa777efa35c0b8529ba936fa67552a6719da2405"
+  },
+  {
+    "path": "work2/kiyas/term/safe_exec_test.go",
+    "sha256": "1928694650012cb20eb9badc628ccdcdef4d3bdface2fbff02ab28a2c8770643"
+  },
+  {
+    "path": "work2/kiyas/term/safe_exec_unix_test.go",
+    "sha256": "5205ebc279d143e1d52e035033dec93a84b6f63e1c61c813b6c4e62d3c8cefa9"
+  },
+  {
+    "path": "work2/kiyas/term/safe_limits_linux.go",
+    "sha256": "26b018479781df2e60854f8934a7a1d1998aad39db2b53dac3d8b4fd033a5b35"
+  },
+  {
+    "path": "work2/kiyas/term/safe_limits_linux_test.go",
+    "sha256": "fd4e00b4f815db07613f1f073612e91e3a6707bfc4fb5a9eb95b79a4df9cecf2"
+  },
+  {
+    "path": "work2/kiyas/term/safe_limits_other.go",
+    "sha256": "340ee6b0c016f4d1705990d98b1a5671b6ded9e4ee3d25f9e54d9f296a78f8f5"
+  },
+  {
+    "path": "work2/kiyas/term/safe_limits_windows.go",
+    "sha256": "3cb7b1c748523648778d896fc714f1e074b0d169550965ce3cb8d6fa68bc6636"
+  },
+  {
+    "path": "work2/kiyas/term/scope_guard_test.go",
+    "sha256": "1ec053be3bb4477c6fa65e0ef12f92e0c687f00951b07c32a4d6544da4c9562d"
+  },
+  {
+    "path": "work2/kiyas/term/smoke_cli.go",
+    "sha256": "9fb9798ab7cd9d7ead827400d88ac3e5b83aa6a64ea51047549119277e29a401"
+  },
+  {
+    "path": "work2/kiyas/term/smoke_cli_test.go",
+    "sha256": "6e72f684df6d48d092a53967dd687feae696b25ac9fd98118fdb173c707ab156"
+  },
+  {
+    "path": "work2/kiyas/term/smoke_console_other.go",
+    "sha256": "643a33670655dcd1b8287379ca29726fb53bea840501d249030b0dc8a9ba1a03"
+  },
+  {
+    "path": "work2/kiyas/term/smoke_console_windows.go",
+    "sha256": "b6120fe07396caed7b8fbd1efa94a309fb4ce8567e5de043d9dc850ae8e24fc6"
+  },
+  {
+    "path": "work2/kiyas/term/source_range.go",
+    "sha256": "318e7ccfe682f480ccdad82f8fecf0db388d28382d6d41d7c9e8aba61d4e4990"
+  },
+  {
+    "path": "work2/kiyas/term/stream_done_test.go",
+    "sha256": "3e42ac23f76005a1fa063cc49bc49e0c6b5ffaf110e0b90160eec245c5bab1ee"
+  },
+  {
+    "path": "work2/kiyas/term/stream_integrity_test.go",
+    "sha256": "27632b2172eedd3434c7e0a2dcdd981ec5e5bebad27cd19c843741a38f641b6c"
+  },
+  {
+    "path": "work2/kiyas/term/studio.go",
+    "sha256": "74d55539203b882d610cc101809085d14fc146529f162b6fd4040c03a0efa8e5"
+  },
+  {
+    "path": "work2/kiyas/term/studio_test.go",
+    "sha256": "f9f79a27187b7d54cfa0f808c826dbfdfce6163fcb6afcdb5f483e6b69042dd5"
+  },
+  {
+    "path": "work2/kiyas/term/task_history.go",
+    "sha256": "84ae2837f1fd6f387afb9b3100b677b51dc25fd7f1ac17407291664a29b9feba"
+  },
+  {
+    "path": "work2/kiyas/term/task_history_test.go",
+    "sha256": "ce053c443dd8bdb73b8b9a0ab1dc1bbb88e665e548d84f587c70de4ea77f81b0"
+  },
+  {
+    "path": "work2/kiyas/term/task_queue.go",
+    "sha256": "82709e52eef6d308d4a240050c79012bcfa574845e9286152bf0e74da73da934"
+  },
+  {
+    "path": "work2/kiyas/term/task_queue_test.go",
+    "sha256": "7311623ab398f30c867b203cd2609897119928681dad9a48f8fd7782953bcc3e"
+  },
+  {
+    "path": "work2/kiyas/term/task_state.go",
+    "sha256": "068b01250af02809d93868f18d341e38020ff2ab8f4ed7de475cf5624faf0010"
+  },
+  {
+    "path": "work2/kiyas/term/task_state_test.go",
+    "sha256": "931445716f373e8738737e8d9f2e9e5c38310219ad222bcc81bb5f5396438d36"
+  },
+  {
+    "path": "work2/kiyas/term/terminal.go",
+    "sha256": "57a2db2b7049cd84bfe5d5f9fd80b04b3b8f5c69ee07b3e94cbf53f6b897b69f"
+  },
+  {
+    "path": "work2/kiyas/term/terminal_gui_test.go",
+    "sha256": "d995b674416dbc70c562dd54022b3fbb7d8a3e3f156abd8e40aedb31bd80978e"
+  },
+  {
+    "path": "work2/kiyas/term/terminal_test.go",
+    "sha256": "3754e045033f5d96c5321c5a26ec9d57776d3729305191dd680be61d38d8ab7a"
+  },
+  {
+    "path": "work2/kiyas/term/testdata/project_acceptance.py",
+    "sha256": "1ab6f46b71a873ce01ea470ed4442451b2ef7e08fd1b7910a3d78ad1536c35ba"
+  },
+  {
+    "path": "work2/kiyas/term/transaction_recovery.go",
+    "sha256": "18b2b6cac7a9b613e8867b2902209e6fbf333121a2fcf582b34520afd59f80bb"
+  },
+  {
+    "path": "work2/kiyas/term/transaction_recovery_test.go",
+    "sha256": "cf32173532f61d74839eb828f6a1f20cbfdb237e6bf25f0bb4e480dd4050446b"
+  },
+  {
+    "path": "work2/kiyas/term/trial.go",
+    "sha256": "9a48a1929d54490c5afb6a6ba9d36eaec1ef6d557d2511a226633b0919efb876"
+  },
+  {
+    "path": "work2/kiyas/term/tunnel.go",
+    "sha256": "c64f5f5113e9174d0a2155a4fdb0bca0817d4964ef684349375c34da3c6c8f29"
+  },
+  {
+    "path": "work2/kiyas/term/tunnel_other.go",
+    "sha256": "b8685c0bd4634636cd905e4d108ea904f4edd770d37f456ae33a6d1548da4067"
+  },
+  {
+    "path": "work2/kiyas/term/tunnel_test.go",
+    "sha256": "758a998d4cd62c346f4b0b648c0dee22da0c76d9b9da9064d627c4ea8b258448"
+  },
+  {
+    "path": "work2/kiyas/term/tunnel_windows.go",
+    "sha256": "52b5a2e9fc0f3af66e459cd30db53fc80758531cd2951e951efdcd632c18b6f3"
+  },
+  {
+    "path": "work2/kiyas/term/ui.go",
+    "sha256": "724eb944e7286e49d1a801be79a75d66b2e10edab07fe06c24aeac2aa60798bb"
+  },
+  {
+    "path": "work2/kiyas/term/ui_test.go",
+    "sha256": "529c8a1bef6f1e43147e49707f032e6165ba306e36d7f4ed58f9a7a7d729ca7c"
+  },
+  {
+    "path": "work2/kiyas/term/vt_other.go",
+    "sha256": "91328c0090125ef3ca73e3841a3be0df94f5ada7a152b9c7bbbc32197366de54"
+  },
+  {
+    "path": "work2/kiyas/term/vt_windows.go",
+    "sha256": "01ba21eb9b9902fbae5b3e23f3f29b3aed5dc13ec67d5fa949dfe82845a2860c"
+  },
+  {
+    "path": "work2/kiyas/term/window.go",
+    "sha256": "01265670f1c24f88e48c24de21d4f7008ea742a5f89a2b0310b0463892ccc836"
+  },
+  {
+    "path": "work2/kiyas/term/window_other.go",
+    "sha256": "adabaef88968911fbfccdfc7a87c951e28a9080468401df0c55183947c399753"
+  },
+  {
+    "path": "work2/kiyas/term/window_windows.go",
+    "sha256": "2152e97f9d0ba2550a7633fe70dc1065346de6bac1eb17539df47ffbf738d7b8"
+  },
+  {
+    "path": "work2/kiyas/term/worker_client.go",
+    "sha256": "b34f3b6ec13eb6f76d8d5ee6d5d60c2c948dd1970da0b761c47c30629e2cbe19"
+  },
+  {
+    "path": "work2/kiyas/term/workspace_context_test.go",
+    "sha256": "07e77acd9386b7a78965a88f2a4bd4ad92bca86d1a0351145420a47078836213"
+  }
+]

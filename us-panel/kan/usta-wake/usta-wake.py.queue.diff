@@ -1,0 +1,118 @@
+--- usta-wake.py.new	2026-11-06 13:38:37.915276942 +0300
++++ usta-wake.py.queue	2026-11-08 00:35:39.225273593 +0300
+@@ -248,19 +248,76 @@
+     return False
+ 
+ 
++def a100_start_now() -> None:
++    worker = WORKERS["a100"]
++    with LOCKS["a100"]:
++        if power_verb(instance_status(worker)) == "start":
++            stop_other_gpus(worker)
++            power(worker, "start")
++
++
+ def a100_start_async() -> None:
+     def run() -> None:
+-        worker = WORKERS["a100"]
+         try:
+-            with LOCKS["a100"]:
+-                if power_verb(instance_status(worker)) == "start":
+-                    stop_other_gpus(worker)
+-                    power(worker, "start")
++            a100_start_now()
+         except Exception as exc:  # noqa: BLE001
+             print("a100 start failed", type(exc).__name__, flush=True)
+     threading.Thread(target=run, daemon=True).start()
+ 
+ 
++# Demir 2026-11-08 00:30: a start that arrives while ds-a100 is STOPPING is
++# queued (at most one) and fired once the VM reaches TERMINATED.
++PENDING_POLL = 5
++PENDING_LIMIT = 5 * 60
++PENDING_LOCK = threading.Lock()
++PENDING: dict = {"since": 0.0}
++SLEEP = time.sleep
++CLOCK = time.time
++
++
++def a100_pending() -> dict:
++    with PENDING_LOCK:
++        since = PENDING["since"]
++    return {"pending_start": bool(since), "pending_since": int(since) if since else None}
++
++
++def a100_queue_start() -> bool:
++    """Record one pending start. Returns False if one is already pending."""
++    with PENDING_LOCK:
++        if PENDING["since"]:
++            return False
++        PENDING["since"] = CLOCK()
++
++    def run() -> None:
++        worker = WORKERS["a100"]
++        deadline = CLOCK() + PENDING_LIMIT
++        outcome = "expired"
++        try:
++            while CLOCK() < deadline:
++                try:
++                    status = instance_status(worker)
++                except Exception:  # noqa: BLE001
++                    status = "UNKNOWN"
++                if power_verb(status) == "start":
++                    try:
++                        a100_start_now()
++                        outcome = "started"
++                    except Exception as exc:  # noqa: BLE001
++                        outcome = "start_failed:" + type(exc).__name__
++                    return
++                if status in ("RUNNING", "STAGING", "PROVISIONING"):
++                    outcome = "already_" + status.lower()
++                    return
++                SLEEP(PENDING_POLL)
++        finally:
++            with PENDING_LOCK:
++                PENDING["since"] = 0.0
++            print("a100 pending start", outcome, flush=True)
++
++    threading.Thread(target=run, daemon=True).start()
++    return True
++
++
+ class Door(BaseHTTPRequestHandler):
+     protocol_version = "HTTP/1.1"
+ 
+@@ -325,14 +382,13 @@
+                 status = instance_status(worker)
+             except Exception:  # noqa: BLE001
+                 status = "UNKNOWN"
+-            reply(
+-                200,
+-                {
+-                    "ok": True,
+-                    "instance": status,
+-                    "model_ready": status == "RUNNING" and worker_awake(worker),
+-                },
+-            )
++            doc = {
++                "ok": True,
++                "instance": status,
++                "model_ready": status == "RUNNING" and worker_awake(worker),
++            }
++            doc.update(a100_pending())
++            reply(200, doc)
+             return True
+         if bare == "/a100/start" and self.command == "POST":
+             length = int(self.headers.get("Content-Length", "0") or "0")
+@@ -345,6 +401,11 @@
+             if power_verb(status) == "start":
+                 a100_start_async()
+                 reply(202, {"ok": True, "instance": status, "action": "start_requested"})
++            elif status == "STOPPING":
++                queued = a100_queue_start()
++                doc = {"ok": True, "instance": status, "action": "start_queued" if queued else "start_already_queued"}
++                doc.update(a100_pending())
++                reply(202, doc)
+             else:
+                 reply(200, {"ok": True, "instance": status, "action": "none"})
+             return True

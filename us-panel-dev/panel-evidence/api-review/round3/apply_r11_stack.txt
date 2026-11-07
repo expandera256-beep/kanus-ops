@@ -1,0 +1,20 @@
+=== uyum-v2 + api-r11 on term .11 ===
+--- 0000-iface.patch ---
+APPLY=0
+--- 0001-prefs-store.patch ---
+APPLY=0
+--- 0002-prefs-test.patch ---
+APPLY=0
+--- 0001-privacy-ops.patch ---
+APPLY=0
+--- 0002-privacy-ops-test.patch ---
+APPLY=0
+--- 0001-handler.patch ---
+APPLY=0
+--- 0002-handler-test.patch ---
+APPLY=0
+--- 0001-main-privacy-mount.patch ---
+APPLY=0
+--- api-r11 ---
+R11_CHECK=0
+R11_APPLY=0

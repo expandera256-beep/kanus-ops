@@ -1,0 +1,193 @@
+[
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch",
+    "sha256": "f6d660142e23f9121e6f621037b9aeaf901155f8be875ac31513152859fee3be",
+    "check": 0,
+    "log": "Checking patch internal/privacy/iface.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch",
+    "sha256": "6f3cf673a93cfd0e1372ce85b4edef90a339f228f02b0f1ad67b14b9227d23a3",
+    "check": 0,
+    "log": "Checking patch internal/privacy/prefs.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch",
+    "sha256": "04a272e8b7e6f2d35feb96d231b244b485be54ae602a4732c9ca10f8a783d177",
+    "check": 0,
+    "log": "Checking patch internal/privacy/prefs_open_unix.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch",
+    "sha256": "48529e9d44881f891d7de65d2a2b6787eff44d314c5393e2a6351840308604a1",
+    "check": 0,
+    "log": "Checking patch internal/privacy/prefs_open_other.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch",
+    "sha256": "26d47990502fb49fe9a9461e76a1c17e3fd62a543e038037cce0f6d4fe670592",
+    "check": 0,
+    "log": "Checking patch internal/privacy/prefs_test.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch",
+    "sha256": "1f4e0b90b13380a2feb431eb817b4ca0586f78d98c853518605ebddbb42e0fcf",
+    "check": 0,
+    "log": "Checking patch internal/privacy/prefs_fifo_unix_test.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch",
+    "sha256": "bfed494d32ebf15d0324db0985305e722e5913aa075a72ab3a188474851a4893",
+    "check": 0,
+    "log": "Checking patch internal/privacy/v4_security_linux_test.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch",
+    "sha256": "ee133c8facd3d0397c5529085fc1a1857f8b2ac2e492ad075df2805180aa9e33",
+    "check": 0,
+    "log": "Checking patch licensesrv/privacy_ops.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch",
+    "sha256": "4f291280b0c6c02bdaa2899ef3d6acc193ac14a56e366d7b84d77bfe72b4cf8d",
+    "check": 0,
+    "log": "Checking patch licensesrv/store.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch",
+    "sha256": "e697d07cf2cd3e93b29c19ff543ad9efbb24f6f0ca6744bd94fe89d827cf2b7d",
+    "check": 0,
+    "log": "Checking patch licensesrv/privacy_ops_test.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch",
+    "sha256": "7453211f1c51bc0fb8b64fc97e5abd5ba3c587a2a1020139b8681f43375f1b34",
+    "check": 0,
+    "log": "Checking patch licensesrv/privacy_v4_test.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch",
+    "sha256": "dc9ef3b99b1c64aa225c74031248bc7287e72496cbae90fa783c9d5da36185ae",
+    "check": 0,
+    "log": "Checking patch internal/privacy/handler.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch",
+    "sha256": "d8b2d8d6ef229c7cefb94272280b99c2a945f7f8b7c0f474e7cef09e616021cd",
+    "check": 0,
+    "log": "Checking patch internal/privacy/handler_test.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch",
+    "sha256": "a617e950feaa95dbaa147f1788e68f79f1e93fd9b80ca6b9deb8e8f0bea3aae3",
+    "check": 0,
+    "log": "Checking patch internal/privacy/v4_handler_test.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch",
+    "sha256": "801da3cedaa56eba6522a31ff0d424e464e7fdb759e07351510c0eb1738fbea4",
+    "check": 0,
+    "log": "Checking patch cmd/us-license-hook/main.go...\nHunk #2 succeeded at 107 (offset 6 lines).\n",
+    "apply": 0
+  },
+  {
+    "stage": "UYUM",
+    "file": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch",
+    "sha256": "0a06b78f48944529ee19b822ee05d9c49b3b2fee4eec842177cfd20f56cac903",
+    "check": 0,
+    "log": "Checking patch cmd/us-license-hook/main_test.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "API",
+    "file": "/workspace/us-panel-dev/patches/api-r11/0001-API-r11-additive-apiv1-package-v1-account-alias-no-l.patch",
+    "sha256": "dec3b16c69e3cb3dad8cebfa6d6048bb040d366fff2aaa054cd3432ea03f4ca1",
+    "check": 1,
+    "log": "Checking patch apiv1/README.md...\nChecking patch apiv1/errors.go...\nChecking patch apiv1/version.go...\nChecking patch apiv1/version_test.go...\nChecking patch cmd/us-license-hook/main.go...\nerror: while searching for:\n\t\tEraseEnabled: os.Getenv(\"US_PRIVACY_ERASE_ENABLED\") == \"1\",\n\t\tAdminToken:   os.Getenv(\"US_PRIVACY_ADMIN_TOKEN\"),\n\t})\n\tmux.HandleFunc(\"/healthz\", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte(\"ok\")) })\n\treturn mux\n}\n\nerror: patch failed: cmd/us-license-hook/main.go:121\nerror: cmd/us-license-hook/main.go: patch does not apply\n"
+  },
+  {
+    "stage": "GLOBAL",
+    "file": "/workspace/us-panel-dev/patches/global_i18n_panel_core.patch",
+    "sha256": "e4f10a339c78818ceddbc49e2f687b4ee80afa86a7fce9d407c22bd8536892c7",
+    "check": 0,
+    "log": "Checking patch i18n/i18n.go...\nChecking patch i18n/i18n_test.go...\nChecking patch i18n/locales/en.json...\nChecking patch i18n/locales/tr.json...\n",
+    "apply": 0
+  },
+  {
+    "stage": "GLOBAL",
+    "file": "/workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch",
+    "sha256": "314fab48b009f06e221ce140758724105b9f5b972c69d0c15c7ad2c9db8d3669",
+    "check": 0,
+    "log": "Checking patch gui.go...\nChecking patch gui.html...\nChecking patch gui_i18n_test.go...\nChecking patch i18n/http.go...\nChecking patch i18n/locales/en.json...\nChecking patch i18n/locales/tr.json...\n",
+    "apply": 0
+  },
+  {
+    "stage": "GLOBAL",
+    "file": "/workspace/us-panel-dev/patches/global_i18n_03_pref.patch",
+    "sha256": "ba8845c5f34855d8f2f2fa49a055c4e9d20698c9fbd7572462531c2746f6b58e",
+    "check": 0,
+    "log": "Checking patch gui.go...\nChecking patch gui.html...\nChecking patch gui_lang.go...\nChecking patch gui_lang_security_test.go...\nChecking patch gui_lang_test.go...\nChecking patch gui_lang_ui_test.mjs...\nChecking patch i18n/locales/en.json...\nChecking patch i18n/locales/tr.json...\nChecking patch i18n/pref.go...\nChecking patch i18n/pref_handles_other_test.go...\nChecking patch i18n/pref_handles_unix_test.go...\nChecking patch i18n/pref_handles_windows_test.go...\nChecking patch i18n/pref_perm_unix_test.go...\nChecking patch i18n/pref_perm_windows_test.go...\nChecking patch i18n/pref_rootcache_test.go...\nChecking patch i18n/pref_security_unix_test.go...\nChecking patch i18n/pref_test.go...\nChecking patch i18n/pref_unix.go...\nChecking patch i18n/pref_windows.go...\nChecking patch i18n/pref_windows_test.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "GLOBAL",
+    "file": "/workspace/us-panel-dev/patches/global_i18n_04_errors.patch",
+    "sha256": "1c937497ee30ef7de86245b2fa4e2b6668b8660e2db62017bd7a7c2db5864991",
+    "check": 0,
+    "log": "Checking patch gui.go...\nChecking patch gui_errors_i18n_test.go...\nChecking patch gui_lang.go...\nChecking patch i18n/locales/en.json...\nChecking patch i18n/locales/tr.json...\n",
+    "apply": 0
+  },
+  {
+    "stage": "GLOBAL",
+    "file": "/workspace/us-panel-dev/patches/global_i18n_06_de_ru.patch",
+    "sha256": "83aaca5d4a3aeb8cf7d4ed0e3854d0c3408d1553bb139ddb2eee22f8b5d013c6",
+    "check": 0,
+    "log": "Checking patch gui.html...\nChecking patch i18n/i18n.go...\nChecking patch i18n/i18n_de_ru_test.go...\nChecking patch i18n/i18n_test.go...\nChecking patch i18n/locales/de.json...\nChecking patch i18n/locales/en.json...\nChecking patch i18n/locales/ru.json...\nChecking patch i18n/locales/tr.json...\nChecking patch i18n/pref_test.go...\n",
+    "apply": 0
+  },
+  {
+    "stage": "GLOBAL",
+    "file": "/workspace/us-panel-dev/patches/global_i18n_05_email_loader.patch",
+    "sha256": "7c917564df055f151f8bd0a0b334a09e248db1481723123196fbfb0377093f3d",
+    "check": 0,
+    "log": "Checking patch kanus/i18n_mail.py...\nChecking patch kanus/locales/en.json...\nChecking patch kanus/locales/tr.json...\nChecking patch kanus/test_i18n_mail.py...\n",
+    "apply": 0
+  },
+  {
+    "stage": "GLOBAL",
+    "file": "/workspace/us-panel-dev/patches/global_i18n_07_mail_de_ru.patch",
+    "sha256": "70acc9b0789a982c2abfe3b0e6f3febbf62db16cf3957343e7fc916f50efae18",
+    "check": 0,
+    "log": "Checking patch kanus/locales/de.json...\nChecking patch kanus/locales/ru.json...\nChecking patch kanus/test_i18n_mail.py...\n",
+    "apply": 0
+  }
+]

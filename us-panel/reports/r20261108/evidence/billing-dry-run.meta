@@ -1,0 +1,2 @@
+bq query --use_legacy_sql=false --maximum_bytes_billed=20000000 ['--dry_run=true'] (billing-query.sql)
+exit=1

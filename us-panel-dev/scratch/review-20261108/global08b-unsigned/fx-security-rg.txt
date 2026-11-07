@@ -1,0 +1,4 @@
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/fx_panel.go:5:// Demir 08.11.2026 01:13 TSİ: unsigned, HTTPS only, no new key. Trust rests
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/fx_panel.go:6:// on TLS certificate verification (system roots, never InsecureSkipVerify),
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/fx_panel.go:61:// InsecureSkipVerify, no custom verification callbacks.
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/fx_panel.go:64:	t.TLSClientConfig = &tls.Config{MinVersion: tls.VersionTLS12}

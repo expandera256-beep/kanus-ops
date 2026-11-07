@@ -1,0 +1,5 @@
+<cursor_untrusted_data_1337 source="CallDynamicTool">
+
+{"cpu_usage":{"unit":"%","usage":{"1793942227":4.99,"1793944111":4.99}},"ram_usage":{"unit":"bytes","usage":{"1793942227":6112055296,"1793944111":6669684736}},"disk_space":{"unit":"bytes","usage":{"1793942227":51936157696,"1793944111":52118790144}},"outgoing_traffic":{"unit":"bytes","usage":{"1793942227":17804689,"1793944111":18690604}},"incoming_traffic":{"unit":"bytes","usage":{"1793942227":19659683,"1793944111":32487417}},"uptime":{"unit":"seconds","usage":{"1793942227":1694223,"1793944111":1696116}}}
+
+</cursor_untrusted_data_1337>

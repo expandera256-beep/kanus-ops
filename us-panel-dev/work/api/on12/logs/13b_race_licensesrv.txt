@@ -1,0 +1,48 @@
+=== RUN   TestAccountOwnershipIdempotencyAndAtomicRace
+2026/11/08 01:26:47 account /account/register email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:26:47 account /account/register email=t***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:26:47 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:26:47 account /account/login email=t***@example.test queue_wait_ms=0 result=slot
+--- PASS: TestAccountOwnershipIdempotencyAndAtomicRace (2.75s)
+=== RUN   TestAccountSignedSessionExpiryResetAndVerification
+2026/11/08 01:26:49 account /account/register email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:26:50 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:26:50 account /account/password-reset/confirm email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:26:50 account /account/password-reset/confirm email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:26:50 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:26:50 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+--- PASS: TestAccountSignedSessionExpiryResetAndVerification (2.72s)
+=== RUN   TestAccountIPRateLimitAndDefaultBcrypt
+2026/11/08 01:26:52 account /account/register email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:26:55 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:26:57 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:00 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:03 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:05 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:08 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:12 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:14 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:17 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:20 account /account/login email=b***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:22 account login limiter: b***@example.test locked for 15m0s after 10 failures
+2026/11/08 01:27:22 account /account/login email=o***@example.test queue_wait_ms=0 result=slot
+--- PASS: TestAccountIPRateLimitAndDefaultBcrypt (35.37s)
+=== RUN   TestAccountLegacyJSONOpensWithoutMigrationAndSessionRestart
+2026/11/08 01:27:28 account /account/register email=r***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:28 account /account/login email=r***@example.test queue_wait_ms=0 result=slot
+--- PASS: TestAccountLegacyJSONOpensWithoutMigrationAndSessionRestart (5.42s)
+=== RUN   TestAccountLocalSSEE2EAndSharedHourlyLedger
+2026/11/08 01:27:33 account /account/register email=e***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:33 account /account/login email=e***@example.test queue_wait_ms=0 result=slot
+    accounts_test.go:344: PASS local register/login/redeem/balance/session-SSE/raw-license shared ledger/release/hourly/cancel/history; upstream calls 7
+--- PASS: TestAccountLocalSSEE2EAndSharedHourlyLedger (3.81s)
+=== RUN   TestSMTPAllowlistNeverInvokesSenderForSkippedRecipient
+2026/11/08 01:27:37 account /account/register email=d***@example.test queue_wait_ms=0 result=slot
+--- PASS: TestSMTPAllowlistNeverInvokesSenderForSkippedRecipient (2.83s)
+=== RUN   TestAccountNoCreditAndInvalidSessionNeverCallsModel
+2026/11/08 01:27:40 account /account/register email=e***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:27:40 account /account/login email=e***@example.test queue_wait_ms=0 result=slot
+--- PASS: TestAccountNoCreditAndInvalidSessionNeverCallsModel (2.73s)
+=== RUN   TestAccountSessionAndRawKeyConcurrentLastCredit
+Terminated
+RACE_LICENSESRV_EXIT=143

@@ -1,0 +1,18 @@
+openapi ['/account/balance', '/account/login', '/account/password-reset/confirm', '/account/password-reset/request', '/account/redeem', '/account/register', '/account/requests', '/account/verification/request', '/account/verify-email', '/account/workers', '/healthz', '/v1/account/register', '/v1/api-keys', '/v1/api-keys/{id}/revoke', '/v1/api-keys/{id}/rotate', '/v1/chat', '/v1/chat/completions', '/v1/credits/reserve', '/v1/credits/settle', '/v1/credits/status', '/v1/models', '/v1/usage', '/webhooks/shopify/orders-cancelled', '/webhooks/shopify/orders-paid', '/webhooks/shopify/refunds-create']
+v1 account paths in openapi ['/v1/account/register']
+missing rotate/revoke pattern ok
+SETTLE BLOCK v1/credits/settle:
+    post:
+      operationId: postCreditsSettle
+      tags: [credits]
+      summary: Rezervasyonu commit veya release
+      description: |
+        Auth: yalnız ham lisans (`us1…`); settleFor lisans anahtarına bağlanır.
+        Hesap oturumu (`usa1…`) kabul edilmez. Aynı commit ile tekrar çağrı idempotent; çakışan commit/release → 409.
+      security:
+        - LicenseBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            sc

@@ -1,0 +1,19 @@
+{"Time":"2026-11-06T10:03:30.230295135+03:00","Action":"start","Package":"kiyas/internal/privacy"}
+{"Time":"2026-11-06T10:03:30.24046815+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit"}
+{"Time":"2026-11-06T10:03:30.24053129+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Output":"=== RUN   TestPanelR2HTTPEraseAttemptLimit\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:03:32.866867011+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Output":"    zz_panel_r2_test.go:31: PASS same-IP request+confirm capped5/15min; changing sourceIP permits more guesses; no account/challenge attempt lockout\n"}
+{"Time":"2026-11-06T10:03:32.867055093+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Output":"--- PASS: TestPanelR2HTTPEraseAttemptLimit (2.63s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:03:32.867066166+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Elapsed":2.63}
+{"Time":"2026-11-06T10:03:32.867195228+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit"}
+{"Time":"2026-11-06T10:03:32.867201228+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Output":"=== RUN   TestPanelR2HTTPEraseAttemptLimit\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:03:35.495595709+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Output":"    zz_panel_r2_test.go:31: PASS same-IP request+confirm capped5/15min; changing sourceIP permits more guesses; no account/challenge attempt lockout\n"}
+{"Time":"2026-11-06T10:03:35.495667008+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Output":"--- PASS: TestPanelR2HTTPEraseAttemptLimit (2.63s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:03:35.495691568+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Elapsed":2.63}
+{"Time":"2026-11-06T10:03:35.495785471+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit"}
+{"Time":"2026-11-06T10:03:35.495789778+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Output":"=== RUN   TestPanelR2HTTPEraseAttemptLimit\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:03:38.157140286+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Output":"    zz_panel_r2_test.go:31: PASS same-IP request+confirm capped5/15min; changing sourceIP permits more guesses; no account/challenge attempt lockout\n"}
+{"Time":"2026-11-06T10:03:38.157226819+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Output":"--- PASS: TestPanelR2HTTPEraseAttemptLimit (2.66s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:03:38.157232354+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPanelR2HTTPEraseAttemptLimit","Elapsed":2.66}
+{"Time":"2026-11-06T10:03:38.157239962+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T10:03:39.159925327+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"ok  \tkiyas/internal/privacy\t8.929s\n"}
+{"Time":"2026-11-06T10:03:39.159992174+03:00","Action":"pass","Package":"kiyas/internal/privacy","Elapsed":8.93}

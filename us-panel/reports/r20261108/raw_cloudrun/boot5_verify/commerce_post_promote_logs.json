@@ -1,0 +1,513 @@
+[
+  {
+    "insertId": "-949gxcuiy",
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/project-27082a40-6083-4952-9db/revisions/us-commerce-sre-ready-r1",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "2",
+            "autoscaling.knative.dev/minScale": "0",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "592.0.0",
+            "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+            "run.googleapis.com/execution-environment": "gen2",
+            "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+            "run.googleapis.com/operation-id": "0651543e-baa6-47f7-a2e3-28196c993d76",
+            "run.googleapis.com/vpc-access-egress": "private-ranges-only",
+            "serving.knative.dev/creator": "demirtumen08@gmail.com"
+          },
+          "creationTimestamp": "2026-11-07T21:47:26.303994Z",
+          "generation": 1,
+          "labels": {
+            "cloud.googleapis.com/location": "europe-west4",
+            "run.googleapis.com/satisfiesPzs": "true",
+            "run.googleapis.com/startupProbeType": "Custom",
+            "serving.knative.dev/configuration": "us-commerce",
+            "serving.knative.dev/configurationGeneration": "3",
+            "serving.knative.dev/route": "us-commerce",
+            "serving.knative.dev/service": "us-commerce",
+            "serving.knative.dev/serviceUid": "5223c720-c0b5-4423-b9cd-8c47badf2681"
+          },
+          "name": "us-commerce-sre-ready-r1",
+          "namespace": "247516932580",
+          "ownerReferences": [
+            {
+              "apiVersion": "serving.knative.dev/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "Configuration",
+              "name": "us-commerce",
+              "uid": "1bf5030c-0121-4664-a433-ff620920c2f4"
+            }
+          ],
+          "resourceVersion": "AAZftrCyPhc",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/revisions/us-commerce-sre-ready-r1",
+          "uid": "9ad399db-86aa-4582-9359-dddd20a57df4"
+        },
+        "spec": {
+          "containerConcurrency": 32,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "US_ENV",
+                  "value": "production"
+                },
+                {
+                  "name": "US_WORKERS_CONFIG",
+                  "value": "/secrets/policy/workers.json"
+                },
+                {
+                  "name": "US_MODEL_CA_FILE",
+                  "value": "/secrets/ca/ca.pem"
+                },
+                {
+                  "name": "SHOPIFY_SHOP",
+                  "value": "19einb-qz.myshopify.com"
+                },
+                {
+                  "name": "US_COMMERCE_DB",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-postgres-dsn"
+                    }
+                  }
+                },
+                {
+                  "name": "US_LICENSE_SECRET",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-license-signing"
+                    }
+                  }
+                },
+                {
+                  "name": "US_MODEL_API_TOKEN",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-model-token"
+                    }
+                  }
+                },
+                {
+                  "name": "US_CREDIT_PRODUCTS",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-credit-products"
+                    }
+                  }
+                },
+                {
+                  "name": "US_SHOPIFY_ENABLED",
+                  "value": "false"
+                }
+              ],
+              "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:2416ec71eb4e16c3da4c1d9866cb3c7393ce8819efd043e8b1f28bf9a8bfdbab",
+              "name": "gateway-1",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 24,
+                "httpGet": {
+                  "path": "/health",
+                  "port": 8080
+                },
+                "periodSeconds": 5,
+                "timeoutSeconds": 5
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/secrets/policy",
+                  "name": "policy"
+                },
+                {
+                  "mountPath": "/secrets/ca",
+                  "name": "ca"
+                }
+              ]
+            }
+          ],
+          "serviceAccountName": "us-gateway@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+          "timeoutSeconds": 600,
+          "volumes": [
+            {
+              "name": "policy",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "workers.json"
+                  }
+                ],
+                "secretName": "us-worker-policy"
+              }
+            },
+            {
+              "name": "ca",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "ca.pem"
+                  }
+                ],
+                "secretName": "us-model-ca"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-07T21:48:33.421847Z",
+              "message": "Updating revision scaling succeeded.",
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:47:36.118411Z",
+              "severity": "Info",
+              "status": "True",
+              "type": "Active"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:47:35.942171Z",
+              "message": "Containers became healthy in 5.03s.",
+              "status": "True",
+              "type": "ContainerHealthy"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:47:28.283283Z",
+              "message": "Container image import completed in 1.3s.",
+              "status": "True",
+              "type": "ContainerReady"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:47:30.224536Z",
+              "message": "Provisioning imported containers completed in 1.94s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+              "status": "True",
+              "type": "ResourcesAvailable"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "imageDigest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:2416ec71eb4e16c3da4c1d9866cb3c7393ce8819efd043e8b1f28bf9a8bfdbab",
+              "name": "gateway-1"
+            }
+          ],
+          "imageDigest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:2416ec71eb4e16c3da4c1d9866cb3c7393ce8819efd043e8b1f28bf9a8bfdbab",
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=project-27082a40-6083-4952-9db&resource=cloud_run_revision/service_name/us-commerce/revision_name/us-commerce-sre-ready-r1&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22us-commerce%22%0Aresource.labels.revision_name%3D%22us-commerce-sre-ready-r1%22",
+          "observedGeneration": 1
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "message": "Ready condition status changed to True for Revision us-commerce-sre-ready-r1 with message: Updating revision scaling succeeded."
+      }
+    },
+    "receiveTimestamp": "2026-11-07T21:48:33.935610053Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:48:33.442037Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001767473s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:656b::90:656b",
+      "requestMethod": "GET",
+      "requestSize": "269",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/health",
+      "responseSize": "240",
+      "serverIp": "2600:1901:81d4:200::",
+      "status": 200,
+      "userAgent": "curl/8.14.1"
+    },
+    "insertId": "6aef9cb6000b5732aed3cc2c",
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:48:38.746978550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "f970b4c9b96fc245",
+    "timestamp": "2026-11-07T21:48:38.733329Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/4fae8b7f1fa1ca63d71c69227e5fefc9",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000143s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9cb6000b5686e0b427e2",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "0bb6a49868d840a9a481a033b99383e6"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:48:38.749558913Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:48:38.743046Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/4fae8b7f1fa1ca63d71c69227e5fefc9"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.041696406s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:c264::5110:c264",
+      "requestMethod": "GET",
+      "requestSize": "269",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/ready",
+      "responseSize": "259",
+      "serverIp": "2600:1900:4240:200::",
+      "status": 200,
+      "userAgent": "curl/8.14.1"
+    },
+    "insertId": "6aef9cb700023b1a1fc6dbce",
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:48:39.414760610Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "64a642e258d5fe40",
+    "timestamp": "2026-11-07T21:48:39.103118Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/4594441d48e05815f758de7a615e5c01"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.040251s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/ready",
+      "responseSize": "58",
+      "status": 200
+    },
+    "insertId": "6aef9cb700023a88de9405fe",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "fb8c5ec9cf164f38a2aadb424b6ae642"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:48:39.415964671Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:48:39.146056Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/4594441d48e05815f758de7a615e5c01"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001581615s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:4714::65a3:4714",
+      "requestMethod": "GET",
+      "requestSize": "270",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/health",
+      "responseSize": "240",
+      "serverIp": "2600:1900:4241:200::",
+      "status": 200,
+      "userAgent": "curl/8.14.1"
+    },
+    "insertId": "6aef9dd6000d89afb9b8dfce",
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:53:26.893259111Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "b74922b022aa4ecc",
+    "timestamp": "2026-11-07T21:53:26.877332Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/7042ff9073b8fef48a1d25f8885f92c9",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.000177s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/health",
+      "responseSize": "39",
+      "status": 200
+    },
+    "insertId": "6aef9dd6000d89556bc31b26",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "39e7121e28a740ad8eb78bbc45c58b37"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:53:26.894566041Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:53:26.887125Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/7042ff9073b8fef48a1d25f8885f92c9"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.055231277s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:4041::b2ed:4041",
+      "requestMethod": "GET",
+      "requestSize": "268",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/ready",
+      "responseSize": "259",
+      "serverIp": "2600:1900:4240:200::",
+      "status": 200,
+      "userAgent": "curl/8.14.1"
+    },
+    "insertId": "6aef9dd70002addc01202c4f",
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:53:27.224738043Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "6cdf4cb106cf71c3",
+    "timestamp": "2026-11-07T21:53:27.118669Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/09792acd949a864a4dd7f2aeb233c8b2"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.053935s",
+      "remoteIp": "169.254.169.126",
+      "requestMethod": "GET",
+      "requestUrl": "/ready",
+      "responseSize": "58",
+      "status": 200
+    },
+    "insertId": "6aef9dd70002ad5bb330c9d3",
+    "jsonPayload": {
+      "message": "HTTP request completed",
+      "request_id": "f1ba05b6aa3743d5a0c288e2b7c988d0"
+    },
+    "labels": {
+      "instanceId": "00e8a408bd17fdbe9a8e1acd3a89de5e84200dfd794ae53df2e5e4a7aec566b93ebd2490727c672f4bdb306d7cd75fb375358b37bdc6bcc2ccd2f914b4842c8abb06f5ea8f550128b44fb796986964fd33d9e9cd633ee8b7baba"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-11-07T21:53:27.225500271Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-sre-ready-r1",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:53:27.175451Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/09792acd949a864a4dd7f2aeb233c8b2"
+  }
+]

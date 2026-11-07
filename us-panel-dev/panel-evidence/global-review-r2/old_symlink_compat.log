@@ -1,0 +1,5 @@
+=== RUN   TestR2OldLegitimateSymlinkConfig
+    zz_r2_symlink_compat_test.go:3: old03 legitimate-symlink POST=200 saved="en"
+--- PASS: TestR2OldLegitimateSymlinkConfig (0.01s)
+PASS
+ok  	kiyas	0.018s

@@ -1,0 +1,26 @@
+=== RUN   TestPanelRootSwapWriteDelete
+=== RUN   TestPanelRootSwapWriteDelete/write
+    review_root_swap_linux_test.go:74: attempts=2698 success=2698 swaps=140843
+=== RUN   TestPanelRootSwapWriteDelete/delete
+    review_root_swap_linux_test.go:74: attempts=16279 success=1 swaps=220586
+--- PASS: TestPanelRootSwapWriteDelete (8.01s)
+    --- PASS: TestPanelRootSwapWriteDelete/write (4.00s)
+    --- PASS: TestPanelRootSwapWriteDelete/delete (4.00s)
+=== RUN   TestPanelRootSwapWriteDelete
+=== RUN   TestPanelRootSwapWriteDelete/write
+    review_root_swap_linux_test.go:74: attempts=1642 success=1642 swaps=112527
+=== RUN   TestPanelRootSwapWriteDelete/delete
+    review_root_swap_linux_test.go:74: attempts=9724 success=1 swaps=111773
+--- PASS: TestPanelRootSwapWriteDelete (8.02s)
+    --- PASS: TestPanelRootSwapWriteDelete/write (4.00s)
+    --- PASS: TestPanelRootSwapWriteDelete/delete (4.02s)
+=== RUN   TestPanelRootSwapWriteDelete
+=== RUN   TestPanelRootSwapWriteDelete/write
+    review_root_swap_linux_test.go:74: attempts=2912 success=2912 swaps=160059
+=== RUN   TestPanelRootSwapWriteDelete/delete
+    review_root_swap_linux_test.go:74: attempts=36605 success=1 swaps=464421
+--- PASS: TestPanelRootSwapWriteDelete (8.00s)
+    --- PASS: TestPanelRootSwapWriteDelete/write (4.00s)
+    --- PASS: TestPanelRootSwapWriteDelete/delete (4.00s)
+PASS
+ok  	kiyas	25.059s

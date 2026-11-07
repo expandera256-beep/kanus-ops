@@ -1,0 +1,39 @@
+=== RUN   TestCommitGraceFromEnvOverflowEdges
+=== RUN   TestCommitGraceFromEnvOverflowEdges/#00
+=== RUN   TestCommitGraceFromEnvOverflowEdges/_
+=== RUN   TestCommitGraceFromEnvOverflowEdges/0
+=== RUN   TestCommitGraceFromEnvOverflowEdges/-0
+=== RUN   TestCommitGraceFromEnvOverflowEdges/-1
+=== RUN   TestCommitGraceFromEnvOverflowEdges/900
+=== RUN   TestCommitGraceFromEnvOverflowEdges/901
+=== RUN   TestCommitGraceFromEnvOverflowEdges/+901
+=== RUN   TestCommitGraceFromEnvOverflowEdges/_901_
+=== RUN   TestCommitGraceFromEnvOverflowEdges/1s
+=== RUN   TestCommitGraceFromEnvOverflowEdges/abc
+=== RUN   TestCommitGraceFromEnvOverflowEdges/9999999999999999999999999
+=== RUN   TestCommitGraceFromEnvOverflowEdges/9223372036
+=== RUN   TestCommitGraceFromEnvOverflowEdges/9223372037
+=== RUN   TestCommitGraceFromEnvOverflowEdges/18446744074
+=== RUN   TestCommitGraceFromEnvOverflowEdges/9223372036854775807
+--- PASS: TestCommitGraceFromEnvOverflowEdges (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/#00 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/_ (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/0 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/-0 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/-1 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/900 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/901 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/+901 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/_901_ (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/1s (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/abc (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/9999999999999999999999999 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/9223372036 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/9223372037 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/18446744074 (0.00s)
+    --- PASS: TestCommitGraceFromEnvOverflowEdges/9223372036854775807 (0.00s)
+=== RUN   TestCommitGraceFromEnvDefaultCapAndInvalid
+--- PASS: TestCommitGraceFromEnvDefaultCapAndInvalid (0.00s)
+PASS
+ok  	kiyas/licensesrv	0.003s
+EXIT=0

@@ -1,0 +1,182 @@
+{
+  "provenance": "SRE-delivered redacted report/raw metadata, locally cross-checked; not independent live GCP measurement",
+  "secret_count": 6,
+  "no_rotation_metadata": [
+    "us-credit-products",
+    "us-license-signing",
+    "us-model-ca",
+    "us-model-token",
+    "us-postgres-dsn",
+    "us-worker-policy"
+  ],
+  "worker_policy_enabled_versions": [
+    "1",
+    "3",
+    "4",
+    "5"
+  ],
+  "secret_access_bindings": [
+    {
+      "secret": "us-credit-products",
+      "sa_short_names": [
+        "us-gateway"
+      ]
+    },
+    {
+      "secret": "us-license-signing",
+      "sa_short_names": [
+        "us-gateway"
+      ]
+    },
+    {
+      "secret": "us-model-ca",
+      "sa_short_names": [
+        "us-gateway",
+        "us-watchdog"
+      ]
+    },
+    {
+      "secret": "us-model-token",
+      "sa_short_names": [
+        "us-gateway",
+        "us-watchdog"
+      ]
+    },
+    {
+      "secret": "us-postgres-dsn",
+      "sa_short_names": [
+        "us-gateway",
+        "us-watchdog"
+      ]
+    },
+    {
+      "secret": "us-worker-policy",
+      "sa_short_names": [
+        "us-gateway",
+        "us-watchdog"
+      ]
+    }
+  ],
+  "run_bindings": [
+    {
+      "service": "us-commerce",
+      "secret": "us-postgres-dsn",
+      "version": "latest",
+      "binding": "env"
+    },
+    {
+      "service": "us-commerce",
+      "secret": "us-license-signing",
+      "version": "latest",
+      "binding": "env"
+    },
+    {
+      "service": "us-commerce",
+      "secret": "us-model-token",
+      "version": "latest",
+      "binding": "env"
+    },
+    {
+      "service": "us-commerce",
+      "secret": "us-credit-products",
+      "version": "latest",
+      "binding": "env"
+    },
+    {
+      "service": "us-commerce",
+      "secret": "us-worker-policy",
+      "version": "latest",
+      "binding": "volume"
+    },
+    {
+      "service": "us-commerce",
+      "secret": "us-model-ca",
+      "version": "latest",
+      "binding": "volume"
+    },
+    {
+      "service": "us-watchdog",
+      "secret": "us-postgres-dsn",
+      "version": "latest",
+      "binding": "env"
+    },
+    {
+      "service": "us-watchdog",
+      "secret": "us-model-token",
+      "version": "latest",
+      "binding": "env"
+    },
+    {
+      "service": "us-watchdog",
+      "secret": "us-worker-policy",
+      "version": "latest",
+      "binding": "volume"
+    },
+    {
+      "service": "us-watchdog",
+      "secret": "us-model-ca",
+      "version": "latest",
+      "binding": "volume"
+    }
+  ],
+  "vm_scope_evidence": [
+    {
+      "instance": "usta-l4",
+      "compute_default_sa": true,
+      "cloud_platform_scope": false
+    },
+    {
+      "instance": "usta-wake",
+      "compute_default_sa": true,
+      "cloud_platform_scope": true
+    },
+    {
+      "instance": "ds-a100",
+      "compute_default_sa": true,
+      "cloud_platform_scope": true
+    }
+  ],
+  "compute_custom_role_permissions": [
+    "compute.instances.get",
+    "compute.instances.resume",
+    "compute.instances.start",
+    "compute.instances.stop",
+    "compute.instances.suspend"
+  ],
+  "sre_oidc_negtest_enabled_no_project_role": true,
+  "us_builder_unused": "NOT VERIFIED",
+  "old_token": {
+    "path": "/workspace/secrets/usta-wake/a100.token.old",
+    "exists": true,
+    "mode": "0o600",
+    "uid": 1000,
+    "gid": 1000,
+    "contents_read": false,
+    "validity": "NOT VERIFIED"
+  },
+  "hook_live_env_permissions": "NOT VERIFIED: HOST evidence needed; source docs600/640 contradictory",
+  "secret_manager_assessment": "FAIL",
+  "security_findings": [
+    {
+      "id": "rotation_metadata",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "version_pinning_policy_retention",
+      "severity": "LOW"
+    },
+    {
+      "id": "vm_identity_scope",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "enabled_designated_negative_test_sa",
+      "severity": "LOW"
+    },
+    {
+      "id": "old_token_residue",
+      "severity": "MEDIUM",
+      "validity": "NOT VERIFIED"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "go-test.jsonl": {
+    "cases": {
+      "pass": 489,
+      "skip": 7
+    },
+    "top_level": {
+      "pass": 411,
+      "skip": 7
+    },
+    "new_cases": {
+      "pass": 8
+    },
+    "packages": {
+      "kiyas/cmd/us-pricing-gen": "skip",
+      "kiyas/cmd/us-license-hook": "pass",
+      "kiyas/licensesrv": "pass",
+      "kiyas": "pass"
+    }
+  },
+  "go-race.jsonl": {
+    "cases": {
+      "pass": 489,
+      "skip": 7
+    },
+    "top_level": {
+      "pass": 411,
+      "skip": 7
+    },
+    "new_cases": {
+      "pass": 8
+    },
+    "packages": {
+      "kiyas/cmd/us-pricing-gen": "skip",
+      "kiyas/cmd/us-license-hook": "pass",
+      "kiyas": "pass",
+      "kiyas/licensesrv": "pass"
+    }
+  }
+}

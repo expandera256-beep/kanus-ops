@@ -1,0 +1,6 @@
+=== RUN   TestCreditHTTPAuthorizationAndIdempotentSettlement
+--- PASS: TestCreditHTTPAuthorizationAndIdempotentSettlement (0.01s)
+PASS
+ok  	kiyas/licensesrv	0.008s
+
+exit_code=0

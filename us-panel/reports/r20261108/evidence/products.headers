@@ -1,0 +1,19 @@
+HTTP/2 429 
+date: Sat, 07 Nov 2026 21:20:52 GMT
+content-type: text/plain
+content-length: 18
+retry-after: 60
+x-download-options: noopen
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+x-dc: gcp-us-west1
+x-request-id: 48691c0c-1303-4da6-bbc7-752ef90669e0-1794086452
+server: cloudflare
+x-permitted-cross-domain-policies: none
+alt-svc: h3=":443"; ma=86400
+cf-cache-status: DYNAMIC
+server-timing: ipv6
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=WeIWpvpHu0ezE6L72YrEZcxgjHxYaU0SENdRc0rnmP8AjOVWzDmOFy%2B0vkT6uxxWmUX4hX6zZS25TlDxu%2BQ5GhNnSMFb605HGxEsaByl2M5wcgLqo%2FMnEVa4mGFeG5PXMxkY4ZpJQsXqJrVx"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.01,"max_age":604800}
+cf-ray: a56f6266cd0d85bc-SEA
+

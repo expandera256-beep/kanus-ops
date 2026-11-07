@@ -1,0 +1,55 @@
+{
+  "results": [
+    {
+      "label": "B",
+      "order": 9000000000302,
+      "webhook": {
+        "webhook_http": 200,
+        "webhook_id": "325bf26c-14c1-4917-82d4-948408c7c9d6",
+        "time": "2026-11-06 08:23:46 TSİ (Europe/Istanbul)",
+        "body_prefix": ""
+      },
+      "status": {
+        "status_http": 200,
+        "fields": {
+          "valid": false,
+          "revoked": true,
+          "remaining": 0,
+          "credits": 0,
+          "available": 0,
+          "reserved": 0,
+          "kind": "sub",
+          "unit": "credits"
+        },
+        "time": "2026-11-06 08:23:48 TSİ (Europe/Istanbul)"
+      },
+      "pass": true
+    },
+    {
+      "label": "A",
+      "order": 9000000000301,
+      "webhook": {
+        "webhook_http": 200,
+        "webhook_id": "4f48d0cd-2673-455f-b52e-bdf8b88cd630",
+        "time": "2026-11-06 08:23:49 TSİ (Europe/Istanbul)",
+        "body_prefix": ""
+      },
+      "status": {
+        "status_http": 200,
+        "fields": {
+          "valid": false,
+          "revoked": true,
+          "remaining": 0,
+          "credits": 0,
+          "available": 0,
+          "reserved": 0,
+          "kind": "sub",
+          "unit": "credits"
+        },
+        "time": "2026-11-06 08:23:50 TSİ (Europe/Istanbul)"
+      },
+      "pass": true
+    }
+  ],
+  "note": "keys/secret never written"
+}

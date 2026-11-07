@@ -1,0 +1,119 @@
+{
+  "projects": [
+    {
+      "name": "003",
+      "path": "/workspace/us-panel-dev/scratch/review-20261108/tmp/TestStudioTracksProjectsRepoAndPlugins3604211036/003",
+      "state": "açık",
+      "tracks": [
+        {
+          "title": "paketle",
+          "state": "sürüyor"
+        }
+      ],
+      "attached": [
+        "not.txt"
+      ]
+    },
+    {
+      "name": "004",
+      "path": "/workspace/us-panel-dev/scratch/review-20261108/tmp/TestStudioTracksProjectsRepoAndPlugins3604211036/004",
+      "state": "duruyor"
+    }
+  ],
+  "plugins": [
+    {
+      "name": "dosyalar",
+      "kind": "mcp",
+      "text": "git kayıtlı. Çalıştırılmadı."
+    },
+    {
+      "name": "not",
+      "kind": "skill",
+      "text": "kisa satir"
+    }
+  ],
+  "journal": [
+    {
+      "n": 1,
+      "kind": "işlem",
+      "text": "iliştir not.txt"
+    },
+    {
+      "n": 2,
+      "kind": "istem",
+      "text": "kullanıcı: renkleri say"
+    },
+    {
+      "n": 3,
+      "kind": "düşünce",
+      "text": "İstek modele gidiyor."
+    },
+    {
+      "n": 4,
+      "kind": "istem",
+      "text": "İş modele gitti: renkleri say\nek: not.txt. Klasörde 2 ad."
+    },
+    {
+      "n": 5,
+      "kind": "işlem",
+      "text": "İstek modele gitti."
+    },
+    {
+      "n": 6,
+      "kind": "özet",
+      "text": "Özet. İstem: renkleri say\nek: not.txt. Okunan: yok. Yazılan: yok. Sonuç: cevap verildi."
+    },
+    {
+      "n": 7,
+      "kind": "işlem",
+      "text": "depo\ndal HEAD\nfatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git \u003ccommand\u003e [\u003crevision\u003e...] -- [\u003cfile\u003e...]'\n.us-tasks/\nboard.svg\nnot.txt"
+    },
+    {
+      "n": 8,
+      "kind": "işlem",
+      "text": "github\nGitHub acme/app https://github.com/acme/app"
+    },
+    {
+      "n": 9,
+      "kind": "işlem",
+      "text": "tuval /view?path=board.svg"
+    },
+    {
+      "n": 10,
+      "kind": "işlem",
+      "text": "bakış"
+    },
+    {
+      "n": 11,
+      "kind": "düşünce",
+      "text": "dal HEAD\nfatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git \u003ccommand\u003e [\u003crevision\u003e...] -- [\u003cfile\u003e...]'\n.us-tasks/\nboard.svg\nnot.txt\nGitHub acme/app https://github.com/acme/app"
+    }
+  ],
+  "chat": [
+    {
+      "role": "panel",
+      "text": "kullanıcı: renkleri say\nek: not.txt\nKlasörde 2 ad var."
+    },
+    {
+      "role": "model",
+      "text": "oldu"
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "renkleri say",
+      "turns": [
+        {
+          "role": "panel",
+          "text": "kullanıcı: renkleri say\nek: not.txt\nKlasörde 2 ad var."
+        },
+        {
+          "role": "model",
+          "text": "oldu"
+        }
+      ]
+    }
+  ],
+  "chatId": "s1"
+}

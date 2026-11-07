@@ -1,0 +1,15 @@
+--- FAIL: TestR13bSessionAncestorSwapRead (0.00s)
+    file_tools_r13b_linux_test.go:84: desk read outside sentinel after ancestor swap: "outside"
+--- FAIL: TestR13bSessionAncestorSwapSave (0.00s)
+    file_tools_r13b_linux_test.go:96: pinned save: got "inside" notice "Dosya açıldıktan sonra değişti; kaydedilmedi."
+--- FAIL: TestR13bSessionAncestorSwapAppend (0.00s)
+    file_tools_r13b_linux_test.go:105: outside sentinel changed: "outside+tail"
+--- FAIL: TestR13bSessionAncestorSwapUndo (0.00s)
+    file_tools_r13b_linux_test.go:119: undo on pinned root: geri alınacak kayıt yok
+--- FAIL: TestR13bSaveCleanupRace (0.00s)
+    file_tools_r13b_linux_test.go:157: cleanup removed an outside entry
+--- FAIL: TestR13bSessionRootSwap (0.00s)
+    file_tools_r13b_linux_test.go:183: pinned root append "inside" notice "Dosya klasörün dışında."
+FAIL
+FAIL	kiyas	0.009s
+FAIL

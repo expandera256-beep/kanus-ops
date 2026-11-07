@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "executed_by": "parent agent; independently verified read-only by executor",
+  "old_revision": "us-commerce-00002-pr2",
+  "new_revision": "us-commerce-sre-ready-r1",
+  "digest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:2416ec71eb4e16c3da4c1d9866cb3c7393ce8819efd043e8b1f28bf9a8bfdbab",
+  "traffic_percent": 100,
+  "latestRevision": false,
+  "spec_same_except_image": true,
+  "candidate_ready": 200,
+  "candidate_health": 200,
+  "rate_limit_request": 15,
+  "retry_after": 1,
+  "promoted_istanbul": "2026-11-08T00:48:30+03:00",
+  "observed_until_istanbul": "2026-11-08T00:55:26.011962+03:00",
+  "post_promote_5xx": 0,
+  "post_promote_error_severity": 0,
+  "executor_cloud_writes": false,
+  "time_istanbul": "2026-11-08T01:00:15.814253+03:00"
+}

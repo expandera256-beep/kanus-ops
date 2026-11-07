@@ -1,0 +1,20 @@
+tree/smoke_cli.go:91:	path := "/healthz"
+tree/licensesrv/gpu_wake.go:116:// NewGPUWaker reads the plain-http allowlist from US_GPU_WAKE_HTTP_ALLOW.
+tree/licensesrv/gpu_wake.go:117:func NewGPUWaker(wakeURL, statusURL, tokenFile string, warmup time.Duration) (*GPUWaker, error) {
+tree/licensesrv/gpu_wake.go:118:	return NewGPUWakerAllow(wakeURL, statusURL, tokenFile, warmup, ParseHTTPAllow(os.Getenv("US_GPU_WAKE_HTTP_ALLOW")))
+tree/licensesrv/gpu_wake.go:121:func NewGPUWakerAllow(wakeURL, statusURL, tokenFile string, warmup time.Duration, httpAllow map[string]bool) (*GPUWaker, error) {
+tree/cmd/us-license-hook/main.go:96:		mux.HandleFunc("/v1/models", proxy.Models)
+tree/cmd/us-license-hook/main.go:98:	mux.Handle("/v1/chat", handler)
+tree/cmd/us-license-hook/main.go:99:	mux.Handle("/v1/chat/completions", handler)
+tree/cmd/us-license-hook/main.go:109:	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte("ok")) })
+tree/cmd/us-license-hook/main.go:136:	waker, err := configuredWaker()
+tree/cmd/us-license-hook/main.go:140:	proxy.Waker = waker
+tree/cmd/us-license-hook/main.go:144:// configuredWaker uses secure built-in defaults. Explicit disable is separate
+tree/cmd/us-license-hook/main.go:146:func configuredWaker() (*licensesrv.GPUWaker, error) {
+tree/cmd/us-license-hook/main.go:156:	w, err := licensesrv.NewGPUWaker(wake, status, env("US_GPU_WAKE_TOKEN_FILE", "/etc/us-model/wake.token"), warm)
+tree/licensesrv/model_proxy.go:135:			p.Waker.Trigger()
+tree/licensesrv/model_proxy.go:206:	req, err := http.NewRequestWithContext(ctx, http.MethodPost, p.Upstream+"/v1/chat/completions", bytes.NewReader(raw))
+tree/licensesrv/model_proxy.go:516:	if p.Waker == nil && p.Upstream == "" {
+tree/repair_loop.go:18:// OpenAI-compatible /v1/chat/completions endpoint. Edits are applied only
+tree/repair_loop.go:262:	hreq, err := http.NewRequestWithContext(ctx, http.MethodPost, strings.TrimRight(l.Endpoint, "/")+"/v1/chat/completions", bytes.NewReader(raw))
+tree/model.go:2060:		last = postCompletionContext(parent, strings.TrimRight(base, "/")+"/v1/chat/completions", worker, key, wire, system, maxTokens, effort, budget, progress, limits)

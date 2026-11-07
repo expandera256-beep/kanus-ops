@@ -1,0 +1,20 @@
+{
+  "X1": {
+    "spki": "C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=",
+    "subject": "CN=ISRG Root X1,O=Internet Security Research Group,C=US",
+    "issuer": "CN=ISRG Root X1,O=Internet Security Research Group,C=US",
+    "notAfter": "2035-06-04T11:04:38+00:00",
+    "notBefore": "2015-06-04T11:04:38+00:00",
+    "key_type": "RSAPublicKey",
+    "SAN": []
+  },
+  "X2": {
+    "spki": "diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI=",
+    "subject": "CN=ISRG Root X2,O=Internet Security Research Group,C=US",
+    "issuer": "CN=ISRG Root X2,O=Internet Security Research Group,C=US",
+    "notAfter": "2040-09-17T16:00:00+00:00",
+    "notBefore": "2020-09-04T00:00:00+00:00",
+    "key_type": "ECPublicKey",
+    "SAN": []
+  }
+}

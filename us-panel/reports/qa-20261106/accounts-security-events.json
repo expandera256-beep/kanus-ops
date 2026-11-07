@@ -1,0 +1,287 @@
+[
+  {
+    "seq": 1,
+    "label": "valid_login_1",
+    "path": "/account/login",
+    "http": 200,
+    "ms": 31362.373,
+    "body_bytes": 203,
+    "time": "2026-11-06T09:15:08.413927+03:00"
+  },
+  {
+    "seq": 2,
+    "label": "valid_login_2",
+    "path": "/account/login",
+    "http": 200,
+    "ms": 31998.25,
+    "body_bytes": 203,
+    "time": "2026-11-06T09:15:40.413028+03:00"
+  },
+  {
+    "seq": 3,
+    "label": "balance_before_1",
+    "path": "/account/balance",
+    "http": 200,
+    "ms": 891.451,
+    "body_bytes": 135,
+    "time": "2026-11-06T09:15:41.305216+03:00"
+  },
+  {
+    "seq": 4,
+    "label": "balance_before_2",
+    "path": "/account/balance",
+    "http": 200,
+    "ms": 1301.342,
+    "body_bytes": 124,
+    "time": "2026-11-06T09:15:42.606978+03:00"
+  },
+  {
+    "seq": 5,
+    "label": "tampered_signature",
+    "path": "/account/balance",
+    "http": 401,
+    "ms": 701.208,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:15:43.308699+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 6,
+    "label": "expired_claims_bad_signature",
+    "path": "/account/balance",
+    "http": 401,
+    "ms": 990.55,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:15:44.299721+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 7,
+    "label": "cross_subject_tamper",
+    "path": "/account/balance",
+    "http": 401,
+    "ms": 1198.854,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:15:45.498996+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 8,
+    "label": "A_token_B_email_balance",
+    "path": "/account/balance",
+    "http": 200,
+    "ms": 905.6,
+    "body_bytes": 135,
+    "time": "2026-11-06T09:15:46.404965+03:00"
+  },
+  {
+    "seq": 9,
+    "label": "A_token_B_email_requests",
+    "path": "/account/requests",
+    "http": 200,
+    "ms": 1102.849,
+    "body_bytes": 16,
+    "time": "2026-11-06T09:15:47.508264+03:00"
+  },
+  {
+    "seq": 10,
+    "label": "A_own_requests",
+    "path": "/account/requests",
+    "http": 200,
+    "ms": 991.02,
+    "body_bytes": 16,
+    "time": "2026-11-06T09:15:48.499653+03:00"
+  },
+  {
+    "seq": 11,
+    "label": "existing_license_status",
+    "path": "/v1/credits/status",
+    "http": 200,
+    "ms": 2110.804,
+    "body_bytes": 248,
+    "time": "2026-11-06T09:15:50.610968+03:00"
+  },
+  {
+    "seq": 12,
+    "label": "redeem_same_owner_1",
+    "path": "/account/redeem",
+    "http": 200,
+    "ms": 1382.786,
+    "body_bytes": 135,
+    "time": "2026-11-06T09:15:51.994160+03:00"
+  },
+  {
+    "seq": 13,
+    "label": "redeem_same_owner_2",
+    "path": "/account/redeem",
+    "http": 200,
+    "ms": 1215.019,
+    "body_bytes": 135,
+    "time": "2026-11-06T09:15:53.209532+03:00"
+  },
+  {
+    "seq": 14,
+    "label": "redeem_parallel_0",
+    "path": "/account/redeem",
+    "http": 200,
+    "ms": 1393.884,
+    "body_bytes": 135,
+    "time": "2026-11-06T09:15:54.606074+03:00"
+  },
+  {
+    "seq": 15,
+    "label": "redeem_parallel_1",
+    "path": "/account/redeem",
+    "http": 200,
+    "ms": 2282.868,
+    "body_bytes": 135,
+    "time": "2026-11-06T09:15:55.495647+03:00"
+  },
+  {
+    "seq": 16,
+    "label": "B_redeem_A_owned_license",
+    "path": "/account/redeem",
+    "http": 409,
+    "ms": 1899.661,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:15:57.396593+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 17,
+    "label": "redeem_revoked_a",
+    "path": "/account/redeem",
+    "http": 409,
+    "ms": 796.859,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:15:58.194088+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 18,
+    "label": "redeem_revoked_b",
+    "path": "/account/redeem",
+    "http": 409,
+    "ms": 806.18,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:15:59.000700+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 19,
+    "label": "balance_after_1",
+    "path": "/account/balance",
+    "http": 200,
+    "ms": 1594.316,
+    "body_bytes": 135,
+    "time": "2026-11-06T09:16:00.595399+03:00"
+  },
+  {
+    "seq": 20,
+    "label": "balance_after_2",
+    "path": "/account/balance",
+    "http": 200,
+    "ms": 900.037,
+    "body_bytes": 124,
+    "time": "2026-11-06T09:16:01.495811+03:00"
+  },
+  {
+    "seq": 21,
+    "label": "enumeration_registered_0",
+    "path": "/account/login",
+    "http": 401,
+    "ms": 33100.67,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:16:34.596928+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 22,
+    "label": "enumeration_unregistered_1",
+    "path": "/account/login",
+    "http": 401,
+    "ms": 34797.644,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:17:09.395457+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 23,
+    "label": "enumeration_unregistered_2",
+    "path": "/account/login",
+    "http": 401,
+    "ms": 34596.937,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:17:43.993199+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 24,
+    "label": "enumeration_registered_3",
+    "path": "/account/login",
+    "http": 401,
+    "ms": 31802.185,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:18:15.796153+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 25,
+    "label": "QA_bruteforce_wrong_0",
+    "path": "/account/login",
+    "http": 401,
+    "ms": 46617.673,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:19:02.414573+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 26,
+    "label": "QA_bruteforce_wrong_1",
+    "path": "/account/login",
+    "http": 401,
+    "ms": 46474.045,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:19:48.889488+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 27,
+    "label": "valid_after_four_QA_failures",
+    "path": "/account/login",
+    "http": 200,
+    "ms": 38311.226,
+    "body_bytes": 203,
+    "time": "2026-11-06T09:20:27.201563+03:00"
+  },
+  {
+    "seq": 28,
+    "label": "bounded_limiter_probe_0",
+    "path": "/account/login",
+    "http": 400,
+    "ms": 893.878,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:20:28.096048+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 29,
+    "label": "bounded_limiter_probe_1",
+    "path": "/account/login",
+    "http": 400,
+    "ms": 993.933,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:20:29.090419+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  },
+  {
+    "seq": 30,
+    "label": "bounded_limiter_probe_2",
+    "path": "/account/login",
+    "http": 400,
+    "ms": 815.751,
+    "body_bytes": 37,
+    "time": "2026-11-06T09:20:29.906577+03:00",
+    "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"
+  }
+]

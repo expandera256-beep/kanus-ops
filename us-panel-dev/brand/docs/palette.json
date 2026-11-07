@@ -1,0 +1,26 @@
+{
+  "version": "2026.11.06",
+  "source": "NIHAI_PROMPT §7 + Demir Thelema logo talimatı",
+  "colors": {
+    "ink": "#05070f",
+    "navy": "#0a0e1a",
+    "navy_mid": "#12182b",
+    "panel": "#161e33",
+    "line": "#2a3555",
+    "muted": "#8b95b2",
+    "paper": "#e8eefc",
+    "blue": "#3b82f6",
+    "blue_neon": "#60a5fa",
+    "blue_deep": "#1d4ed8",
+    "purple": "#a855f7",
+    "purple_neon": "#c084fc",
+    "purple_deep": "#7c3aed",
+    "cyan": "#22d3ee",
+    "success": "#34d399",
+    "warn": "#fbbf24",
+    "danger": "#f87171",
+    "flag_red": "#E30A17",
+    "flag_white": "#FFFFFF"
+  },
+  "logo_gradient": ["#c084fc", "#60a5fa", "#a855f7"]
+}

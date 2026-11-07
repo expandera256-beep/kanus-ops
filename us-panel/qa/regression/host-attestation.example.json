@@ -1,0 +1,9 @@
+{
+  "release": "2026.11.06.11",
+  "ip": "82.29.184.225",
+  "hook_sha256": "REPLACE_WITH_HOST_READ_ONLY_RUNNING_BINARY_SHA256",
+  "migration_complete": false,
+  "qa_only": true,
+  "account_limit": 10,
+  "account_window_seconds": 900
+}

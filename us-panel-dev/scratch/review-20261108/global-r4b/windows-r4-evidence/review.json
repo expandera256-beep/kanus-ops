@@ -1,0 +1,32 @@
+{
+  "PASS": 23,
+  "FAIL": 0,
+  "SKIP": 1,
+  "tests": [
+    "TestFourLocaleParity",
+    "TestFormattingDeRu",
+    "TestNoMissingKeysBetweenLocales",
+    "TestPlaceholdersMatch",
+    "TestForbiddenSloganAbsent",
+    "TestSloganSingleKey",
+    "TestNegotiate",
+    "TestFallbackAndPlaceholders",
+    "TestAddRejectsBadLocale",
+    "TestFormatting",
+    "TestConcurrentUse",
+    "TestPrefRootCacheBounded",
+    "TestPrefRootHandleScaling",
+    "TestPrefRootClosedHandleInvalid",
+    "TestPrefRootEvictionWhileInUse",
+    "TestPrefRootConcurrentSwitch",
+    "TestPrefStoreRoundTrip",
+    "TestPrefHandler",
+    "TestWinPrefNormalSave",
+    "TestWinPrefJunctionBelowRootRejected",
+    "TestWinPrefSymlinkFileRejected",
+    "TestWinPrefJunctionRootAllowedAndPinned",
+    "TestWinPrefDACLSharedRoot",
+    "TestWinPrefHardlinkAliasRejected"
+  ],
+  "sha256": "166d869a5dad7e21985a5b910f894c4283af1799244653fce3f0c97104f974fe"
+}

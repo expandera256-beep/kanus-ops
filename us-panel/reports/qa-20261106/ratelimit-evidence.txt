@@ -1,0 +1,161 @@
+api-test.kanus.org /account/login rate-limit evidence
+Collected READ-ONLY from srv1662550 (31.220.63.191) at 2026-11-06T06:37:18Z (Europe/Istanbul 09:37).
+Server timezone: Etc/UTC. No secrets/env values included. No config changes.
+
+==============================================================================
+1) nginx -T grep (uslic_account|limit_req|location /account|real_ip|X-Real-IP|X-Forwarded-For)
+==============================================================================
+200:limit_req_zone $binary_remote_addr zone=uslic_webhooks:10m rate=10r/s;
+201:limit_req_zone $binary_remote_addr zone=uslic_credits:10m rate=5r/s;
+202:limit_req_zone $binary_remote_addr zone=uslic_account:10m rate=5r/m;
+257:    limit_req zone=uslic_webhooks burst=20 nodelay;
+263:    limit_req zone=uslic_webhooks burst=20 nodelay;
+269:    limit_req zone=uslic_webhooks burst=20 nodelay;
+275:    limit_req zone=uslic_credits burst=10 nodelay;
+281:    limit_req zone=uslic_credits burst=10 nodelay;
+287:    limit_req zone=uslic_credits burst=10 nodelay;
+302:    limit_req zone=uslic_credits burst=10 nodelay;
+312:    limit_req zone=uslic_credits burst=10 nodelay;
+325:    limit_req zone=uslic_credits burst=10 nodelay;
+341:    limit_req zone=uslic_account burst=2 nodelay;
+346:    proxy_set_header X-Real-IP $remote_addr;
+347:    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+352:    limit_req zone=uslic_account burst=2 nodelay;
+357:    proxy_set_header X-Real-IP $remote_addr;
+358:    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+367:    proxy_set_header X-Real-IP $remote_addr;
+368:    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+(plus many unrelated X-Real-IP / X-Forwarded-For lines from other vhosts)
+
+Active zones file /etc/nginx/conf.d/us-license-hook-ratelimit.conf:
+  limit_req_zone $binary_remote_addr zone=uslic_webhooks:10m rate=10r/s;
+  limit_req_zone $binary_remote_addr zone=uslic_credits:10m rate=5r/s;
+  limit_req_zone $binary_remote_addr zone=uslic_account:10m rate=5r/m;
+
+NOTE: No real_ip_header / set_real_ip_from in the grep hits — nginx keys limits on
+connecting peer ($binary_remote_addr), not on XFF.
+
+==============================================================================
+2) Active /account/ location blocks (from nginx -T via included snippet)
+   include: /etc/nginx/snippets/us-license-hook-locations.conf
+   (included inside api-test.kanus.org HTTPS server block)
+==============================================================================
+location = /account/login {
+    limit_req zone=uslic_account burst=2 nodelay;
+    client_max_body_size 16k;
+    proxy_pass http://127.0.0.1:8787;
+    proxy_set_header Host $host;
+    proxy_set_header Authorization $http_authorization;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_read_timeout 90s;
+}
+location = /account/register {
+    limit_req zone=uslic_account burst=2 nodelay;
+    client_max_body_size 16k;
+    proxy_pass http://127.0.0.1:8787;
+    proxy_set_header Host $host;
+    proxy_set_header Authorization $http_authorization;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_read_timeout 90s;
+}
+location ^~ /account/ {
+    client_max_body_size 16k;
+    proxy_pass http://127.0.0.1:8787;
+    proxy_set_header Host $host;
+    proxy_set_header Authorization $http_authorization;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_read_timeout 90s;
+}
+
+Exact `location = /account/login` DOES apply limit_req (zone uslic_account, burst=2).
+Prefix `^~ /account/` has NO limit_req (other account paths).
+Location match order: exact `=` wins over `^~` for /account/login — ordering OK.
+
+==============================================================================
+3) Access log /account/login — 06:26–06:31 UTC (= 09:26–09:31 Europe/Istanbul)
+==============================================================================
+Log file: /var/log/nginx/access.log  (global; no dedicated api-test access_log)
+Log format: default combined — fields: remote_addr, time_local, request, status, …
+X-Forwarded-For / XFF: NOT present in this log format (xff_present_in_format=False).
+
+Matched lines in window (grep /account/login + 06/Nov/2026:06:26–06:31):
+
+time=06/Nov/2026:06:27:46 +0000 status=400 remote_addr=140.248.50.33  xff=N/A
+time=06/Nov/2026:06:27:46 +0000 status=400 remote_addr=140.248.50.86  xff=N/A
+time=06/Nov/2026:06:27:46 +0000 status=400 remote_addr=140.248.50.109 xff=N/A
+time=06/Nov/2026:06:27:46 +0000 status=400 remote_addr=140.248.50.38  xff=N/A
+time=06/Nov/2026:06:27:46 +0000 status=400 remote_addr=140.248.50.32  xff=N/A
+time=06/Nov/2026:06:29:10 +0000 status=400 remote_addr=140.248.50.115 xff=N/A
+time=06/Nov/2026:06:29:10 +0000 status=400 remote_addr=140.248.50.21  xff=N/A
+time=06/Nov/2026:06:29:10 +0000 status=400 remote_addr=140.248.50.96  xff=N/A
+time=06/Nov/2026:06:29:10 +0000 status=400 remote_addr=140.248.50.24  xff=N/A
+time=06/Nov/2026:06:29:11 +0000 status=400 remote_addr=140.248.50.116 xff=N/A
+time=06/Nov/2026:06:30:14 +0000 status=200 remote_addr=213.14.161.140 xff=N/A
+time=06/Nov/2026:06:30:35 +0000 status=400 remote_addr=140.248.50.73  xff=N/A
+time=06/Nov/2026:06:30:35 +0000 status=400 remote_addr=140.248.50.27  xff=N/A
+time=06/Nov/2026:06:30:35 +0000 status=400 remote_addr=140.248.50.30  xff=N/A
+time=06/Nov/2026:06:30:35 +0000 status=400 remote_addr=140.248.50.81  xff=N/A
+time=06/Nov/2026:06:30:35 +0000 status=400 remote_addr=140.248.50.24  xff=N/A
+
+Status counts in this window: 400=15, 200=1, 429=0. matched_lines=16.
+(If QA counted “32 attempts”, they may include a wider window or /account/register;
+ this file reports only /account/login in 06:26–06:31 UTC.)
+
+UA mostly Python-urllib/3.13 from 140.248.50.*; one Go-http-client/2.0 → 200 from 213.14.161.140.
+
+==============================================================================
+4) Running binary hashes + unit ExecStart
+==============================================================================
+systemctl show:
+  MainPID=1107497
+  ExecStart={ path=/opt/us-license-hook/us-license-hook-wrap.sh ; argv[]=/opt/us-license-hook/us-license-hook-wrap.sh ; … pid=1107497 … }
+
+systemctl cat | grep ExecStart:
+  ExecStart=/opt/us-license-hook/us-license-hook-wrap.sh
+
+/proc/1107497/exe -> /opt/us-license-hook/us-license-hook.real (deleted)
+sha256 /proc/1107497/exe:
+  7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0
+sha256 /opt/us-license-hook/us-license-hook.real:
+  7d72f449ae3011e7f37632b0aced7ba827113940846213a3dd94415a921256f0
+sha256 /opt/us-license-hook/us-license-hook (wrapper script on disk, 127 bytes):
+  3e21b85936581585497120c5e536bbc6acf8f6658447061b35db7b4dbd215195
+
+Note: exe shows "(deleted)" but sha256 of /proc/PID/exe matches current
+us-license-hook.real on disk (same digest).
+
+==============================================================================
+5) Hypothesis — why many login attempts produced no 429
+==============================================================================
+PROVEN:
+- nginx DOES attach limit_req zone=uslic_account to location = /account/login
+  (rate 5r/m, burst=2, nodelay). Not a “missing limit_req on /account/login” bug.
+- Exact location match is present; not swallowed by ^~ /account/ without limits.
+- Zone key is $binary_remote_addr (TCP peer), not XFF. No real_ip module in play.
+- Access log shows nearly every QA hit from a DIFFERENT 140.248.50.x address
+  (box egress rotation). Only 140.248.50.24 appears twice in-window, minutes apart.
+- 429 count in-window = 0; responses are mostly 400 (app validation) plus one 200.
+
+HYPOTHESIS (high confidence, consistent with proven facts):
+- limit_req buckets are per connecting IP. Rotating box egress ⇒ each attempt
+  lands in a fresh (or nearly fresh) bucket ⇒ burst/rate never exhausted ⇒ no 429.
+- Even same-IP: 5r/m + burst 2 allows several quick requests before 429; sparse
+  duplicates would still often stay under the limit.
+
+HYPOTHESIS (lower confidence / not proven here):
+- Go app may also rate-limit (or not) on X-Real-IP; with X-Real-IP=$remote_addr
+  it would see the same rotating peer IPs. Not inspected in binary/source this pass.
+- If QA’s “32 attempts” used a single IP via a sticky path, absence of 429 would
+  need another explanation — but the access log for this window contradicts
+  single-IP; it shows many distinct 140.248.50.* peers.
+
+NOT supported by evidence:
+- “limit_req not applied to /account/login” — false (it is applied).
+- “location ordering sends /account/login to unlimited ^~ /account/” — false
+  (`=` exact takes precedence).

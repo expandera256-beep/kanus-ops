@@ -1,0 +1,160 @@
+{
+ "slogan": {
+  "tr": "Fikirlerini yazılıma dönüştür.",
+  "en": "Turn your ideas into software."
+ },
+ "tr": {
+  "meta": {
+   "name": "Türkçe",
+   "bcp47": "tr-TR",
+   "dir": "ltr"
+  },
+  "nav": {
+   "home": "Ana sayfa",
+   "product": "Ürün",
+   "pricing": "Fiyatlandırma",
+   "download": "İndir",
+   "docs": "Dokümantasyon",
+   "api": "API",
+   "support": "Destek",
+   "privacy": "Gizlilik",
+   "terms": "Kullanım koşulları",
+   "refund": "İade"
+  },
+  "pages": {
+   "home": {
+    "title": "Ana sayfa",
+    "desc": "US Panel ile yapay zekâ destekli yazılım geliştirme. Kredini shop.kanus.org’dan al.",
+    "body": "US Panel’de istemlerini koda ve ürüne çevir. Mağaza: shop.kanus.org."
+   },
+   "product": {
+    "title": "US Panel",
+    "desc": "US Panel Windows uygulaması: proje, dosya, terminal ve yapay zekâ ajanı.",
+    "body": "Az sürtünme. Çalışan çıktı. Boş bir tuval. Senin sözlerin. US Panel’de konuşmaya başla."
+   },
+   "pricing": {
+    "title": "Fiyatlandırma",
+    "desc": "Güncel paket ve fiyatlar shop.kanus.org’dadır.",
+    "body": "US Panel Windows uygulamasıdır. Güncel paket ve fiyatlar shop.kanus.org’dadır; sitedeki örnek rakamlar teklif değildir."
+   },
+   "download": {
+    "title": "US Panel indir",
+    "desc": "US Panel’i indir; lisansı shop.kanus.org’dan al.",
+    "body": "US Panel’i indir. Lisansı shop.kanus.org’dan al; ödenmiş siparişin anahtarı e-postayla gelir."
+   },
+   "docs": {
+    "title": "Dokümantasyon",
+    "desc": "US Panel kullanım belgeleri.",
+    "body": "Kurulum, giriş, proje açma ve kredi kullanımı belgeleri hazırlanıyor. Sorular için support@kanus.org."
+   },
+   "api": {
+    "title": "API belgeleri",
+    "desc": "Kanus API belgeleri.",
+    "body": "Sürümlenmiş REST API belgeleri hazırlanıyor."
+   },
+   "support": {
+    "title": "Destek",
+    "desc": "US Panel veya siparişin hakkında destek.",
+    "body": "US Panel veya siparişin hakkında soru mu var? support@kanus.org’a not bırak."
+   },
+   "privacy": {
+    "title": "Gizlilik politikası",
+    "desc": "Kanus gizlilik politikası.",
+    "body": "TASLAK — hukuki metin onay bekliyor.",
+    "draft": true,
+    "status": "TASLAK — YAYINLANMAZ / DRAFT — NOT PUBLISHED"
+   },
+   "terms": {
+    "title": "Kullanım koşulları",
+    "desc": "Kanus kullanım koşulları.",
+    "body": "TASLAK — hukuki metin onay bekliyor.",
+    "draft": true,
+    "status": "TASLAK — YAYINLANMAZ / DRAFT — NOT PUBLISHED"
+   },
+   "refund": {
+    "title": "İade politikası",
+    "desc": "Kanus iade politikası.",
+    "body": "TASLAK — hukuki metin onay bekliyor.",
+    "draft": true,
+    "status": "TASLAK — YAYINLANMAZ / DRAFT — NOT PUBLISHED"
+   }
+  }
+ },
+ "en": {
+  "meta": {
+   "name": "English",
+   "bcp47": "en-US",
+   "dir": "ltr"
+  },
+  "nav": {
+   "home": "Home",
+   "product": "Product",
+   "pricing": "Pricing",
+   "download": "Download",
+   "docs": "Docs",
+   "api": "API",
+   "support": "Support",
+   "privacy": "Privacy",
+   "terms": "Terms",
+   "refund": "Refunds"
+  },
+  "pages": {
+   "home": {
+    "title": "Home",
+    "desc": "AI-assisted software development with US Panel. Get credits at shop.kanus.org.",
+    "body": "Build with US Panel. Get credits at shop.kanus.org."
+   },
+   "product": {
+    "title": "US Panel",
+    "desc": "US Panel for Windows: projects, files, terminal and an AI agent.",
+    "body": "Less friction. Working output. A blank canvas. Your words. Start the conversation in US Panel."
+   },
+   "pricing": {
+    "title": "Pricing",
+    "desc": "Current plans and prices are on shop.kanus.org.",
+    "body": "US Panel for Windows. Current plans and prices are on shop.kanus.org."
+   },
+   "download": {
+    "title": "Download US Panel",
+    "desc": "Download US Panel; get a license at shop.kanus.org.",
+    "body": "Download US Panel. Get your license at shop.kanus.org; the key for a paid order arrives by email."
+   },
+   "docs": {
+    "title": "Documentation",
+    "desc": "US Panel documentation.",
+    "body": "Guides for setup, sign-in, opening projects and using credits are being prepared. Questions: support@kanus.org."
+   },
+   "api": {
+    "title": "API reference",
+    "desc": "Kanus API reference.",
+    "body": "Versioned REST API documentation is being prepared."
+   },
+   "support": {
+    "title": "Support",
+    "desc": "Support for US Panel and your order.",
+    "body": "Questions about US Panel or your order? Leave a note at support@kanus.org."
+   },
+   "privacy": {
+    "title": "Privacy policy",
+    "desc": "Kanus privacy policy.",
+    "body": "DRAFT — legal text pending approval.",
+    "draft": true,
+    "status": "TASLAK — YAYINLANMAZ / DRAFT — NOT PUBLISHED"
+   },
+   "terms": {
+    "title": "Terms of use",
+    "desc": "Kanus terms of use.",
+    "body": "DRAFT — legal text pending approval.",
+    "draft": true,
+    "status": "TASLAK — YAYINLANMAZ / DRAFT — NOT PUBLISHED"
+   },
+   "refund": {
+    "title": "Refund policy",
+    "desc": "Kanus refund policy.",
+    "body": "DRAFT — legal text pending approval.",
+    "draft": true,
+    "status": "TASLAK — YAYINLANMAZ / DRAFT — NOT PUBLISHED"
+   }
+  }
+ }
+}

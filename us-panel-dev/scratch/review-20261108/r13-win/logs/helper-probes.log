@@ -1,0 +1,14 @@
+=== RUN   TestR13ParentSwapPathTakingWriter
+--- PASS: TestR13ParentSwapPathTakingWriter (0.00s)
+=== RUN   TestR13HistoryPrivateModesAndNestedNewFile
+--- PASS: TestR13HistoryPrivateModesAndNestedNewFile (0.01s)
+=== RUN   TestR13DeskHistoryParentSwap
+    file_tools_r13_linux_test.go:112: swaps=4622 reads=10 snapshots=13
+--- PASS: TestR13DeskHistoryParentSwap (0.12s)
+=== RUN   TestR13ReviewHistoryRePinAncestor
+    review_r13_parent_linux_test.go:108: desktop session accepted replaced ancestor before per-call pin
+    review_r13_parent_linux_test.go:116: history read and wrote outside the original workspace
+--- FAIL: TestR13ReviewHistoryRePinAncestor (0.01s)
+FAIL
+FAIL	kiyas	0.229s
+FAIL

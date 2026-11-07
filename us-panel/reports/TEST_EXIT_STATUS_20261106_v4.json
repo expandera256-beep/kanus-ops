@@ -1,0 +1,17 @@
+{
+  "time_tsi": "06.11.2026 08:16 TSİ (Europe/Istanbul)",
+  "go_test": 0,
+  "go_race_all": 0,
+  "go_vet_all": 0,
+  "windows_cross_build": 0,
+  "hook_cross_build": 0,
+  "top_level_pass": 304,
+  "subtests_pass": 37,
+  "top_level_skip": 6,
+  "native_windows": "BLOCKED",
+  "live_model": "BLOCKED",
+  "deployed": false,
+  "archive_files_verified": 9,
+  "linux_headless_version": 0,
+  "linux_headless_selftest": 0
+}

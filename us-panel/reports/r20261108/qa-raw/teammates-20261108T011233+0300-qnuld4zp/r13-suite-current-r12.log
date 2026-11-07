@@ -1,0 +1,8 @@
+RUN_DIR /workspace/us-panel/reports/r20261108/qa-raw/r13-runs/20261108T012326+0300-xq3dfmzt
+{"name": "F02_ssrf", "status": "PASS", "log": "/workspace/us-panel/reports/r20261108/qa-raw/r13-runs/20261108T012326+0300-xq3dfmzt/F02_ssrf.log", "case_evidence": "/workspace/us-panel/reports/r20261108/qa-raw/runs/20261108T012326_854948+0300-atpt56jr/case-ssrf-results.json", "scope": "Local synthetic case; no public endpoint"}
+{"name": "F04_account_limiter", "status": "PASS", "log": "/workspace/us-panel/reports/r20261108/qa-raw/r13-runs/20261108T012326+0300-xq3dfmzt/F04_account_limiter.log", "case_evidence": "/workspace/us-panel/reports/r20261108/qa-raw/runs/20261108T012328_051246+0300-is9ra877/case-rate_limit-results.json", "scope": "Local synthetic case; no public endpoint"}
+{"name": "F07_account_lock_dos", "status": "FAIL", "log": "/workspace/us-panel/reports/r20261108/qa-raw/r13-runs/20261108T012326+0300-xq3dfmzt/F07_account_lock_dos.jsonl", "test": "TestQAAuditLimiterAccountLockDoS", "reason": "Safety regression failed or build/harness error; inspect raw evidence"}
+{"name": "F01_linux_landlock", "status": "FAIL", "log": "/workspace/us-panel/reports/r20261108/qa-raw/r13-runs/20261108T012326+0300-xq3dfmzt/F01_linux_landlock.jsonl", "test": "TestQAR13LinuxLandlockSiblingRead", "reason": "Safety regression failed or build/harness error; inspect raw evidence"}
+{"name": "Windows_low_il_write_block", "status": "NOT TESTED", "reason": "Native Windows runtime unavailable; cross-compilation is not runtime proof"}
+SUMMARY {"PASS": 2, "FAIL": 2, "SKIP": 0, "NOT TESTED": 1, "BLOCKED": 0, "PLANNED": 0}
+SUITE_STATUS FAIL

@@ -1,0 +1,7 @@
+2026-11-06 08:07:16 TSİ
+CMD: GOPROXY=off GOSUMDB=off go build -o qa/hook ./cmd/us-license-hook
+linux_build_exit=0
+CMD: GOOS=windows GOARCH=amd64 go build -o qa/US-QA.exe .
+windows_cross_build_exit=0
+25f1136136023a6ca423a83b0dcc97f38fb01aa7de5d996702ec855f377a3943  /workspace/us-panel/qa/hook
+1a49a021a7b2db2886114bc49f7178bfb588ea8d9abfe16f5336b4bf987b96f1  /workspace/us-panel/qa/US-QA.exe

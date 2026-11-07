@@ -1,0 +1,27 @@
+{
+  "source_release_unchanged": true,
+  "source_module_matches": {
+    "test_ready_window.py": true,
+    "lifecycle_config.py": true,
+    "managed_inference.py": true,
+    "mail_worker.py": true,
+    "model_gateway.py": true,
+    "inference_lifecycle.py": true,
+    "storage.py": true,
+    "commerce_http.py": true,
+    "metering_admin.py": true,
+    "legacy_wake_migration.py": true,
+    "account_store.py": true,
+    "gce_provider.py": true,
+    "metering_stream.py": true,
+    "delivery.py": true,
+    "test_gce_discard.py": true,
+    "shopify_ledger.py": true,
+    "runtime.py": true,
+    "commercial_server.py": true
+  },
+  "release_tgz_sha256": "80d16639d3c3440518e4db519a98feb0a7f44f31cb6bf8aaea7ace03aaba5584",
+  "credential_pattern_json_files": [],
+  "local_proxy_port_closed": true,
+  "time_istanbul": "2026-11-08T00:42:51.706709+03:00"
+}

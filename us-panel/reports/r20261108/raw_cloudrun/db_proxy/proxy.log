@@ -1,0 +1,17 @@
+2026/11/08 00:33:14 Ignoring --disable-metrics because --telemetry-project was not set
+2026/11/08 00:33:14 Ignoring --disable-traces because --telemetry-project was not set
+2026/11/08 00:33:14 Authorizing with gcloud user credentials
+2026/11/08 00:33:15 [project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg] Listening on 127.0.0.1:15438
+2026/11/08 00:33:15 [project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg] Accepted connection from 127.0.0.1:41528
+2026/11/08 00:33:17 [project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg] client closed the connection
+2026/11/08 00:33:17 [project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg] Accepted connection from 127.0.0.1:41536
+2026/11/08 00:33:18 [project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg] client closed the connection
+2026/11/08 00:33:18 [project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg] Accepted connection from 127.0.0.1:41538
+2026/11/08 00:33:19 [project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg] client closed the connection
+2026/11/08 00:33:19 [project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg] Accepted connection from 127.0.0.1:41542
+2026/11/08 00:33:20 [project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg] client closed the connection
+2026/11/08 00:33:20 [project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg] Accepted connection from 127.0.0.1:41546
+2026/11/08 00:33:22 [project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg] client closed the connection
+2026/11/08 00:33:22 Sending SIGTERM signal for proxy to shutdown.
+2026/11/08 00:33:22 SIGTERM signal received. Shutting down...
+2026/11/08 00:33:22 proxy server error: accept tcp4 127.0.0.1:15438: use of closed network connection

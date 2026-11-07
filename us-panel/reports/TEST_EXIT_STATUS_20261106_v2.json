@@ -1,0 +1,9 @@
+{
+  "go_test": 0,
+  "go_race_all_packages": 0,
+  "go_vet": 0,
+  "python_unittest": 0,
+  "windows_cross_build": 0,
+  "linux_hook_build_and_tgz": 0,
+  "node_gui_syntax": 0
+}

@@ -1,0 +1,28 @@
+--- a/licensesrv/model_proxy.go
++++ b/licensesrv/model_proxy.go
+@@ -113,9 +113,12 @@
+ 	}
+ 	ctx, cancel := context.WithTimeout(r.Context(), p.Timeout)
+ 	defer cancel()
++	queueStarted := time.Now()
+ 	select {
+ 	case p.requests <- struct{}{}:
+ 	default:
++		w.Header().Set("Retry-After", "1")
++		w.Header().Set("X-US-Queue-Wait-Ms", fmt.Sprint(time.Since(queueStarted).Milliseconds()))
+ 		http.Error(w, "model queue full", 429)
+ 		return
+ 	}
+@@ -123,9 +126,12 @@
+ 	select {
+ 	case p.slots <- struct{}{}:
+ 	case <-ctx.Done():
++		w.Header().Set("Retry-After", "1")
++		w.Header().Set("X-US-Queue-Wait-Ms", fmt.Sprint(time.Since(queueStarted).Milliseconds()))
+ 		http.Error(w, "model queue timeout", 504)
+ 		return
+ 	}
++	w.Header().Set("X-US-Queue-Wait-Ms", fmt.Sprint(time.Since(queueStarted).Milliseconds()))
+ 	defer func() { <-p.slots }()
+ 	id, held, hourly, err := p.Store.reserveModel(key, p.Timeout, time.Now())
+ 	if err != nil {

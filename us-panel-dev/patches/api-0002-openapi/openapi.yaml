@@ -1,0 +1,726 @@
+openapi: 3.1.0
+info:
+  title: KAN.US License Hook API
+  version: "2026.11.06.10"
+  description: |
+    Mevcut `us-license-hook` HTTP yüzeyi (panel buildVersion 2026.11.06.10 tabanı).
+    Auth ayrımı (koddan):
+    - Ham lisans `us1…`: credits reserve/settle/status, model chat/models.
+    - Hesap oturumu `usa1…`: yalnız `/v1/credits/status` (özel-case) + `/account/*` korumalı uçlar + model `authorizedCredential`.
+    - `/v1/credits/reserve` ve `/v1/credits/settle` oturum KABUL ETMEZ; `License(key)` ile ham lisans gerekir.
+    Hata gövdeleri çoğu uçta düz metin; account uçlarında `{"error":"…"}` (zarf genişletmesi sonraki yamalarda).
+  contact:
+    name: KANUS.ORG
+  license:
+    name: Proprietary
+    url: https://kanus.org/terms
+servers:
+  - url: https://api-test.kanus.org
+    description: QA (deploy bu turda yok)
+  - url: http://127.0.0.1:8787
+    description: Yerel dinleyici (US_LISTEN)
+tags:
+  - name: health
+    description: Liveness probes
+  - name: webhooks
+    description: Shopify webhook receivers (HMAC)
+  - name: credits
+    description: Credit reserve/settle/status ledger HTTP surface
+  - name: models
+    description: Model proxy chat and metadata
+  - name: account
+    description: Account register/login and owned-license balance
+paths:
+  /healthz:
+    get:
+      operationId: getHealthz
+      tags: [health]
+      summary: Liveness
+      security: []
+      responses:
+        "200":
+          description: ok
+          content:
+            text/plain:
+              schema:
+                type: string
+                examples: ["ok"]
+        "405":
+          description: Method not allowed
+  /webhooks/shopify/orders-paid:
+    post:
+      operationId: shopifyOrdersPaid
+      tags: [webhooks]
+      summary: Shopify orders/paid — lisans mint
+      security: []
+      parameters:
+        - $ref: "#/components/parameters/ShopifyHmac"
+        - $ref: "#/components/parameters/ShopifyTopicPaid"
+        - $ref: "#/components/parameters/ShopifyWebhookId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: Kabul / idempotent yeniden oynatma
+        "400":
+          description: JSON/topic
+        "401":
+          description: HMAC veya topic reddi
+  /webhooks/shopify/orders-cancelled:
+    post:
+      operationId: shopifyOrdersCancelled
+      tags: [webhooks]
+      summary: Sipariş iptali — lisans revoke
+      security: []
+      parameters:
+        - $ref: "#/components/parameters/ShopifyHmac"
+        - $ref: "#/components/parameters/ShopifyTopicCancelled"
+        - $ref: "#/components/parameters/ShopifyWebhookId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: İptal işlendi
+        "400":
+          description: JSON
+        "401":
+          description: HMAC/topic reddi
+  /webhooks/shopify/refunds-create:
+    post:
+      operationId: shopifyRefundsCreate
+      tags: [webhooks]
+      summary: Kısmi/tam iade — kredi düşümü
+      security: []
+      parameters:
+        - $ref: "#/components/parameters/ShopifyHmac"
+        - $ref: "#/components/parameters/ShopifyTopicRefund"
+        - $ref: "#/components/parameters/ShopifyWebhookId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: İade işlendi
+        "400":
+          description: JSON / refund lines
+        "401":
+          description: HMAC/topic reddi
+  /v1/credits/status:
+    get:
+      operationId: getCreditsStatus
+      tags: [credits]
+      summary: Kredi durumu (ham lisans veya hesap oturumu)
+      description: |
+        Ham lisans → `CreditStatus`. Oturum (`usa1.`) → hesap toplu durum.
+        Okuma rezervasyon süpürmez. Reserve/settle bu auth modelini paylaşmaz.
+      security:
+        - LicenseBearer: []
+        - SessionBearer: []
+      responses:
+        "200":
+          description: Durum
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/CreditStatus"
+                  - $ref: "#/components/schemas/AccountCreditStatus"
+        "401":
+          description: Geçersiz Bearer
+        "405":
+          description: Yalnız GET
+  /v1/credits/reserve:
+    post:
+      operationId: postCreditsReserve
+      tags: [credits]
+      summary: 1 kredi rezerve (yalnız sub plan / ham lisans)
+      description: |
+        Caller amount/TTL kabul etmez. Sabit 1 kredi, TTL=45dk.
+        Auth: yalnız ham lisans (`us1…`). Hesap oturumu (`usa1…`) kabul edilmez.
+        `use` (saatlik) planlarda 403 — model proxy gerekir.
+      security:
+        - LicenseBearer: []
+      responses:
+        "200":
+          description: Rezervasyon
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [id]
+                properties:
+                  id:
+                    type: string
+        "401":
+          description: Lisans yok/geçersiz
+        "402":
+          description: Yetersiz kredi
+        "403":
+          description: Geçersiz lisans veya hourly plan
+        "405":
+          description: Yalnız POST
+        "503":
+          description: Depo/transaction hatası
+  /v1/credits/settle:
+    post:
+      operationId: postCreditsSettle
+      tags: [credits]
+      summary: Rezervasyonu commit veya release
+      description: |
+        Auth: yalnız ham lisans (`us1…`); settleFor lisans anahtarına bağlanır.
+        Hesap oturumu (`usa1…`) kabul edilmez. Aynı commit ile tekrar çağrı idempotent; çakışan commit/release → 409.
+      security:
+        - LicenseBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [id, commit]
+              properties:
+                id:
+                  type: string
+                commit:
+                  type: boolean
+                  description: true=düşüm, false=serbest bırakma
+      responses:
+        "200":
+          description: Başarılı (aynı commit ile tekrar çağrı idempotent)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+        "400":
+          description: JSON/id eksik
+        "401":
+          description: Ham lisans gerekli
+        "409":
+          description: Çapraz lisans, çakışan commit/release veya settle hatası
+        "405":
+          description: Yalnız POST
+  /v1/models:
+    get:
+      operationId: getModels
+      tags: [models]
+      summary: Upstream model listesi (proxy)
+      security:
+        - LicenseBearer: []
+        - SessionBearer: []
+      responses:
+        "200":
+          description: Upstream JSON passthrough
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        "401":
+          description: Lisans/oturum yok
+        "405":
+          description: Yalnız GET
+        "502":
+          description: Upstream metadata hatası
+        "503":
+          description: Upstream yapılandırması geçersiz
+  /v1/chat:
+    post:
+      operationId: postChat
+      tags: [models]
+      summary: Model sohbet (SSE veya JSON)
+      description: Hesap oturumu veya ham lisans (`authorizedCredential`). Reserve→upstream→settleAmount.
+      security:
+        - LicenseBearer: []
+        - SessionBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatRequest"
+      responses:
+        "200":
+          description: SSE veya JSON yanıt
+          content:
+            text/event-stream:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        "400":
+          description: JSON / model / bounds / unsupported override
+        "401":
+          description: Auth
+        "402":
+          description: Yetersiz kredi
+        "403":
+          description: Rezervasyon artık aktif değil
+        "413":
+          description: Gövde > 1MiB
+        "429":
+          description: Model kuyruğu dolu
+        "502":
+          description: Upstream
+        "503":
+          description: Upstream yapılandırılmamış / rezervasyon reddi
+        "504":
+          description: Kuyruk veya model zaman aşımı
+  /v1/chat/completions:
+    post:
+      operationId: postChatCompletions
+      tags: [models]
+      summary: OpenAI uyumlu completions alias
+      description: /v1/chat ile aynı handler ve auth.
+      security:
+        - LicenseBearer: []
+        - SessionBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatRequest"
+      responses:
+        "200":
+          description: SSE veya JSON
+          content:
+            text/event-stream:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        "400":
+          description: İstek hatası
+        "401":
+          description: Auth
+        "402":
+          description: Yetersiz kredi
+        "429":
+          description: Kuyruk dolu
+        "503":
+          description: Yapılandırma/rezervasyon
+  /account/register:
+    post:
+      operationId: accountRegister
+      tags: [account]
+      summary: Hesap kaydı (bcrypt cost 12)
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AccountRegister"
+      responses:
+        "201":
+          description: Oluşturuldu
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkTrue"
+        "400":
+          description: E-posta/parola geçersiz
+        "409":
+          description: E-posta veya lisans bağlama çatışması
+        "429":
+          description: IP rate limit / KDF worker dolu
+        "503":
+          description: Session secret yok veya CSPRNG
+  /account/login:
+    post:
+      operationId: accountLogin
+      tags: [account]
+      summary: Oturum (HMAC usa1 token)
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AccountLogin"
+      responses:
+        "200":
+          description: Session
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [session]
+                properties:
+                  session:
+                    type: string
+                    description: usa1.<claims>.<hmac>
+        "400":
+          description: Validasyon
+        "401":
+          description: Kimlik reddi (enumeration-safe gövde)
+        "429":
+          description: Rate limit
+        "503":
+          description: Handler hazır değil
+  /account/balance:
+    post:
+      operationId: accountBalance
+      tags: [account]
+      summary: Hesaba bağlı lisansların toplam bakiyesi
+      security:
+        - SessionBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+      responses:
+        "200":
+          description: Bakiye
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccountBalance"
+        "401":
+          description: Bearer session gerekli
+  /account/redeem:
+    post:
+      operationId: accountRedeem
+      tags: [account]
+      summary: Lisansı hesaba bağla (tek sahip, idempotent)
+      security:
+        - SessionBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [license]
+              properties:
+                license:
+                  type: string
+      responses:
+        "200":
+          description: Bağlandı / zaten sahibi — ardından balance gövdesi
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccountBalance"
+        "400":
+          description: Lisans boş/çok uzun
+        "401":
+          description: Session
+        "409":
+          description: Başka hesaba bağlı veya kullanılamaz
+  /account/requests:
+    post:
+      operationId: accountRequests
+      tags: [account]
+      summary: Son 20 rezervasyon/settlement özeti
+      security:
+        - SessionBearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+      responses:
+        "200":
+          description: İstek geçmişi
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requests:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/AccountRequest"
+        "401":
+          description: Session
+  /account/workers:
+    post:
+      operationId: accountWorkers
+      tags: [account]
+      summary: Model worker metadata (live=false iddiası yok)
+      security:
+        - SessionBearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+      responses:
+        "200":
+          description: Workers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  workers:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+        "401":
+          description: Session
+        "503":
+          description: Proxy yok / metadata
+  /account/verify-email:
+    post:
+      operationId: accountVerifyEmail
+      tags: [account]
+      security: []
+      summary: E-posta doğrulama kodu
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, code]
+              properties:
+                email: { type: string, format: email }
+                code: { type: string, minLength: 32, maxLength: 32 }
+      responses:
+        "200":
+          description: Doğrulandı
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkTrue"
+        "400":
+          description: Kod geçersiz/tekrar
+  /account/verification/request:
+    post:
+      operationId: accountVerificationRequest
+      tags: [account]
+      security: []
+      summary: Doğrulama kodu yeniden iste (enumeration-safe 202)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email: { type: string, format: email }
+      responses:
+        "202":
+          description: Kabul (hesap yoksa da aynı gövde)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkTrue"
+        "400":
+          description: E-posta geçersiz
+  /account/password-reset/request:
+    post:
+      operationId: accountPasswordResetRequest
+      tags: [account]
+      security: []
+      summary: Parola sıfırlama kodu iste
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email: { type: string, format: email }
+      responses:
+        "202":
+          description: Enumeration-safe kabul
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkTrue"
+        "400":
+          description: E-posta geçersiz
+  /account/password-reset/confirm:
+    post:
+      operationId: accountPasswordResetConfirm
+      tags: [account]
+      security: []
+      summary: Parola sıfırla (sessionVersion++)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password, code]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string, minLength: 12, maxLength: 72 }
+                code: { type: string, minLength: 32, maxLength: 32 }
+      responses:
+        "200":
+          description: Parola değişti
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkTrue"
+        "400":
+          description: Kod/validasyon
+components:
+  securitySchemes:
+    LicenseBearer:
+      type: http
+      scheme: bearer
+      description: Ham lisans anahtarı (`us1…`). Reserve/settle için zorunlu.
+    SessionBearer:
+      type: http
+      scheme: bearer
+      description: Hesap oturumu (`usa1…`). Account korumalı uçlar + credits status + model proxy.
+  parameters:
+    ShopifyHmac:
+      name: X-Shopify-Hmac-Sha256
+      in: header
+      required: true
+      schema: { type: string }
+    ShopifyWebhookId:
+      name: X-Shopify-Webhook-Id
+      in: header
+      required: false
+      schema: { type: string }
+    ShopifyTopicPaid:
+      name: X-Shopify-Topic
+      in: header
+      required: true
+      schema: { type: string, enum: [orders/paid] }
+    ShopifyTopicCancelled:
+      name: X-Shopify-Topic
+      in: header
+      required: true
+      schema: { type: string, enum: [orders/cancelled] }
+    ShopifyTopicRefund:
+      name: X-Shopify-Topic
+      in: header
+      required: true
+      schema: { type: string, enum: [refunds/create] }
+  schemas:
+    OkTrue:
+      type: object
+      properties:
+        ok: { type: boolean }
+    AccountRegister:
+      type: object
+      required: [email, password]
+      additionalProperties: false
+      properties:
+        email: { type: string, format: email }
+        password: { type: string, minLength: 12, maxLength: 72 }
+        license: { type: string, description: Opsiyonel ilk bağlama }
+    AccountLogin:
+      type: object
+      required: [email, password]
+      additionalProperties: false
+      properties:
+        email: { type: string, format: email }
+        password: { type: string, minLength: 12, maxLength: 72 }
+    AccountBalance:
+      type: object
+      properties:
+        remaining: { type: integer }
+        seconds_remaining: { type: integer }
+        reserved: { type: integer }
+        reserved_seconds: { type: integer }
+        kind: { type: string, examples: [account] }
+        expiresAt: { type: string, format: date-time }
+    AccountRequest:
+      type: object
+      properties:
+        request_id: { type: string }
+        state: { type: string, enum: [reserved, completed, refunded] }
+        created: { type: integer }
+        updated: { type: integer }
+    CreditUsage:
+      type: object
+      properties:
+        at: { type: string, format: date-time }
+        amount: { type: integer }
+        commit: { type: boolean }
+    CreditStatus:
+      type: object
+      properties:
+        kind: { type: string, enum: [sub, use] }
+        remaining: { type: integer }
+        unit: { type: string }
+        history:
+          type: array
+          items: { $ref: "#/components/schemas/CreditUsage" }
+        credits: { type: integer }
+        reserved: { type: integer }
+        available: { type: integer }
+        committed: { type: integer }
+        released: { type: integer }
+        revoked: { type: boolean }
+        valid: { type: boolean }
+        expiresAt: { type: string, format: date-time }
+        observedAt: { type: string, format: date-time }
+    AccountCreditStatus:
+      type: object
+      properties:
+        kind: { type: string, examples: [account] }
+        remaining: { type: integer }
+        credits: { type: integer }
+        available: { type: integer }
+        reserved: { type: integer }
+        seconds_remaining: { type: integer }
+        reserved_seconds: { type: integer }
+        expiresAt: { type: string, format: date-time }
+        valid: { type: boolean }
+        revoked: { type: boolean }
+        observedAt: { type: string, format: date-time }
+        unit: { type: string }
+        history:
+          type: array
+          items: { $ref: "#/components/schemas/CreditUsage" }
+        committed: { type: integer }
+        released: { type: integer }
+    ChatRequest:
+      type: object
+      required: [model, messages, max_tokens]
+      additionalProperties: true
+      description: |
+        Kod sınırları (model_proxy.go): messages 1..256; max_tokens 1..8192 zorunlu;
+        gövde ≤ 1MiB; `n`, `best_of`, `max_completion_tokens` alanları reddedilir (400).
+        `model` yapılandırılmış proxy model adına eşit olmalı.
+      properties:
+        model:
+          type: string
+        messages:
+          type: array
+          minItems: 1
+          maxItems: 256
+          items:
+            type: object
+            additionalProperties: true
+        max_tokens:
+          type: integer
+          minimum: 1
+          maximum: 8192
+        stream:
+          type: boolean

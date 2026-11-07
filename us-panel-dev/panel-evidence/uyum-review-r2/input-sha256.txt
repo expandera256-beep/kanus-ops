@@ -1,0 +1,13 @@
+f6d660142e23f9121e6f621037b9aeaf901155f8be875ac31513152859fee3be  /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0000-iface.patch
+4f6b093a15fca4de2ea5784b520cfab7c96b38520cbb4580949cc49d5dc26991  /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0001-prefs-store.patch
+5fe60668f618a9c1591a2f9ea2f79338763cb866c71b570274ed969ed6a2146c  /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0002-prefs-test.patch
+e3d96b6ce45d79fc46795b80175cbed64584c885150cca40fc48290f8ae54d96  /workspace/us-panel-dev/patches/uyum-v2/01-preferences/README.md
+90a488078baf42df6062cc1ab69d13351b48d1c5c48972a4b34caaf77a508326  /workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch
+0e2db44f7e640a17d944232b8d5529f444d3d0029f2738e690387f5d8872b8f9  /workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch
+b06dab39a2e1074855f21dc2edc900228bd17e2ee9157702e03fad6c1f49e9bf  /workspace/us-panel-dev/patches/uyum-v2/02-ops/README.md
+2f4206d6af115fb0feebd58e3644c55f032411fc196e3d6c3b7cd38c6b8dda8b  /workspace/us-panel-dev/patches/uyum-v2/03-handler/0001-handler.patch
+81b2d02fdd00dccd5897512df10789bedfa68884a3dcb31e301dab5988b76906  /workspace/us-panel-dev/patches/uyum-v2/03-handler/0002-handler-test.patch
+59f87ad236cf4dfee4843a658d0aff101b20b10d5f86cd5fee1f0cf3289f7aef  /workspace/us-panel-dev/patches/uyum-v2/03-handler/README.md
+410f0add3f26cfd7bc6953937b22885548c7d70ad5a1648c9464af3f623c46e8  /workspace/us-panel-dev/patches/uyum-v2/04-hook-us/0001-main-privacy-mount.patch
+2b03803a03c9358a91ba2f25e74639af970ba23d57c9c8b1ebe1a200ab2e2736  /workspace/us-panel-dev/patches/uyum-v2/04-hook-us/README.md
+17656a743c566f1e7bd2c0d25833412083d7a5520d5e38ed07d23800a6eaca36  /workspace/us-panel-dev/patches/uyum-v2/README.md

@@ -1,0 +1,128 @@
+[
+  {
+    "labels": {
+      "role": "usta-gpu"
+    },
+    "name": "usta-l4",
+    "networkInterfaces": [
+      {
+        "accessConfigs": [
+          {
+            "kind": "compute#accessConfig",
+            "name": "external-nat",
+            "networkTier": "PREMIUM",
+            "type": "ONE_TO_ONE_NAT"
+          }
+        ],
+        "fingerprint": "6Ws2loZAy38=",
+        "kind": "compute#networkInterface",
+        "name": "nic0",
+        "network": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/networks/default",
+        "networkIP": "10.128.0.6",
+        "stackType": "IPV4_ONLY",
+        "subnetwork": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1/subnetworks/default"
+      }
+    ],
+    "serviceAccounts": [
+      {
+        "email": "247516932580-compute@developer.gserviceaccount.com",
+        "scopes": [
+          "https://www.googleapis.com/auth/devstorage.read_only",
+          "https://www.googleapis.com/auth/logging.write",
+          "https://www.googleapis.com/auth/monitoring.write",
+          "https://www.googleapis.com/auth/pubsub",
+          "https://www.googleapis.com/auth/service.management.readonly",
+          "https://www.googleapis.com/auth/servicecontrol",
+          "https://www.googleapis.com/auth/trace.append",
+          "https://www.googleapis.com/auth/compute"
+        ]
+      }
+    ],
+    "status": "TERMINATED",
+    "tags": {
+      "fingerprint": "hpjnnwBOkgY=",
+      "items": [
+        "usta-l4"
+      ]
+    },
+    "zone": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-a"
+  },
+  {
+    "name": "usta-wake",
+    "networkInterfaces": [
+      {
+        "accessConfigs": [
+          {
+            "kind": "compute#accessConfig",
+            "name": "external-nat",
+            "natIP": "34.41.186.170",
+            "networkTier": "PREMIUM",
+            "type": "ONE_TO_ONE_NAT"
+          }
+        ],
+        "fingerprint": "hl4Qkh60cnQ=",
+        "kind": "compute#networkInterface",
+        "name": "nic0",
+        "network": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/networks/default",
+        "networkIP": "10.128.0.3",
+        "stackType": "IPV4_ONLY",
+        "subnetwork": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1/subnetworks/default"
+      }
+    ],
+    "serviceAccounts": [
+      {
+        "email": "247516932580-compute@developer.gserviceaccount.com",
+        "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+        ]
+      }
+    ],
+    "status": "RUNNING",
+    "tags": {
+      "fingerprint": "MF35BRJsENQ=",
+      "items": [
+        "kalfa-http"
+      ]
+    },
+    "zone": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c"
+  },
+  {
+    "name": "ds-a100",
+    "networkInterfaces": [
+      {
+        "accessConfigs": [
+          {
+            "kind": "compute#accessConfig",
+            "name": "external-nat",
+            "natIP": "34.12.110.224",
+            "networkTier": "PREMIUM",
+            "type": "ONE_TO_ONE_NAT"
+          }
+        ],
+        "fingerprint": "64SEl6FAttc=",
+        "kind": "compute#networkInterface",
+        "name": "nic0",
+        "network": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/networks/default",
+        "networkIP": "10.164.0.6",
+        "stackType": "IPV4_ONLY",
+        "subnetwork": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/europe-west4/subnetworks/default"
+      }
+    ],
+    "serviceAccounts": [
+      {
+        "email": "247516932580-compute@developer.gserviceaccount.com",
+        "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+        ]
+      }
+    ],
+    "status": "RUNNING",
+    "tags": {
+      "fingerprint": "JXz8u0ZtN8s=",
+      "items": [
+        "us-managed-model"
+      ]
+    },
+    "zone": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/europe-west4-b"
+  }
+]

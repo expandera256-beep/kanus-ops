@@ -1,0 +1,36 @@
+{"Time":"2026-11-08T01:20:33.545265596+03:00","Action":"start","Package":"kiyas"}
+{"Time":"2026-11-08T01:20:33.550553377+03:00","Action":"start","Package":"kiyas/cmd/us-license-hook"}
+{"Time":"2026-11-08T01:20:33.550659222+03:00","Action":"start","Package":"kiyas/cmd/us-pricing-gen"}
+{"Time":"2026-11-08T01:20:33.550759017+03:00","Action":"output","Package":"kiyas/cmd/us-pricing-gen","Output":"?   \tkiyas/cmd/us-pricing-gen\t[no test files]\n"}
+{"Time":"2026-11-08T01:20:33.551317944+03:00","Action":"skip","Package":"kiyas/cmd/us-pricing-gen","Elapsed":0.001}
+{"Time":"2026-11-08T01:20:33.552953603+03:00","Action":"run","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux"}
+{"Time":"2026-11-08T01:20:33.55298801+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux","Output":"=== RUN   TestAccountRoutesThroughProductionMux\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:20:33.555453549+03:00","Action":"run","Package":"kiyas","Test":"TestAccountLoginSlowServerWithinBudgetSucceeds"}
+{"Time":"2026-11-08T01:20:33.555485537+03:00","Action":"output","Package":"kiyas","Test":"TestAccountLoginSlowServerWithinBudgetSucceeds","Output":"=== RUN   TestAccountLoginSlowServerWithinBudgetSucceeds\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:20:33.580405935+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-08T01:20:33.586965301+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestAccountOwnershipIdempotencyAndAtomicRace"}
+{"Time":"2026-11-08T01:20:33.587000853+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountOwnershipIdempotencyAndAtomicRace","Output":"=== RUN   TestAccountOwnershipIdempotencyAndAtomicRace\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:20:33.841339723+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux","Output":"2026/11/08 01:20:33 account /account/register email=m***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:33.882451895+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountOwnershipIdempotencyAndAtomicRace","Output":"2026/11/08 01:20:33 account /account/register email=o***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:33.907352355+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountOwnershipIdempotencyAndAtomicRace","Output":"2026/11/08 01:20:33 account /account/register email=t***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:33.915157186+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountOwnershipIdempotencyAndAtomicRace","Output":"2026/11/08 01:20:33 account /account/login email=o***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:33.916130378+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountOwnershipIdempotencyAndAtomicRace","Output":"2026/11/08 01:20:33 account /account/login email=t***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:33.923225431+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountOwnershipIdempotencyAndAtomicRace","Output":"--- PASS: TestAccountOwnershipIdempotencyAndAtomicRace (0.34s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:20:33.923245423+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestAccountOwnershipIdempotencyAndAtomicRace","Elapsed":0.34}
+{"Time":"2026-11-08T01:20:33.923253089+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestAccountSignedSessionExpiryResetAndVerification"}
+{"Time":"2026-11-08T01:20:33.923255605+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountSignedSessionExpiryResetAndVerification","Output":"=== RUN   TestAccountSignedSessionExpiryResetAndVerification\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:20:34.057797296+03:00","Action":"output","Package":"kiyas","Test":"TestAccountLoginSlowServerWithinBudgetSucceeds","Output":"--- PASS: TestAccountLoginSlowServerWithinBudgetSucceeds (0.50s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:20:34.057890737+03:00","Action":"pass","Package":"kiyas","Test":"TestAccountLoginSlowServerWithinBudgetSucceeds","Elapsed":0.5}
+{"Time":"2026-11-08T01:20:34.057901304+03:00","Action":"run","Package":"kiyas","Test":"TestAccountLoginTimeoutRetriesExactlyOnce"}
+{"Time":"2026-11-08T01:20:34.057904895+03:00","Action":"output","Package":"kiyas","Test":"TestAccountLoginTimeoutRetriesExactlyOnce","Output":"=== RUN   TestAccountLoginTimeoutRetriesExactlyOnce\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:20:34.139170171+03:00","Action":"output","Package":"kiyas/cmd/us-license-hook","Test":"TestAccountRoutesThroughProductionMux","Output":"2026/11/08 01:20:34 account /account/login email=m***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:34.354240839+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountSignedSessionExpiryResetAndVerification","Output":"2026/11/08 01:20:34 account /account/register email=o***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:34.362243203+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountSignedSessionExpiryResetAndVerification","Output":"2026/11/08 01:20:34 account /account/login email=o***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:34.368887+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountSignedSessionExpiryResetAndVerification","Output":"2026/11/08 01:20:34 account /account/password-reset/confirm email=o***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:34.376035152+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountSignedSessionExpiryResetAndVerification","Output":"2026/11/08 01:20:34 account /account/password-reset/confirm email=o***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:34.376063534+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountSignedSessionExpiryResetAndVerification","Output":"2026/11/08 01:20:34 account /account/login email=o***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:34.376067394+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountSignedSessionExpiryResetAndVerification","Output":"2026/11/08 01:20:34 account /account/login email=o***@example.test queue_wait_ms=0 result=slot\n"}
+{"Time":"2026-11-08T01:20:34.376168644+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountSignedSessionExpiryResetAndVerification","Output":"--- PASS: TestAccountSignedSessionExpiryResetAndVerification (0.45s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:20:34.376200065+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestAccountSignedSessionExpiryResetAndVerification","Elapsed":0.45}
+{"Time":"2026-11-08T01:20:34.376253573+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestAccountIPRateLimitAndDefaultBcrypt"}
+{"Time":"2026-11-08T01:20:34.376259556+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestAccountIPRateLimitAndDefaultBcrypt","Output":"=== RUN   TestAccountIPRateLimitAndDefaultBcrypt\n","OutputType":"frame"}

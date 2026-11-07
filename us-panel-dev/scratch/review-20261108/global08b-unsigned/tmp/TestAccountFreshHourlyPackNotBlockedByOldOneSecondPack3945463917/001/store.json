@@ -1,0 +1,73 @@
+{
+  "accounts": {},
+  "licenseOwners": {},
+  "webhooks": {
+    "mint": "2026-11-06T00:00:00Z"
+  },
+  "orders": {
+    "555": [
+      "us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6ImM2ODMxNDRjMGQyOGI5NDViNGU4ZDMxOCIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.sRlbyrEl-agQpG34nw5THU1fCMl4rvy0SArLo2XBw-8",
+      "us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6IjllZGUyOTY3NGQ3NjFiODQ2YjM0YjlhOCIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.uqPUEsy2LspZiorglkxQ8SFVFCE_r6omNnFT2dZh7kw"
+    ]
+  },
+  "licenses": {
+    "us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6IjllZGUyOTY3NGQ3NjFiODQ2YjM0YjlhOCIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.uqPUEsy2LspZiorglkxQ8SFVFCE_r6omNnFT2dZh7kw": {
+      "key": "us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6IjllZGUyOTY3NGQ3NjFiODQ2YjM0YjlhOCIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.uqPUEsy2LspZiorglkxQ8SFVFCE_r6omNnFT2dZh7kw",
+      "orderId": 555,
+      "lineId": 1,
+      "email": "a@example.com",
+      "productId": 42,
+      "plan": {
+        "kind": "sub",
+        "days": 30,
+        "prompts": 500,
+        "seconds": 0,
+        "credits": 500
+      },
+      "issuedAt": "2026-11-06T00:00:00Z",
+      "expiresAt": "2026-12-06T00:00:00Z",
+      "revoked": false,
+      "credits": 500,
+      "meterUnit": "credits",
+      "reserved": 0
+    },
+    "us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6ImM2ODMxNDRjMGQyOGI5NDViNGU4ZDMxOCIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.sRlbyrEl-agQpG34nw5THU1fCMl4rvy0SArLo2XBw-8": {
+      "key": "us1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6ImM2ODMxNDRjMGQyOGI5NDViNGU4ZDMxOCIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.sRlbyrEl-agQpG34nw5THU1fCMl4rvy0SArLo2XBw-8",
+      "orderId": 555,
+      "lineId": 1,
+      "email": "a@example.com",
+      "productId": 42,
+      "plan": {
+        "kind": "sub",
+        "days": 30,
+        "prompts": 500,
+        "seconds": 0,
+        "credits": 500
+      },
+      "issuedAt": "2026-11-06T00:00:00Z",
+      "expiresAt": "2026-12-06T00:00:00Z",
+      "revoked": false,
+      "credits": 500,
+      "meterUnit": "credits",
+      "reserved": 0
+    }
+  },
+  "outbox": [
+    {
+      "orderName": "adı belirtilmedi",
+      "orderId": 555,
+      "id": "6eb87116c3d1907475e33b59",
+      "to": "a@example.com",
+      "subject": "KAN.US US lisans anahtarınız — adı belirtilmedi",
+      "body": "Merhaba,\r\n\r\nSiparişiniz (adı belirtilmedi) için US lisans anahtar(lar)ınız:\r\n\r\nus1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6ImM2ODMxNDRjMGQyOGI5NDViNGU4ZDMxOCIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.sRlbyrEl-agQpG34nw5THU1fCMl4rvy0SArLo2XBw-8\r\nus1.eyJleHAiOjE3OTY1MTUyMDAsImtpbmQiOiJzdWIiLCJub25jZSI6IjllZGUyOTY3NGQ3NjFiODQ2YjM0YjlhOCIsInByb21wdHMiOjUwMCwic2Vjb25kcyI6MCwidXNkIjowfQ.uqPUEsy2LspZiorglkxQ8SFVFCE_r6omNnFT2dZh7kw\r\n\r\nAnahtarı US panelinde Lisans alanına yapıştırın.\r\n\r\nKAN.US destek: support@kanus.org\r\n",
+      "attempts": 0,
+      "nextTry": "2026-11-06T00:00:00Z",
+      "sentAt": "0001-01-01T00:00:00Z",
+      "dead": false
+    }
+  ],
+  "reservations": {},
+  "settlements": {},
+  "cancelled": {},
+  "refunds": {}
+}

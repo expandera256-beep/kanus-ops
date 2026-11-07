@@ -1,0 +1,6 @@
+     10 --- FAIL: TestR13CancelledFollowerDoesNotWake
+     10 --- FAIL: TestR13CancelledLeaderDoesNotWake
+     10 --- FAIL: TestR13CancelledLeaderLiveFollowerPolicy
+     10 --- FAIL: TestR13EntitlementChangesBeforeWake
+      2 FAIL
+      1 FAIL	kiyas/licensesrv	1.102s

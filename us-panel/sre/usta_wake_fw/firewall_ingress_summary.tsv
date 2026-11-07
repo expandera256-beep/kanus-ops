@@ -1,0 +1,10 @@
+name	priority	direction	sourceRanges	targetTags	targetSA	allowed_or_denied	disabled	logEnable
+us-model-private-allow	800	INGRESS	['10.164.0.0/20']	['us-managed-model']	None	ALLOW tcp:8443	False	False
+us-model-private-deny	810	INGRESS	['0.0.0.0/0']	['us-managed-model']	None	DENY tcp:8443	False	False
+allow-iap-ssh	1000	INGRESS	['35.235.240.0/20']	None	None	ALLOW tcp:22	False	False
+kalfa-allow-http	1000	INGRESS	['0.0.0.0/0']	['kalfa-http']	None	ALLOW tcp:80	False	False
+kalfa-allow-worker	1000	INGRESS	['0.0.0.0/0']	['kalfa-http']	None	ALLOW tcp:8788	False	False
+default-allow-icmp	65534	INGRESS	['0.0.0.0/0']	None	None	ALLOW icmp:*	False	False
+default-allow-internal	65534	INGRESS	['10.128.0.0/9']	None	None	ALLOW tcp:0-65535;udp:0-65535;icmp:*	False	False
+default-allow-rdp	65534	INGRESS	['0.0.0.0/0']	None	None	ALLOW tcp:3389	False	False
+default-allow-ssh	65534	INGRESS	['0.0.0.0/0']	None	None	ALLOW tcp:22	False	False

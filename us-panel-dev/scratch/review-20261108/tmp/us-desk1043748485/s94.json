@@ -1,0 +1,11 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "düşünce",
+      "text": "Model çağrılmadı. Model anahtarı yok. Eksik olan: US_KEY veya USTA_KEY. Model çağrılmadı."
+    }
+  ]
+}

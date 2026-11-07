@@ -1,0 +1,19 @@
+{
+  "combined": {
+    "command": "PYTHONPATH=/workspace/us-panel/sre/cloudrun/fixes/app-00007 env -u US_POSTGRES_TEST_DSN python3 -m pytest -q -rs /workspace/us-panel/sre/cloudrun/fixes/tests",
+    "passed": 142,
+    "skipped": 37
+  },
+  "watchdog": {
+    "passed": 138,
+    "skipped": 37,
+    "deselected": 4,
+    "exclude_expression": "not commerce_ready and not commerce_missing_config and not gateway_factory"
+  },
+  "commerce": {
+    "passed": 138,
+    "skipped": 37,
+    "deselected": 4,
+    "exclude_expression": "not watchdog_ready and not watchdog_failed_store and not watchdog_no_policy and not real_watchdog_factory"
+  }
+}

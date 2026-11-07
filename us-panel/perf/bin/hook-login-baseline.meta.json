@@ -1,0 +1,10 @@
+{
+  "binary_sha256": "75e92824da67814b8cda3b93e7dc7898244618ee519355cbb1412281bef54e40",
+  "previous_source_fingerprint": {
+    "go_source_sha256_before": "15a0449599ea8df47aad76ed386fecd5de6af6c2a8300325ffe0354dab5a294f",
+    "go_source_sha256_after": "15a0449599ea8df47aad76ed386fecd5de6af6c2a8300325ffe0354dab5a294f",
+    "binary_sha256": "75e92824da67814b8cda3b93e7dc7898244618ee519355cbb1412281bef54e40",
+    "source_stable_during_build": true
+  },
+  "revision_label": ".10 historical PERF binary; hash attested, no separate release/commit attestation"
+}

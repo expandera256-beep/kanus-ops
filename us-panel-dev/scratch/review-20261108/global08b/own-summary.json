@@ -1,0 +1,42 @@
+{
+  "own39": {
+    "all": {
+      "pass": 42
+    },
+    "leaf": {
+      "pass": 39
+    },
+    "failed": []
+  },
+  "boundaries": {
+    "all": {
+      "pass": 14
+    },
+    "leaf": {
+      "pass": 13
+    },
+    "failed": []
+  },
+  "own-extra": {
+    "all": {
+      "pass": 19,
+      "fail": 2
+    },
+    "leaf": {
+      "pass": 18,
+      "fail": 1
+    },
+    "failed": [
+      "TestOwnCacheMatrix/max-body-cache"
+    ]
+  },
+  "own-followup": {
+    "all": {
+      "pass": 3
+    },
+    "leaf": {
+      "pass": 3
+    },
+    "failed": []
+  }
+}

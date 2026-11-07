@@ -1,0 +1,1 @@
+gofmt -l . (tüm ağaç): 0 dosya

@@ -1,0 +1,11 @@
+{
+  "base": "/workspace/us-panel-dev/qa12/term.orig",
+  "tree": "/workspace/us-panel/qa/build/qa-r11-patch-6ij93zmg/term",
+  "patch": "/workspace/us-panel-dev/patches/qa12/qa12_finding01_02.patch",
+  "patch_sha256": "c31ac8b8b015184d7911c4eadf0abde6155f41cefa3da24da25fd5badabf40dc",
+  "manifest": "/workspace/us-panel/dist/2026.11.06.11/TREE_MANIFEST.sha256",
+  "manifest_sha256": "1e8aa1883c85e29e556b9802c7a93dbf63a707da9870a2a6f9996cfcde5440c8",
+  "verified_files": 205,
+  "source_release": ".11",
+  "source_trees_untouched": true
+}

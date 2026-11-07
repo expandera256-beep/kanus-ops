@@ -1,0 +1,7 @@
+=== RUN   TestReviewRootFDGrowth
+    review_fd_test.go:3: fds before=7 after=71 roots=64
+    review_fd_test.go:3: root handles accumulate without Close/eviction
+--- FAIL: TestReviewRootFDGrowth (0.06s)
+FAIL
+FAIL	kiyas/i18n	0.063s
+FAIL

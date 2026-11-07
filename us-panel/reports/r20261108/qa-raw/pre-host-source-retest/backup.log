@@ -1,0 +1,22 @@
+{"case": "test_both_instances_separate_and_verified", "instance": "prod", "exit_code": 0}
+{"case": "test_both_instances_separate_and_verified", "instance": "test", "exit_code": 0}
+{"case": "test_invalid_store_json_exit3", "instance": "test", "exit_code": 3}
+{"case": "test_missing_optional_env_success", "instance": "test", "exit_code": 0}
+{"case": "test_missing_plans_exit2", "instance": "test", "exit_code": 2}
+{"case": "test_missing_store_exit2", "instance": "test", "exit_code": 2}
+{"case": "test_symlink_store_exit2", "instance": "test", "exit_code": 2}
+{"case": "test_unknown_instance_exit64", "instance": "other", "exit_code": 64}
+test_both_instances_separate_and_verified (__main__.BackupV2.test_both_instances_separate_and_verified) ... ok
+test_invalid_store_json_exit3 (__main__.BackupV2.test_invalid_store_json_exit3) ... ok
+test_missing_optional_env_success (__main__.BackupV2.test_missing_optional_env_success) ... ok
+test_missing_plans_exit2 (__main__.BackupV2.test_missing_plans_exit2) ... ok
+test_missing_store_exit2 (__main__.BackupV2.test_missing_store_exit2) ... ok
+test_symlink_store_exit2 (__main__.BackupV2.test_symlink_store_exit2) ... ok
+test_unknown_instance_exit64 (__main__.BackupV2.test_unknown_instance_exit64) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.192s
+
+OK
+
+exit_code=0

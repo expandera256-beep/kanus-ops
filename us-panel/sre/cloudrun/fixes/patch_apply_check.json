@@ -1,0 +1,110 @@
+[
+  {
+    "tree": "patch_apply_check",
+    "steps": [
+      {
+        "patch": "readiness.patch",
+        "returncode": 0,
+        "stdout": "patching file commerce_http.py\npatching file readiness_checks.py\npatching file runtime.py\n",
+        "stderr": ""
+      },
+      {
+        "patch": "rate-limit.patch",
+        "returncode": 0,
+        "stdout": "patching file rate_limit.py\npatching file runtime.py\n",
+        "stderr": ""
+      },
+      {
+        "patch": "structured-logging.patch",
+        "returncode": 0,
+        "stdout": "patching file runtime.py\npatching file structured_logging.py\n",
+        "stderr": ""
+      }
+    ],
+    "matches": {
+      "lifecycle_config.py": true,
+      "managed_inference.py": true,
+      "mail_worker.py": true,
+      "model_gateway.py": true,
+      "inference_lifecycle.py": true,
+      "storage.py": true,
+      "commerce_http.py": true,
+      "metering_admin.py": true,
+      "legacy_wake_migration.py": true,
+      "readiness_checks.py": true,
+      "account_store.py": true,
+      "gce_provider.py": true,
+      "metering_stream.py": true,
+      "rate_limit.py": true,
+      "delivery.py": true,
+      "shopify_ledger.py": true,
+      "runtime.py": true,
+      "commercial_server.py": true,
+      "structured_logging.py": true
+    }
+  },
+  {
+    "tree": "us-commerce-apply-check",
+    "steps": [
+      {
+        "patch": "us-commerce/local-acceptance.patch",
+        "returncode": 0,
+        "stdout": "patching file commerce_http.py\npatching file rate_limit.py\npatching file readiness_checks.py\npatching file runtime.py\npatching file structured_logging.py\n",
+        "stderr": ""
+      }
+    ],
+    "matches": {
+      "lifecycle_config.py": true,
+      "managed_inference.py": true,
+      "mail_worker.py": true,
+      "model_gateway.py": true,
+      "inference_lifecycle.py": true,
+      "storage.py": true,
+      "commerce_http.py": true,
+      "metering_admin.py": true,
+      "legacy_wake_migration.py": true,
+      "readiness_checks.py": true,
+      "account_store.py": true,
+      "gce_provider.py": true,
+      "metering_stream.py": true,
+      "rate_limit.py": true,
+      "delivery.py": true,
+      "shopify_ledger.py": true,
+      "runtime.py": true,
+      "commercial_server.py": true,
+      "structured_logging.py": true
+    }
+  },
+  {
+    "tree": "us-watchdog-apply-check",
+    "steps": [
+      {
+        "patch": "us-watchdog/local-acceptance.patch",
+        "returncode": 0,
+        "stdout": "patching file rate_limit.py\npatching file readiness_checks.py\npatching file runtime.py\npatching file structured_logging.py\n",
+        "stderr": ""
+      }
+    ],
+    "matches": {
+      "lifecycle_config.py": true,
+      "managed_inference.py": true,
+      "mail_worker.py": true,
+      "model_gateway.py": true,
+      "inference_lifecycle.py": true,
+      "storage.py": true,
+      "commerce_http.py": true,
+      "metering_admin.py": true,
+      "legacy_wake_migration.py": true,
+      "readiness_checks.py": true,
+      "account_store.py": true,
+      "gce_provider.py": true,
+      "metering_stream.py": true,
+      "rate_limit.py": true,
+      "delivery.py": true,
+      "shopify_ledger.py": true,
+      "runtime.py": true,
+      "commercial_server.py": true,
+      "structured_logging.py": true
+    }
+  }
+]

@@ -1,0 +1,5 @@
+314fab48b009f06e221ce140758724105b9f5b972c69d0c15c7ad2c9db8d3669  /workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch
+d159ae761997fd1a6d4cabdc333c5723effde07875ca90b6c8c041ecdf04e922  /workspace/us-panel-dev/patches/global_i18n_03_pref.patch
+ac00c449845ce30d7e2bd01a5ba6cc09926de6815d4acc9c1c9db10023f7822c  /workspace/us-panel-dev/patches/global_i18n_04_errors.patch
+7c917564df055f151f8bd0a0b334a09e248db1481723123196fbfb0377093f3d  /workspace/us-panel-dev/patches/global_i18n_05_email_loader.patch
+e4f10a339c78818ceddbc49e2f687b4ee80afa86a7fce9d407c22bd8536892c7  /workspace/us-panel-dev/patches/global_i18n_panel_core.patch

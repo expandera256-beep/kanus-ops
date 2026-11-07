@@ -1,0 +1,1 @@
+europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:5ad490386738a1006f667497c2891cd392b4af5febac59a8018c0bd8a3c8a64a

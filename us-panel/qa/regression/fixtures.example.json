@@ -1,0 +1,9 @@
+{
+  "account1_credentials": "/workspace/secrets/acct-test-credentials.json",
+  "account2_email": "qa-acct2-20261106@kanus.org",
+  "account2_password": "/workspace/secrets/acct-test-password2.txt",
+  "license_a": "/workspace/secrets/acct-test-license.txt",
+  "license_b": "/workspace/secrets/acct-qa-fresh-license.txt",
+  "fresh_license": "/workspace/secrets/r11-fresh-license.txt",
+  "revoked_license": "/workspace/secrets/r11-revoked-license.txt"
+}

@@ -1,0 +1,14 @@
+{
+  "licensesrv/accounts.go": {
+    "pinned": "0014f216db3f1440fd6cec37d60fbe0f3eae0f3f96d085b7f177354491277078",
+    "uyum": "0014f216db3f1440fd6cec37d60fbe0f3eae0f3f96d085b7f177354491277078"
+  },
+  "licensesrv/store.go": {
+    "pinned": "72c42f7a867ddbe599afe9f6985f564e9c5bc9a886821b357de34eca51f1db24",
+    "uyum": "72c42f7a867ddbe599afe9f6985f564e9c5bc9a886821b357de34eca51f1db24"
+  },
+  "licensesrv/model_proxy.go": {
+    "pinned": "6a8bd098d1e4fc06bd219ed8f010fcae0a021417f2cd8ed0edd60408923348c4",
+    "uyum": "6a8bd098d1e4fc06bd219ed8f010fcae0a021417f2cd8ed0edd60408923348c4"
+  }
+}

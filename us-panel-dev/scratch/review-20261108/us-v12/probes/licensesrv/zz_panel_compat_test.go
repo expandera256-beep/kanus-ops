@@ -1,0 +1,13 @@
+package licensesrv
+import("encoding/json";"os";"testing")
+func TestPanelCompatGenerate(t *testing.T){
+ if os.Getenv("PANEL_COMPAT_MODE")!="generate"{t.Skip("mode")};p:=os.Getenv("PANEL_COMPAT_OUT");s,e:=OpenStore(p);if e!=nil{t.Fatal(e)};defer s.Close()
+ raw:=`{"accounts":{"buyer@example.test":{"id":"account-test","email":"buyer@example.test","passwordHash":"synthetic-not-a-real-hash","sessionVersion":4,"createdAt":"2026-11-01T00:00:00Z","emailVerified":true,"verificationHash":"verify-test","verificationExpiry":"2030-01-01T00:00:00Z","resetHash":"reset-test","resetExpiry":"2030-01-01T00:00:00Z"}},"licenseOwners":{"synthetic-license":"account-test"},"webhooks":{"hook-test":"2026-11-01T00:00:00Z"},"orders":{"42":["synthetic-license"]},"licenses":{"synthetic-license":{"key":"synthetic-license","orderId":42,"lineId":12,"email":"buyer@example.test","productId":5,"plan":{"kind":"use","days":30,"prompts":0,"seconds":100,"credits":100},"issuedAt":"2026-11-01T00:00:00Z","expiresAt":"2030-01-01T00:00:00Z","revoked":false,"credits":99,"meterUnit":"seconds","reserved":3}},"outbox":[{"skipped":"fixture","orderName":"TEST-42","orderId":42,"id":"mail-test","to":"buyer@example.test","subject":"Synthetic test","body":"Synthetic body","attempts":2,"nextTry":"2030-01-01T00:00:00Z","sentAt":"2026-11-01T00:00:00Z","lastErr":"test error","dead":false}],"reservations":{"r-test":{"createdAt":"2026-11-01T00:00:00Z","key":"synthetic-license","amount":3,"expires":"2030-01-01T00:00:00Z"}},"settlements":{"s-test":{"createdAt":"2026-11-01T00:00:00Z","key":"synthetic-license","commit":true,"amount":1,"settledAt":"2026-11-01T01:00:00Z"}},"cancelled":{"cancel-test":true},"refunds":{"refund-test":{"orderId":42,"lines":{"12":1}}}}`
+ if e=json.Unmarshal([]byte(raw),&s.st);e!=nil{t.Fatal(e)};if e=s.saveLocked();e!=nil{t.Fatal(e)}
+}
+func TestPanelCompatRoundtrip(t *testing.T){
+ if os.Getenv("PANEL_COMPAT_MODE")!="roundtrip"{t.Skip("mode")};in:=os.Getenv("PANEL_COMPAT_IN");out:=os.Getenv("PANEL_COMPAT_OUT");raw,e:=os.ReadFile(in);if e!=nil{t.Fatal(e)};if e=os.WriteFile(out,raw,0600);e!=nil{t.Fatal(e)}
+ s,e:=OpenStore(out);if e!=nil{t.Fatal(e)};defer s.Close();if e=s.saveLocked();e!=nil{t.Fatal(e)}
+ reread,e:=os.ReadFile(out);if e!=nil{t.Fatal(e)};var a,b any;json.Unmarshal(raw,&a);json.Unmarshal(reread,&b);before,_:=json.Marshal(a);after,_:=json.Marshal(b);if string(before)!=string(after){t.Fatalf("JSON data changed\nbefore=%s\nafter=%s",before,after)}
+ if len(s.st.Accounts)!=1||len(s.st.Licenses)!=1||len(s.st.LicenseOwners)!=1||len(s.st.Reservations)!=1||len(s.st.Settlements)!=1{t.Fatal("known fields lost")}
+}

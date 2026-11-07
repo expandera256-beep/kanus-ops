@@ -1,0 +1,5 @@
+# UYGULANMADI — /etc/cron.d/us-license-hook-store olarak kopyala (mode 644).
+# Restart gerekmez (cron otomatik okur).
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+15 3 * * * root /usr/local/sbin/backup-us-license-hook-store.sh >/var/log/us-license-hook-backup.log 2>&1

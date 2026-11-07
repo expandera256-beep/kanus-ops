@@ -1,0 +1,5 @@
+ok  	kiyas	39.191s
+ok  	kiyas/cmd/us-license-hook	17.181s
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+ok  	kiyas/licensesrv	86.499s
+RACE:0

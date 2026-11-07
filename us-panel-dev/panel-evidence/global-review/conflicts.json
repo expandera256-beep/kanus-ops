@@ -1,0 +1,52 @@
+{
+  "api-0001-regression": {
+    "touched": [
+      "licensesrv/api_regression_baseline_test.go"
+    ],
+    "same_files_as_i18n": []
+  },
+  "api-0002-openapi": {
+    "touched": [
+      "openapi.yaml (standalone artifact; no source patch)"
+    ],
+    "same_files_as_i18n": []
+  },
+  "uyum-wiring": {
+    "touched": [
+      "cmd/us-license-hook/main.go"
+    ],
+    "same_files_as_i18n": []
+  },
+  "uyum-export": {
+    "touched": [
+      "internal/privacy/handler.go",
+      "licensesrv/privacy_ops.go",
+      "licensesrv/privacy_ops_test.go"
+    ],
+    "same_files_as_i18n": []
+  },
+  "uyum-erase": {
+    "touched": [
+      "internal/privacy/handler.go",
+      "licensesrv/privacy_ops.go"
+    ],
+    "same_files_as_i18n": []
+  },
+  "uyum-retention": {
+    "touched": [
+      "internal/privacy/handler.go",
+      "licensesrv/privacy_ops.go"
+    ],
+    "same_files_as_i18n": []
+  },
+  "uyum-preferences": {
+    "touched": [
+      "internal/privacy/handler.go",
+      "internal/privacy/prefs.go",
+      "internal/privacy/privacy_test.go"
+    ],
+    "same_files_as_i18n": []
+  },
+  "US_main_shared_modified": [],
+  "main_compat_result": 0
+}

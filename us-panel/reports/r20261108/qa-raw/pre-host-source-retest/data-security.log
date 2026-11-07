@@ -1,0 +1,20 @@
+{"case": "backup_missing_store", "exit_code": 0, "nothing_backed_up": true}
+test_backup_missing_store_must_fail (__main__.DataSecurity.test_backup_missing_store_must_fail) ... FAIL
+test_backup_restore (__main__.DataSecurity.test_backup_restore) ... ok
+test_sql_injection (__main__.DataSecurity.test_sql_injection) ... ok
+
+======================================================================
+FAIL: test_backup_missing_store_must_fail (__main__.DataSecurity.test_backup_missing_store_must_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/us-panel/qa/audit12/test_data_security.py", line 50, in test_backup_missing_store_must_fail
+    self.assertNotEqual(p.returncode,0,'backup reports success when every source is missing (draft script)')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 == 0 : backup reports success when every source is missing (draft script)
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.239s
+
+FAILED (failures=1)
+
+exit_code=1

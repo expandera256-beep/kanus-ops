@@ -1,0 +1,27 @@
+{
+  "sec8": {
+    "PASS": 61,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT TESTED": 5
+  },
+  "e2e9": {
+    "PASS": 3,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT TESTED": 2
+  },
+  "post_revoke": {
+    "PASS": 15,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT TESTED": 2
+  },
+  "combined": {
+    "PASS": 64,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT TESTED": 7
+  },
+  "superseded": "Historical post_revoke_B_denial pending row replaced by actual A/B results; original raw file preserved"
+}

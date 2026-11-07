@@ -1,0 +1,32 @@
+{
+  "TXT@": [
+    "ERR:NoAnswer:The DNS response does not contain an answer to the question: kanus.org. IN TXT"
+  ],
+  "MX@": [
+    "ERR:NoAnswer:The DNS response does not contain an answer to the question: kanus.org. IN MX"
+  ],
+  "NS@": [
+    "ERR:NoAnswer:The DNS response does not contain an answer to the question: kanus.org. IN NS"
+  ],
+  "DMARC": [
+    "ERR:NoAnswer:The DNS response does not contain an answer to the question: _dmarc.kanus.org. IN TXT"
+  ],
+  "dkim-a-txt": [
+    "ERR:NoAnswer:The DNS response does not contain an answer to the question: hostingermail-a._domainkey.kanus.org. IN TXT"
+  ],
+  "dkim-a-cname": [
+    "ERR:NoAnswer:The DNS response does not contain an answer to the question: hostingermail-a._domainkey.kanus.org. IN CNAME"
+  ],
+  "dkim-b-txt": [
+    "ERR:NoAnswer:The DNS response does not contain an answer to the question: hostingermail-b._domainkey.kanus.org. IN TXT"
+  ],
+  "dkim-b-cname": [
+    "ERR:NoAnswer:The DNS response does not contain an answer to the question: hostingermail-b._domainkey.kanus.org. IN CNAME"
+  ],
+  "dkim-c-txt": [
+    "ERR:NoAnswer:The DNS response does not contain an answer to the question: hostingermail-c._domainkey.kanus.org. IN TXT"
+  ],
+  "dkim-c-cname": [
+    "ERR:NoAnswer:The DNS response does not contain an answer to the question: hostingermail-c._domainkey.kanus.org. IN CNAME"
+  ]
+}

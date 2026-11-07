@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "mocked_dns": "198.18.0.1",
+  "http_attempts": 0,
+  "reason": "Fail-closed DNS gate; no real network in this unit test"
+}

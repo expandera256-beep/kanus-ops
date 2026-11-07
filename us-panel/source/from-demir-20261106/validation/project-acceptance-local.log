@@ -1,0 +1,37 @@
+PASS password salt and verification
+127.0.0.1 - "GET /api/tasks HTTP/1.1" 401 -
+127.0.0.1 - "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - "POST /api/login HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - "POST /api/login HTTP/1.1" 200 -
+127.0.0.1 - "GET /api/me HTTP/1.1" 200 -
+PASS register/login/authentication
+127.0.0.1 - "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - "GET /api/tasks HTTP/1.1" 200 -
+127.0.0.1 - "PATCH /api/tasks/1 HTTP/1.1" 404 -
+127.0.0.1 - "PATCH /api/tasks/1 HTTP/1.1" 200 -
+127.0.0.1 - "GET /api/tasks HTTP/1.1" 200 -
+PASS task CRUD and tenant isolation
+127.0.0.1 - "GET /api/models HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "GET /api/me HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 200 -
+127.0.0.1 - "POST /api/prompts HTTP/1.1" 402 -
+PASS ten concurrent requests, idempotent credit, restart, exhaustion
+127.0.0.1 - "GET / HTTP/1.1" 200 -
+127.0.0.1 - "GET /static/app.js HTTP/1.1" 200 -
+127.0.0.1 - "GET /static/../storage.py HTTP/1.1" 404 -
+PASS live HTTP UI, assets, traversal protection
+ALL INDEPENDENT PROJECT ACCEPTANCE CHECKS PASSED

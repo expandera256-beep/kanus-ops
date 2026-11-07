@@ -1,0 +1,22 @@
+{
+  "_meta": {"name": "Türkçe", "dir": "ltr", "bcp47": "tr-TR", "currency": "TRY"},
+  "brand.slogan": "Fikirlerini yazılıma dönüştür.",
+  "brand.name": "Kanus",
+  "product.name": "US Panel",
+  "ui.language": "Dil",
+  "ui.open_panel": "US Panel'i aç",
+  "ui.download": "US Panel indir",
+  "ui.credits": "Kalan kredi: {count}",
+  "ui.login": "Giriş yap",
+  "ui.logout": "Çıkış yap",
+  "ui.help_center": "Yardım merkezi",
+  "err.network": "Sunucuya bağlanılamadı. Lütfen bağlantını kontrol edip tekrar dene.",
+  "err.license_invalid": "Lisans geçersiz veya süresi dolmuş.",
+  "err.insufficient_credit": "Yetersiz kredi. Kredini shop.kanus.org'dan alabilirsin.",
+  "err.model_unavailable": "Model şu anda hazır değil; birazdan tekrar dene.",
+  "err.unknown": "Beklenmeyen bir hata oluştu.",
+  "email.license.subject": "US Panel lisans anahtarın",
+  "email.license.body": "Merhaba,\n\nSiparişin ({order}) için lisans anahtarın hazır. US Panel'i açıp anahtarı girebilirsin.\n\nSoruların için: support@kanus.org",
+  "help.title": "Yardım merkezi",
+  "help.intro": "US Panel veya siparişin hakkında soru mu var? support@kanus.org'a not bırak."
+}

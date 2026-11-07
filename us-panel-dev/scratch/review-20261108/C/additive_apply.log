@@ -1,0 +1,3 @@
+check EXIT 1
+error: patch failed: cmd/us-license-hook/main.go:121
+error: cmd/us-license-hook/main.go: patch does not apply

@@ -1,0 +1,88 @@
+{"event": "request_start", "seq": 1, "label": "valid_login_1", "path": "/account/login", "time": "2026-11-06T09:14:37.051421+03:00"}
+{"seq": 1, "label": "valid_login_1", "path": "/account/login", "http": 200, "ms": 31362.373, "body_bytes": 203, "time": "2026-11-06T09:15:08.413927+03:00"}
+{"name": "valid_login_1", "status": "PASS", "detail": {"http": 200, "ms": 31362.373, "session": "[MASKED]", "session_length": 188}}
+{"event": "request_start", "seq": 2, "label": "valid_login_2", "path": "/account/login", "time": "2026-11-06T09:15:08.414733+03:00"}
+{"seq": 2, "label": "valid_login_2", "path": "/account/login", "http": 200, "ms": 31998.25, "body_bytes": 203, "time": "2026-11-06T09:15:40.413028+03:00"}
+{"name": "valid_login_2", "status": "PASS", "detail": {"http": 200, "ms": 31998.25, "session": "[MASKED]", "session_length": 188}}
+{"event": "request_start", "seq": 3, "label": "balance_before_1", "path": "/account/balance", "time": "2026-11-06T09:15:40.413740+03:00"}
+{"seq": 3, "label": "balance_before_1", "path": "/account/balance", "http": 200, "ms": 891.451, "body_bytes": 135, "time": "2026-11-06T09:15:41.305216+03:00"}
+{"name": "authenticated_balance_1", "status": "PASS", "detail": {"http": 200, "balance": {"remaining": 10, "seconds_remaining": 0, "reserved": 0, "reserved_seconds": 0, "kind": "account", "expiresAt": "2027-02-04T05:34:19.947782032Z"}}}
+{"event": "request_start", "seq": 4, "label": "balance_before_2", "path": "/account/balance", "time": "2026-11-06T09:15:41.305602+03:00"}
+{"seq": 4, "label": "balance_before_2", "path": "/account/balance", "http": 200, "ms": 1301.342, "body_bytes": 124, "time": "2026-11-06T09:15:42.606978+03:00"}
+{"name": "authenticated_balance_2", "status": "PASS", "detail": {"http": 200, "balance": {"remaining": 0, "seconds_remaining": 0, "reserved": 0, "reserved_seconds": 0, "kind": "account", "expiresAt": "0001-01-01T00:00:00Z"}}}
+{"name": "genuine_signed_session_expiry", "status": "NOT TESTED", "detail": {"remaining_ttl_seconds": 86335, "expiry_tsi": ["2026-11-07T09:14:37+03:00", "2026-11-07T09:15:09+03:00"], "reason": "No short-TTL issuance API; cannot change VPS TTL or use signing secret. Not waiting24h."}}
+{"event": "request_start", "seq": 5, "label": "tampered_signature", "path": "/account/balance", "time": "2026-11-06T09:15:42.607460+03:00"}
+{"seq": 5, "label": "tampered_signature", "path": "/account/balance", "http": 401, "ms": 701.208, "body_bytes": 37, "time": "2026-11-06T09:15:43.308699+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"name": "session_tampered_signature_rejected", "status": "PASS", "detail": {"http": 401}}
+{"event": "request_start", "seq": 6, "label": "expired_claims_bad_signature", "path": "/account/balance", "time": "2026-11-06T09:15:43.309139+03:00"}
+{"seq": 6, "label": "expired_claims_bad_signature", "path": "/account/balance", "http": 401, "ms": 990.55, "body_bytes": 37, "time": "2026-11-06T09:15:44.299721+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"name": "expired_claims_without_valid_signature_rejected", "status": "PASS", "detail": {"http": 401, "scope": "Signature/claims tamper denial only; NOT genuine signed expiry acceptance"}}
+{"event": "request_start", "seq": 7, "label": "cross_subject_tamper", "path": "/account/balance", "time": "2026-11-06T09:15:44.300118+03:00"}
+{"seq": 7, "label": "cross_subject_tamper", "path": "/account/balance", "http": 401, "ms": 1198.854, "body_bytes": 37, "time": "2026-11-06T09:15:45.498996+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"name": "cross_account_subject_forgery_rejected", "status": "PASS", "detail": {"http": 401}}
+{"event": "request_start", "seq": 8, "label": "A_token_B_email_balance", "path": "/account/balance", "time": "2026-11-06T09:15:45.499338+03:00"}
+{"seq": 8, "label": "A_token_B_email_balance", "path": "/account/balance", "http": 200, "ms": 905.6, "body_bytes": 135, "time": "2026-11-06T09:15:46.404965+03:00"}
+{"name": "cross_account_balance_authority", "status": "PASS", "detail": {"http": 200, "A_balance": {"remaining": 10, "seconds_remaining": 0, "reserved": 0, "reserved_seconds": 0, "kind": "account", "expiresAt": "2027-02-04T05:34:19.947782032Z"}, "B_balance": {"remaining": 0, "seconds_remaining": 0, "reserved": 0, "reserved_seconds": 0, "kind": "account", "expiresAt": "0001-01-01T00:00:00Z"}, "returned": {"remaining": 10, "seconds_remaining": 0, "reserved": 0, "reserved_seconds": 0, "kind": "account", "expiresAt": "2027-02-04T05:34:19.947782032Z"}, "scope": "A Bearer + B email retains A authority; no endpoint for arbitrary user ID"}}
+{"event": "request_start", "seq": 9, "label": "A_token_B_email_requests", "path": "/account/requests", "time": "2026-11-06T09:15:46.405384+03:00"}
+{"seq": 9, "label": "A_token_B_email_requests", "path": "/account/requests", "http": 200, "ms": 1102.849, "body_bytes": 16, "time": "2026-11-06T09:15:47.508264+03:00"}
+{"event": "request_start", "seq": 10, "label": "A_own_requests", "path": "/account/requests", "time": "2026-11-06T09:15:47.508607+03:00"}
+{"seq": 10, "label": "A_own_requests", "path": "/account/requests", "http": 200, "ms": 991.02, "body_bytes": 16, "time": "2026-11-06T09:15:48.499653+03:00"}
+{"name": "cross_account_history_authority", "status": "PASS", "detail": {"http": [200, 200], "same_A_history": true, "scope": "B identity field cannot change A scoped history; no new model calls"}}
+{"event": "request_start", "seq": 11, "label": "existing_license_status", "path": "/v1/credits/status", "time": "2026-11-06T09:15:48.500129+03:00"}
+{"seq": 11, "label": "existing_license_status", "path": "/v1/credits/status", "http": 200, "ms": 2110.804, "body_bytes": 248, "time": "2026-11-06T09:15:50.610968+03:00"}
+{"event": "request_start", "seq": 12, "label": "redeem_same_owner_1", "path": "/account/redeem", "time": "2026-11-06T09:15:50.611341+03:00"}
+{"seq": 12, "label": "redeem_same_owner_1", "path": "/account/redeem", "http": 200, "ms": 1382.786, "body_bytes": 135, "time": "2026-11-06T09:15:51.994160+03:00"}
+{"event": "request_start", "seq": 13, "label": "redeem_same_owner_2", "path": "/account/redeem", "time": "2026-11-06T09:15:51.994480+03:00"}
+{"seq": 13, "label": "redeem_same_owner_2", "path": "/account/redeem", "http": 200, "ms": 1215.019, "body_bytes": 135, "time": "2026-11-06T09:15:53.209532+03:00"}
+{"name": "same_owner_redeem_twice_idempotent", "status": "PASS", "detail": {"http": [200, 200], "balance_unchanged": true, "fixture": "existing valid order9000000000303 already bound to account1"}}
+{"event": "request_start", "seq": 14, "label": "redeem_parallel_0", "path": "/account/redeem", "time": "2026-11-06T09:15:53.212123+03:00"}
+{"event": "request_start", "seq": 15, "label": "redeem_parallel_1", "path": "/account/redeem", "time": "2026-11-06T09:15:53.212697+03:00"}
+{"seq": 14, "label": "redeem_parallel_0", "path": "/account/redeem", "http": 200, "ms": 1393.884, "body_bytes": 135, "time": "2026-11-06T09:15:54.606074+03:00"}
+{"seq": 15, "label": "redeem_parallel_1", "path": "/account/redeem", "http": 200, "ms": 2282.868, "body_bytes": 135, "time": "2026-11-06T09:15:55.495647+03:00"}
+{"name": "same_owner_redeem_parallel2_idempotent", "status": "PASS", "detail": {"http": [200, 200], "parallel": 2, "scope": "Already-owned key repeat race, not fresh first-claim race"}}
+{"event": "request_start", "seq": 16, "label": "B_redeem_A_owned_license", "path": "/account/redeem", "time": "2026-11-06T09:15:55.496893+03:00"}
+{"seq": 16, "label": "B_redeem_A_owned_license", "path": "/account/redeem", "http": 409, "ms": 1899.661, "body_bytes": 37, "time": "2026-11-06T09:15:57.396593+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"name": "cross_account_redeem_existing_owner_denied", "status": "PASS", "detail": {"http": 409, "expected": 409}}
+{"name": "fresh_first_claim_parallel_race", "status": "BLOCKED", "detail": "Existing valid key is already owned. Need ONE unbound valid synthetic test-order license in /workspace/secrets/acct-qa-fresh-license.txt for two-account first-claim race. No new orders/secrets used."}
+{"event": "request_start", "seq": 17, "label": "redeem_revoked_a", "path": "/account/redeem", "time": "2026-11-06T09:15:57.397198+03:00"}
+{"seq": 17, "label": "redeem_revoked_a", "path": "/account/redeem", "http": 409, "ms": 796.859, "body_bytes": 37, "time": "2026-11-06T09:15:58.194088+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"name": "revoked_license_redeem_a", "status": "PASS", "detail": {"http": 409, "expected": 409}}
+{"event": "request_start", "seq": 18, "label": "redeem_revoked_b", "path": "/account/redeem", "time": "2026-11-06T09:15:58.194490+03:00"}
+{"seq": 18, "label": "redeem_revoked_b", "path": "/account/redeem", "http": 409, "ms": 806.18, "body_bytes": 37, "time": "2026-11-06T09:15:59.000700+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"name": "revoked_license_redeem_b", "status": "PASS", "detail": {"http": 409, "expected": 409}}
+{"event": "request_start", "seq": 19, "label": "balance_after_1", "path": "/account/balance", "time": "2026-11-06T09:15:59.001058+03:00"}
+{"seq": 19, "label": "balance_after_1", "path": "/account/balance", "http": 200, "ms": 1594.316, "body_bytes": 135, "time": "2026-11-06T09:16:00.595399+03:00"}
+{"name": "credits_unchanged_1", "status": "PASS", "detail": {"http": 200, "before": {"remaining": 10, "seconds_remaining": 0, "reserved": 0, "reserved_seconds": 0, "kind": "account", "expiresAt": "2027-02-04T05:34:19.947782032Z"}, "after": {"remaining": 10, "seconds_remaining": 0, "reserved": 0, "reserved_seconds": 0, "kind": "account", "expiresAt": "2027-02-04T05:34:19.947782032Z"}, "credits_consumed": 0}}
+{"event": "request_start", "seq": 20, "label": "balance_after_2", "path": "/account/balance", "time": "2026-11-06T09:16:00.595748+03:00"}
+{"seq": 20, "label": "balance_after_2", "path": "/account/balance", "http": 200, "ms": 900.037, "body_bytes": 124, "time": "2026-11-06T09:16:01.495811+03:00"}
+{"name": "credits_unchanged_2", "status": "PASS", "detail": {"http": 200, "before": {"remaining": 0, "seconds_remaining": 0, "reserved": 0, "reserved_seconds": 0, "kind": "account", "expiresAt": "0001-01-01T00:00:00Z"}, "after": {"remaining": 0, "seconds_remaining": 0, "reserved": 0, "reserved_seconds": 0, "kind": "account", "expiresAt": "0001-01-01T00:00:00Z"}, "credits_consumed": 0}}
+{"event": "request_start", "seq": 21, "label": "enumeration_registered_0", "path": "/account/login", "time": "2026-11-06T09:16:01.496208+03:00"}
+{"seq": 21, "label": "enumeration_registered_0", "path": "/account/login", "http": 401, "ms": 33100.67, "body_bytes": 37, "time": "2026-11-06T09:16:34.596928+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"event": "request_start", "seq": 22, "label": "enumeration_unregistered_1", "path": "/account/login", "time": "2026-11-06T09:16:34.597757+03:00"}
+{"seq": 22, "label": "enumeration_unregistered_1", "path": "/account/login", "http": 401, "ms": 34797.644, "body_bytes": 37, "time": "2026-11-06T09:17:09.395457+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"event": "request_start", "seq": 23, "label": "enumeration_unregistered_2", "path": "/account/login", "time": "2026-11-06T09:17:09.396201+03:00"}
+{"seq": 23, "label": "enumeration_unregistered_2", "path": "/account/login", "http": 401, "ms": 34596.937, "body_bytes": 37, "time": "2026-11-06T09:17:43.993199+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"event": "request_start", "seq": 24, "label": "enumeration_registered_3", "path": "/account/login", "time": "2026-11-06T09:17:43.993913+03:00"}
+{"seq": 24, "label": "enumeration_registered_3", "path": "/account/login", "http": 401, "ms": 31802.185, "body_bytes": 37, "time": "2026-11-06T09:18:15.796153+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"name": "login_enumeration_body_status", "status": "PASS", "detail": {"samples": [{"label": "enumeration_registered_0", "http": 401, "ms": 33100.67, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}, {"label": "enumeration_unregistered_1", "http": 401, "ms": 34797.644, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}, {"label": "enumeration_unregistered_2", "http": 401, "ms": 34596.937, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}, {"label": "enumeration_registered_3", "http": 401, "ms": 31802.185, "body_bytes": 37, "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}]}}
+{"name": "login_enumeration_timing", "status": "NOT TESTED", "detail": {"samples_ms": {"registered": [33100.67, 31802.185], "unregistered": [34797.644, 34596.937]}, "medians_ms": {"registered": 32451.427, "unregistered": 34697.291}, "reason": "Only2 samples/class; load~27, bcrypt20–28s and network noise. Insufficient to establish or exclude timing side channel."}}
+{"name": "register_reset_enumeration", "status": "NOT TESTED", "detail": "Not invoked: registration/reset/verification may queue or send real mail; no mail-generating endpoints called."}
+{"event": "request_start", "seq": 25, "label": "QA_bruteforce_wrong_0", "path": "/account/login", "time": "2026-11-06T09:18:15.796853+03:00"}
+{"seq": 25, "label": "QA_bruteforce_wrong_0", "path": "/account/login", "http": 401, "ms": 46617.673, "body_bytes": 37, "time": "2026-11-06T09:19:02.414573+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"name": "wrong_password_QA_denied_0", "status": "PASS", "detail": {"http": 401}}
+{"event": "request_start", "seq": 26, "label": "QA_bruteforce_wrong_1", "path": "/account/login", "time": "2026-11-06T09:19:02.415390+03:00"}
+{"seq": 26, "label": "QA_bruteforce_wrong_1", "path": "/account/login", "http": 401, "ms": 46474.045, "body_bytes": 37, "time": "2026-11-06T09:19:48.889488+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"name": "wrong_password_QA_denied_1", "status": "PASS", "detail": {"http": 401}}
+{"event": "request_start", "seq": 27, "label": "valid_after_four_QA_failures", "path": "/account/login", "time": "2026-11-06T09:19:48.890287+03:00"}
+{"seq": 27, "label": "valid_after_four_QA_failures", "path": "/account/login", "http": 200, "ms": 38311.226, "body_bytes": 203, "time": "2026-11-06T09:20:27.201563+03:00"}
+{"name": "account_specific_lockout", "status": "NOT TESTED", "detail": {"http_after_four_wrong_QA_attempts": 200, "reason": "No documented per-account lock threshold; source shows per-IP15min limiter only. Small test cannot prove lockout absence or exhaust account-specific threshold."}}
+{"event": "request_start", "seq": 28, "label": "bounded_limiter_probe_0", "path": "/account/login", "time": "2026-11-06T09:20:27.202139+03:00"}
+{"seq": 28, "label": "bounded_limiter_probe_0", "path": "/account/login", "http": 400, "ms": 893.878, "body_bytes": 37, "time": "2026-11-06T09:20:28.096048+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"event": "request_start", "seq": 29, "label": "bounded_limiter_probe_1", "path": "/account/login", "time": "2026-11-06T09:20:28.096446+03:00"}
+{"seq": 29, "label": "bounded_limiter_probe_1", "path": "/account/login", "http": 400, "ms": 993.933, "body_bytes": 37, "time": "2026-11-06T09:20:29.090419+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"event": "request_start", "seq": 30, "label": "bounded_limiter_probe_2", "path": "/account/login", "time": "2026-11-06T09:20:29.090797+03:00"}
+{"seq": 30, "label": "bounded_limiter_probe_2", "path": "/account/login", "http": 400, "ms": 815.751, "body_bytes": 37, "time": "2026-11-06T09:20:29.906577+03:00", "body_sha256": "6832c24dc64d8e6926835a9c50921423f40ac9ec4fc502d83a9ce741649b3648"}
+{"name": "login_ip_bruteforce_rate_limit", "status": "NOT TESTED", "detail": {"429_observed": false, "login_requests_so_far": 12, "scope": "Per-IP/proxy limiter, not per-account lockout; invalid short passwords keep additional probes cheap"}}
+{"name": "XFF_rotation_limiter_bypass", "status": "NOT TESTED", "detail": "Baseline429 not reached within bounded request budget; no escalation"}
+SUMMARY {"PASS": 19, "FAIL": 0, "BLOCKED": 1, "NOT TESTED": 6}
+CREDENTIAL_LEAK_CHECK PASS

@@ -1,0 +1,84 @@
+=== RUN   TestPanelCancelWorksForShortTaskAndBlocksRootMutation
+--- PASS: TestPanelCancelWorksForShortTaskAndBlocksRootMutation (0.01s)
+=== RUN   TestPanelRejectsForeignHostHeader
+--- PASS: TestPanelRejectsForeignHostHeader (0.00s)
+=== RUN   TestPanelOpensAfterItAnswers
+--- PASS: TestPanelOpensAfterItAnswers (0.00s)
+=== RUN   TestPanelExposesAKeyInput
+--- PASS: TestPanelExposesAKeyInput (0.01s)
+=== RUN   TestPanelShellMatchesTheStrataWindow
+--- PASS: TestPanelShellMatchesTheStrataWindow (0.00s)
+=== RUN   TestPanelCancelsActualTestAndPersistsCancelledState
+--- PASS: TestPanelCancelsActualTestAndPersistsCancelledState (1.42s)
+=== RUN   TestPanelRunsREAWithoutTheModel
+--- PASS: TestPanelRunsREAWithoutTheModel (0.01s)
+=== RUN   TestPanelRootSwapWriteDelete
+=== RUN   TestPanelRootSwapWriteDelete/write
+    zz_panel_root_race_test.go:17: attempts=5 success=2 outsideChanged=true
+    zz_panel_root_race_test.go:18: root-swap escaped pinned workspace boundary
+=== RUN   TestPanelRootSwapWriteDelete/delete
+    zz_panel_root_race_test.go:17: attempts=58 success=2 outsideChanged=true
+    zz_panel_root_race_test.go:18: root-swap escaped pinned workspace boundary
+--- FAIL: TestPanelRootSwapWriteDelete (0.01s)
+    --- FAIL: TestPanelRootSwapWriteDelete/write (0.00s)
+    --- FAIL: TestPanelRootSwapWriteDelete/delete (0.00s)
+=== RUN   TestPanelChildSwapWriteDelete
+    zz_panel_root_race_test.go:25: attempts=5603 successfulWrites=5444 outsideNames=[victim]
+--- PASS: TestPanelChildSwapWriteDelete (3.00s)
+FAIL
+FAIL	kiyas	4.474s
+testing: warning: no tests to run
+PASS
+ok  	kiyas/cmd/us-license-hook	1.011s [no tests to run]
+?   	kiyas/cmd/us-pricing-gen	[no test files]
+=== RUN   TestPanelTLSProbes
+=== RUN   TestPanelTLSProbes/SPKI-correct
+2026/11/08 00:36:13 gpu_wake scheme=https host=127.0.0.1:39899 path=/a100/status status=200 pin_ok=yes duration_ms=5 level=INFO method=GET err=-
+=== RUN   TestPanelTLSProbes/SPKI-wrong
+2026/11/08 00:36:13 http: TLS handshake error from 127.0.0.1:54340: remote error: tls: bad certificate
+2026/11/08 00:36:13 gpu_wake scheme=https host=127.0.0.1:39899 path=/a100/status status=0 pin_ok=no duration_ms=4 level=INFO method=GET err=unreachable
+=== RUN   TestPanelTLSProbes/PEM-correct
+2026/11/08 00:36:13 gpu_wake scheme=https host=127.0.0.1:39899 path=/a100/status status=200 pin_ok=yes duration_ms=4 level=INFO method=GET err=-
+=== RUN   TestPanelTLSProbes/invalid-short
+2026/11/08 00:36:13 gpu_wake scheme=https host=127.0.0.1:39899 path=/a100/status status=0 pin_ok=no duration_ms=0 level=INFO method=GET err=pin_invalid
+=== RUN   TestPanelTLSProbes/invalid-empty
+2026/11/08 00:36:13 gpu_wake scheme=https host=127.0.0.1:39899 path=/a100/status status=0 pin_ok=no duration_ms=0 level=INFO method=GET err=pin_invalid
+=== RUN   TestPanelTLSProbes/base64
+2026/11/08 00:36:13 gpu_wake scheme=https host=127.0.0.1:39899 path=/a100/status status=200 pin_ok=yes duration_ms=4 level=INFO method=GET err=-
+=== RUN   TestPanelTLSProbes/raw-base64
+2026/11/08 00:36:13 gpu_wake scheme=https host=127.0.0.1:39899 path=/a100/status status=200 pin_ok=yes duration_ms=4 level=INFO method=GET err=-
+=== RUN   TestPanelTLSProbes/prefixed-hex
+2026/11/08 00:36:13 gpu_wake scheme=https host=127.0.0.1:39899 path=/a100/status status=200 pin_ok=yes duration_ms=4 level=INFO method=GET err=-
+=== RUN   TestPanelTLSProbes/mixed-PEM-SPKI
+2026/11/08 00:36:13 gpu_wake scheme=https host=127.0.0.1:39899 path=/a100/status status=0 pin_ok=no duration_ms=0 level=INFO method=GET err=pin_invalid
+=== RUN   TestPanelTLSProbes/pin-file-missing
+2026/11/08 00:36:13 gpu_wake scheme=https host=127.0.0.1:39899 path=/a100/status status=0 pin_ok=no duration_ms=0 level=INFO method=GET err=pin_unreadable
+=== RUN   TestPanelTLSProbes/callback-leaf-empty-host-date
+=== RUN   TestPanelTLSProbes/PEM-normal-hostname
+2026/11/08 00:36:13 http: TLS handshake error from 127.0.0.1:54382: read tcp 127.0.0.1:39899->127.0.0.1:54382: use of closed network connection
+--- PASS: TestPanelTLSProbes (0.04s)
+    --- PASS: TestPanelTLSProbes/SPKI-correct (0.01s)
+    --- PASS: TestPanelTLSProbes/SPKI-wrong (0.00s)
+    --- PASS: TestPanelTLSProbes/PEM-correct (0.01s)
+    --- PASS: TestPanelTLSProbes/invalid-short (0.00s)
+    --- PASS: TestPanelTLSProbes/invalid-empty (0.00s)
+    --- PASS: TestPanelTLSProbes/base64 (0.00s)
+    --- PASS: TestPanelTLSProbes/raw-base64 (0.00s)
+    --- PASS: TestPanelTLSProbes/prefixed-hex (0.00s)
+    --- PASS: TestPanelTLSProbes/mixed-PEM-SPKI (0.00s)
+    --- PASS: TestPanelTLSProbes/pin-file-missing (0.00s)
+    --- PASS: TestPanelTLSProbes/callback-leaf-empty-host-date (0.00s)
+    --- PASS: TestPanelTLSProbes/PEM-normal-hostname (0.00s)
+=== RUN   TestPanelTLSResumption
+2026/11/08 00:36:13 http: TLS handshake error from 127.0.0.1:60094: remote error: tls: bad certificate
+--- PASS: TestPanelTLSResumption (0.01s)
+=== RUN   TestPanelHTTPAndEnv
+2026/11/08 00:36:13 gpu_wake scheme=http host=127.0.0.1:34691 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+--- PASS: TestPanelHTTPAndEnv (0.00s)
+=== RUN   TestPanelMixedOriginsNeedPin
+    zz_panel_tls_test.go:36: non-loopback status lost mandatory pin with wake=http://127.0.0.1:1/a100/start
+    zz_panel_tls_test.go:36: non-loopback status lost mandatory pin with wake=https://localhost:1/a100/start
+--- FAIL: TestPanelMixedOriginsNeedPin (0.00s)
+FAIL
+FAIL	kiyas/licensesrv	0.057s
+FAIL

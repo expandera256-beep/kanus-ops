@@ -1,0 +1,3 @@
+2026-11-08T00:21:26.489807+03:00
+gcloud run services describe us-commerce --region=europe-west4 --format=json
+exit=0

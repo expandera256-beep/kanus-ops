@@ -1,0 +1,12 @@
+{"Time":"2026-11-08T01:23:36.962846192+03:00","Action":"start","Package":"kiyas"}
+{"Time":"2026-11-08T01:23:36.975828583+03:00","Action":"run","Package":"kiyas","Test":"TestQAR13LinuxLandlockSiblingRead"}
+{"Time":"2026-11-08T01:23:36.975886746+03:00","Action":"output","Package":"kiyas","Test":"TestQAR13LinuxLandlockSiblingRead","Output":"=== RUN   TestQAR13LinuxLandlockSiblingRead\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:23:36.996814085+03:00","Action":"output","Package":"kiyas","Test":"TestQAR13LinuxLandlockSiblingRead","Output":"    zz_qa_r13_F01_linux_landlock_test.go:56: kernel_landlock_abi=6 inside_control=true sibling_read_denied=false sibling_read_allowed=true state=success\n"}
+{"Time":"2026-11-08T01:23:36.996857753+03:00","Action":"output","Package":"kiyas","Test":"TestQAR13LinuxLandlockSiblingRead","Output":"    zz_qa_r13_F01_linux_landlock_test.go:61: F01 Linux OPEN: child read synthetic sibling; .13 enforcement required\n","OutputType":"error"}
+{"Time":"2026-11-08T01:23:36.997113016+03:00","Action":"output","Package":"kiyas","Test":"TestQAR13LinuxLandlockSiblingRead","Output":"--- FAIL: TestQAR13LinuxLandlockSiblingRead (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:23:36.997137724+03:00","Action":"fail","Package":"kiyas","Test":"TestQAR13LinuxLandlockSiblingRead","Elapsed":0.02}
+{"Time":"2026-11-08T01:23:36.997167466+03:00","Action":"output","Package":"kiyas","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:23:37.002829759+03:00","Action":"output","Package":"kiyas","Output":"FAIL\tkiyas\t0.036s\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:23:37.002853955+03:00","Action":"fail","Package":"kiyas","Elapsed":0.04}
+
+exit_code=1

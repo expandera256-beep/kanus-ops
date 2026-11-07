@@ -1,0 +1,29 @@
+test_abandoned_request_expires_after_restart (test_inference_lifecycle.LifecycleTest.test_abandoned_request_expires_after_restart) ... ok
+test_ack_loss_does_not_duplicate_start (test_inference_lifecycle.LifecycleTest.test_ack_loss_does_not_duplicate_start) ... ok
+test_active_lease_prevents_stop_after_idle_interval (test_inference_lifecycle.LifecycleTest.test_active_lease_prevents_stop_after_idle_interval) ... ok
+test_broken_watchdog_cannot_approve_more_wakes (test_inference_lifecycle.LifecycleTest.test_broken_watchdog_cannot_approve_more_wakes) ... ok
+test_cancel_during_status_read_cannot_start (test_inference_lifecycle.LifecycleTest.test_cancel_during_status_read_cannot_start) ... ok
+test_capacity_and_daily_budgets_fail_closed (test_inference_lifecycle.LifecycleTest.test_capacity_and_daily_budgets_fail_closed) ... ok
+test_last_of_two_requests_controls_idle (test_inference_lifecycle.LifecycleTest.test_last_of_two_requests_controls_idle) ... ok
+test_only_reserved_model_request_can_wake (test_inference_lifecycle.LifecycleTest.test_only_reserved_model_request_can_wake) ... ok
+test_poll_and_model_listing_never_wake_or_refresh_idle (test_inference_lifecycle.LifecycleTest.test_poll_and_model_listing_never_wake_or_refresh_idle) ... ok
+test_request_cannot_extend_native_uptime_guard (test_inference_lifecycle.LifecycleTest.test_request_cannot_extend_native_uptime_guard) ... ok
+test_request_does_not_silently_adopt_or_stop_unmanaged_work (test_inference_lifecycle.LifecycleTest.test_request_does_not_silently_adopt_or_stop_unmanaged_work) ... ok
+test_slow_model_probe_cannot_report_ready_after_deadline (test_inference_lifecycle.LifecycleTest.test_slow_model_probe_cannot_report_ready_after_deadline) ... ok
+test_slow_status_read_cannot_start_after_boot_deadline (test_inference_lifecycle.LifecycleTest.test_slow_status_read_cannot_start_after_boot_deadline) ... ok
+test_ten_parallel_controllers_issue_one_cloud_start (test_inference_lifecycle.LifecycleTest.test_ten_parallel_controllers_issue_one_cloud_start) ... ok
+test_unknown_running_worker_is_not_stopped_by_audit (test_inference_lifecycle.LifecycleTest.test_unknown_running_worker_is_not_stopped_by_audit) ... ok
+test_uptime_guard_stops_without_waiting_for_full_idle (test_inference_lifecycle.LifecycleTest.test_uptime_guard_stops_without_waiting_for_full_idle) ... ok
+test_watchdog_required_even_if_worker_already_running (test_inference_lifecycle.LifecycleTest.test_watchdog_required_even_if_worker_already_running) ... ok
+test_instance_id_mismatch_refuses_mutation (test_inference_lifecycle.ProviderSafetyTest.test_instance_id_mismatch_refuses_mutation) ... ok
+test_native_guard_requires_no_restart_and_configured_stop (test_inference_lifecycle.ProviderSafetyTest.test_native_guard_requires_no_restart_and_configured_stop) ... ok
+test_production_model_origin_requires_tls (test_inference_lifecycle.ProviderSafetyTest.test_production_model_origin_requires_tls) ... ok
+test_stop_preserves_ssd_and_never_falls_back_to_discard (test_inference_lifecycle.ProviderSafetyTest.test_stop_preserves_ssd_and_never_falls_back_to_discard) ... ok
+test_watchdog_does_not_allow_autonomous_provider_restart (test_inference_lifecycle.ProviderSafetyTest.test_watchdog_does_not_allow_autonomous_provider_restart) ... ok
+test_default_idle_exactly_600_and_boot_600 (test_inference_lifecycle.TenMinutePolicyTest.test_default_idle_exactly_600_and_boot_600) ... ok
+test_queued_admitted_request_blocks_idle_stop (test_inference_lifecycle.TenMinutePolicyTest.test_queued_admitted_request_blocks_idle_stop) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.496s
+
+OK

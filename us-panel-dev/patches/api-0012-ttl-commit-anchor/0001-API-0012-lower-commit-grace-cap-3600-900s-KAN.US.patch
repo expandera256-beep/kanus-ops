@@ -1,0 +1,55 @@
+From 62bf8d237f8e51308736e09e27f0e59c941099fb Mon Sep 17 00:00:00 2001
+From: bot <bot@local>
+Date: Fri, 6 Nov 2026 10:14:43 +0300
+Subject: [PATCH] =?UTF-8?q?API-0012:=20lower=20commit=20grace=20cap=203600?=
+ =?UTF-8?q?=E2=86=92900s=20(KAN.US)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ licensesrv/store.go                  | 6 +++---
+ licensesrv/ttl_commit_anchor_test.go | 8 ++++++--
+ 2 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/licensesrv/store.go b/licensesrv/store.go
+index 7016b29..4c246e1 100644
+--- a/licensesrv/store.go
++++ b/licensesrv/store.go
+@@ -241,11 +241,11 @@ func (s *Store) transactionLocked(fn func() error) error {
+ 
+ // commitGraceFromEnv reads US_CREDIT_COMMIT_GRACE_SECONDS (default 600 = 10m).
+ // Set to 0 for legacy immediate expire-at-TTL behavior.
+-// Cap: 3600s (1h) — longer would pin Reserved far beyond typical ReservationTTL
+-// and amplify stuck holds after client crashes; invalid/negative/unparseable → 600.
++// Cap: 900s (15m, KAN.US) — clamp above max to 900 (not reset to default).
++// Longer holds pin Reserved after client crashes; invalid/negative/unparseable → 600.
+ func commitGraceFromEnv() time.Duration {
+ 	const def = 10 * time.Minute
+-	const maxGrace = time.Hour
++	const maxGrace = 15 * time.Minute
+ 	raw := strings.TrimSpace(os.Getenv("US_CREDIT_COMMIT_GRACE_SECONDS"))
+ 	if raw == "" {
+ 		return def
+diff --git a/licensesrv/ttl_commit_anchor_test.go b/licensesrv/ttl_commit_anchor_test.go
+index 29cb7bd..543347a 100644
+--- a/licensesrv/ttl_commit_anchor_test.go
++++ b/licensesrv/ttl_commit_anchor_test.go
+@@ -129,8 +129,12 @@ func TestCommitGraceFromEnvDefaultCapAndInvalid(t *testing.T) {
+ 		t.Fatal("30")
+ 	}
+ 	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "99999")
+-	if commitGraceFromEnv() != time.Hour {
+-		t.Fatal("cap 3600")
++	if commitGraceFromEnv() != 15*time.Minute {
++		t.Fatal("cap 900 clamp")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "900")
++	if commitGraceFromEnv() != 15*time.Minute {
++		t.Fatal("exact 900")
+ 	}
+ 	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "-5")
+ 	if commitGraceFromEnv() != 10*time.Minute {
+-- 
+2.47.3
+

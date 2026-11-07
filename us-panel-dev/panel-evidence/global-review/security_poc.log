@@ -1,0 +1,17 @@
+=== RUN   TestGlobalReviewEndpointSecurity
+    zz_global_security_test.go:17: foreign Origin: existing /api/act=403 new /api/lang=200 persisted=en
+    zz_global_security_test.go:21: body bytes=2097165 trailing input accepted code=200
+    zz_global_security_test.go:21: body bytes=26 trailing input accepted code=200
+    zz_global_security_test.go:21: body bytes=22 trailing input accepted code=200
+    zz_global_security_test.go:22: non-JSON content types rejected; traversal languages rejected; foreign hosts rejected
+--- PASS: TestGlobalReviewEndpointSecurity (0.02s)
+=== RUN   TestGlobalReviewPreferenceSymlink
+    zz_global_security_test.go:29: final symlink Get="en" (follows target)
+    zz_global_security_test.go:29: final symlink Set preserves victim="{\"lang\":\"en\"}" replaced-link=true perm=600
+    zz_global_security_test.go:30: symlink parent redirected write to outside directory="{\"lang\":\"en\"}"
+--- PASS: TestGlobalReviewPreferenceSymlink (0.00s)
+=== RUN   TestGlobalReviewPreferenceFIFO
+    zz_global_security_test.go:36: Get blocks on lang.json FIFO while holding PrefStore mutex
+--- PASS: TestGlobalReviewPreferenceFIFO (0.15s)
+PASS
+ok  	kiyas	1.184s

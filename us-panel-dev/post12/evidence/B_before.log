@@ -1,0 +1,9 @@
+--- FAIL: TestPost12PricingTLOnlyWithoutVerifiedFX (0.00s)
+    post12_fx_fallback_test.go:14: unverified FX or missing TRY: Aylık abonelik 18.900 TL (≈378 USD), 200 istem / 30 gün. Saatlik kullanım 1.990 TL (≈40 USD), 1 saat işlem veya açık panel. İstem paketleri: 1 istem 149 TL, 5 istem 695 TL, 10 istem 1.290 TL, 25 istem 2.990 TL, 50 istem 5.490 TL, 100 istem 9.900 TL. Fiyatlar KDV dahil TL; USD karşılığı ≈50.05 TL/USD ile bilgi amaçlıdır.
+--- FAIL: TestPost12LegacyUSDNotDisplayedWithoutVerifiedFX (0.00s)
+    post12_fx_fallback_test.go:18: legacy dollar approximation shown without verified rate:  99 USD
+--- FAIL: TestPost12LicenseMintOmitsUnverifiedDollarPrice (0.00s)
+    post12_fx_fallback_test.go:25: minted unverified dollar amount: USD=378 TRY=18900
+FAIL
+FAIL	kiyas	0.003s
+FAIL

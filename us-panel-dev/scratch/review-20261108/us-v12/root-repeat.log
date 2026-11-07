@@ -1,0 +1,26 @@
+=== RUN   TestPanelIndependentRootSwapWriteDelete
+=== RUN   TestPanelIndependentRootSwapWriteDelete/write
+    zz_panel_root_race_test.go:17: attempts=135823 success=2313 outsideChanged=false
+=== RUN   TestPanelIndependentRootSwapWriteDelete/delete
+    zz_panel_root_race_test.go:17: attempts=219461 success=1 outsideChanged=false
+--- PASS: TestPanelIndependentRootSwapWriteDelete (16.00s)
+    --- PASS: TestPanelIndependentRootSwapWriteDelete/write (8.00s)
+    --- PASS: TestPanelIndependentRootSwapWriteDelete/delete (8.00s)
+=== RUN   TestPanelIndependentRootSwapWriteDelete
+=== RUN   TestPanelIndependentRootSwapWriteDelete/write
+    zz_panel_root_race_test.go:17: attempts=129942 success=2205 outsideChanged=false
+=== RUN   TestPanelIndependentRootSwapWriteDelete/delete
+    zz_panel_root_race_test.go:17: attempts=198216 success=1 outsideChanged=false
+--- PASS: TestPanelIndependentRootSwapWriteDelete (16.00s)
+    --- PASS: TestPanelIndependentRootSwapWriteDelete/write (8.00s)
+    --- PASS: TestPanelIndependentRootSwapWriteDelete/delete (8.00s)
+=== RUN   TestPanelIndependentRootSwapWriteDelete
+=== RUN   TestPanelIndependentRootSwapWriteDelete/write
+    zz_panel_root_race_test.go:17: attempts=112770 success=2235 outsideChanged=false
+=== RUN   TestPanelIndependentRootSwapWriteDelete/delete
+    zz_panel_root_race_test.go:17: attempts=143287 success=1 outsideChanged=false
+--- PASS: TestPanelIndependentRootSwapWriteDelete (16.00s)
+    --- PASS: TestPanelIndependentRootSwapWriteDelete/write (8.00s)
+    --- PASS: TestPanelIndependentRootSwapWriteDelete/delete (8.00s)
+PASS
+ok  	kiyas	49.021s

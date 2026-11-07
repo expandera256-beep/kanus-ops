@@ -1,0 +1,236 @@
+=== RUN   TestRound6SSE50LicensesQueue32
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":0,"http":200,"ms":65.625,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":1,"http":200,"ms":85.106,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":2,"http":200,"ms":145.337,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":3,"http":200,"ms":179.916,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":4,"http":200,"ms":352.517,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":5,"http":429,"ms":25.449,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":6,"http":429,"ms":25.77,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":7,"http":200,"ms":241.031,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":8,"http":200,"ms":305.273,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":9,"http":200,"ms":209.938,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":10,"http":200,"ms":276.576,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":11,"http":200,"ms":268.487,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":12,"http":200,"ms":230.617,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":13,"http":200,"ms":295.411,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":14,"http":200,"ms":259.593,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":15,"http":200,"ms":315.763,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":16,"http":429,"ms":25.639,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":17,"http":429,"ms":25.552,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":18,"http":200,"ms":34.56,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":19,"http":200,"ms":114.951,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":20,"http":429,"ms":24.868,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":21,"http":429,"ms":25.478,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":22,"http":429,"ms":24.907,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":23,"http":429,"ms":26.198,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":24,"http":429,"ms":25.917,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":25,"http":200,"ms":285.893,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":26,"http":200,"ms":56.632,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":27,"http":200,"ms":334.002,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":28,"http":429,"ms":26.036,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":29,"http":429,"ms":25.939,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":30,"http":200,"ms":324.814,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":31,"http":429,"ms":25.599,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":32,"http":429,"ms":25.147,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":33,"http":200,"ms":125.241,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":34,"http":200,"ms":95.196,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":35,"http":200,"ms":75.21,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":36,"http":200,"ms":104.97,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":37,"http":200,"ms":157.026,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":38,"http":200,"ms":45.144,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":39,"http":200,"ms":135.372,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":40,"http":429,"ms":25.499,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":41,"http":200,"ms":343.217,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":42,"http":200,"ms":168.544,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":43,"http":200,"ms":189.23,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":44,"http":200,"ms":200.796,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":45,"http":429,"ms":25.701,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":46,"http":429,"ms":25.561,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":47,"http":200,"ms":220.723,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":48,"http":200,"ms":249.691,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":49,"http":429,"ms":26.613,"sse_done":false}
+    load_round6_test.go:108: METRIC 50licenses_queue32 n=50 p50_ms=104.970 p95_ms=334.002 http=map[200:33 429:17]
+    load_round6_test.go:130: PASS expected_overflow=17 unexpected_errors=0 peak_admitted=33 active_capacity=1
+--- PASS: TestRound6SSE50LicensesQueue32 (0.40s)
+=== RUN   TestRound6SingleLicenseReserveRace
+    load_round6_test.go:189: single_license_reserve_race raw {"index":0,"http":402,"ms":5.267,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":1,"http":402,"ms":5.874,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":2,"http":402,"ms":5.942,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":3,"http":402,"ms":4.517,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":4,"http":402,"ms":4.182,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":5,"http":402,"ms":5.851,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":6,"http":402,"ms":3.607,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":7,"http":402,"ms":5.084,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":8,"http":402,"ms":4.079,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":9,"http":402,"ms":5.074,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":10,"http":402,"ms":3.485,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":11,"http":402,"ms":3.73,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":12,"http":402,"ms":4.381,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":13,"http":402,"ms":6.136,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":14,"http":402,"ms":4.858,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":15,"http":402,"ms":4.918,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":16,"http":200,"ms":3.785,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":17,"http":402,"ms":6.148,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":18,"http":402,"ms":6.506,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":19,"http":402,"ms":4.346,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":20,"http":402,"ms":5.098,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":21,"http":402,"ms":3.291,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":22,"http":402,"ms":5.135,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":23,"http":402,"ms":5.935,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":24,"http":402,"ms":5.778,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":25,"http":402,"ms":4.618,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":26,"http":402,"ms":3.204,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":27,"http":402,"ms":5.967,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":28,"http":402,"ms":5.441,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":29,"http":402,"ms":3.214,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":30,"http":402,"ms":5.218,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":31,"http":402,"ms":5.793,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":32,"http":402,"ms":5.854,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":33,"http":402,"ms":4.041,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":34,"http":402,"ms":3.65,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":35,"http":402,"ms":3.198,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":36,"http":402,"ms":5.203,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":37,"http":402,"ms":5.692,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":38,"http":402,"ms":5.178,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":39,"http":402,"ms":5.365,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":40,"http":402,"ms":5.947,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":41,"http":402,"ms":3.945,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":42,"http":402,"ms":5.323,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":43,"http":402,"ms":5.547,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":44,"http":402,"ms":4.994,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":45,"http":402,"ms":5.081,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":46,"http":402,"ms":5.14,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":47,"http":402,"ms":5.073,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":48,"http":402,"ms":5.108,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":49,"http":402,"ms":4.343,"sse_done":false}
+    load_round6_test.go:189: METRIC single_license_reserve_race n=50 p50_ms=5.084 p95_ms=6.136 http=map[200:1 402:49]
+    load_round6_test.go:190: PASS successes=1 expected_402=49 negative_balance=0 double_spend=0
+--- PASS: TestRound6SingleLicenseReserveRace (0.01s)
+=== RUN   TestRound6ExpiredRevokedHourlySSE
+    load_round6_test.go:226: expired_revoked_hourly raw {"index":0,"http":401,"ms":0.24,"sse_done":false}
+    load_round6_test.go:226: expired_revoked_hourly raw {"index":1,"http":401,"ms":0.121,"sse_done":false}
+    load_round6_test.go:226: expired_revoked_hourly raw {"index":2,"http":200,"ms":1105.78,"sse_done":true}
+    load_round6_test.go:226: METRIC expired_revoked_hourly n=3 p50_ms=0.240 p95_ms=1105.780 http=map[200:1 401:2]
+    load_round6_test.go:227: PASS hourly_debit=2 expected_ceil_seconds=2 expired_http=401 revoked_http=401 unexpected_errors=0
+--- PASS: TestRound6ExpiredRevokedHourlySSE (1.11s)
+PASS
+ok  	kiyas/licensesrv	1.522s
+
+ROUND7 rerun 06.11.2026 08:01:44 TSİ — local fake SSE only
+=== RUN   TestRound6SSE50LicensesQueue32
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":0,"http":429,"ms":24.225,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":1,"http":200,"ms":292.678,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":2,"http":429,"ms":24.145,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":3,"http":429,"ms":24.148,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":4,"http":200,"ms":386.508,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":5,"http":200,"ms":334.413,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":6,"http":429,"ms":24.143,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":7,"http":429,"ms":24.109,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":8,"http":429,"ms":24.141,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":9,"http":429,"ms":24.195,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":10,"http":429,"ms":24.669,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":11,"http":429,"ms":24.627,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":12,"http":200,"ms":133.561,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":13,"http":200,"ms":102.374,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":14,"http":200,"ms":122.708,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":15,"http":200,"ms":111.965,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":16,"http":200,"ms":74.545,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":17,"http":200,"ms":195.755,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":18,"http":429,"ms":24.124,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":19,"http":200,"ms":143.076,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":20,"http":200,"ms":282.45,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":21,"http":200,"ms":344.465,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":22,"http":429,"ms":24.038,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":23,"http":200,"ms":85.468,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":24,"http":200,"ms":323.785,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":25,"http":200,"ms":184.781,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":26,"http":429,"ms":24.118,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":27,"http":200,"ms":303.31,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":28,"http":200,"ms":272.547,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":29,"http":200,"ms":366.031,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":30,"http":429,"ms":24.087,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":31,"http":429,"ms":24.077,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":32,"http":200,"ms":376.08,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":33,"http":200,"ms":262.424,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":34,"http":429,"ms":24.305,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":35,"http":429,"ms":24.199,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":36,"http":200,"ms":65.714,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":37,"http":200,"ms":94.597,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":38,"http":200,"ms":34.828,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":39,"http":429,"ms":24.519,"sse_done":false}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":40,"http":200,"ms":174.815,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":41,"http":200,"ms":165.035,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":42,"http":200,"ms":251.129,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":43,"http":200,"ms":354.276,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":44,"http":200,"ms":154.066,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":45,"http":200,"ms":240.029,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":46,"http":200,"ms":313.821,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":47,"http":200,"ms":44.623,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":48,"http":200,"ms":206.804,"sse_done":true}
+    load_round6_test.go:108: 50licenses_queue32 raw {"index":49,"http":200,"ms":55.364,"sse_done":true}
+    load_round6_test.go:108: METRIC 50licenses_queue32 n=50 p50_ms=102.374 p95_ms=366.031 http=map[200:33 429:17]
+    load_round6_test.go:130: PASS expected_overflow=17 unexpected_errors=0 peak_admitted=33 active_capacity=1
+--- PASS: TestRound6SSE50LicensesQueue32 (0.45s)
+=== RUN   TestRound6SingleLicenseReserveRace
+    load_round6_test.go:189: single_license_reserve_race raw {"index":0,"http":200,"ms":2.185,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":1,"http":402,"ms":2.6,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":2,"http":402,"ms":3.717,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":3,"http":402,"ms":3.349,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":4,"http":402,"ms":3.712,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":5,"http":402,"ms":3.437,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":6,"http":402,"ms":3.355,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":7,"http":402,"ms":2.42,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":8,"http":402,"ms":2.954,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":9,"http":402,"ms":3.959,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":10,"http":402,"ms":4.346,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":11,"http":402,"ms":2.794,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":12,"http":402,"ms":4.503,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":13,"http":402,"ms":3.415,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":14,"http":402,"ms":3.118,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":15,"http":402,"ms":3.201,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":16,"http":402,"ms":3.438,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":17,"http":402,"ms":3.641,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":18,"http":402,"ms":3.721,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":19,"http":402,"ms":4.047,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":20,"http":402,"ms":3.336,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":21,"http":402,"ms":3.669,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":22,"http":402,"ms":3.604,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":23,"http":402,"ms":3.254,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":24,"http":402,"ms":3.501,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":25,"http":402,"ms":2.667,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":26,"http":402,"ms":3.059,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":27,"http":402,"ms":3.886,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":28,"http":402,"ms":3.866,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":29,"http":402,"ms":3.511,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":30,"http":402,"ms":3.581,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":31,"http":402,"ms":3.821,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":32,"http":402,"ms":3.491,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":33,"http":402,"ms":3.786,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":34,"http":402,"ms":3.519,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":35,"http":402,"ms":2.218,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":36,"http":402,"ms":3.537,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":37,"http":402,"ms":2.414,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":38,"http":402,"ms":4.436,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":39,"http":402,"ms":4.458,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":40,"http":402,"ms":4.339,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":41,"http":402,"ms":2.902,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":42,"http":402,"ms":3.634,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":43,"http":402,"ms":3.056,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":44,"http":402,"ms":4.485,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":45,"http":402,"ms":3.004,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":46,"http":402,"ms":2.799,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":47,"http":402,"ms":4.434,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":48,"http":402,"ms":2.057,"sse_done":false}
+    load_round6_test.go:189: single_license_reserve_race raw {"index":49,"http":402,"ms":2.433,"sse_done":false}
+    load_round6_test.go:189: METRIC single_license_reserve_race n=50 p50_ms=3.491 p95_ms=4.458 http=map[200:1 402:49]
+    load_round6_test.go:190: PASS successes=1 expected_402=49 negative_balance=0 double_spend=0
+--- PASS: TestRound6SingleLicenseReserveRace (0.01s)
+=== RUN   TestRound6ExpiredRevokedHourlySSE
+    load_round6_test.go:226: expired_revoked_hourly raw {"index":0,"http":401,"ms":0.25,"sse_done":false}
+    load_round6_test.go:226: expired_revoked_hourly raw {"index":1,"http":401,"ms":0.23,"sse_done":false}
+    load_round6_test.go:226: expired_revoked_hourly raw {"index":2,"http":200,"ms":1104.879,"sse_done":true}
+    load_round6_test.go:226: METRIC expired_revoked_hourly n=3 p50_ms=0.250 p95_ms=1104.879 http=map[200:1 401:2]
+    load_round6_test.go:227: PASS hourly_debit=2 expected_ceil_seconds=2 expired_http=401 revoked_http=401 unexpected_errors=0
+--- PASS: TestRound6ExpiredRevokedHourlySSE (1.11s)
+PASS
+ok  	kiyas/licensesrv	1.571s

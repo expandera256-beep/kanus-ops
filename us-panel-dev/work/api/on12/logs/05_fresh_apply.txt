@@ -1,0 +1,14 @@
+UYUM_DONE
+patching file licensesrv/grace_overflow_test.go
+patching file licensesrv/ledger_hardening_test.go
+patching file licensesrv/licensesrv_test.go
+patching file licensesrv/store.go
+patching file licensesrv/ttl_commit_anchor_test.go
+patching file licensesrv/ttl_grace_lock_test.go
+GRACE_EXIT=0
+patching file apiv1/README.md
+patching file apiv1/errors.go
+patching file apiv1/version.go
+patching file apiv1/version_test.go
+patching file cmd/us-license-hook/main.go
+ADDITIVE_EXIT=0

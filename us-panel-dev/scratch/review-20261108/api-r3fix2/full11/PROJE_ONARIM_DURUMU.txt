@@ -1,0 +1,27 @@
+US PROJE ONARIMI — KAYNAK TASLAĞI
+
+Bu arşivdeki son kaynak değişiklikleri henüz Go ile derlenmedi veya test
+edilmedi. Bu nedenle bu değişiklikleri çalışır ya da üretime hazır bir
+sürüm olarak değerlendirmeyin. Bu arşiv yeni bir Windows EXE içermez.
+
+Amaçlanan değişiklikler:
+- “Projeyi tamamla ve eksikleri onar” gibi isteklerde gerçek proje adlarının
+  modele iletilmesi ve örnek yol üretmeden önce dosya istemesinin sağlanması.
+- Model gerçek proje dosyası okumazsa herhangi bir dosya yazılmaması; mevcut
+  bir dosyanın üzerine yazılabilmesi için o dosyanın tamamının okunması.
+- Python bulunamaz veya başlatılamazsa bunun sözdizimi hatası değil,
+  gerçekleştirilememiş bir denetim olarak raporlanması.
+- Dizin taraması sınırlandığında “en az” ifadesi kullanılması.
+
+Sınırlar: Dosya listesi ilk 80 adla, okuma ise en çok iki turla sınırlıdır.
+4000 bayttan uzun ya da gizli içerik nedeniyle maskelenmiş bir dosya tam
+olarak okunmuş sayılmaz ve bu onarım akışıyla üzerine yazılmaz. Dosya yazmak,
+projenin bütünüyle tamamlandığını veya çalıştığını kanıtlamaz.
+
+Doğrulama: Go 1.22 veya daha yenisinin ve Go bağımlılıklarının bulunduğu bir
+ortamda kiyas/term klasöründe `go test ./...` çalıştırın. Windows EXE için aynı
+klasörde US_DERLE.bat kullanılabilir; betik test başarısızsa derlemeyi durdurur.
+Windows ve gerçek model bağlantısıyla uçtan uca deneme ayrıca gereklidir.
+
+ONARIM_NOTU.txt dosyasındaki daha önce yapılmış test açıklamaları, bu son
+değişikliklerin test edildiği anlamına gelmez.

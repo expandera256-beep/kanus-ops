@@ -1,0 +1,15 @@
+{
+  "gce_provider.py": {
+    "sha256": "f2de2bc53ce4e292ab71d915234941b7ceea42de645c8de8d3d838bc5ced5667",
+    "same_as_KAN_tested_source": true
+  },
+  "runtime.py": {
+    "sha256": "4af701741bd51ff0fc601a579f25beec01dbcb0ce9d178d087518079109b2c94",
+    "same_as_KAN_tested_source": true
+  },
+  "commerce_http.py": {
+    "sha256": "41a7fd7b2ab7f8461b60f16823ed04a60df85686aea120851105d3f6402d8bf8",
+    "same_as_KAN_tested_source": true
+  },
+  "manifest_matches_revision_digest": true
+}

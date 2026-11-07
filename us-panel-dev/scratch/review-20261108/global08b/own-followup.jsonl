@@ -1,0 +1,17 @@
+{"Time":"2026-11-08T01:16:29.106883251+03:00","Action":"start","Package":"kiyas"}
+{"Time":"2026-11-08T01:16:29.12016354+03:00","Action":"run","Package":"kiyas","Test":"TestOwnFailureRateLimit"}
+{"Time":"2026-11-08T01:16:29.120433192+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFailureRateLimit","Output":"=== RUN   TestOwnFailureRateLimit\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:29.144558611+03:00","Action":"output","Package":"kiyas","Test":"TestOwnFailureRateLimit","Output":"--- PASS: TestOwnFailureRateLimit (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:29.144600984+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnFailureRateLimit","Elapsed":0.02}
+{"Time":"2026-11-08T01:16:29.150425515+03:00","Action":"run","Package":"kiyas","Test":"TestOwn4096Fetch"}
+{"Time":"2026-11-08T01:16:29.150433031+03:00","Action":"output","Package":"kiyas","Test":"TestOwn4096Fetch","Output":"=== RUN   TestOwn4096Fetch\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:29.158495489+03:00","Action":"output","Package":"kiyas","Test":"TestOwn4096Fetch","Output":"--- PASS: TestOwn4096Fetch (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:29.158510066+03:00","Action":"pass","Package":"kiyas","Test":"TestOwn4096Fetch","Elapsed":0.01}
+{"Time":"2026-11-08T01:16:29.158582845+03:00","Action":"run","Package":"kiyas","Test":"TestOwnForgedCache"}
+{"Time":"2026-11-08T01:16:29.158586321+03:00","Action":"output","Package":"kiyas","Test":"TestOwnForgedCache","Output":"=== RUN   TestOwnForgedCache\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:29.162429438+03:00","Action":"output","Package":"kiyas","Test":"TestOwnForgedCache","Output":"    review_fx_extra_test.go:26: Synthetic local holder of the same license secret successfully signed and loaded a forged FX cache\n"}
+{"Time":"2026-11-08T01:16:29.163045289+03:00","Action":"output","Package":"kiyas","Test":"TestOwnForgedCache","Output":"--- PASS: TestOwnForgedCache (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:29.163048375+03:00","Action":"pass","Package":"kiyas","Test":"TestOwnForgedCache","Elapsed":0}
+{"Time":"2026-11-08T01:16:29.1630506+03:00","Action":"output","Package":"kiyas","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:16:30.168453676+03:00","Action":"output","Package":"kiyas","Output":"ok  \tkiyas\t1.061s\n"}
+{"Time":"2026-11-08T01:16:30.170537335+03:00","Action":"pass","Package":"kiyas","Elapsed":1.064}

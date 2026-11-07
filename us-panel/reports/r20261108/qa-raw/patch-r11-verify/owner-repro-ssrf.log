@@ -1,0 +1,6 @@
+    zz_qa_audit12_test.go:67: redirect_contacted=false authorization_forwarded=false project_body_forwarded=false
+--- PASS: TestQAAuditRepairRedirectIsolation (0.00s)
+ok  	kiyas	0.004s
+rc=0
+
+exit_code=0

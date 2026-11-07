@@ -1,0 +1,5 @@
+timestamp_tsi=2026-11-06 10:00:24 +03
+command=timeout 10 openssl s_client -connect 34.41.186.170:8443 -servername 34.41.186.170
+exit_code=124  # GNU timeout: command exceeded 10s
+stdout_stderr_bytes=0
+interpretation=TCP/TLS handshake did not complete within 10s from box (non-VPS). Consistent with firewall drop for non-allowlisted sources.

@@ -1,0 +1,55 @@
+uyum-wiring/0001-privacy-mux-wiring.patch
+$ ['git', 'apply', '-p6', '--check', '/workspace/us-panel-dev/patches/uyum-wiring/0001-privacy-mux-wiring.patch']
+exit=0
+
+uyum-wiring/0001-privacy-mux-wiring.patch
+$ ['patch', '--batch', '--fuzz=0', '-p6', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-wiring/0001-privacy-mux-wiring.patch']
+exit=0
+checking file cmd/us-license-hook/main.go
+
+uyum-wiring/0001-privacy-mux-wiring.patch
+$ ['patch', '--batch', '--fuzz=0', '-p6', '-i', '/workspace/us-panel-dev/patches/uyum-wiring/0001-privacy-mux-wiring.patch']
+exit=0
+patching file cmd/us-license-hook/main.go
+
+uyum-export/0001-privacy-ops-export-erase-retention.patch
+$ ['git', 'apply', '-p6', '--check', '/workspace/us-panel-dev/patches/uyum-export/0001-privacy-ops-export-erase-retention.patch']
+exit=0
+
+uyum-export/0001-privacy-ops-export-erase-retention.patch
+$ ['patch', '--batch', '--fuzz=0', '-p6', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-export/0001-privacy-ops-export-erase-retention.patch']
+exit=0
+checking file licensesrv/privacy_ops.go
+
+uyum-export/0001-privacy-ops-export-erase-retention.patch
+$ ['patch', '--batch', '--fuzz=0', '-p6', '-i', '/workspace/us-panel-dev/patches/uyum-export/0001-privacy-ops-export-erase-retention.patch']
+exit=0
+patching file licensesrv/privacy_ops.go
+
+uyum-export/0002-privacy-ops-test.patch
+$ ['git', 'apply', '-p6', '--check', '/workspace/us-panel-dev/patches/uyum-export/0002-privacy-ops-test.patch']
+exit=0
+
+uyum-export/0002-privacy-ops-test.patch
+$ ['patch', '--batch', '--fuzz=0', '-p6', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-export/0002-privacy-ops-test.patch']
+exit=0
+checking file licensesrv/privacy_ops_test.go
+
+uyum-export/0002-privacy-ops-test.patch
+$ ['patch', '--batch', '--fuzz=0', '-p6', '-i', '/workspace/us-panel-dev/patches/uyum-export/0002-privacy-ops-test.patch']
+exit=0
+patching file licensesrv/privacy_ops_test.go
+
+uyum-export/0003-privacy-handler.patch
+$ ['git', 'apply', '-p6', '--check', '/workspace/us-panel-dev/patches/uyum-export/0003-privacy-handler.patch']
+exit=0
+
+uyum-export/0003-privacy-handler.patch
+$ ['patch', '--batch', '--fuzz=0', '-p6', '--dry-run', '-i', '/workspace/us-panel-dev/patches/uyum-export/0003-privacy-handler.patch']
+exit=0
+checking file internal/privacy/handler.go
+
+uyum-export/0003-privacy-handler.patch
+$ ['patch', '--batch', '--fuzz=0', '-p6', '-i', '/workspace/us-panel-dev/patches/uyum-export/0003-privacy-handler.patch']
+exit=0
+patching file internal/privacy/handler.go

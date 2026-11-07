@@ -1,0 +1,13 @@
+## 2026-11-08 01:18:05 +03  tree=/workspace/us-panel-dev/f01/term
+### gofmt -l (changed/new files): 
+gofmt_done
+### go vet ./...
+vet_exit=0
+### GOOS=windows go vet .
+winvet_exit=0
+### go test -race -count=1 ./...
+Terminated
+test_exit=143
+PASS_count=0 FAIL_count=0 SKIP_count=0
+### GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build
+winbuild_exit=0

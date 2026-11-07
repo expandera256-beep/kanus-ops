@@ -1,0 +1,37 @@
+=== Protected path hits ===
+diff --git a/licensesrv/accounts.go b/licensesrv/accounts.go
+diff --git a/licensesrv/api_error.go b/licensesrv/api_error.go
+diff --git a/licensesrv/api_error_test.go b/licensesrv/api_error_test.go
+diff --git a/licensesrv/credits.go b/licensesrv/credits.go
+diff --git a/licensesrv/model_proxy.go b/licensesrv/model_proxy.go
+diff --git a/cmd/us-license-hook/accounts_routes_test.go b/cmd/us-license-hook/accounts_routes_test.go
+diff --git a/cmd/us-license-hook/main.go b/cmd/us-license-hook/main.go
+diff --git a/licensesrv/api_version.go b/licensesrv/api_version.go
+diff --git a/licensesrv/api_version_test.go b/licensesrv/api_version_test.go
+diff --git a/cmd/us-license-hook/main.go b/cmd/us-license-hook/main.go
+diff --git a/licensesrv/accounts.go b/licensesrv/accounts.go
+diff --git a/licensesrv/api_keys.go b/licensesrv/api_keys.go
+diff --git a/licensesrv/api_keys_test.go b/licensesrv/api_keys_test.go
+diff --git a/licensesrv/credits.go b/licensesrv/credits.go
+diff --git a/licensesrv/store.go b/licensesrv/store.go
+diff --git a/licensesrv/api_keys_test.go b/licensesrv/api_keys_test.go
+-- /workspace/us-panel-dev/patches/api-0003-error-envelope/0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch --
+diff --git a/licensesrv/accounts.go b/licensesrv/accounts.go
+diff --git a/licensesrv/api_error.go b/licensesrv/api_error.go
+diff --git a/licensesrv/api_error_test.go b/licensesrv/api_error_test.go
+diff --git a/licensesrv/credits.go b/licensesrv/credits.go
+diff --git a/licensesrv/model_proxy.go b/licensesrv/model_proxy.go
+-- /workspace/us-panel-dev/patches/api-0005-v1-versioning/0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch --
+diff --git a/cmd/us-license-hook/accounts_routes_test.go b/cmd/us-license-hook/accounts_routes_test.go
+diff --git a/cmd/us-license-hook/main.go b/cmd/us-license-hook/main.go
+diff --git a/licensesrv/api_version.go b/licensesrv/api_version.go
+diff --git a/licensesrv/api_version_test.go b/licensesrv/api_version_test.go
+-- /workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch --
+diff --git a/cmd/us-license-hook/main.go b/cmd/us-license-hook/main.go
+diff --git a/licensesrv/accounts.go b/licensesrv/accounts.go
+diff --git a/licensesrv/api_keys.go b/licensesrv/api_keys.go
+diff --git a/licensesrv/api_keys_test.go b/licensesrv/api_keys_test.go
+diff --git a/licensesrv/credits.go b/licensesrv/credits.go
+diff --git a/licensesrv/store.go b/licensesrv/store.go
+-- /workspace/us-panel-dev/patches/api-0008-rate-quota-usage/0001-API-0008-daily-quota-429-Retry-After-regression-test.patch --
+diff --git a/licensesrv/api_keys_test.go b/licensesrv/api_keys_test.go

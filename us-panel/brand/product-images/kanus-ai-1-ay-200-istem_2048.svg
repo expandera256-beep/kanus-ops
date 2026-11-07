@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="2048" height="2048" viewBox="0 0 2048 2048" role="img"
+     aria-label="Kanus AI – 1 Aylık Erişim">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="36%" r="42%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.22"/>
+      <stop offset="50%" stop-color="#1d4ed8" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#05070f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="2048" height="2048" fill="#05070f"/>
+  <rect width="2048" height="2048" fill="url(#glow)"/>
+  <rect x="48" y="48" width="1952" height="1952" rx="48" fill="none" stroke="#2a3555" stroke-width="3" opacity="0.65"/>
+  <image x="634" y="300" width="780" height="780" href="../svg/kanus-logo-unicursal-rose-nobg.svg" xlink:href="../svg/kanus-logo-unicursal-rose-nobg.svg"/>
+  <rect x="944" y="1108" width="160" height="3" rx="2" fill="#c084fc"/>
+  <text x="1024" y="1200" text-anchor="middle" font-family="Inter, Segoe UI, DejaVu Sans, sans-serif" font-size="68" font-weight="600" fill="#60a5fa" letter-spacing="16">KANUS</text>
+  <text x="1024" y="1000" text-anchor="middle" font-family="Inter, Segoe UI, DejaVu Sans, sans-serif" font-size="108" font-weight="700" fill="#e8eefc">Kanus AI</text>
+<text x="1024" y="1118" text-anchor="middle" font-family="Inter, Segoe UI, DejaVu Sans, sans-serif" font-size="108" font-weight="700" fill="#e8eefc">1 Aylık Erişim</text>
+  <rect x="740" y="1480" width="568" height="110" rx="55" fill="#161e33" stroke="#2a3555" stroke-width="2"/>
+  <text x="1024" y="1552" text-anchor="middle" font-family="Inter, Segoe UI, DejaVu Sans, sans-serif" font-size="76" font-weight="600" fill="#c084fc">200 İstem</text>
+</svg>

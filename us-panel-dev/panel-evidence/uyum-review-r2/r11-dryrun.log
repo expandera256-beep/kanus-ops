@@ -1,0 +1,24 @@
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0000-iface.patch exit=0
+checking file internal/privacy/iface.go
+
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0001-prefs-store.patch exit=0
+checking file internal/privacy/prefs.go
+
+/workspace/us-panel-dev/patches/uyum-v2/01-preferences/0002-prefs-test.patch exit=0
+checking file internal/privacy/prefs_test.go
+
+/workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch exit=0
+checking file licensesrv/privacy_ops.go
+
+/workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch exit=0
+checking file licensesrv/privacy_ops_test.go
+
+/workspace/us-panel-dev/patches/uyum-v2/03-handler/0001-handler.patch exit=0
+checking file internal/privacy/handler.go
+
+/workspace/us-panel-dev/patches/uyum-v2/03-handler/0002-handler-test.patch exit=0
+checking file internal/privacy/handler_test.go
+
+/workspace/us-panel-dev/patches/uyum-v2/04-hook-us/0001-main-privacy-mount.patch exit=0
+checking file cmd/us-license-hook/main.go
+Hunk #2 succeeded at 107 (offset 6 lines).

@@ -1,0 +1,23 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "istem",
+      "text": "kullanıcı: proje kur"
+    },
+    {
+      "n": 2,
+      "kind": "düşünce",
+      "text": "Model çağrılmadı. Model anahtarı yok. Eksik olan: US_KEY veya USTA_KEY. Model çağrılmadı."
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "Sohbet 1"
+    }
+  ],
+  "chatId": "s1"
+}

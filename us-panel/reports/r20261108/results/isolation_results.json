@@ -1,0 +1,149 @@
+{
+  "data_source": "MOCK_UPSTREAM_REAL_LOCAL_HOOK",
+  "license_count": 5,
+  "gpu_memory_bytes": null,
+  "isolation_scope": "response markers + independent synthetic license ledgers; NOT filesystem/workspace/tenant acceptance",
+  "levels": [
+    {
+      "concurrency": 1,
+      "complete_count": 1,
+      "response_isolation_pass": true,
+      "expected_debit_per_user": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "actual_debit_per_user": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "credit_isolation_pass": true,
+      "outstanding_holds": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "concurrency": 5,
+      "complete_count": 5,
+      "response_isolation_pass": true,
+      "expected_debit_per_user": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "actual_debit_per_user": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "credit_isolation_pass": true,
+      "outstanding_holds": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "concurrency": 10,
+      "complete_count": 10,
+      "response_isolation_pass": true,
+      "expected_debit_per_user": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "actual_debit_per_user": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "credit_isolation_pass": true,
+      "outstanding_holds": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "concurrency": 25,
+      "complete_count": 25,
+      "response_isolation_pass": true,
+      "expected_debit_per_user": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_debit_per_user": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "credit_isolation_pass": true,
+      "outstanding_holds": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "concurrency": 50,
+      "complete_count": 50,
+      "response_isolation_pass": true,
+      "expected_debit_per_user": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "actual_debit_per_user": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "credit_isolation_pass": true,
+      "outstanding_holds": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "source_fingerprint": {
+    "go_source_sha256_before": "e2a1736924a00fb7900319b2adcd145ec8d3ba395fb9dc35c631137a73bc1c23",
+    "go_source_sha256_after": "e2a1736924a00fb7900319b2adcd145ec8d3ba395fb9dc35c631137a73bc1c23",
+    "binary_sha256": "b08628b27b05fefa1ab9e2e245648c1816de4b8b2ebb0512b3ded50f6a12a676",
+    "source_stable_during_build": true
+  }
+}

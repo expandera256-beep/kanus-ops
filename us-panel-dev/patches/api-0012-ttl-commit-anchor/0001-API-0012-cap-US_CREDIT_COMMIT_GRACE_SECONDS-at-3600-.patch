@@ -1,0 +1,84 @@
+From 5c11d4510885fbb0f329ff1d25f5703d461f360c Mon Sep 17 00:00:00 2001
+From: bot <bot@local>
+Date: Fri, 6 Nov 2026 10:11:58 +0300
+Subject: [PATCH] =?UTF-8?q?API-0012:=20cap=20US=5FCREDIT=5FCOMMIT=5FGRACE?=
+ =?UTF-8?q?=5FSECONDS=20at=203600;=20invalid=E2=86=92600?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ licensesrv/store.go                  | 14 +++++++++++---
+ licensesrv/ttl_commit_anchor_test.go | 27 +++++++++++++++++++++++++++
+ 2 files changed, 38 insertions(+), 3 deletions(-)
+
+diff --git a/licensesrv/store.go b/licensesrv/store.go
+index cf46b1d..7016b29 100644
+--- a/licensesrv/store.go
++++ b/licensesrv/store.go
+@@ -241,16 +241,24 @@ func (s *Store) transactionLocked(fn func() error) error {
+ 
+ // commitGraceFromEnv reads US_CREDIT_COMMIT_GRACE_SECONDS (default 600 = 10m).
+ // Set to 0 for legacy immediate expire-at-TTL behavior.
++// Cap: 3600s (1h) — longer would pin Reserved far beyond typical ReservationTTL
++// and amplify stuck holds after client crashes; invalid/negative/unparseable → 600.
+ func commitGraceFromEnv() time.Duration {
++	const def = 10 * time.Minute
++	const maxGrace = time.Hour
+ 	raw := strings.TrimSpace(os.Getenv("US_CREDIT_COMMIT_GRACE_SECONDS"))
+ 	if raw == "" {
+-		return 10 * time.Minute
++		return def
+ 	}
+ 	n, err := strconv.Atoi(raw)
+ 	if err != nil || n < 0 {
+-		return 10 * time.Minute
++		return def
+ 	}
+-	return time.Duration(n) * time.Second
++	d := time.Duration(n) * time.Second
++	if d > maxGrace {
++		return maxGrace
++	}
++	return d
+ }
+ 
+ func (s *Store) reservationCommitDeadline(r *Reservation) time.Time {
+diff --git a/licensesrv/ttl_commit_anchor_test.go b/licensesrv/ttl_commit_anchor_test.go
+index 512e0ae..29cb7bd 100644
+--- a/licensesrv/ttl_commit_anchor_test.go
++++ b/licensesrv/ttl_commit_anchor_test.go
+@@ -114,3 +114,30 @@ func TestTTLCommitAnchorIdempotentAndConcurrent(t *testing.T) {
+ 		t.Fatal("conflict accepted")
+ 	}
+ }
++
++func TestCommitGraceFromEnvDefaultCapAndInvalid(t *testing.T) {
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "")
++	if commitGraceFromEnv() != 10*time.Minute {
++		t.Fatal("default")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "0")
++	if commitGraceFromEnv() != 0 {
++		t.Fatal("zero legacy")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "30")
++	if commitGraceFromEnv() != 30*time.Second {
++		t.Fatal("30")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "99999")
++	if commitGraceFromEnv() != time.Hour {
++		t.Fatal("cap 3600")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "-5")
++	if commitGraceFromEnv() != 10*time.Minute {
++		t.Fatal("neg")
++	}
++	t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", "abc")
++	if commitGraceFromEnv() != 10*time.Minute {
++		t.Fatal("parse")
++	}
++}
+-- 
+2.47.3
+

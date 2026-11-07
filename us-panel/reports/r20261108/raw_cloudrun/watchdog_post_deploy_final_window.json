@@ -1,0 +1,3840 @@
+[
+  {
+    "httpRequest": {
+      "latency": "0.341171842s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.135.12",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef93ab0009d5314a9a169e",
+    "labels": {
+      "instanceId": "00e8a408bdee202ac213dcb0c6181719d1f46962e36094943e16251760bf25c32b3b6226c2eefdf9113dbb08e7ea937f02f74dd60755519389350d1adcb5d2e8d199bf42e0b0bfaf6c430231cc1bd013e6a1c92b9c10ef46e936f2",
+      "worker-policy": "v3"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:10:03.652798115Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00003-jdk",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "9d040dc50b530a4d",
+    "timestamp": "2026-11-07T21:10:03.280536Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/09f18493cc214af86fe3db6a8c68c693",
+    "traceSampled": true
+  },
+  {
+    "insertId": "1q5o4umdjjex",
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Factivity",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "authenticationInfo": {
+        "oauthInfo": {
+          "oauthClientId": "32555940559.apps.googleusercontent.com"
+        },
+        "principalEmail": "demirtumen08@gmail.com",
+        "principalSubject": "user:demirtumen08@gmail.com"
+      },
+      "authorizationInfo": [
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+          "resourceAttributes": {}
+        },
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+          "resourceAttributes": {
+            "name": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+            "service": "run.googleapis.com/",
+            "type": "run.googleapis.com/Service"
+          }
+        }
+      ],
+      "methodName": "google.cloud.run.v1.Services.ReplaceService",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.ReplaceServiceRequest",
+        "name": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+        "service": {
+          "apiVersion": "serving.knative.dev/v1",
+          "kind": "Service",
+          "metadata": {
+            "annotations": {
+              "run.googleapis.com/client-name": "gcloud",
+              "run.googleapis.com/client-version": "592.0.0",
+              "run.googleapis.com/ingress": "all",
+              "run.googleapis.com/ingress-status": "all",
+              "run.googleapis.com/maxScale": "3",
+              "run.googleapis.com/operation-id": "bc9e79e7-d7b7-4cb6-b9f6-8092f2128103",
+              "run.googleapis.com/urls": "[\"https://us-watchdog-247516932580.europe-west4.run.app\",\"https://us-watchdog-iqhblf63dq-ez.a.run.app\"]",
+              "serving.knative.dev/creator": "demirtumen08@gmail.com",
+              "serving.knative.dev/lastModifier": "demirtumen08@gmail.com"
+            },
+            "creationTimestamp": "2026-11-05T20:44:19.648841Z",
+            "generation": 3,
+            "labels": {
+              "cloud.googleapis.com/location": "europe-west4",
+              "run.googleapis.com/satisfiesPzs": "true",
+              "worker-policy": "v4"
+            },
+            "name": "us-watchdog",
+            "namespace": "247516932580",
+            "resourceVersion": "AAZftiUPA/o",
+            "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/services/us-watchdog",
+            "uid": "440f1173-98a5-4919-9bcf-7369043d5cf7"
+          },
+          "spec": {
+            "template": {
+              "metadata": {
+                "annotations": {
+                  "autoscaling.knative.dev/maxScale": "1",
+                  "autoscaling.knative.dev/minScale": "0",
+                  "run.googleapis.com/client-name": "gcloud",
+                  "run.googleapis.com/client-version": "592.0.0",
+                  "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+                  "run.googleapis.com/execution-environment": "gen2",
+                  "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+                  "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+                },
+                "labels": {
+                  "client.knative.dev/nonce": "tcxvqgackv",
+                  "cloud.googleapis.com/location": "europe-west4",
+                  "run.googleapis.com/satisfiesPzs": "true",
+                  "worker-policy": "v4"
+                }
+              },
+              "spec": {
+                "containerConcurrency": 1,
+                "containers": [
+                  {
+                    "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "512Mi"
+                      }
+                    }
+                  }
+                ],
+                "serviceAccountName": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+                "timeoutSeconds": 300,
+                "volumes": [
+                  {
+                    "name": "policy",
+                    "secret": {
+                      "items": [
+                        {
+                          "key": "latest",
+                          "path": "workers.json"
+                        }
+                      ],
+                      "secretName": "us-worker-policy"
+                    }
+                  },
+                  {
+                    "name": "ca",
+                    "secret": {
+                      "items": [
+                        {
+                          "key": "latest",
+                          "path": "ca.pem"
+                        }
+                      ],
+                      "secretName": "us-model-ca"
+                    }
+                  }
+                ]
+              }
+            },
+            "traffic": [
+              {
+                "latestRevision": true,
+                "percent": 100
+              }
+            ]
+          },
+          "status": {
+            "conditions": [
+              {
+                "lastTransitionTime": "2026-11-07T21:09:30.691578Z",
+                "status": "True",
+                "type": "Ready"
+              },
+              {
+                "lastTransitionTime": "2026-11-07T21:09:21.546473Z",
+                "status": "True",
+                "type": "ConfigurationsReady"
+              },
+              {
+                "lastTransitionTime": "2026-11-07T21:09:30.638954Z",
+                "status": "True",
+                "type": "RoutesReady"
+              }
+            ],
+            "latestCreatedRevisionName": "us-watchdog-00003-jdk",
+            "latestReadyRevisionName": "us-watchdog-00003-jdk",
+            "observedGeneration": 3,
+            "traffic": [
+              {
+                "latestRevision": true,
+                "percent": 100,
+                "revisionName": "us-watchdog-00003-jdk"
+              }
+            ],
+            "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app"
+          }
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "2a04:4e41:88:986b::e48b:986b",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/592.0.0 agent-name/cursor command/gcloud.run.services.update invocation-id/04df241ee54f405c8d73f8d889a1bbf9 environment/None environment-version/None client-os/LINUX client-os-ver/6.12.113 client-pltf-arch/x86_64 interactive/False from-script/True python/3.14.9 term/dumb  (Linux 6.12.113+),gzip(gfe)",
+        "destinationAttributes": {},
+        "requestAttributes": {
+          "auth": {},
+          "time": "2026-11-07T21:10:55.571826Z"
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "europe-west4"
+        ]
+      },
+      "resourceName": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+      "serviceName": "run.googleapis.com",
+      "status": {}
+    },
+    "receiveTimestamp": "2026-11-07T21:10:56.148890929Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "NOTICE",
+    "timestamp": "2026-11-07T21:10:54.821447Z"
+  },
+  {
+    "insertId": "6aef93e2000887a3d9f8ff8a",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "scaling_reason": "DEPLOYMENT_ROLLOUT",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-11-07T21:10:58.562579479Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.",
+    "timestamp": "2026-11-07T21:10:58.559011Z"
+  },
+  {
+    "insertId": "6aef93e5000c185217e2de88",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:11:01.802105743Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:11:01 +0000] [1] [INFO] Starting gunicorn 26.2.0",
+    "timestamp": "2026-11-07T21:11:01.792658Z"
+  },
+  {
+    "insertId": "6aef93e5000c1864ef404297",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:11:01.802105743Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:11:01 +0000] [1] [INFO] Listening at: http://0.0.0.0:8080 (1)",
+    "timestamp": "2026-11-07T21:11:01.792676Z"
+  },
+  {
+    "insertId": "6aef93e5000c187469e228f0",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:11:01.802105743Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:11:01 +0000] [1] [INFO] Using worker: gthread",
+    "timestamp": "2026-11-07T21:11:01.792692Z"
+  },
+  {
+    "insertId": "6aef93e5000c1ff4cedd9945",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:11:02.134439579Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:11:01 +0000] [10] [INFO] Booting worker with pid: 10",
+    "timestamp": "2026-11-07T21:11:01.794612Z"
+  },
+  {
+    "insertId": "6aef93e60000bc905d592d4a",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:11:02.134439579Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:11:02 +0000] [1] [INFO] Control socket listening at /home/app/.gunicorn/gunicorn.ctl",
+    "timestamp": "2026-11-07T21:11:02.048272Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.257341131s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.162",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef93e6000e73fc8adf112b",
+    "labels": {
+      "instanceId": "00e8a408bdee202ac213dcb0c6181719d1f46962e36094943e16251760bf25c32b3b6226c2eefdf9113dbb08e7ea937f02f74dd60755519389350d1adcb5d2e8d199bf42e0b0bfaf6c430231cc1bd013e6a1c92b9c10ef46e936f2",
+      "worker-policy": "v3"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:11:02.956406548Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00003-jdk",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "a4bcad0ea1357e17",
+    "timestamp": "2026-11-07T21:11:02.674079Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/86d28693907a6c85cf038775180e3f71",
+    "traceSampled": true
+  },
+  {
+    "insertId": "6aef93e800097836eaf63242",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-11-07T21:11:04.893468702Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "STARTUP HTTP probe succeeded after 2 attempts for container \"gateway-1\" on port 8080 path \"/health\".",
+    "timestamp": "2026-11-07T21:11:04.620598Z"
+  },
+  {
+    "insertId": "f0ekyedb0o2",
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/project-27082a40-6083-4952-9db/revisions/us-watchdog-00004-kts",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "1",
+            "autoscaling.knative.dev/minScale": "0",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "592.0.0",
+            "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+            "run.googleapis.com/execution-environment": "gen2",
+            "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+            "run.googleapis.com/operation-id": "5f3c8ed8-e612-4ea9-9c42-7b0ade1bd2a1",
+            "run.googleapis.com/vpc-access-egress": "private-ranges-only",
+            "serving.knative.dev/creator": "demirtumen08@gmail.com"
+          },
+          "creationTimestamp": "2026-11-07T21:10:55.626779Z",
+          "generation": 1,
+          "labels": {
+            "client.knative.dev/nonce": "tcxvqgackv",
+            "cloud.googleapis.com/location": "europe-west4",
+            "run.googleapis.com/satisfiesPzs": "true",
+            "run.googleapis.com/startupProbeType": "Custom",
+            "serving.knative.dev/configuration": "us-watchdog",
+            "serving.knative.dev/configurationGeneration": "4",
+            "serving.knative.dev/route": "us-watchdog",
+            "serving.knative.dev/service": "us-watchdog",
+            "serving.knative.dev/serviceUid": "440f1173-98a5-4919-9bcf-7369043d5cf7",
+            "worker-policy": "v4"
+          },
+          "name": "us-watchdog-00004-kts",
+          "namespace": "247516932580",
+          "ownerReferences": [
+            {
+              "apiVersion": "serving.knative.dev/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "Configuration",
+              "name": "us-watchdog",
+              "uid": "df7a2c9a-d427-44f3-af17-a383b6639cf7"
+            }
+          ],
+          "resourceVersion": "AAZftiqpA+8",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/revisions/us-watchdog-00004-kts",
+          "uid": "3fe9e11b-c13f-4ada-b271-984fdf9a54e9"
+        },
+        "spec": {
+          "containerConcurrency": 1,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "US_ENV",
+                  "value": "production"
+                },
+                {
+                  "name": "US_APP_FACTORY",
+                  "value": "runtime:watchdog_app()"
+                },
+                {
+                  "name": "US_WORKERS_CONFIG",
+                  "value": "/secrets/policy/workers.json"
+                },
+                {
+                  "name": "US_MODEL_CA_FILE",
+                  "value": "/secrets/ca/ca.pem"
+                },
+                {
+                  "name": "US_COMMERCE_DB",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-postgres-dsn"
+                    }
+                  }
+                },
+                {
+                  "name": "US_MODEL_API_TOKEN",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-model-token"
+                    }
+                  }
+                }
+              ],
+              "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+              "name": "gateway-1",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 24,
+                "httpGet": {
+                  "path": "/health",
+                  "port": 8080
+                },
+                "periodSeconds": 5,
+                "timeoutSeconds": 5
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/secrets/policy",
+                  "name": "policy"
+                },
+                {
+                  "mountPath": "/secrets/ca",
+                  "name": "ca"
+                }
+              ]
+            }
+          ],
+          "serviceAccountName": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+          "timeoutSeconds": 300,
+          "volumes": [
+            {
+              "name": "policy",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "workers.json"
+                  }
+                ],
+                "secretName": "us-worker-policy"
+              }
+            },
+            {
+              "name": "ca",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "ca.pem"
+                  }
+                ],
+                "secretName": "us-model-ca"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-07T21:11:04.670191Z",
+              "message": "Deploying revision succeeded in 9.04s.",
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:11:04.625987Z",
+              "message": "Containers became healthy in 5.45s.",
+              "status": "True",
+              "type": "ContainerHealthy"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:10:56.459395Z",
+              "message": "Container image import completed.",
+              "status": "True",
+              "type": "ContainerReady"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:10:58.424087Z",
+              "message": "Provisioning imported containers completed in 1.97s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+              "status": "True",
+              "type": "ResourcesAvailable"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "imageDigest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+              "name": "gateway-1"
+            }
+          ],
+          "imageDigest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=project-27082a40-6083-4952-9db&resource=cloud_run_revision/service_name/us-watchdog/revision_name/us-watchdog-00004-kts&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22us-watchdog%22%0Aresource.labels.revision_name%3D%22us-watchdog-00004-kts%22",
+          "observedGeneration": 1
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "message": "Ready condition status changed to True for Revision us-watchdog-00004-kts with message: Deploying revision succeeded in 9.04s."
+      }
+    },
+    "receiveTimestamp": "2026-11-07T21:11:05.509153898Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:11:04.679411Z"
+  },
+  {
+    "insertId": "-b2qyqhde9km",
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "metadata": {
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "592.0.0",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "3",
+            "run.googleapis.com/operation-id": "5f3c8ed8-e612-4ea9-9c42-7b0ade1bd2a1",
+            "run.googleapis.com/urls": "[\"https://us-watchdog-247516932580.europe-west4.run.app\",\"https://us-watchdog-iqhblf63dq-ez.a.run.app\"]",
+            "serving.knative.dev/creator": "demirtumen08@gmail.com",
+            "serving.knative.dev/lastModifier": "demirtumen08@gmail.com"
+          },
+          "creationTimestamp": "2026-11-05T20:44:19.648841Z",
+          "generation": 4,
+          "labels": {
+            "cloud.googleapis.com/location": "europe-west4",
+            "run.googleapis.com/satisfiesPzs": "true",
+            "worker-policy": "v4"
+          },
+          "name": "us-watchdog",
+          "namespace": "247516932580",
+          "resourceVersion": "AAZftirEECc",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/services/us-watchdog",
+          "uid": "440f1173-98a5-4919-9bcf-7369043d5cf7"
+        },
+        "spec": {
+          "template": {
+            "metadata": {
+              "annotations": {
+                "autoscaling.knative.dev/maxScale": "1",
+                "autoscaling.knative.dev/minScale": "0",
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "592.0.0",
+                "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+                "run.googleapis.com/execution-environment": "gen2",
+                "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+                "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+              },
+              "labels": {
+                "client.knative.dev/nonce": "tcxvqgackv",
+                "run.googleapis.com/startupProbeType": "Custom",
+                "worker-policy": "v4"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 1,
+              "containers": [
+                {
+                  "env": [
+                    {
+                      "name": "US_ENV",
+                      "value": "production"
+                    },
+                    {
+                      "name": "US_APP_FACTORY",
+                      "value": "runtime:watchdog_app()"
+                    },
+                    {
+                      "name": "US_WORKERS_CONFIG",
+                      "value": "/secrets/policy/workers.json"
+                    },
+                    {
+                      "name": "US_MODEL_CA_FILE",
+                      "value": "/secrets/ca/ca.pem"
+                    },
+                    {
+                      "name": "US_COMMERCE_DB",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "us-postgres-dsn"
+                        }
+                      }
+                    },
+                    {
+                      "name": "US_MODEL_API_TOKEN",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "us-model-token"
+                        }
+                      }
+                    }
+                  ],
+                  "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+                  "ports": [
+                    {
+                      "containerPort": 8080,
+                      "name": "http1"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "cpu": "1",
+                      "memory": "512Mi"
+                    }
+                  },
+                  "startupProbe": {
+                    "failureThreshold": 24,
+                    "httpGet": {
+                      "path": "/health",
+                      "port": 8080
+                    },
+                    "periodSeconds": 5,
+                    "timeoutSeconds": 5
+                  },
+                  "volumeMounts": [
+                    {
+                      "mountPath": "/secrets/policy",
+                      "name": "policy"
+                    },
+                    {
+                      "mountPath": "/secrets/ca",
+                      "name": "ca"
+                    }
+                  ]
+                }
+              ],
+              "serviceAccountName": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+              "timeoutSeconds": 300,
+              "volumes": [
+                {
+                  "name": "policy",
+                  "secret": {
+                    "items": [
+                      {
+                        "key": "latest",
+                        "path": "workers.json"
+                      }
+                    ],
+                    "secretName": "us-worker-policy"
+                  }
+                },
+                {
+                  "name": "ca",
+                  "secret": {
+                    "items": [
+                      {
+                        "key": "latest",
+                        "path": "ca.pem"
+                      }
+                    ],
+                    "secretName": "us-model-ca"
+                  }
+                }
+              ]
+            }
+          },
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100
+            }
+          ]
+        },
+        "status": {
+          "address": {
+            "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app"
+          },
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-07T21:11:06.442791Z",
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:10:56.591572Z",
+              "status": "True",
+              "type": "ConfigurationsReady"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:11:06.251363Z",
+              "status": "True",
+              "type": "RoutesReady"
+            }
+          ],
+          "latestCreatedRevisionName": "us-watchdog-00004-kts",
+          "latestReadyRevisionName": "us-watchdog-00004-kts",
+          "observedGeneration": 4,
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100,
+              "revisionName": "us-watchdog-00004-kts"
+            }
+          ],
+          "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app"
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "message": "Ready condition status changed to True for Service us-watchdog."
+      }
+    },
+    "receiveTimestamp": "2026-11-07T21:11:06.933091043Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:11:06.456532Z"
+  },
+  {
+    "insertId": "6aef93ec0008e5c25935a6e5",
+    "labels": {
+      "instanceId": "00e8a408bdee202ac213dcb0c6181719d1f46962e36094943e16251760bf25c32b3b6226c2eefdf9113dbb08e7ea937f02f74dd60755519389350d1adcb5d2e8d199bf42e0b0bfaf6c430231cc1bd013e6a1c92b9c10ef46e936f2",
+      "worker-policy": "v3"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:11:08.590105046Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00003-jdk",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:11:08 +0000] [1] [INFO] Handling signal: term",
+    "timestamp": "2026-11-07T21:11:08.583106Z"
+  },
+  {
+    "insertId": "6aef93ec0008eb7e765c26fe",
+    "labels": {
+      "instanceId": "00e8a408bdee202ac213dcb0c6181719d1f46962e36094943e16251760bf25c32b3b6226c2eefdf9113dbb08e7ea937f02f74dd60755519389350d1adcb5d2e8d199bf42e0b0bfaf6c430231cc1bd013e6a1c92b9c10ef46e936f2",
+      "worker-policy": "v3"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:11:08.922805919Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00003-jdk",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:11:08 +0000] [10] [INFO] Worker exiting (pid: 10)",
+    "timestamp": "2026-11-07T21:11:08.584574Z"
+  },
+  {
+    "insertId": "6aef93ec000bfa185ce3f71e",
+    "labels": {
+      "instanceId": "00e8a408bdee202ac213dcb0c6181719d1f46962e36094943e16251760bf25c32b3b6226c2eefdf9113dbb08e7ea937f02f74dd60755519389350d1adcb5d2e8d199bf42e0b0bfaf6c430231cc1bd013e6a1c92b9c10ef46e936f2",
+      "worker-policy": "v3"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:11:08.922805919Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00003-jdk",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:11:08 +0000] [1] [INFO] Shutting down: Master",
+    "timestamp": "2026-11-07T21:11:08.784920Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.300956987s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.168",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef94230008173f7489c084",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:12:03.535701586Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "3457138f82e21524",
+    "timestamp": "2026-11-07T21:12:03.207539Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/c28bb3e5cc4864f806991ab054fa2eee",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.296135872s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.132",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef945f0000063ca6479467",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:13:03.011939863Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "beeb9b78a3669e85",
+    "timestamp": "2026-11-07T21:13:02.685900Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/25a2ef7e0b247790c510258f0a118833",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.287017011s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.167",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef949b00079c2b642d6b44",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:14:03.502771323Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "10fb30022aae80b5",
+    "timestamp": "2026-11-07T21:14:03.192834Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/0f432b80d409ec3d414bcf259aa47dda",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.326376247s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.132",
+      "requestMethod": "POST",
+      "requestSize": "1322",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef94d7000031299a6f39e6",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:15:03.023881189Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "ad63019c8fb41338",
+    "timestamp": "2026-11-07T21:15:02.664061Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/615bb7bd4e72574f024e9fbf12a0df17",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.347696258s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.75",
+      "requestMethod": "POST",
+      "requestSize": "1322",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.77.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef95130000e9b93ad35455",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:16:03.067462892Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "982f63dcc75b6576",
+    "timestamp": "2026-11-07T21:16:02.690102Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/6365f27cd07c093fa712a48fdcb7fa8f",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.324630818s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.135.133",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef954f0000a95584f02157",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:17:03.049510924Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "5f832e807b2bdb99",
+    "timestamp": "2026-11-07T21:17:02.705399Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/cbb1c171bbc054737b53d4cbee50034a",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.321982942s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.135.38",
+      "requestMethod": "POST",
+      "requestSize": "1322",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.77.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef958b0000ea4d5a5c9114",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:18:03.066737097Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "d76f3a24974de85f",
+    "timestamp": "2026-11-07T21:18:02.722570Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/0f909715a3721bd39fd32ec557dafe28",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.294455001s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "34.127.142.131",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef95c7000021c070e9eec5",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:19:03.015822828Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "2156387eaef5650c",
+    "timestamp": "2026-11-07T21:19:02.696351Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/1c98046e22732b21e97d3ce5df329b57",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.331015520s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "34.127.142.133",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef960300093a009b3130f5",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:20:03.614938474Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "ef2eb0622458e0c1",
+    "timestamp": "2026-11-07T21:20:03.250757Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/239f1825e3797d84c06b53cdd28395bd",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.275872014s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.135.45",
+      "requestMethod": "POST",
+      "requestSize": "1322",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef963e000d980660306296",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:21:02.898444837Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "d47db5f0547dadcb",
+    "timestamp": "2026-11-07T21:21:02.593417Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/7723d9a8473c0b2b4ce7ff75944a03e3",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:4714::65a3:4714",
+      "requestMethod": "GET",
+      "requestSize": "269",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/readyz",
+      "serverIp": "2600:1900:4240:200::",
+      "status": 403,
+      "userAgent": "curl/8.14.1"
+    },
+    "insertId": "6aef96560008fe4f8cdecab3",
+    "labels": {
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:21:26.594149147Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "597ce0406144cf01",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:21:26.411380Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/81576415b30b6fde009fca52860c38ac",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:cee9::c195:cee9",
+      "requestMethod": "GET",
+      "requestSize": "269",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "serverIp": "2600:1900:4240:200::",
+      "status": 403,
+      "userAgent": "curl/8.14.1"
+    },
+    "insertId": "6aef9656000c00850e77f829",
+    "labels": {
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:21:26.929534409Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "32835d86e169a88c",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:21:26.601717Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/2ed9d265f6a641d1c235b112251e030e"
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:4714::65a3:4714",
+      "requestMethod": "GET",
+      "requestSize": "268",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/ready",
+      "serverIp": "2600:1901:81d4:200::",
+      "status": 403,
+      "userAgent": "curl/8.14.1"
+    },
+    "insertId": "6aef9656000f149163f9a13a",
+    "labels": {
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:21:27.260850488Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "39a602810717db31",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:21:26.793673Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/35cc8b383f1f0b3e523a480a23079909"
+  },
+  {
+    "insertId": "10wmnswdjmr9",
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Factivity",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "authenticationInfo": {
+        "oauthInfo": {
+          "oauthClientId": "32555940559.apps.googleusercontent.com"
+        },
+        "principalEmail": "demirtumen08@gmail.com",
+        "principalSubject": "user:demirtumen08@gmail.com"
+      },
+      "authorizationInfo": [
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+          "resourceAttributes": {}
+        },
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+          "resourceAttributes": {
+            "name": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+            "service": "run.googleapis.com/",
+            "type": "run.googleapis.com/Service"
+          }
+        }
+      ],
+      "methodName": "google.cloud.run.v1.Services.ReplaceService",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.ReplaceServiceRequest",
+        "name": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+        "service": {
+          "apiVersion": "serving.knative.dev/v1",
+          "kind": "Service",
+          "metadata": {
+            "annotations": {
+              "run.googleapis.com/client-name": "gcloud",
+              "run.googleapis.com/client-version": "592.0.0",
+              "run.googleapis.com/ingress": "all",
+              "run.googleapis.com/ingress-status": "all",
+              "run.googleapis.com/maxScale": "3",
+              "run.googleapis.com/operation-id": "5f3c8ed8-e612-4ea9-9c42-7b0ade1bd2a1",
+              "run.googleapis.com/urls": "[\"https://us-watchdog-247516932580.europe-west4.run.app\",\"https://us-watchdog-iqhblf63dq-ez.a.run.app\"]",
+              "serving.knative.dev/creator": "demirtumen08@gmail.com",
+              "serving.knative.dev/lastModifier": "demirtumen08@gmail.com"
+            },
+            "creationTimestamp": "2026-11-05T20:44:19.648841Z",
+            "generation": 4,
+            "labels": {
+              "cloud.googleapis.com/location": "europe-west4",
+              "run.googleapis.com/satisfiesPzs": "true",
+              "worker-policy": "v5"
+            },
+            "name": "us-watchdog",
+            "namespace": "247516932580",
+            "resourceVersion": "AAZftirEECc",
+            "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/services/us-watchdog",
+            "uid": "440f1173-98a5-4919-9bcf-7369043d5cf7"
+          },
+          "spec": {
+            "template": {
+              "metadata": {
+                "annotations": {
+                  "autoscaling.knative.dev/maxScale": "1",
+                  "autoscaling.knative.dev/minScale": "0",
+                  "run.googleapis.com/client-name": "gcloud",
+                  "run.googleapis.com/client-version": "592.0.0",
+                  "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+                  "run.googleapis.com/execution-environment": "gen2",
+                  "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+                  "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+                },
+                "labels": {
+                  "client.knative.dev/nonce": "vrlxslrpaf",
+                  "cloud.googleapis.com/location": "europe-west4",
+                  "run.googleapis.com/satisfiesPzs": "true",
+                  "worker-policy": "v5"
+                }
+              },
+              "spec": {
+                "containerConcurrency": 1,
+                "containers": [
+                  {
+                    "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "512Mi"
+                      }
+                    }
+                  }
+                ],
+                "serviceAccountName": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+                "timeoutSeconds": 300,
+                "volumes": [
+                  {
+                    "name": "policy",
+                    "secret": {
+                      "items": [
+                        {
+                          "key": "latest",
+                          "path": "workers.json"
+                        }
+                      ],
+                      "secretName": "us-worker-policy"
+                    }
+                  },
+                  {
+                    "name": "ca",
+                    "secret": {
+                      "items": [
+                        {
+                          "key": "latest",
+                          "path": "ca.pem"
+                        }
+                      ],
+                      "secretName": "us-model-ca"
+                    }
+                  }
+                ]
+              }
+            },
+            "traffic": [
+              {
+                "latestRevision": true,
+                "percent": 100
+              }
+            ]
+          },
+          "status": {
+            "conditions": [
+              {
+                "lastTransitionTime": "2026-11-07T21:11:06.442791Z",
+                "status": "True",
+                "type": "Ready"
+              },
+              {
+                "lastTransitionTime": "2026-11-07T21:10:56.591572Z",
+                "status": "True",
+                "type": "ConfigurationsReady"
+              },
+              {
+                "lastTransitionTime": "2026-11-07T21:11:06.251363Z",
+                "status": "True",
+                "type": "RoutesReady"
+              }
+            ],
+            "latestCreatedRevisionName": "us-watchdog-00004-kts",
+            "latestReadyRevisionName": "us-watchdog-00004-kts",
+            "observedGeneration": 4,
+            "traffic": [
+              {
+                "latestRevision": true,
+                "percent": 100,
+                "revisionName": "us-watchdog-00004-kts"
+              }
+            ],
+            "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app"
+          }
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "2a04:4e41:88:b7aa::e79d:b7aa",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/592.0.0 agent-name/cursor command/gcloud.run.services.update invocation-id/ecb1f8e30720497d9c6efe88ad4065b6 environment/None environment-version/None client-os/LINUX client-os-ver/6.12.113 client-pltf-arch/x86_64 interactive/False from-script/True python/3.14.9 term/dumb  (Linux 6.12.113+),gzip(gfe)",
+        "destinationAttributes": {},
+        "requestAttributes": {
+          "auth": {},
+          "time": "2026-11-07T21:21:50.908766Z"
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "europe-west4"
+        ]
+      },
+      "resourceName": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+      "serviceName": "run.googleapis.com",
+      "status": {}
+    },
+    "receiveTimestamp": "2026-11-07T21:21:51.749654741Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "NOTICE",
+    "timestamp": "2026-11-07T21:21:50.203687Z"
+  },
+  {
+    "insertId": "6aef9671000d3b29326a7976",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "scaling_reason": "DEPLOYMENT_ROLLOUT",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-11-07T21:21:53.873999146Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.",
+    "timestamp": "2026-11-07T21:21:53.867113Z"
+  },
+  {
+    "insertId": "6aef96730009e8a74a7c30c0",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:21:55.653256148Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:21:55 +0000] [1] [INFO] Starting gunicorn 26.2.0",
+    "timestamp": "2026-11-07T21:21:55.649383Z"
+  },
+  {
+    "insertId": "6aef96730009e957c03abe72",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:21:55.990478890Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:21:55 +0000] [1] [INFO] Listening at: http://0.0.0.0:8080 (1)",
+    "timestamp": "2026-11-07T21:21:55.649559Z"
+  },
+  {
+    "insertId": "6aef96730009e95d757d836c",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:21:55.990478890Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:21:55 +0000] [1] [INFO] Using worker: gthread",
+    "timestamp": "2026-11-07T21:21:55.649565Z"
+  },
+  {
+    "insertId": "6aef96730009f6f1816a6ef1",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:21:55.990478890Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:21:55 +0000] [10] [INFO] Booting worker with pid: 10",
+    "timestamp": "2026-11-07T21:21:55.653041Z"
+  },
+  {
+    "insertId": "6aef9673000e7df9ad3ae25b",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:21:55.990478890Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:21:55 +0000] [1] [INFO] Control socket listening at /home/app/.gunicorn/gunicorn.ctl",
+    "timestamp": "2026-11-07T21:21:55.949753Z"
+  },
+  {
+    "insertId": "6aef9677000a0f5c5f48adc4",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-11-07T21:21:59.865419072Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "STARTUP HTTP probe succeeded after 2 attempts for container \"gateway-1\" on port 8080 path \"/health\".",
+    "timestamp": "2026-11-07T21:21:59.659292Z"
+  },
+  {
+    "insertId": "-arru7sdz21u",
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/project-27082a40-6083-4952-9db/revisions/us-watchdog-00005-z97",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "1",
+            "autoscaling.knative.dev/minScale": "0",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "592.0.0",
+            "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+            "run.googleapis.com/execution-environment": "gen2",
+            "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+            "run.googleapis.com/operation-id": "008b28df-35ce-4e0a-b702-508dac31940d",
+            "run.googleapis.com/vpc-access-egress": "private-ranges-only",
+            "serving.knative.dev/creator": "demirtumen08@gmail.com"
+          },
+          "creationTimestamp": "2026-11-07T21:21:50.988567Z",
+          "generation": 1,
+          "labels": {
+            "client.knative.dev/nonce": "vrlxslrpaf",
+            "cloud.googleapis.com/location": "europe-west4",
+            "run.googleapis.com/satisfiesPzs": "true",
+            "run.googleapis.com/startupProbeType": "Custom",
+            "serving.knative.dev/configuration": "us-watchdog",
+            "serving.knative.dev/configurationGeneration": "5",
+            "serving.knative.dev/route": "us-watchdog",
+            "serving.knative.dev/service": "us-watchdog",
+            "serving.knative.dev/serviceUid": "440f1173-98a5-4919-9bcf-7369043d5cf7",
+            "worker-policy": "v5"
+          },
+          "name": "us-watchdog-00005-z97",
+          "namespace": "247516932580",
+          "ownerReferences": [
+            {
+              "apiVersion": "serving.knative.dev/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "Configuration",
+              "name": "us-watchdog",
+              "uid": "df7a2c9a-d427-44f3-af17-a383b6639cf7"
+            }
+          ],
+          "resourceVersion": "AAZftlG0c80",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/revisions/us-watchdog-00005-z97",
+          "uid": "53bcaa8c-43d8-4941-9be4-146897fd9adf"
+        },
+        "spec": {
+          "containerConcurrency": 1,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "US_ENV",
+                  "value": "production"
+                },
+                {
+                  "name": "US_APP_FACTORY",
+                  "value": "runtime:watchdog_app()"
+                },
+                {
+                  "name": "US_WORKERS_CONFIG",
+                  "value": "/secrets/policy/workers.json"
+                },
+                {
+                  "name": "US_MODEL_CA_FILE",
+                  "value": "/secrets/ca/ca.pem"
+                },
+                {
+                  "name": "US_COMMERCE_DB",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-postgres-dsn"
+                    }
+                  }
+                },
+                {
+                  "name": "US_MODEL_API_TOKEN",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-model-token"
+                    }
+                  }
+                }
+              ],
+              "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+              "name": "gateway-1",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 24,
+                "httpGet": {
+                  "path": "/health",
+                  "port": 8080
+                },
+                "periodSeconds": 5,
+                "timeoutSeconds": 5
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/secrets/policy",
+                  "name": "policy"
+                },
+                {
+                  "mountPath": "/secrets/ca",
+                  "name": "ca"
+                }
+              ]
+            }
+          ],
+          "serviceAccountName": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+          "timeoutSeconds": 300,
+          "volumes": [
+            {
+              "name": "policy",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "workers.json"
+                  }
+                ],
+                "secretName": "us-worker-policy"
+              }
+            },
+            {
+              "name": "ca",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "ca.pem"
+                  }
+                ],
+                "secretName": "us-model-ca"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-07T21:21:59.731149Z",
+              "message": "Deploying revision succeeded in 8.74s.",
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:21:59.664127Z",
+              "message": "Containers became healthy in 5.22s.",
+              "status": "True",
+              "type": "ContainerHealthy"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:21:51.720544Z",
+              "message": "Container image import completed.",
+              "status": "True",
+              "type": "ContainerReady"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:21:53.771785Z",
+              "message": "Provisioning imported containers completed in 2.05s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+              "status": "True",
+              "type": "ResourcesAvailable"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "imageDigest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+              "name": "gateway-1"
+            }
+          ],
+          "imageDigest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=project-27082a40-6083-4952-9db&resource=cloud_run_revision/service_name/us-watchdog/revision_name/us-watchdog-00005-z97&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22us-watchdog%22%0Aresource.labels.revision_name%3D%22us-watchdog-00005-z97%22",
+          "observedGeneration": 1
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "message": "Ready condition status changed to True for Revision us-watchdog-00005-z97 with message: Deploying revision succeeded in 8.74s."
+      }
+    },
+    "receiveTimestamp": "2026-11-07T21:21:59.919414008Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:21:59.749479Z"
+  },
+  {
+    "insertId": "9psupkbpc",
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "metadata": {
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "592.0.0",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "3",
+            "run.googleapis.com/operation-id": "008b28df-35ce-4e0a-b702-508dac31940d",
+            "run.googleapis.com/urls": "[\"https://us-watchdog-247516932580.europe-west4.run.app\",\"https://us-watchdog-iqhblf63dq-ez.a.run.app\"]",
+            "serving.knative.dev/creator": "demirtumen08@gmail.com",
+            "serving.knative.dev/lastModifier": "demirtumen08@gmail.com"
+          },
+          "creationTimestamp": "2026-11-05T20:44:19.648841Z",
+          "generation": 5,
+          "labels": {
+            "cloud.googleapis.com/location": "europe-west4",
+            "run.googleapis.com/satisfiesPzs": "true",
+            "worker-policy": "v5"
+          },
+          "name": "us-watchdog",
+          "namespace": "247516932580",
+          "resourceVersion": "AAZftlHJzts",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/services/us-watchdog",
+          "uid": "440f1173-98a5-4919-9bcf-7369043d5cf7"
+        },
+        "spec": {
+          "template": {
+            "metadata": {
+              "annotations": {
+                "autoscaling.knative.dev/maxScale": "1",
+                "autoscaling.knative.dev/minScale": "0",
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "592.0.0",
+                "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+                "run.googleapis.com/execution-environment": "gen2",
+                "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+                "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+              },
+              "labels": {
+                "client.knative.dev/nonce": "vrlxslrpaf",
+                "run.googleapis.com/startupProbeType": "Custom",
+                "worker-policy": "v5"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 1,
+              "containers": [
+                {
+                  "env": [
+                    {
+                      "name": "US_ENV",
+                      "value": "production"
+                    },
+                    {
+                      "name": "US_APP_FACTORY",
+                      "value": "runtime:watchdog_app()"
+                    },
+                    {
+                      "name": "US_WORKERS_CONFIG",
+                      "value": "/secrets/policy/workers.json"
+                    },
+                    {
+                      "name": "US_MODEL_CA_FILE",
+                      "value": "/secrets/ca/ca.pem"
+                    },
+                    {
+                      "name": "US_COMMERCE_DB",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "us-postgres-dsn"
+                        }
+                      }
+                    },
+                    {
+                      "name": "US_MODEL_API_TOKEN",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "us-model-token"
+                        }
+                      }
+                    }
+                  ],
+                  "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+                  "ports": [
+                    {
+                      "containerPort": 8080,
+                      "name": "http1"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "cpu": "1",
+                      "memory": "512Mi"
+                    }
+                  },
+                  "startupProbe": {
+                    "failureThreshold": 24,
+                    "httpGet": {
+                      "path": "/health",
+                      "port": 8080
+                    },
+                    "periodSeconds": 5,
+                    "timeoutSeconds": 5
+                  },
+                  "volumeMounts": [
+                    {
+                      "mountPath": "/secrets/policy",
+                      "name": "policy"
+                    },
+                    {
+                      "mountPath": "/secrets/ca",
+                      "name": "ca"
+                    }
+                  ]
+                }
+              ],
+              "serviceAccountName": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+              "timeoutSeconds": 300,
+              "volumes": [
+                {
+                  "name": "policy",
+                  "secret": {
+                    "items": [
+                      {
+                        "key": "latest",
+                        "path": "workers.json"
+                      }
+                    ],
+                    "secretName": "us-worker-policy"
+                  }
+                },
+                {
+                  "name": "ca",
+                  "secret": {
+                    "items": [
+                      {
+                        "key": "latest",
+                        "path": "ca.pem"
+                      }
+                    ],
+                    "secretName": "us-model-ca"
+                  }
+                }
+              ]
+            }
+          },
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100
+            }
+          ]
+        },
+        "status": {
+          "address": {
+            "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app"
+          },
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-07T21:22:01.130715Z",
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:21:51.844579Z",
+              "status": "True",
+              "type": "ConfigurationsReady"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:22:01.094512Z",
+              "status": "True",
+              "type": "RoutesReady"
+            }
+          ],
+          "latestCreatedRevisionName": "us-watchdog-00005-z97",
+          "latestReadyRevisionName": "us-watchdog-00005-z97",
+          "observedGeneration": 5,
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100,
+              "revisionName": "us-watchdog-00005-z97"
+            }
+          ],
+          "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app"
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "message": "Ready condition status changed to True for Service us-watchdog."
+      }
+    },
+    "receiveTimestamp": "2026-11-07T21:22:02.077674712Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:22:01.148818Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.314239548s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.135.102",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.76.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef967b000a2265cb94a6f3",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:22:03.671451626Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "31a1c24bad087cfc",
+    "timestamp": "2026-11-07T21:22:03.332030Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/8ed74fb399a4673c577d7f2e47d2ec55",
+    "traceSampled": true
+  },
+  {
+    "insertId": "6aef967b000be3efc759721e",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:22:03.785271290Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:22:03 +0000] [1] [INFO] Handling signal: term",
+    "timestamp": "2026-11-07T21:22:03.779247Z"
+  },
+  {
+    "insertId": "6aef967b000be7e0b70eae01",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:22:04.119633210Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:22:03 +0000] [10] [INFO] Worker exiting (pid: 10)",
+    "timestamp": "2026-11-07T21:22:03.780256Z"
+  },
+  {
+    "insertId": "6aef967b000ef617a3520105",
+    "labels": {
+      "instanceId": "00e8a408bd01ad6131511a11a025a04ea037cbfba67972d660b6c4e0250b5c4a515ec9b778b8fab11c4a05e5a7f0e9869dbeee8d9bf02c7962fede82e6b2348de9f19ff854dba8bb3f3ed115fe4e94c8f670a687f54dca7aeb",
+      "worker-policy": "v4"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:22:04.119633210Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00004-kts",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:22:03 +0000] [1] [INFO] Shutting down: Master",
+    "timestamp": "2026-11-07T21:22:03.980503Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.311504246s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.38",
+      "requestMethod": "POST",
+      "requestSize": "1322",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef96b6000e703394a07560",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:02.951729060Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "148e5685b3c9cc83",
+    "timestamp": "2026-11-07T21:23:02.615696Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/40ce76f0abfbb84a3a6c7b54c6974dd5",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:4714::65a3:4714",
+      "requestMethod": "GET",
+      "requestSize": "277",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/",
+      "serverIp": "2600:1900:4241:200::",
+      "status": 403,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b9000db626be0298d7",
+    "labels": {
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:05.951005614Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "f9a170eb4f39a860",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:23:05.719299Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/656e64e3943247ee2302142ab960e6b4"
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:4714::65a3:4714",
+      "requestMethod": "GET",
+      "requestSize": "284",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "serverIp": "2600:1900:4244:200::",
+      "status": 403,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96ba000466a70717ada9",
+    "labels": {
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:06.613922061Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "0d6d3836efbebf82",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:23:06.096661Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/23c5cacc827fc84f75869e9c2c5f6137"
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:d538::3569:d538",
+      "requestMethod": "GET",
+      "requestSize": "282",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/ready",
+      "serverIp": "2600:1900:4245:200::",
+      "status": 403,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96ba000916afdad494a7",
+    "labels": {
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:06.613922061Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "1b650cd0d69b14e4",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:23:06.594291Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/b5465888581481008007cbeada8153f9"
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:f2f4::3562:f2f4",
+      "requestMethod": "GET",
+      "requestSize": "284",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/readyz",
+      "serverIp": "2600:1901:81d5:200::",
+      "status": 403,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96ba000c8087fe48cc72",
+    "labels": {
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:06.946019827Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "7e0eab37fadccf81",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:23:06.818168Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/2dd7a2255070f0984145a6eefee68612"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001624263s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:c264::5110:c264",
+      "requestMethod": "GET",
+      "requestSize": "812",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/",
+      "responseSize": "160",
+      "serverIp": "2600:1901:81d5:200::",
+      "status": 404,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96bb000bc47107403220",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:07.950433033Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "04c5e07fdabfea61",
+    "timestamp": "2026-11-07T21:23:07.763705Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/1fd4b76d7caa0eb3b4954d8525381b26"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001314103s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "140.248.52.26",
+      "requestMethod": "GET",
+      "requestSize": "819",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "responseSize": "154",
+      "serverIp": "34.143.77.2",
+      "status": 200,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96bb000f1319cd2da8b0",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:08.285616954Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "baec45f77b4ef65c",
+    "timestamp": "2026-11-07T21:23:07.984444Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/ffa850a89fe386567b9c9fc16e60abf2"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001387755s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:7fdf::7f51:7fdf",
+      "requestMethod": "GET",
+      "requestSize": "818",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/ready",
+      "responseSize": "160",
+      "serverIp": "2600:1900:4241:200::",
+      "status": 404,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96bc0003ae1da0d26e0a",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:08.285616954Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "1b3d88486424e55b",
+    "timestamp": "2026-11-07T21:23:08.234275Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/9f0ae33757fe69efaef2e0151100beaa"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.308166316s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.135.199",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.77.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef96f300004088ac656956",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:24:03.023431335Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "2d901273ced386a1",
+    "timestamp": "2026-11-07T21:24:02.689735Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/d14c5b1680292e68a7b9fbd957d7fcc7",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.264982786s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "34.127.142.129",
+      "requestMethod": "POST",
+      "requestSize": "1322",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.79.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef972e000e95104ac13528",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:25:02.964603635Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "af9828418717b2a8",
+    "timestamp": "2026-11-07T21:25:02.668336Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/1709b9dee3b08e6e3d55e78b9d13c92b",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001351698s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:1056::bf9b:1056",
+      "requestMethod": "GET",
+      "requestSize": "819",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/readyz",
+      "responseSize": "160",
+      "serverIp": "2600:1900:4242:200::",
+      "status": 404,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef9756000de0b16c7b60c4",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:25:42.916090025Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "f32af14afd6227f6",
+    "timestamp": "2026-11-07T21:25:42.891766Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/b1f29b820d2967324bc6570d212e1e17",
+    "traceSampled": true
+  },
+  {
+    "insertId": "1i5w45uc1mk",
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Factivity",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "authenticationInfo": {
+        "oauthInfo": {
+          "oauthClientId": "32555940559.apps.googleusercontent.com"
+        },
+        "principalEmail": "demirtumen08@gmail.com",
+        "principalSubject": "user:demirtumen08@gmail.com"
+      },
+      "authorizationInfo": [
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+          "resourceAttributes": {}
+        },
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+          "resourceAttributes": {
+            "name": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+            "service": "run.googleapis.com/",
+            "type": "run.googleapis.com/Service"
+          }
+        }
+      ],
+      "methodName": "google.cloud.run.v1.Services.ReplaceService",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.ReplaceServiceRequest",
+        "name": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+        "service": {
+          "apiVersion": "serving.knative.dev/v1",
+          "kind": "Service",
+          "metadata": {
+            "annotations": {
+              "run.googleapis.com/client-name": "gcloud",
+              "run.googleapis.com/client-version": "592.0.0",
+              "run.googleapis.com/ingress": "all",
+              "run.googleapis.com/ingress-status": "all",
+              "run.googleapis.com/maxScale": "3",
+              "run.googleapis.com/operation-id": "008b28df-35ce-4e0a-b702-508dac31940d",
+              "run.googleapis.com/urls": "[\"https://us-watchdog-247516932580.europe-west4.run.app\",\"https://us-watchdog-iqhblf63dq-ez.a.run.app\"]",
+              "serving.knative.dev/creator": "demirtumen08@gmail.com",
+              "serving.knative.dev/lastModifier": "demirtumen08@gmail.com"
+            },
+            "creationTimestamp": "2026-11-05T20:44:19.648841Z",
+            "generation": 5,
+            "labels": {
+              "cloud.googleapis.com/location": "europe-west4",
+              "discard-fix": "20261108",
+              "run.googleapis.com/satisfiesPzs": "true",
+              "worker-policy": "v5"
+            },
+            "name": "us-watchdog",
+            "namespace": "247516932580",
+            "resourceVersion": "AAZftlHJzts",
+            "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/services/us-watchdog",
+            "uid": "440f1173-98a5-4919-9bcf-7369043d5cf7"
+          },
+          "spec": {
+            "template": {
+              "metadata": {
+                "annotations": {
+                  "autoscaling.knative.dev/maxScale": "1",
+                  "autoscaling.knative.dev/minScale": "0",
+                  "run.googleapis.com/client-name": "gcloud",
+                  "run.googleapis.com/client-version": "592.0.0",
+                  "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+                  "run.googleapis.com/execution-environment": "gen2",
+                  "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+                  "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+                },
+                "labels": {
+                  "client.knative.dev/nonce": "yqlyhiwqpa",
+                  "cloud.googleapis.com/location": "europe-west4",
+                  "discard-fix": "20261108",
+                  "run.googleapis.com/satisfiesPzs": "true",
+                  "worker-policy": "v5"
+                }
+              },
+              "spec": {
+                "containerConcurrency": 1,
+                "containers": [
+                  {
+                    "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway:2026-11-08-discard",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "512Mi"
+                      }
+                    }
+                  }
+                ],
+                "serviceAccountName": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+                "timeoutSeconds": 300,
+                "volumes": [
+                  {
+                    "name": "policy",
+                    "secret": {
+                      "items": [
+                        {
+                          "key": "latest",
+                          "path": "workers.json"
+                        }
+                      ],
+                      "secretName": "us-worker-policy"
+                    }
+                  },
+                  {
+                    "name": "ca",
+                    "secret": {
+                      "items": [
+                        {
+                          "key": "latest",
+                          "path": "ca.pem"
+                        }
+                      ],
+                      "secretName": "us-model-ca"
+                    }
+                  }
+                ]
+              }
+            },
+            "traffic": [
+              {
+                "latestRevision": true,
+                "percent": 100
+              }
+            ]
+          },
+          "status": {
+            "conditions": [
+              {
+                "lastTransitionTime": "2026-11-07T21:22:01.130715Z",
+                "status": "True",
+                "type": "Ready"
+              },
+              {
+                "lastTransitionTime": "2026-11-07T21:21:51.844579Z",
+                "status": "True",
+                "type": "ConfigurationsReady"
+              },
+              {
+                "lastTransitionTime": "2026-11-07T21:22:01.094512Z",
+                "status": "True",
+                "type": "RoutesReady"
+              }
+            ],
+            "latestCreatedRevisionName": "us-watchdog-00005-z97",
+            "latestReadyRevisionName": "us-watchdog-00005-z97",
+            "observedGeneration": 5,
+            "traffic": [
+              {
+                "latestRevision": true,
+                "percent": 100,
+                "revisionName": "us-watchdog-00005-z97"
+              }
+            ],
+            "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app"
+          }
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "2a04:4e41:88:32b7::28f7:32b7",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/592.0.0 agent-name/cursor command/gcloud.run.services.update invocation-id/7f2c0e4c249345fd8f166b53d78b47f2 environment/None environment-version/None client-os/LINUX client-os-ver/6.12.113 client-pltf-arch/x86_64 interactive/False from-script/True python/3.14.9 term/dumb  (Linux 6.12.113+),gzip(gfe)",
+        "destinationAttributes": {},
+        "requestAttributes": {
+          "auth": {},
+          "time": "2026-11-07T21:26:01.167377Z"
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "europe-west4"
+        ]
+      },
+      "resourceName": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+      "serviceName": "run.googleapis.com",
+      "status": {}
+    },
+    "receiveTimestamp": "2026-11-07T21:26:01.789589597Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "NOTICE",
+    "timestamp": "2026-11-07T21:25:59.675498Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.266401494s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "34.127.142.99",
+      "requestMethod": "POST",
+      "requestSize": "1322",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef976a000eb56194b86570",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:26:02.970011418Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "58aee05d6272c3b3",
+    "timestamp": "2026-11-07T21:26:02.678728Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/4f68f56d3f9da019ac10f45761bfbd5b",
+    "traceSampled": true
+  },
+  {
+    "insertId": "6aef976e000463254c8339a7",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "scaling_reason": "DEPLOYMENT_ROLLOUT",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-11-07T21:26:06.292953247Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.",
+    "timestamp": "2026-11-07T21:26:06.287525Z"
+  },
+  {
+    "insertId": "6aef97710009dd662256f938",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:26:09.651005418Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:26:09 +0000] [1] [INFO] Starting gunicorn 26.2.0",
+    "timestamp": "2026-11-07T21:26:09.646502Z"
+  },
+  {
+    "insertId": "6aef97710009dd91972cd00b",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:26:09.651005418Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:26:09 +0000] [1] [INFO] Listening at: http://0.0.0.0:8080 (1)",
+    "timestamp": "2026-11-07T21:26:09.646545Z"
+  },
+  {
+    "insertId": "6aef97710009de0f58a0085a",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:26:09.986054197Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:26:09 +0000] [1] [INFO] Using worker: gthread",
+    "timestamp": "2026-11-07T21:26:09.646671Z"
+  },
+  {
+    "insertId": "6aef97710009e5a4a0ca87d8",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:26:09.986054197Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:26:09 +0000] [10] [INFO] Booting worker with pid: 10",
+    "timestamp": "2026-11-07T21:26:09.648612Z"
+  },
+  {
+    "insertId": "6aef9771000e2a800f5b9dc1",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:26:09.986054197Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:26:09 +0000] [1] [INFO] Control socket listening at /home/app/.gunicorn/gunicorn.ctl",
+    "timestamp": "2026-11-07T21:26:09.928384Z"
+  },
+  {
+    "insertId": "6aef9774000220163dd6ba49",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-11-07T21:26:12.286605564Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "STARTUP HTTP probe succeeded after 2 attempts for container \"gateway-1\" on port 8080 path \"/health\".",
+    "timestamp": "2026-11-07T21:26:12.139286Z"
+  },
+  {
+    "insertId": "kumrhod4nj8",
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/project-27082a40-6083-4952-9db/revisions/us-watchdog-00006-88h",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "1",
+            "autoscaling.knative.dev/minScale": "0",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "592.0.0",
+            "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+            "run.googleapis.com/execution-environment": "gen2",
+            "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+            "run.googleapis.com/operation-id": "c3bca9ae-e46c-47dc-8c7c-7dbed44fb315",
+            "run.googleapis.com/vpc-access-egress": "private-ranges-only",
+            "serving.knative.dev/creator": "demirtumen08@gmail.com"
+          },
+          "creationTimestamp": "2026-11-07T21:26:01.245707Z",
+          "generation": 1,
+          "labels": {
+            "client.knative.dev/nonce": "yqlyhiwqpa",
+            "cloud.googleapis.com/location": "europe-west4",
+            "discard-fix": "20261108",
+            "run.googleapis.com/satisfiesPzs": "true",
+            "run.googleapis.com/startupProbeType": "Custom",
+            "serving.knative.dev/configuration": "us-watchdog",
+            "serving.knative.dev/configurationGeneration": "6",
+            "serving.knative.dev/route": "us-watchdog",
+            "serving.knative.dev/service": "us-watchdog",
+            "serving.knative.dev/serviceUid": "440f1173-98a5-4919-9bcf-7369043d5cf7",
+            "worker-policy": "v5"
+          },
+          "name": "us-watchdog-00006-88h",
+          "namespace": "247516932580",
+          "ownerReferences": [
+            {
+              "apiVersion": "serving.knative.dev/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "Configuration",
+              "name": "us-watchdog",
+              "uid": "df7a2c9a-d427-44f3-af17-a383b6639cf7"
+            }
+          ],
+          "resourceVersion": "AAZftmDA1gw",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/revisions/us-watchdog-00006-88h",
+          "uid": "bda59726-6125-4825-ad17-b8402f6d5f30"
+        },
+        "spec": {
+          "containerConcurrency": 1,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "US_ENV",
+                  "value": "production"
+                },
+                {
+                  "name": "US_APP_FACTORY",
+                  "value": "runtime:watchdog_app()"
+                },
+                {
+                  "name": "US_WORKERS_CONFIG",
+                  "value": "/secrets/policy/workers.json"
+                },
+                {
+                  "name": "US_MODEL_CA_FILE",
+                  "value": "/secrets/ca/ca.pem"
+                },
+                {
+                  "name": "US_COMMERCE_DB",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-postgres-dsn"
+                    }
+                  }
+                },
+                {
+                  "name": "US_MODEL_API_TOKEN",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "us-model-token"
+                    }
+                  }
+                },
+                {
+                  "name": "US_ALLOW_DISCARD_LOCAL_SSD",
+                  "value": "1"
+                }
+              ],
+              "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:5bf7bc8e276d907f65ae0f274b6de2a9853b5b32b73ed0f59bf9cb0f66392122",
+              "name": "gateway-1",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 24,
+                "httpGet": {
+                  "path": "/health",
+                  "port": 8080
+                },
+                "periodSeconds": 5,
+                "timeoutSeconds": 5
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/secrets/policy",
+                  "name": "policy"
+                },
+                {
+                  "mountPath": "/secrets/ca",
+                  "name": "ca"
+                }
+              ]
+            }
+          ],
+          "serviceAccountName": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+          "timeoutSeconds": 300,
+          "volumes": [
+            {
+              "name": "policy",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "workers.json"
+                  }
+                ],
+                "secretName": "us-worker-policy"
+              }
+            },
+            {
+              "name": "ca",
+              "secret": {
+                "items": [
+                  {
+                    "key": "latest",
+                    "path": "ca.pem"
+                  }
+                ],
+                "secretName": "us-model-ca"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-07T21:26:12.200972Z",
+              "message": "Deploying revision succeeded in 10.95s.",
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:26:12.144827Z",
+              "message": "Containers became healthy in 5.23s.",
+              "status": "True",
+              "type": "ContainerHealthy"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:26:03.136336Z",
+              "message": "Container image import completed in 1.24s.",
+              "status": "True",
+              "type": "ContainerReady"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:26:06.165318Z",
+              "message": "Provisioning imported containers completed in 3.03s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+              "status": "True",
+              "type": "ResourcesAvailable"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "imageDigest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:5bf7bc8e276d907f65ae0f274b6de2a9853b5b32b73ed0f59bf9cb0f66392122",
+              "name": "gateway-1"
+            }
+          ],
+          "imageDigest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:5bf7bc8e276d907f65ae0f274b6de2a9853b5b32b73ed0f59bf9cb0f66392122",
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=project-27082a40-6083-4952-9db&resource=cloud_run_revision/service_name/us-watchdog/revision_name/us-watchdog-00006-88h&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22us-watchdog%22%0Aresource.labels.revision_name%3D%22us-watchdog-00006-88h%22",
+          "observedGeneration": 1
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "message": "Ready condition status changed to True for Revision us-watchdog-00006-88h with message: Deploying revision succeeded in 10.95s."
+      }
+    },
+    "receiveTimestamp": "2026-11-07T21:26:12.409036048Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:26:12.214051Z"
+  },
+  {
+    "insertId": "kumrhod4njm",
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/project-27082a40-6083-4952-9db/services/us-watchdog",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "metadata": {
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "592.0.0",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "3",
+            "run.googleapis.com/operation-id": "c3bca9ae-e46c-47dc-8c7c-7dbed44fb315",
+            "run.googleapis.com/urls": "[\"https://us-watchdog-247516932580.europe-west4.run.app\",\"https://us-watchdog-iqhblf63dq-ez.a.run.app\"]",
+            "serving.knative.dev/creator": "demirtumen08@gmail.com",
+            "serving.knative.dev/lastModifier": "demirtumen08@gmail.com"
+          },
+          "creationTimestamp": "2026-11-05T20:44:19.648841Z",
+          "generation": 6,
+          "labels": {
+            "cloud.googleapis.com/location": "europe-west4",
+            "discard-fix": "20261108",
+            "run.googleapis.com/satisfiesPzs": "true",
+            "worker-policy": "v5"
+          },
+          "name": "us-watchdog",
+          "namespace": "247516932580",
+          "resourceVersion": "AAZftmDXv8o",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/247516932580/services/us-watchdog",
+          "uid": "440f1173-98a5-4919-9bcf-7369043d5cf7"
+        },
+        "spec": {
+          "template": {
+            "metadata": {
+              "annotations": {
+                "autoscaling.knative.dev/maxScale": "1",
+                "autoscaling.knative.dev/minScale": "0",
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "592.0.0",
+                "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+                "run.googleapis.com/execution-environment": "gen2",
+                "run.googleapis.com/network-interfaces": "[{\"network\":\"default\",\"subnetwork\":\"default\"}]",
+                "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+              },
+              "labels": {
+                "client.knative.dev/nonce": "yqlyhiwqpa",
+                "discard-fix": "20261108",
+                "run.googleapis.com/startupProbeType": "Custom",
+                "worker-policy": "v5"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 1,
+              "containers": [
+                {
+                  "env": [
+                    {
+                      "name": "US_ENV",
+                      "value": "production"
+                    },
+                    {
+                      "name": "US_APP_FACTORY",
+                      "value": "runtime:watchdog_app()"
+                    },
+                    {
+                      "name": "US_WORKERS_CONFIG",
+                      "value": "/secrets/policy/workers.json"
+                    },
+                    {
+                      "name": "US_MODEL_CA_FILE",
+                      "value": "/secrets/ca/ca.pem"
+                    },
+                    {
+                      "name": "US_COMMERCE_DB",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "us-postgres-dsn"
+                        }
+                      }
+                    },
+                    {
+                      "name": "US_MODEL_API_TOKEN",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "us-model-token"
+                        }
+                      }
+                    },
+                    {
+                      "name": "US_ALLOW_DISCARD_LOCAL_SSD",
+                      "value": "1"
+                    }
+                  ],
+                  "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway:2026-11-08-discard",
+                  "ports": [
+                    {
+                      "containerPort": 8080,
+                      "name": "http1"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "cpu": "1",
+                      "memory": "512Mi"
+                    }
+                  },
+                  "startupProbe": {
+                    "failureThreshold": 24,
+                    "httpGet": {
+                      "path": "/health",
+                      "port": 8080
+                    },
+                    "periodSeconds": 5,
+                    "timeoutSeconds": 5
+                  },
+                  "volumeMounts": [
+                    {
+                      "mountPath": "/secrets/policy",
+                      "name": "policy"
+                    },
+                    {
+                      "mountPath": "/secrets/ca",
+                      "name": "ca"
+                    }
+                  ]
+                }
+              ],
+              "serviceAccountName": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+              "timeoutSeconds": 300,
+              "volumes": [
+                {
+                  "name": "policy",
+                  "secret": {
+                    "items": [
+                      {
+                        "key": "latest",
+                        "path": "workers.json"
+                      }
+                    ],
+                    "secretName": "us-worker-policy"
+                  }
+                },
+                {
+                  "name": "ca",
+                  "secret": {
+                    "items": [
+                      {
+                        "key": "latest",
+                        "path": "ca.pem"
+                      }
+                    ],
+                    "secretName": "us-model-ca"
+                  }
+                }
+              ]
+            }
+          },
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100
+            }
+          ]
+        },
+        "status": {
+          "address": {
+            "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app"
+          },
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-07T21:26:13.702602Z",
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:26:03.249495Z",
+              "status": "True",
+              "type": "ConfigurationsReady"
+            },
+            {
+              "lastTransitionTime": "2026-11-07T21:26:13.668657Z",
+              "status": "True",
+              "type": "RoutesReady"
+            }
+          ],
+          "latestCreatedRevisionName": "us-watchdog-00006-88h",
+          "latestReadyRevisionName": "us-watchdog-00006-88h",
+          "observedGeneration": 6,
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100,
+              "revisionName": "us-watchdog-00006-88h"
+            }
+          ],
+          "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app"
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "message": "Ready condition status changed to True for Service us-watchdog."
+      }
+    },
+    "receiveTimestamp": "2026-11-07T21:26:14.414445351Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-11-07T21:26:13.715799Z"
+  },
+  {
+    "insertId": "6aef9777000980e871ab0e90",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:26:15.627666591Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:26:15 +0000] [1] [INFO] Handling signal: term",
+    "timestamp": "2026-11-07T21:26:15.622824Z"
+  },
+  {
+    "insertId": "6aef9777000986b700ebc83d",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:26:15.959975494Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:26:15 +0000] [10] [INFO] Worker exiting (pid: 10)",
+    "timestamp": "2026-11-07T21:26:15.624311Z"
+  },
+  {
+    "insertId": "6aef9777000c94741223b2d8",
+    "labels": {
+      "instanceId": "00e8a408bd199ecda31d8eb99b8c850ed22da24113315089a546d870bcc62883ddc18712ac01ddf3a350b9a6a4c25b92e961a93d77302f638a5457d7a1d18411eefb1371aaffe2991a92b056b43b0f04f99e06fb0b799dc9fdac",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-11-07T21:26:15.959975494Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00005-z97",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[2026-11-07 21:26:15 +0000] [1] [INFO] Shutting down: Master",
+    "timestamp": "2026-11-07T21:26:15.824436Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.317696673s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.135.167",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.77.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef97a7000007c894912946",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:27:03.009943133Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "946cfcb104ef3301",
+    "timestamp": "2026-11-07T21:27:02.669095Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/ada4596541dc3b61cdc67a4c1c561abb",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.266305548s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.135.129",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.79.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef97e3000682e4830d65da",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:28:03.434687373Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "cb20e275ac352820",
+    "timestamp": "2026-11-07T21:28:03.144241Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/1b1e021c1b09150497073e3741366143",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:b51f::c975:b51f",
+      "requestMethod": "GET",
+      "requestSize": "283",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "serverIp": "2600:1900:4244:200::",
+      "status": 403,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef97e5000aafca8ac4b7ef",
+    "labels": {
+      "discard-fix": "20261108",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:28:05.762643599Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "5e127b465b8e407c",
+    "textPayload": "The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header. Empty Authorization header value. Read more at https://cloud.google.com/run/docs/securing/authenticating Additional troubleshooting documentation can be found at: https://cloud.google.com/run/docs/troubleshooting#unauthorized-client",
+    "timestamp": "2026-11-07T21:28:05.507731Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/79217b20c3167931a00f427f434889d3"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001159747s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:e384::bf3:e384",
+      "requestMethod": "GET",
+      "requestSize": "819",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/health",
+      "responseSize": "154",
+      "serverIp": "2600:1900:4241:200::",
+      "status": 200,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef97e5000dced28c908ce1",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:28:06.096986076Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "7319dbc5a6ce8ef2",
+    "timestamp": "2026-11-07T21:28:05.895450Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/92e3d2ddf3a904951e7f9082c387a091"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001245118s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:a284::e48:a284",
+      "requestMethod": "GET",
+      "requestSize": "817",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/ready",
+      "responseSize": "160",
+      "serverIp": "2600:1900:4240:200::",
+      "status": 404,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef97e60001dc968da6cd97",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:28:06.431080331Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "c62a13d2256434fd",
+    "timestamp": "2026-11-07T21:28:06.119247Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/50bd96426e4f98bdf7016b66a6a58968"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.001124807s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:8875::d707:8875",
+      "requestMethod": "GET",
+      "requestSize": "819",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/readyz",
+      "responseSize": "160",
+      "serverIp": "2600:1900:4242:200::",
+      "status": 404,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef97e60004f24590ffa31a",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:28:06.431080331Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "4b75792085cbf503",
+    "timestamp": "2026-11-07T21:28:06.321141Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/591ceb4ddeb89aafa78c381d98550630"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.296405903s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "34.127.142.130",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "260",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef981e000e7c0e52455244",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:29:02.955112907Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "3e7ab5d5da0f0ff9",
+    "timestamp": "2026-11-07T21:29:02.635108Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/ab2c9f9b4c1a73eb96b67a03c2fa870c",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "0.320753383s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.131.165",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "260",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef985a000ec341ba7ed777",
+    "labels": {
+      "discard-fix": "20261108",
+      "instanceId": "00e8a408bd855a4c8ed31142391316ef71da4f3010b55fe1eace53ab6b87b033023de44dbb01c35fe42fc5e5de17976c5f0eadcebdc522c9ddab6af7c1f723657ffc68a60ebb5c4cfee34df379fe88b8fa0f598a33a5d18879",
+      "worker-policy": "v5"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:30:02.974146314Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00006-88h",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "e0b65f46727d9b95",
+    "timestamp": "2026-11-07T21:30:02.628346Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/f4ac67999170cf3b67b2551943ea688d",
+    "traceSampled": true
+  }
+]

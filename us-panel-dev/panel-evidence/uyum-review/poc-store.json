@@ -1,0 +1,28 @@
+{"Time":"2026-11-06T09:40:09.23354655+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-06T09:40:09.242370223+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue"}
+{"Time":"2026-11-06T09:40:09.242420641+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"=== RUN   TestUyumReviewLedgerAndResidue\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:11.962648561+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:10: PASS ledger financial/time/audit fields unchanged\n"}
+{"Time":"2026-11-06T09:40:11.962761248+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:11: CONFIRMED personal residue: outbox Body/OrderName/LastErr retain email,name,IP,device\n"}
+{"Time":"2026-11-06T09:40:11.962788493+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:12: CONFIRMED pseudonym recomputable from retained account ID; not hash inversion\n"}
+{"Time":"2026-11-06T09:40:11.962795568+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:13: CONFIRMED retained license key still authenticates\n"}
+{"Time":"2026-11-06T09:40:11.962953649+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"--- PASS: TestUyumReviewLedgerAndResidue (2.72s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:11.962978104+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Elapsed":2.72}
+{"Time":"2026-11-06T09:40:11.963175891+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue"}
+{"Time":"2026-11-06T09:40:11.963182498+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"=== RUN   TestUyumReviewLedgerAndResidue\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:14.634451489+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:10: PASS ledger financial/time/audit fields unchanged\n"}
+{"Time":"2026-11-06T09:40:14.63459644+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:11: CONFIRMED personal residue: outbox Body/OrderName/LastErr retain email,name,IP,device\n"}
+{"Time":"2026-11-06T09:40:14.634605642+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:12: CONFIRMED pseudonym recomputable from retained account ID; not hash inversion\n"}
+{"Time":"2026-11-06T09:40:14.634609535+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:13: CONFIRMED retained license key still authenticates\n"}
+{"Time":"2026-11-06T09:40:14.634918717+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"--- PASS: TestUyumReviewLedgerAndResidue (2.67s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:14.63496906+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Elapsed":2.67}
+{"Time":"2026-11-06T09:40:14.635241258+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue"}
+{"Time":"2026-11-06T09:40:14.635264083+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"=== RUN   TestUyumReviewLedgerAndResidue\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:17.301174378+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:10: PASS ledger financial/time/audit fields unchanged\n"}
+{"Time":"2026-11-06T09:40:17.301296751+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:11: CONFIRMED personal residue: outbox Body/OrderName/LastErr retain email,name,IP,device\n"}
+{"Time":"2026-11-06T09:40:17.301311376+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:12: CONFIRMED pseudonym recomputable from retained account ID; not hash inversion\n"}
+{"Time":"2026-11-06T09:40:17.301328602+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"    zz_uyum_review_test.go:13: CONFIRMED retained license key still authenticates\n"}
+{"Time":"2026-11-06T09:40:17.301592235+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Output":"--- PASS: TestUyumReviewLedgerAndResidue (2.67s)\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:17.301606975+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestUyumReviewLedgerAndResidue","Elapsed":2.67}
+{"Time":"2026-11-06T09:40:17.30164383+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-06T09:40:18.305111938+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"ok  \tkiyas/licensesrv\t9.071s\n"}
+{"Time":"2026-11-06T09:40:18.305159406+03:00","Action":"pass","Package":"kiyas/licensesrv","Elapsed":9.072}

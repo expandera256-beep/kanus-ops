@@ -1,0 +1,163 @@
+{
+  "resource": "instance-20261030-232245",
+  "zone": "us-central1-c",
+  "action": "DELETED",
+  "described_at_europe_istanbul": "2026-11-06 08:11 TSİ (UTC+3)",
+  "deleted_at_europe_istanbul": "2026-11-06 08:13 TSİ (UTC+3)",
+  "verified_absent_at_europe_istanbul": "2026-11-06 08:19 TSİ (UTC+3)",
+  "post_delete_verify": {
+    "instance_describe": "NOT_FOUND",
+    "disk_describe": "NOT_FOUND (autoDelete=true, removed with instance)",
+    "external_ip": "34.57.193.184 was ephemeral ONE_TO_ONE_NAT (not in reserved addresses); released with instance",
+    "snapshot": {
+      "name": "pre-delete-instance-20261030-232245-20261106",
+      "status_at_delete_gate": "READY",
+      "status_at_08_19": "READY",
+      "storageBytes": 132842560,
+      "storageLocations": [
+        "us"
+      ],
+      "diskSizeGb": "180"
+    }
+  },
+  "pre_delete_describe": {
+    "canIpForward": false,
+    "confidentialInstanceConfig": {
+      "enableConfidentialCompute": false
+    },
+    "cpuPlatform": "Intel Emerald Rapids",
+    "creationTimestamp": "2026-10-30T16:27:50.959-07:00",
+    "deletionProtection": false,
+    "description": "",
+    "disks": [
+      {
+        "architecture": "X86_64",
+        "autoDelete": true,
+        "boot": true,
+        "deviceName": "instance-20261030-232245",
+        "diskSizeGb": "180",
+        "guestOsFeatures": [
+          {
+            "type": "UEFI_COMPATIBLE"
+          },
+          {
+            "type": "VIRTIO_SCSI_MULTIQUEUE"
+          },
+          {
+            "type": "GVNIC"
+          },
+          {
+            "type": "SEV_CAPABLE"
+          },
+          {
+            "type": "SEV_LIVE_MIGRATABLE_V2"
+          },
+          {
+            "type": "SUSPEND_SAFE_FPR"
+          }
+        ],
+        "index": 0,
+        "interface": "NVME",
+        "kind": "compute#attachedDisk",
+        "licenses": [
+          "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-12-bookworm"
+        ],
+        "mode": "READ_WRITE",
+        "source": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/disks/instance-20261030-232245",
+        "type": "PERSISTENT"
+      }
+    ],
+    "displayDevice": {
+      "enableDisplay": false
+    },
+    "fingerprint": "S1e3xzfxpQY=",
+    "id": "8624417259651635482",
+    "keyRevocationActionType": "NONE",
+    "kind": "compute#instance",
+    "labelFingerprint": "u1i0GMcZHVI=",
+    "labels": {
+      "goog-ops-agent-policy": "v2-template-1-7-0"
+    },
+    "lastStartTimestamp": "2026-11-01T09:51:37.811-08:00",
+    "lastStopTimestamp": "2026-10-30T22:12:50.540-07:00",
+    "lastSuspendedTimestamp": "2026-11-01T09:50:50.002-08:00",
+    "machineType": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/machineTypes/c4n-highmem-8",
+    "metadata": {
+      "fingerprint": "fY77qWqTi_4=",
+      "items": [
+        {
+          "key": "enable-osconfig",
+          "value": "TRUE"
+        },
+        {
+          "key": "ssh-keys",
+          "value": "demirtumen08:ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP2bSSQrptg5fgZ8UvCgB0j8JUaKjHDtMJhe1WSR3YDdFm9fhyjV2Mv8rB/7qBYGZ3mxUTVN1QicND4vGRnETlQ= google-ssh {\"userName\":\"demirtumen08@gmail.com\",\"expireOn\":\"2026-10-31T00:16:48+0000\"}\ndemirtumen08:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAEu9pKsBsb2Zun72i4y+ekGQHuqb1Tj0wnhMWH6PjKH3SErGQjCL1/KQ9HRWIoHPpLavvtKzQWfzW21liwfiRiGf1iif1s1k5qTv3I1etXOiiRrvRU9qmezmIy6nWkjhUgiK4uq4wxQqqWzDq4JjoqrahVzAuXrzI1klk2Sspqi0Iwj4p5l3fv/hNCI1ShGzxSMqdTysVEwyTR602z+Ws7KiPUrM4XcBKNrJPR1oqaldlWnocDpF2bFsivraEBVrD0ghGuqYTFwNI6iMDsTmYSb067EUdyjkZbKiBp1Lx/FNMCgXtAXk9TtN8K73hL0SpxZtWKtTg3SdXAqgKOxLiis= google-ssh {\"userName\":\"demirtumen08@gmail.com\",\"expireOn\":\"2026-10-31T00:16:54+0000\"}"
+        }
+      ],
+      "kind": "compute#metadata"
+    },
+    "name": "instance-20261030-232245",
+    "networkInterfaces": [
+      {
+        "accessConfigs": [
+          {
+            "kind": "compute#accessConfig",
+            "name": "external-nat",
+            "natIP": "34.57.193.184",
+            "networkTier": "PREMIUM",
+            "type": "ONE_TO_ONE_NAT"
+          }
+        ],
+        "fingerprint": "WjaBu4LtWJM=",
+        "kind": "compute#networkInterface",
+        "name": "nic0",
+        "network": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/networks/default",
+        "networkIP": "10.128.0.2",
+        "stackType": "IPV4_ONLY",
+        "subnetwork": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1/subnetworks/default"
+      }
+    ],
+    "reservationAffinity": {
+      "consumeReservationType": "ANY_RESERVATION"
+    },
+    "resourceStatus": {
+      "effectiveInstanceMetadata": {
+        "enableOsconfigMetadataValue": true,
+        "vmDnsSettingMetadataValue": "ZonalOnly"
+      }
+    },
+    "satisfiesPzi": true,
+    "scheduling": {
+      "automaticRestart": true,
+      "onHostMaintenance": "MIGRATE",
+      "preemptible": false,
+      "provisioningModel": "STANDARD"
+    },
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c/instances/instance-20261030-232245",
+    "serviceAccounts": [
+      {
+        "email": "247516932580-compute@developer.gserviceaccount.com",
+        "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+        ]
+      }
+    ],
+    "shieldedInstanceConfig": {
+      "enableIntegrityMonitoring": true,
+      "enableSecureBoot": false,
+      "enableVtpm": true
+    },
+    "shieldedInstanceIntegrityPolicy": {
+      "updateAutoLearnPolicy": true
+    },
+    "startRestricted": false,
+    "status": "RUNNING",
+    "tags": {
+      "fingerprint": "MF35BRJsENQ=",
+      "items": [
+        "kalfa-http"
+      ]
+    },
+    "zone": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-c"
+  }
+}

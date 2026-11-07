@@ -1,0 +1,14 @@
+package licensesrv
+import("context";"fmt";"net/http";"net/http/httptest";"os";"path/filepath";"strings";"sync/atomic";"testing";"time")
+func TestPanelR12SharedNegativeCacheBounds(t *testing.T){
+ h,_:=setup(t);post(h,payload,sign("whsec",payload),"p");key:=h.Store.st.Orders["555"][0];other:=*h.Store.st.Licenses[key];other.Key="second-synthetic-key";h.Store.st.Licenses[other.Key]=&other
+ var ready atomic.Bool;var status,starts atomic.Int32
+ s:=httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter,r *http.Request){if r.URL.Path=="/a100/start"{starts.Add(1);w.WriteHeader(500);return};status.Add(1);fmt.Fprintf(w,`{"model_ready":%t}`,ready.Load())}));defer s.Close()
+ tok:=filepath.Join(t.TempDir(),"token");os.WriteFile(tok,[]byte("test-token"),0600);t.Setenv("US_GPU_WAKE_PIN_FILE","");g,_:=NewGPUWaker(s.URL+"/a100/start",s.URL+"/a100/status",tok,0);g.set("failed","test-stable-cooldown")
+ up:=httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter,r *http.Request){if r.URL.Path=="/v1/models"{fmt.Fprint(w,`{"data":[{"id":"test-model"}]}`);return};w.Header().Set("Content-Type","text/event-stream");fmt.Fprint(w,goodEvents)}));defer up.Close();p,_:=NewModelProxy(h.Store,up.URL,"","test-model",time.Second,1,2);p.Waker=g
+ a:=proxyRequest(p,key,proxyInput,context.Background());if a.Code!=503||status.Load()!=1{t.Fatal("first negative probe")};p.readyMu.Lock();left:=time.Until(p.notReadyUntil);p.readyMu.Unlock();if left<1800*time.Millisecond||left>2100*time.Millisecond{t.Fatalf("negative TTL=%v",left)}
+ ready.Store(true);b:=proxyRequest(p,other.Key,proxyInput,context.Background());if b.Code!=503||status.Load()!=1{t.Fatal("shared short negative cache absent")};time.Sleep(2100*time.Millisecond);c:=proxyRequest(p,other.Key,proxyInput,context.Background());if c.Code!=200||!strings.Contains(c.Body.String(),"[DONE]")||status.Load()!=2||starts.Load()!=0{t.Fatalf("negative cache poisoned other user code=%d status=%d start=%d",c.Code,status.Load(),starts.Load())};t.Log("second funded user sees at most 2s shared not-ready snapshot; recovery after TTL PASS")
+}
+func TestPanelR12GateStatusBodies(t *testing.T){
+ for _,c:=range []struct{name string;code int}{{"zero",402},{"bad-plan",403}}{t.Run(c.name,func(t *testing.T){h,_:=setup(t);post(h,payload,sign("whsec",payload),"p");key:=h.Store.st.Orders["555"][0];if c.name=="zero"{h.Store.st.Licenses[key].Credits=0}else{h.Store.st.Licenses[key].Plan.Kind="unknown"};g,starts,status:=panelWakeFixture(t);p,_:=NewModelProxy(h.Store,"http://127.0.0.1:1","","test-model",time.Second,1,2);p.Waker=g;w:=proxyRequest(p,key,proxyInput,context.Background());if w.Code!=c.code||starts.Load()!=0||status.Load()!=0{t.Fatalf("bad gate %d %s",w.Code,w.Body.String())};for _,bad:=range []string{key,"@","token_unreadable","pin_unreadable","synthetic-account"}{if strings.Contains(w.Body.String(),bad){t.Fatal("body leak")}};t.Logf("code=%d body=%q",w.Code,w.Body.String())})}
+}

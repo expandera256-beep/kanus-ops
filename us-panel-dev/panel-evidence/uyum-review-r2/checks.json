@@ -1,0 +1,73 @@
+[
+  {
+    "name": "vet",
+    "command": [
+      "go",
+      "vet",
+      "./..."
+    ],
+    "exit": 0,
+    "seconds": 0.42
+  },
+  {
+    "name": "race",
+    "command": [
+      "go",
+      "test",
+      "-race",
+      "-json",
+      "./..."
+    ],
+    "exit": 0,
+    "seconds": 102.32
+  },
+  {
+    "name": "win-vet",
+    "command": [
+      "go",
+      "vet",
+      "./..."
+    ],
+    "exit": 0,
+    "seconds": 0.67
+  },
+  {
+    "name": "win-build",
+    "command": [
+      "go",
+      "build",
+      "./..."
+    ],
+    "exit": 0,
+    "seconds": 1.33
+  },
+  {
+    "name": "new-count3",
+    "command": [
+      "go",
+      "test",
+      "-race",
+      "-json",
+      "./licensesrv",
+      "./internal/privacy",
+      "-run",
+      "Privacy|Erase|Retention|Pref|Handler",
+      "-count=3"
+    ],
+    "exit": 0,
+    "seconds": 94.34
+  },
+  {
+    "name": "gofmt",
+    "command": [
+      "gofmt",
+      "-l",
+      "internal/privacy",
+      "licensesrv/privacy_ops.go",
+      "licensesrv/privacy_ops_test.go",
+      "cmd/us-license-hook/main.go"
+    ],
+    "exit": 0,
+    "seconds": 0.01
+  }
+]

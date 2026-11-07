@@ -1,0 +1,221 @@
+{
+  "api11": {
+    "test": {
+      "pass": 528,
+      "fail": 0,
+      "skip": 7,
+      "packages": [
+        {
+          "package": "kiyas",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/apiv1",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/cmd/us-license-hook",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/internal/privacy",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/licensesrv",
+          "result": "pass"
+        }
+      ],
+      "failures": [],
+      "skips": [
+        "kiyas/TestPHPLicenseMatchesThePanel",
+        "kiyas/TestLiveDoorAnswers",
+        "kiyas/TestOfficialREAInspectsOwnedFile",
+        "kiyas/TestRealModelPanelMultiFileRepair",
+        "kiyas/TestRealModelPanelBuildRentalProject",
+        "kiyas/TestTaskStateCrashChild",
+        "kiyas/licensesrv/TestStoreWriterProcess"
+      ]
+    },
+    "race": {
+      "pass": 465,
+      "fail": 0,
+      "skip": 6,
+      "packages": [
+        {
+          "package": "kiyas",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/apiv1",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/cmd/us-license-hook",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/internal/privacy",
+          "result": "pass"
+        }
+      ],
+      "failures": [],
+      "skips": [
+        "kiyas/TestPHPLicenseMatchesThePanel",
+        "kiyas/TestLiveDoorAnswers",
+        "kiyas/TestOfficialREAInspectsOwnedFile",
+        "kiyas/TestRealModelPanelMultiFileRepair",
+        "kiyas/TestRealModelPanelBuildRentalProject",
+        "kiyas/TestTaskStateCrashChild"
+      ],
+      "completion": "BLOCKED: SIGTERM exit143 before licensesrv package completed"
+    },
+    "commands": {
+      "build": 0,
+      "vet": 0,
+      "windows-vet": 0,
+      "windows-build": 0,
+      "gofmt": 0,
+      "test": 0,
+      "node": 0,
+      "race": 143,
+      "s2": 0
+    },
+    "gofmt_files": [
+      "continuation.go",
+      "continuation_test.go",
+      "chat_quality_test.go",
+      "tunnel_other.go",
+      "log_regression_test.go",
+      "long_checkpoint.go",
+      "change_history.go",
+      "context_budget_test.go",
+      "cloud_install_test.go",
+      "proposal_batch_test.go",
+      "project.go",
+      "cloud_install.go",
+      "journal.go",
+      "transaction_recovery_test.go",
+      "change_history_test.go",
+      "project_inspection_regression_test.go",
+      "proposal_test.go",
+      "long_checkpoint_test.go",
+      "context_limits_test.go",
+      "repair_intent_regression_test.go",
+      "tunnel_windows.go",
+      "gateway_test.go",
+      "project_map.go",
+      "cloud_space.go",
+      "transaction_recovery.go",
+      "editor_safety_test.go",
+      "scope_guard_test.go",
+      "cloud_space_test.go",
+      "cmd/us-pricing-gen/main.go",
+      "core_safety_regression_test.go"
+    ],
+    "s2_last_lines": [
+      "| N-NPM | PASS | argv=[\"npm\" \"run\" \"x\"] kabul=false durum=idle notice=\"Komut izinli de\u011fil. Go test/build/run/vet/version; Python dosyas\u0131/unittest/py_compile; Node dosyas\u0131/test/check desteklenir. Ba\u011f\u0131ml\u0131l\u0131klar otomatik kurulmaz.\" |",
+      "",
+      "Toplam: PASS=36 FAIL=0 BLOCKED=0",
+      "Sonu\u00e7lar: /workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/checks-api11/s2"
+    ]
+  },
+  "stack12": {
+    "test": {
+      "pass": 592,
+      "fail": 0,
+      "skip": 7,
+      "packages": [
+        {
+          "package": "kiyas",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/apiv1",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/cmd/us-license-hook",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/i18n",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/internal/privacy",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/licensesrv",
+          "result": "pass"
+        }
+      ],
+      "failures": [],
+      "skips": [
+        "kiyas/TestPHPLicenseMatchesThePanel",
+        "kiyas/TestLiveDoorAnswers",
+        "kiyas/TestOfficialREAInspectsOwnedFile",
+        "kiyas/TestRealModelPanelMultiFileRepair",
+        "kiyas/TestRealModelPanelBuildRentalProject",
+        "kiyas/TestTaskStateCrashChild",
+        "kiyas/licensesrv/TestStoreWriterProcess"
+      ]
+    },
+    "race": {
+      "pass": 482,
+      "fail": 0,
+      "skip": 6,
+      "packages": [
+        {
+          "package": "kiyas",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/apiv1",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/cmd/us-license-hook",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/i18n",
+          "result": "pass"
+        },
+        {
+          "package": "kiyas/internal/privacy",
+          "result": "pass"
+        }
+      ],
+      "failures": [],
+      "skips": [
+        "kiyas/TestPHPLicenseMatchesThePanel",
+        "kiyas/TestLiveDoorAnswers",
+        "kiyas/TestOfficialREAInspectsOwnedFile",
+        "kiyas/TestRealModelPanelMultiFileRepair",
+        "kiyas/TestRealModelPanelBuildRentalProject",
+        "kiyas/TestTaskStateCrashChild"
+      ],
+      "completion": "BLOCKED: SIGTERM exit143 before licensesrv package completed"
+    },
+    "commands": {
+      "build": 0,
+      "vet": 0,
+      "windows-vet": 0,
+      "windows-build": 0,
+      "gofmt": 0,
+      "test": 0,
+      "node": 0,
+      "race": 143,
+      "s2": 0
+    },
+    "gofmt_files": [],
+    "s2_last_lines": [
+      "| N-NPM | PASS | argv=[\"npm\" \"run\" \"x\"] kabul=false durum=idle notice=\"Komut izinli de\u011fil. Go test/build/run/vet/version; Python dosyas\u0131/unittest/py_compile; Node dosyas\u0131/test/check desteklenir. Ba\u011f\u0131ml\u0131l\u0131klar otomatik kurulmaz.\" |",
+      "",
+      "Toplam: PASS=36 FAIL=0 BLOCKED=0",
+      "Sonu\u00e7lar: /workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/checks-stack12/s2"
+    ]
+  }
+}

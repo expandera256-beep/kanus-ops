@@ -1,0 +1,10 @@
+{
+  "15424693010660": {"plan":"monthly","credits":200,"days":30,"price_try":18900},
+  "15424693108964": {"plan":"hourly","seconds":3600,"days":30,"price_try":1990},
+  "15428080632036": {"plan":"credit","credits":1,"days":90,"price_try":149},
+  "15428080664804": {"plan":"credit","credits":5,"days":90,"price_try":695},
+  "15428084170980": {"plan":"credit","credits":10,"days":90,"price_try":1290},
+  "15432761344228": {"plan":"credit","credits":25,"days":180,"price_try":2990},
+  "15432761409764": {"plan":"credit","credits":50,"days":180,"price_try":5490},
+  "15432761442532": {"plan":"credit","credits":100,"days":365,"price_try":9900}
+}

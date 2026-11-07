@@ -1,0 +1,116 @@
+{
+  "us-watchdog": {
+    "revision": "us-watchdog-00007-fnc",
+    "traffic": [
+      {
+        "latestRevision": true,
+        "percent": 100,
+        "revisionName": "us-watchdog-00007-fnc"
+      }
+    ],
+    "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway:2026-11-08-readywindow",
+    "service_account": "us-watchdog@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "url": "https://us-watchdog-iqhblf63dq-ez.a.run.app",
+    "command": [
+      "gcloud",
+      "run",
+      "services",
+      "describe",
+      "us-watchdog",
+      "--project=project-27082a40-6083-4952-9db",
+      "--region=europe-west4",
+      "--format=json"
+    ],
+    "time_istanbul": "2026-11-08T00:37:13.729443+03:00",
+    "immutable_image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:f8a85dbcdee57c0d21639feed0b722beac1ab4b9d94781a06a9d1fb85011e1a6",
+    "ready_conditions": [
+      {
+        "lastTransitionTime": "2026-11-07T21:33:52.084757Z",
+        "message": "Deploying revision succeeded in 9.89s.",
+        "status": "True",
+        "type": "Ready"
+      },
+      {
+        "lastTransitionTime": "2026-11-07T21:33:52.193597Z",
+        "severity": "Info",
+        "status": "True",
+        "type": "Active"
+      },
+      {
+        "lastTransitionTime": "2026-11-07T21:33:51.994520Z",
+        "message": "Containers became healthy in 5.04s.",
+        "status": "True",
+        "type": "ContainerHealthy"
+      },
+      {
+        "lastTransitionTime": "2026-11-07T21:33:44.090706Z",
+        "message": "Container image import completed in 1.29s.",
+        "status": "True",
+        "type": "ContainerReady"
+      },
+      {
+        "lastTransitionTime": "2026-11-07T21:33:46.176514Z",
+        "message": "Provisioning imported containers completed in 2.09s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+        "status": "True",
+        "type": "ResourcesAvailable"
+      }
+    ]
+  },
+  "us-commerce": {
+    "revision": "us-commerce-00002-pr2",
+    "traffic": [
+      {
+        "latestRevision": true,
+        "percent": 100,
+        "revisionName": "us-commerce-00002-pr2"
+      }
+    ],
+    "image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+    "service_account": "us-gateway@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "url": "https://us-commerce-iqhblf63dq-ez.a.run.app",
+    "command": [
+      "gcloud",
+      "run",
+      "services",
+      "describe",
+      "us-commerce",
+      "--project=project-27082a40-6083-4952-9db",
+      "--region=europe-west4",
+      "--format=json"
+    ],
+    "time_istanbul": "2026-11-08T00:37:15.295450+03:00",
+    "immutable_image": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+    "ready_conditions": [
+      {
+        "lastTransitionTime": "2026-11-05T21:17:52.925121Z",
+        "message": "Deploying revision succeeded in 11.04s.",
+        "status": "True",
+        "type": "Ready"
+      },
+      {
+        "lastTransitionTime": "2026-11-05T21:17:53.075797Z",
+        "severity": "Info",
+        "status": "True",
+        "type": "Active"
+      },
+      {
+        "lastTransitionTime": "2026-11-05T21:17:52.867736Z",
+        "message": "Containers became healthy in 5.13s.",
+        "status": "True",
+        "type": "ContainerHealthy"
+      },
+      {
+        "lastTransitionTime": "2026-11-05T21:17:43.865050Z",
+        "message": "Container image import completed in 1.26s.",
+        "status": "True",
+        "type": "ContainerReady"
+      },
+      {
+        "lastTransitionTime": "2026-11-05T21:17:46.949033Z",
+        "message": "Provisioning imported containers completed in 3.08s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+        "status": "True",
+        "type": "ResourcesAvailable"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "test": {
+    "counts": {
+      "pass": 453,
+      "skip": 7
+    },
+    "skips": [
+      "TestPHPLicenseMatchesThePanel",
+      "TestLiveDoorAnswers",
+      "TestOfficialREAInspectsOwnedFile",
+      "TestRealModelPanelMultiFileRepair",
+      "TestRealModelPanelBuildRentalProject",
+      "TestTaskStateCrashChild",
+      "TestStoreWriterProcess"
+    ],
+    "packages": {
+      "kiyas": "pass",
+      "kiyas/cmd/us-license-hook": "pass",
+      "kiyas/licensesrv": "pass"
+    }
+  },
+  "race": {
+    "counts": {
+      "pass": 453,
+      "skip": 7
+    },
+    "skips": [
+      "TestPHPLicenseMatchesThePanel",
+      "TestLiveDoorAnswers",
+      "TestOfficialREAInspectsOwnedFile",
+      "TestRealModelPanelMultiFileRepair",
+      "TestRealModelPanelBuildRentalProject",
+      "TestTaskStateCrashChild",
+      "TestStoreWriterProcess"
+    ],
+    "packages": {
+      "kiyas": "pass",
+      "kiyas/cmd/us-license-hook": "pass",
+      "kiyas/licensesrv": "pass"
+    }
+  },
+  "manifest_files": 205
+}

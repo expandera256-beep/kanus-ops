@@ -1,0 +1,436 @@
+[
+  {
+    "credit_name": "FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-885.067666", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-01", 
+    "service": "Compute Engine"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-201.76085000000003", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-01", 
+    "service": "Compute Engine"
+  }, 
+  {
+    "credit_name": "VM Manager - Free usage for Cloud Ops.", 
+    "credit_try": "-3.562614", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-01", 
+    "service": "VM Manager"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Network Analyzer until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Analyzer SKU)", 
+    "credit_try": "-2.8866759999999996", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-01", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Topology and Performance Dashboard until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Topology and Performance Dashboard SKU)", 
+    "credit_try": "-2.886674", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-01", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Internet to Google Cloud Performance until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Internet to Google Cloud Performance SKU)", 
+    "credit_try": "-2.099401", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-01", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "0.0", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-01", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-1532.573129", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-02", 
+    "service": "Compute Engine"
+  }, 
+  {
+    "credit_name": "VM Manager - Free usage for Cloud Ops.", 
+    "credit_try": "-3.5882639999999997", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-02", 
+    "service": "VM Manager"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Topology and Performance Dashboard until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Topology and Performance Dashboard SKU)", 
+    "credit_try": "-3.563329", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-02", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Network Analyzer until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Analyzer SKU)", 
+    "credit_try": "-3.5633270000000006", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-02", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Internet to Google Cloud Performance until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Internet to Google Cloud Performance SKU)", 
+    "credit_try": "-2.5915079999999993", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-02", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "0.0", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-02", 
+    "service": "Cloud Logging"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-1820.9619630000016", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-03", 
+    "service": "Compute Engine"
+  }, 
+  {
+    "credit_name": "VM Manager - Free usage for Cloud Ops.", 
+    "credit_try": "-3.5882639999999992", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-03", 
+    "service": "VM Manager"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Topology and Performance Dashboard until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Topology and Performance Dashboard SKU)", 
+    "credit_try": "-3.5085029999999997", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-03", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Network Analyzer until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Analyzer SKU)", 
+    "credit_try": "-3.508502", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-03", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-2.785169", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-03", 
+    "service": "Cloud Storage"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Internet to Google Cloud Performance until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Internet to Google Cloud Performance SKU)", 
+    "credit_try": "-2.5516379999999996", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-03", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "0.0", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-03", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-2253.5997639999996", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-04", 
+    "service": "Compute Engine"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-7.803666000000001", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-04", 
+    "service": "Cloud Storage"
+  }, 
+  {
+    "credit_name": "VM Manager - Free usage for Cloud Ops.", 
+    "credit_try": "-3.5882639999999997", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-04", 
+    "service": "VM Manager"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Topology and Performance Dashboard until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Topology and Performance Dashboard SKU)", 
+    "credit_try": "-3.3988630000000004", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-04", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Network Analyzer until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Analyzer SKU)", 
+    "credit_try": "-3.398861", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-04", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Internet to Google Cloud Performance until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Internet to Google Cloud Performance SKU)", 
+    "credit_try": "-2.4719010000000003", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-04", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "0.0", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-04", 
+    "service": "VM Manager"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "4.235164736271502E-22", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-04", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-3270.0437170000023", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-05", 
+    "service": "Compute Engine"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-7.91272", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-05", 
+    "service": "Cloud Storage"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Network Analyzer until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Analyzer SKU)", 
+    "credit_try": "-3.947063999999999", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-05", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Topology and Performance Dashboard until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Topology and Performance Dashboard SKU)", 
+    "credit_try": "-3.947061999999999", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-05", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "VM Manager - Free usage for Cloud Ops.", 
+    "credit_try": "-3.5882639999999997", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-05", 
+    "service": "VM Manager"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Internet to Google Cloud Performance until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Internet to Google Cloud Performance SKU)", 
+    "credit_try": "-2.8705909999999992", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-05", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-2.1835380000000004", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-05", 
+    "service": "Cloud SQL"
+  }, 
+  {
+    "credit_name": "CPU Allocation Time", 
+    "credit_try": "-0.026312000000000002", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-05", 
+    "service": "Cloud Run"
+  }, 
+  {
+    "credit_name": "Memory Allocation Time", 
+    "credit_try": "-0.001369", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-05", 
+    "service": "Cloud Run"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "0.0", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-05", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-935.573435999999", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-06", 
+    "service": "Compute Engine"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-90.611698", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-06", 
+    "service": "Cloud SQL"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-7.683978", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-06", 
+    "service": "Cloud Storage"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Network Analyzer until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Analyzer SKU)", 
+    "credit_try": "-2.3024490000000006", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-06", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Topology and Performance Dashboard until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Topology and Performance Dashboard SKU)", 
+    "credit_try": "-2.3024490000000006", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-06", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Internet to Google Cloud Performance until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Internet to Google Cloud Performance SKU)", 
+    "credit_try": "-1.6745069999999995", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-06", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "VM Manager - Free usage for Cloud Ops.", 
+    "credit_try": "-1.3455989999999998", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-06", 
+    "service": "VM Manager"
+  }, 
+  {
+    "credit_name": "CPU Allocation Time", 
+    "credit_try": "-0.674803", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-06", 
+    "service": "Cloud Run"
+  }, 
+  {
+    "credit_name": "Memory Allocation Time", 
+    "credit_try": "-0.035115999999999994", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-06", 
+    "service": "Cloud Run"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-1.61E-4", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-06", 
+    "service": "Artifact Registry"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-2.0E-6", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-06", 
+    "service": "Cloud Run"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "0.0", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-06", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "0.0", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-06", 
+    "service": "VM Manager"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "0.0", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-06", 
+    "service": "Secret Manager"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-58.49549100000004", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-07", 
+    "service": "Cloud SQL"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-18.73043700000001", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-07", 
+    "service": "Compute Engine"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "-7.683982", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-07", 
+    "service": "Cloud Storage"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Network Analyzer until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Analyzer SKU)", 
+    "credit_try": "-1.0415799999999997", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-07", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Topology and Performance Dashboard until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Network Topology and Performance Dashboard SKU)", 
+    "credit_try": "-1.0415799999999997", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-07", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "100% discount for Network Intelligence Center Internet to Google Cloud Performance until billing comes into effect on October 1, 2023 (billing activated only if you have subscribed to the Internet to Google Cloud Performance SKU)", 
+    "credit_try": "-0.7575110000000002", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-07", 
+    "service": "Networking"
+  }, 
+  {
+    "credit_name": "CPU Allocation Time", 
+    "credit_try": "-0.44636", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-07", 
+    "service": "Cloud Run"
+  }, 
+  {
+    "credit_name": "Memory Allocation Time", 
+    "credit_try": "-0.023229999999999997", 
+    "credit_type": "DISCOUNT", 
+    "day": "2026-11-07", 
+    "service": "Cloud Run"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "0.0", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-07", 
+    "service": "Cloud Logging"
+  }, 
+  {
+    "credit_name": "FreeTrialUpgrade:CreditId-FreeTrial:Credit-017786-B62E9C-E21182", 
+    "credit_try": "0.0", 
+    "credit_type": "PROMOTION", 
+    "day": "2026-11-07", 
+    "service": "Cloud Run"
+  }
+]

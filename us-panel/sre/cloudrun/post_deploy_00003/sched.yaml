@@ -1,0 +1,25 @@
+attemptDeadline: 300s
+httpTarget:
+  body: e30=
+  headers:
+    Content-Type: application/octet-stream
+    User-Agent: Google-Cloud-Scheduler
+  httpMethod: POST
+  oidcToken:
+    audience: https://us-watchdog-iqhblf63dq-ez.a.run.app
+    serviceAccountEmail: us-scheduler@project-27082a40-6083-4952-9db.iam.gserviceaccount.com
+  uri: https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile
+lastAttemptTime: '2026-11-07T21:10:03.260344Z'
+name: projects/project-27082a40-6083-4952-9db/locations/europe-west4/jobs/us-idle-watchdog
+retryConfig:
+  maxBackoffDuration: 60s
+  maxDoublings: 5
+  maxRetryDuration: 0s
+  minBackoffDuration: 60s
+  retryCount: 1
+schedule: '* * * * *'
+scheduleTime: '2026-11-07T21:11:02.499654Z'
+state: ENABLED
+status: {}
+timeZone: UTC
+userUpdateTime: '2026-11-05T20:45:04.313704Z'

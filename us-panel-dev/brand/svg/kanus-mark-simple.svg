@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Kanus US unicursal hexagram">
+<rect width="512" height="512" rx="61.44" fill="#05070f"/>
+<defs>
+<linearGradient id="strokeGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c084fc"/><stop offset="50%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#a855f7"/></linearGradient>
+<radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#7c3aed" stop-opacity="0.35"/><stop offset="70%" stop-color="#1d4ed8" stop-opacity="0.10"/><stop offset="100%" stop-color="#05070f" stop-opacity="0"/></radialGradient>
+<linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
+</defs>
+<path d="M 256.000000,51.200000 L 425.599431,342.309547 L 86.400569,169.690453 L 256.000000,460.800000 L 425.599431,169.690453 L 86.400569,342.309547 L 256.000000,51.200000" fill="none" stroke="url(#strokeGrad)" stroke-width="28.160" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

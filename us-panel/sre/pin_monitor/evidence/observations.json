@@ -1,0 +1,138 @@
+{
+  "api-test.kanus.org": {
+    "host": "api-test.kanus.org",
+    "observed_at": "2026-11-07T22:22:20.271534+00:00",
+    "chain": [
+      {
+        "spki": "/mDQtXQR7xQxXMCtk3hPpVy9EvYNgIYODuGXjxl1cjc=",
+        "subject": "CN=api-test.kanus.org",
+        "issuer": "CN=YE1,O=Let's Encrypt,C=US",
+        "notAfter": "2027-02-04T00:48:11+00:00",
+        "notBefore": "2026-11-06T00:48:12+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": [
+          "api-test.kanus.org"
+        ]
+      },
+      {
+        "spki": "brzvtCELCIZUo4sD/qPX0ccRtPsd3DY6RfmxpOU9oB4=",
+        "subject": "CN=YE1,O=Let's Encrypt,C=US",
+        "issuer": "CN=Root YE,O=ISRG,C=US",
+        "notAfter": "2028-09-02T23:59:59+00:00",
+        "notBefore": "2025-09-03T00:00:00+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": []
+      },
+      {
+        "spki": "sCkq5UWXjg+7mKu9lMhhYF5bGLsy7VI/UNW3tccdR7w=",
+        "subject": "CN=Root YE,O=ISRG,C=US",
+        "issuer": "CN=ISRG Root X2,O=Internet Security Research Group,C=US",
+        "notAfter": "2032-09-02T23:59:59+00:00",
+        "notBefore": "2026-05-13T00:00:00+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": []
+      },
+      {
+        "spki": "diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI=",
+        "subject": "CN=ISRG Root X2,O=Internet Security Research Group,C=US",
+        "issuer": "CN=ISRG Root X1,O=Internet Security Research Group,C=US",
+        "notAfter": "2032-09-02T23:59:59+00:00",
+        "notBefore": "2026-05-13T00:00:00+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": []
+      }
+    ],
+    "tls_verified": true
+  },
+  "api.kanus.org": {
+    "host": "api.kanus.org",
+    "observed_at": "2026-11-07T22:22:20.619541+00:00",
+    "chain": [
+      {
+        "spki": "RMWkVD8VDAnv0bthc/pfT0BDB54THxSNo6UcGicoRTI=",
+        "subject": "CN=api.kanus.org",
+        "issuer": "CN=YE1,O=Let's Encrypt,C=US",
+        "notAfter": "2027-02-04T05:13:20+00:00",
+        "notBefore": "2026-11-06T05:13:21+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": [
+          "api.kanus.org"
+        ]
+      },
+      {
+        "spki": "brzvtCELCIZUo4sD/qPX0ccRtPsd3DY6RfmxpOU9oB4=",
+        "subject": "CN=YE1,O=Let's Encrypt,C=US",
+        "issuer": "CN=Root YE,O=ISRG,C=US",
+        "notAfter": "2028-09-02T23:59:59+00:00",
+        "notBefore": "2025-09-03T00:00:00+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": []
+      },
+      {
+        "spki": "sCkq5UWXjg+7mKu9lMhhYF5bGLsy7VI/UNW3tccdR7w=",
+        "subject": "CN=Root YE,O=ISRG,C=US",
+        "issuer": "CN=ISRG Root X2,O=Internet Security Research Group,C=US",
+        "notAfter": "2032-09-02T23:59:59+00:00",
+        "notBefore": "2026-05-13T00:00:00+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": []
+      },
+      {
+        "spki": "diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI=",
+        "subject": "CN=ISRG Root X2,O=Internet Security Research Group,C=US",
+        "issuer": "CN=ISRG Root X1,O=Internet Security Research Group,C=US",
+        "notAfter": "2032-09-02T23:59:59+00:00",
+        "notBefore": "2026-05-13T00:00:00+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": []
+      }
+    ],
+    "tls_verified": true
+  },
+  "kanus.org": {
+    "host": "kanus.org",
+    "observed_at": "2026-11-07T22:22:21.087552+00:00",
+    "chain": [
+      {
+        "spki": "GdXXNrVDeARQ//2r0Zap3bV/ZkrGAxBVUAmKfZPrNHg=",
+        "subject": "CN=kanus.org",
+        "issuer": "CN=YE1,O=Let's Encrypt,C=US",
+        "notAfter": "2027-01-31T15:28:13+00:00",
+        "notBefore": "2026-11-02T15:28:14+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": [
+          "kanus.org",
+          "www.kanus.org"
+        ]
+      },
+      {
+        "spki": "brzvtCELCIZUo4sD/qPX0ccRtPsd3DY6RfmxpOU9oB4=",
+        "subject": "CN=YE1,O=Let's Encrypt,C=US",
+        "issuer": "CN=Root YE,O=ISRG,C=US",
+        "notAfter": "2028-09-02T23:59:59+00:00",
+        "notBefore": "2025-09-03T00:00:00+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": []
+      },
+      {
+        "spki": "sCkq5UWXjg+7mKu9lMhhYF5bGLsy7VI/UNW3tccdR7w=",
+        "subject": "CN=Root YE,O=ISRG,C=US",
+        "issuer": "CN=ISRG Root X2,O=Internet Security Research Group,C=US",
+        "notAfter": "2032-09-02T23:59:59+00:00",
+        "notBefore": "2026-05-13T00:00:00+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": []
+      },
+      {
+        "spki": "diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI=",
+        "subject": "CN=ISRG Root X2,O=Internet Security Research Group,C=US",
+        "issuer": "CN=ISRG Root X1,O=Internet Security Research Group,C=US",
+        "notAfter": "2032-09-02T23:59:59+00:00",
+        "notBefore": "2026-05-13T00:00:00+00:00",
+        "key_type": "ECPublicKey",
+        "SAN": []
+      }
+    ],
+    "tls_verified": true
+  }
+}

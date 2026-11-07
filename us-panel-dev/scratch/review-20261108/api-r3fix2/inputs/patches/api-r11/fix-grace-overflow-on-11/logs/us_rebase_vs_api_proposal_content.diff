@@ -1,0 +1,10 @@
+1d0
+< new file mode 100644
+98,99c97,98
+<  	if s.st.UsageEvents == nil {
+<  		s.st.UsageEvents = []UsageEvent{}
+---
+>  	if s.st.LicenseOwners == nil {
+>  		s.st.LicenseOwners = map[string]string{}
+201d199
+< new file mode 100644

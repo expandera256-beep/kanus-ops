@@ -1,0 +1,28 @@
+{"Time":"2026-11-08T01:30:19.358602712+03:00","Action":"start","Package":"kiyas/internal/privacy"}
+{"Time":"2026-11-08T01:30:19.367289112+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort"}
+{"Time":"2026-11-08T01:30:19.367367046+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort","Output":"=== RUN   TestReviewInvalidOriginPort\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:30:19.367461088+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://localhost:65536"}
+{"Time":"2026-11-08T01:30:19.367473137+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://localhost:65536","Output":"=== RUN   TestReviewInvalidOriginPort/http://localhost:65536\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:30:19.367694331+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://localhost:65536","Output":"2026/11/08 01:30:19 privacy origin allowlist: invalid entry ignored (index 0)\n"}
+{"Time":"2026-11-08T01:30:19.367760379+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://localhost:65536","Output":"--- PASS: TestReviewInvalidOriginPort/http://localhost:65536 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:30:19.367793882+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://localhost:65536","Elapsed":0}
+{"Time":"2026-11-08T01:30:19.367827509+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://[::1]:65536"}
+{"Time":"2026-11-08T01:30:19.367835725+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://[::1]:65536","Output":"=== RUN   TestReviewInvalidOriginPort/http://[::1]:65536\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:30:19.367910134+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://[::1]:65536","Output":"2026/11/08 01:30:19 privacy origin allowlist: invalid entry ignored (index 0)\n"}
+{"Time":"2026-11-08T01:30:19.367957441+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://[::1]:65536","Output":"--- PASS: TestReviewInvalidOriginPort/http://[::1]:65536 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:30:19.367983777+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://[::1]:65536","Elapsed":0}
+{"Time":"2026-11-08T01:30:19.368013518+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/https://api.example:65536"}
+{"Time":"2026-11-08T01:30:19.368021343+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/https://api.example:65536","Output":"=== RUN   TestReviewInvalidOriginPort/https://api.example:65536\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:30:19.368081459+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/https://api.example:65536","Output":"2026/11/08 01:30:19 privacy origin allowlist: invalid entry ignored (index 0)\n"}
+{"Time":"2026-11-08T01:30:19.368123147+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/https://api.example:65536","Output":"--- PASS: TestReviewInvalidOriginPort/https://api.example:65536 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:30:19.368148521+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/https://api.example:65536","Elapsed":0}
+{"Time":"2026-11-08T01:30:19.368175382+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://localhost:"}
+{"Time":"2026-11-08T01:30:19.368182408+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://localhost:","Output":"=== RUN   TestReviewInvalidOriginPort/http://localhost:\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:30:19.368257516+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://localhost:","Output":"2026/11/08 01:30:19 privacy origin allowlist: invalid entry ignored (index 0)\n"}
+{"Time":"2026-11-08T01:30:19.368293599+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://localhost:","Output":"--- PASS: TestReviewInvalidOriginPort/http://localhost: (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:30:19.368319875+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort/http://localhost:","Elapsed":0}
+{"Time":"2026-11-08T01:30:19.368358392+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort","Output":"--- PASS: TestReviewInvalidOriginPort (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:30:19.368386592+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestReviewInvalidOriginPort","Elapsed":0}
+{"Time":"2026-11-08T01:30:19.368461288+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:30:20.369957812+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"ok  \tkiyas/internal/privacy\t1.011s\n"}
+{"Time":"2026-11-08T01:30:20.370019579+03:00","Action":"pass","Package":"kiyas/internal/privacy","Elapsed":1.011}

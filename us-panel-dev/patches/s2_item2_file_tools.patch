@@ -1,0 +1,395 @@
+diff -ruN -x kiyas -x '*.exe' snap_item1/change_history.go snap_item2/change_history.go
+--- snap_item1/change_history.go	2026-11-05 02:33:56.000000000 +0300
++++ snap_item2/change_history.go	2026-11-06 08:33:15.438829331 +0300
+@@ -69,15 +69,7 @@
+ }
+ 
+ func writeModelFile(root, full string, data []byte) error {
+-	if err := noSymlinkPath(root,full); err != nil { return err }
+-	if err := os.MkdirAll(filepath.Dir(full),0755); err != nil { return err }
+-	if err := noSymlinkPath(root,full); err != nil { return err }
+-	mode := os.FileMode(0644)
+-	if info, err := os.Stat(full); err == nil { mode = info.Mode().Perm() }
+-	f, err := os.CreateTemp(filepath.Dir(full),".us-write-*"); if err != nil { return err }
+-	tmp := f.Name(); defer os.Remove(tmp)
+-	if err = f.Chmod(mode); err == nil { _, err = f.Write(data) }; if closeErr := f.Close(); err == nil { err = closeErr }; if err != nil { return err }
+-	return os.Rename(tmp,full)
++	return atomicWriteFile(root, full, data)
+ }
+ 
+ func undoLastChange(root string) (string, error) {
+diff -ruN -x kiyas -x '*.exe' snap_item1/desk.go snap_item2/desk.go
+--- snap_item1/desk.go	2026-11-05 14:22:32.000000000 +0300
++++ snap_item2/desk.go	2026-11-06 08:33:15.438829331 +0300
+@@ -114,23 +114,23 @@
+ 		s.notice = "Dosya klasörün dışında."
+ 		return
+ 	}
+-	prev, _ := os.ReadFile(path)
+-	if len(prev)+len(text) > 256*1024 {
+-		s.notice = "Metin büyük. Eklenmedi."
++	prev, err := os.ReadFile(path)
++	if err != nil && !os.IsNotExist(err) {
++		s.notice = "Dosya okunamadı."
+ 		return
+ 	}
+-	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+-		s.notice = "Klasör açılmadı."
++	if len(prev)+len(text) > 256*1024 {
++		s.notice = "Metin büyük. Eklenmedi."
+ 		return
+ 	}
+-	f, err := os.OpenFile(path, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o644)
++	next := append(append([]byte{}, prev...), text...)
++	record, err := recordChange(s.root, relPath(s.root, path), next)
+ 	if err != nil {
+-		s.notice = "Dosya yazılamadı."
++		s.notice = "Dosya yedeği oluşturulamadı."
+ 		return
+ 	}
+-	_, err = f.WriteString(text)
+-	_ = f.Close()
+-	if err != nil {
++	if err := writeModelFile(s.root, path, next); err != nil {
++		_ = os.Remove(record)
+ 		s.notice = "Dosya yazılamadı."
+ 		return
+ 	}
+diff -ruN -x kiyas -x '*.exe' snap_item1/file_tools.go snap_item2/file_tools.go
+--- snap_item1/file_tools.go	1970-01-01 02:00:00.000000000 +0200
++++ snap_item2/file_tools.go	2026-11-06 08:33:45.386168577 +0300
+@@ -0,0 +1,201 @@
++package main
++
++import (
++	"errors"
++	"io"
++	"os"
++	"path/filepath"
++	"strings"
++)
++
++// Root-confined file tools for the agent/editor paths. Every path is
++// resolved relative to one workspace root; "..", absolute paths outside the
++// root and any symlink component are refused. Writes are atomic
++// (temp file + fsync + rename + dir fsync) and size-limited.
++
++const (
++	fileToolMaxRead  = 8 << 20
++	fileToolMaxWrite = maxBackupBytes // restores of backed-up files must still fit
++)
++
++var errFileToolEscape = errors.New("yol çalışma klasörünün dışında")
++
++type fileTools struct {
++	Root     string
++	MaxRead  int64
++	MaxWrite int64
++}
++
++func newFileTools(root string) (*fileTools, error) {
++	if strings.TrimSpace(root) == "" || refusedFolder(root) {
++		return nil, errors.New("geçerli proje klasörü yok")
++	}
++	abs, err := filepath.Abs(root)
++	if err != nil {
++		return nil, err
++	}
++	info, err := os.Lstat(abs)
++	if err != nil || !info.IsDir() || info.Mode()&os.ModeSymlink != 0 {
++		return nil, errors.New("geçersiz çalışma klasörü")
++	}
++	return &fileTools{Root: abs, MaxRead: fileToolMaxRead, MaxWrite: fileToolMaxWrite}, nil
++}
++
++// resolve maps rel to a full path inside Root or returns errFileToolEscape.
++func (ft *fileTools) resolve(rel string) (string, error) {
++	rel = strings.TrimSpace(rel)
++	if rel == "" || strings.ContainsRune(rel, 0) {
++		return "", errFileToolEscape
++	}
++	for _, part := range strings.Split(strings.ReplaceAll(rel, `\`, "/"), "/") {
++		if part == ".." {
++			return "", errFileToolEscape
++		}
++	}
++	full := rel
++	if !filepath.IsAbs(full) {
++		full = filepath.Join(ft.Root, filepath.FromSlash(rel))
++	}
++	full = filepath.Clean(full)
++	if full == ft.Root || !insideRoot(ft.Root, full) {
++		return "", errFileToolEscape
++	}
++	if err := noSymlinkPath(ft.Root, full); err != nil {
++		return "", errFileToolEscape
++	}
++	// Defence in depth: the deepest existing ancestor must resolve inside.
++	probe := full
++	for {
++		if _, err := os.Lstat(probe); err == nil {
++			break
++		}
++		next := filepath.Dir(probe)
++		if next == probe {
++			break
++		}
++		probe = next
++	}
++	realRoot, err := filepath.EvalSymlinks(ft.Root)
++	if err != nil {
++		return "", errFileToolEscape
++	}
++	realProbe, err := filepath.EvalSymlinks(probe)
++	if err != nil || (realProbe != realRoot && !insideRoot(realRoot, realProbe)) {
++		return "", errFileToolEscape
++	}
++	return full, nil
++}
++
++func (ft *fileTools) Read(rel string) ([]byte, error) {
++	full, err := ft.resolve(rel)
++	if err != nil {
++		return nil, err
++	}
++	f, err := os.OpenFile(full, os.O_RDONLY, 0)
++	if err != nil {
++		return nil, err
++	}
++	defer f.Close()
++	info, err := f.Stat()
++	if err != nil || !info.Mode().IsRegular() {
++		return nil, errors.New("normal dosya değil")
++	}
++	if info.Size() > ft.MaxRead {
++		return nil, errors.New("dosya okuma sınırını aşıyor")
++	}
++	body, err := io.ReadAll(io.LimitReader(f, ft.MaxRead+1))
++	if err != nil {
++		return nil, err
++	}
++	if int64(len(body)) > ft.MaxRead {
++		return nil, errors.New("dosya okuma sınırını aşıyor")
++	}
++	return body, nil
++}
++
++func (ft *fileTools) Write(rel string, data []byte) error {
++	if int64(len(data)) > ft.MaxWrite {
++		return errors.New("yazma boyut sınırı aşıldı")
++	}
++	full, err := ft.resolve(rel)
++	if err != nil {
++		return err
++	}
++	if info, err := os.Lstat(full); err == nil && !info.Mode().IsRegular() {
++		return errors.New("normal dosya değil")
++	}
++	return atomicWriteFile(ft.Root, full, data)
++}
++
++func (ft *fileTools) Delete(rel string) error {
++	full, err := ft.resolve(rel)
++	if err != nil {
++		return err
++	}
++	info, err := os.Lstat(full)
++	if err != nil {
++		return err
++	}
++	if !info.Mode().IsRegular() {
++		return errors.New("yalnız normal dosya silinir")
++	}
++	return os.Remove(full)
++}
++
++// atomicWriteFile writes via a synced temp file in the same directory and an
++// atomic rename. Readers see either the old or the new content, never a
++// partial file. writeTestHook lets tests simulate a crash mid-write.
++var atomicWriteTestHook func(tmp string) error
++
++func atomicWriteFile(root, full string, data []byte) error {
++	if int64(len(data)) > fileToolMaxWrite {
++		return errors.New("yazma boyut sınırı aşıldı")
++	}
++	if err := noSymlinkPath(root, full); err != nil {
++		return err
++	}
++	dir := filepath.Dir(full)
++	if err := os.MkdirAll(dir, 0o755); err != nil {
++		return err
++	}
++	if err := noSymlinkPath(root, full); err != nil {
++		return err
++	}
++	mode := os.FileMode(0o644)
++	if info, err := os.Lstat(full); err == nil {
++		mode = info.Mode().Perm()
++	}
++	f, err := os.CreateTemp(dir, ".us-write-*")
++	if err != nil {
++		return err
++	}
++	tmp := f.Name()
++	defer os.Remove(tmp)
++	if err = f.Chmod(mode); err == nil {
++		_, err = f.Write(data)
++	}
++	if err == nil {
++		err = f.Sync()
++	}
++	if closeErr := f.Close(); err == nil {
++		err = closeErr
++	}
++	if err == nil && atomicWriteTestHook != nil {
++		err = atomicWriteTestHook(tmp)
++	}
++	if err != nil {
++		return err
++	}
++	if err = os.Rename(tmp, full); err != nil {
++		return err
++	}
++	syncDir(dir)
++	return nil
++}
++
++func syncDir(dir string) {
++	if d, err := os.Open(dir); err == nil {
++		_ = d.Sync()
++		_ = d.Close()
++	}
++}
+diff -ruN -x kiyas -x '*.exe' snap_item1/file_tools_test.go snap_item2/file_tools_test.go
+--- snap_item1/file_tools_test.go	1970-01-01 02:00:00.000000000 +0200
++++ snap_item2/file_tools_test.go	2026-11-06 08:33:35.938369433 +0300
+@@ -0,0 +1,129 @@
++package main
++
++import (
++	"errors"
++	"os"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++func TestFileToolsRefuseEscapes(t *testing.T) {
++	root := t.TempDir()
++	outside := t.TempDir()
++	if err := os.WriteFile(filepath.Join(outside, "secret.txt"), []byte("gizli"), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	ft, err := newFileTools(root)
++	if err != nil {
++		t.Fatal(err)
++	}
++	symOK := os.Symlink(outside, filepath.Join(root, "linkdir")) == nil
++	if symOK {
++		_ = os.Symlink(filepath.Join(outside, "secret.txt"), filepath.Join(root, "link.txt"))
++	}
++	bad := []string{"../x", "a/../../x", `..\x`, filepath.Join(outside, "secret.txt"), "/etc/passwd", "", "."}
++	if symOK {
++		bad = append(bad, "linkdir/secret.txt", "linkdir/new.txt", "link.txt")
++	}
++	for _, rel := range bad {
++		if _, err := ft.Read(rel); err == nil {
++			t.Fatalf("okuma kaçışı kabul edildi: %q", rel)
++		}
++		if err := ft.Write(rel, []byte("x")); err == nil {
++			t.Fatalf("yazma kaçışı kabul edildi: %q", rel)
++		}
++		if err := ft.Delete(rel); err == nil {
++			t.Fatalf("silme kaçışı kabul edildi: %q", rel)
++		}
++	}
++	if raw, _ := os.ReadFile(filepath.Join(outside, "secret.txt")); string(raw) != "gizli" {
++		t.Fatal("kök dışı dosya değişti")
++	}
++	if entries, _ := os.ReadDir(outside); len(entries) != 1 {
++		t.Fatal("kök dışına dosya yazıldı")
++	}
++	if _, err := newFileTools(filepath.Join(root, "linkdir")); symOK && err == nil {
++		t.Fatal("symlink kök kabul edildi")
++	}
++}
++
++func TestFileToolsAtomicWriteAndLimits(t *testing.T) {
++	root := t.TempDir()
++	ft, _ := newFileTools(root)
++	ft.MaxWrite = 1024
++	ft.MaxRead = 2048
++	if err := ft.Write("pkg/a.go", []byte("package a\n")); err != nil {
++		t.Fatal(err)
++	}
++	if got, err := ft.Read("pkg/a.go"); err != nil || string(got) != "package a\n" {
++		t.Fatalf("%q %v", got, err)
++	}
++	if err := ft.Write("pkg/big.txt", make([]byte, 1025)); err == nil {
++		t.Fatal("yazma sınırı uygulanmadı")
++	}
++	if err := os.WriteFile(filepath.Join(root, "huge.txt"), make([]byte, 4096), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	if _, err := ft.Read("huge.txt"); err == nil {
++		t.Fatal("okuma sınırı uygulanmadı")
++	}
++	// Simulated crash between temp write and rename: original stays intact,
++	// no partial or temp file remains.
++	atomicWriteTestHook = func(string) error { return errors.New("çökme simülasyonu") }
++	err := ft.Write("pkg/a.go", []byte("package a // YARIM"))
++	atomicWriteTestHook = nil
++	if err == nil {
++		t.Fatal("çökme simülasyonu hata vermedi")
++	}
++	if got, _ := os.ReadFile(filepath.Join(root, "pkg", "a.go")); string(got) != "package a\n" {
++		t.Fatalf("kısmi yazım görünür: %q", got)
++	}
++	entries, _ := os.ReadDir(filepath.Join(root, "pkg"))
++	for _, e := range entries {
++		if strings.HasPrefix(e.Name(), ".us-write-") {
++			t.Fatal("geçici dosya kaldı")
++		}
++	}
++	if err := ft.Delete("pkg/a.go"); err != nil {
++		t.Fatal(err)
++	}
++}
++
++func TestFileToolsWorkspacesAreSeparate(t *testing.T) {
++	a, b := t.TempDir(), t.TempDir()
++	fa, _ := newFileTools(a)
++	fb, _ := newFileTools(b)
++	if err := fa.Write("x.txt", []byte("A")); err != nil {
++		t.Fatal(err)
++	}
++	if _, err := fb.Read(filepath.Join(a, "x.txt")); err == nil {
++		t.Fatal("B çalışma alanı A dosyasını okudu")
++	}
++	if _, err := fb.Read("x.txt"); err == nil {
++		t.Fatal("B'de olmayan dosya okundu")
++	}
++}
++
++func TestAppendFileIsAtomicAndBackedUp(t *testing.T) {
++	root := t.TempDir()
++	if err := os.WriteFile(filepath.Join(root, "n.txt"), []byte("bir\n"), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	s := newView("q-append")
++	s.root = root
++	s.appendFile("n.txt", "iki\n")
++	if got, _ := os.ReadFile(filepath.Join(root, "n.txt")); string(got) != "bir\niki\n" {
++		t.Fatalf("%q notice=%q", got, s.notice)
++	}
++	hist, _ := os.ReadDir(filepath.Join(root, changeHistoryDir))
++	if len(hist) == 0 {
++		t.Fatal("ekleme öncesi yedek yok")
++	}
++	if os.Symlink(t.TempDir(), filepath.Join(root, "dis")) == nil {
++		s.appendFile("dis/y.txt", "x")
++		if _, err := os.Stat(filepath.Join(root, "dis", "y.txt")); err == nil {
++			t.Fatal("symlink üzerinden ekleme yapıldı")
++		}
++	}
++}

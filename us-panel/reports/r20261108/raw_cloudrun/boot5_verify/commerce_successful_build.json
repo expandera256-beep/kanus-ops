@@ -1,0 +1,28 @@
+{
+  "createTime": "2026-11-07T21:46:46.473430302Z",
+  "finishTime": "2026-11-07T21:47:09.057773Z",
+  "id": "dda56d30-c325-47d9-8689-c21cb9a63583",
+  "results": {
+    "images": [
+      {
+        "artifactRegistryPackage": "projects/project-27082a40-6083-4952-9db/locations/europe-west4/repositories/us-runtime/packages/gateway/versions/sha256:2416ec71eb4e16c3da4c1d9866cb3c7393ce8819efd043e8b1f28bf9a8bfdbab",
+        "digest": "sha256:2416ec71eb4e16c3da4c1d9866cb3c7393ce8819efd043e8b1f28bf9a8bfdbab",
+        "name": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway:2026-11-08-sre-commerce-ready",
+        "pushTiming": {
+          "endTime": "2026-11-07T21:47:07.668937926Z",
+          "startTime": "2026-11-07T21:47:01.390002733Z"
+        }
+      }
+    ]
+  },
+  "serviceAccount": "projects/project-27082a40-6083-4952-9db/serviceAccounts/us-builder@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+  "source": {
+    "storageSource": {
+      "bucket": "us-build-247516932580-euw4",
+      "generation": "1794088005398139",
+      "object": "source/1794088004.003762-e8df64b7e8e04497ab99d92827e473d4.tgz"
+    }
+  },
+  "startTime": "2026-11-07T21:46:47.599635433Z",
+  "status": "SUCCESS"
+}

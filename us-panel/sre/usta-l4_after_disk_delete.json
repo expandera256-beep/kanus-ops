@@ -1,0 +1,98 @@
+{
+  "canIpForward": false,
+  "cpuPlatform": "Unknown CPU Platform",
+  "creationTimestamp": "2026-11-01T10:06:49.210-08:00",
+  "deletionProtection": false,
+  "fingerprint": "GpChddzxXEg=",
+  "guestAccelerators": [
+    {
+      "acceleratorCount": 1,
+      "acceleratorType": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-a/acceleratorTypes/nvidia-l4"
+    }
+  ],
+  "id": "3469850072249450839",
+  "kind": "compute#instance",
+  "labelFingerprint": "QU5IcIbSXuM=",
+  "labels": {
+    "role": "usta-gpu"
+  },
+  "lastStartTimestamp": "2026-11-02T10:26:32.003-08:00",
+  "lastStopTimestamp": "2026-11-02T16:09:32.807-08:00",
+  "machineType": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-a/machineTypes/g2-standard-4",
+  "metadata": {
+    "fingerprint": "TT9_koO5hRI=",
+    "items": [
+      {
+        "key": "startup-script",
+        "value": "#!/bin/bash\nset -eu\nexec > /var/log/usta-l4-setup.log 2>&1\necho \"boot $(date -u +%Y-%m-%dT%H:%M:%SZ)\"\nfor i in $(seq 1 40); do\n  if nvidia-smi >/dev/null 2>&1; then\n    echo \"nvidia ready on try $i\"\n    break\n  fi\n  echo \"waiting for nvidia $i\"\n  sleep 5\ndone\nnvidia-smi\nsystemctl enable ollama\nif curl -sf --max-time 2 http://127.0.0.1:11434/api/tags >/dev/null; then\n  echo \"ollama already listening, leave it running\"\nelse\n  systemctl restart ollama\n  for i in $(seq 1 30); do\n    if curl -sf --max-time 2 http://127.0.0.1:11434/api/tags >/dev/null; then\n      break\n    fi\n    sleep 2\n  done\nfi\nif ! sudo -u ollama env HOME=/usr/share/ollama /usr/local/bin/ollama list | grep -q usta-q5; then\n  echo \"usta-q5 missing\"\n  exit 1\nfi\necho \"usta-q5 present $(date -u +%Y-%m-%dT%H:%M:%SZ)\"\ntouch /var/log/usta-l4-setup.done\n"
+      }
+    ],
+    "kind": "compute#metadata"
+  },
+  "name": "usta-l4",
+  "networkInterfaces": [
+    {
+      "accessConfigs": [
+        {
+          "kind": "compute#accessConfig",
+          "name": "external-nat",
+          "networkTier": "PREMIUM",
+          "type": "ONE_TO_ONE_NAT"
+        }
+      ],
+      "fingerprint": "6Ws2loZAy38=",
+      "kind": "compute#networkInterface",
+      "name": "nic0",
+      "network": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/global/networks/default",
+      "networkIP": "10.128.0.6",
+      "stackType": "IPV4_ONLY",
+      "subnetwork": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/regions/us-central1/subnetworks/default"
+    }
+  ],
+  "resourceStatus": {
+    "effectiveInstanceMetadata": {
+      "enableOsconfigMetadataValue": false,
+      "vmDnsSettingMetadataValue": "ZonalOnly"
+    }
+  },
+  "satisfiesPzi": true,
+  "scheduling": {
+    "automaticRestart": true,
+    "onHostMaintenance": "TERMINATE",
+    "preemptible": false,
+    "provisioningModel": "STANDARD"
+  },
+  "selfLink": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-a/instances/usta-l4",
+  "serviceAccounts": [
+    {
+      "email": "247516932580-compute@developer.gserviceaccount.com",
+      "scopes": [
+        "https://www.googleapis.com/auth/devstorage.read_only",
+        "https://www.googleapis.com/auth/logging.write",
+        "https://www.googleapis.com/auth/monitoring.write",
+        "https://www.googleapis.com/auth/pubsub",
+        "https://www.googleapis.com/auth/service.management.readonly",
+        "https://www.googleapis.com/auth/servicecontrol",
+        "https://www.googleapis.com/auth/trace.append",
+        "https://www.googleapis.com/auth/compute"
+      ]
+    }
+  ],
+  "shieldedInstanceConfig": {
+    "enableIntegrityMonitoring": true,
+    "enableSecureBoot": false,
+    "enableVtpm": true
+  },
+  "shieldedInstanceIntegrityPolicy": {
+    "updateAutoLearnPolicy": true
+  },
+  "startRestricted": false,
+  "status": "TERMINATED",
+  "tags": {
+    "fingerprint": "hpjnnwBOkgY=",
+    "items": [
+      "usta-l4"
+    ]
+  },
+  "zone": "https://www.googleapis.com/compute/v1/projects/project-27082a40-6083-4952-9db/zones/us-central1-a"
+}

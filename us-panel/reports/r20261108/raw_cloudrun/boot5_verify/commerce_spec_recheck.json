@@ -1,0 +1,97 @@
+{
+  "spec_old_new_equal": true,
+  "new_revision_matches_saved_spec": true,
+  "projected_spec": {
+    "sa": "us-gateway@project-27082a40-6083-4952-9db.iam.gserviceaccount.com",
+    "env": [
+      {
+        "name": "US_ENV",
+        "value": "production"
+      },
+      {
+        "name": "US_WORKERS_CONFIG",
+        "value": "/secrets/policy/workers.json"
+      },
+      {
+        "name": "US_MODEL_CA_FILE",
+        "value": "/secrets/ca/ca.pem"
+      },
+      {
+        "name": "SHOPIFY_SHOP",
+        "value": "19einb-qz.myshopify.com"
+      },
+      {
+        "name": "US_COMMERCE_DB",
+        "valueFrom": {
+          "secretKeyRef": {
+            "key": "latest",
+            "name": "us-postgres-dsn"
+          }
+        }
+      },
+      {
+        "name": "US_LICENSE_SECRET",
+        "valueFrom": {
+          "secretKeyRef": {
+            "key": "latest",
+            "name": "us-license-signing"
+          }
+        }
+      },
+      {
+        "name": "US_MODEL_API_TOKEN",
+        "valueFrom": {
+          "secretKeyRef": {
+            "key": "latest",
+            "name": "us-model-token"
+          }
+        }
+      },
+      {
+        "name": "US_CREDIT_PRODUCTS",
+        "valueFrom": {
+          "secretKeyRef": {
+            "key": "latest",
+            "name": "us-credit-products"
+          }
+        }
+      },
+      {
+        "name": "US_SHOPIFY_ENABLED",
+        "value": "false"
+      }
+    ],
+    "vol": [
+      {
+        "name": "policy",
+        "secret": {
+          "items": [
+            {
+              "key": "latest",
+              "path": "workers.json"
+            }
+          ],
+          "secretName": "us-worker-policy"
+        }
+      },
+      {
+        "name": "ca",
+        "secret": {
+          "items": [
+            {
+              "key": "latest",
+              "path": "ca.pem"
+            }
+          ],
+          "secretName": "us-model-ca"
+        }
+      }
+    ],
+    "ann": {
+      "autoscaling.knative.dev/maxScale": "2",
+      "autoscaling.knative.dev/minScale": "0",
+      "run.googleapis.com/cloudsql-instances": "project-27082a40-6083-4952-9db:europe-west4:us-commerce-pg",
+      "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+    }
+  }
+}

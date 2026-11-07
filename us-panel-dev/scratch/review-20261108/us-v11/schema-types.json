@@ -1,0 +1,34 @@
+{
+  "Plan": {
+    "equal": true,
+    "schema": "Kind string `json:\"kind\"` Days int `json:\"days\"` Prompts int `json:\"prompts\"` Seconds int `json:\"seconds\"` Credits int `json:\"credits\"`"
+  },
+  "License": {
+    "equal": true,
+    "schema": "Key string `json:\"key\"` OrderID int64 `json:\"orderId\"` LineID int64 `json:\"lineId\"` Email string `json:\"email\"` ProductID int64 `json:\"productId\"` Plan Plan `json:\"plan\"` IssuedAt time.Time `json:\"issuedAt\"` ExpiresAt time.Time `json:\"expiresAt\"` Revoked bool `json:\"revoked\"` Credits int `json:\"credits\"` MeterUnit string `json:\"meterUnit,omitempty\"` Reserved int `json:\"reserved\"`"
+  },
+  "Mail": {
+    "equal": true,
+    "schema": "Skipped string `json:\"skipped,omitempty\"` OrderName string `json:\"orderName,omitempty\"` OrderID int64 `json:\"orderId,omitempty\"` ID string `json:\"id\"` To string `json:\"to\"` Subject string `json:\"subject\"` Body string `json:\"body\"` Attempts int `json:\"attempts\"` NextTry time.Time `json:\"nextTry\"` SentAt time.Time `json:\"sentAt,omitempty\"` LastErr string `json:\"lastErr,omitempty\"` Dead bool `json:\"dead\"`"
+  },
+  "Settlement": {
+    "equal": true,
+    "schema": "CreatedAt time.Time `json:\"createdAt,omitempty\"` Key string `json:\"key\"` Commit bool `json:\"commit\"` Amount int `json:\"amount,omitempty\"` SettledAt time.Time `json:\"settledAt,omitempty\"`"
+  },
+  "Refund": {
+    "equal": true,
+    "schema": "OrderID int64 `json:\"orderId\"` Lines map[int64]int `json:\"lines\"`"
+  },
+  "Reservation": {
+    "equal": true,
+    "schema": "CreatedAt time.Time `json:\"createdAt,omitempty\"` Key string `json:\"key\"` Amount int `json:\"amount\"` Expires time.Time `json:\"expires\"`"
+  },
+  "state": {
+    "equal": true,
+    "schema": "Accounts map[string]*Account `json:\"accounts\"` LicenseOwners map[string]string `json:\"licenseOwners\"` Webhooks map[string]time.Time `json:\"webhooks\"` Orders map[string][]string `json:\"orders\"` Licenses map[string]*License `json:\"licenses\"` Outbox []*Mail `json:\"outbox\"` Reservations map[string]*Reservation `json:\"reservations\"` Settlements map[string]Settlement `json:\"settlements\"` Cancelled map[string]bool `json:\"cancelled\"` Refunds map[string]Refund `json:\"refunds\"`"
+  },
+  "Account": {
+    "equal": true,
+    "schema": "ID string `json:\"id\"` Email string `json:\"email\"` PasswordHash string `json:\"passwordHash\"` Version int `json:\"sessionVersion\"` CreatedAt time.Time `json:\"createdAt\"` Verified bool `json:\"emailVerified\"` VerifyHash string `json:\"verificationHash,omitempty\"` VerifyExpiry time.Time `json:\"verificationExpiry,omitempty\"` ResetHash string `json:\"resetHash,omitempty\"` ResetExpiry time.Time `json:\"resetExpiry,omitempty\"`"
+  }
+}

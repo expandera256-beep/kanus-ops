@@ -1,0 +1,20 @@
+{
+  "68119764304100": {
+    "prompts": 1,
+    "price_minor": 25000,
+    "valid_days": 90,
+    "currency": "TRY"
+  },
+  "68119764336868": {
+    "prompts": 5,
+    "price_minor": 140000,
+    "valid_days": 90,
+    "currency": "TRY"
+  },
+  "68119790026980": {
+    "prompts": 10,
+    "price_minor": 260000,
+    "valid_days": 90,
+    "currency": "TRY"
+  }
+}

@@ -1,0 +1,8 @@
+probe11-before 1
+probe11-fixed 0
+probe-r10-before 1
+probe-r10-fixed 0
+r10-incremental 0
+probe-stack12 0
+lock-good 0
+lock-mutant 1

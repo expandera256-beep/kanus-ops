@@ -1,0 +1,19 @@
+▶ kanus-sdk-ts
+  ✔ maps error envelope with masked toString (26.970859ms)
+  ✔ retries GET on 429 within maxRetries (9.107224ms)
+  ✔ caps Retry-After (0.280843ms)
+  ✔ PoC: reserve POST is NOT retried on 429 (single hit) (3.081942ms)
+  ✔ requires https except localhost (0.292891ms)
+  ✔ sends api key without leaking secret (2.586831ms)
+  ✔ forwards Idempotency-Key once (no multi-retry) (3.364307ms)
+  ✔ parses fragmented SSE (3.285364ms)
+  ✔ SSE buffer limit (4.077786ms)
+✔ kanus-sdk-ts (54.432565ms)
+ℹ tests 9
+ℹ suites 1
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 231.957126

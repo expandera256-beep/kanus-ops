@@ -1,0 +1,9 @@
+{
+  "image_summary": {
+    "digest": "sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+    "fully_qualified_digest": "europe-west4-docker.pkg.dev/project-27082a40-6083-4952-9db/us-runtime/gateway@sha256:3e001dbec0a7d033ac105366bf282a59e4babff84e60413a33dbc2a7c474098a",
+    "registry": "europe-west4-docker.pkg.dev",
+    "repository": "us-runtime",
+    "slsa_build_level": "unknown"
+  }
+}

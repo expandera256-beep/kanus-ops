@@ -1,0 +1,12 @@
+diff /workspace/us-panel-dev/scratch/review-20261108/C/tree/licensesrv/api_keys_test.go.orig /workspace/us-panel-dev/scratch/review-20261108/C/tree/licensesrv/api_keys_test.go
+--- /workspace/us-panel-dev/scratch/review-20261108/C/tree/licensesrv/api_keys_test.go.orig
++++ /workspace/us-panel-dev/scratch/review-20261108/C/tree/licensesrv/api_keys_test.go
+@@ -240,7 +240,7 @@
+ 		Previous     apiKeyPublic `json:"previous"`
+ 		Key          string       `json:"key"`
+ 	}
+-	if rw.Code != 200 || json.Unmarshal(rw.Body.Bytes(), &out) != nil || out.GraceSeconds != int((24 * time.Hour).Seconds()) || out.Previous.Status != "grace" {
++	if rw.Code != 200 || json.Unmarshal(rw.Body.Bytes(), &out) != nil || out.GraceSeconds != int((24*time.Hour).Seconds()) || out.Previous.Status != "grace" {
+ 		t.Fatal(rw.Code, rw.Body.String())
+ 	}
+ 	// old still works during grace

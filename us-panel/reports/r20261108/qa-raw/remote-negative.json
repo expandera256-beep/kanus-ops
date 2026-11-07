@@ -1,0 +1,63 @@
+{
+  "results": [
+    {
+      "name": "health",
+      "http": 200,
+      "status": "PASS",
+      "time": "2026-11-08T00:30:16.585481+03:00",
+      "scope": "Negative gate only; not a full filesystem/terminal/SSRF proof"
+    },
+    {
+      "name": "missing_auth",
+      "http": 401,
+      "status": "PASS",
+      "time": "2026-11-08T00:30:17.013999+03:00",
+      "scope": "Negative gate only; not a full filesystem/terminal/SSRF proof"
+    },
+    {
+      "name": "fake_license",
+      "http": 401,
+      "status": "PASS",
+      "time": "2026-11-08T00:30:17.582162+03:00",
+      "scope": "Negative gate only; not a full filesystem/terminal/SSRF proof"
+    },
+    {
+      "name": "fake_session",
+      "http": 401,
+      "status": "PASS",
+      "time": "2026-11-08T00:30:18.013258+03:00",
+      "scope": "Negative gate only; not a full filesystem/terminal/SSRF proof"
+    },
+    {
+      "name": "missing_hmac",
+      "http": 401,
+      "status": "PASS",
+      "time": "2026-11-08T00:30:18.458577+03:00",
+      "scope": "Negative gate only; not a full filesystem/terminal/SSRF proof"
+    },
+    {
+      "name": "wrong_hmac",
+      "http": 401,
+      "status": "PASS",
+      "time": "2026-11-08T00:30:18.942606+03:00",
+      "scope": "Negative gate only; not a full filesystem/terminal/SSRF proof"
+    },
+    {
+      "name": "traversal_gate",
+      "http": 400,
+      "status": "PASS",
+      "time": "2026-11-08T00:30:19.430943+03:00",
+      "scope": "Negative gate only; not a full filesystem/terminal/SSRF proof"
+    },
+    {
+      "name": "command_gate",
+      "http": 401,
+      "status": "PASS",
+      "time": "2026-11-08T00:30:19.911923+03:00",
+      "scope": "Negative gate only; not a full filesystem/terminal/SSRF proof"
+    }
+  ],
+  "max_parallel": 1,
+  "hard_cap": 8,
+  "secrets_read": false
+}

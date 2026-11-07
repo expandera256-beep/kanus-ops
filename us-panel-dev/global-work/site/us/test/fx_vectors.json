@@ -1,0 +1,18 @@
+{"note":"Shared FX policy vectors (from PANEL DEV R4B 39-case probe). now = ISO instant; accept = expected.",
+"date":[
+ ["today","2026-11-08","2026-11-08T12:00:00Z",true],
+ ["fifth_day_exact","2026-11-03","2026-11-08T00:00:00Z",true],
+ ["fifth_calendar_day_tsi_end","2026-11-03","2026-11-08T23:59:59+03:00",true],
+ ["same_local_day_before_utc","2026-11-08","2026-11-08T00:01:00+03:00",true],
+ ["sixth_day_utc","2026-11-02","2026-11-08T00:00:00Z",false],
+ ["sixth_day_tsi","2026-11-02","2026-11-08T00:00:00+03:00",false],
+ ["sixth_day_plus_second","2026-11-02","2026-11-08T00:00:01Z",false],
+ ["tomorrow","2026-11-09","2026-11-08T12:00:00Z",false],
+ ["future_36h","2026-11-10","2026-11-08T12:00:00Z",false],
+ ["future_over_36h","2026-11-10","2026-11-08T11:59:59Z",false],
+ ["injected_clock_2030","2030-01-01","2030-01-01T12:00:00Z",true],
+ ["bad_calendar","2026-02-29","2026-11-08T12:00:00Z",false]],
+"rates":[
+ ["cross_min",80,100,true],["cross_max",160,100,true],["cross_below",79.999,100,false],["cross_above",160.001,100,false],
+ ["zero",0,50,false],["neg",-1,50,false],["string","55",50,false],["null",null,50,false],["huge",1e300,50,false]],
+"round":[["half_cent_29_rate2",29,2,15],["half_cent_21_rate6",21,6,4],["real_18900",1890000,55.9609,33774],["real_usd",1890000,50.0724,37745],["over_cap",1000000000000001,1,null]]}

@@ -1,0 +1,7 @@
+US çıktı sınırı düzeltmesi
+
+Proje onarımında model bir yanıtı token sınırında keserse, tamamen okunmuş tek bir hedef dosya için daha küçük bir işlem yeniden denenir. Model farklı veya birden çok dosya döndürürse değişiklik uygulanmaz. Diğer uzun yanıtlarda tamamlanan kısmın sonu temel alınarak devam istenir; devam başlangıcı önceki bölümle birebir eşleşmedikçe sonuç birleştirilmez. Bağlantı hatasında, kullanıcı durdurduğunda, eşleşme bozulduğunda veya devam sınırı dolduğunda dosyalar uygulanmaz. En fazla dört devam çağrısı yapılır; tek çağrı ve nihai yanıt boyutları sınırlandırılmıştır.
+
+Tam okunmamış mevcut dosyaları değiştirmeme koruması sürer. Bu düzeltme büyük proje dosyalarını parçalı düzenleme ya da sınırsız üretim sağlamaz. Model bağlamı hâlâ 8.192 tokendır; uzun istem özetlerinde ayrıntı kaybı olabilir.
+
+Kaynak testleri, sentetik bir canlı model devam testi ve geçici Python dosyasında canlı onarım testi çalıştırılmıştır. Windows üzerinde gerçek kullanıcı klasörünün onarımı ve otomatik SSH tüneli ayrıca doğrulanmalıdır.

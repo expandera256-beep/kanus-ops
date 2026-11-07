@@ -1,0 +1,38 @@
+[
+  {
+    "command": "POST https://us-commerce-iqhblf63dq-ez.a.run.app/account/balance Content-Type: application/json; body={} (no Authorization)",
+    "started_istanbul": "2026-11-08T00:25:06.407549+03:00",
+    "http_status": 400,
+    "body": "{\"error\": \"request rejected\"}",
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "c0d3dd36fdf5932dc15ef2ab1af4093b;o=1",
+      "date": "Sat, 07 Nov 2026 21:25:06 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "29",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "db_path": "SELECT only; no auth_attempts or balance mutation",
+    "gpu_path": "none"
+  },
+  {
+    "command": "POST https://us-commerce-iqhblf63dq-ez.a.run.app/account/requests Content-Type: application/json; body={} (no Authorization)",
+    "started_istanbul": "2026-11-08T00:25:06.704235+03:00",
+    "http_status": 400,
+    "body": "{\"error\": \"request rejected\"}",
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      "x-cloud-trace-context": "a5c43e1c4de749f6cd991b2406f47cd5",
+      "date": "Sat, 07 Nov 2026 21:25:06 GMT",
+      "server": "Google Frontend",
+      "Content-Length": "29",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "db_path": "SELECT only; no auth_attempts or balance mutation",
+    "gpu_path": "none"
+  }
+]

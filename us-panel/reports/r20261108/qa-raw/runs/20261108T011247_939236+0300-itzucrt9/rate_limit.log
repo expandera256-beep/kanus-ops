@@ -1,0 +1,20 @@
+=== RUN   TestAccountLimiterRotatingIPs
+--- PASS: TestAccountLimiterRotatingIPs (2.37s)
+=== RUN   TestAccountLimiterSuccessResetsAndWindow
+2026/11/08 01:12:51 account /account/register email=u***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:51 account /account/login email=u***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:51 account /account/login email=u***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:51 account /account/login email=u***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:51 account /account/login email=u***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:51 account /account/login email=u***@example.test queue_wait_ms=0 result=slot
+2026/11/08 01:12:51 account login limiter: u***@example.test locked for 15m0s after 3 failures
+--- PASS: TestAccountLimiterSuccessResetsAndWindow (0.22s)
+=== RUN   TestAccountLimiterMemoryBound
+--- PASS: TestAccountLimiterMemoryBound (0.00s)
+=== RUN   TestQAAuditIPOnlyRateDesign
+    zz_qa_audit_store_test.go:41: IP-only layer: rotating_source_requests=11 accepted=11 per_ip_limit=10; account limiter must be separate
+--- PASS: TestQAAuditIPOnlyRateDesign (0.00s)
+PASS
+ok  	kiyas/licensesrv	2.590s
+
+exit_code=0

@@ -1,0 +1,22 @@
+=== UYUM touched ===
+DIR /workspace/us-panel-dev/patches/uyum-erase/
+0001-privacy-ops-shared.patch
+0002-privacy-handler.patch
+README.md
+DIR /workspace/us-panel-dev/patches/uyum-export/
+0001-privacy-ops-export-erase-retention.patch
+0002-privacy-ops-test.patch
+0003-privacy-handler.patch
+README.md
+DIR /workspace/us-panel-dev/patches/uyum-preferences/
+0001-prefs-store.patch
+0002-privacy-handler.patch
+0003-privacy-handler-test.patch
+README.md
+DIR /workspace/us-panel-dev/patches/uyum-retention/
+0001-privacy-ops-shared.patch
+0002-privacy-handler.patch
+README.md
+DIR /workspace/us-panel-dev/patches/uyum-wiring/
+0001-privacy-mux-wiring.patch
+README.md

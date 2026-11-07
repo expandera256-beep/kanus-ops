@@ -1,0 +1,2 @@
+PANEL R2 PoC (pre-fix): sdk_ts_retry_idempotency_poc.txt — reserve 3 POST without Idempotency-Key
+STATUS: FAIL

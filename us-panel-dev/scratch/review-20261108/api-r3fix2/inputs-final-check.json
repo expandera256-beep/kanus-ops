@@ -1,0 +1,457 @@
+[
+  {
+    "path": "/workspace/us-panel-dev/patches/api-0001-regression/0001-API-0001-regression-tests-locking-accounts-credit-le.patch",
+    "expected": "f6adb8da070ce4d472ba4b06a49a71c96d03736407296a186dd25d6705d39767",
+    "current_original": "f6adb8da070ce4d472ba4b06a49a71c96d03736407296a186dd25d6705d39767",
+    "snapshot": "f6adb8da070ce4d472ba4b06a49a71c96d03736407296a186dd25d6705d39767",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-0003-error-envelope/0001-API-0003-dual-mode-standard-error-envelope-legacy-er.patch",
+    "expected": "89ea7bb67023665ed170bab3d57d83494c5dead35d74db616ba89b13ea711205",
+    "current_original": "89ea7bb67023665ed170bab3d57d83494c5dead35d74db616ba89b13ea711205",
+    "snapshot": "89ea7bb67023665ed170bab3d57d83494c5dead35d74db616ba89b13ea711205",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-0005-v1-versioning/0001-API-0005-API-Version-header-and-v1-account-alias-leg.patch",
+    "expected": "1be4417f9e1fbcd2ae64deb8ef16aa24120901acd17b925c8928b7cdcb71f63d",
+    "current_original": "1be4417f9e1fbcd2ae64deb8ef16aa24120901acd17b925c8928b7cdcb71f63d",
+    "snapshot": "1be4417f9e1fbcd2ae64deb8ef16aa24120901acd17b925c8928b7cdcb71f63d",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch",
+    "expected": "19b3cbd93ef5196d05f1be9540a0fa67e73ad72bf34e425d48ed10500ac2ed76",
+    "current_original": "19b3cbd93ef5196d05f1be9540a0fa67e73ad72bf34e425d48ed10500ac2ed76",
+    "snapshot": "19b3cbd93ef5196d05f1be9540a0fa67e73ad72bf34e425d48ed10500ac2ed76",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006b-rotate-revoke_old-grace_seconds-gofmt-trai.patch",
+    "expected": "75dec7b4eaf50277d6979a6ddc43a1d61c6d6dc78ff255b07a4df607982f03b0",
+    "current_original": "75dec7b4eaf50277d6979a6ddc43a1d61c6d6dc78ff255b07a4df607982f03b0",
+    "snapshot": "75dec7b4eaf50277d6979a6ddc43a1d61c6d6dc78ff255b07a4df607982f03b0",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-0008-rate-quota-usage/0001-API-0008-daily-quota-429-Retry-After-regression-test.patch",
+    "expected": "496f390718b691fa245d0675cb0580c078997a56adba736add131406db08433d",
+    "current_original": "496f390718b691fa245d0675cb0580c078997a56adba736add131406db08433d",
+    "snapshot": "496f390718b691fa245d0675cb0580c078997a56adba736add131406db08433d",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-0012-ttl-commit-anchor/0001-API-0012-clamp-grace-seconds-as-int64-before-Duratio.patch",
+    "expected": "8ba71f1e907e9152fa62d4ebe41bdad422c9179292a2c66e1e4b5cae51e87f7b",
+    "current_original": "8ba71f1e907e9152fa62d4ebe41bdad422c9179292a2c66e1e4b5cae51e87f7b",
+    "snapshot": "8ba71f1e907e9152fa62d4ebe41bdad422c9179292a2c66e1e4b5cae51e87f7b",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-0012-ttl-commit-anchor/0001-US-proposal-store-0004-0012.diff",
+    "expected": "ee9aee17b68cc82ffbfe944e78380f525e3dfdb4f5abad8feaab901b4bc604cf",
+    "current_original": "ee9aee17b68cc82ffbfe944e78380f525e3dfdb4f5abad8feaab901b4bc604cf",
+    "snapshot": "ee9aee17b68cc82ffbfe944e78380f525e3dfdb4f5abad8feaab901b4bc604cf",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-0012-ttl-commit-anchor/0002-API-0012-test-reserved-stays-locked-during-grace-rel.patch",
+    "expected": "1d2aac59a2f07c296c2c3715d5cba30248bd87e40575a30b8d79a8d2fea84018",
+    "current_original": "1d2aac59a2f07c296c2c3715d5cba30248bd87e40575a30b8d79a8d2fea84018",
+    "snapshot": "1d2aac59a2f07c296c2c3715d5cba30248bd87e40575a30b8d79a8d2fea84018",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/README.md",
+    "expected": "70eaf7e8b3df621e984aa4e1cb795cdc16807523f5cd831f18d0bf15932df962",
+    "current_original": "70eaf7e8b3df621e984aa4e1cb795cdc16807523f5cd831f18d0bf15932df962",
+    "snapshot": "70eaf7e8b3df621e984aa4e1cb795cdc16807523f5cd831f18d0bf15932df962",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/fix-grace-overflow-on-11.diff",
+    "expected": "df1ae528483634405cb6b21f3c3a0dd3481db9d2f808b2e10f7991d994c07c28",
+    "current_original": "df1ae528483634405cb6b21f3c3a0dd3481db9d2f808b2e10f7991d994c07c28",
+    "snapshot": "df1ae528483634405cb6b21f3c3a0dd3481db9d2f808b2e10f7991d994c07c28",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/old_0006b.patch.bak",
+    "expected": "8a3018be5101f324dd9e9da969831d82583c5428ed3d94786f92e62f1ab6414c",
+    "current_original": "8a3018be5101f324dd9e9da969831d82583c5428ed3d94786f92e62f1ab6414c",
+    "snapshot": "8a3018be5101f324dd9e9da969831d82583c5428ed3d94786f92e62f1ab6414c",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/old_us_proposal_regenerated.diff",
+    "expected": "a21a62511236d35d7e6a408605106224a7827f034b70e2372e2b29cf5a5f1db4",
+    "current_original": "a21a62511236d35d7e6a408605106224a7827f034b70e2372e2b29cf5a5f1db4",
+    "snapshot": "a21a62511236d35d7e6a408605106224a7827f034b70e2372e2b29cf5a5f1db4",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/old_us_proposal_store-and-tests.diff.bak",
+    "expected": "a21a62511236d35d7e6a408605106224a7827f034b70e2372e2b29cf5a5f1db4",
+    "current_original": "a21a62511236d35d7e6a408605106224a7827f034b70e2372e2b29cf5a5f1db4",
+    "snapshot": "a21a62511236d35d7e6a408605106224a7827f034b70e2372e2b29cf5a5f1db4",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/on11_0012_grace_lock.txt",
+    "expected": "511e05d91cdaa20aafcb898d695206d99a63e937a86b2846f946a0ddd91a84cc",
+    "current_original": "511e05d91cdaa20aafcb898d695206d99a63e937a86b2846f946a0ddd91a84cc",
+    "snapshot": "511e05d91cdaa20aafcb898d695206d99a63e937a86b2846f946a0ddd91a84cc",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/on11_0012_ledger_tests.txt",
+    "expected": "277070931365999dac744259807b1061ad054ac3f64f7939787b9307c85e4547",
+    "current_original": "277070931365999dac744259807b1061ad054ac3f64f7939787b9307c85e4547",
+    "snapshot": "277070931365999dac744259807b1061ad054ac3f64f7939787b9307c85e4547",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/on11_FAIL_before.txt",
+    "expected": "a477f101cd3c6e7ed3a9cf354b082cf8757806060d45902ed40b9c75f1186ba9",
+    "current_original": "a477f101cd3c6e7ed3a9cf354b082cf8757806060d45902ed40b9c75f1186ba9",
+    "snapshot": "a477f101cd3c6e7ed3a9cf354b082cf8757806060d45902ed40b9c75f1186ba9",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/on11_PASS_after.txt",
+    "expected": "57338059ad9d35950e468684692be25c1abe448ab00ec06a51cf614d8f4fce61",
+    "current_original": "57338059ad9d35950e468684692be25c1abe448ab00ec06a51cf614d8f4fce61",
+    "snapshot": "57338059ad9d35950e468684692be25c1abe448ab00ec06a51cf614d8f4fce61",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/on11_apply_us_stack.txt",
+    "expected": "eb899571cb28c7f9fd05f4f52b0cd3a573a3ea9e9314a83d7afd7fd83a948992",
+    "current_original": "eb899571cb28c7f9fd05f4f52b0cd3a573a3ea9e9314a83d7afd7fd83a948992",
+    "snapshot": "eb899571cb28c7f9fd05f4f52b0cd3a573a3ea9e9314a83d7afd7fd83a948992",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/on11_gofmt_changed.txt",
+    "expected": "66eff3c6293336e6338a605462d758799222c7276386e7fe42d24c2aac70fa43",
+    "current_original": "66eff3c6293336e6338a605462d758799222c7276386e7fe42d24c2aac70fa43",
+    "snapshot": "66eff3c6293336e6338a605462d758799222c7276386e7fe42d24c2aac70fa43",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/on11_gofmt_tree.txt",
+    "expected": "b16ef77e1b5e9dce5665133e1a5587fc11ca2aba8416d96a9703cf03d8f00fee",
+    "current_original": "b16ef77e1b5e9dce5665133e1a5587fc11ca2aba8416d96a9703cf03d8f00fee",
+    "snapshot": "b16ef77e1b5e9dce5665133e1a5587fc11ca2aba8416d96a9703cf03d8f00fee",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/on11_grace_lock_MUTATION_grace0.txt",
+    "expected": "1b088bd61c5955d46767f3530a1a89cbffe9b06c6adc65db0c45907f0da6ec6e",
+    "current_original": "1b088bd61c5955d46767f3530a1a89cbffe9b06c6adc65db0c45907f0da6ec6e",
+    "snapshot": "1b088bd61c5955d46767f3530a1a89cbffe9b06c6adc65db0c45907f0da6ec6e",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/on11_race.txt",
+    "expected": "ef12d37235cdaef1674d4c68df680b851d8c46d416c6dc0715d2d285ea9fe9bd",
+    "current_original": "ef12d37235cdaef1674d4c68df680b851d8c46d416c6dc0715d2d285ea9fe9bd",
+    "snapshot": "ef12d37235cdaef1674d4c68df680b851d8c46d416c6dc0715d2d285ea9fe9bd",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/on11_vet.txt",
+    "expected": "1a5a3d202bd92a84b923d872ec19e6e4c49c0b7d743274c26373353c9c424a96",
+    "current_original": "1a5a3d202bd92a84b923d872ec19e6e4c49c0b7d743274c26373353c9c424a96",
+    "snapshot": "1a5a3d202bd92a84b923d872ec19e6e4c49c0b7d743274c26373353c9c424a96",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/qa_f04_account_limiter_unit.txt",
+    "expected": "b6a59558e3bc3bef055153a81f4f85e4cc9000189e96dcd8350642e6bd2dcbbb",
+    "current_original": "b6a59558e3bc3bef055153a81f4f85e4cc9000189e96dcd8350642e6bd2dcbbb",
+    "snapshot": "b6a59558e3bc3bef055153a81f4f85e4cc9000189e96dcd8350642e6bd2dcbbb",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/r10_FAIL_before.txt",
+    "expected": "a477f101cd3c6e7ed3a9cf354b082cf8757806060d45902ed40b9c75f1186ba9",
+    "current_original": "a477f101cd3c6e7ed3a9cf354b082cf8757806060d45902ed40b9c75f1186ba9",
+    "snapshot": "a477f101cd3c6e7ed3a9cf354b082cf8757806060d45902ed40b9c75f1186ba9",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/r10_PASS_after.txt",
+    "expected": "57338059ad9d35950e468684692be25c1abe448ab00ec06a51cf614d8f4fce61",
+    "current_original": "57338059ad9d35950e468684692be25c1abe448ab00ec06a51cf614d8f4fce61",
+    "snapshot": "57338059ad9d35950e468684692be25c1abe448ab00ec06a51cf614d8f4fce61",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/r10_chain_apply.txt",
+    "expected": "91f36e74b148cbb0aad1258d47c7985d9577b4a6224e23e538f0e4f7e25416b2",
+    "current_original": "91f36e74b148cbb0aad1258d47c7985d9577b4a6224e23e538f0e4f7e25416b2",
+    "snapshot": "91f36e74b148cbb0aad1258d47c7985d9577b4a6224e23e538f0e4f7e25416b2",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/r10_gofmt_licensesrv.txt",
+    "expected": "3856509679b7b3a21a695ec1cdcc41b0396e2bf88d3bfc453eaf639120e71c40",
+    "current_original": "3856509679b7b3a21a695ec1cdcc41b0396e2bf88d3bfc453eaf639120e71c40",
+    "snapshot": "3856509679b7b3a21a695ec1cdcc41b0396e2bf88d3bfc453eaf639120e71c40",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/r10_race.txt",
+    "expected": "e01cfd6ff655652d81ca7e6352f6d958312f72a475547ecd96ab7235016837cd",
+    "current_original": "e01cfd6ff655652d81ca7e6352f6d958312f72a475547ecd96ab7235016837cd",
+    "snapshot": "e01cfd6ff655652d81ca7e6352f6d958312f72a475547ecd96ab7235016837cd",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/r10_ttl_tests_after.txt",
+    "expected": "11eb51e9c6bf8c25a48a0e41df7ecfd6f5613f8eb4ff101f6ad6cec13a213f8d",
+    "current_original": "11eb51e9c6bf8c25a48a0e41df7ecfd6f5613f8eb4ff101f6ad6cec13a213f8d",
+    "snapshot": "11eb51e9c6bf8c25a48a0e41df7ecfd6f5613f8eb4ff101f6ad6cec13a213f8d",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/r10_vet.txt",
+    "expected": "1a5a3d202bd92a84b923d872ec19e6e4c49c0b7d743274c26373353c9c424a96",
+    "current_original": "1a5a3d202bd92a84b923d872ec19e6e4c49c0b7d743274c26373353c9c424a96",
+    "snapshot": "1a5a3d202bd92a84b923d872ec19e6e4c49c0b7d743274c26373353c9c424a96",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/sha256_r10.txt",
+    "expected": "473548515077a63540828802a2204cbd2bc2aba1b785c1f30e3a690cf7427a86",
+    "current_original": "473548515077a63540828802a2204cbd2bc2aba1b785c1f30e3a690cf7427a86",
+    "snapshot": "473548515077a63540828802a2204cbd2bc2aba1b785c1f30e3a690cf7427a86",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/us_additive_vs_original_changed_lines.diff",
+    "expected": "419a7abf4d29474dddf5c5243152e39373232f8497dc192f048c5ff3475da276",
+    "current_original": "419a7abf4d29474dddf5c5243152e39373232f8497dc192f048c5ff3475da276",
+    "snapshot": "419a7abf4d29474dddf5c5243152e39373232f8497dc192f048c5ff3475da276",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/logs/us_rebase_vs_api_proposal_content.diff",
+    "expected": "22384b8a7f05da913f1b77c79d31d21bcbc7962ab0396cc435601a83b242e093",
+    "current_original": "22384b8a7f05da913f1b77c79d31d21bcbc7962ab0396cc435601a83b242e093",
+    "snapshot": "22384b8a7f05da913f1b77c79d31d21bcbc7962ab0396cc435601a83b242e093",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/fix-grace-overflow-on-11/r10-grace-overflow-fix.diff",
+    "expected": "84a42e17b55f94f76dbf25122d62a13d307e93bea495f5ad1145a4ec04b951d3",
+    "current_original": "84a42e17b55f94f76dbf25122d62a13d307e93bea495f5ad1145a4ec04b951d3",
+    "snapshot": "84a42e17b55f94f76dbf25122d62a13d307e93bea495f5ad1145a4ec04b951d3",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/FULL_STACK_11+api+uyum-v4+additive.diff",
+    "expected": "c602879b7a0949b7bed38b47ac50219bcb65939aeba38dd770fde4aab6054d78",
+    "current_original": "c602879b7a0949b7bed38b47ac50219bcb65939aeba38dd770fde4aab6054d78",
+    "snapshot": "c602879b7a0949b7bed38b47ac50219bcb65939aeba38dd770fde4aab6054d78",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/REBASE_NOTU_TR.md",
+    "expected": "7c84c1c2ba4ac4a9362724662c2ef9ff5961e3e609d3036218e5b11731e61441",
+    "current_original": "7c84c1c2ba4ac4a9362724662c2ef9ff5961e3e609d3036218e5b11731e61441",
+    "snapshot": "7c84c1c2ba4ac4a9362724662c2ef9ff5961e3e609d3036218e5b11731e61441",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-0004-0012-combined-on-11.diff",
+    "expected": "9c8a4c45553d64ee60f2562aeac2f2020fb70ad90e5c4e49d0812415d10751a4",
+    "current_original": "9c8a4c45553d64ee60f2562aeac2f2020fb70ad90e5c4e49d0812415d10751a4",
+    "snapshot": "9c8a4c45553d64ee60f2562aeac2f2020fb70ad90e5c4e49d0812415d10751a4",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/rebased-on-11/api-r11-additive-on-11+api+uyum-v4.diff",
+    "expected": "4a052e5bc7821aca5f5b749b816e05b4a155bf5dd773198b2f0b5120f9697f79",
+    "current_original": "4a052e5bc7821aca5f5b749b816e05b4a155bf5dd773198b2f0b5120f9697f79",
+    "snapshot": "4a052e5bc7821aca5f5b749b816e05b4a155bf5dd773198b2f0b5120f9697f79",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/us-proposals/api-0004-ledger-hardening/store-and-tests.diff",
+    "expected": "ee9aee17b68cc82ffbfe944e78380f525e3dfdb4f5abad8feaab901b4bc604cf",
+    "current_original": "ee9aee17b68cc82ffbfe944e78380f525e3dfdb4f5abad8feaab901b4bc604cf",
+    "snapshot": "ee9aee17b68cc82ffbfe944e78380f525e3dfdb4f5abad8feaab901b4bc604cf",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/api-r11/us-proposals/api-0012-ttl-commit-anchor/store-and-tests.diff",
+    "expected": "ee9aee17b68cc82ffbfe944e78380f525e3dfdb4f5abad8feaab901b4bc604cf",
+    "current_original": "ee9aee17b68cc82ffbfe944e78380f525e3dfdb4f5abad8feaab901b4bc604cf",
+    "snapshot": "ee9aee17b68cc82ffbfe944e78380f525e3dfdb4f5abad8feaab901b4bc604cf",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_02_gui_strings.patch",
+    "expected": "314fab48b009f06e221ce140758724105b9f5b972c69d0c15c7ad2c9db8d3669",
+    "current_original": "314fab48b009f06e221ce140758724105b9f5b972c69d0c15c7ad2c9db8d3669",
+    "snapshot": "314fab48b009f06e221ce140758724105b9f5b972c69d0c15c7ad2c9db8d3669",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_03_pref.patch",
+    "expected": "ba8845c5f34855d8f2f2fa49a055c4e9d20698c9fbd7572462531c2746f6b58e",
+    "current_original": "ba8845c5f34855d8f2f2fa49a055c4e9d20698c9fbd7572462531c2746f6b58e",
+    "snapshot": "ba8845c5f34855d8f2f2fa49a055c4e9d20698c9fbd7572462531c2746f6b58e",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_04_errors.patch",
+    "expected": "1c937497ee30ef7de86245b2fa4e2b6668b8660e2db62017bd7a7c2db5864991",
+    "current_original": "1c937497ee30ef7de86245b2fa4e2b6668b8660e2db62017bd7a7c2db5864991",
+    "snapshot": "1c937497ee30ef7de86245b2fa4e2b6668b8660e2db62017bd7a7c2db5864991",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_05_email_loader.patch",
+    "expected": "7c917564df055f151f8bd0a0b334a09e248db1481723123196fbfb0377093f3d",
+    "current_original": "7c917564df055f151f8bd0a0b334a09e248db1481723123196fbfb0377093f3d",
+    "snapshot": "7c917564df055f151f8bd0a0b334a09e248db1481723123196fbfb0377093f3d",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_06_de_ru.patch",
+    "expected": "83aaca5d4a3aeb8cf7d4ed0e3854d0c3408d1553bb139ddb2eee22f8b5d013c6",
+    "current_original": "83aaca5d4a3aeb8cf7d4ed0e3854d0c3408d1553bb139ddb2eee22f8b5d013c6",
+    "snapshot": "83aaca5d4a3aeb8cf7d4ed0e3854d0c3408d1553bb139ddb2eee22f8b5d013c6",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_07_mail_de_ru.patch",
+    "expected": "70acc9b0789a982c2abfe3b0e6f3febbf62db16cf3957343e7fc916f50efae18",
+    "current_original": "70acc9b0789a982c2abfe3b0e6f3febbf62db16cf3957343e7fc916f50efae18",
+    "snapshot": "70acc9b0789a982c2abfe3b0e6f3febbf62db16cf3957343e7fc916f50efae18",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/global_i18n_panel_core.patch",
+    "expected": "e4f10a339c78818ceddbc49e2f687b4ee80afa86a7fce9d407c22bd8536892c7",
+    "current_original": "e4f10a339c78818ceddbc49e2f687b4ee80afa86a7fce9d407c22bd8536892c7",
+    "snapshot": "e4f10a339c78818ceddbc49e2f687b4ee80afa86a7fce9d407c22bd8536892c7",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch",
+    "expected": "f6d660142e23f9121e6f621037b9aeaf901155f8be875ac31513152859fee3be",
+    "current_original": "f6d660142e23f9121e6f621037b9aeaf901155f8be875ac31513152859fee3be",
+    "snapshot": "f6d660142e23f9121e6f621037b9aeaf901155f8be875ac31513152859fee3be",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch",
+    "expected": "6f3cf673a93cfd0e1372ce85b4edef90a339f228f02b0f1ad67b14b9227d23a3",
+    "current_original": "6f3cf673a93cfd0e1372ce85b4edef90a339f228f02b0f1ad67b14b9227d23a3",
+    "snapshot": "6f3cf673a93cfd0e1372ce85b4edef90a339f228f02b0f1ad67b14b9227d23a3",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch",
+    "expected": "04a272e8b7e6f2d35feb96d231b244b485be54ae602a4732c9ca10f8a783d177",
+    "current_original": "04a272e8b7e6f2d35feb96d231b244b485be54ae602a4732c9ca10f8a783d177",
+    "snapshot": "04a272e8b7e6f2d35feb96d231b244b485be54ae602a4732c9ca10f8a783d177",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch",
+    "expected": "48529e9d44881f891d7de65d2a2b6787eff44d314c5393e2a6351840308604a1",
+    "current_original": "48529e9d44881f891d7de65d2a2b6787eff44d314c5393e2a6351840308604a1",
+    "snapshot": "48529e9d44881f891d7de65d2a2b6787eff44d314c5393e2a6351840308604a1",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch",
+    "expected": "26d47990502fb49fe9a9461e76a1c17e3fd62a543e038037cce0f6d4fe670592",
+    "current_original": "26d47990502fb49fe9a9461e76a1c17e3fd62a543e038037cce0f6d4fe670592",
+    "snapshot": "26d47990502fb49fe9a9461e76a1c17e3fd62a543e038037cce0f6d4fe670592",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch",
+    "expected": "1f4e0b90b13380a2feb431eb817b4ca0586f78d98c853518605ebddbb42e0fcf",
+    "current_original": "1f4e0b90b13380a2feb431eb817b4ca0586f78d98c853518605ebddbb42e0fcf",
+    "snapshot": "1f4e0b90b13380a2feb431eb817b4ca0586f78d98c853518605ebddbb42e0fcf",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch",
+    "expected": "bfed494d32ebf15d0324db0985305e722e5913aa075a72ab3a188474851a4893",
+    "current_original": "bfed494d32ebf15d0324db0985305e722e5913aa075a72ab3a188474851a4893",
+    "snapshot": "bfed494d32ebf15d0324db0985305e722e5913aa075a72ab3a188474851a4893",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch",
+    "expected": "ee133c8facd3d0397c5529085fc1a1857f8b2ac2e492ad075df2805180aa9e33",
+    "current_original": "ee133c8facd3d0397c5529085fc1a1857f8b2ac2e492ad075df2805180aa9e33",
+    "snapshot": "ee133c8facd3d0397c5529085fc1a1857f8b2ac2e492ad075df2805180aa9e33",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch",
+    "expected": "4f291280b0c6c02bdaa2899ef3d6acc193ac14a56e366d7b84d77bfe72b4cf8d",
+    "current_original": "4f291280b0c6c02bdaa2899ef3d6acc193ac14a56e366d7b84d77bfe72b4cf8d",
+    "snapshot": "4f291280b0c6c02bdaa2899ef3d6acc193ac14a56e366d7b84d77bfe72b4cf8d",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch",
+    "expected": "e697d07cf2cd3e93b29c19ff543ad9efbb24f6f0ca6744bd94fe89d827cf2b7d",
+    "current_original": "e697d07cf2cd3e93b29c19ff543ad9efbb24f6f0ca6744bd94fe89d827cf2b7d",
+    "snapshot": "e697d07cf2cd3e93b29c19ff543ad9efbb24f6f0ca6744bd94fe89d827cf2b7d",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch",
+    "expected": "7453211f1c51bc0fb8b64fc97e5abd5ba3c587a2a1020139b8681f43375f1b34",
+    "current_original": "7453211f1c51bc0fb8b64fc97e5abd5ba3c587a2a1020139b8681f43375f1b34",
+    "snapshot": "7453211f1c51bc0fb8b64fc97e5abd5ba3c587a2a1020139b8681f43375f1b34",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch",
+    "expected": "dc9ef3b99b1c64aa225c74031248bc7287e72496cbae90fa783c9d5da36185ae",
+    "current_original": "dc9ef3b99b1c64aa225c74031248bc7287e72496cbae90fa783c9d5da36185ae",
+    "snapshot": "dc9ef3b99b1c64aa225c74031248bc7287e72496cbae90fa783c9d5da36185ae",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch",
+    "expected": "d8b2d8d6ef229c7cefb94272280b99c2a945f7f8b7c0f474e7cef09e616021cd",
+    "current_original": "d8b2d8d6ef229c7cefb94272280b99c2a945f7f8b7c0f474e7cef09e616021cd",
+    "snapshot": "d8b2d8d6ef229c7cefb94272280b99c2a945f7f8b7c0f474e7cef09e616021cd",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch",
+    "expected": "a617e950feaa95dbaa147f1788e68f79f1e93fd9b80ca6b9deb8e8f0bea3aae3",
+    "current_original": "a617e950feaa95dbaa147f1788e68f79f1e93fd9b80ca6b9deb8e8f0bea3aae3",
+    "snapshot": "a617e950feaa95dbaa147f1788e68f79f1e93fd9b80ca6b9deb8e8f0bea3aae3",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch",
+    "expected": "801da3cedaa56eba6522a31ff0d424e464e7fdb759e07351510c0eb1738fbea4",
+    "current_original": "801da3cedaa56eba6522a31ff0d424e464e7fdb759e07351510c0eb1738fbea4",
+    "snapshot": "801da3cedaa56eba6522a31ff0d424e464e7fdb759e07351510c0eb1738fbea4",
+    "unchanged": true
+  },
+  {
+    "path": "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch",
+    "expected": "0a06b78f48944529ee19b822ee05d9c49b3b2fee4eec842177cfd20f56cac903",
+    "current_original": "0a06b78f48944529ee19b822ee05d9c49b3b2fee4eec842177cfd20f56cac903",
+    "snapshot": "0a06b78f48944529ee19b822ee05d9c49b3b2fee4eec842177cfd20f56cac903",
+    "unchanged": true
+  }
+]

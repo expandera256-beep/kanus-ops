@@ -1,0 +1,8 @@
+# public_html/_fx/ — web'den tüm erişim kapalı (script yalnız cron/CLI ile çalışır)
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

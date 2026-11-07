@@ -1,0 +1,30 @@
+HTTP/1.1 302 Moved Temporarily
+Server: Kestrel
+Location: https://software-static.download.prss.microsoft.com/dbazure/26300.9457.260913-1737.26h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso
+Request-Context: appId=cid-v1:d94c0f68-64bf-4036-8409-a0e761bb7ee1
+X-Response-Cache-Status: True
+Content-Length: 0
+Expires: Sat, 07 Nov 2026 21:09:34 GMT
+Cache-Control: max-age=0, no-cache, no-store
+Pragma: no-cache
+Date: Sat, 07 Nov 2026 21:09:34 GMT
+Connection: keep-alive
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+
+HTTP/1.1 200 OK
+Content-Length: 8225329152
+Content-Type: application/octet-stream
+Server: Kestrel
+Accept-Ranges: bytes
+Cache-Control: public, max-age=6000
+ETag: "0x6AE65CFA8A1DA5B61DAF9D9BB0A719D0FCCC0373BDB46A98F5AE3C0C88E6AD40"
+Last-Modified: Thu, 17 Sep 2026 19:32:20 GMT
+X-Ms-ApiVersion: Distribute 1.2
+X-Ms-Region: prod-eus-z1
+Content-Disposition: attachment; filename=26300.9457.260913-1737.26h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso; filename*=UTF-8''26300.9457.260913-1737.26h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso
+Date: Sat, 07 Nov 2026 21:09:35 GMT
+Connection: keep-alive
+X-OSID: 2
+X-CID: 2
+X-CCC: CA
+

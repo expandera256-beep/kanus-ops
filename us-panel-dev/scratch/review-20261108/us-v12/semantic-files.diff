@@ -1,0 +1,710 @@
+--- /workspace/us-panel-dev/pinned/v11/file_open_unix.go	2026-11-06 13:38:35.487476569 +0300
++++ /workspace/us-panel-dev/pinned/v12/file_open_unix.go	2026-11-08 00:47:01.112430217 +0300
+@@ -20,12 +20,62 @@
+ // symlink between check and use cannot redirect the open (no stat-then-open
+ // TOCTOU). The final fd is fstat'ed: regular file with exactly one link.
+ func openBeneath(root, rel string) (*os.File, error) {
++	h, err := pinRoot(root)
++	if err != nil {
++		return nil, err
++	}
++	defer h.Close()
++	return openBeneathAt(h, root, rel)
++}
++
++// rootHandle is a workspace root opened once (O_DIRECTORY|O_NOFOLLOW) and
++// kept as an fd. Every later operation is openat/mkdirat/renameat/unlinkat
++// relative to a dup of this fd; the root path is never re-resolved, so a
++// later swap of the root (or any ancestor) for a symlink cannot redirect it.
++type rootHandle struct{ f *os.File }
++
++func pinRoot(root string) (*rootHandle, error) {
++	fd, err := unix.Open(root, unix.O_RDONLY|unix.O_DIRECTORY|unix.O_NOFOLLOW|unix.O_CLOEXEC, 0)
++	if err != nil {
++		return nil, errFileToolEscape
++	}
++	return &rootHandle{f: os.NewFile(uintptr(fd), root)}, nil
++}
++
++func (h *rootHandle) Close() error {
++	if h == nil || h.f == nil {
++		return nil
++	}
++	return h.f.Close()
++}
++
++// dupRoot returns a private dup of the pinned root fd (caller closes it).
++func (h *rootHandle) dupRoot() (int, error) {
++	if h == nil || h.f == nil {
++		return -1, errFileToolEscape
++	}
++	raw, err := h.f.SyscallConn()
++	if err != nil {
++		return -1, err
++	}
++	nfd := -1
++	var derr error
++	if cerr := raw.Control(func(fd uintptr) { nfd, derr = unix.FcntlInt(fd, unix.F_DUPFD_CLOEXEC, 0) }); cerr != nil {
++		return -1, cerr
++	}
++	if derr != nil {
++		return -1, derr
++	}
++	return nfd, nil
++}
++
++func openBeneathAt(h *rootHandle, root, rel string) (*os.File, error) {
+ 	rel = filepath.ToSlash(filepath.Clean(rel))
+ 	if rel == "." || strings.HasPrefix(rel, "/") || rel == ".." || strings.HasPrefix(rel, "../") {
+ 		return nil, errFileToolEscape
+ 	}
+ 	parts := strings.Split(rel, "/")
+-	dirfd, err := unix.Open(root, unix.O_RDONLY|unix.O_DIRECTORY|unix.O_CLOEXEC, 0)
++	dirfd, err := h.dupRoot()
+ 	if err != nil {
+ 		return nil, err
+ 	}
+@@ -57,12 +107,12 @@
+ // openDirBeneath returns an fd for root/relDir, walking every component
+ // with openat(O_DIRECTORY|O_NOFOLLOW). With create, missing components are
+ // made with mkdirat relative to the parent fd.
+-func openDirBeneath(root, relDir string, create bool) (int, error) {
++func openDirBeneath(h *rootHandle, relDir string, create bool) (int, error) {
+ 	relDir = filepath.ToSlash(filepath.Clean(relDir))
+ 	if strings.HasPrefix(relDir, "/") || relDir == ".." || strings.HasPrefix(relDir, "../") {
+ 		return -1, errFileToolEscape
+ 	}
+-	dirfd, err := unix.Open(root, unix.O_RDONLY|unix.O_DIRECTORY|unix.O_CLOEXEC, 0)
++	dirfd, err := h.dupRoot()
+ 	if err != nil {
+ 		return -1, err
+ 	}
+@@ -108,11 +158,20 @@
+ // the same dir fd, fsync dir. On any failure the temp is unlinkat'ed from
+ // the same dir fd, so it can never be left outside (or inside) the root.
+ func writeBeneath(root, rel string, data []byte) error {
++	h, err := pinRoot(root)
++	if err != nil {
++		return err
++	}
++	defer h.Close()
++	return writeBeneathAt(h, root, rel, data)
++}
++
++func writeBeneathAt(h *rootHandle, root, rel string, data []byte) error {
+ 	dir, name, err := splitBeneath(rel)
+ 	if err != nil {
+ 		return err
+ 	}
+-	dirfd, err := openDirBeneath(root, dir, true)
++	dirfd, err := openDirBeneath(h, dir, true)
+ 	if err != nil {
+ 		return err
+ 	}
+@@ -169,11 +228,20 @@
+ // deleteBeneath: unlinkat on the parent dir fd; the target must be a
+ // regular file (checked with fstatat AT_SYMLINK_NOFOLLOW on the same fd).
+ func deleteBeneath(root, rel string) error {
++	h, err := pinRoot(root)
++	if err != nil {
++		return err
++	}
++	defer h.Close()
++	return deleteBeneathAt(h, rel)
++}
++
++func deleteBeneathAt(h *rootHandle, rel string) error {
+ 	dir, name, err := splitBeneath(rel)
+ 	if err != nil {
+ 		return err
+ 	}
+-	dirfd, err := openDirBeneath(root, dir, false)
++	dirfd, err := openDirBeneath(h, dir, false)
+ 	if err != nil {
+ 		return err
+ 	}
+--- /workspace/us-panel-dev/pinned/v11/file_open_windows.go	2026-11-06 13:38:35.387485045 +0300
++++ /workspace/us-panel-dev/pinned/v12/file_open_windows.go	2026-11-08 00:47:01.112430217 +0300
+@@ -11,6 +11,22 @@
+ // openBeneath on Windows: components are checked by noSymlinkPath (reparse
+ // points refused) before open; a race-free handle-relative open is NOT
+ // implemented here (NOT FIXED on Windows, documented).
++// rootHandle on Windows only records the root path. Handle-relative
++// (NtCreateFile RootDirectory) operations are NOT implemented this round:
++// Windows Write/Delete remain path based (NOT DONE, documented in report).
++type rootHandle struct{ root string }
++
++func pinRoot(root string) (*rootHandle, error) { return &rootHandle{root: root}, nil }
++func (h *rootHandle) Close() error             { return nil }
++
++func openBeneathAt(h *rootHandle, root, rel string) (*os.File, error) {
++	return openBeneath(h.root, rel)
++}
++func writeBeneathAt(h *rootHandle, root, rel string, data []byte) error {
++	return writeBeneath(h.root, rel, data)
++}
++func deleteBeneathAt(h *rootHandle, rel string) error { return deleteBeneath(h.root, rel) }
++
+ func openBeneath(root, rel string) (*os.File, error) {
+ 	full := filepath.Join(root, rel)
+ 	if err := noSymlinkPath(root, full); err != nil {
+--- /workspace/us-panel-dev/pinned/v11/file_tools.go	2026-11-06 13:38:34.199587566 +0300
++++ /workspace/us-panel-dev/pinned/v12/file_tools.go	2026-11-08 00:47:01.112430217 +0300
+@@ -24,6 +24,9 @@
+ 	Root     string
+ 	MaxRead  int64
+ 	MaxWrite int64
++	// root is pinned once at construction (unix: O_NOFOLLOW dir fd); all
++	// Write/Delete/Read go through it and never re-resolve Root.
++	root *rootHandle
+ }
+ 
+ func newFileTools(root string) (*fileTools, error) {
+@@ -38,7 +41,11 @@
+ 	if err != nil || !info.IsDir() || info.Mode()&os.ModeSymlink != 0 {
+ 		return nil, errors.New("geçersiz çalışma klasörü")
+ 	}
+-	return &fileTools{Root: abs, MaxRead: fileToolMaxRead, MaxWrite: fileToolMaxWrite}, nil
++	h, err := pinRoot(abs)
++	if err != nil {
++		return nil, errors.New("geçersiz çalışma klasörü")
++	}
++	return &fileTools{Root: abs, MaxRead: fileToolMaxRead, MaxWrite: fileToolMaxWrite, root: h}, nil
+ }
+ 
+ // resolve maps rel to a full path inside Root or returns errFileToolEscape.
+@@ -102,7 +109,7 @@
+ 	if err != nil {
+ 		return nil, errFileToolEscape
+ 	}
+-	f, err := openBeneath(ft.Root, rel2)
++	f, err := openBeneathAt(ft.root, ft.Root, rel2)
+ 	if err != nil {
+ 		return nil, err
+ 	}
+@@ -135,7 +142,11 @@
+ 	if info, err := os.Lstat(full); err == nil && (!info.Mode().IsRegular() || fileLinkCount(info) > 1) {
+ 		return errors.New("normal dosya değil veya hard link")
+ 	}
+-	return atomicWriteFile(ft.Root, full, data)
++	rel2, err := filepath.Rel(ft.Root, full)
++	if err != nil || rel2 == "." || strings.HasPrefix(rel2, "..") {
++		return errFileToolEscape
++	}
++	return writeBeneathAt(ft.root, ft.Root, rel2, data)
+ }
+ 
+ func (ft *fileTools) Delete(rel string) error {
+@@ -147,7 +158,7 @@
+ 	if err != nil {
+ 		return errFileToolEscape
+ 	}
+-	return deleteBeneath(ft.Root, rel2)
++	return deleteBeneathAt(ft.root, rel2)
+ }
+ 
+ // atomicWriteFile writes via a synced temp file in the same directory and an
+--- /workspace/us-panel-dev/pinned/v11/licensesrv/accounts.go	2026-11-06 13:38:28.052179604 +0300
++++ /workspace/us-panel-dev/pinned/v12/licensesrv/accounts.go	2026-11-08 00:49:53.200255292 +0300
+@@ -725,3 +725,53 @@
+ 	bcryptOps.Add(1)
+ 	return bcrypt.GenerateFromPassword(pw, cost)
+ }
++
++// modelSpendable is the read-only entitlement gate that runs after the
++// credential check and BEFORE any GPU readiness probe or wake: the
++// credential must resolve to an active license (account sessions: one the
++// account owns) with usable credit, i.e. credits minus live reservations > 0.
++// ErrInvalid → 403 (raw key without an active license), ErrNoCredit → 402
++// (no usable credit; for sessions also no owned active license). It never mutates
++// the store; expired reservations are simply not counted.
++func (s *Store) modelSpendable(token string, now time.Time) error {
++	s.mu.Lock()
++	defer s.mu.Unlock()
++	if strings.HasPrefix(token, "usa1.") {
++		a := s.accountForTokenLocked(token, now)
++		if a == nil {
++			return ErrInvalid
++		}
++		// No owned active license, or none with usable credit: 402, the same
++		// status the reservation path has always returned for sessions.
++		for key, owner := range s.st.LicenseOwners {
++			if l := s.st.Licenses[key]; owner == a.ID && l != nil && !l.Revoked && now.Before(l.ExpiresAt) && s.usableCreditLocked(key, l, now) > 0 {
++				return nil
++			}
++		}
++		return ErrNoCredit
++	}
++	l := s.st.Licenses[token]
++	if l == nil || l.Revoked || !now.Before(l.ExpiresAt) || l.Plan.Kind != "use" && l.Plan.Kind != "sub" {
++		return ErrInvalid
++	}
++	if s.usableCreditLocked(token, l, now) <= 0 {
++		return ErrNoCredit
++	}
++	return nil
++}
++
++func (s *Store) usableCreditLocked(key string, l *License, now time.Time) int {
++	if x := s.legacySecondsLocked(key, l); x > 0 {
++		return x
++	}
++	reserved := l.Reserved
++	for _, r := range s.st.Reservations {
++		if r != nil && r.Key == key && !now.Before(r.Expires) {
++			reserved -= r.Amount // expired, released on the next reserve
++		}
++	}
++	if reserved < 0 {
++		reserved = 0
++	}
++	return l.Credits - reserved
++}
+--- /workspace/us-panel-dev/pinned/v11/licensesrv/gpu_pin.go	2026-11-08 00:15:55.738967690 +0300
++++ /workspace/us-panel-dev/pinned/v12/licensesrv/gpu_pin.go	2026-11-08 00:48:29.870403081 +0300
+@@ -18,8 +18,11 @@
+ 
+ const DefaultGPUWakePinFile = "/etc/us-model/wake.pin"
+ 
+-// pinMaterial accepts either a PEM certificate bundle (preferred) or one
+-// SPKI SHA256 per line. Multiple entries support rotation. Formats are not mixed.
++// pinMaterial: the only supported mode is a PEM certificate bundle (one or
++// more certificates for rotation). R12: SPKI-hash-only pins are parsed but
++// refused (pin_spki_unsupported, fail closed) because trusting a bare key
++// hash for a self-signed leaf would need InsecureSkipVerify, which is not
++// allowed anywhere in this code base. Formats are not mixed.
+ type pinMaterial struct {
+ 	hashes       [][32]byte
+ 	certificates []*x509.Certificate
+@@ -102,46 +105,11 @@
+ 	}
+ }
+ 
+-// pinnedTLS: Go's CA check is skipped ONLY because VerifyConnection below
+-// enforces both (1) leaf SPKI sha256 ∈ pins and (2) the leaf matches the
+-// URL host (DNS name or IP SAN). Any failure aborts the handshake.
+-func pinnedTLS(host string, pins [][32]byte) *tls.Config {
+-	return &tls.Config{
+-		MinVersion:         tls.VersionTLS12,
+-		ServerName:         host,
+-		InsecureSkipVerify: true, // replaced by VerifyConnection (pin + SAN)
+-		VerifyConnection: func(cs tls.ConnectionState) error {
+-			if len(cs.PeerCertificates) == 0 {
+-				return errors.New("no peer certificate")
+-			}
+-			leaf := cs.PeerCertificates[0]
+-			sum := sha256.Sum256(leaf.RawSubjectPublicKeyInfo)
+-			ok := false
+-			for _, p := range pins {
+-				if p == sum {
+-					ok = true
+-				}
+-			}
+-			if !ok {
+-				return errors.New("certificate pin mismatch")
+-			}
+-			if err := leaf.VerifyHostname(host); err != nil {
+-				return errors.New("certificate host/IP SAN mismatch")
+-			}
+-			now := time.Now()
+-			if now.Before(leaf.NotBefore) || now.After(leaf.NotAfter) {
+-				return errors.New("certificate expired or not yet valid")
+-			}
+-			return nil
+-		},
+-	}
+-}
+-
+ // client returns the HTTP client for one control call. Redirects are never
+ // followed. With a pin file: pinned TLS; without: system CA verification.
+ func (g *GPUWaker) client(rawURL string) (*http.Client, error) {
+ 	noRedirect := func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }
+-	if g.PinFile == "" {
++	if !g.pinnedFor(rawURL) {
+ 		c := g.Client
+ 		if c == nil {
+ 			c = &http.Client{Timeout: 20 * time.Second}
+@@ -165,10 +133,10 @@
+ 		host = h
+ 	}
+ 	host = strings.Trim(host, "[]")
+-	config := pinnedTLS(host, material.hashes)
+-	if len(material.certificates) > 0 {
+-		config = pemTLS(host, material.certificates)
++	if len(material.certificates) == 0 {
++		return nil, errors.New("pin_spki_unsupported") // fail closed, see loadPinMaterial
+ 	}
++	config := pemTLS(host, material.certificates)
+ 	tr := &http.Transport{TLSClientConfig: config, DisableKeepAlives: true, TLSHandshakeTimeout: 10 * time.Second, Proxy: nil}
+ 	return &http.Client{Timeout: 20 * time.Second, Transport: tr, CheckRedirect: noRedirect}, nil
+ }
+@@ -184,3 +152,8 @@
+ 	}
+ 	return DefaultGPUWakePinFile
+ }
++
++// pinnedFor reports whether a control call to rawURL must use the pin.
++func (g *GPUWaker) pinnedFor(rawURL string) bool {
++	return g.PinFile != "" && !g.pinExempt[rawURL]
++}
+--- /workspace/us-panel-dev/pinned/v11/licensesrv/gpu_pin_test.go	2026-11-08 00:13:56.764323186 +0300
++++ /workspace/us-panel-dev/pinned/v12/licensesrv/gpu_pin_test.go	2026-11-08 00:48:45.202743880 +0300
+@@ -52,22 +52,37 @@
+ 	return g
+ }
+ 
++func certPEMOf(s *httptest.Server) string {
++	return string(pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE", Bytes: s.Certificate().Raw}))
++}
++
++// R12: PEM is the only supported pin mode; SPKI-hash pins fail closed
++// (no request reaches the server) instead of using InsecureSkipVerify.
+ func TestGPUPinSPKIAndPEMAndRotation(t *testing.T) {
+-	s, _ := tlsGPU(t)
++	s, hits := tlsGPU(t)
+ 	leaf := s.Certificate()
+ 	sum := sha256.Sum256(leaf.RawSubjectPublicKeyInfo)
+ 	other := sha256.Sum256([]byte("old key"))
+-	cases := map[string]string{
++	g := pinnedWaker(t, s, writePin(t, certPEMOf(s)))
++	if !g.ModelReady(context.Background()) {
++		t.Fatal("pem: eşleşen pin reddedildi")
++	}
++	before := hits.Load()
++	for name, body := range map[string]string{
+ 		"hex":           hex.EncodeToString(sum[:]),
+ 		"base64+prefix": "sha256/" + base64.StdEncoding.EncodeToString(sum[:]),
+ 		"rotation":      "# eski\nsha256/" + base64.StdEncoding.EncodeToString(other[:]) + "\n" + hex.EncodeToString(sum[:]) + "\n",
+-		"pem":           string(pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE", Bytes: leaf.Raw})),
+-	}
+-	for name, body := range cases {
++	} {
+ 		g := pinnedWaker(t, s, writePin(t, body))
+-		if !g.ModelReady(context.Background()) {
+-			t.Fatalf("%s: eşleşen pin reddedildi", name)
++		if g.ModelReady(context.Background()) {
++			t.Fatalf("%s: SPKI pin artık desteklenmiyor, fail-closed olmalı", name)
+ 		}
++		if _, err := g.client(s.URL); err == nil || err.Error() != "pin_spki_unsupported" {
++			t.Fatalf("%s: err=%v", name, err)
++		}
++	}
++	if hits.Load() != before {
++		t.Fatal("SPKI pin ile sunucuya istek ulaştı")
+ 	}
+ }
+ 
+@@ -108,8 +123,7 @@
+ 		http.Redirect(w, r, other.URL+r.URL.Path, http.StatusFound)
+ 	}))
+ 	defer s.Close()
+-	sum := sha256.Sum256(s.Certificate().RawSubjectPublicKeyInfo)
+-	g := pinnedWaker(t, s, writePin(t, hex.EncodeToString(sum[:])))
++	g := pinnedWaker(t, s, writePin(t, certPEMOf(s)))
+ 	g.Trigger()
+ 	waitState(t, g, "failed")
+ 	if otherHits.Load() != 0 {
+@@ -122,9 +136,8 @@
+ 
+ func TestGPUPinRightKeyWrongHostRejected(t *testing.T) {
+ 	s, _ := tlsGPU(t)
+-	sum := sha256.Sum256(s.Certificate().RawSubjectPublicKeyInfo)
+ 	u := strings.Replace(s.URL, "127.0.0.1", "localhost", 1) // not in the cert's SANs
+-	t.Setenv("US_GPU_WAKE_PIN_FILE", writePin(t, hex.EncodeToString(sum[:])))
++	t.Setenv("US_GPU_WAKE_PIN_FILE", writePin(t, certPEMOf(s)))
+ 	g, err := NewGPUWaker(u+"/a100/start", u+"/a100/status", tokenFile(t), 45*time.Minute)
+ 	if err != nil {
+ 		t.Fatal(err)
+@@ -139,8 +152,7 @@
+ 	log.SetOutput(&buf)
+ 	defer log.SetOutput(os.Stderr)
+ 	s, _ := tlsGPU(t)
+-	sum := sha256.Sum256(s.Certificate().RawSubjectPublicKeyInfo)
+-	g := pinnedWaker(t, s, writePin(t, hex.EncodeToString(sum[:])))
++	g := pinnedWaker(t, s, writePin(t, certPEMOf(s)))
+ 	g.ModelReady(context.Background())
+ 	out := buf.String()
+ 	host := strings.TrimPrefix(s.URL, "https://")
+--- /workspace/us-panel-dev/pinned/v11/licensesrv/gpu_wake.go	2026-11-08 00:16:59.276379967 +0300
++++ /workspace/us-panel-dev/pinned/v12/licensesrv/gpu_wake.go	2026-11-08 00:48:29.870403081 +0300
+@@ -29,6 +29,11 @@
+ 	// PinFile: SPKI/PEM pin file for https control calls (empty: system CA).
+ 	PinFile     string
+ 	UseSystemCA bool // explicit opt-in for non-loopback HTTPS without a pin
++	// pinExempt lists control URLs (exact string) that may skip the pin:
++	// only loopback or plain-http URLs, and only when no explicit
++	// US_GPU_WAKE_PIN_FILE is set. Decided per URL (R12): a loopback
++	// WakeURL never lifts the pin for a remote StatusURL. nil: pin all.
++	pinExempt map[string]bool
+ 
+ 	mu      sync.Mutex
+ 	state   string // idle, starting, polling, ready, failed
+@@ -136,11 +141,22 @@
+ 		Client: &http.Client{Timeout: 20 * time.Second, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}, state: "idle", since: time.Now()}
+ 	g.UseSystemCA = os.Getenv("US_GPU_WAKE_USE_SYSTEM_CA") == "1"
+ 	g.PinFile = pinFileFromEnv()
+-	u, _ := url.Parse(wakeURL)
+-	// Loopback HTTP is permitted for local tunnels/tests. A nonempty explicit
+-	// pin remains fail-closed. Non-loopback HTTPS always defaults to a pin.
+-	if (u.Scheme == "http" || isLoopbackHost(u.Hostname())) && strings.TrimSpace(os.Getenv("US_GPU_WAKE_PIN_FILE")) == "" {
+-		g.PinFile = ""
++	// Loopback/plain-http URLs (local tunnels, tests) may skip the pin, decided
++	// per URL. A nonempty explicit pin stays fail-closed for every URL.
++	// Non-loopback HTTPS always requires the pin.
++	if strings.TrimSpace(os.Getenv("US_GPU_WAKE_PIN_FILE")) == "" {
++		g.pinExempt = map[string]bool{}
++		all := true
++		for _, raw := range []string{wakeURL, statusURL} {
++			if u, e := url.Parse(raw); e == nil && (u.Scheme == "http" || isLoopbackHost(u.Hostname())) {
++				g.pinExempt[raw] = true
++			} else {
++				all = false
++			}
++		}
++		if all {
++			g.PinFile = ""
++		}
+ 	}
+ 	return g, nil
+ }
+@@ -203,8 +219,9 @@
+ 
+ func (g *GPUWaker) call(ctx context.Context, method, u string) (code int, body []byte, err error) {
+ 	started := time.Now()
++	pinned := g.pinnedFor(u)
+ 	pin := "n/a(system-ca)"
+-	if g.PinFile != "" {
++	if pinned {
+ 		pin = "no"
+ 	}
+ 	defer func() {
+@@ -241,7 +258,7 @@
+ 		return 0, nil, errors.New("unreachable")
+ 	}
+ 	defer resp.Body.Close()
+-	if g.PinFile != "" && resp.TLS != nil {
++	if pinned && resp.TLS != nil {
+ 		pin = "yes" // handshake passed PEM trust+leaf match or SPKI+SAN verification
+ 	}
+ 	b, _ := io.ReadAll(io.LimitReader(resp.Body, 4096))
+--- /workspace/us-panel-dev/pinned/v11/licensesrv/model_proxy.go	2026-11-08 00:16:37.047885883 +0300
++++ /workspace/us-panel-dev/pinned/v12/licensesrv/model_proxy.go	2026-11-08 00:50:23.160921242 +0300
+@@ -33,9 +33,17 @@
+ 	// alone settles (previous behaviour).
+ 	StrictDone bool
+ 	// ReadyTTL caches a positive model-readiness result (default 20s).
+-	ReadyTTL        time.Duration
++	ReadyTTL time.Duration
++	// NotReadyTTL caches a negative readiness result (default 2s) so a burst
++	// of requests produces at most one status probe per window; concurrent
++	// probes are coalesced (singleflight) as well.
++	NotReadyTTL     time.Duration
+ 	readyMu         sync.Mutex
+ 	readyUntil      time.Time
++	notReadyUntil   time.Time
++	notReadyGPU     bool
++	notReadyStamp   time.Time
++	readyFlight     *readyCall
+ 	slots, requests chan struct{}
+ }
+ 
+@@ -105,6 +113,17 @@
+ 		return
+ 	}
+ 	_ = json.Unmarshal(in["stream"], &stream)
++	// Entitlement gate (R12): after credential/license validation and BEFORE
++	// any readiness probe or wake. No active license → 403, no usable credit
++	// (credits − live reservations ≤ 0) → 402. Neither touches the GPU.
++	if err := p.Store.modelSpendable(key, time.Now()); err != nil {
++		if err == ErrNoCredit {
++			http.Error(w, "no usable credit", 402)
++		} else {
++			http.Error(w, "no active license", 403)
++		}
++		return
++	}
+ 	if ready, gpuUp := p.modelReady(r.Context()); !ready {
+ 		st := GPUStatus{State: "warming", Reason: "model_not_ready", Since: time.Now()}
+ 		if p.Waker != nil && gpuUp {
+@@ -475,7 +494,7 @@
+ 	}
+ 	defer resp.Body.Close()
+ 	body, err := io.ReadAll(io.LimitReader(resp.Body, (1<<20)+1))
+-	if err != nil || len(body) > 1<<20 || resp.StatusCode != 200 || !json.Valid(body) {
++	if _, ok := parseModelList(body); err != nil || len(body) > 1<<20 || resp.StatusCode != 200 || !ok {
+ 		p.invalidateReady()
+ 		http.Error(w, "model metadata invalid", 502)
+ 		return
+@@ -488,35 +507,82 @@
+ // with a Waker, /a100/status must say model_ready=true; in every case the
+ // upstream GET /v1/models must return 200 and list p.Model. A positive
+ // result is cached for ReadyTTL. Runs before queue and credit reservation.
++type readyCall struct {
++	done         chan struct{}
++	ready, gpuUp bool
++}
++
+ func (p *ModelProxy) modelReady(ctx context.Context) (ready, gpuReady bool) {
+ 	if p.Waker == nil && p.Upstream == "" {
+ 		return true, true // no upstream configured: rejected downstream
+ 	}
+ 	p.readyMu.Lock()
+-	ok := time.Now().Before(p.readyUntil)
+-	p.readyMu.Unlock()
+-	if ok {
++	now := time.Now()
++	if now.Before(p.readyUntil) {
++		p.readyMu.Unlock()
+ 		return true, true
+ 	}
++	var stamp time.Time
++	if p.Waker != nil {
++		stamp = p.Waker.Status().Since
++	}
++	// A waker state change (e.g. warmup reached ready) voids the negative cache.
++	if now.Before(p.notReadyUntil) && stamp.Equal(p.notReadyStamp) {
++		gpu := p.notReadyGPU
++		p.readyMu.Unlock()
++		return false, gpu
++	}
++	if c := p.readyFlight; c != nil {
++		p.readyMu.Unlock()
++		select {
++		case <-c.done:
++			return c.ready, c.gpuUp
++		case <-ctx.Done():
++			return false, false
++		}
++	}
++	c := &readyCall{done: make(chan struct{})}
++	p.readyFlight = c
++	p.readyMu.Unlock()
++	// The shared probe is detached from one caller's cancellation but bounded.
++	pctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
++	c.ready, c.gpuUp = p.probeReady(pctx)
++	cancel()
++	p.readyMu.Lock()
++	p.readyFlight = nil
++	if c.ready {
++		ttl := p.ReadyTTL
++		if ttl <= 0 {
++			ttl = 20 * time.Second
++		}
++		p.readyUntil = time.Now().Add(ttl)
++	} else if !c.gpuUp {
++		// Only a GPU-not-ready result is cached: it is what costs status calls.
++		ttl := p.NotReadyTTL
++		if ttl <= 0 {
++			ttl = 2 * time.Second
++		}
++		p.notReadyUntil, p.notReadyGPU, p.notReadyStamp = time.Now().Add(ttl), c.gpuUp, stamp
++	}
++	p.readyMu.Unlock()
++	close(c.done)
++	return c.ready, c.gpuUp
++}
++
++func (p *ModelProxy) probeReady(ctx context.Context) (ready, gpuReady bool) {
+ 	if p.Waker != nil && !p.Waker.ModelReady(ctx) {
+ 		return false, false
+ 	}
+ 	if !p.upstreamListsModel(ctx) {
+ 		return false, true
+ 	}
+-	ttl := p.ReadyTTL
+-	if ttl <= 0 {
+-		ttl = 20 * time.Second
+-	}
+-	p.readyMu.Lock()
+-	p.readyUntil = time.Now().Add(ttl)
+-	p.readyMu.Unlock()
+ 	return true, true
+ }
+ 
+ func (p *ModelProxy) invalidateReady() {
+ 	p.readyMu.Lock()
+ 	p.readyUntil = time.Time{}
++	p.notReadyUntil = time.Time{}
+ 	p.readyMu.Unlock()
+ 	if p.Waker != nil {
+ 		p.Waker.MarkDown()
+@@ -542,15 +608,15 @@
+ 	if resp.StatusCode != 200 {
+ 		return false
+ 	}
+-	var list struct {
+-		Data []struct {
+-			ID string `json:"id"`
+-		} `json:"data"`
++	body, err := io.ReadAll(io.LimitReader(resp.Body, (1<<20)+1))
++	if err != nil || len(body) > 1<<20 {
++		return false
+ 	}
+-	if json.NewDecoder(io.LimitReader(resp.Body, 1<<20)).Decode(&list) != nil {
++	list, ok := parseModelList(body)
++	if !ok {
+ 		return false
+ 	}
+-	for _, m := range list.Data {
++	for _, m := range list {
+ 		if m.ID == p.Model {
+ 			return true
+ 		}
+@@ -568,3 +634,24 @@
+ 	n := missingDoneTotal.Add(1)
+ 	log.Printf("model proxy: upstream stream ended without [DONE] after finish_reason=stop; reservation released (total=%d)", n)
+ }
++
++// parseModelList accepts exactly one JSON object with a non-null "data"
++// array of model entries and nothing after it (trailing bytes, null, {},
++// {"data":null} are rejected and invalidate readiness).
++func parseModelList(body []byte) ([]struct {
++	ID string `json:"id"`
++}, bool) {
++	var doc struct {
++		Data *[]struct {
++			ID string `json:"id"`
++		} `json:"data"`
++	}
++	dec := json.NewDecoder(bytes.NewReader(body))
++	if dec.Decode(&doc) != nil || doc.Data == nil {
++		return nil, false
++	}
++	if _, err := dec.Token(); err != io.EOF {
++		return nil, false
++	}
++	return *doc.Data, true
++}
+--- /workspace/us-panel-dev/pinned/v11/release.go	2026-11-06 13:38:28.024182528 +0300
++++ /workspace/us-panel-dev/pinned/v12/release.go	2026-11-08 00:51:49.942850185 +0300
+@@ -8,7 +8,7 @@
+ 	"time"
+ )
+ 
+-const buildVersion = "2026.11.06.11"
++const buildVersion = "2026.11.06.12"
+ 
+ // An occupied port must not silently open an older panel after an EXE update.
+ func currentPanelVersion(base string) bool {
+--- /workspace/us-panel-dev/pinned/v11/repair_loop.go	2026-11-06 13:38:34.179589306 +0300
++++ /workspace/us-panel-dev/pinned/v12/repair_loop.go	2026-11-08 00:51:49.938850096 +0300
+@@ -267,10 +267,17 @@
+ 	if l.Key != "" {
+ 		hreq.Header.Set("Authorization", "Bearer "+l.Key)
+ 	}
+-	client := l.Client
+-	if client == nil {
++	// Never follow redirects: a 3xx would resend Authorization and the project
++	// body to another origin (QA FINDING-02). Work on a shallow copy so the
++	// caller's client is never mutated.
++	var client *http.Client
++	if l.Client != nil {
++		c := *l.Client
++		client = &c
++	} else {
+ 		client = &http.Client{Timeout: 10 * time.Minute}
+ 	}
++	client.CheckRedirect = func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }
+ 	resp, err := client.Do(hreq)
+ 	if err != nil {
+ 		return nil, err

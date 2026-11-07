@@ -1,0 +1,36 @@
+[
+  {
+    "httpRequest": {
+      "latency": "0.000998696s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "2a04:4e41:88:e658::d1f:e658",
+      "requestMethod": "GET",
+      "requestSize": "294",
+      "requestUrl": "https://us-commerce-iqhblf63dq-ez.a.run.app/webhooks/shopify",
+      "responseSize": "204",
+      "serverIp": "2600:1900:4244:200::",
+      "status": 503,
+      "userAgent": "KANUS-SRE-readonly-acceptance/20261108"
+    },
+    "insertId": "6aef96b90007574d11f8d87f",
+    "labels": {
+      "instanceId": "00e8a408bd55b74ee77ca80e1ee60e99a2eab1a747132d2ba857b2c7b38aa1366499d478f77aef1c76ba9ca89b945e9ae3e582d729a539bb48a7c0cca63fd310f5ec4c05145b24cbbdb26659e39a62ec439e4c8c95323d8a52ac"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:23:05.558447349Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-commerce",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-commerce-00002-pr2",
+        "service_name": "us-commerce"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "spanId": "1e3d2634d41dde1d",
+    "timestamp": "2026-11-07T21:23:05.478889Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/0c86be71eecb7655592941c3d991e679"
+  }
+]

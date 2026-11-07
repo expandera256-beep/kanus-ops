@@ -1,0 +1,13 @@
+PASS tr /us page translated {"lang":"tr","sample":"İçeriğe geç\nKAN.US)\n®\n\nÇALIŞMA ALANIN\n\nKeşfet\nUygulamalar\nGünlük\nGaleri\nForum\nİletişim\n\nKAN.US)\nBiraz merak uzun bir yol"}
+PASS tr date localized {"found":"\n6 Kas 2026 09:05"}
+PASS tr submit error localized {"notice":"Kaydedilemedi. Lütfen tekrar dene."}
+PASS en /us page translated {"lang":"en","sample":"Skip to content\nKAN.US)\n®\n\nYOUR WORKSPACE\n\nDiscover\nApplications\nJournal\nGallery\nForum\nContact\n\nKAN.US)\nA little curiosi"}
+PASS en date localized {"found":"\nNov 6, 2026, 9:05 AM"}
+PASS en submit error localized {"notice":"Could not save. Please try again."}
+PASS de /us page translated {"lang":"de","sample":"Zum Inhalt\nKAN.US)\n®\n\nDEIN ARBEITSBEREICH\n\nEntdecken\nAnwendungen\nJournal\nGalerie\nForum\nKontakt\n\nKAN.US)\nEin wenig Neugie"}
+PASS de date localized {"found":"\n06.11.2026, 09:05"}
+PASS de submit error localized {"notice":"Speichern fehlgeschlagen. Bitte versuche es erneut."}
+PASS ru /us page translated {"lang":"ru","sample":"К содержанию\nKAN.US)\n®\n\nВАШЕ ПРОСТРАНСТВО\n\nОбзор\nПриложения\nЖурнал\nГалерея\nФорум\nКонтакты\n\nKAN.US)\nНемного любопытства в"}
+PASS ru date localized {"found":"\n6 нояб. 2026 г., 09:05"}
+PASS ru submit error localized {"notice":"Не удалось сохранить. Повторите попытку."}
+TOTAL 12 PASS / 0 FAIL

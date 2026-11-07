@@ -1,0 +1,152 @@
+38:func clipUTF8(text string, limit int) (string, bool) {
+67:func planWire(run projectRun) string {
+108:func (s *session) modelKey() string {
+146:func (s *session) showMissingKey(task string) {
+175:func (s *session) askModel(task string, in intent) {
+205:	setTask("planning", "Bağlam ve dosya kapsamı belirleniyor.")
+206:	ctx, cancelModel := context.WithCancel(context.Background())
+264:	repair := projectRepairRequest(task)
+265:	sendOnce := func(payload string, round int) modelResult {
+279:		if round != 0 && s.modelStage == "" {
+288:					response = s.watchProgramWithLimits(worker, key, payload, round, limits)
+319:	call := func(payload string, round int) modelResult {
+320:		result = sendOnce(payload, round)
+321:		if round >= 0 && result.limited {
+322:			if repair && len(completeReads) > 0 {
+324:				result = s.retrySingleRepairWithLimit(payload, completeReads, sendOnce, limits.promptBytes)
+336:				result = sendOnce(prefix+correction, round)
+354:		if repair || len(sent) > initialLimit {
+367:	if repair {
+376:	if repair && result.ok && !requestsModelRead(result.body) && len(projectReadPaths(s.root, result.body)) == 0 {
+385:	if repair {
+425:		if repair && readRound == 0 && len(paths) == 0 {
+494:	} else if repair && len(reads) == 0 {
+498:	} else if repair && len(okuPaths(result.body)) > 0 {
+504:		// non-repair prompts and when preview mode is disabled.
+585:			ending = "test kırmızı: " + failKey(fail)
+599:		setTask("completed", "Model yanıtı tamamlandı; test çalıştırıldığı anlamına gelmez.")
+670:func singleExplicitTarget(root, task string) string {
+697:func workWire(task, root string) string {
+701:func projectRepairRequest(task string) bool {
+708:	// repair terminology. A new-project request must not consequently demand
+711:	creating := strings.Contains(lead, "olustur") || strings.Contains(lead, "create") || strings.Contains(lead, "build")
+712:	fixing := strings.Contains(lead, "onar") || strings.Contains(lead, "duzelt") || strings.Contains(lead, "repair") || strings.Contains(lead, "fix") || strings.Contains(lead, "tamamla")
+723:	for _, action := range []string{"onar", "duzelt", "eksik", "repair", "fix"} {
+731:func fileMutationRequest(task string) bool {
+746:	for _, action := range []string{"olustur", "gelistir", "yaz", "ekle", "onar", "duzelt", "create", "build", "implement", "patch", "repair", "fix"} {
+754:// Some models return only file names even when asked for an OKU prefix.
+756:func projectReadPaths(root, body string) []string {
+794:func chatWire(task, root string) string {
+800:func boundedChatWire(task, root string, withPaths bool, limit int) string {
+820:func taskNeedsPaths(task string) bool {
+829:	// explicitly say "existing" or ask for a repair.
+847:func chatWireMode(task, root string, withPaths bool) string {
+879:func speakReply(body string) string {
+907:func jobWire(task, root, wrote, missing, fail string) string {
+930:func pathToken(rel string) bool {
+942:func taskPaths(task string) []string {
+962:func missingTargets(task, root string) []string {
+972:func clearPythonCache(root string) {
+982:func shopChecked(root, task string) bool {
+983:	if len(testFiles(root, task)) > 0 {
+994:func testFiles(root, task string) []string {
+995:	var tests []string
+1000:		if !strings.HasPrefix(base, "test_") || !strings.HasSuffix(base, ".py") || seen[rel] {
+1009:		tests = append(tests, rel)
+1014:	if len(tests) > 0 || strings.TrimSpace(root) == "" {
+1015:		return tests
+1017:	if !wantsStore(task) && !strings.Contains(foldText(task), "test") {
+1037:	return tests
+1040:func shopFailure(root, task string) string {
+1050:func unitFailure(root, task string) string {
+1054:	tests := testFiles(root, task)
+1055:	if len(tests) == 0 {
+1058:	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+1060:	args := []string{"-m", "unittest"}
+1061:	for _, rel := range tests {
+1080:func failKey(fail string) string {
+1102:func nextNamed(task, current, fail string) string {
+1106:		if rel == current || strings.HasPrefix(filepath.Base(rel), "test_") {
+1122:			if nxt != current && !strings.HasPrefix(filepath.Base(nxt), "test_") {
+1128:		if rel != current && !strings.HasPrefix(filepath.Base(rel), "test_") {
+1138:func writtenPaths(note string) []string {
+1153:func tailText(text string, max int) string {
+1162:func mainGap(root, task string) string {
+1195:func wantsSmoke(task string) bool {
+1207:func serverGap(root, task string) string {
+1267:func pollPage(url string) (string, int) {
+1284:func postOrder(url string) (string, int) {
+1300:func copyWork(root, dst string) error {
+1335:func isJobMark(line string) bool {
+1344:func wantsContinue(task string) bool {
+1349:func thoughtOnly(body string) bool {
+1357:func jobDone(body string) bool {
+1367:func pyParseCheck(root, path string) (string, string) {
+1376:	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+1396:func applyReplyFiles(root, reply string) string {
+1401:// allowed is nil for normal generation. For repairs, an existing file can
+1403:func applyReplyFilesChecked(root, reply string, allowed map[string]bool) (string, []string) {
+1407:func applyReplyFilesCheckedVersioned(root, reply string, allowed map[string]bool, versions map[string]string) (string, []string) {
+1458:			// Keep the backup if verification fails: the destination may already
+1500:func replyTarget(root, name string) (full, rel string, ok bool) {
+1532:func expandFences(reply string) string {
+1563:func fencePath(info, body string) string {
+1588:func (s *session) startModel(run projectRun) {
+1599:	wire := planWire(run)
+1607:		result := gate.call(context.Background(), func() modelResult {
+1630:func (s *session) applyModel(result modelResult) {
+1650:		if s.flow[i].title == "plan" {
+1673:func (s *session) applyDecision(dec decision) string {
+1718:func firstLine(text string) string {
+1741:func parseDecision(text string) decision {
+1813:func looksLikeProgram(text string) bool {
+1820:func promptEcho(text string) bool {
+1830:func schemaField(line string) bool {
+1842:func logTalk(text string) bool {
+1852:func splitField(line string) (string, string, bool) {
+1860:func decisionSummary(dec decision, fallback string) string {
+1897:func shortAnswer(text string) string {
+1939:func inventedLine(line string) bool {
+1962:func callModel(worker workerID, key, wire string) modelResult {
+1972:func callProgram(worker workerID, key, wire string) modelResult {
+1982:func deepseekTune(round int) (effort string, budget, tokens int) {
+1983:	if round == 0 {
+1989:func (s *session) noteLive(n int) {
+2007:func (s *session) watchProgram(worker workerID, key, wire string, round int) modelResult {
+2008:	return s.watchProgramWithLimits(worker, key, wire, round, defaultContextLimits())
+2011:func (s *session) watchProgramWithLimits(worker workerID, key, wire string, round int, limits contextLimits) modelResult {
+2015:	if round == -4 {
+2018:	} else if round == -3 {
+2021:	} else if round == -2 {
+2024:	} else if round < 0 {
+2029:		if round < 0 {
+2032:			effort, budget, tokens = deepseekTune(round)
+2035:	if round >= 0 || round == -3 || round == -4 {
+2039:	if round < -1 && callContext != nil {
+2045:func postDoor(worker workerID, key, wire, system string, maxTokens int) modelResult {
+2049:func postDoorProgress(worker workerID, key, wire, system string, maxTokens int, effort string, budget int, progress func(int)) modelResult {
+2053:func postDoorProgressWithLimits(worker workerID, key, wire, system string, maxTokens int, effort string, budget int, progress func(int), limits contextLimits) modelResult {
+2054:	return postDoorContext(context.Background(), worker, key, wire, system, maxTokens, effort, budget, progress, limits)
+2057:func postDoorContext(parent context.Context, worker workerID, key, wire, system string, maxTokens int, effort string, budget int, progress func(int), limits contextLimits) modelResult {
+2062:		parent = context.Background()
+2074:func doorBases() []string {
+2089:func (s *session) programFromModel(task, subject string) string {
+2099:	result := s.creditGateway().call(context.Background(), func() modelResult {
+2113:func acceptProgram(text, subject string) string {
+2136:func stripFence(text string) string {
+2160:func postCompletion(url string, worker workerID, key, wire, system string, maxTokens int) modelResult {
+2164:func postCompletionProgress(url string, worker workerID, key, wire, system string, maxTokens int, effort string, budget int, progress func(int)) modelResult {
+2168:func postCompletionProgressWithLimits(url string, worker workerID, key, wire, system string, maxTokens int, effort string, budget int, progress func(int), limits contextLimits) (out modelResult) {
+2169:	return postCompletionContext(context.Background(), url, worker, key, wire, system, maxTokens, effort, budget, progress, limits)
+2172:func postCompletionContext(parent context.Context, url string, worker workerID, key, wire, system string, maxTokens int, effort string, budget int, progress func(int), limits contextLimits) (out modelResult) {
+2195:		parent = context.Background()
+2332:func (r *streamIdleReader) Read(p []byte) (int, error) {
+2340:func readLimitedBody(body io.Reader, contentType string, progress func(int)) (content, thinking, errText string) {
+2344:func readLimitedBodyPolicy(body io.Reader, contentType string, progress func(int), allowJobMarker bool) (content, thinking, errText string) {
+2357:func readModelStream(reader *bufio.Reader, progress func(int)) (content, thinking, errText string) {
+2361:func readModelStreamPolicy(reader *bufio.Reader, progress func(int), allowJobMarker bool) (content, thinking, errText string) {
+2411:func readModelBody(text string) (content, thinking, errText string) {
+2419:func readStream(text string) (content, thinking, errText string) {
+2440:func readChunk(data string) (content, thinking, errText string) {
+2484:func readCompletion(text string) (content, thinking, errText string) {
+2524:func errorText(raw json.RawMessage) string {

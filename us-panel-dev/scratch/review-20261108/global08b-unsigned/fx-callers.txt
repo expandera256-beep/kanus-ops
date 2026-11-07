@@ -1,0 +1,9 @@
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/fx_panel.go:94:func fxBase() string {
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/fx_panel.go:125:func fetchFX(base string) (i18n.FXSnapshot, []byte, time.Duration, error) {
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/fx_panel.go:182:	s, body, ttl, err := fetchFX(base)
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/fx_panel.go:202:func currentFX() (i18n.FXSnapshot, bool) {
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/fx_panel.go:203:	base := fxBase()
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/pricing.go:48:	snap, fxOK := currentFX()
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/pricing.go:54:		a, _ := l.ApproxFX(int64(v)*100, snap)
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/pricing.go:66:		_, note := l.ApproxFX(int64(m.PriceTRY)*100, snap)
+/workspace/us-panel-dev/scratch/review-20261108/global08b-unsigned/tree/i18n/fx.go:137:func (l *Localizer) ApproxFX(tryMinor int64, s FXSnapshot) (approx, note string) {

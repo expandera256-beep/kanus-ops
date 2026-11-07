@@ -1,0 +1,5 @@
+FAIL 500 reverts and shows TR error {"value":"en","loadedEn":true,"htmlLang":"en","statusShown":false,"statusText":""}
+FAIL 503 not-persisted reverts {"value":"en","loadedEn":true,"htmlLang":"en","statusShown":false,"statusText":""}
+FAIL network error reverts {"value":"en","loadedEn":true,"htmlLang":"en","statusShown":false,"statusText":""}
+PASS 200 switches to en {"value":"en","loadedEn":true,"htmlLang":"en","statusShown":false,"statusText":""}
+gui lang UI test FAILED

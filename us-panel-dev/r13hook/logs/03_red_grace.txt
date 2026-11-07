@@ -1,0 +1,12 @@
+      2     --- FAIL: TestR13GraceHeldCreditMustNotWake//v1/chat/completions/license (0.01s)
+      1     --- FAIL: TestR13GraceHeldCreditMustNotWake//v1/chat/completions/license (0.02s)
+      2     --- FAIL: TestR13GraceHeldCreditMustNotWake//v1/chat/completions/session (0.00s)
+      1     --- FAIL: TestR13GraceHeldCreditMustNotWake//v1/chat/completions/session (0.01s)
+      1     --- FAIL: TestR13GraceHeldCreditMustNotWake//v1/chat/license (0.00s)
+      1     --- FAIL: TestR13GraceHeldCreditMustNotWake//v1/chat/license (0.01s)
+      1     --- FAIL: TestR13GraceHeldCreditMustNotWake//v1/chat/license (0.02s)
+      3     --- FAIL: TestR13GraceHeldCreditMustNotWake//v1/chat/session (0.01s)
+      1 --- FAIL: TestR13GraceHeldCreditMustNotWake (0.03s)
+      2 --- FAIL: TestR13GraceHeldCreditMustNotWake (0.05s)
+      2 FAIL
+      1 FAIL	kiyas/licensesrv	0.138s

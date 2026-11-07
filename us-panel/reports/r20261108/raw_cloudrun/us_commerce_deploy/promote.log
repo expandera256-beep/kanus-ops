@@ -1,0 +1,8 @@
+Updating traffic...
+Routing traffic.......................done
+Done.
+URL: https://us-commerce-iqhblf63dq-ez.a.run.app
+Traffic:
+  100% us-commerce-sre-ready-r1
+         sre-candidate-commerce: https://sre-candidate-commerce---us-commerce-iqhblf63dq-ez.a.run.app
+[{"percent":100,"revisionName":"us-commerce-sre-ready-r1","tag":"sre-candidate-commerce","url":"https://sre-candidate-commerce---us-commerce-iqhblf63dq-ez.a.run.app"}]

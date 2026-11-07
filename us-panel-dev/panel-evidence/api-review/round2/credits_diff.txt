@@ -1,0 +1,116 @@
+--- /tmp/api-review-r2/pristine/licensesrv/credits.go	2026-11-06 07:59:05.041749334 +0300
++++ /tmp/api-review-r2/patched/licensesrv/credits.go	2026-11-06 09:47:10.908124752 +0300
+@@ -21,18 +21,69 @@
+ func (h *CreditHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+ 	w.Header().Set("Cache-Control", "no-store")
+ 	if (r.URL.Path == "/v1/credits/status" && r.Method != http.MethodGet) || (r.URL.Path != "/v1/credits/status" && r.Method != http.MethodPost) {
+-		http.Error(w, "method", 405)
++		WriteAPIError(w, r, 405, "method_not_allowed", "method")
+ 		return
+ 	}
+ 	key := strings.TrimPrefix(r.Header.Get("Authorization"), "Bearer ")
++	nowPre := time.Now()
++	if h.Now != nil {
++		nowPre = h.Now()
++	}
++	if strings.HasPrefix(key, apiKeyPrefix) {
++		if r.URL.Path == "/v1/credits/status" {
++			accountID, keyID, ra, err := h.Store.GateAPIKey(key, nowPre)
++			if err == ErrAPIKeyRate {
++				writeRateLimited(w, r, ra, "rate_limited", "rate")
++				return
++			}
++			if err == ErrAPIKeyQuota {
++				writeRateLimited(w, r, ra, "quota_exceeded", "quota")
++				return
++			}
++			if err != nil {
++				WriteAPIError(w, r, 401, "unauthorized", "license")
++				return
++			}
++			_ = keyID
++			out, e := h.Store.accountCreditStatusByAccountID(accountID, nowPre)
++			if e != nil {
++				WriteAPIError(w, r, 401, "unauthorized", "license")
++				return
++			}
++			accountJSON(w, 200, out)
++			return
++		}
++		lic, _, ra, err := h.Store.AuthorizeBearer(key, nowPre)
++		if err == ErrAPIKeyRate {
++			writeRateLimited(w, r, ra, "rate_limited", "rate")
++			return
++		}
++		if err == ErrAPIKeyQuota {
++			writeRateLimited(w, r, ra, "quota_exceeded", "quota")
++			return
++		}
++		if err == ErrAPIKeyInvalid {
++			WriteAPIError(w, r, 401, "unauthorized", "license")
++			return
++		}
++		if err == ErrNoCredit {
++			WriteAPIError(w, r, 402, "insufficient_credit", "reserve")
++			return
++		}
++		if err != nil {
++			WriteAPIError(w, r, 401, "unauthorized", "license")
++			return
++		}
++		key = lic
++	}
+ 	if r.URL.Path == "/v1/credits/status" && strings.HasPrefix(key, "usa1.") {
+ 		if key == r.Header.Get("Authorization") {
+-			http.Error(w, "session", 401)
++			WriteAPIError(w, r, 401, "unauthorized", "session")
+ 			return
+ 		}
+ 		out, e := h.Store.accountCreditStatus(key, time.Now())
+ 		if e != nil {
+-			http.Error(w, "session", 401)
++			WriteAPIError(w, r, 401, "unauthorized", "session")
+ 			return
+ 		}
+ 		accountJSON(w, 200, out)
+@@ -40,7 +91,7 @@
+ 	}
+ 	l, ok := h.Store.License(key)
+ 	if key == "" || key == r.Header.Get("Authorization") || !ok {
+-		http.Error(w, "license", 401)
++		WriteAPIError(w, r, 401, "unauthorized", "license")
+ 		return
+ 	}
+ 	now := time.Now()
+@@ -53,7 +104,7 @@
+ 		out, _ = h.Store.CreditStatus(key, now)
+ 	case "/v1/credits/reserve":
+ 		if l.Plan.Kind != "sub" {
+-			http.Error(w, "hourly seconds metering requires the server model proxy", 403)
++			WriteAPIError(w, r, 403, "hourly_requires_proxy", "hourly seconds metering requires the server model proxy")
+ 			return
+ 		}
+ 		id, err := h.Store.Reserve(key, 1, ReservationTTL, now)
+@@ -65,7 +116,7 @@
+ 			if err == ErrNoCredit {
+ 				status = 402
+ 			}
+-			http.Error(w, "reserve", status)
++			WriteAPIError(w, r, status, "reserve_rejected", "reserve")
+ 			return
+ 		}
+ 		out = map[string]string{"id": id}
+@@ -76,11 +127,11 @@
+ 		}
+ 		dec := json.NewDecoder(io.LimitReader(r.Body, 4097))
+ 		if dec.Decode(&in) != nil || in.ID == "" {
+-			http.Error(w, "json", 400)
++			WriteAPIError(w, r, 400, "invalid_json", "json")
+ 			return
+ 		}
+ 		if err := h.Store.settleFor(key, in.ID, in.Commit, now); err != nil {
+-			http.Error(w, "settle", 409)
++			WriteAPIError(w, r, 409, "settle_conflict", "settle")
+ 			return
+ 		}
+ 		out = map[string]bool{"ok": true}

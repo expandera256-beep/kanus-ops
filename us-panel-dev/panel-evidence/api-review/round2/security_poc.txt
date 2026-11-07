@@ -1,0 +1,24 @@
+=== RUN   TestPoC_IDOR_RevokeOtherAccountKey
+--- PASS: TestPoC_IDOR_RevokeOtherAccountKey (2.94s)
+=== RUN   TestPoC_IDOR_RotateOtherAccountKey
+--- PASS: TestPoC_IDOR_RotateOtherAccountKey (2.63s)
+=== RUN   TestPoC_ErrorEnvelopeNoLeak
+--- PASS: TestPoC_ErrorEnvelopeNoLeak (0.00s)
+=== RUN   TestPoC_V1PathNormalization
+    panel_api_security_poc_test.go:123: path "/v1/account/login" -> 400
+    panel_api_security_poc_test.go:123: path "//v1/account/login" -> 307
+    panel_api_security_poc_test.go:123: path "/v1/../account/login" -> 307
+    panel_api_security_poc_test.go:123: path "/v1/account/../account/login" -> 307
+    panel_api_security_poc_test.go:123: path "/v1/account/%2e%2e/login" -> 404
+--- PASS: TestPoC_V1PathNormalization (2.68s)
+=== RUN   TestPoC_ConcurrentQuotaNoBypass
+    panel_api_security_poc_test.go:165: ok=5 limited=35
+--- PASS: TestPoC_ConcurrentQuotaNoBypass (2.74s)
+=== RUN   TestPoC_HashUnsaltedAndConstantTime
+--- PASS: TestPoC_HashUnsaltedAndConstantTime (0.00s)
+=== RUN   TestPoC_RevokeImmediate
+--- PASS: TestPoC_RevokeImmediate (2.62s)
+=== RUN   TestPoC_CreateAuthRequiresSessionNotAPIKey
+--- PASS: TestPoC_CreateAuthRequiresSessionNotAPIKey (2.59s)
+PASS
+ok  	kiyas/licensesrv	17.218s

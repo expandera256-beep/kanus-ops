@@ -1,0 +1,239 @@
+{
+  "r11_base": {
+    "source": "/workspace/us-panel-dev/r11_base",
+    "pass": 18,
+    "fail": 0,
+    "results": [
+      {
+        "patch": "01-preferences/0001-iface.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0002-prefs.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0003-prefs_open_unix.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0004-prefs_open_other.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0005-prefs_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0006-prefs_fifo_unix_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0007-v4_security_linux_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "02-ops/0001-privacy_ops.patch",
+        "exit": 0
+      },
+      {
+        "patch": "02-ops/0002-store.patch",
+        "exit": 0
+      },
+      {
+        "patch": "02-ops/0003-privacy_ops_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "02-ops/0004-privacy_v4_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0001-handler.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0002-handler_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0003-v4_handler_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0004-v41_origin_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "04-hook-us/0001-main.patch",
+        "exit": 0
+      },
+      {
+        "patch": "04-hook-us/0002-main_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "04-hook-us/0003-privacy_v41_test.patch",
+        "exit": 0
+      }
+    ]
+  },
+  "dist11_literal": {
+    "source": "/workspace/us-panel/dist/2026.11.06.11",
+    "pass": 15,
+    "fail": 3,
+    "results": [
+      {
+        "patch": "01-preferences/0001-iface.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0002-prefs.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0003-prefs_open_unix.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0004-prefs_open_other.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0005-prefs_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0006-prefs_fifo_unix_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0007-v4_security_linux_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "02-ops/0001-privacy_ops.patch",
+        "exit": 0
+      },
+      {
+        "patch": "02-ops/0002-store.patch",
+        "exit": 1
+      },
+      {
+        "patch": "02-ops/0003-privacy_ops_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "02-ops/0004-privacy_v4_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0001-handler.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0002-handler_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0003-v4_handler_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0004-v41_origin_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "04-hook-us/0001-main.patch",
+        "exit": 1
+      },
+      {
+        "patch": "04-hook-us/0002-main_test.patch",
+        "exit": 1
+      },
+      {
+        "patch": "04-hook-us/0003-privacy_v41_test.patch",
+        "exit": 0
+      }
+    ]
+  },
+  "dist11_manifest_source": {
+    "source": "/workspace/us-panel-dev/pinned/v11",
+    "pass": 18,
+    "fail": 0,
+    "results": [
+      {
+        "patch": "01-preferences/0001-iface.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0002-prefs.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0003-prefs_open_unix.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0004-prefs_open_other.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0005-prefs_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0006-prefs_fifo_unix_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "01-preferences/0007-v4_security_linux_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "02-ops/0001-privacy_ops.patch",
+        "exit": 0
+      },
+      {
+        "patch": "02-ops/0002-store.patch",
+        "exit": 0
+      },
+      {
+        "patch": "02-ops/0003-privacy_ops_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "02-ops/0004-privacy_v4_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0001-handler.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0002-handler_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0003-v4_handler_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "03-handler/0004-v41_origin_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "04-hook-us/0001-main.patch",
+        "exit": 0
+      },
+      {
+        "patch": "04-hook-us/0002-main_test.patch",
+        "exit": 0
+      },
+      {
+        "patch": "04-hook-us/0003-privacy_v41_test.patch",
+        "exit": 0
+      }
+    ]
+  }
+}

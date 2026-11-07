@@ -1,0 +1,71 @@
+{
+  "projects": null,
+  "plugins": null,
+  "journal": [
+    {
+      "n": 1,
+      "kind": "düşünce",
+      "text": "İstek modele gidiyor."
+    },
+    {
+      "n": 2,
+      "kind": "istem",
+      "text": "İş modele gitti: projeyi tamamla ve eksikleri onar uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun. Klasörde 1 ad."
+    },
+    {
+      "n": 3,
+      "kind": "işlem",
+      "text": "İstek modele gitti."
+    },
+    {
+      "n": 4,
+      "kind": "işlem",
+      "text": "Kısmen okundu: main.txt. Kesilen veya gizlenen içerik nedeniyle dosyanın üzerine yazılmayacak."
+    },
+    {
+      "n": 5,
+      "kind": "işlem",
+      "text": "Dosya işlemi reddedildi: tam okunmamış dosya: main.txt"
+    },
+    {
+      "n": 6,
+      "kind": "özet",
+      "text": "Özet. İstem: projeyi tamamla ve eksikleri onar uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun. Okunan: main.txt. Yazılan: yok. Sonuç: Dosya işlemi reddedildi: tam okunmamış dosya: main.txt."
+    }
+  ],
+  "chat": [
+    {
+      "role": "panel",
+      "text": "kullanıcı: projeyi tamamla ve eksikleri onar uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun\nKlasörde 1 ad var.\nÇalışma alanındaki yollar:\nmain.txt\nMevcut dosyaları değiştirmeden önce içeriklerini OKU göreviyle iste. Örnek veya yer tutucu dosya yolları üretme."
+    },
+    {
+      "role": "panel",
+      "text": "OKU main.txt. Gövde kayda geçmedi."
+    },
+    {
+      "role": "model",
+      "text": "DOSYA main.txt\ndosya gövdesi loglanmadı."
+    }
+  ],
+  "chats": [
+    {
+      "id": "s1",
+      "title": "projeyi tamamla ve eksikleri onar uzun uzu",
+      "turns": [
+        {
+          "role": "panel",
+          "text": "kullanıcı: projeyi tamamla ve eksikleri onar uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun uzun\nKlasörde 1 ad var.\nÇalışma alanındaki yollar:\nmain.txt\nMevcut dosyaları değiştirmeden önce içeriklerini OKU göreviyle iste. Örnek veya yer tutucu dosya yolları üretme."
+        },
+        {
+          "role": "panel",
+          "text": "OKU main.txt. Gövde kayda geçmedi."
+        },
+        {
+          "role": "model",
+          "text": "DOSYA main.txt\ndosya gövdesi loglanmadı."
+        }
+      ]
+    }
+  ],
+  "chatId": "s1"
+}

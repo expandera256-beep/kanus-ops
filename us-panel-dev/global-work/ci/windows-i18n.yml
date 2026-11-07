@@ -1,0 +1,58 @@
+# LOCAL DRAFT ONLY. Copy to .github/workflows/ only after Demir approves
+# uploading this package to the chosen PRIVATE repository. Manual runs only.
+name: Windows i18n only
+on:
+  workflow_dispatch:
+    inputs:
+      module_dir:
+        description: 'Directory containing go.mod and i18n/ (not the i18n directory itself)'
+        required: true
+        default: '.'
+permissions:
+  contents: read
+jobs:
+  i18n:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    env:
+      CGO_ENABLED: '1'
+      MODULE_DIR: ${{ inputs.module_dir }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Check race compiler
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $paths = @('C:\msys64\mingw64\bin', 'C:\mingw64\bin')
+          foreach ($p in $paths) {
+            if (Test-Path "$p\gcc.exe") { $env:PATH = "$p;$env:PATH"; break }
+          }
+          gcc --version
+          if ($LASTEXITCODE -ne 0) { throw 'MinGW-w64 GCC required for -race' }
+          $lib = (gcc --print-file-name libsynchronization.a).Trim()
+          if ($lib -eq 'libsynchronization.a' -or !(Test-Path $lib)) { throw 'Update MinGW-w64: missing libsynchronization.a' }
+          "PATH=$env:PATH" >> $env:GITHUB_ENV
+      - name: Package race tests (only i18n)
+        shell: pwsh
+        run: |
+          Set-Location -LiteralPath (Join-Path $env:GITHUB_WORKSPACE $env:MODULE_DIR)
+          go test -race -count=1 -v ./i18n/
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Windows-specific cases, no silent skips
+        shell: pwsh
+        run: |
+          Set-Location -LiteralPath (Join-Path $env:GITHUB_WORKSPACE $env:MODULE_DIR)
+          $lines = @(go test -race -count=1 -json -run '^TestWinPref' ./i18n/)
+          $code = $LASTEXITCODE
+          $lines | Write-Output
+          if ($code -ne 0) { exit $code }
+          $events = @($lines | ForEach-Object { $_ | ConvertFrom-Json })
+          $passes = @($events | Where-Object { $_.Test -like 'TestWinPref*' -and $_.Action -eq 'pass' }).Count
+          $skips = @($events | Where-Object { $_.Test -like 'TestWinPref*' -and $_.Action -eq 'skip' }).Count
+          if ($passes -ne 4 -or $skips -gt 0) { throw "Windows coverage incomplete: pass=$passes skip=$skips; enable symlink privilege/Developer Mode" }

@@ -1,0 +1,23 @@
+{
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0001-iface.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0002-prefs.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0003-prefs_open_unix.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0004-prefs_open_other.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0005-prefs_test.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0006-prefs_fifo_unix_test.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/0007-v4_security_linux_test.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/01-preferences/README.md": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0001-privacy_ops.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0002-store.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0003-privacy_ops_test.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/02-ops/0004-privacy_v4_test.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/02-ops/README.md": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0001-handler.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0002-handler_test.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/03-handler/0003-v4_handler_test.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/03-handler/README.md": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0001-main.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/0002-main_test.patch": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/04-hook-us/README.md": true,
+  "/workspace/us-panel-dev/patches/uyum-v4/README.md": true
+}

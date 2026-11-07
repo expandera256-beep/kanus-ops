@@ -1,0 +1,302 @@
+{
+  "results": [
+    {
+      "name": "remote_health",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "expected": [
+          200
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_license_forgery",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_token_forgery",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_missing_auth",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_hmac_missing",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_hmac_wrong",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_traversal_auth_gate",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_traversal_encoded_route",
+      "status": "PASS",
+      "detail": {
+        "http": 400,
+        "expected": [
+          400,
+          401,
+          404
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_injection_auth_gate",
+      "status": "PASS",
+      "detail": {
+        "http": 401,
+        "expected": [
+          401
+        ],
+        "scope": "negatif auth/route kontrolü; dosya/terminal güvenliği kanıtı değil"
+      }
+    },
+    {
+      "name": "remote_rate_limit",
+      "status": "NOT TESTED",
+      "detail": {
+        "cap": 12,
+        "concurrency": 2,
+        "requests": [
+          {
+            "index": 0,
+            "http": 401,
+            "total_ms": 582.823
+          },
+          {
+            "index": 1,
+            "http": 401,
+            "total_ms": 595.584
+          },
+          {
+            "index": 2,
+            "http": 401,
+            "total_ms": 1114.776
+          },
+          {
+            "index": 3,
+            "http": 401,
+            "total_ms": 1100.328
+          },
+          {
+            "index": 4,
+            "http": 401,
+            "total_ms": 1098.782
+          },
+          {
+            "index": 5,
+            "http": 401,
+            "total_ms": 1096.828
+          },
+          {
+            "index": 6,
+            "http": 401,
+            "total_ms": 901.372
+          },
+          {
+            "index": 7,
+            "http": 401,
+            "total_ms": 1187.887
+          },
+          {
+            "index": 8,
+            "http": 401,
+            "total_ms": 786.395
+          },
+          {
+            "index": 9,
+            "http": 401,
+            "total_ms": 801.993
+          },
+          {
+            "index": 10,
+            "http": 401,
+            "total_ms": 900.824
+          },
+          {
+            "index": 11,
+            "http": 401,
+            "total_ms": 610.823
+          }
+        ],
+        "reason": "429 görülmezse düşük hacimle enforcement kanıtlanamaz; trafik artırılmaz"
+      }
+    },
+    {
+      "name": "remote_account_login_rate_limit",
+      "status": "NOT TESTED",
+      "detail": {
+        "cap": 12,
+        "concurrency": 2,
+        "requests": [
+          {
+            "index": 0,
+            "http": 404
+          },
+          {
+            "index": 1,
+            "http": 404
+          },
+          {
+            "index": 2,
+            "http": 404
+          },
+          {
+            "index": 3,
+            "http": 404
+          },
+          {
+            "index": 4,
+            "http": 404
+          },
+          {
+            "index": 5,
+            "http": 404
+          },
+          {
+            "index": 6,
+            "http": 404
+          },
+          {
+            "index": 7,
+            "http": 404
+          },
+          {
+            "index": 8,
+            "http": 404
+          },
+          {
+            "index": 9,
+            "http": 404
+          },
+          {
+            "index": 10,
+            "http": 404
+          },
+          {
+            "index": 11,
+            "http": 404
+          }
+        ],
+        "scope": "account login IP limiter only; not model or nginx limiter",
+        "reason": "No escalation if429 not observed"
+      }
+    },
+    {
+      "name": "remote_authenticated_traversal_status",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "scope": "authenticated status ignores unsupported path/command query; same A scoped balance",
+        "not_covered": "No remote file/terminal resource endpoint; not full workspace or shell isolation proof"
+      }
+    },
+    {
+      "name": "remote_authenticated_injection_status",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "scope": "authenticated status ignores unsupported path/command query; same A scoped balance",
+        "not_covered": "No remote file/terminal resource endpoint; not full workspace or shell isolation proof"
+      }
+    },
+    {
+      "name": "remote_cross_license_status",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "scope": "A bearer + B credential in GET body; A scoped alanları değişmez; credential URL/log içine yazılmaz",
+        "distinct_fixture_expiry": true,
+        "not_covered": "B dosya/oturumlarına erişim: hookta resource endpoint yok"
+      }
+    },
+    {
+      "name": "remote_tampered_real_license",
+      "status": "PASS",
+      "detail": {
+        "http": 401
+      }
+    },
+    {
+      "name": "remote_credits_unchanged",
+      "status": "PASS",
+      "detail": {
+        "balances": [
+          {
+            "license": "A",
+            "before": 10,
+            "after": 10,
+            "credits_used": 0,
+            "reserved_before": 0,
+            "reserved_after": 0
+          },
+          {
+            "license": "B",
+            "before": 10,
+            "after": 10,
+            "credits_used": 0,
+            "reserved_before": 0,
+            "reserved_after": 0
+          }
+        ],
+        "cleanup": "QA lisansları artık revoke edilebilir; bu harness revoke etmez"
+      }
+    }
+  ],
+  "counts": {
+    "PASS": 14,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT TESTED": 2
+  }
+}

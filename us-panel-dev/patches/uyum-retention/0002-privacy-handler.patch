@@ -1,0 +1,187 @@
+--- /dev/null	2026-11-06 03:20:41.675288136 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/internal/privacy/handler.go	2026-11-06 09:31:08.021665934 +0300
+@@ -0,0 +1,184 @@
++package privacy
++
++import (
++	"encoding/json"
++	"io"
++	"net/http"
++	"os"
++	"strconv"
++	"strings"
++	"time"
++
++	"kiyas/licensesrv"
++)
++
++// Handler serves KVKK/GDPR technical endpoints under /account/privacy/*.
++// It does not modify licensesrv account route tables; wire it on the mux.
++type Handler struct {
++	Store    *licensesrv.Store
++	Prefs    *PrefStore
++	AdminTok string
++	Keep     time.Duration
++}
++
++func NewHandler(st *licensesrv.Store, prefs *PrefStore) *Handler {
++	keepDays := 90
++	if v := os.Getenv("US_PRIVACY_RETENTION_DAYS"); v != "" {
++		if n, err := strconv.Atoi(v); err == nil && n > 0 {
++			keepDays = n
++		}
++	}
++	return &Handler{
++		Store:    st,
++		Prefs:    prefs,
++		AdminTok: os.Getenv("US_PRIVACY_ADMIN_TOKEN"),
++		Keep:     time.Duration(keepDays) * 24 * time.Hour,
++	}
++}
++
++func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
++	if r.Method != http.MethodPost {
++		writeJSON(w, http.StatusMethodNotAllowed, map[string]string{"error": "method not allowed"})
++		return
++	}
++	path := r.URL.Path
++	switch path {
++	case "/account/privacy/export":
++		h.export(w, r)
++	case "/account/privacy/erase":
++		h.erase(w, r)
++	case "/account/privacy/preferences":
++		h.preferences(w, r)
++	case "/account/privacy/retention-run":
++		h.retention(w, r)
++	default:
++		writeJSON(w, http.StatusNotFound, map[string]string{"error": "not found"})
++	}
++}
++
++func (h *Handler) bearer(r *http.Request) string {
++	return strings.TrimPrefix(r.Header.Get("Authorization"), "Bearer ")
++}
++
++func (h *Handler) export(w http.ResponseWriter, r *http.Request) {
++	token := h.bearer(r)
++	now := time.Now()
++	var prefs map[string]any
++	// Resolve prefs after we know account id from a dry auth via export.
++	exp, err := h.Store.ExportPrivacy(token, now, nil)
++	if err != nil {
++		writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "unauthorized"})
++		return
++	}
++	if h.Prefs != nil {
++		prefs = h.Prefs.AsMap(exp.AccountID)
++		exp.Preferences = prefs
++	}
++	writeJSON(w, http.StatusOK, exp)
++}
++
++func (h *Handler) erase(w http.ResponseWriter, r *http.Request) {
++	token := h.bearer(r)
++	now := time.Now()
++	// Capture account id for prefs deletion via export auth first.
++	exp, err := h.Store.ExportPrivacy(token, now, nil)
++	if err != nil {
++		writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "unauthorized"})
++		return
++	}
++	pseudo, err := h.Store.AnonymizeAccount(token, now)
++	if err != nil {
++		writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "unauthorized"})
++		return
++	}
++	if h.Prefs != nil {
++		_ = h.Prefs.Delete(exp.AccountID)
++	}
++	writeJSON(w, http.StatusOK, map[string]any{
++		"status":          "anonymized",
++		"accountId":       exp.AccountID,
++		"pseudonymEmail":  pseudo,
++		"ledgerPreserved": true,
++		"note":            "license/credit ledger rows retained; personal fields pseudonymized",
++	})
++}
++
++func (h *Handler) preferences(w http.ResponseWriter, r *http.Request) {
++	token := h.bearer(r)
++	now := time.Now()
++	exp, err := h.Store.ExportPrivacy(token, now, nil)
++	if err != nil {
++		writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "unauthorized"})
++		return
++	}
++	body, _ := io.ReadAll(io.LimitReader(r.Body, 1<<16))
++	var in struct {
++		MarketingConsent *bool  `json:"marketingConsent"`
++		ProductUpdates   *bool  `json:"productUpdates"`
++		CookieAnalytics  *bool  `json:"cookieAnalytics"`
++		Source           string `json:"source"`
++	}
++	if len(body) > 0 {
++		if json.Unmarshal(body, &in) != nil {
++			writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid json"})
++			return
++		}
++	}
++	cur := Preferences{AccountID: exp.AccountID}
++	if h.Prefs != nil {
++		cur = h.Prefs.Get(exp.AccountID)
++		cur.AccountID = exp.AccountID
++	}
++	if in.MarketingConsent != nil {
++		cur.MarketingConsent = *in.MarketingConsent
++	}
++	if in.ProductUpdates != nil {
++		cur.ProductUpdates = *in.ProductUpdates
++	}
++	if in.CookieAnalytics != nil {
++		cur.CookieAnalytics = *in.CookieAnalytics
++	}
++	if in.Source != "" {
++		cur.Source = in.Source
++	}
++	if h.Prefs == nil {
++		writeJSON(w, http.StatusServiceUnavailable, map[string]string{"error": "prefs unavailable"})
++		return
++	}
++	if err := h.Prefs.Put(cur, now); err != nil {
++		writeJSON(w, http.StatusServiceUnavailable, map[string]string{"error": "prefs unavailable"})
++		return
++	}
++	writeJSON(w, http.StatusOK, h.Prefs.AsMap(exp.AccountID))
++}
++
++func (h *Handler) retention(w http.ResponseWriter, r *http.Request) {
++	if h.AdminTok == "" || subtleEqual(h.bearer(r), h.AdminTok) == false {
++		writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "unauthorized"})
++		return
++	}
++	res, err := h.Store.RetentionSweep(time.Now(), h.Keep)
++	if err != nil {
++		writeJSON(w, http.StatusServiceUnavailable, map[string]string{"error": "sweep failed"})
++		return
++	}
++	writeJSON(w, http.StatusOK, res)
++}
++
++func subtleEqual(a, b string) bool {
++	if len(a) != len(b) {
++		return false
++	}
++	var v byte
++	for i := 0; i < len(a); i++ {
++		v |= a[i] ^ b[i]
++	}
++	return v == 0
++}
++
++func writeJSON(w http.ResponseWriter, status int, v any) {
++	w.Header().Set("Content-Type", "application/json")
++	w.Header().Set("Cache-Control", "no-store")
++	w.WriteHeader(status)
++	_ = json.NewEncoder(w).Encode(v)
++}

@@ -1,0 +1,223 @@
+73-	if p.Upstream == "" {
+74-		http.Error(w, "model upstream not configured", 503)
+75-		return
+76-	}
+77-	raw, err := io.ReadAll(io.LimitReader(r.Body, (1<<20)+1))
+78:	if err != nil || len(raw) > 1<<20 {
+79-		http.Error(w, "body", 413)
+80-		return
+81-	}
+82-	var in map[string]json.RawMessage
+83-	if json.Unmarshal(raw, &in) != nil {
+84-		http.Error(w, "json", 400)
+85-		return
+--
+134-		http.Error(w, "model queue timeout", 504)
+135-		return
+136-	}
+137-	defer func() { <-p.slots }()
+138-	id, held, hourly, err := p.Store.reserveModel(key, p.Timeout, time.Now())
+139:	if err != nil {
+140-		status := 503
+141-		if err == ErrNoCredit {
+142-			status = 402
+143-		}
+144-		if err == ErrInvalid {
+145-			status = 403
+146-		}
+--
+176-			}
+177-		}
+178-		if ctx.Err() != nil {
+179-			return ctx.Err()
+180-		}
+181:		if err := p.Store.settleAmount(key, id, amount, time.Now()); err != nil {
+182-			return err
+183-		}
+184-		settled = true
+185-		return nil
+186-	}
+187-	req, err := http.NewRequestWithContext(ctx, http.MethodPost, p.Upstream+"/v1/chat/completions", bytes.NewReader(raw))
+188:	if err != nil {
+189-		http.Error(w, "upstream request", 502)
+190-		return
+191-	}
+192-	req.Header.Set("Content-Type", "application/json")
+193-	if p.Token != "" {
+194-		req.Header.Set("Authorization", "Bearer "+p.Token)
+195-	}
+--
+218-		tick := time.NewTicker(15 * time.Second)
+219-		defer tick.Stop()
+220-		for resp == nil {
+221-			select {
+222-			case v := <-ready:
+223:				if v.err != nil {
+224:					p.invalidateReady()
+225-					proxyFault(w, "upstream unavailable")
+226-					return
+227-				}
+228-				resp = v.resp
+229-			case <-tick.C:
+230-				if !proxyWrite(w, ": GPU isiniyor / kuyruk bekleniyor\n\n") {
+231-					return
+--
+236-			}
+237-		}
+238-	} else {
+239-		select {
+240-		case v := <-ready:
+241:			if v.err != nil {
+242:				p.invalidateReady()
+243-				http.Error(w, "upstream unavailable", 502)
+244-				return
+245-			}
+246-			resp = v.resp
+247-		case <-ctx.Done():
+248-			http.Error(w, "model timeout or cancellation", 504)
+249-			return
+--
+255-			proxyFault(w, message)
+256-		} else {
+257-			http.Error(w, message, 502)
+258-		}
+259-	}
+260:	if resp.StatusCode != 200 {
+261:		if resp.StatusCode == http.StatusServiceUnavailable {
+262:			p.invalidateReady()
+263-		}
+264-		fail("upstream rejected model request")
+265-		return
+266-	}
+267-	if !stream {
+268-		body, e := io.ReadAll(io.LimitReader(resp.Body, (8<<20)+1))
+269-		if e != nil || len(body) > 8<<20 || !proxyCompleted(body) {
+270-			fail("incomplete model response")
+271-			return
+272-		}
+273:		if err := settle(); err != nil {
+274-			fail("settlement not confirmed")
+275-			return
+276-		}
+277-		w.Header().Set("Content-Type", "application/json")
+278-		proxyWrite(w, string(body))
+279-		return
+280-	}
+--
+288-	defer tick.Stop()
+289-	hasOutput, finishSeen := false, false
+290-	for {
+291-		select {
+292-		case event := <-events:
+293:			if event.err != nil {
+294-				if finishSeen {
+295-					// finish_reason=stop arrived but the upstream never sent
+296-					// [DONE]: strict policy releases the reservation.
+297-					countMissingDone()
+298-				}
+299-				fail("incomplete model stream")
+300-				return
+--
+302-			if event.data == "[DONE]" {
+303-				if !hasOutput || p.StrictDone && !finishSeen {
+304-					fail("empty model response")
+305-					return
+306-				}
+307:				if err := settle(); err != nil {
+308-					fail("settlement not confirmed")
+309-					return
+310-				}
+311-				proxyWrite(w, "data: [DONE]\n\n")
+312-				return
+313-			}
+314-			var doc struct {
+--
+344-					return
+345-				}
+346-				if p.StrictDone {
+347-					// Settlement deferred until upstream [DONE]; EOF releases.
+348-					finishSeen = true
+349:				} else if err := settle(); err != nil {
+350-					fail("settlement not confirmed")
+351-					return
+352-				}
+353-			}
+354-			if !proxyWrite(w, "data: "+event.data+"\n\n") {
+355-				return
+356-			}
+--
+387-	controller := http.NewResponseController(w)
+388-	// Bound slow-reader writes independently of the upstream request timeout.
+389-	// Tests/custom writers may not expose deadline controls; the native Go HTTP
+390-	// server does. Each chunk/heartbeat renews this short write deadline.
+391-	_ = controller.SetWriteDeadline(time.Now().Add(20 * time.Second))
+392:	if _, err := io.WriteString(w, text); err != nil {
+393-		return false
+394-	}
+395:	if err := controller.Flush(); err != nil && !errors.Is(err, http.ErrNotSupported) {
+396-		return false
+397-	}
+398-	return true
+399-}
+400-
+401-func proxyFault(w http.ResponseWriter, message string) {
+402-	body, _ := json.Marshal(map[string]any{"error": map[string]string{"message": message}})
+--
+464-	req, _ := http.NewRequestWithContext(ctx, "GET", p.Upstream+"/v1/models", nil)
+465-	if p.Token != "" {
+466-		req.Header.Set("Authorization", "Bearer "+p.Token)
+467-	}
+468-	resp, err := p.Client.Do(req)
+469:	if err != nil {
+470-		http.Error(w, "model metadata unavailable", 502)
+471-		return
+472-	}
+473-	defer resp.Body.Close()
+474-	body, err := io.ReadAll(io.LimitReader(resp.Body, (1<<20)+1))
+475:	if err != nil || len(body) > 1<<20 || resp.StatusCode != 200 || !json.Valid(body) {
+476-		http.Error(w, "model metadata invalid", 502)
+477-		return
+478-	}
+479-	w.Header().Set("Content-Type", "application/json")
+480-	proxyWrite(w, string(body))
+481-}
+482-
+--
+508-	p.readyUntil = time.Now().Add(ttl)
+509-	p.readyMu.Unlock()
+510-	return true, true
+511-}
+512-
+513:func (p *ModelProxy) invalidateReady() {
+514-	p.readyMu.Lock()
+515-	p.readyUntil = time.Time{}
+516-	p.readyMu.Unlock()
+517-	if p.Waker != nil {
+518-		p.Waker.MarkDown()
+519-	}
+520-}
+521-
+522-func (p *ModelProxy) upstreamListsModel(ctx context.Context) bool {
+523-	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+524-	defer cancel()
+525-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, p.Upstream+"/v1/models", nil)
+526:	if err != nil {
+527-		return false
+528-	}
+529-	req.Header.Set("X-US-Ready-Probe", "1")
+530-	if p.Token != "" {
+531-		req.Header.Set("Authorization", "Bearer "+p.Token)
+532-	}
+533-	resp, err := p.Client.Do(req)
+534:	if err != nil {
+535-		return false
+536-	}
+537-	defer resp.Body.Close()
+538:	if resp.StatusCode != 200 {
+539-		return false
+540-	}
+541-	var list struct {
+542-		Data []struct {
+543-			ID string `json:"id"`
+544-		} `json:"data"`
+545-	}

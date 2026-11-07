@@ -1,0 +1,16 @@
+{
+  "r11-source-now": {
+    "cmd/us-license-hook/main.go": "8971f7189547f760684e94c902789dd06843c3d8d7ad95c00d02886cae9dea75",
+    "licensesrv/accounts.go": "e4df723471cf208cee1ff6acca3eaa2d23045765699c1aa153bfe22c9c8ec9c3",
+    "licensesrv/store.go": "72c42f7a867ddbe599afe9f6985f564e9c5bc9a886821b357de34eca51f1db24",
+    "release.go": "03bf9f1edf54f33274305a46d8bd5e9213d4ae775401122366db8f7799de9aed",
+    "release_text": "package main\n\nimport (\n\t\"encoding/json\"\n\t\"io\"\n\t\"net/http\"\n\t\"strings\"\n\t\"time\"\n)\n\nconst buildVersion = \"2026.11.06.11\"\n\n// An occupied port must not silently open an older panel after an EXE update.\nfunc currentPanelVersion(base string) bool {\n\tclient := http.Client{Timeout: 800 * time.Millisecond, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}\n\tresp, err := client.Get(strings.TrimRight(base, \"/\") + \"/api/version\")\n\tif err != nil {\n\t\treturn false\n\t}\n\tdefer resp.Body.Close()\n\tif resp.StatusCode != http.StatusOK {\n\t\treturn false\n\t}\n\tvar value struct {\n\t\tVersion string `json:\"version\"`\n\t}\n\treturn json.NewDecoder(io.LimitReader(resp.Body, 1024)).Decode(&value) == nil && value.Version == buildVersion\n}\n"
+  },
+  "r11-snapshot": {
+    "cmd/us-license-hook/main.go": "5f3dc7cdab3b17aff5c10a6d37f3dc0a3708dbcc800b38c167e848a102d7554b",
+    "licensesrv/accounts.go": "e4df723471cf208cee1ff6acca3eaa2d23045765699c1aa153bfe22c9c8ec9c3",
+    "licensesrv/store.go": "72c42f7a867ddbe599afe9f6985f564e9c5bc9a886821b357de34eca51f1db24",
+    "release.go": "03bf9f1edf54f33274305a46d8bd5e9213d4ae775401122366db8f7799de9aed",
+    "release_text": "package main\n\nimport (\n\t\"encoding/json\"\n\t\"io\"\n\t\"net/http\"\n\t\"strings\"\n\t\"time\"\n)\n\nconst buildVersion = \"2026.11.06.11\"\n\n// An occupied port must not silently open an older panel after an EXE update.\nfunc currentPanelVersion(base string) bool {\n\tclient := http.Client{Timeout: 800 * time.Millisecond, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}\n\tresp, err := client.Get(strings.TrimRight(base, \"/\") + \"/api/version\")\n\tif err != nil {\n\t\treturn false\n\t}\n\tdefer resp.Body.Close()\n\tif resp.StatusCode != http.StatusOK {\n\t\treturn false\n\t}\n\tvar value struct {\n\t\tVersion string `json:\"version\"`\n\t}\n\treturn json.NewDecoder(io.LimitReader(resp.Body, 1024)).Decode(&value) == nil && value.Version == buildVersion\n}\n"
+  }
+}

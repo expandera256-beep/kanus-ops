@@ -1,0 +1,38 @@
+[
+  {
+    "httpRequest": {
+      "latency": "0.341171842s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "35.187.135.12",
+      "requestMethod": "POST",
+      "requestSize": "1323",
+      "requestUrl": "https://us-watchdog-iqhblf63dq-ez.a.run.app/internal/reconcile",
+      "responseSize": "179",
+      "serverIp": "34.143.72.2",
+      "status": 200,
+      "userAgent": "Google-Cloud-Scheduler"
+    },
+    "insertId": "6aef93ab0009d5314a9a169e",
+    "labels": {
+      "instanceId": "00e8a408bdee202ac213dcb0c6181719d1f46962e36094943e16251760bf25c32b3b6226c2eefdf9113dbb08e7ea937f02f74dd60755519389350d1adcb5d2e8d199bf42e0b0bfaf6c430231cc1bd013e6a1c92b9c10ef46e936f2",
+      "worker-policy": "v3"
+    },
+    "logName": "projects/project-27082a40-6083-4952-9db/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-11-07T21:10:03.652798115Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "us-watchdog",
+        "location": "europe-west4",
+        "project_id": "project-27082a40-6083-4952-9db",
+        "revision_name": "us-watchdog-00003-jdk",
+        "service_name": "us-watchdog"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "9d040dc50b530a4d",
+    "timestamp": "2026-11-07T21:10:03.280536Z",
+    "trace": "projects/project-27082a40-6083-4952-9db/traces/09f18493cc214af86fe3db6a8c68c693",
+    "traceSampled": true
+  }
+]

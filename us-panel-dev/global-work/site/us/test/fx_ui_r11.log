@@ -1,0 +1,20 @@
+PASS tr FX shown (TL+EUR+USD) {"t":"₺18.900,00 (≈ €337,74 · ≈ $377,45)","n":"Yaklaşık tutar; ödeme TL ile alınır. Kur: TCMB döviz satış, 6 Kas 2026."}
+PASS tr note + TCMB date localized "Yaklaşık tutar; ödeme TL ile alınır. Kur: TCMB döviz satış, 6 Kas 2026."
+PASS tr /us page still translated "İçeriğe geç\nKAN.US)®\n\nÇalışma alanın\n\nKeşfetUygulamalarGünlükGaleriForumİletişim"
+PASS en FX shown (TL+EUR+USD) {"t":"TRY 18,900.00 (≈ €337.74 · ≈ $377.45)","n":"Approximate amount; payment is charged in Turkish lira. Rate: CBRT forex selling, Nov 6, 2026."}
+PASS en note + TCMB date localized "Approximate amount; payment is charged in Turkish lira. Rate: CBRT forex selling, Nov 6, 2026."
+PASS en /us page still translated "Skip to content\nKAN.US)®\n\nYour workspace\n\nDiscoverApplicationsJournalGalleryForu"
+PASS de FX shown (TL+EUR+USD) {"t":"18.900,00 TRY (≈ 337,74 € · ≈ 377,45 $)","n":"Ungefährer Betrag; bezahlt wird in türkischen Lira. Kurs: TCMB-Devisenverkaufskurs vom 06.11.2026."}
+PASS de note + TCMB date localized "Ungefährer Betrag; bezahlt wird in türkischen Lira. Kurs: TCMB-Devisenverkaufskurs vom 06.11.2026."
+PASS de /us page still translated "Zum Inhalt\nKAN.US)®\n\nDein Arbeitsbereich\n\nEntdeckenAnwendungenJournalGalerieForu"
+PASS ru FX shown (TL+EUR+USD) {"t":"18 900,00 TRY (≈ 337,74 € · ≈ 377,45 $)","n":"Сумма приблизительная; оплата производится в турецких лирах. Курс: ЦБ Турции, продажа валюты, 6 нояб. 2026 г."}
+PASS ru note + TCMB date localized "Сумма приблизительная; оплата производится в турецких лирах. Курс: ЦБ Турции, продажа валюты, 6 нояб. 2026 г."
+PASS ru /us page still translated "К содержанию\nKAN.US)®\n\nВаше пространство\n\nОбзорПриложенияЖурналГалереяФорумКонта"
+PASS lang switch re-renders note "Ungefährer Betrag; bezahlt wird in türkischen Lira. Kurs: TCMB-Devisenverkaufskurs vom 06.11.2026."
+PASS fx.json missing -> TL only, no FX/note {"t":"₺18.900,00","n":""}
+PASS fx.json corrupt -> TL only, no FX/note {"t":"₺18.900,00","n":""}
+PASS fx.json stale -> TL only, no FX/note {"t":"₺18.900,00","n":""}
+PASS fx.json future -> TL only, no FX/note {"t":"₺18.900,00","n":""}
+PASS no browser request to tcmb.gov.tr ["http://127.0.0.1:8801/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8801/fx.json","http://127.0.0.1:8801/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8801/fx.json","http://127.0.0.1:8801/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8801/fx.json","http://127.0.0.1:8801/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8801/fx.json","http://127.0.0.1:8801/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8801/fx.json","http://127.0.0.1:8801/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8801/fx.json","http://127.0.0.1:8801/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8801/fx.json","http://127.0.0.1:8801/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8801/fx.json","http://127.0.0.1:8802/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8802/fx.json","http://127.0.0.1:8802/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8802/fx.json","http://127.0.0.1:8803/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8803/fx.json","http://127.0.0.1:8803/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8803/fx.json","http://127.0.0.1:8804/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8804/fx.json","http://127.0.0.1:8804/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8804/fx.json","http://127.0.0.1:8805/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8805/fx.json","http://127.0.0.1:8805/assets/index-uscommerce-i18nfx2-dc1e3536.js","http://127.0.0.1:8805/fx.json"]
+PASS browser fetched /fx.json ""
+TOTAL 19 PASS / 0 FAIL

@@ -1,0 +1,13 @@
+[Unit]
+Description=US license hook TEST instance (api-test.kanus.org on prod VPS)
+After=network-online.target
+
+[Service]
+User=uslic-test
+WorkingDirectory=/opt/us-license-hook-test
+EnvironmentFile=/etc/us-license-hook-test.env
+ExecStart=/opt/us-license-hook-test/us-license-hook-wrap.sh
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

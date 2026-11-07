@@ -1,0 +1,71 @@
+{
+  "race-licensesrv": {
+    "exit": 0,
+    "tests": {
+      "pass": 83,
+      "skip": 1
+    },
+    "packages": [
+      {
+        "package": "kiyas/licensesrv",
+        "action": "pass"
+      }
+    ]
+  },
+  "race-privacy": {
+    "exit": 0,
+    "tests": {
+      "pass": 79
+    },
+    "packages": [
+      {
+        "package": "kiyas/internal/privacy",
+        "action": "pass"
+      }
+    ]
+  },
+  "race-hook": {
+    "exit": 0,
+    "tests": {
+      "pass": 11
+    },
+    "packages": [
+      {
+        "package": "kiyas/cmd/us-license-hook",
+        "action": "pass"
+      }
+    ]
+  },
+  "v11-probes": {
+    "exit": 0,
+    "tests": {
+      "pass": 53
+    },
+    "packages": [
+      {
+        "package": "kiyas/internal/privacy",
+        "action": "pass"
+      },
+      {
+        "package": "kiyas/cmd/us-license-hook",
+        "action": "pass"
+      }
+    ]
+  },
+  "race_total": {
+    "pass": 173,
+    "skip": 1
+  },
+  "pinned_v10_unchanged": true,
+  "pinned_v10_files": 181,
+  "v11_manifest_after": {
+    "count": 205,
+    "mismatch": []
+  },
+  "work_equals_apply": true,
+  "gofmt_clean": true,
+  "vet_exit": 0,
+  "windows_exit": 0,
+  "v11_cumulative_exit": 0,
+  "first_race_interrupted_exit": 143
+}

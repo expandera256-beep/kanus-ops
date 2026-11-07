@@ -1,0 +1,13 @@
+=== RUN   TestF01LandlockSiblingHomeAndWrite
+    sandbox_linux_test.go:40: state=failed err=exit status 1 out=Traceback (most recent call last):
+          File "<string>", line 5, in <module>
+            raise AssertionError("OUTSIDE_READ_ALLOWED")
+        AssertionError: OUTSIDE_READ_ALLOWED
+--- FAIL: TestF01LandlockSiblingHomeAndWrite (0.02s)
+=== RUN   TestF01LandlockGoTest
+    sandbox_linux_test.go:49: ok  	f01fixture	0.001s
+        
+--- PASS: TestF01LandlockGoTest (0.21s)
+FAIL
+FAIL	kiyas	0.234s
+FAIL

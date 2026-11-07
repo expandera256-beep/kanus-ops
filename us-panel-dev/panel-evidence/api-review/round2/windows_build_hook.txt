@@ -1,0 +1,2 @@
+go: downloading golang.org/x/crypto v0.33.0
+licensesrv/accounts.go:21:2: module lookup disabled by GOPROXY=off

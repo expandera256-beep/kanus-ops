@@ -1,0 +1,13 @@
+[
+  {
+    "createTime": "2026-10-30T23:19:54.384Z",
+    "lifecycleState": "ACTIVE",
+    "name": "My First Project",
+    "parent": {
+      "id": "655261323422",
+      "type": "organization"
+    },
+    "projectId": "project-27082a40-6083-4952-9db",
+    "projectNumber": "247516932580"
+  }
+]

@@ -1,0 +1,59 @@
+v3 /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0000-iface.patch EXIT 0
+patching file internal/privacy/iface.go
+
+v3 /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0001-prefs-store.patch EXIT 0
+patching file internal/privacy/prefs.go
+
+v3 /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0001b-prefs-open-unix.patch EXIT 0
+patching file internal/privacy/prefs_open_unix.go
+
+v3 /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0001c-prefs-open-windows.patch EXIT 0
+patching file internal/privacy/prefs_open_windows.go
+
+v3 /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0002-prefs-test.patch EXIT 0
+patching file internal/privacy/prefs_test.go
+
+v3 /workspace/us-panel-dev/patches/uyum-v3/01-preferences/0002b-prefs-fifo-unix-test.patch EXIT 0
+patching file internal/privacy/prefs_fifo_unix_test.go
+
+v3 /workspace/us-panel-dev/patches/uyum-v3/02-ops/0001-privacy-ops.patch EXIT 0
+patching file licensesrv/privacy_ops.go
+
+v3 /workspace/us-panel-dev/patches/uyum-v3/02-ops/0002-privacy-ops-test.patch EXIT 0
+patching file licensesrv/privacy_ops_test.go
+
+v3 /workspace/us-panel-dev/patches/uyum-v3/03-handler/0001-handler.patch EXIT 0
+patching file internal/privacy/handler.go
+
+v3 /workspace/us-panel-dev/patches/uyum-v3/03-handler/0002-handler-test.patch EXIT 0
+patching file internal/privacy/handler_test.go
+
+v3 /workspace/us-panel-dev/patches/uyum-v3/04-hook-us/0001-main-privacy-mount.patch EXIT 0
+patching file cmd/us-license-hook/main.go
+
+v3 /workspace/us-panel-dev/patches/uyum-v3/04-hook-us/0002-main-test-retention.patch EXIT 0
+patching file cmd/us-license-hook/main_test.go
+
+v2 /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0000-iface.patch EXIT 0
+patching file internal/privacy/iface.go
+
+v2 /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0001-prefs-store.patch EXIT 0
+patching file internal/privacy/prefs.go
+
+v2 /workspace/us-panel-dev/patches/uyum-v2/01-preferences/0002-prefs-test.patch EXIT 0
+patching file internal/privacy/prefs_test.go
+
+v2 /workspace/us-panel-dev/patches/uyum-v2/02-ops/0001-privacy-ops.patch EXIT 0
+patching file licensesrv/privacy_ops.go
+
+v2 /workspace/us-panel-dev/patches/uyum-v2/02-ops/0002-privacy-ops-test.patch EXIT 0
+patching file licensesrv/privacy_ops_test.go
+
+v2 /workspace/us-panel-dev/patches/uyum-v2/03-handler/0001-handler.patch EXIT 0
+patching file internal/privacy/handler.go
+
+v2 /workspace/us-panel-dev/patches/uyum-v2/03-handler/0002-handler-test.patch EXIT 0
+patching file internal/privacy/handler_test.go
+
+v2 /workspace/us-panel-dev/patches/uyum-v2/04-hook-us/0001-main-privacy-mount.patch EXIT 0
+patching file cmd/us-license-hook/main.go

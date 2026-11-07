@@ -1,0 +1,124 @@
+diff --git a/licensesrv/grace_overflow_test.go b/licensesrv/grace_overflow_test.go
+new file mode 100644
+index 0000000..d53d5aa
+--- /dev/null
++++ b/licensesrv/grace_overflow_test.go
+@@ -0,0 +1,29 @@
++package licensesrv
++
++import (
++	"testing"
++	"time"
++)
++
++// PANEL DEV R3-A01: 16 uç durum (PANEL_API_REVIEW_R3FIX_20261106.md).
++func TestCommitGraceFromEnvOverflowEdges(t *testing.T) {
++	def, max := 10*time.Minute, 15*time.Minute
++	cases := []struct {
++		in   string
++		want time.Duration
++	}{
++		{"", def}, {" ", def}, {"0", 0}, {"-0", 0}, {"-1", def},
++		{"900", max}, {"901", max}, {"+901", max}, {" 901 ", max},
++		{"1s", def}, {"abc", def}, {"9999999999999999999999999", def},
++		{"9223372036", max}, {"9223372037", max}, {"18446744074", max},
++		{"9223372036854775807", max},
++	}
++	for _, c := range cases {
++		t.Run(c.in, func(t *testing.T) {
++			t.Setenv("US_CREDIT_COMMIT_GRACE_SECONDS", c.in)
++			if got := commitGraceFromEnv(); got != c.want {
++				t.Fatalf("input=%q got=%v want=%v", c.in, got, c.want)
++			}
++		})
++	}
++}
+diff --git a/licensesrv/store.go b/licensesrv/store.go
+index 738b6cd..4564b57 100644
+--- a/licensesrv/store.go
++++ b/licensesrv/store.go
+@@ -236,21 +236,21 @@ func (s *Store) transactionLocked(fn func() error) error {
+ // Cap: 900s (15m, KAN.US) — clamp above max to 900 (not reset to default).
+ // Longer holds pin Reserved after client crashes; invalid/negative/unparseable → 600.
+ func commitGraceFromEnv() time.Duration {
+-	const def = 10 * time.Minute
+-	const maxGrace = 15 * time.Minute
++	const defSeconds int64 = 600
++	const maxSeconds int64 = 900
+ 	raw := strings.TrimSpace(os.Getenv("US_CREDIT_COMMIT_GRACE_SECONDS"))
+ 	if raw == "" {
+-		return def
++		return time.Duration(defSeconds) * time.Second
+ 	}
+-	n, err := strconv.Atoi(raw)
++	// Parse as int64 seconds and clamp BEFORE multiplying into a Duration,
++	// so huge values cannot overflow (PANEL DEV R3-A01).
++	n, err := strconv.ParseInt(raw, 10, 64)
+ 	if err != nil || n < 0 {
+-		return def
++		n = defSeconds
++	} else if n > maxSeconds {
++		n = maxSeconds
+ 	}
+-	d := time.Duration(n) * time.Second
+-	if d > maxGrace {
+-		return maxGrace
+-	}
+-	return d
++	return time.Duration(n) * time.Second
+ }
+ 
+ func (s *Store) reservationCommitDeadline(r *Reservation) time.Time {
+diff --git a/licensesrv/ttl_grace_lock_test.go b/licensesrv/ttl_grace_lock_test.go
+new file mode 100644
+index 0000000..78fddb4
+--- /dev/null
++++ b/licensesrv/ttl_grace_lock_test.go
+@@ -0,0 +1,47 @@
++package licensesrv
++
++import (
++	"testing"
++	"time"
++)
++
++// API-0012: grace içinde sweep rezervasyonu serbest bırakmaz (Reserved kilitli),
++// grace sonrası sweep debit etmeden release eder, geç commit reddedilir.
++func TestTTLGraceKeepsReservedLockedThenReleases(t *testing.T) {
++	h, _ := setup(t)
++	h.Store.commitGrace = 10 * time.Minute
++	post(h, payload, sign("whsec", payload), "ttlLock")
++	key := h.Store.st.Orders["555"][0]
++	now := h.now()
++	id, err := h.Store.Reserve(key, 1, time.Minute, now)
++	if err != nil {
++		t.Fatal(err)
++	}
++	inGrace := now.Add(time.Minute + 30*time.Second)
++	id2, err := h.Store.Reserve(key, 1, time.Hour, inGrace) // triggers sweep
++	if err != nil {
++		t.Fatal(err)
++	}
++	if l, _ := h.Store.License(key); l.Reserved != 2 || l.Credits != 500 {
++		t.Fatalf("in grace: want reserved=2 credits=500, got reserved=%d credits=%d", l.Reserved, l.Credits)
++	}
++	afterGrace := now.Add(time.Minute + 10*time.Minute + time.Second)
++	id3, err := h.Store.Reserve(key, 1, time.Hour, afterGrace) // sweep releases id
++	if err != nil {
++		t.Fatal(err)
++	}
++	if l, _ := h.Store.License(key); l.Reserved != 2 || l.Credits != 500 {
++		t.Fatalf("after grace: want reserved=2 (id2,id3) credits=500, got reserved=%d credits=%d", l.Reserved, l.Credits)
++	}
++	if err := h.Store.settleFor(key, id, true, afterGrace); err == nil {
++		t.Fatal("late commit after grace must fail")
++	}
++	for _, x := range []string{id2, id3} {
++		if err := h.Store.settleFor(key, x, true, afterGrace); err != nil {
++			t.Fatal(err)
++		}
++	}
++	if l, _ := h.Store.License(key); l.Reserved != 0 || l.Credits != 498 {
++		t.Fatalf("final: want reserved=0 credits=498, got reserved=%d credits=%d", l.Reserved, l.Credits)
++	}
++}

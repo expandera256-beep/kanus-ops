@@ -1,0 +1,5 @@
+RUN_DIR /workspace/us-panel/reports/r20261108/qa-raw/runs/20261108T005820_107020+0300-dj3rn2vc
+{"item": "file_isolation", "status": "FAIL", "log": "reports/r20261108/qa-raw/runs/20261108T005820_107020+0300-dj3rn2vc/file_isolation.log", "exit_code": 1, "scope": "Local synthetic tests only; Secret Manager production IAM/rotation evidence remains BLOCKED"}
+SUMMARY {"PASS": 0, "FAIL": 1, "BLOCKED": 0, "NOT TESTED": 0}
+
+exit_code=1

@@ -1,0 +1,5 @@
+vet=0
+winvet=0
+build=0
+test=0
+race=0

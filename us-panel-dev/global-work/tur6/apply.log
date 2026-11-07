@@ -1,0 +1,4 @@
+panel_core CHECK/APPLY PASS
+02_gui_strings CHECK/APPLY PASS
+03_pref CHECK/APPLY PASS
+04_errors CHECK/APPLY PASS

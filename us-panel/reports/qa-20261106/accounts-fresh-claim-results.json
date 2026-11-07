@@ -1,0 +1,244 @@
+{
+  "results": [
+    {
+      "name": "fresh_fixture",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "remaining": 10,
+        "reserved": 0,
+        "ownership": "Unbound is hypothesis; race delta will verify"
+      }
+    },
+    {
+      "name": "fresh_login_1",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "session": "[MASKED]"
+      }
+    },
+    {
+      "name": "fresh_login_2",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "session": "[MASKED]"
+      }
+    },
+    {
+      "name": "fresh_distinct_accounts",
+      "status": "PASS",
+      "detail": {
+        "distinct_subjects": true
+      }
+    },
+    {
+      "name": "fresh_first_claim_parallel_race",
+      "status": "PASS",
+      "detail": {
+        "http": [
+          409,
+          200
+        ],
+        "winner_account": 2,
+        "before": [
+          {
+            "remaining": 10,
+            "seconds_remaining": 0,
+            "reserved": 0,
+            "reserved_seconds": 0
+          },
+          {
+            "remaining": 0,
+            "seconds_remaining": 0,
+            "reserved": 0,
+            "reserved_seconds": 0
+          }
+        ],
+        "after": [
+          {
+            "remaining": 10,
+            "seconds_remaining": 0,
+            "reserved": 0,
+            "reserved_seconds": 0
+          },
+          {
+            "remaining": 10,
+            "seconds_remaining": 0,
+            "reserved": 0,
+            "reserved_seconds": 0
+          }
+        ],
+        "deltas": [
+          0,
+          10
+        ],
+        "expected_new_credits_exactly_once": 10,
+        "parallel": 2
+      }
+    },
+    {
+      "name": "fresh_winner_repeat_idempotent",
+      "status": "PASS",
+      "detail": {
+        "http": 200,
+        "winner_account": 2
+      }
+    },
+    {
+      "name": "fresh_loser_cannot_claim",
+      "status": "PASS",
+      "detail": {
+        "http": 409,
+        "loser_account": 1
+      }
+    },
+    {
+      "name": "fresh_ledger_credit_consistency",
+      "status": "PASS",
+      "detail": {
+        "source_before": 10,
+        "source_after": 10,
+        "source_reserved": 0,
+        "account_balances_before": [
+          {
+            "remaining": 10,
+            "seconds_remaining": 0,
+            "reserved": 0,
+            "reserved_seconds": 0
+          },
+          {
+            "remaining": 0,
+            "seconds_remaining": 0,
+            "reserved": 0,
+            "reserved_seconds": 0
+          }
+        ],
+        "account_balances_final": [
+          {
+            "remaining": 10,
+            "seconds_remaining": 0,
+            "reserved": 0,
+            "reserved_seconds": 0
+          },
+          {
+            "remaining": 10,
+            "seconds_remaining": 0,
+            "reserved": 0,
+            "reserved_seconds": 0
+          }
+        ],
+        "credit_consumption": 0,
+        "note": "Ownership links existing credits; not a new mint/debit. Coordinator may revoke fresh test license afterwards."
+      }
+    }
+  ],
+  "counts": {
+    "PASS": 8,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT TESTED": 0
+  },
+  "events": [
+    {
+      "label": "fresh_source_before",
+      "path": "/v1/credits/status",
+      "http": 200,
+      "ms": 867.485,
+      "time": "2026-11-06T09:31:50.192586+03:00"
+    },
+    {
+      "label": "fresh_login_1",
+      "path": "/account/login",
+      "http": 200,
+      "ms": 45104.663,
+      "time": "2026-11-06T09:32:35.297576+03:00"
+    },
+    {
+      "label": "fresh_login_2",
+      "path": "/account/login",
+      "http": 200,
+      "ms": 51111.411,
+      "time": "2026-11-06T09:33:26.409271+03:00"
+    },
+    {
+      "label": "fresh_balance_before_1",
+      "path": "/account/balance",
+      "http": 200,
+      "ms": 1187.1,
+      "time": "2026-11-06T09:33:27.596650+03:00"
+    },
+    {
+      "label": "fresh_balance_before_2",
+      "path": "/account/balance",
+      "http": 200,
+      "ms": 1407.0,
+      "time": "2026-11-06T09:33:29.003766+03:00"
+    },
+    {
+      "label": "fresh_race_2",
+      "path": "/account/redeem",
+      "http": 200,
+      "ms": 1688.033,
+      "time": "2026-11-06T09:33:30.694067+03:00"
+    },
+    {
+      "label": "fresh_race_1",
+      "path": "/account/redeem",
+      "http": 409,
+      "ms": 1888.646,
+      "time": "2026-11-06T09:33:30.894090+03:00"
+    },
+    {
+      "label": "fresh_balance_after_1",
+      "path": "/account/balance",
+      "http": 200,
+      "ms": 1497.171,
+      "time": "2026-11-06T09:33:32.391814+03:00"
+    },
+    {
+      "label": "fresh_balance_after_2",
+      "path": "/account/balance",
+      "http": 200,
+      "ms": 1101.8,
+      "time": "2026-11-06T09:33:33.493709+03:00"
+    },
+    {
+      "label": "fresh_winner_repeat",
+      "path": "/account/redeem",
+      "http": 200,
+      "ms": 1403.728,
+      "time": "2026-11-06T09:33:34.897608+03:00"
+    },
+    {
+      "label": "fresh_loser_repeat",
+      "path": "/account/redeem",
+      "http": 409,
+      "ms": 808.147,
+      "time": "2026-11-06T09:33:35.705928+03:00"
+    },
+    {
+      "label": "fresh_source_after",
+      "path": "/v1/credits/status",
+      "http": 200,
+      "ms": 1184.887,
+      "time": "2026-11-06T09:33:36.890966+03:00"
+    },
+    {
+      "label": "fresh_final_balance_1",
+      "path": "/account/balance",
+      "http": 200,
+      "ms": 701.361,
+      "time": "2026-11-06T09:33:37.592479+03:00"
+    },
+    {
+      "label": "fresh_final_balance_2",
+      "path": "/account/balance",
+      "http": 200,
+      "ms": 804.236,
+      "time": "2026-11-06T09:33:38.396817+03:00"
+    }
+  ],
+  "race_executed": true
+}

@@ -1,0 +1,15 @@
+--- /workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/api11-fixed/licensesrv/store.go	2026-11-08 01:11:43.609382367 +0300
++++ /workspace/us-panel-dev/scratch/review-20261108/api-r3fix2/mutant11/licensesrv/store.go	2026-11-08 01:12:52.478913162 +0300
+@@ -254,10 +254,8 @@
+ }
+ 
+ func (s *Store) reservationCommitDeadline(r *Reservation) time.Time {
+-	if s.commitGrace <= 0 {
+-		return r.Expires
+-	}
+-	return r.Expires.Add(s.commitGrace)
++	// PANEL mutation: force legacy TTL, ignore grace for deadline.
++	return r.Expires
+ }
+ 
+ // applyReservedDelta adjusts Reserved and returns an error if it would go negative.

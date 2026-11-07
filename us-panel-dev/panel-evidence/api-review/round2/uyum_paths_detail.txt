@@ -1,0 +1,33 @@
+== /workspace/us-panel-dev/patches/uyum-erase/0001-privacy-ops-shared.patch ==
+--- /dev/null	2026-11-06 03:20:41.675288136 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/licensesrv/privacy_ops.go	2026-11-06 09:32:04.489834351 +0300
+== /workspace/us-panel-dev/patches/uyum-erase/0002-privacy-handler.patch ==
+--- /dev/null	2026-11-06 03:20:41.675288136 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/internal/privacy/handler.go	2026-11-06 09:31:08.021665934 +0300
+== /workspace/us-panel-dev/patches/uyum-export/0001-privacy-ops-export-erase-retention.patch ==
+--- /dev/null	2026-11-06 03:20:41.675288136 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/licensesrv/privacy_ops.go	2026-11-06 09:32:04.489834351 +0300
+== /workspace/us-panel-dev/patches/uyum-export/0002-privacy-ops-test.patch ==
+--- /dev/null	2026-11-06 03:20:41.675288136 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/licensesrv/privacy_ops_test.go	2026-11-06 09:31:34.821742193 +0300
+== /workspace/us-panel-dev/patches/uyum-export/0003-privacy-handler.patch ==
+--- /dev/null	2026-11-06 03:20:41.675288136 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/internal/privacy/handler.go	2026-11-06 09:31:08.021665934 +0300
+== /workspace/us-panel-dev/patches/uyum-preferences/0001-prefs-store.patch ==
+--- /dev/null	2026-11-06 03:20:41.675288136 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/internal/privacy/prefs.go	2026-11-06 09:32:04.489834351 +0300
+== /workspace/us-panel-dev/patches/uyum-preferences/0002-privacy-handler.patch ==
+--- /dev/null	2026-11-06 03:20:41.675288136 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/internal/privacy/handler.go	2026-11-06 09:31:08.021665934 +0300
+== /workspace/us-panel-dev/patches/uyum-preferences/0003-privacy-handler-test.patch ==
+--- /dev/null	2026-11-06 03:20:41.675288136 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/internal/privacy/privacy_test.go	2026-11-06 09:31:55.465805485 +0300
+== /workspace/us-panel-dev/patches/uyum-retention/0001-privacy-ops-shared.patch ==
+--- /dev/null	2026-11-06 03:20:41.675288136 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/licensesrv/privacy_ops.go	2026-11-06 09:32:04.489834351 +0300
+== /workspace/us-panel-dev/patches/uyum-retention/0002-privacy-handler.patch ==
+--- /dev/null	2026-11-06 03:20:41.675288136 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/internal/privacy/handler.go	2026-11-06 09:31:08.021665934 +0300
+== /workspace/us-panel-dev/patches/uyum-wiring/0001-privacy-mux-wiring.patch ==
+--- /workspace/us-panel-dev/work/api/r10_base/cmd/us-license-hook/main.go	2026-11-06 07:51:32.253778517 +0300
++++ /workspace/us-panel-dev/work/uyum/r10_privacy/cmd/us-license-hook/main.go	2026-11-06 09:30:47.337611849 +0300

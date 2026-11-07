@@ -1,0 +1,156 @@
+{
+  "counts": {
+    "PASS": 10,
+    "FAIL": 3,
+    "BLOCKED": 1,
+    "NOT TESTED": 0
+  },
+  "items": [
+    {
+      "item": "Kullanıcı kimlik doğrulaması",
+      "status": "PASS",
+      "source": "accounts.go:48–91,362–373,453–485",
+      "repro": "--case authentication",
+      "evidence": "authentication.log;remote-negative.json",
+      "scope": "Signed session expiry/reset/version/verification yerel PASS; uzak fake/missing401. Authenticated yeni-host kabulü yapılmadı."
+    },
+    {
+      "item": "API token güvenliği",
+      "status": "PASS",
+      "source": "accounts.go:53–91;repair_loop.go:271–281",
+      "repro": "--case api_tokens; --case ssrf",
+      "evidence": "api_tokens.log;ssrf.log;patch-r11-verify/verification-results.json",
+      "scope": "Forgery denial PASS; F02 patched .11de ve güncel mutable .12 kaynakta redirect-contact/body/Authorization false. Release .12 merge/artifact kabulü ayrı bekler; hook binary bu desktop packageı içermez. .12 manifest209/209 + artifacts5/5; independent .12 SSRF false/false/false, source/artifact integration now verified; not native/live acceptance."
+    },
+    {
+      "item": "Secret Manager",
+      "status": "FAIL",
+      "source": "gateway.service.yaml:30–47;watchdog.service.yaml:29–40;SRE_SECRETS_IAM_METADATA.md:5–46,61–87",
+      "repro": "review_sre_metadata.py --assert-safe --evidence <raw_secrets_iam> --output <new-file>",
+      "evidence": "reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/sre-metadata-verification.json;qa-findings/FINDING-06.md;reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/sre-policy-negative-final.json",
+      "scope": "SRE-reported cloud metadata locally cross-checked: rotation/version pin/default VM SA+scope/unused SA policy gaps; old token path locally stat-only. No live cloud measurement/secret value access. HOST env permissions still NOT VERIFIED."
+    },
+    {
+      "item": "Webhook HMAC",
+      "status": "PASS",
+      "source": "licensesrv/webhook.go:34–45,72–93",
+      "repro": "--case hmac",
+      "evidence": "hmac.log;remote-negative.json",
+      "scope": "Constant-time HMAC; local bad/missing/reversal shop/topic testleri PASS; remote missing/wrong401. Gerçek webhook sırrı kullanılmadı."
+    },
+    {
+      "item": "SQL injection",
+      "status": "PASS",
+      "source": "kanus/account_store.py:123–136,162–170;kanus/storage.py:21–35",
+      "repro": "--case sqli",
+      "evidence": "sqli.log;python-tests.log",
+      "scope": "Gerçek AccountStore/SQLite parameter-binding ile email/session payloadları auth alamadı; accounts tablosu ve quota sağlam. PostgreSQL gerçek DSN/migration ayrıca NOT TESTED."
+    },
+    {
+      "item": "Komut enjeksiyonu",
+      "status": "PASS",
+      "source": "terminal.go:32+;safe_exec.go:223–258",
+      "repro": "--case command_injection",
+      "evidence": "command_injection.log;panel-audit.log",
+      "scope": "Terminal shell/meta/python-c argv reddi PASS. İzinli proje kodunun OS erişimi sandbox değildir, F01 ayrıca FAIL."
+    },
+    {
+      "item": "Path traversal",
+      "status": "PASS",
+      "source": "file_tools.go:44–105,127–138",
+      "repro": "--case path_traversal",
+      "evidence": "path_traversal.log",
+      "scope": "../,absolute outside,Windows separator ve symlink escape fileTools üzerinden reddedildi. OS child bypassı F01dir. Existing PASS scope is local tested fileTools confinement, NOT Windows race/runtime acceptance; PANEL DEV separately reports Windows path/junction HIGH, not independently runtime-reproduced here."
+    },
+    {
+      "item": "SSRF",
+      "status": "PASS",
+      "source": "repair_loop.go:271–281;licensesrv/model_proxy.go:54–66;gpu_pin.go client policy",
+      "repro": "--case ssrf",
+      "evidence": "ssrf.log;patch-r11-verify/verification-results.json",
+      "scope": "F02 bağımsız .11 kopyasında önce FAIL, patch sonrası PASS; default/caller client guardları PASS. Gerçek metadata/ağ saldırısı yapılmadı. .12 manifest209/209 + artifacts5/5; independent .12 SSRF false/false/false, source/artifact integration now verified; not native/live acceptance."
+    },
+    {
+      "item": "Rate limiting",
+      "status": "FAIL",
+      "source": "login_limiter.go:10–107;accounts.go:48–52,257–290,344–374,467,484;backpressure.go:29–37",
+      "repro": "repro_limiter_risks.py --tree <verified-r11>;run.py --tree <verified-r11> --case rate_limit",
+      "evidence": "reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/r11-rate-limit.log;reports/r20261108/qa-raw/teammates-20261108T011233+0300-qnuld4zp/r11-limiter-risks-wrapper-reassessed.log;qa-findings/FINDING-07.md",
+      "scope": "Functional account10/900s test PASS, but unauthenticated10failures block correct password429: F07 MEDIUM verified. F04 historical IP-only DESIGN GAP unchanged. IP429 Retry-After=5 actually present; absence claim disproved."
+    },
+    {
+      "item": "Yetki yükseltme",
+      "status": "PASS",
+      "source": "accounts.go:53–100,110–118,201–221;credits.go authorization/settle",
+      "repro": "--case privilege_escalation",
+      "evidence": "privilege_escalation.log;go-test.log",
+      "scope": "Application credential/ownership düzeyinde farklı license reservation settle reddi ve idempotency PASS; root/kernel/container escape audit kabulü değildir."
+    },
+    {
+      "item": "Dosya izolasyonu",
+      "status": "FAIL",
+      "source": "safe_exec.go:17–19,176–208,223–258;file_tools.go:44–105",
+      "repro": "--case file_isolation",
+      "evidence": "file_isolation.log",
+      "scope": "F01 güncel .12 ve patched .11de FAIL; aynı-UID sentetik sibling read. EXE/desktop-only paket sınırı Go deps ile doğrulandı, hookta bu kod yok. HOST ayrı uslic/uslic-test UIDs bildiriyor; canlı untrusted panel yürütmesi yok. Windows ACCEPTED-RISK: Demir01:15TSI decision relayed via KAN.US, QA not directly verified; release note pending owner. Linux OPEN, .13 Landlock retest pending."
+    },
+    {
+      "item": "Hassas loglar",
+      "status": "PASS",
+      "source": "licensesrv/privacy_mask.go:10–40;mail.go:63–70,97–110;accounts.go:384–387",
+      "repro": "--case sensitive_logs; check_logs.py",
+      "evidence": "sensitive_logs.log;log-leak-check-post-patch-20261108.json;../QA_QUERY_LOG_REVIEW_20261108.md",
+      "scope": "Yerel masking/redaction PASS; bütün audit alt loglarında token/canary scan PASS. HOSTun7 journal satırı temiz. Ürün credential-query bulunmadı; QA loopback sentetik query bodyye taşındı. Tarihsel uzak leak doğrulanmadı; nginx tam request-target kaydı olmadan mutlak yokluk kanıtlanamaz."
+    },
+    {
+      "item": "Yedekleme",
+      "status": "PASS",
+      "source": "deploy/host-hardening/backup/backup-us-license-hook-hourly.v2.sh:8–10,23,28–29,37–43",
+      "repro": "--case backup",
+      "evidence": "backup-v2-local.log;backup.log;backup-v2-hash-comparison.json;../HOST_EVIDENCE_QA_20261108.md:16–20",
+      "scope": "v2 local7 PASS, iki sentetik instance coverage/manifest/LAST_SUCCESS; v1 productionda kuruluymuş, F03 v2yle FIXED-PENDING-VERIFY. F05 live-test coverage HOSTa göre mitigated. Production scheduled run/full SHA bağımsız doğrulanmadı; restore BLOCKED."
+    },
+    {
+      "item": "Geri yükleme",
+      "status": "BLOCKED",
+      "source": "licensesrv/store.go:101–150,153–185;kanus/storage.py:53–58;restore-us-license-hook-store.sh:21–33",
+      "repro": "--case restore",
+      "evidence": "restore.log;go-store-backup-restore.log",
+      "scope": "Yerel sentetik SQLite+Go Store restore/quota/history/lock PASS. HOST migration copy/hash açılışı bildirdi; planlı production restore drill/RPO/RTO kaydı yok, bakım penceresi bekler."
+    }
+  ],
+  "distinct_open_fail_findings": 3,
+  "design_gap_findings": 1,
+  "routing": "Proposed component owners; prompt contains no bot ownership table",
+  "product_fixed": true,
+  "additional_acceptance": {
+    "new_host_precheck": "HOST-EVIDENCED: hostname/IP/pre-.11 hash and external TLS/health plus nginx proxy routing; own direct DNS/peer gate BLOCKED, exact00:30 probe correlation pending",
+    "production_journal_sensitive_logs": "HOST7-line redacted sample clear; no full-retention acceptance; URL source/harness review documented",
+    "gpu_dependent_authenticated_model": "NOT TESTED: forbidden outside KAN live window; no valid model/completions call",
+    "shopify_full_e2e": "SHOP owns; referenced, not duplicated",
+    "host_reported_running_version": "pre-.11;7d72f449…56f0 (not independently measured)",
+    "host_reported_r11_hash": "12772d12…b47 (.11 not deployed, per HOST)",
+    "production_restore_drill": "BLOCKED: approved maintenance window/owner drill record needed",
+    "backup_f03": "FIXED-PENDING-VERIFY: v2 local7 PASS; installed fragment matches, full remote SHA pending",
+    "backup_f05": "MITIGATED-PENDING-VERIFY per HOST00:48 TSI; prod:05/test:07; source cron draft still prod-only",
+    "hook_live_env_permissions": "NOT VERIFIED, owner HOST: docs600/640 and wake.token ownership conflict, actual stat/User/Group readability evidence needed",
+    "r12_f02": "PASS: QA manifest209/209, artifact checks5/5, own --tree ssrf false/false/false",
+    "r12_f01": "FAIL: own --tree file_isolation synthetic_sibling_read=true",
+    "panel_dev_r12_overall": "Teammate-reported hook FAIL and Windows EXE FAIL; extra entitlement/cancellation/status-contract and Windows TOCTOU findings remain PANEL DEV owned. Narrow QA retests are not full release/deploy approval.",
+    "remote_requests_this_update": 0,
+    "f06_negative_safety_regression": "FAIL/exit1:5 reported+locally cross-checked policy risks; consistency test separately PASS",
+    "f01_windows_risk": "ACCEPTED-RISK claim relayed KAN.US,08.11.2026 01:15 TSI; QA not directly confirmed; release note owner pending",
+    "f01_linux": "OPEN: ABI6 available, actual .11/.12 sibling read FAIL; .13 retest required",
+    "r13_windows_low_il": "NOT TESTED runtime; claim per KAN.US, compile-only PASS",
+    "r13_suite_baseline": "2PASS/2FAIL/1NOT TESTED on .12 and F02-patched .11; no hidden xfail",
+    "r13_commands": "reports/r20261108/QA_REGRESSION_R13_COMMANDS.md"
+  },
+  "product_fixed_by_qa": false,
+  "product_fix_scope": "F02 local patched .11 verified; .12 merge/artifact acceptance pending; F03/F05 HOST-reported production mitigation with local v2 PASS",
+  "evidence_hashes": [
+    "QA_HOST_REASSESSMENT_SOURCE_SHA256.json",
+    "QA_HOST_REASSESSMENT_REPORT_SHA256.json"
+  ],
+  "as_of": "08.11.2026 01:17 TSİ (Europe/Istanbul)",
+  "historical_matrix_retained": "qa-raw/FINAL_QA_AUDIT_MATRIX.json"
+}

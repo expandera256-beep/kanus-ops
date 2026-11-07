@@ -1,0 +1,3 @@
+./licensesrv 0
+./internal/privacy 0
+./cmd/us-license-hook 0

@@ -1,0 +1,207 @@
+[
+  {
+    "id": "file_00000000564882108dfcd56b18b2113a",
+    "library_file_id": "libfile_371bcdfc551c8191b1b4e37bf1ce2aec",
+    "mime_type": "application/x-msdownload",
+    "name": "US (24).exe",
+    "size": 7906304,
+    "source": "local"
+  },
+  {
+    "name": "US_Yerel_Cikarim_Paneli.zip",
+    "library_file_id": "libfile_0c18ac35e3888191868ba8e6ce52c681",
+    "source": "link"
+  },
+  {
+    "id": "file_00000000419482108513104046220a7f",
+    "library_file_id": "libfile_1ec2771b7a44819192fea3ff75a298e2",
+    "mime_type": "application/x-zip-compressed",
+    "name": "US-kaynak.zip",
+    "size": 125339,
+    "source": "local"
+  },
+  {
+    "name": "US_Kaynak_GUI_Revizyon_Taslak.zip",
+    "library_file_id": "libfile_a59df723c474819197fc9dbfca1207ea",
+    "source": "link"
+  },
+  {
+    "name": "US_1453_Kaynak.zip",
+    "library_file_id": "libfile_07c0b5baffa88191b37b4bb8e16c7164",
+    "source": "link"
+  },
+  {
+    "height": 881,
+    "id": "file_000000007d0c82109867704af3beb60e",
+    "library_file_id": "libfile_4178500282b881918132db4e182c01e1",
+    "mime_type": "image/png",
+    "name": "image.png",
+    "size": 264453,
+    "source": "local",
+    "width": 1179
+  },
+  {
+    "name": "US_Proje_Okuma_Taslak.zip",
+    "library_file_id": "libfile_f97363000a588191a07d25f82d5ab1a9",
+    "source": "link"
+  },
+  {
+    "name": "US_Shopify_Ticari_Taslak.zip",
+    "library_file_id": "libfile_67efb28000188191997ebd612c421809",
+    "source": "link"
+  },
+  {
+    "id": "file_000000008e1c8210873e5341a3ecab2d",
+    "library_file_id": "libfile_25b4467a8d1c8191940f754d9df2b44d",
+    "mime_type": "application/x-zip-compressed",
+    "name": "US_Proje_Okuma_Duzenlenmis(1).zip",
+    "size": 150583,
+    "source": "local"
+  },
+  {
+    "name": "US_Ticari_Yeni_Baz.zip",
+    "library_file_id": "libfile_a42e7d63dc80819187dfdc1f4d5f4014",
+    "source": "link"
+  },
+  {
+    "name": "US_Web_Ticari_Taslak.zip",
+    "library_file_id": "libfile_b368b5ac2e7c819194676bcda8dcceb7",
+    "source": "link"
+  },
+  {
+    "name": "US_Akis_Duzeltme_Kaynak.zip",
+    "library_file_id": "libfile_de76a2adf11881918562d0f181158caf",
+    "source": "link"
+  },
+  {
+    "name": "US_Kok_Duzeltme_Kaynak.zip",
+    "library_file_id": "libfile_064d1afb14d48191b5ee7950129011d7",
+    "source": "link"
+  },
+  {
+    "name": "US_Baglam_Duzeltme_Kaynak.zip",
+    "library_file_id": "libfile_c5e6f85a1d1c8191b6e3659096113562",
+    "source": "link"
+  },
+  {
+    "name": "US_Uzun_Baglam_Kaynak_Taslak.zip",
+    "library_file_id": "libfile_8f0044dac3ac8191aa91cd486de1b915",
+    "source": "link"
+  },
+  {
+    "name": "Güncel kaynak kodu — US_Cikti_Devam_Kaynak.zip",
+    "library_file_id": "libfile_4a7b45935bac81919e0f24d57caa2044",
+    "source": "link"
+  },
+  {
+    "name": "US_Dinamik_Baglam_Taslak.zip",
+    "library_file_id": "libfile_0f6bc23f20288191b945fa320bde5270",
+    "source": "link"
+  },
+  {
+    "name": "Test edilmiş kaynak paketi",
+    "library_file_id": "libfile_6a3f2561082c8191ad8cb000abdebaca",
+    "source": "link"
+  },
+  {
+    "name": "US_Guvenli_Degisiklik_Kaynak.zip",
+    "library_file_id": "libfile_61c3196862708191bc7f82e10655d2d4",
+    "source": "link"
+  },
+  {
+    "name": "US_Faz_Gelistirme_Taslak.zip",
+    "library_file_id": "libfile_0ef119ba09e88191a0541ebaeb6eddca",
+    "source": "link"
+  },
+  {
+    "name": "US_Kalan_Fazlar_Kaynak_Taslak.zip",
+    "library_file_id": "libfile_b5cf3b48bef081919f786217e182021b",
+    "source": "link"
+  },
+  {
+    "name": "US_Ticari_Entegrasyon_Taslak.zip",
+    "library_file_id": "libfile_fcee1d71ef4c8191beef045a0ee2c795",
+    "source": "link"
+  },
+  {
+    "name": "US_Shopify_Hesap_Gateway_Taslak.zip",
+    "library_file_id": "libfile_cb286a0a0f188191879317915b45e3bd",
+    "source": "link"
+  },
+  {
+    "name": "US_Hostinger_API_Kaynak_Taslak.zip",
+    "library_file_id": "libfile_3b086d4a79588191b30f3e8ea61ac7e7",
+    "source": "link"
+  },
+  {
+    "name": "US_Dosya_Listesi_Duzeltme.zip",
+    "library_file_id": "libfile_6e8e45106fe48191bb52db3ffbf1ac01",
+    "source": "link"
+  },
+  {
+    "name": "US_Uzun_Istem_Onarim_Kaynak.zip",
+    "library_file_id": "libfile_64f128e897188191bee6894636def07b",
+    "source": "link"
+  },
+  {
+    "attachment_role": "open_library_file",
+    "id": "file_0000000068dc821090aabbfe31243af5",
+    "library_file_id": "libfile_62385dcc62fc8191939102dc4c47c584",
+    "mime_type": "text/plain",
+    "name": "Yapıştırılan metin.txt",
+    "source": "library"
+  },
+  {
+    "name": "Kaynak kodu ve ayrıntılı inceleme raporunu indir",
+    "library_file_id": "libfile_d3cb647bd2648191bd6ad9c9a32db414",
+    "source": "link"
+  },
+  {
+    "name": "Kaynak kodu ve durum raporu",
+    "library_file_id": "libfile_600eb7c34c2c81918fb31c5e96ec5e4c",
+    "source": "link"
+  },
+  {
+    "id": "file_00000000e9788210b057b992419f413d",
+    "is_big_paste": true,
+    "library_file_id": "libfile_fd498c656ccc8191bd6ab8ee1d868da2",
+    "mime_type": "text/plain",
+    "name": "Yapıştırılan metin(1).txt",
+    "size": 12705,
+    "source": "local"
+  },
+  {
+    "name": "Kaynak kodunu indir",
+    "library_file_id": "libfile_82ee7f0171e481919b7980f187db1ad0",
+    "source": "link"
+  },
+  {
+    "name": "Ayrıntılı kapsam, test ve fiyat raporu",
+    "library_file_id": "libfile_c15f62b3b3088191b4bc6bec8e2bec07",
+    "source": "link"
+  },
+  {
+    "name": "EXE’yi indir",
+    "library_file_id": "libfile_cf223bde8d948191a6f49b0380b9af97",
+    "source": "link"
+  },
+  {
+    "name": "Ticari aday EXE",
+    "library_file_id": "libfile_1f1137eb83c88191981a804350c5df37",
+    "source": "link"
+  },
+  {
+    "name": "Modelin oluşturduğu proje",
+    "library_file_id": "libfile_c4847351a02c81918886590ac0daea9a",
+    "source": "link"
+  },
+  {
+    "id": "file_00000000db708210b47465365b23b2ff",
+    "is_big_paste": true,
+    "library_file_id": "libfile_a08a1c4943408191a653c37b12b295fd",
+    "mime_type": "text/plain",
+    "name": "Yapıştırılan metin(2).txt",
+    "size": 12756,
+    "source": "local"
+  }
+]

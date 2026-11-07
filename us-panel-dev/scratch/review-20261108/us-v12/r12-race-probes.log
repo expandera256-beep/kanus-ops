@@ -1,0 +1,36 @@
+=== RUN   TestPanelR12EntitlementChangesBeforeWake
+=== RUN   TestPanelR12EntitlementChangesBeforeWake/credit-consumed
+2026/11/08 01:02:46 gpu_wake scheme=http host=127.0.0.1:35885 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=5 level=INFO method=GET err=-
+2026/11/08 01:02:46 gpu_wake scheme=http host=127.0.0.1:35885 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=2 level=INFO method=POST err=-
+2026/11/08 01:02:46 gpu wake: failed (wake_http)
+    zz_panel_r12_races_test.go:11: after credit-consumed wake=1
+    zz_panel_r12_races_test.go:11: stale eligibility snapshot woke GPU after entitlement disappeared
+=== RUN   TestPanelR12EntitlementChangesBeforeWake/license-revoked
+2026/11/08 01:02:46 gpu_wake scheme=http host=127.0.0.1:44885 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+2026/11/08 01:02:46 gpu_wake scheme=http host=127.0.0.1:44885 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=1 level=INFO method=POST err=-
+2026/11/08 01:02:46 gpu wake: failed (wake_http)
+    zz_panel_r12_races_test.go:11: after license-revoked wake=1
+    zz_panel_r12_races_test.go:11: stale eligibility snapshot woke GPU after entitlement disappeared
+--- FAIL: TestPanelR12EntitlementChangesBeforeWake (0.02s)
+    --- FAIL: TestPanelR12EntitlementChangesBeforeWake/credit-consumed (0.01s)
+    --- FAIL: TestPanelR12EntitlementChangesBeforeWake/license-revoked (0.01s)
+=== RUN   TestPanelR12CancelledLeaderDoesNotWake
+2026/11/08 01:02:46 gpu_wake scheme=http host=127.0.0.1:37693 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+2026/11/08 01:02:46 gpu_wake scheme=http host=127.0.0.1:37693 path=/a100/start status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:02:46 gpu_wake scheme=http host=127.0.0.1:37693 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=0 level=INFO method=GET err=-
+    zz_panel_r12_races_test.go:16: cancelled leader code=503 wake=1
+    zz_panel_r12_races_test.go:16: already-cancelled request woke GPU
+--- FAIL: TestPanelR12CancelledLeaderDoesNotWake (0.01s)
+=== RUN   TestPanelR12CancelledFollowerDoesNotWake
+2026/11/08 01:02:46 gpu_wake scheme=http host=127.0.0.1:43315 path=/a100/start status=500 pin_ok=n/a(http) duration_ms=0 level=INFO method=POST err=-
+2026/11/08 01:02:46 gpu wake: failed (wake_http)
+2026/11/08 01:02:46 gpu_wake scheme=http host=127.0.0.1:43315 path=/a100/status status=200 pin_ok=n/a(http) duration_ms=1 level=INFO method=GET err=-
+    zz_panel_r12_races_test.go:25: cancelled follower code=503 wake=1
+    zz_panel_r12_races_test.go:25: cancelled follower treated cancellation as GPU-down and woke ready GPU
+--- FAIL: TestPanelR12CancelledFollowerDoesNotWake (0.01s)
+=== RUN   TestPanelR12ReserveSettleNoOverspend
+    zz_panel_r12_races_test.go:32: ok=1 denied=19 chats=1 credits=0 reserved=0
+--- PASS: TestPanelR12ReserveSettleNoOverspend (0.03s)
+FAIL
+FAIL	kiyas/licensesrv	0.085s
+FAIL

@@ -1,0 +1,108 @@
+{
+  "currency": "TRY",
+  "note": "TEST mağazası içindir; canlı fiyatlar değiştirilmedi. Fiyatlar KDV dahil.",
+  "products": [
+    {
+      "sku": "US-CREDIT-1",
+      "title": "Kanus AI — 1 Model İsteği",
+      "price_try": 149,
+      "live_product_id": 15428080632036,
+      "plan": {
+        "kind": "sub",
+        "days": 90,
+        "prompts": 1,
+        "seconds": 0,
+        "credits": 1
+      }
+    },
+    {
+      "sku": "US-CREDIT-5",
+      "title": "Kanus AI — 5 Model İsteği",
+      "price_try": 695,
+      "live_product_id": 15428080664804,
+      "plan": {
+        "kind": "sub",
+        "days": 90,
+        "prompts": 5,
+        "seconds": 0,
+        "credits": 5
+      }
+    },
+    {
+      "sku": "US-CREDIT-10",
+      "title": "Kanus AI — 10 Model İsteği",
+      "price_try": 1290,
+      "live_product_id": 15428084170980,
+      "plan": {
+        "kind": "sub",
+        "days": 90,
+        "prompts": 10,
+        "seconds": 0,
+        "credits": 10
+      }
+    },
+    {
+      "sku": "US-CREDIT-25",
+      "title": "Kanus AI — 25 Model İsteği",
+      "price_try": 2990,
+      "plan": {
+        "kind": "sub",
+        "days": 180,
+        "prompts": 25,
+        "seconds": 0,
+        "credits": 25
+      }
+    },
+    {
+      "sku": "US-CREDIT-50",
+      "title": "Kanus AI — 50 Model İsteği",
+      "price_try": 5490,
+      "plan": {
+        "kind": "sub",
+        "days": 180,
+        "prompts": 50,
+        "seconds": 0,
+        "credits": 50
+      }
+    },
+    {
+      "sku": "US-CREDIT-100",
+      "title": "Kanus AI — 100 Model İsteği",
+      "price_try": 9900,
+      "plan": {
+        "kind": "sub",
+        "days": 365,
+        "prompts": 100,
+        "seconds": 0,
+        "credits": 100
+      }
+    },
+    {
+      "sku": "US-MONTHLY-200",
+      "title": "Kanus AI — 1 Aylık Erişim / 200 İstem",
+      "price_try": 18900,
+      "live_product_id": 15424693010660,
+      "plan": {
+        "kind": "sub",
+        "days": 30,
+        "prompts": 200,
+        "seconds": 0,
+        "credits": 200
+      }
+    },
+    {
+      "sku": "US-HOUR-1",
+      "title": "Kanus AI — 1 Saatlik Kullanım",
+      "price_try": 1990,
+      "live_product_id": 15424693108964,
+      "plan": {
+        "kind": "use",
+        "days": 30,
+        "prompts": 0,
+        "seconds": 3600,
+        "credits": 0
+      }
+    }
+  ],
+  "usdtry_ref": 50.05
+}

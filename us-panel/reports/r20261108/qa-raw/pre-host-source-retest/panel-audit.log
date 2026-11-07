@@ -1,0 +1,19 @@
+=== RUN   TestQAAuditCommandInjection
+--- PASS: TestQAAuditCommandInjection (0.00s)
+=== RUN   TestQAAuditPathTraversal
+--- PASS: TestQAAuditPathTraversal (0.00s)
+=== RUN   TestQAAuditChildEnvironment
+--- PASS: TestQAAuditChildEnvironment (0.00s)
+=== RUN   TestQAAuditExecSiblingIsolation
+    zz_qa_audit12_test.go:48: synthetic_sibling_read=true state=success
+    zz_qa_audit12_test.go:49: untrusted project can read sibling workspace: cwd/resource limits are not filesystem sandbox
+--- FAIL: TestQAAuditExecSiblingIsolation (0.02s)
+=== RUN   TestQAAuditRepairRedirectIsolation
+    zz_qa_audit12_test.go:67: redirect_contacted=true authorization_forwarded=true project_body_forwarded=true
+    zz_qa_audit12_test.go:68: repair default HTTP client followed cross-port redirect; expected refusal
+--- FAIL: TestQAAuditRepairRedirectIsolation (0.00s)
+FAIL
+FAIL	kiyas	0.023s
+FAIL
+
+exit_code=1

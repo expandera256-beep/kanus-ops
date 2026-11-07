@@ -1,0 +1,18 @@
+{"Time":"2026-11-08T01:35:06.247747361+03:00","Action":"start","Package":"kiyas/licensesrv"}
+{"Time":"2026-11-08T01:35:06.256422351+03:00","Action":"run","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger"}
+{"Time":"2026-11-08T01:35:06.256506159+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Output":"=== RUN   TestPanelV41AuthWrongCodeLedger\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:35:08.957035675+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Output":"    zz_panel_erase_test.go:6: bad auth/code no mutation; valid erase preserves prior ledger, revokes license and releases hold without refund\n"}
+{"Time":"2026-11-08T01:35:08.957094933+03:00","Action":"output","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Output":"--- PASS: TestPanelV41AuthWrongCodeLedger (2.70s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:35:08.957103459+03:00","Action":"pass","Package":"kiyas/licensesrv","Test":"TestPanelV41AuthWrongCodeLedger","Elapsed":2.7}
+{"Time":"2026-11-08T01:35:08.957121512+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:35:09.962451022+03:00","Action":"output","Package":"kiyas/licensesrv","Output":"ok  \tkiyas/licensesrv\t3.714s\n"}
+{"Time":"2026-11-08T01:35:09.962494317+03:00","Action":"pass","Package":"kiyas/licensesrv","Elapsed":3.715}
+{"Time":"2026-11-08T01:35:10.650626359+03:00","Action":"start","Package":"kiyas/internal/privacy"}
+{"Time":"2026-11-08T01:35:10.658585657+03:00","Action":"run","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth"}
+{"Time":"2026-11-08T01:35:10.658672351+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Output":"=== RUN   TestPanelV41HealthyHTTPAuth\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:35:10.65988216+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Output":"    zz_panel_auth_test.go:3: 16 healthy-route invalid credentials rejected; optional nil preferences stays503\n"}
+{"Time":"2026-11-08T01:35:10.660177167+03:00","Action":"output","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Output":"--- PASS: TestPanelV41HealthyHTTPAuth (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:35:10.660241061+03:00","Action":"pass","Package":"kiyas/internal/privacy","Test":"TestPanelV41HealthyHTTPAuth","Elapsed":0}
+{"Time":"2026-11-08T01:35:10.660316505+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-11-08T01:35:11.673898764+03:00","Action":"output","Package":"kiyas/internal/privacy","Output":"ok  \tkiyas/internal/privacy\t1.023s\n"}
+{"Time":"2026-11-08T01:35:11.673978285+03:00","Action":"pass","Package":"kiyas/internal/privacy","Elapsed":1.023}

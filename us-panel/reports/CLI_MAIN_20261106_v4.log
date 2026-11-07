@@ -1,0 +1,6 @@
+
+2026-11-06T08:15:29+03:00 smoke
+PASS version=2026.11.06.7
+
+2026-11-06T08:15:29+03:00 smoke
+PASS selftest assets=configured pricing=resolved version=2026.11.06.7

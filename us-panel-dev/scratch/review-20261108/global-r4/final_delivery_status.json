@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-11-08T00:39:29.503212+03:00",
+  "dist_exists": true,
+  "dist_files": [
+    "SHA256SUMS",
+    "TESLIM_RAPORU_TR.md",
+    "TREE_MANIFEST.sha256",
+    "US_Ticari_Aday_2026_11_06_11.exe",
+    "us-license-hook_hostinger.tgz",
+    "us-license-hook_linux"
+  ],
+  "pinned_v11_exists": true
+}

@@ -1,0 +1,10 @@
+# GPU Raporu
+
+Güncelleme: 06.11.2026 05:51 TSİ (Europe/Istanbul). Etiketler: PASS=kanıtlı, FAIL, BLOCKED, NOT TESTED. Üretime hazır DEĞİL.
+
+- Hedef idle: 15 dk (Demir override). usta-wake idle.py 15 dk — REPORTED (GPU_SOGUK_ACILIS_TR.md).
+- REPORTED — /health GPU açmaz; X-Usta-Worker: a100 ile uyandırma; soğuk açılış ~20–30 dk, 50 dk bekleme, 70 dk'da durdurma.
+- FAIL (prompt §4.9'a göre) — soğuk açılış 10 dk hedefini aşar (~20–30 dk; 257 GB ağırlık çekimi). Kalıcı disk/önbellek gerekli.
+- NOT TESTED — Eşzamanlı isteklerin tek açılışı paylaşması, aktif görev/kuyrukta kapanmama, retry, maliyet kaydı, IAM.
+- BLOCKED — Go .4 istemcide GPU aç/kapa/ısınma UX'i yok.
+- NOT TESTED — Eski wake sisteminin devreden çıkarılması.

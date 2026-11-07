@@ -1,0 +1,13 @@
+EXIT:0
+APPLY_EXIT:0
+EXIT:0
+APPLY_EXIT:0
+EXIT:0
+APPLY_EXIT:0
+EXIT:0
+/workspace/us-panel-dev/patches/api-0006-api-keys/0001-API-0006-hashed-API-keys-create-list-rotate-revoke-r.patch:517: trailing whitespace.
+// by resolving owned license for downstream credit/model paths via request context... 
+warning: 1 line adds whitespace errors.
+APPLY_EXIT:0
+EXIT:0
+APPLY_EXIT:0

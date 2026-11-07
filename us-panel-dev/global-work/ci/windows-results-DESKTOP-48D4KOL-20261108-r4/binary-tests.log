@@ -1,0 +1,51 @@
+﻿=== RUN   TestFourLocaleParity
+--- PASS: TestFourLocaleParity (0.00s)
+=== RUN   TestFormattingDeRu
+--- PASS: TestFormattingDeRu (0.00s)
+=== RUN   TestNoMissingKeysBetweenLocales
+--- PASS: TestNoMissingKeysBetweenLocales (0.00s)
+=== RUN   TestPlaceholdersMatch
+--- PASS: TestPlaceholdersMatch (0.00s)
+=== RUN   TestForbiddenSloganAbsent
+--- PASS: TestForbiddenSloganAbsent (0.00s)
+=== RUN   TestSloganSingleKey
+--- PASS: TestSloganSingleKey (0.00s)
+=== RUN   TestNegotiate
+--- PASS: TestNegotiate (0.00s)
+=== RUN   TestFallbackAndPlaceholders
+--- PASS: TestFallbackAndPlaceholders (0.00s)
+=== RUN   TestAddRejectsBadLocale
+--- PASS: TestAddRejectsBadLocale (0.00s)
+=== RUN   TestFormatting
+--- PASS: TestFormatting (0.00s)
+=== RUN   TestConcurrentUse
+--- PASS: TestConcurrentUse (0.00s)
+=== RUN   TestPrefRootCacheBounded
+--- PASS: TestPrefRootCacheBounded (0.48s)
+=== RUN   TestPrefRootHandleScaling
+    pref_rootcache_test.go:77: handle delta: 64 roots +6, 512 roots +2
+--- PASS: TestPrefRootHandleScaling (5.25s)
+=== RUN   TestPrefRootClosedHandleInvalid
+--- PASS: TestPrefRootClosedHandleInvalid (0.15s)
+=== RUN   TestPrefRootEvictionWhileInUse
+--- PASS: TestPrefRootEvictionWhileInUse (0.01s)
+=== RUN   TestPrefRootConcurrentSwitch
+--- PASS: TestPrefRootConcurrentSwitch (2.74s)
+=== RUN   TestPrefStoreRoundTrip
+--- PASS: TestPrefStoreRoundTrip (0.02s)
+=== RUN   TestPrefHandler
+--- PASS: TestPrefHandler (0.01s)
+=== RUN   TestWinPrefNormalSave
+--- PASS: TestWinPrefNormalSave (0.01s)
+=== RUN   TestWinPrefJunctionBelowRootRejected
+--- PASS: TestWinPrefJunctionBelowRootRejected (0.05s)
+=== RUN   TestWinPrefSymlinkFileRejected
+    pref_windows_test.go:61: symlink privilege missing: symlink C:\Users\demir\AppData\Local\Temp\TestWinPrefSymlinkFileRejected3504554084\002\victim.json C:\Users\demir\AppData\Local\Temp\TestWinPrefSymlinkFileRejected3504554084\001\lang.json: Gereken ayr─▒cal─▒k istemci taraf─▒ndan sa─şlanm─▒yor.
+--- SKIP: TestWinPrefSymlinkFileRejected (0.01s)
+=== RUN   TestWinPrefJunctionRootAllowedAndPinned
+--- PASS: TestWinPrefJunctionRootAllowedAndPinned (0.11s)
+=== RUN   TestWinPrefDACLSharedRoot
+--- PASS: TestWinPrefDACLSharedRoot (0.02s)
+=== RUN   TestWinPrefHardlinkAliasRejected
+--- PASS: TestWinPrefHardlinkAliasRejected (0.01s)
+PASS
