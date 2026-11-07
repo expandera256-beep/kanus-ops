@@ -1,0 +1,8 @@
+host=DESKTOP-48D4KOL user=demir (non-admin)  OS=Microsoft Windows [Version 10.0.19045.6466]
+zip=wintest_f01.zip box_sha256=deafd5e36501b0c75b1aae01b463087cb6ef23c232e44c74385310ed8d6895d2
+pc_Get-FileHash=DEAFD5E36501B0C75B1AAE01B463087CB6EF23C232E44C74385310ED8D6895D2 (MATCH)
+dir=C:\Users\demir\kanus-wintest\f01-20261108
+command=cmd /v:on /c "cd /d ... & run.cmd > console_amd64.txt 2>&1 & echo RC_AMD64=!ERRORLEVEL! & run.cmd 386 > console_386.txt 2>&1 & echo RC_386=!ERRORLEVEL!"
+start=2026-11-08 01:44:22 +03:00 end=01:44:23 +03:00
+ERRORLEVEL amd64=0 (PASS) ; 386=1 (FAIL)
+note: run.cmd line `echo exit_code=%RC%>>file` parses "0>>"/"1>>" as handle redirect, so exit_code is blank/missing in sonuc_*.log; RC taken from ERRORLEVEL.

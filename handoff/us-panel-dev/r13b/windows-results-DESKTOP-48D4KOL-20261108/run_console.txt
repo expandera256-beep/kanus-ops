@@ -1,0 +1,1178 @@
+LOG_SHA256 4f87a2f38e83fd9c84caccd2455d03f9496f521ef6770a686ec84c088cc2c22d
+==== R13B NATIVE RUN ====
+RUN_DATE=Paz 08.11.2026  1:43:05,79
+HOSTNAME=DESKTOP-48D4KOL
+HOSTNAME_CMD=DESKTOP-48D4KOL
+OS_VERSION=Microsoft Windows [Version 10.0.19045.6466]
+PROCESSOR_ARCHITECTURE=AMD64 PROCESSOR_ARCHITEW6432=
+ADMIN=0
+---- SHA256 (certutil) ----
+SHA256 r13b_windows_amd64.test.exe b0816c2fa21729f4dc485a739ee6f998ea3cc2837aae1ac66f3c6d5c888857da
+SHA256 r13b_windows_386.test.exe df796fa51ac4e51e2db791d36b1be43c33c46243763c97ab268f97c97074e9a9
+SHA256 windows_handle_fileops_v2.diff 662fc40a005a3fa690996a5eed5c12bb648345ac3c17795ba6f49716f91e089c
+SHA256 BUILDINFO.txt 308bda0c6acc21ed71967fc48df6191aab77ef94a35da9bee441f009885372dc
+---- expected (SHA256SUMS.txt) ----
+b0816c2fa21729f4dc485a739ee6f998ea3cc2837aae1ac66f3c6d5c888857da  r13b_windows_amd64.test.exe
+df796fa51ac4e51e2db791d36b1be43c33c46243763c97ab268f97c97074e9a9  r13b_windows_386.test.exe
+662fc40a005a3fa690996a5eed5c12bb648345ac3c17795ba6f49716f91e089c  windows_handle_fileops_v2.diff
+308bda0c6acc21ed71967fc48df6191aab77ef94a35da9bee441f009885372dc  BUILDINFO.txt
+29cdcac03130f01367f7b3cd45ad3dc778bbf3bc46a5e9c5d41fa2abf95aef33  run.cmd
+3515fec790f32b512ea8f4e8956995d0adec90fe5dbb8060f57c5ce470464f52  README_TR.md
+R13B BUILDINFO
+patch=windows_handle_fileops_v2.diff sha256=662fc40a005a3fa690996a5eed5c12bb648345ac3c17795ba6f49716f91e089c
+base=.12 /workspace/us-panel/work2/kiyas/term + r13b patch (tree /workspace/us-panel-dev/r13b/term)
+built=2026-11-08 01:39:40 +03
+go version go1.27.3 linux/amd64
+--- go version -m r13b_windows_amd64.test.exe
+r13b_windows_amd64.test.exe: go1.27.3
+	path	kiyas.test
+	mod	kiyas	(devel)	
+	dep	github.com/aymanbagabas/go-osc52/v2	v2.0.1	h1:HwpRHbFMcZLEVr42D4p7XBqjyuxQH5SMiErDT4WkJ2k=
+	dep	github.com/charmbracelet/colorprofile	v0.2.3-0.20250311203215-f60798e515dc	h1:4pZI35227imm7yK2bGPcfpFEmuY1gc2YSTShr4iJBfs=
+	dep	github.com/charmbracelet/lipgloss	v1.1.0	h1:vYXsiLHVkK7fp74RkV7b2kq9+zDLoEU4MZoFqR/noCY=
+	dep	github.com/charmbracelet/x/ansi	v0.8.0	h1:9GTq3xq9caJW8ZrBTe0LIe2fvfLR/bYXKTx2llXn7xE=
+	dep	github.com/charmbracelet/x/cellbuf	v0.0.13-0.20250311204145-2c3ea96c31dd	h1:vy0GVL4jeHEwG5YOXDmi86oYw2yuYUGqz6a8sLwg0X8=
+	dep	github.com/charmbracelet/x/term	v0.2.1	h1:AQeHeLZ1OqSXhrAWpYUtZyX1T3zVxfpZuEQMIQaGIAQ=
+	dep	github.com/jchv/go-webview2	v0.0.0-20260205173254-56598839c808	h1:ftnsTqIUH57XQEF+PnXX9++nlHCzdkuB5zbWyMMruZo=
+	dep	github.com/jchv/go-winloader	v0.0.0-20250406163304-c1995be93bd1	h1:njuLRcjAuMKr7kI3D85AXWkw6/+v9PwtV6M6o11sWHQ=
+	dep	github.com/lucasb-eyer/go-colorful	v1.2.0	h1:1nnpGOrhyZZuNyfu1QjKiUICQ74+3FNCN69Aj6K7nkY=
+	dep	github.com/mattn/go-isatty	v0.0.20	h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=
+	dep	github.com/mattn/go-runewidth	v0.0.16	h1:E5ScNMtiwvlvB5paMFdw9p4kSQzbXFikJ5SQO6TULQc=
+	dep	github.com/muesli/termenv	v0.16.0	h1:S5AlUN9dENB57rsbnkPyfdGuWIlkmzJjbFf0Tf5FWUc=
+	dep	github.com/rivo/uniseg	v0.4.7	h1:WUdvkW8uEhrYfLC4ZzdpI2ztxP1I582+49Oc5Mq64VQ=
+	dep	github.com/xo/terminfo	v0.0.0-20220910002029-abceb7e1c41e	h1:JVG44RsyaB9T2KIHavMF/ppJZNG9ZpyihvCd0w101no=
+	dep	golang.org/x/crypto	v0.33.0	h1:IOBPskki6Lysi0lo9qQvbxiQ+FvsCC/YWOecCHAixus=
+	dep	golang.org/x/sys	v0.30.0	h1:QjkSwP/36a20jFYWkSue1YwXzLmsV5Gfq7Eiy72C1uc=
+	dep	golang.org/x/term	v0.29.0	h1:L6pJp37ocefwRRtYPKSWOWzOtWSxVajvz2ldH/xi3iU=
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	-trimpath=true
+	build	DefaultGODEBUG=containermaxprocs=0,cryptocustomrand=1,decoratemappings=0,gotestjsonbuildtext=1,httpcookiemaxnum=0,httpservecontentkeepheaders=1,httpservecontentmaxranges=1,multipathtcp=0,randseednop=0,rsa1024min=0,tlsmlkem=0,tlssecpmlkem=0,tlssha1=1,tracebacklabels=0,updatemaxprocs=0,urlmaxqueryparams=0,urlstrictcolons=0,winreadlinkvolume=0,winsymlink=0,x509negativeserial=1,x509rsacrt=0,x509sha256skid=0,x509sslcertoverrideplatform=0,x509usepolicies=0
+	build	CGO_ENABLED=0
+	build	GOARCH=amd64
+	build	GOOS=windows
+	build	GOAMD64=v1
+--- go version -m r13b_windows_386.test.exe
+r13b_windows_386.test.exe: go1.27.3
+	path	kiyas.test
+	mod	kiyas	(devel)	
+	dep	github.com/aymanbagabas/go-osc52/v2	v2.0.1	h1:HwpRHbFMcZLEVr42D4p7XBqjyuxQH5SMiErDT4WkJ2k=
+	dep	github.com/charmbracelet/colorprofile	v0.2.3-0.20250311203215-f60798e515dc	h1:4pZI35227imm7yK2bGPcfpFEmuY1gc2YSTShr4iJBfs=
+	dep	github.com/charmbracelet/lipgloss	v1.1.0	h1:vYXsiLHVkK7fp74RkV7b2kq9+zDLoEU4MZoFqR/noCY=
+	dep	github.com/charmbracelet/x/ansi	v0.8.0	h1:9GTq3xq9caJW8ZrBTe0LIe2fvfLR/bYXKTx2llXn7xE=
+	dep	github.com/charmbracelet/x/cellbuf	v0.0.13-0.20250311204145-2c3ea96c31dd	h1:vy0GVL4jeHEwG5YOXDmi86oYw2yuYUGqz6a8sLwg0X8=
+	dep	github.com/charmbracelet/x/term	v0.2.1	h1:AQeHeLZ1OqSXhrAWpYUtZyX1T3zVxfpZuEQMIQaGIAQ=
+	dep	github.com/jchv/go-webview2	v0.0.0-20260205173254-56598839c808	h1:ftnsTqIUH57XQEF+PnXX9++nlHCzdkuB5zbWyMMruZo=
+	dep	github.com/jchv/go-winloader	v0.0.0-20250406163304-c1995be93bd1	h1:njuLRcjAuMKr7kI3D85AXWkw6/+v9PwtV6M6o11sWHQ=
+	dep	github.com/lucasb-eyer/go-colorful	v1.2.0	h1:1nnpGOrhyZZuNyfu1QjKiUICQ74+3FNCN69Aj6K7nkY=
+	dep	github.com/mattn/go-isatty	v0.0.20	h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=
+	dep	github.com/mattn/go-runewidth	v0.0.16	h1:E5ScNMtiwvlvB5paMFdw9p4kSQzbXFikJ5SQO6TULQc=
+	dep	github.com/muesli/termenv	v0.16.0	h1:S5AlUN9dENB57rsbnkPyfdGuWIlkmzJjbFf0Tf5FWUc=
+	dep	github.com/rivo/uniseg	v0.4.7	h1:WUdvkW8uEhrYfLC4ZzdpI2ztxP1I582+49Oc5Mq64VQ=
+	dep	github.com/xo/terminfo	v0.0.0-20220910002029-abceb7e1c41e	h1:JVG44RsyaB9T2KIHavMF/ppJZNG9ZpyihvCd0w101no=
+	dep	golang.org/x/crypto	v0.33.0	h1:IOBPskki6Lysi0lo9qQvbxiQ+FvsCC/YWOecCHAixus=
+	dep	golang.org/x/sys	v0.30.0	h1:QjkSwP/36a20jFYWkSue1YwXzLmsV5Gfq7Eiy72C1uc=
+	dep	golang.org/x/term	v0.29.0	h1:L6pJp37ocefwRRtYPKSWOWzOtWSxVajvz2ldH/xi3iU=
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	-trimpath=true
+	build	DefaultGODEBUG=containermaxprocs=0,cryptocustomrand=1,decoratemappings=0,gotestjsonbuildtext=1,httpcookiemaxnum=0,httpservecontentkeepheaders=1,httpservecontentmaxranges=1,multipathtcp=0,randseednop=0,rsa1024min=0,tlsmlkem=0,tlssecpmlkem=0,tlssha1=1,tracebacklabels=0,updatemaxprocs=0,urlmaxqueryparams=0,urlstrictcolons=0,winreadlinkvolume=0,winsymlink=0,x509negativeserial=1,x509rsacrt=0,x509sha256skid=0,x509sslcertoverrideplatform=0,x509usepolicies=0
+	build	CGO_ENABLED=0
+	build	GOARCH=386
+	build	GOOS=windows
+	build	GO386=sse2
+==== amd64 ====
+=== RUN   TestR13PortableAliasAndDevicePolicy
+--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)
+=== RUN   TestR13bAAMetadata
+    file_tools_r13b_windows_test.go:63: R13B_META binary_sha256=b0816c2fa21729f4dc485a739ee6f998ea3cc2837aae1ac66f3c6d5c888857da
+    file_tools_r13b_windows_test.go:64: R13B_META binary_name=r13b_windows_amd64.test.exe
+    file_tools_r13b_windows_test.go:65: R13B_META patch_sha256=662fc40a005a3fa690996a5eed5c12bb648345ac3c17795ba6f49716f91e089c
+    file_tools_r13b_windows_test.go:66: R13B_META hostname=DESKTOP-48D4KOL
+    file_tools_r13b_windows_test.go:67: R13B_META go_toolchain=go1.27.3 goos=windows goarch=amd64
+    file_tools_r13b_windows_test.go:68: R13B_META elevated=false user_sid=S-1-5-21-1316099983-995286136-1676610296-1001
+    file_tools_r13b_windows_test.go:69: R13B_META os_version=10.0.19045 sp=0 product_type=1
+--- PASS: TestR13bAAMetadata (0.09s)
+=== RUN   TestR13bWindowsParentHelperControl
+--- PASS: TestR13bWindowsParentHelperControl (0.06s)
+=== RUN   TestR13bWindowsParentSwapPinnedRoot
+    file_tools_r13b_windows_test.go:203: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot2814633706\001\nested -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot2814633706\002)
+--- PASS: TestR13bWindowsParentSwapPinnedRoot (0.04s)
+=== RUN   TestR13WindowsParentSwapAtomicHelper
+    file_tools_r13b_windows_test.go:256: hook entered=true renamed=false junction=false rename_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper63669624\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper63669624\001\old: Erişim engellendi. helper_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper63669624\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper63669624\001\old: Erişim engellendi.
+    file_tools_r13b_windows_test.go:289: OUTCOME=REFUSED errno=5: Windows refuses renaming a directory with an open child handle; swap in this window is impossible (not a swap test, see TestR13bWindowsParentSwapPinnedRoot)
+--- PASS: TestR13WindowsParentSwapAtomicHelper (0.02s)
+=== RUN   TestR13bWindowsDeskSubdirSwap
+    file_tools_r13b_windows_test.go:306: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap2396466517\001\sub -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap2396466517\002)
+--- PASS: TestR13bWindowsDeskSubdirSwap (0.04s)
+=== RUN   TestR13bWindowsDeskSessionRootSwap
+    file_tools_r13b_windows_test.go:330: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap3016130167\001\ws -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap3016130167\002)
+--- PASS: TestR13bWindowsDeskSessionRootSwap (0.06s)
+=== RUN   TestR13bWindowsDeskAncestorSwap
+    file_tools_r13b_windows_test.go:386: OUTCOME=REFUSED errno=5: ancestor of a pinned root cannot be renamed while the pin is held
+--- PASS: TestR13bWindowsDeskAncestorSwap (0.01s)
+=== RUN   TestR13bWindowsDeskCleanupRace
+--- PASS: TestR13bWindowsDeskCleanupRace (0.04s)
+=== RUN   TestR13bWindowsSymlinkRejected
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2996529865\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2996529865\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+--- SKIP: TestR13bWindowsSymlinkRejected (0.00s)
+=== RUN   TestR13bWindowsVolumeMountPoint
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+--- SKIP: TestR13bWindowsVolumeMountPoint (0.00s)
+=== RUN   TestR13bWindowsVolumeRootJunction
+    file_tools_r13b_windows_test.go:467: reparse tag=0xA0000003
+--- PASS: TestR13bWindowsVolumeRootJunction (0.04s)
+=== RUN   TestR13bWindowsRetagDirectory
+--- PASS: TestR13bWindowsRetagDirectory (0.02s)
+=== RUN   TestR13bWindowsRetagPinnedRoot
+    file_tools_r13b_windows_test.go:582: after root retag: write=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid. read=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid.
+--- PASS: TestR13bWindowsRetagPinnedRoot (0.01s)
+=== RUN   TestR13bWindowsHardlinkAfterOpen
+--- PASS: TestR13bWindowsHardlinkAfterOpen (0.01s)
+=== RUN   TestR13bWindowsHardlinkInWindow
+--- PASS: TestR13bWindowsHardlinkInWindow (0.01s)
+=== RUN   TestR13bWindowsShortNameWithoutTilde
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+--- SKIP: TestR13bWindowsShortNameWithoutTilde (0.00s)
+=== RUN   TestR13bWindowsPathVariants
+=== RUN   TestR13bWindowsPathVariants/NUL
+=== RUN   TestR13bWindowsPathVariants/nul
+=== RUN   TestR13bWindowsPathVariants/Nul.txt
+=== RUN   TestR13bWindowsPathVariants/a_nul
+=== RUN   TestR13bWindowsPathVariants/a_NUL.tar.gz
+=== RUN   TestR13bWindowsPathVariants/nul_
+=== RUN   TestR13bWindowsPathVariants/CONIN$
+=== RUN   TestR13bWindowsPathVariants/conout$.txt
+=== RUN   TestR13bWindowsPathVariants/COM1_
+=== RUN   TestR13bWindowsPathVariants/a._b
+=== RUN   TestR13bWindowsPathVariants/__._NUL
+=== RUN   TestR13bWindowsPathVariants/__._C__x
+=== RUN   TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null
+=== RUN   TestR13bWindowsPathVariants/__?_C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/_??_C__x
+=== RUN   TestR13bWindowsPathVariants/C_x
+=== RUN   TestR13bWindowsPathVariants/c_x.txt
+=== RUN   TestR13bWindowsPathVariants/C_x#01
+=== RUN   TestR13bWindowsPathVariants/C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/c__windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/x__$DATA
+=== RUN   TestR13bWindowsPathVariants/x_$DATA
+=== RUN   TestR13bWindowsPathVariants/x_s_$DATA
+=== RUN   TestR13bWindowsPathVariants/sub_.._.._x
+=== RUN   TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants2797686121_002_x
+--- PASS: TestR13bWindowsPathVariants (0.01s)
+    --- PASS: TestR13bWindowsPathVariants/NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/Nul.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_NUL.tar.gz (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/CONIN$ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/conout$.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/COM1_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a._b (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/_??_C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c_x.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x#01 (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c__windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x__$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_s_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/sub_.._.._x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants2797686121_002_x (0.00s)
+=== RUN   TestR13bWindowsCaseSensitiveDir
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+--- SKIP: TestR13bWindowsCaseSensitiveDir (0.00s)
+=== RUN   TestR13bWindowsDACLDenied
+    file_tools_r13b_windows_test.go:807: deny-dir write: ntstatus=0xC0000022 {Access Denied}
+        A process has requested access to an object, but has not been granted those access rights.
+--- PASS: TestR13bWindowsDACLDenied (0.13s)
+=== RUN   TestR13bWindowsDACLOtherAccount
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+--- SKIP: TestR13bWindowsDACLOtherAccount (0.00s)
+=== RUN   TestR13bWindowsReadonlyErrors
+--- PASS: TestR13bWindowsReadonlyErrors (0.01s)
+=== RUN   TestR13bWindowsTempErrorPath
+--- PASS: TestR13bWindowsTempErrorPath (0.01s)
+=== RUN   TestR13bWindowsHandleLeak
+    file_tools_r13b_windows_test.go:899: handles before=178 after=196
+--- PASS: TestR13bWindowsHandleLeak (3.48s)
+=== RUN   TestR13WindowsRelativeLifecycle
+--- PASS: TestR13WindowsRelativeLifecycle (0.03s)
+=== RUN   TestR13WindowsUnsafeNames
+=== RUN   TestR13WindowsUnsafeNames/x:stream
+=== RUN   TestR13WindowsUnsafeNames/CON.txt
+=== RUN   TestR13WindowsUnsafeNames/nul
+=== RUN   TestR13WindowsUnsafeNames/com1.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT9
+=== RUN   TestR13WindowsUnsafeNames/COM¹.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT²
+=== RUN   TestR13WindowsUnsafeNames/dir/PRN
+=== RUN   TestR13WindowsUnsafeNames/a.
+=== RUN   TestR13WindowsUnsafeNames/a_
+=== RUN   TestR13WindowsUnsafeNames/LONGFI~1.TXT
+=== RUN   TestR13WindowsUnsafeNames/../outside
+=== RUN   TestR13WindowsUnsafeNames/\\?\C:\x
+--- PASS: TestR13WindowsUnsafeNames (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/x:stream (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/CON.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/nul (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/com1.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT9 (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/COM¹.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT² (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/dir/PRN (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a. (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a_ (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LONGFI~1.TXT (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/../outside (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/\\?\C:\x (0.00s)
+=== RUN   TestR13WindowsHardLink
+--- PASS: TestR13WindowsHardLink (0.01s)
+=== RUN   TestR13WindowsJunctionRejected
+--- PASS: TestR13WindowsJunctionRejected (0.04s)
+=== RUN   TestR13WindowsRootSwapPinned
+--- PASS: TestR13WindowsRootSwapPinned (0.06s)
+=== RUN   TestR13WindowsRootSwapStress
+=== RUN   TestR13WindowsRootSwapStress/write
+    file_tools_windows_test.go:223: swaps=9 successful_operations=81
+=== RUN   TestR13WindowsRootSwapStress/delete
+    file_tools_windows_test.go:223: swaps=17 successful_operations=107
+--- PASS: TestR13WindowsRootSwapStress (6.11s)
+    --- PASS: TestR13WindowsRootSwapStress/write (3.06s)
+    --- PASS: TestR13WindowsRootSwapStress/delete (3.05s)
+=== RUN   TestR13WindowsShortAlias
+    file_tools_windows_test.go:241: short alias="AQUITE~1.TXT" tilde=true
+--- PASS: TestR13WindowsShortAlias (0.01s)
+=== RUN   TestR13WindowsDeskAndHistory
+--- PASS: TestR13WindowsDeskAndHistory (0.02s)
+=== RUN   TestR13PortableAliasAndDevicePolicy
+--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)
+=== RUN   TestR13bAAMetadata
+    file_tools_r13b_windows_test.go:63: R13B_META binary_sha256=b0816c2fa21729f4dc485a739ee6f998ea3cc2837aae1ac66f3c6d5c888857da
+    file_tools_r13b_windows_test.go:64: R13B_META binary_name=r13b_windows_amd64.test.exe
+    file_tools_r13b_windows_test.go:65: R13B_META patch_sha256=662fc40a005a3fa690996a5eed5c12bb648345ac3c17795ba6f49716f91e089c
+    file_tools_r13b_windows_test.go:66: R13B_META hostname=DESKTOP-48D4KOL
+    file_tools_r13b_windows_test.go:67: R13B_META go_toolchain=go1.27.3 goos=windows goarch=amd64
+    file_tools_r13b_windows_test.go:68: R13B_META elevated=false user_sid=S-1-5-21-1316099983-995286136-1676610296-1001
+    file_tools_r13b_windows_test.go:69: R13B_META os_version=10.0.19045 sp=0 product_type=1
+--- PASS: TestR13bAAMetadata (0.09s)
+=== RUN   TestR13bWindowsParentHelperControl
+--- PASS: TestR13bWindowsParentHelperControl (0.04s)
+=== RUN   TestR13bWindowsParentSwapPinnedRoot
+    file_tools_r13b_windows_test.go:203: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot3241217436\001\nested -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot3241217436\002)
+--- PASS: TestR13bWindowsParentSwapPinnedRoot (0.06s)
+=== RUN   TestR13WindowsParentSwapAtomicHelper
+    file_tools_r13b_windows_test.go:256: hook entered=true renamed=false junction=false rename_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1296735746\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1296735746\001\old: Erişim engellendi. helper_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1296735746\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1296735746\001\old: Erişim engellendi.
+    file_tools_r13b_windows_test.go:289: OUTCOME=REFUSED errno=5: Windows refuses renaming a directory with an open child handle; swap in this window is impossible (not a swap test, see TestR13bWindowsParentSwapPinnedRoot)
+--- PASS: TestR13WindowsParentSwapAtomicHelper (0.03s)
+=== RUN   TestR13bWindowsDeskSubdirSwap
+    file_tools_r13b_windows_test.go:306: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap3168589657\001\sub -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap3168589657\002)
+--- PASS: TestR13bWindowsDeskSubdirSwap (0.05s)
+=== RUN   TestR13bWindowsDeskSessionRootSwap
+    file_tools_r13b_windows_test.go:330: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap2976451729\001\ws -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap2976451729\002)
+--- PASS: TestR13bWindowsDeskSessionRootSwap (0.08s)
+=== RUN   TestR13bWindowsDeskAncestorSwap
+    file_tools_r13b_windows_test.go:386: OUTCOME=REFUSED errno=5: ancestor of a pinned root cannot be renamed while the pin is held
+--- PASS: TestR13bWindowsDeskAncestorSwap (0.02s)
+=== RUN   TestR13bWindowsDeskCleanupRace
+--- PASS: TestR13bWindowsDeskCleanupRace (0.03s)
+=== RUN   TestR13bWindowsSymlinkRejected
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2286759708\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2286759708\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+--- SKIP: TestR13bWindowsSymlinkRejected (0.01s)
+=== RUN   TestR13bWindowsVolumeMountPoint
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+--- SKIP: TestR13bWindowsVolumeMountPoint (0.00s)
+=== RUN   TestR13bWindowsVolumeRootJunction
+    file_tools_r13b_windows_test.go:467: reparse tag=0xA0000003
+--- PASS: TestR13bWindowsVolumeRootJunction (0.04s)
+=== RUN   TestR13bWindowsRetagDirectory
+--- PASS: TestR13bWindowsRetagDirectory (0.01s)
+=== RUN   TestR13bWindowsRetagPinnedRoot
+    file_tools_r13b_windows_test.go:582: after root retag: write=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid. read=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid.
+--- PASS: TestR13bWindowsRetagPinnedRoot (0.01s)
+=== RUN   TestR13bWindowsHardlinkAfterOpen
+--- PASS: TestR13bWindowsHardlinkAfterOpen (0.01s)
+=== RUN   TestR13bWindowsHardlinkInWindow
+--- PASS: TestR13bWindowsHardlinkInWindow (0.02s)
+=== RUN   TestR13bWindowsShortNameWithoutTilde
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+--- SKIP: TestR13bWindowsShortNameWithoutTilde (0.00s)
+=== RUN   TestR13bWindowsPathVariants
+=== RUN   TestR13bWindowsPathVariants/NUL
+=== RUN   TestR13bWindowsPathVariants/nul
+=== RUN   TestR13bWindowsPathVariants/Nul.txt
+=== RUN   TestR13bWindowsPathVariants/a_nul
+=== RUN   TestR13bWindowsPathVariants/a_NUL.tar.gz
+=== RUN   TestR13bWindowsPathVariants/nul_
+=== RUN   TestR13bWindowsPathVariants/CONIN$
+=== RUN   TestR13bWindowsPathVariants/conout$.txt
+=== RUN   TestR13bWindowsPathVariants/COM1_
+=== RUN   TestR13bWindowsPathVariants/a._b
+=== RUN   TestR13bWindowsPathVariants/__._NUL
+=== RUN   TestR13bWindowsPathVariants/__._C__x
+=== RUN   TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null
+=== RUN   TestR13bWindowsPathVariants/__?_C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/_??_C__x
+=== RUN   TestR13bWindowsPathVariants/C_x
+=== RUN   TestR13bWindowsPathVariants/c_x.txt
+=== RUN   TestR13bWindowsPathVariants/C_x#01
+=== RUN   TestR13bWindowsPathVariants/C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/c__windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/x__$DATA
+=== RUN   TestR13bWindowsPathVariants/x_$DATA
+=== RUN   TestR13bWindowsPathVariants/x_s_$DATA
+=== RUN   TestR13bWindowsPathVariants/sub_.._.._x
+=== RUN   TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants2936324259_002_x
+--- PASS: TestR13bWindowsPathVariants (0.01s)
+    --- PASS: TestR13bWindowsPathVariants/NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/Nul.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_NUL.tar.gz (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/CONIN$ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/conout$.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/COM1_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a._b (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/_??_C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c_x.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x#01 (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c__windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x__$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_s_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/sub_.._.._x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants2936324259_002_x (0.00s)
+=== RUN   TestR13bWindowsCaseSensitiveDir
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+--- SKIP: TestR13bWindowsCaseSensitiveDir (0.00s)
+=== RUN   TestR13bWindowsDACLDenied
+    file_tools_r13b_windows_test.go:807: deny-dir write: ntstatus=0xC0000022 {Access Denied}
+        A process has requested access to an object, but has not been granted those access rights.
+--- PASS: TestR13bWindowsDACLDenied (0.12s)
+=== RUN   TestR13bWindowsDACLOtherAccount
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+--- SKIP: TestR13bWindowsDACLOtherAccount (0.00s)
+=== RUN   TestR13bWindowsReadonlyErrors
+--- PASS: TestR13bWindowsReadonlyErrors (0.01s)
+=== RUN   TestR13bWindowsTempErrorPath
+--- PASS: TestR13bWindowsTempErrorPath (0.01s)
+=== RUN   TestR13bWindowsHandleLeak
+    file_tools_r13b_windows_test.go:899: handles before=202 after=202
+--- PASS: TestR13bWindowsHandleLeak (3.77s)
+=== RUN   TestR13WindowsRelativeLifecycle
+--- PASS: TestR13WindowsRelativeLifecycle (0.01s)
+=== RUN   TestR13WindowsUnsafeNames
+=== RUN   TestR13WindowsUnsafeNames/x:stream
+=== RUN   TestR13WindowsUnsafeNames/CON.txt
+=== RUN   TestR13WindowsUnsafeNames/nul
+=== RUN   TestR13WindowsUnsafeNames/com1.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT9
+=== RUN   TestR13WindowsUnsafeNames/COM¹.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT²
+=== RUN   TestR13WindowsUnsafeNames/dir/PRN
+=== RUN   TestR13WindowsUnsafeNames/a.
+=== RUN   TestR13WindowsUnsafeNames/a_
+=== RUN   TestR13WindowsUnsafeNames/LONGFI~1.TXT
+=== RUN   TestR13WindowsUnsafeNames/../outside
+=== RUN   TestR13WindowsUnsafeNames/\\?\C:\x
+--- PASS: TestR13WindowsUnsafeNames (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/x:stream (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/CON.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/nul (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/com1.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT9 (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/COM¹.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT² (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/dir/PRN (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a. (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a_ (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LONGFI~1.TXT (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/../outside (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/\\?\C:\x (0.00s)
+=== RUN   TestR13WindowsHardLink
+--- PASS: TestR13WindowsHardLink (0.01s)
+=== RUN   TestR13WindowsJunctionRejected
+--- PASS: TestR13WindowsJunctionRejected (0.04s)
+=== RUN   TestR13WindowsRootSwapPinned
+--- PASS: TestR13WindowsRootSwapPinned (0.05s)
+=== RUN   TestR13WindowsRootSwapStress
+=== RUN   TestR13WindowsRootSwapStress/write
+    file_tools_windows_test.go:223: swaps=11 successful_operations=203
+=== RUN   TestR13WindowsRootSwapStress/delete
+    file_tools_windows_test.go:223: swaps=21 successful_operations=160
+--- PASS: TestR13WindowsRootSwapStress (6.13s)
+    --- PASS: TestR13WindowsRootSwapStress/write (3.08s)
+    --- PASS: TestR13WindowsRootSwapStress/delete (3.05s)
+=== RUN   TestR13WindowsShortAlias
+    file_tools_windows_test.go:241: short alias="AQUITE~1.TXT" tilde=true
+--- PASS: TestR13WindowsShortAlias (0.00s)
+=== RUN   TestR13WindowsDeskAndHistory
+--- PASS: TestR13WindowsDeskAndHistory (0.01s)
+=== RUN   TestR13PortableAliasAndDevicePolicy
+--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)
+=== RUN   TestR13bAAMetadata
+    file_tools_r13b_windows_test.go:63: R13B_META binary_sha256=b0816c2fa21729f4dc485a739ee6f998ea3cc2837aae1ac66f3c6d5c888857da
+    file_tools_r13b_windows_test.go:64: R13B_META binary_name=r13b_windows_amd64.test.exe
+    file_tools_r13b_windows_test.go:65: R13B_META patch_sha256=662fc40a005a3fa690996a5eed5c12bb648345ac3c17795ba6f49716f91e089c
+    file_tools_r13b_windows_test.go:66: R13B_META hostname=DESKTOP-48D4KOL
+    file_tools_r13b_windows_test.go:67: R13B_META go_toolchain=go1.27.3 goos=windows goarch=amd64
+    file_tools_r13b_windows_test.go:68: R13B_META elevated=false user_sid=S-1-5-21-1316099983-995286136-1676610296-1001
+    file_tools_r13b_windows_test.go:69: R13B_META os_version=10.0.19045 sp=0 product_type=1
+--- PASS: TestR13bAAMetadata (0.08s)
+=== RUN   TestR13bWindowsParentHelperControl
+--- PASS: TestR13bWindowsParentHelperControl (0.04s)
+=== RUN   TestR13bWindowsParentSwapPinnedRoot
+    file_tools_r13b_windows_test.go:203: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot3352025567\001\nested -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot3352025567\002)
+--- PASS: TestR13bWindowsParentSwapPinnedRoot (0.04s)
+=== RUN   TestR13WindowsParentSwapAtomicHelper
+    file_tools_r13b_windows_test.go:256: hook entered=true renamed=false junction=false rename_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1619184854\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1619184854\001\old: Erişim engellendi. helper_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1619184854\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper1619184854\001\old: Erişim engellendi.
+    file_tools_r13b_windows_test.go:289: OUTCOME=REFUSED errno=5: Windows refuses renaming a directory with an open child handle; swap in this window is impossible (not a swap test, see TestR13bWindowsParentSwapPinnedRoot)
+--- PASS: TestR13WindowsParentSwapAtomicHelper (0.01s)
+=== RUN   TestR13bWindowsDeskSubdirSwap
+    file_tools_r13b_windows_test.go:306: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap1097836179\001\sub -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap1097836179\002)
+--- PASS: TestR13bWindowsDeskSubdirSwap (0.04s)
+=== RUN   TestR13bWindowsDeskSessionRootSwap
+    file_tools_r13b_windows_test.go:330: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap3929444266\001\ws -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap3929444266\002)
+--- PASS: TestR13bWindowsDeskSessionRootSwap (0.07s)
+=== RUN   TestR13bWindowsDeskAncestorSwap
+    file_tools_r13b_windows_test.go:386: OUTCOME=REFUSED errno=5: ancestor of a pinned root cannot be renamed while the pin is held
+--- PASS: TestR13bWindowsDeskAncestorSwap (0.02s)
+=== RUN   TestR13bWindowsDeskCleanupRace
+--- PASS: TestR13bWindowsDeskCleanupRace (0.04s)
+=== RUN   TestR13bWindowsSymlinkRejected
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected867616465\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected867616465\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+--- SKIP: TestR13bWindowsSymlinkRejected (0.01s)
+=== RUN   TestR13bWindowsVolumeMountPoint
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+--- SKIP: TestR13bWindowsVolumeMountPoint (0.00s)
+=== RUN   TestR13bWindowsVolumeRootJunction
+    file_tools_r13b_windows_test.go:467: reparse tag=0xA0000003
+--- PASS: TestR13bWindowsVolumeRootJunction (0.03s)
+=== RUN   TestR13bWindowsRetagDirectory
+--- PASS: TestR13bWindowsRetagDirectory (0.01s)
+=== RUN   TestR13bWindowsRetagPinnedRoot
+    file_tools_r13b_windows_test.go:582: after root retag: write=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid. read=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid.
+--- PASS: TestR13bWindowsRetagPinnedRoot (0.01s)
+=== RUN   TestR13bWindowsHardlinkAfterOpen
+--- PASS: TestR13bWindowsHardlinkAfterOpen (0.05s)
+=== RUN   TestR13bWindowsHardlinkInWindow
+--- PASS: TestR13bWindowsHardlinkInWindow (0.04s)
+=== RUN   TestR13bWindowsShortNameWithoutTilde
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+--- SKIP: TestR13bWindowsShortNameWithoutTilde (0.00s)
+=== RUN   TestR13bWindowsPathVariants
+=== RUN   TestR13bWindowsPathVariants/NUL
+=== RUN   TestR13bWindowsPathVariants/nul
+=== RUN   TestR13bWindowsPathVariants/Nul.txt
+=== RUN   TestR13bWindowsPathVariants/a_nul
+=== RUN   TestR13bWindowsPathVariants/a_NUL.tar.gz
+=== RUN   TestR13bWindowsPathVariants/nul_
+=== RUN   TestR13bWindowsPathVariants/CONIN$
+=== RUN   TestR13bWindowsPathVariants/conout$.txt
+=== RUN   TestR13bWindowsPathVariants/COM1_
+=== RUN   TestR13bWindowsPathVariants/a._b
+=== RUN   TestR13bWindowsPathVariants/__._NUL
+=== RUN   TestR13bWindowsPathVariants/__._C__x
+=== RUN   TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null
+=== RUN   TestR13bWindowsPathVariants/__?_C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/_??_C__x
+=== RUN   TestR13bWindowsPathVariants/C_x
+=== RUN   TestR13bWindowsPathVariants/c_x.txt
+=== RUN   TestR13bWindowsPathVariants/C_x#01
+=== RUN   TestR13bWindowsPathVariants/C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/c__windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/x__$DATA
+=== RUN   TestR13bWindowsPathVariants/x_$DATA
+=== RUN   TestR13bWindowsPathVariants/x_s_$DATA
+=== RUN   TestR13bWindowsPathVariants/sub_.._.._x
+=== RUN   TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants3709108710_002_x
+--- PASS: TestR13bWindowsPathVariants (0.01s)
+    --- PASS: TestR13bWindowsPathVariants/NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/Nul.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_NUL.tar.gz (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/CONIN$ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/conout$.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/COM1_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a._b (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/_??_C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c_x.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x#01 (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c__windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x__$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_s_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/sub_.._.._x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants3709108710_002_x (0.00s)
+=== RUN   TestR13bWindowsCaseSensitiveDir
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+--- SKIP: TestR13bWindowsCaseSensitiveDir (0.00s)
+=== RUN   TestR13bWindowsDACLDenied
+    file_tools_r13b_windows_test.go:807: deny-dir write: ntstatus=0xC0000022 {Access Denied}
+        A process has requested access to an object, but has not been granted those access rights.
+--- PASS: TestR13bWindowsDACLDenied (0.12s)
+=== RUN   TestR13bWindowsDACLOtherAccount
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+--- SKIP: TestR13bWindowsDACLOtherAccount (0.00s)
+=== RUN   TestR13bWindowsReadonlyErrors
+--- PASS: TestR13bWindowsReadonlyErrors (0.01s)
+=== RUN   TestR13bWindowsTempErrorPath
+--- PASS: TestR13bWindowsTempErrorPath (0.02s)
+=== RUN   TestR13bWindowsHandleLeak
+    file_tools_r13b_windows_test.go:899: handles before=202 after=202
+--- PASS: TestR13bWindowsHandleLeak (3.33s)
+=== RUN   TestR13WindowsRelativeLifecycle
+--- PASS: TestR13WindowsRelativeLifecycle (0.02s)
+=== RUN   TestR13WindowsUnsafeNames
+=== RUN   TestR13WindowsUnsafeNames/x:stream
+=== RUN   TestR13WindowsUnsafeNames/CON.txt
+=== RUN   TestR13WindowsUnsafeNames/nul
+=== RUN   TestR13WindowsUnsafeNames/com1.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT9
+=== RUN   TestR13WindowsUnsafeNames/COM¹.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT²
+=== RUN   TestR13WindowsUnsafeNames/dir/PRN
+=== RUN   TestR13WindowsUnsafeNames/a.
+=== RUN   TestR13WindowsUnsafeNames/a_
+=== RUN   TestR13WindowsUnsafeNames/LONGFI~1.TXT
+=== RUN   TestR13WindowsUnsafeNames/../outside
+=== RUN   TestR13WindowsUnsafeNames/\\?\C:\x
+--- PASS: TestR13WindowsUnsafeNames (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/x:stream (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/CON.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/nul (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/com1.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT9 (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/COM¹.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT² (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/dir/PRN (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a. (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a_ (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LONGFI~1.TXT (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/../outside (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/\\?\C:\x (0.00s)
+=== RUN   TestR13WindowsHardLink
+--- PASS: TestR13WindowsHardLink (0.00s)
+=== RUN   TestR13WindowsJunctionRejected
+--- PASS: TestR13WindowsJunctionRejected (0.04s)
+=== RUN   TestR13WindowsRootSwapPinned
+--- PASS: TestR13WindowsRootSwapPinned (0.05s)
+=== RUN   TestR13WindowsRootSwapStress
+=== RUN   TestR13WindowsRootSwapStress/write
+    file_tools_windows_test.go:223: swaps=24 successful_operations=161
+=== RUN   TestR13WindowsRootSwapStress/delete
+    file_tools_windows_test.go:223: swaps=10 successful_operations=41
+--- PASS: TestR13WindowsRootSwapStress (6.11s)
+    --- PASS: TestR13WindowsRootSwapStress/write (3.06s)
+    --- PASS: TestR13WindowsRootSwapStress/delete (3.05s)
+=== RUN   TestR13WindowsShortAlias
+    file_tools_windows_test.go:241: short alias="AQUITE~1.TXT" tilde=true
+--- PASS: TestR13WindowsShortAlias (0.01s)
+=== RUN   TestR13WindowsDeskAndHistory
+--- PASS: TestR13WindowsDeskAndHistory (0.02s)
+PASS
+AMD64_EXITCODE=0
+==== 386 ====
+=== RUN   TestR13PortableAliasAndDevicePolicy
+--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)
+=== RUN   TestR13bAAMetadata
+    file_tools_r13b_windows_test.go:63: R13B_META binary_sha256=df796fa51ac4e51e2db791d36b1be43c33c46243763c97ab268f97c97074e9a9
+    file_tools_r13b_windows_test.go:64: R13B_META binary_name=r13b_windows_386.test.exe
+    file_tools_r13b_windows_test.go:65: R13B_META patch_sha256=662fc40a005a3fa690996a5eed5c12bb648345ac3c17795ba6f49716f91e089c
+    file_tools_r13b_windows_test.go:66: R13B_META hostname=DESKTOP-48D4KOL
+    file_tools_r13b_windows_test.go:67: R13B_META go_toolchain=go1.27.3 goos=windows goarch=386
+    file_tools_r13b_windows_test.go:68: R13B_META elevated=false user_sid=S-1-5-21-1316099983-995286136-1676610296-1001
+    file_tools_r13b_windows_test.go:69: R13B_META os_version=10.0.19045 sp=0 product_type=1
+--- PASS: TestR13bAAMetadata (0.18s)
+=== RUN   TestR13bWindowsParentHelperControl
+--- PASS: TestR13bWindowsParentHelperControl (0.03s)
+=== RUN   TestR13bWindowsParentSwapPinnedRoot
+    file_tools_r13b_windows_test.go:203: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot1568728073\001\nested -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot1568728073\002)
+--- PASS: TestR13bWindowsParentSwapPinnedRoot (0.07s)
+=== RUN   TestR13WindowsParentSwapAtomicHelper
+    file_tools_r13b_windows_test.go:256: hook entered=true renamed=false junction=false rename_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper3598750926\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper3598750926\001\old: Erişim engellendi. helper_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper3598750926\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper3598750926\001\old: Erişim engellendi.
+    file_tools_r13b_windows_test.go:289: OUTCOME=REFUSED errno=5: Windows refuses renaming a directory with an open child handle; swap in this window is impossible (not a swap test, see TestR13bWindowsParentSwapPinnedRoot)
+--- PASS: TestR13WindowsParentSwapAtomicHelper (0.02s)
+=== RUN   TestR13bWindowsDeskSubdirSwap
+    file_tools_r13b_windows_test.go:306: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap2937225185\001\sub -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap2937225185\002)
+--- PASS: TestR13bWindowsDeskSubdirSwap (0.05s)
+=== RUN   TestR13bWindowsDeskSessionRootSwap
+    file_tools_r13b_windows_test.go:330: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap3288059813\001\ws -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap3288059813\002)
+--- PASS: TestR13bWindowsDeskSessionRootSwap (0.08s)
+=== RUN   TestR13bWindowsDeskAncestorSwap
+    file_tools_r13b_windows_test.go:386: OUTCOME=REFUSED errno=5: ancestor of a pinned root cannot be renamed while the pin is held
+--- PASS: TestR13bWindowsDeskAncestorSwap (0.01s)
+=== RUN   TestR13bWindowsDeskCleanupRace
+--- PASS: TestR13bWindowsDeskCleanupRace (0.04s)
+=== RUN   TestR13bWindowsSymlinkRejected
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected539382001\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected539382001\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+--- SKIP: TestR13bWindowsSymlinkRejected (0.01s)
+=== RUN   TestR13bWindowsVolumeMountPoint
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+--- SKIP: TestR13bWindowsVolumeMountPoint (0.00s)
+=== RUN   TestR13bWindowsVolumeRootJunction
+    file_tools_r13b_windows_test.go:467: reparse tag=0xA0000003
+--- PASS: TestR13bWindowsVolumeRootJunction (0.06s)
+=== RUN   TestR13bWindowsRetagDirectory
+--- PASS: TestR13bWindowsRetagDirectory (0.01s)
+=== RUN   TestR13bWindowsRetagPinnedRoot
+    file_tools_r13b_windows_test.go:582: after root retag: write=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid. read=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid.
+--- PASS: TestR13bWindowsRetagPinnedRoot (0.01s)
+=== RUN   TestR13bWindowsHardlinkAfterOpen
+--- PASS: TestR13bWindowsHardlinkAfterOpen (0.01s)
+=== RUN   TestR13bWindowsHardlinkInWindow
+--- PASS: TestR13bWindowsHardlinkInWindow (0.01s)
+=== RUN   TestR13bWindowsShortNameWithoutTilde
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+--- SKIP: TestR13bWindowsShortNameWithoutTilde (0.00s)
+=== RUN   TestR13bWindowsPathVariants
+=== RUN   TestR13bWindowsPathVariants/NUL
+=== RUN   TestR13bWindowsPathVariants/nul
+=== RUN   TestR13bWindowsPathVariants/Nul.txt
+=== RUN   TestR13bWindowsPathVariants/a_nul
+=== RUN   TestR13bWindowsPathVariants/a_NUL.tar.gz
+=== RUN   TestR13bWindowsPathVariants/nul_
+=== RUN   TestR13bWindowsPathVariants/CONIN$
+=== RUN   TestR13bWindowsPathVariants/conout$.txt
+=== RUN   TestR13bWindowsPathVariants/COM1_
+=== RUN   TestR13bWindowsPathVariants/a._b
+=== RUN   TestR13bWindowsPathVariants/__._NUL
+=== RUN   TestR13bWindowsPathVariants/__._C__x
+=== RUN   TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null
+=== RUN   TestR13bWindowsPathVariants/__?_C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/_??_C__x
+=== RUN   TestR13bWindowsPathVariants/C_x
+=== RUN   TestR13bWindowsPathVariants/c_x.txt
+=== RUN   TestR13bWindowsPathVariants/C_x#01
+=== RUN   TestR13bWindowsPathVariants/C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/c__windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/x__$DATA
+=== RUN   TestR13bWindowsPathVariants/x_$DATA
+=== RUN   TestR13bWindowsPathVariants/x_s_$DATA
+=== RUN   TestR13bWindowsPathVariants/sub_.._.._x
+=== RUN   TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants1887669605_002_x
+--- PASS: TestR13bWindowsPathVariants (0.01s)
+    --- PASS: TestR13bWindowsPathVariants/NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/Nul.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_NUL.tar.gz (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/CONIN$ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/conout$.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/COM1_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a._b (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/_??_C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c_x.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x#01 (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c__windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x__$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_s_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/sub_.._.._x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants1887669605_002_x (0.00s)
+=== RUN   TestR13bWindowsCaseSensitiveDir
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+--- SKIP: TestR13bWindowsCaseSensitiveDir (0.00s)
+=== RUN   TestR13bWindowsDACLDenied
+    file_tools_r13b_windows_test.go:807: deny-dir write: ntstatus=0xC0000022 {Access Denied}
+        A process has requested access to an object, but has not been granted those access rights.
+--- PASS: TestR13bWindowsDACLDenied (0.16s)
+=== RUN   TestR13bWindowsDACLOtherAccount
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+--- SKIP: TestR13bWindowsDACLOtherAccount (0.00s)
+=== RUN   TestR13bWindowsReadonlyErrors
+--- PASS: TestR13bWindowsReadonlyErrors (0.02s)
+=== RUN   TestR13bWindowsTempErrorPath
+--- PASS: TestR13bWindowsTempErrorPath (0.03s)
+=== RUN   TestR13bWindowsHandleLeak
+    file_tools_r13b_windows_test.go:899: handles before=188 after=200
+--- PASS: TestR13bWindowsHandleLeak (3.76s)
+=== RUN   TestR13WindowsRelativeLifecycle
+--- PASS: TestR13WindowsRelativeLifecycle (0.01s)
+=== RUN   TestR13WindowsUnsafeNames
+=== RUN   TestR13WindowsUnsafeNames/x:stream
+=== RUN   TestR13WindowsUnsafeNames/CON.txt
+=== RUN   TestR13WindowsUnsafeNames/nul
+=== RUN   TestR13WindowsUnsafeNames/com1.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT9
+=== RUN   TestR13WindowsUnsafeNames/COM¹.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT²
+=== RUN   TestR13WindowsUnsafeNames/dir/PRN
+=== RUN   TestR13WindowsUnsafeNames/a.
+=== RUN   TestR13WindowsUnsafeNames/a_
+=== RUN   TestR13WindowsUnsafeNames/LONGFI~1.TXT
+=== RUN   TestR13WindowsUnsafeNames/../outside
+=== RUN   TestR13WindowsUnsafeNames/\\?\C:\x
+--- PASS: TestR13WindowsUnsafeNames (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/x:stream (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/CON.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/nul (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/com1.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT9 (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/COM¹.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT² (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/dir/PRN (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a. (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a_ (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LONGFI~1.TXT (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/../outside (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/\\?\C:\x (0.00s)
+=== RUN   TestR13WindowsHardLink
+--- PASS: TestR13WindowsHardLink (0.01s)
+=== RUN   TestR13WindowsJunctionRejected
+--- PASS: TestR13WindowsJunctionRejected (0.05s)
+=== RUN   TestR13WindowsRootSwapPinned
+--- PASS: TestR13WindowsRootSwapPinned (0.05s)
+=== RUN   TestR13WindowsRootSwapStress
+=== RUN   TestR13WindowsRootSwapStress/write
+    file_tools_windows_test.go:223: swaps=16 successful_operations=227
+=== RUN   TestR13WindowsRootSwapStress/delete
+    file_tools_windows_test.go:223: swaps=12 successful_operations=102
+--- PASS: TestR13WindowsRootSwapStress (6.30s)
+    --- PASS: TestR13WindowsRootSwapStress/write (3.06s)
+    --- PASS: TestR13WindowsRootSwapStress/delete (3.24s)
+=== RUN   TestR13WindowsShortAlias
+    file_tools_windows_test.go:241: short alias="AQUITE~1.TXT" tilde=true
+--- PASS: TestR13WindowsShortAlias (0.01s)
+=== RUN   TestR13WindowsDeskAndHistory
+--- PASS: TestR13WindowsDeskAndHistory (0.02s)
+=== RUN   TestR13PortableAliasAndDevicePolicy
+--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)
+=== RUN   TestR13bAAMetadata
+    file_tools_r13b_windows_test.go:63: R13B_META binary_sha256=df796fa51ac4e51e2db791d36b1be43c33c46243763c97ab268f97c97074e9a9
+    file_tools_r13b_windows_test.go:64: R13B_META binary_name=r13b_windows_386.test.exe
+    file_tools_r13b_windows_test.go:65: R13B_META patch_sha256=662fc40a005a3fa690996a5eed5c12bb648345ac3c17795ba6f49716f91e089c
+    file_tools_r13b_windows_test.go:66: R13B_META hostname=DESKTOP-48D4KOL
+    file_tools_r13b_windows_test.go:67: R13B_META go_toolchain=go1.27.3 goos=windows goarch=386
+    file_tools_r13b_windows_test.go:68: R13B_META elevated=false user_sid=S-1-5-21-1316099983-995286136-1676610296-1001
+    file_tools_r13b_windows_test.go:69: R13B_META os_version=10.0.19045 sp=0 product_type=1
+--- PASS: TestR13bAAMetadata (0.19s)
+=== RUN   TestR13bWindowsParentHelperControl
+--- PASS: TestR13bWindowsParentHelperControl (0.03s)
+=== RUN   TestR13bWindowsParentSwapPinnedRoot
+    file_tools_r13b_windows_test.go:203: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot3972207777\001\nested -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot3972207777\002)
+--- PASS: TestR13bWindowsParentSwapPinnedRoot (0.05s)
+=== RUN   TestR13WindowsParentSwapAtomicHelper
+    file_tools_r13b_windows_test.go:256: hook entered=true renamed=false junction=false rename_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper2535760300\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper2535760300\001\old: Erişim engellendi. helper_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper2535760300\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper2535760300\001\old: Erişim engellendi.
+    file_tools_r13b_windows_test.go:289: OUTCOME=REFUSED errno=5: Windows refuses renaming a directory with an open child handle; swap in this window is impossible (not a swap test, see TestR13bWindowsParentSwapPinnedRoot)
+--- PASS: TestR13WindowsParentSwapAtomicHelper (0.02s)
+=== RUN   TestR13bWindowsDeskSubdirSwap
+    file_tools_r13b_windows_test.go:306: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap3325812228\001\sub -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap3325812228\002)
+--- PASS: TestR13bWindowsDeskSubdirSwap (0.07s)
+=== RUN   TestR13bWindowsDeskSessionRootSwap
+    file_tools_r13b_windows_test.go:330: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap2269560097\001\ws -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap2269560097\002)
+--- PASS: TestR13bWindowsDeskSessionRootSwap (0.07s)
+=== RUN   TestR13bWindowsDeskAncestorSwap
+    file_tools_r13b_windows_test.go:386: OUTCOME=REFUSED errno=5: ancestor of a pinned root cannot be renamed while the pin is held
+--- PASS: TestR13bWindowsDeskAncestorSwap (0.01s)
+=== RUN   TestR13bWindowsDeskCleanupRace
+--- PASS: TestR13bWindowsDeskCleanupRace (0.03s)
+=== RUN   TestR13bWindowsSymlinkRejected
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected1650553849\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected1650553849\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+--- SKIP: TestR13bWindowsSymlinkRejected (0.01s)
+=== RUN   TestR13bWindowsVolumeMountPoint
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+--- SKIP: TestR13bWindowsVolumeMountPoint (0.00s)
+=== RUN   TestR13bWindowsVolumeRootJunction
+    file_tools_r13b_windows_test.go:467: reparse tag=0xA0000003
+--- PASS: TestR13bWindowsVolumeRootJunction (0.05s)
+=== RUN   TestR13bWindowsRetagDirectory
+--- PASS: TestR13bWindowsRetagDirectory (0.02s)
+=== RUN   TestR13bWindowsRetagPinnedRoot
+    file_tools_r13b_windows_test.go:582: after root retag: write=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid. read=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid.
+--- PASS: TestR13bWindowsRetagPinnedRoot (0.01s)
+=== RUN   TestR13bWindowsHardlinkAfterOpen
+--- PASS: TestR13bWindowsHardlinkAfterOpen (0.01s)
+=== RUN   TestR13bWindowsHardlinkInWindow
+--- PASS: TestR13bWindowsHardlinkInWindow (0.01s)
+=== RUN   TestR13bWindowsShortNameWithoutTilde
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+--- SKIP: TestR13bWindowsShortNameWithoutTilde (0.00s)
+=== RUN   TestR13bWindowsPathVariants
+=== RUN   TestR13bWindowsPathVariants/NUL
+=== RUN   TestR13bWindowsPathVariants/nul
+=== RUN   TestR13bWindowsPathVariants/Nul.txt
+=== RUN   TestR13bWindowsPathVariants/a_nul
+=== RUN   TestR13bWindowsPathVariants/a_NUL.tar.gz
+=== RUN   TestR13bWindowsPathVariants/nul_
+=== RUN   TestR13bWindowsPathVariants/CONIN$
+=== RUN   TestR13bWindowsPathVariants/conout$.txt
+=== RUN   TestR13bWindowsPathVariants/COM1_
+=== RUN   TestR13bWindowsPathVariants/a._b
+=== RUN   TestR13bWindowsPathVariants/__._NUL
+=== RUN   TestR13bWindowsPathVariants/__._C__x
+=== RUN   TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null
+=== RUN   TestR13bWindowsPathVariants/__?_C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/_??_C__x
+=== RUN   TestR13bWindowsPathVariants/C_x
+=== RUN   TestR13bWindowsPathVariants/c_x.txt
+=== RUN   TestR13bWindowsPathVariants/C_x#01
+=== RUN   TestR13bWindowsPathVariants/C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/c__windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/x__$DATA
+=== RUN   TestR13bWindowsPathVariants/x_$DATA
+=== RUN   TestR13bWindowsPathVariants/x_s_$DATA
+=== RUN   TestR13bWindowsPathVariants/sub_.._.._x
+=== RUN   TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants3490027499_002_x
+--- PASS: TestR13bWindowsPathVariants (0.01s)
+    --- PASS: TestR13bWindowsPathVariants/NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/Nul.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_NUL.tar.gz (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/CONIN$ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/conout$.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/COM1_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a._b (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/_??_C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c_x.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x#01 (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c__windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x__$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_s_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/sub_.._.._x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants3490027499_002_x (0.00s)
+=== RUN   TestR13bWindowsCaseSensitiveDir
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+--- SKIP: TestR13bWindowsCaseSensitiveDir (0.00s)
+=== RUN   TestR13bWindowsDACLDenied
+    file_tools_r13b_windows_test.go:807: deny-dir write: ntstatus=0xC0000022 {Access Denied}
+        A process has requested access to an object, but has not been granted those access rights.
+--- PASS: TestR13bWindowsDACLDenied (0.14s)
+=== RUN   TestR13bWindowsDACLOtherAccount
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+--- SKIP: TestR13bWindowsDACLOtherAccount (0.00s)
+=== RUN   TestR13bWindowsReadonlyErrors
+--- PASS: TestR13bWindowsReadonlyErrors (0.01s)
+=== RUN   TestR13bWindowsTempErrorPath
+--- PASS: TestR13bWindowsTempErrorPath (0.01s)
+=== RUN   TestR13bWindowsHandleLeak
+    file_tools_r13b_windows_test.go:899: handles before=206 after=206
+--- PASS: TestR13bWindowsHandleLeak (3.72s)
+=== RUN   TestR13WindowsRelativeLifecycle
+--- PASS: TestR13WindowsRelativeLifecycle (0.01s)
+=== RUN   TestR13WindowsUnsafeNames
+=== RUN   TestR13WindowsUnsafeNames/x:stream
+=== RUN   TestR13WindowsUnsafeNames/CON.txt
+=== RUN   TestR13WindowsUnsafeNames/nul
+=== RUN   TestR13WindowsUnsafeNames/com1.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT9
+=== RUN   TestR13WindowsUnsafeNames/COM¹.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT²
+=== RUN   TestR13WindowsUnsafeNames/dir/PRN
+=== RUN   TestR13WindowsUnsafeNames/a.
+=== RUN   TestR13WindowsUnsafeNames/a_
+=== RUN   TestR13WindowsUnsafeNames/LONGFI~1.TXT
+=== RUN   TestR13WindowsUnsafeNames/../outside
+=== RUN   TestR13WindowsUnsafeNames/\\?\C:\x
+--- PASS: TestR13WindowsUnsafeNames (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/x:stream (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/CON.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/nul (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/com1.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT9 (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/COM¹.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT² (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/dir/PRN (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a. (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a_ (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LONGFI~1.TXT (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/../outside (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/\\?\C:\x (0.00s)
+=== RUN   TestR13WindowsHardLink
+--- PASS: TestR13WindowsHardLink (0.01s)
+=== RUN   TestR13WindowsJunctionRejected
+--- PASS: TestR13WindowsJunctionRejected (0.04s)
+=== RUN   TestR13WindowsRootSwapPinned
+--- PASS: TestR13WindowsRootSwapPinned (0.05s)
+=== RUN   TestR13WindowsRootSwapStress
+=== RUN   TestR13WindowsRootSwapStress/write
+    file_tools_windows_test.go:223: swaps=22 successful_operations=231
+=== RUN   TestR13WindowsRootSwapStress/delete
+    file_tools_windows_test.go:223: swaps=19 successful_operations=90
+--- PASS: TestR13WindowsRootSwapStress (6.11s)
+    --- PASS: TestR13WindowsRootSwapStress/write (3.05s)
+    --- PASS: TestR13WindowsRootSwapStress/delete (3.05s)
+=== RUN   TestR13WindowsShortAlias
+    file_tools_windows_test.go:241: short alias="AQUITE~1.TXT" tilde=true
+--- PASS: TestR13WindowsShortAlias (0.00s)
+=== RUN   TestR13WindowsDeskAndHistory
+--- PASS: TestR13WindowsDeskAndHistory (0.02s)
+=== RUN   TestR13PortableAliasAndDevicePolicy
+--- PASS: TestR13PortableAliasAndDevicePolicy (0.00s)
+=== RUN   TestR13bAAMetadata
+    file_tools_r13b_windows_test.go:63: R13B_META binary_sha256=df796fa51ac4e51e2db791d36b1be43c33c46243763c97ab268f97c97074e9a9
+    file_tools_r13b_windows_test.go:64: R13B_META binary_name=r13b_windows_386.test.exe
+    file_tools_r13b_windows_test.go:65: R13B_META patch_sha256=662fc40a005a3fa690996a5eed5c12bb648345ac3c17795ba6f49716f91e089c
+    file_tools_r13b_windows_test.go:66: R13B_META hostname=DESKTOP-48D4KOL
+    file_tools_r13b_windows_test.go:67: R13B_META go_toolchain=go1.27.3 goos=windows goarch=386
+    file_tools_r13b_windows_test.go:68: R13B_META elevated=false user_sid=S-1-5-21-1316099983-995286136-1676610296-1001
+    file_tools_r13b_windows_test.go:69: R13B_META os_version=10.0.19045 sp=0 product_type=1
+--- PASS: TestR13bAAMetadata (0.17s)
+=== RUN   TestR13bWindowsParentHelperControl
+--- PASS: TestR13bWindowsParentHelperControl (0.05s)
+=== RUN   TestR13bWindowsParentSwapPinnedRoot
+    file_tools_r13b_windows_test.go:203: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot3050131513\001\nested -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsParentSwapPinnedRoot3050131513\002)
+--- PASS: TestR13bWindowsParentSwapPinnedRoot (0.05s)
+=== RUN   TestR13WindowsParentSwapAtomicHelper
+    file_tools_r13b_windows_test.go:256: hook entered=true renamed=false junction=false rename_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper3682386001\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper3682386001\001\old: Erişim engellendi. helper_err=errno=5(0x5) rename C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper3682386001\001\nested C:\Users\demir\AppData\Local\Temp\TestR13WindowsParentSwapAtomicHelper3682386001\001\old: Erişim engellendi.
+    file_tools_r13b_windows_test.go:289: OUTCOME=REFUSED errno=5: Windows refuses renaming a directory with an open child handle; swap in this window is impossible (not a swap test, see TestR13bWindowsParentSwapPinnedRoot)
+--- PASS: TestR13WindowsParentSwapAtomicHelper (0.02s)
+=== RUN   TestR13bWindowsDeskSubdirSwap
+    file_tools_r13b_windows_test.go:306: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap2633121083\001\sub -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSubdirSwap2633121083\002)
+--- PASS: TestR13bWindowsDeskSubdirSwap (0.05s)
+=== RUN   TestR13bWindowsDeskSessionRootSwap
+    file_tools_r13b_windows_test.go:330: BARRIER: swap performed C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap1400079882\001\ws -> junction(C:\Users\demir\AppData\Local\Temp\TestR13bWindowsDeskSessionRootSwap1400079882\002)
+--- PASS: TestR13bWindowsDeskSessionRootSwap (0.09s)
+=== RUN   TestR13bWindowsDeskAncestorSwap
+    file_tools_r13b_windows_test.go:386: OUTCOME=REFUSED errno=5: ancestor of a pinned root cannot be renamed while the pin is held
+--- PASS: TestR13bWindowsDeskAncestorSwap (0.01s)
+=== RUN   TestR13bWindowsDeskCleanupRace
+--- PASS: TestR13bWindowsDeskCleanupRace (0.03s)
+=== RUN   TestR13bWindowsSymlinkRejected
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2214723377\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2214723377\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+--- SKIP: TestR13bWindowsSymlinkRejected (0.01s)
+=== RUN   TestR13bWindowsVolumeMountPoint
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+--- SKIP: TestR13bWindowsVolumeMountPoint (0.00s)
+=== RUN   TestR13bWindowsVolumeRootJunction
+    file_tools_r13b_windows_test.go:467: reparse tag=0xA0000003
+--- PASS: TestR13bWindowsVolumeRootJunction (0.04s)
+=== RUN   TestR13bWindowsRetagDirectory
+--- PASS: TestR13bWindowsRetagDirectory (0.01s)
+=== RUN   TestR13bWindowsRetagPinnedRoot
+    file_tools_r13b_windows_test.go:582: after root retag: write=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid. read=ntstatus=0xC0000280 The symbolic link could not be resolved even though the initial file name is valid.
+--- PASS: TestR13bWindowsRetagPinnedRoot (0.01s)
+=== RUN   TestR13bWindowsHardlinkAfterOpen
+--- PASS: TestR13bWindowsHardlinkAfterOpen (0.01s)
+=== RUN   TestR13bWindowsHardlinkInWindow
+--- PASS: TestR13bWindowsHardlinkInWindow (0.01s)
+=== RUN   TestR13bWindowsShortNameWithoutTilde
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+--- SKIP: TestR13bWindowsShortNameWithoutTilde (0.00s)
+=== RUN   TestR13bWindowsPathVariants
+=== RUN   TestR13bWindowsPathVariants/NUL
+=== RUN   TestR13bWindowsPathVariants/nul
+=== RUN   TestR13bWindowsPathVariants/Nul.txt
+=== RUN   TestR13bWindowsPathVariants/a_nul
+=== RUN   TestR13bWindowsPathVariants/a_NUL.tar.gz
+=== RUN   TestR13bWindowsPathVariants/nul_
+=== RUN   TestR13bWindowsPathVariants/CONIN$
+=== RUN   TestR13bWindowsPathVariants/conout$.txt
+=== RUN   TestR13bWindowsPathVariants/COM1_
+=== RUN   TestR13bWindowsPathVariants/a._b
+=== RUN   TestR13bWindowsPathVariants/__._NUL
+=== RUN   TestR13bWindowsPathVariants/__._C__x
+=== RUN   TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null
+=== RUN   TestR13bWindowsPathVariants/__?_C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/__localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x
+=== RUN   TestR13bWindowsPathVariants/_??_C__x
+=== RUN   TestR13bWindowsPathVariants/C_x
+=== RUN   TestR13bWindowsPathVariants/c_x.txt
+=== RUN   TestR13bWindowsPathVariants/C_x#01
+=== RUN   TestR13bWindowsPathVariants/C__Windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/c__windows_win.ini
+=== RUN   TestR13bWindowsPathVariants/x__$DATA
+=== RUN   TestR13bWindowsPathVariants/x_$DATA
+=== RUN   TestR13bWindowsPathVariants/x_s_$DATA
+=== RUN   TestR13bWindowsPathVariants/sub_.._.._x
+=== RUN   TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants497972806_002_x
+--- PASS: TestR13bWindowsPathVariants (0.01s)
+    --- PASS: TestR13bWindowsPathVariants/NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/Nul.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_nul (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a_NUL.tar.gz (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/nul_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/CONIN$ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/conout$.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/COM1_ (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/a._b (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._NUL (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__._C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_GLOBALROOT_Device_Null (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_C$_Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/__?_UNC_localhost_c$_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/_??_C__x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c_x.txt (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C_x#01 (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/c__windows_win.ini (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x__$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/x_s_$DATA (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/sub_.._.._x (0.00s)
+    --- PASS: TestR13bWindowsPathVariants/C__Users_demir_AppData_Local_Temp_TestR13bWindowsPathVariants497972806_002_x (0.00s)
+=== RUN   TestR13bWindowsCaseSensitiveDir
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+--- SKIP: TestR13bWindowsCaseSensitiveDir (0.00s)
+=== RUN   TestR13bWindowsDACLDenied
+    file_tools_r13b_windows_test.go:807: deny-dir write: ntstatus=0xC0000022 {Access Denied}
+        A process has requested access to an object, but has not been granted those access rights.
+--- PASS: TestR13bWindowsDACLDenied (0.14s)
+=== RUN   TestR13bWindowsDACLOtherAccount
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+--- SKIP: TestR13bWindowsDACLOtherAccount (0.00s)
+=== RUN   TestR13bWindowsReadonlyErrors
+--- PASS: TestR13bWindowsReadonlyErrors (0.01s)
+=== RUN   TestR13bWindowsTempErrorPath
+--- PASS: TestR13bWindowsTempErrorPath (0.01s)
+=== RUN   TestR13bWindowsHandleLeak
+    file_tools_r13b_windows_test.go:899: handles before=206 after=206
+--- PASS: TestR13bWindowsHandleLeak (3.96s)
+=== RUN   TestR13WindowsRelativeLifecycle
+--- PASS: TestR13WindowsRelativeLifecycle (0.01s)
+=== RUN   TestR13WindowsUnsafeNames
+=== RUN   TestR13WindowsUnsafeNames/x:stream
+=== RUN   TestR13WindowsUnsafeNames/CON.txt
+=== RUN   TestR13WindowsUnsafeNames/nul
+=== RUN   TestR13WindowsUnsafeNames/com1.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT9
+=== RUN   TestR13WindowsUnsafeNames/COM¹.txt
+=== RUN   TestR13WindowsUnsafeNames/LPT²
+=== RUN   TestR13WindowsUnsafeNames/dir/PRN
+=== RUN   TestR13WindowsUnsafeNames/a.
+=== RUN   TestR13WindowsUnsafeNames/a_
+=== RUN   TestR13WindowsUnsafeNames/LONGFI~1.TXT
+=== RUN   TestR13WindowsUnsafeNames/../outside
+=== RUN   TestR13WindowsUnsafeNames/\\?\C:\x
+--- PASS: TestR13WindowsUnsafeNames (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/x:stream (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/CON.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/nul (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/com1.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT9 (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/COM¹.txt (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LPT² (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/dir/PRN (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a. (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/a_ (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/LONGFI~1.TXT (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/../outside (0.00s)
+    --- PASS: TestR13WindowsUnsafeNames/\\?\C:\x (0.00s)
+=== RUN   TestR13WindowsHardLink
+--- PASS: TestR13WindowsHardLink (0.01s)
+=== RUN   TestR13WindowsJunctionRejected
+--- PASS: TestR13WindowsJunctionRejected (0.05s)
+=== RUN   TestR13WindowsRootSwapPinned
+--- PASS: TestR13WindowsRootSwapPinned (0.06s)
+=== RUN   TestR13WindowsRootSwapStress
+=== RUN   TestR13WindowsRootSwapStress/write
+    file_tools_windows_test.go:223: swaps=18 successful_operations=187
+=== RUN   TestR13WindowsRootSwapStress/delete
+    file_tools_windows_test.go:223: swaps=19 successful_operations=149
+--- PASS: TestR13WindowsRootSwapStress (6.11s)
+    --- PASS: TestR13WindowsRootSwapStress/write (3.06s)
+    --- PASS: TestR13WindowsRootSwapStress/delete (3.05s)
+=== RUN   TestR13WindowsShortAlias
+    file_tools_windows_test.go:241: short alias="AQUITE~1.TXT" tilde=true
+--- PASS: TestR13WindowsShortAlias (0.00s)
+=== RUN   TestR13WindowsDeskAndHistory
+--- PASS: TestR13WindowsDeskAndHistory (0.02s)
+PASS
+I386_EXITCODE=0
+---- SKIP lines ----
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2996529865\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2996529865\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2286759708\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2286759708\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected867616465\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected867616465\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected539382001\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected539382001\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected1650553849\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected1650553849\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+    file_tools_r13b_windows_test.go:431: SKIP-PRIVILEGE: symlink creation needs SeCreateSymbolicLinkPrivilege (admin or Developer Mode): errno=1314(0x522) symlink C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2214723377\002 C:\Users\demir\AppData\Local\Temp\TestR13bWindowsSymlinkRejected2214723377\001\dlink: Gereken ayrıcalık istemci tarafından sağlanmıyor.
+    file_tools_r13b_windows_test.go:456: SKIP-ADMIN: a real volume mount point (SetVolumeMountPointW/mountvol) needs admin and changes the system mount table; same IO_REPARSE_TAG_MOUNT_POINT tag is covered by JunctionRejected, VolumeRootJunction and Retag
+    file_tools_r13b_windows_test.go:676: SKIP-ADMIN: assigning a tilde-free 8.3 name (SetFileShortNameW) requires SeRestorePrivilege (elevated); tilde aliases are covered by TestR13WindowsShortAlias and the GetFinalPathNameByHandle check
+    file_tools_r13b_windows_test.go:764: SKIP-ENV: per-directory case sensitivity (fsutil file setCaseSensitiveInfo) needs the optional WSL component and changes system state; NOT TESTED
+    file_tools_r13b_windows_test.go:818: SKIP-ACCOUNT: history privacy against a second low-privilege local account needs creating that account (admin); NOT TESTED
+FINAL_EXITCODE=0
+PASS - r13b Windows testleri. SKIP satirlarini README'ye gore inceleyin.

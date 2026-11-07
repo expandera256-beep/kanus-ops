@@ -1,0 +1,14 @@
+=== RUN   TestF01WindowsChild
+    sandbox_windows_test.go:25: yalnız Low IL çocuk yordamı
+--- SKIP: TestF01WindowsChild (0.00s)
+=== RUN   TestF01WindowsLowIL
+    sandbox_windows_test.go:143: === RUN   TestF01WindowsChild
+        LOW_IL_OK ADMIN_DENY_ONLY_OK PRIVILEGES_DROPPED_OK INSIDE_WRITE_OK OUTSIDE_WRITE_DENIED OUTSIDE_READ_STILL_ALLOWED
+        TOOL_SKIP go: araç PATH içinde yok
+        TOOL_SKIP node: araç PATH içinde yok
+        TOOL_LOW_IL_OK python Python 3.12.10
+        
+--- PASS: TestF01WindowsLowIL (0.13s)
+PASS
+exit_code=0
+exit_code=

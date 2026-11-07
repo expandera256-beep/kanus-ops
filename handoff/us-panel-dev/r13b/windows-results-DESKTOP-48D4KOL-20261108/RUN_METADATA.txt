@@ -1,0 +1,9 @@
+host=DESKTOP-48D4KOL user=demir (non-admin, ADMIN=0)  OS=Microsoft Windows [Version 10.0.19045.6466]
+zip=wintest_bundle_v2.zip box_sha256=4a0a44321009ee65076a2a0c5eb80e0234cb35b2fec4f737007d88313f7fc547
+pc_Get-FileHash=4A0A44321009EE65076A2A0C5EB80E0234CB35B2FEC4F737007D88313F7FC547 (MATCH)
+dir=C:\Users\demir\kanus-wintest\r13b-20261108\wintest (Expand-Archive)
+command=cmd /v:on /c "cd /d ...\wintest & run.cmd > run_console.txt 2>&1 & echo RC=!ERRORLEVEL!"
+start=2026-11-08 01:43:05 +03:00  end=~01:44:14 +03:00 (69 s)
+ERRORLEVEL=0  AMD64_EXITCODE=0 I386_EXITCODE=0 FINAL_EXITCODE=0
+counts: amd64 PASS=81 FAIL=0 SKIP=15 ; 386 PASS=81 FAIL=0 SKIP=15 ; panic=0
+R13B_META binary/patch sha256 match SHA256SUMS.txt
