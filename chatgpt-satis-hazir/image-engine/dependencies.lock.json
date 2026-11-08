@@ -1,0 +1,608 @@
+{
+  "schema_version": 1,
+  "status": "PARTIAL / BLOCKED for production installation",
+  "production_installable": false,
+  "floating_git_allowed": false,
+  "packages": [
+    {
+      "name": "transformers",
+      "version_or_commit": "4.56.1",
+      "status": "PINNED sourced",
+      "source_of_pin": {
+        "file": "/workspace/tmp/media-models/black-forest-labs/FLUX.2-klein-4B/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder/config.json",
+        "sha256": "214b4c29a0d975e9fddf9994a5673f22cb2c4c5750352f9227c2c3251ebeab40",
+        "field": "transformers_version"
+      },
+      "metadata_source": "https://pypi.org/pypi/transformers/4.56.1/json",
+      "metadata_evidence": "/workspace/us-panel/reports/r20261108/image_stage_evidence/transformers-pypi.json",
+      "metadata_sha256": "57f40b6e5ee2fba72afecd3ae3d44c5dff77567217042f4b79c0225d7d289151",
+      "wheels": [
+        {
+          "filename": "transformers-4.56.1-py3-none-any.whl",
+          "sha256": "1697af6addfb6ddbce9618b763f4b52d5a756f6da4899ffd1b4febf58b779248",
+          "url": "https://files.pythonhosted.org/packages/71/7c/283c3dd35e00e22a7803a0b2a65251347b745474a82399be058bde1c9f15/transformers-4.56.1-py3-none-any.whl"
+        }
+      ],
+      "runtime_compatibility": "NOT TESTED"
+    },
+    {
+      "name": "diffusers",
+      "version_or_commit": "0.37.0",
+      "status": "PINNED sourced",
+      "source_of_pin": {
+        "snapshot_file": "/workspace/tmp/media-models/black-forest-labs/FLUX.2-klein-4B/e7b7dc27f91deacad38e78976d1f2b499d76a294/model_index.json",
+        "snapshot_sha256": "51a76cb1cf3ed37423a1128c79c22faee8e6fbe7f5aaeb737f0a258930dbaac0",
+        "snapshot_version": "0.37.0.dev0",
+        "snapshot_status": "DEV-ONLY",
+        "release_selection": "Exact released 0.37.0 wheel inspected as zip (not imported); contains Flux2KleinPipeline. Released successor candidate, GPU compatibility NOT TESTED. Not floating git main.",
+        "pipeline_evidence": "/workspace/us-panel/reports/r20261108/image_stage_evidence/diffusers-0.37.0-pipeline_flux2_klein.py",
+        "pipeline_sha256": "e625460449da51819ba940db2967306a554728b057275719fa4e6d67592f44c0"
+      },
+      "metadata_source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+      "metadata_evidence": "/workspace/us-panel/reports/r20261108/image_stage_evidence/diffusers-0.37.0-pypi.json",
+      "metadata_sha256": "a5408140d422c2dd75b525c525979c463d986ea8d03eda77ec5e48363716b57a",
+      "wheels": [
+        {
+          "filename": "diffusers-0.37.0-py3-none-any.whl",
+          "sha256": "7eab74bf896974250b5e1027cae813aba1004f02d97c9b44891b83713386aa08",
+          "url": "https://files.pythonhosted.org/packages/f7/55/586a3a2b9c95f371c9c3cb048c3cac15aedcce8d6d53ebd6bbc46860722d/diffusers-0.37.0-py3-none-any.whl"
+        }
+      ],
+      "runtime_compatibility": "NOT TESTED"
+    },
+    {
+      "name": "tokenizers",
+      "version_or_commit": "0.22.0",
+      "status": "PINNED sourced",
+      "source_of_pin": {
+        "constraint": "tokenizers<=0.23.0,>=0.22.0",
+        "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+        "selection": "Official exact release at sourced lower bound; isolated CPU diagnostic only, no dependency install."
+      },
+      "metadata_source": "https://pypi.org/pypi/tokenizers/0.22.0/json",
+      "metadata_evidence": "/workspace/us-panel/reports/r20261108/image_stage_evidence/tokenizers-0.22.0-pypi.json",
+      "metadata_sha256": "9a9141eda6e4fab35a2995c5b6a1cdc9d75a5e81d1d6f6dab60ffa32496e3849",
+      "wheels": [
+        {
+          "filename": "tokenizers-0.22.0-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "sha256": "a89264e26f63c449d8cded9061adea7b5de53ba2346fc7e87311f7e4117c1cc8",
+          "url": "https://files.pythonhosted.org/packages/d4/61/aeab3402c26874b74bb67a7f2c4b569dde29b51032c5384db592e7b216f4/tokenizers-0.22.0-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+        }
+      ],
+      "runtime_compatibility": "CPU raw token count evaluated separately; pipeline-format admission NOT TESTED"
+    },
+    {
+      "name": "torch",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torch>=2.2; extra == \"torch\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torch>=2.2; extra == \"serving\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchaudio; extra == \"speech\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchaudio; extra == \"torch-speech\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchvision; extra == \"torch-vision\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torch>=2.2; extra == \"all\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchaudio; extra == \"all\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchvision; extra == \"all\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torch>=2.2; extra == \"dev-torch\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchaudio; extra == \"dev-torch\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchvision; extra == \"dev-torch\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torch>=2.2; extra == \"dev\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchaudio; extra == \"dev\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchvision; extra == \"dev\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torch>=2.2; extra == \"torchhub\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "torchsde; extra == \"test\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "torchvision; extra == \"test\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "torch>=1.4; extra == \"torch\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "torchao>=0.7.0; extra == \"torchao\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "torchsde; extra == \"dev\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "torchvision; extra == \"dev\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "torch>=1.4; extra == \"dev\""
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "torchvision",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchvision; extra == \"torch-vision\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchvision; extra == \"all\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchvision; extra == \"dev-torch\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "torchvision; extra == \"dev\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "torchvision; extra == \"test\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "torchvision; extra == \"dev\""
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "CUDA",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "pynvml",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "accelerate",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "accelerate>=0.26.0; extra == \"torch\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "accelerate>=0.26.0; extra == \"accelerate\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "accelerate>=0.26.0; extra == \"deepspeed\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "accelerate>=0.26.0; extra == \"serving\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "accelerate>=0.26.0; extra == \"deepspeed-testing\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "accelerate>=0.26.0; extra == \"all\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "accelerate>=0.26.0; extra == \"all\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "accelerate>=0.26.0; extra == \"dev-torch\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "accelerate>=0.26.0; extra == \"dev\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "accelerate>=0.26.0; extra == \"dev\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "accelerate>=0.31.0; extra == \"training\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "accelerate>=0.31.0; extra == \"torch\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "accelerate>=0.31.0; extra == \"bitsandbytes\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "accelerate>=0.31.0; extra == \"gguf\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "accelerate>=0.31.0; extra == \"optimum-quanto\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "accelerate>=0.31.0; extra == \"torchao\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "accelerate>=0.31.0; extra == \"dev\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "accelerate>=0.31.0; extra == \"dev\""
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "huggingface-hub",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "huggingface-hub<1.0,>=0.34.0"
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "huggingface-hub<1.0,>=0.34.0; extra == \"torchhub\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "huggingface-hub<2.0,>=0.34.0"
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "safetensors",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "safetensors>=0.4.3"
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "safetensors>=0.3.1"
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "safetensors>=0.3.1; extra == \"test\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "safetensors>=0.3.1; extra == \"dev\""
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "Pillow",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "Pillow<=15.0,>=10.0.1; extra == \"vision\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "Pillow<=15.0,>=10.0.1; extra == \"torch-vision\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "Pillow<=15.0,>=10.0.1; extra == \"all\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "Pillow<=15.0,>=10.0.1; extra == \"all\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "Pillow<=15.0,>=10.0.1; extra == \"dev-torch\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "Pillow<=15.0,>=10.0.1; extra == \"dev-torch\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "Pillow<=15.0,>=10.0.1; extra == \"dev-tensorflow\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "Pillow<=15.0,>=10.0.1; extra == \"dev\""
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "Pillow<=15.0,>=10.0.1; extra == \"dev\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "Pillow"
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "numpy",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "numpy>=1.17"
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "numpy>=1.17; extra == \"torchhub\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "numpy"
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "filelock",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "filelock"
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "filelock; extra == \"torchhub\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "filelock"
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "httpx",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "httpx<1.0.0"
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "importlib_metadata",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "importlib_metadata; extra == \"torchhub\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "importlib_metadata"
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "packaging",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "packaging>=20.0"
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "packaging>=20.0; extra == \"torchhub\""
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "pyyaml",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "pyyaml>=5.1"
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "regex",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "regex!=2019.12.17"
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "regex!=2019.12.17; extra == \"torchhub\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "regex!=2019.12.17"
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "requests",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "requests"
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "requests; extra == \"torchhub\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "requests"
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "requests-mock==1.10.0; extra == \"test\""
+        },
+        {
+          "source": "https://pypi.org/pypi/diffusers/0.37.0/json",
+          "requires_dist": "requests-mock==1.10.0; extra == \"dev\""
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    },
+    {
+      "name": "tqdm",
+      "version_or_commit": null,
+      "status": "UNKNOWN",
+      "source_of_pin": null,
+      "sourced_constraints": [
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "tqdm>=4.27"
+        },
+        {
+          "source": "https://pypi.org/pypi/transformers/4.56.1/json",
+          "requires_dist": "tqdm>=4.27; extra == \"torchhub\""
+        }
+      ],
+      "wheels": [],
+      "reason": "Only ranges/unversioned metadata or no applicable official exact requirement; no wheel/CUDA variant guessed."
+    }
+  ],
+  "prompt_limit": {
+    "status": "UNKNOWN / NOT TESTED",
+    "value": null,
+    "snapshot_max_sequence_length_occurrences": [],
+    "not_admission_caps": {
+      "text_encoder.max_position_embeddings": 40960,
+      "tokenizer.model_max_length": 131072
+    },
+    "released_pipeline_candidate_default": {
+      "value": 512,
+      "source": "/workspace/us-panel/reports/r20261108/image_stage_evidence/diffusers-0.37.0-pipeline_flux2_klein.py",
+      "sha256": "e625460449da51819ba940db2967306a554728b057275719fa4e6d67592f44c0",
+      "note": "Released wheel source default, NOT present in pinned snapshot; NOT adopted as admission cap. Exact pipeline formatter and no-truncation integration need review."
+    }
+  },
+  "schnell": {
+    "status": "BLOCKED",
+    "reason": "HF 401, no permitted local snapshot; no bypass or download"
+  },
+  "remaining_gates": [
+    "Full exact transitive lock including torch/CUDA/NVML and Python/platform ABI",
+    "Reviewed no-truncation pipeline formatter/token budget",
+    "Approved GPU compatibility and handoff tests",
+    "Live fenced chat/lifecycle integration and durable crash/operator reconciliation"
+  ]
+}
